@@ -13,6 +13,8 @@ Retain B1+C as the preferred experimental candidate with those limitations.
 B2, main integration, release and push remain unauthorized. Full parity and
 integration/I6 NOT ACCEPTED dispositions remain unchanged. Older
 I-stage status/authority paragraphs below are historical, not current permission.
+The subsequent [I6 full-suite diagnosis and closure proposal](#i6-full-suite-blocker-diagnosis-and-proposed-closure-2026-10-22)
+is read-only analysis; its proposed checks and conditional repairs have not begun.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -8274,3 +8276,163 @@ TOC-dot and spacing differences. The old I6 complete Service-suite prerequisite
 remains OPEN and I6 remains **NOT ACCEPTED**; these small-case results do not waive
 it. Full pixel parity, the0.48pt cause, wider documents and production readiness
 are not proven. **Report and stop before B2 or main integration.**
+
+### I6 full-suite blocker diagnosis and proposed closure 2026-10-22
+
+**Disposition: diagnosis/proposal complete; full-suite blocker OPEN, I6 NOT
+ACCEPTED.** Owner request authorizes investigating causes and proposing closure,
+not code changes, another test run, B2 or main integration. Active roles: Evidence
+Reviewer / Planning Partner / Documentation Synthesizer. Owner is Service for
+tests/process/queue behavior and Project Control for this shared proposal. Work,
+Phase, Checklist and execution IDs are N/A for this single-room continuation.
+Risk Tier: routine. This section is canonical planning/status, not passing
+product Evidence. Historical receipts remain intact.
+
+Inspection receipt:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-full-suite-diagnosis-20261022/inspection-and-preservation.json`.
+It freezes inspected source/log hashes and preservation checks. Original logs
+and receipts are under
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i6-evidence`.
+This inspection did not start containers, change a database, run tests, export
+Word/PDF, or change product files.
+
+#### Findings and confidence
+
+1. **Confirmed environment mismatch in the retry:**
+   `src/tasks/queue-resources.ts:72` rejects a real cgroup memory maximum other
+   than exactly1GiB. The diagnostic retry used1.5GiB, so its queue capability
+   rejection/HTTP503 failures cannot establish a valid queue regression. The
+   retry had7 failed files,11 failed tests and8 unhandled errors. Its recorded
+   peak943656960 bytes and zero OOM kills do not prove the earlier1GiB run
+   exhausted memory. Scheduler tests that inject their own1GiB samples must be
+   assessed separately; real container size alone does not explain them.
+2. **Confirmed CLI checker budget mismatch:** the CLI error-sanitization case
+   includes an unavailable database whose configured connection timeout is5s,
+   plus several child CLI launches. Both old full runs used the default5s test
+   limit. The retained15s isolated recheck passed3/3, with this case taking5127ms.
+   Service README already documents `npm test -- --testTimeout 15000` for I6.
+   This is a checker budget, not permission to increase production deadlines or
+   the tests' explicit MCP/native deadlines.
+3. **Confirmed shared-lock failure mechanism; initiating hang unresolved:**
+   the first full run timed out in the task-api MCP case at60s and native-server
+   case at30s, then many cases reported `Processor already active`.
+   `src/jobs/processor.ts:22` acquires PostgreSQL advisory key60430404 and releases
+   it during stop. `tests/isolatedDatabase.mjs` creates separate schemas in the
+   same database; these schemas do not isolate that database-wide lock. A live
+   leftover processor can therefore block subsequent files. Both task-api paths
+   already have `finally` cleanup; missing cleanup code is not an established
+   cause. An unbounded health fetch or transport wait, timeout/cleanup overlap,
+   or child-exit race remains a hypothesis. Old logs do not identify the owning
+   child PID/PG session or the exact stalled stage. The recheck helper also lacks
+   the production compose `init:true` equivalent; using an init process reaps
+   dead orphans but does not itself stop a live server or release its lock.
+4. **Confirmed reservation ordering; scheduler failure unresolved:** the
+   scheduler's storage-wait case observed one worker while the task stayed queued
+   and no renderer had entered. `src/tasks/processing.ts:246` reserves a worker
+   before awaiting the database storage/quota transaction, and releases it on
+   rejection/finally. A snapshot can therefore see a temporary reservation.
+   Whether the full-run observation is a sampling assumption, slow transaction,
+   cleanup interference, or a product contract defect needs timing evidence.
+   Isolated scheduler13/13 passing does not settle this combined-run failure.
+5. **Historical fixture failure already superseded:** the retry's invalid TOC
+   fixture preceded the final frozen fixture. The retained final I6 API18/18
+   result covers that corrected fixture; no validator relaxation is proposed.
+   Comparing143 frozen test/helper files to the current Service files found no
+   textual differences:14 raw hash differences are line-ending differences only.
+
+The first full run failed33/121 files and60/568 tests; the retry failed7/122 files
+and11/586 tests. Neither is a complete passing run on the final frozen snapshot
+under all required conditions. The previously collected581 passes and5 optional
+skips across isolated files remain supporting evidence, not a full-suite PASS.
+The initiating MCP/native hang and the scheduler timing question are the two
+principal unknowns; this inspection does not assert that all remaining faults
+are only test infrastructure.
+
+#### Proposed bounded closure sequence — not executed
+
+**F0 — freeze and preflight the original I6 candidate.** Target Service base
+`8690193b73b14554c63a9aebe5c888edcf780946` plus its retained pending I6 files,
+original Core archive SHA256
+`067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`,
+and final frozen checks image
+`sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0`.
+Record actual hashes, dependencies, configuration and environment before running.
+Do not install B1+C to close an older I6 prerequisite. Use disposable test
+database/network/storage and a fresh proof directory; never user data or old
+proof outputs. Require Linux/amd64, exact1GiB memory limit with1GiB swap setting,
+an init process consistent with compose, and a recorded fixed CPU allocation.
+Verify actual cgroup limits, pressure/OOM counters, absence of the processor lock
+at entry, original vendor/build/migrations, both candidate plugin roots, reviewed
+four-face Bai Jamjuree/OFL hashes read-only, and writable proof output. Keep the
+documented15s default test limit and existing explicit60s/30s deadlines.
+
+**F1 — capture the first cause with bounded diagnostics.** At most three targeted
+invocations: CLI3 cases; task-api14 cases including MCP/native and their cleanup
+transitions; then the processing resource-wait case and the two scheduler
+memory/storage-wait cases. This is at most20 targeted cases, not full-suite
+acceptance. Preserve serial ordering/shared database conditions where relevant;
+per-file disposable databases may diagnose isolation but cannot substitute for
+the final invocation. Capture owned PID/parent/process-group and PG advisory-lock
+holder/session state at start, failure and completion; record transport/readiness
+stages and cleanup timing. Capture worker acquisition, quota transaction,
+storage rejection/release, assertion times and task terminal reason for the
+scheduler question. Use external observation first; any temporary test
+instrumentation requires the later authorized test/harness scope and must leave
+the product candidate unchanged. Collect bounded cgroup/process samples at most
+once per second, no secrets/full environment dumps. Verify no owned live child
+or held processor lock before the next case. Budget:10 minutes total diagnostic
+time,10MiB evidence, last4KiB stderr per owned child. Stop on budget exhaustion
+with the first failure preserved; no automatic retries. One failing-case replay
+requires a concrete new observation or authorized repair.
+
+**F2 — repair only a demonstrated cause, if separately authorized.** If the
+evidence proves a test-owned lifecycle defect, propose a narrow change in
+`tests/task-api.test.mjs` and its necessary helper: owned abort/deadline,
+idempotent awaited cleanup and safe child-exit handling, with a reproducing
+check. Apply the CLI budget through the existing invocation. Do not add arbitrary
+sleeps, weaken assertions, hide unhandled errors or relax the final fixture's
+validation. If timing reveals a runtime scheduling/reservation defect, return
+the evidence and a new Service repair scope before changing runtime code.
+Processor lock semantics, queue1GiB guard, quotas, production timeouts, Core and
+PDF/DOCX renderers are outside the proposed harness repair. If targeted checks
+pass with clean preconditions, omit F2 rather than invent a repair.
+
+**F3 — one complete full-suite gate after prerequisites pass.** Run the final
+frozen candidate with `npm test -- --testTimeout 15000`, preserving the existing
+serial file setting, exact1GiB conditions and one dedicated database for the
+whole invocation. Verify the discovered inventory against the frozen snapshot
+(expected122 files/586 cases); explain any discrepancy before accepting. No
+filter, `.only`, sharding, reordered subset, or aggregate of separate runs may
+replace this result. Proposed external watchdog:15 minutes, without increasing
+explicit case deadlines. Save the source manifest, safe environment identity,
+complete structured result/log, resource counters and owned-process/lock checks
+at entry/exit. On failure preserve the earliest cause and stop; a second full
+run needs a concrete repair plus passing affected checks, not unused budget.
+
+Acceptance requires exit0, every mandatory case passing in that one invocation,
+zero unhandled errors, unexpected skips, timeouts, owned live children or held
+processor lock at exit. The existing five optional external font-height skips
+must remain separately named: `fonts-height-proposals`1,
+`fonts-height-supplied`1 and `fonts-height-delivery-guard`3; skips are not PASS.
+Hook-failure fallout is not an optional skip. Retain the exact candidate and
+review evidence coverage before changing the I6 disposition. Until that result
+exists and is accepted, I6 remains NOT ACCEPTED. Closing original I6 does not
+authorize B1+C Service integration, B2, release or merge.
+
+#### Preservation, budget and handoff
+
+B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa` in
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e2-b1c/core-worktree`.
+The inspection reverified all96 D artifacts,72 regression artifacts and29
+original source/font/reference files against their retained hashes. Original
+PDF baselines were not regenerated or modified. Service retains its pre-existing
+README/usage edits and untracked I6 test/fixture; no product change was made.
+
+Proof Budget this inspection: zero suite invocations, zero Word exports and zero
+new document-review pages; cumulative162 pages/21 exports unchanged. The proposed
+closure uses ordinary disposable test outputs only, with no new Word review or
+replacement reference PDF. A renderer/runtime scope expansion needs its own
+impact/proof decision. Document Budget: this existing Project Control plan plus
+the external inspection receipt; no new Work/map/registry record. Proposed F0–F3
+execution and any repair require subsequent owner authorization. Report this
+diagnosis and stop at the current read-only boundary.
