@@ -28,6 +28,10 @@ boundaries are clean, while memory admission blocks generation in observed
 failure windows. F2/I6 remain NOT ACCEPTED; no further code change or F3 run.
 The owner subsequently requested the [harness and cache attribution proposal](#i6-harness-and-cache-memory-attribution-plan-2026-10-22).
 It is planning only; its proposed measurement budget is not execution permission.
+The owner subsequently authorized that bounded discovery. Its
+[M0/M1 result](#i6-memory-attribution-m0-m1-result-2026-10-22) stops after2/12
+cache probes because the comparison controls are invalid; M2/M3 were not run.
+Harness/cache attribution remains UNKNOWN and F2/I6 remain NOT ACCEPTED.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9185,3 +9189,124 @@ Planning verification: Project Control `tools/check.ts` and `git diff --check`
 pass. Read-only hash checks preserve408 prior source/evidence files and all358
 candidate inputs; F2 HEAD/status are unchanged and B1+C remains clean at its
 frozen commit. This checkpoint changes only this Project Control plan.
+
+### I6 memory attribution M0 M1 result 2026-10-22
+
+**STOP / UNKNOWN attribution.** The owner authorized the preceding discovery
+plan up to12 executions, exact1GiB, with an explicit stop if controls cannot
+be established. M0 used saved evidence; M1 executed2 cache-only probes. No
+functional test, generation request, M2, M3, source repair, full suite, B2 or
+product integration followed. The remaining10 executions were not spent.
+F2/I6 remain NOT ACCEPTED; neither a passing capacity result nor a policy defect
+is established by these probes.
+
+Role: Evidence Reviewer / Documentation Synthesizer. Service owns the unchanged
+candidate, Project Control owns this shared checkpoint. Work/Phase/Checklist/
+execution IDs: N/A, single-room discovery in the retained isolated lane.
+The current host model performed this bounded read-only execution without a
+model override or dispatch; its availability basis is the current host tool
+contract. No historical registry or separate WORK room was reopened.
+
+New evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-memory-attribution/proof`.
+Manifest SHA256:
+`150c3695bfd3926e86bc3821bba2d5e2c1c3d911db01e4e8f16f6ea5f06bd21f`;
+28 files,1129508 bytes before the manifest. The manifest also binds the external
+`../run.py` observer/reader orchestrator. `ledger.json`, `receipt.json`,
+`m0-analysis.json`, both inventories/content digests, per-second target/observer
+samples and environment/placement receipts retain the result. External probe
+scripts are proof tooling, not changes to Service, its tests or runtime inputs.
+
+#### M0: saved evidence and observer correction
+
+M0 groups existing phase readings and records a nearby per-process sample at
+the original direct-generation marker. These are historical samples, not new
+case executions. OS metrics cannot split the Vitest/Service heap inside their
+shared process; pre-import/build decomposition and native internal snapshots
+remain missing. Do not turn summed RSS, anonymous memory or a cross-topology
+subtraction into a measured harness-only allocation.
+
+Review found a methodological qualification to the preceding17-case record:
+the old `observe.py` was invoked with `docker exec` inside the target's memory
+group. It was external to the application, not external to its cgroup. At the
+nearby saved sample it had10MiB RSS and8.29MiB PSS. Those values overlap the
+existing accounting views and are not a justified subtraction from queue input.
+The old measured admission refusal and failed gate remain recorded; that
+observer overhead does not establish what an observer-free run would do.
+
+The new observer uses a separate verified cgroup while reading the target PID
+namespace/cgroup read-only. Saved target and observer paths differ; observer
+memory is recorded separately, approximately12.42–12.47MiB current in probe1
+and5.36–5.65MiB in probe2. These are complete observer-group readings, not the
+observer's isolated heap. No observer work was silently counted as free RAM.
+
+#### M1: two probes, invalid runtime comparison controls
+
+Both target groups use the exact retained Linux/amd64 checks image
+`sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0`,
+1GiB memory/no swap,2 CPUs, init, read-only image/fonts and no network. No
+Service, database, build or renderer was started. The existing admission policy
+source is unchanged; the cache probes do not exercise queue admission.
+
+Each probe traversed the same inventory and read/hash-checked it twice with a
+bounded streaming buffer. Both cycles and both probes have identical aggregate
+path/content digests:5399 files,170391052 bytes (approximately162.50MiB).
+The reader then exited; settled readings contain only target init/sleep.
+
+| Probe | Initial total MiB | Initial file MiB | Settled total MiB | Settled anonymous MiB | Settled file MiB | Settled kernel MiB |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 44.36 | 16.25 | 209.43 | 0.15 | 192.32 | 16.65 |
+| 2 | 18.82 | 0.00 | 6.50 | 0.15 | 0.00 | 5.85 |
+
+The predeclared80MiB file-contrast feasibility threshold was exceeded, but that
+alone is insufficient: the same read preparation yielded different settled
+charges, not two independently selectable/reproducible application-ready
+conditions. Container order/global cache history are confounders. The first
+target was removed before the second probe; no claim is made about which
+ancestor/other group subsequently owns the pages. Zero target file charge
+does not mean zero physical cache, absent file reads or lower total host RAM.
+The charge also includes reader/OS file activity, so192.32MiB is not an exact
+application-file-only allocation.
+
+Control review found a second concrete coverage defect: the external reader
+looked for relative `plugins`, which the inventory reports missing, while the
+frozen image's two plugin-root variables point to `/candidate`. Thus byte
+equality is established only for the probed inventory, not the entire MCP
+runtime footprint. This is a diagnostic-tool coverage error, not a candidate
+defect. It was retained and reported rather than repaired/rerun after the stop
+condition fired. The preliminary contrast-found receipt is preserved as a
+field within the final receipt; final disposition is STOP_CACHE_CONTROL_UNKNOWN.
+
+M2/M3 would compare uncontrolled states, so they were not started. No cache
+flush, memory-policy adjustment, extra preparation run or source edit was used
+to force a comparable/passing condition. Approximately47.4 seconds elapsed
+across discovery/probe execution; output stayed below10MiB. No OOM was observed.
+
+#### Preservation, coverage and next proposal boundary
+
+Before/after checks preserve408 prior source/evidence files and all358 candidate
+inputs. F2 HEAD/status and primary Service status are unchanged; B1+C is clean
+at `b79f426649e65eadb3fb29e410250395a6d65faa`. Original PDF baselines and all
+old D/regression/F1/F2/followup17 evidence remain intact. No Word export or page
+review was spent; cumulative162 pages/21 exports stays unchanged. The four owned
+probe/observer containers were removed; no owned container remains. No database,
+network, user data or product commit was created by this experiment.
+
+Coverage: policy/input containment and bounded cleanup pass; attribution and
+controlled cache preparation are UNKNOWN; functional admission, prefix
+reproduction and standalone capacity are NOT RUN. The discovery budget stops
+at2/12, not at a fabricated10-case PASS or a demand to exhaust the remaining cap.
+
+A later proposal should first correct the external inventory to the actual
+runtime/plugin roots and define a repeatable preparation/charge ownership
+method without changing the1GiB rule, file bytes or host cache globally. If
+that cannot be done within scope, use process-topology observations only with
+explicit confounding limits; do not promise an exact harness/cache split.
+No follow-up measurement, harness refactor or policy change is authorized by
+this result. Report the controlled-comparison blocker and stop.
+
+Checkpoint verification: Project Control `tools/check.ts` and `git diff --check`
+pass. Independent read-only checks verify all28 new evidence files, the bound
+external runner, all358 candidate inputs, the2/12 ledger, actual separate
+observer placement and no remaining owned containers. Only this Project
+Control document changes in a repository; product code and maps do not change.
