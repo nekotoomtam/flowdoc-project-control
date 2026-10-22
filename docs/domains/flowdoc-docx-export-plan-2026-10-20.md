@@ -45,6 +45,9 @@ The owner subsequently authorized the seven-scenario comparison. Its
 stops on an external network-metadata parser error before any live cache or
 readiness arm. Charge the failed preparation as1/7; no retry occurred.
 The previous cache-only PASS remains limited to its recorded topology.
+The owner next requested the [network-parser and budget-repair proposal](#i6-network-parser-and-budget-repair-plan-2026-10-22).
+It specifies offline fixture checks and a separate fresh live budget; no repair
+or further experiment is authorized by this planning checkpoint.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9932,3 +9935,177 @@ Checkpoint verification: Project Control `tools/check.ts` and
 as-run/supplemental records,13 unchanged helper files, conservative1/7 accounting
 and all preservation locators above. Only this shared document changes in a
 repository; external evidence/tooling is retained separately.
+
+### I6 network parser and budget repair plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner requests a repair plan for the external
+network reader and preparation budget boundary, including synthetic tests and
+a new-round budget. Current scope is this plan and read-only preservation/
+documentation checks only. No helper/product source edit, synthetic test run,
+Docker command, cache probe, Service launch, generation request, B2 or product
+integration is authorized now. F2/I6 and the A/B comparison remain unaccepted/
+UNKNOWN. Retain the previous charged1/7 preparation failure and raw0 ledger.
+
+Project Control owns this shared proposal; Service owns any later product/test
+change. Role: Planning Partner / Evidence Reviewer / Documentation Synthesizer.
+Work/Phase/Checklist/execution IDs: N/A, single-room planning, no registry
+reactivation. Work Size: small; Risk Tier: routine. Document Budget: this existing
+document only; no new Work, map or product Markdown. A later execution resolves
+its own model decision using current host availability.
+
+#### N0: contain the repair and preserve the failed attempt
+
+If separately authorized, create a fresh external directory such as
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-harness-network-repair`.
+Keep the failed `i6-harness-service-memory` source, raw proof and postrun
+reconciliation immutable. Use two small helper units for pure network parsing
+and phase-budget persistence, deterministic fixture tests, and narrow call-site
+changes in a new orchestrator copy. Preserve the existing observer, reader,
+shared lifecycle, A/B fixture, frozen native environment, deadlines and cache
+tolerances; do not use this fix to redesign the experiment.
+
+Allowed future edits are external proof tooling/fixtures only. Forbidden:
+Service/Core source/tests/configuration, old evidence/helpers, package/image
+contents, B1+C, original PDF baselines, installed runtime, product maps and
+unrelated resources. Updated helper bytes must be included in any later frozen
+inventory and source manifest. No build/install/live pilot is needed to test
+these two pure metadata/accounting defects.
+
+#### N1: classify network metadata before deciding overlap/ownership
+
+The parser takes a saved/synthetic inspect-result list, intended network name
+and candidate subnet; it performs no Docker or filesystem mutation. Validate
+the record and IPAM shapes explicitly. Return parsed subnets and an auditable
+list of recognized non-subnet records, or a typed failure/UNKNOWN.
+
+Accept an explicitly present `IPAM.Config=null` as no subnet only for the exact
+built-in pairs `Name=host, Driver=host` and `Name=none, Driver=null`, matching the
+retained diagnosis. Record why those entries were excluded. A matching name
+with another driver is not the exemption. Missing IPAM/Config, wrong shapes,
+unknown bridge/custom null/empty subnet information, malformed entries or an
+invalid CIDR remain a stop; do not normalize every false-like value to `[]`.
+
+For bridge/custom records with actual subnet lists, parse each required Subnet
+as a valid canonical IPv4/IPv6 network and preserve its family. Deduplicate
+without discarding ownership context. Compare overlap only between the same
+address family; a valid IPv6 entry must not crash an IPv4 check or be treated
+as malformed. Reject the proposed name if it already exists, and reject an
+overlapping same-family candidate. Never allocate a different subnet or remove
+an existing network merely to pass preflight.
+
+Retain the established ownership boundary: prove the intended name absent
+before claiming it, register intended ownership before an uncertain create,
+and use the returned network ID for normal cleanup. A timeout may use a
+name-based cleanup path only where prior absence/ownership was established;
+unknown ownership stops cleanup of that object. Failed metadata inspection
+does not grant ownership. No unrelated network may be removed.
+
+#### N2: reserve preparation before the first Docker preflight
+
+After offline source/preservation/fixture prerequisites pass and before the
+first Docker image/network/container inspection, durably record preparation
+STARTED with `used=1` and the fixed cap. Confirm the saved reservation before
+allowing the Docker adapter to execute. Metadata-only setup failures therefore
+consume the same preparation unit as later infrastructure failures.
+
+Use a single-writer ledger and a same-directory temporary write/flush/replace
+so readers see either the last valid state or the new valid reservation. Do
+not claim power-loss durability beyond the verified platform behavior. If
+reservation persistence cannot be confirmed, invoke zero Docker operations,
+report the accounting failure/attempt explicitly and stop; never continue from
+an in-memory counter or call it a free successful0-run preflight.
+
+Preparation encompasses image/network checks, owned resource setup, database
+provisioning/migration, Linux helper guards and the initial cache preparation;
+it is reserved once. Every later cache/readiness scenario reserves exactly one
+additional unit before it starts. Finishing/failing/cleanup changes status,
+not the charged count. Duplicate phase starts, a used-up cap, an existing proof
+directory or an attempted resume must not reset/refund the budget or silently
+reuse an earlier reservation. A failed attempt stops; no automatic new directory
+or retry follows. Keep cleanup and its errors visible within the charged phase.
+
+The unchanged intended sequence is preparation1, cache checks2, then A1–B1–B2–A2
+readiness arms4. A first Docker-inspection exception must leave a retrievable
+STARTED/failed preparation charged1, no created resources and no later phase.
+Do not retrospectively rewrite the previous raw0 ledger: its supplemental
+charged1 record remains the authority for that historical attempt.
+
+#### N3: sixteen named offline fixture cases
+
+Use deterministic Python fixtures and injected fake Docker/persistence adapters.
+The test process must prohibit real Docker/subprocess calls; no daemon, image,
+network, database, container, Service or document is needed. Preserve fixtures
+and per-case results so the failing inputs can be replayed.
+
+| ID | Synthetic input or injected fault | Required result |
+| --- | --- | --- |
+| N01 | Built-in host/host with explicit Config null | Recognized non-subnet entry, audited, no exception |
+| N02 | Built-in none/null with explicit Config null | Same narrow exemption, no exception |
+| N03 | Valid bridge IPv4 plus custom-network IPv6 records | Canonical family-aware subnet collection; IPv4 comparison does not error on IPv6 |
+| N04 | Name host but driver bridge, Config null | Stop; no name-only exemption |
+| N05 | Ordinary bridge Config null | Stop/UNKNOWN, no empty-list shortcut |
+| N06 | Missing IPAM metadata | Explicit metadata failure, no implicit no-overlap result |
+| N07 | Config object instead of list/null | Explicit shape failure |
+| N08 | List entry without a usable Subnet | Stop rather than silently skip |
+| N09 | Invalid subnet/CIDR | Explicit parse failure, no network allocation |
+| N10 | Candidate overlaps a valid existing same-family subnet | Stop before create, no adaptive alternate subnet |
+| N11 | Intended network name already exists | Stop with ownership false; zero create/remove calls |
+| N12 | Absent name proved, fake create times out after possible creation | Charged preparation1; bounded cleanup uses only established ownership, never unrelated objects; no retry |
+| N13 | Fake first Docker image-inspect callback raises | Callback observes saved used1 beforehand; failure remains charged1; no resource creation or later phase |
+| N14 | Fake successful seven-phase sequence | Exact counts1 through7 and A1–B1–B2–A2 order; completion/cleanup never double-charge preparation |
+| N15 | Reservation attempted with used7/cap7 | Rejected before callback; no reset, refund or external invocation |
+| N16 | Reservation persistence fails before replace/confirmation | Zero Docker callbacks; previous ledger remains valid, accounting failure reported; no resume from an unsaved counter |
+
+These are sixteen named fixture checks, not sixteen live experiments or an
+exhaustive claim about all Docker drivers/crash modes. Preserve the initial
+regression failure before repairing the helper; then run the complete fixture
+set against the fix. A proposed offline proof ceiling is three complete passes
+(at most48 named fixture executions, with collection failures also consuming
+a pass),5 minutes active checks and2MiB output. Stop once all16 pass; a third
+pass is available only for a demonstrated failing repair, not extra reassurance.
+If the offline ceiling is exhausted or a guard remains unresolved, report and
+stop with zero live work. No hidden parameterized/live pilot cases are allowed.
+
+#### N4: separate repair acceptance from a new live budget
+
+First proposed checkpoint: accept only the external tool repair after the
+sixteen cases pass, the narrow diff/ownership/counting boundaries are reviewed,
+and all old hashes remain unchanged. This acceptance does not launch Docker
+or confer cache/Service acceptance. Report the exact offline pass/case counts,
+changed helper hashes, retained failed regression and remaining limitations.
+
+A subsequent owner-authorized complete comparison needs a **fresh7-scenario
+budget**, not the previous unused6: preparation1, cache verification2 and the
+four A–B–B–A readiness arms. The historical failed preparation remains charged1;
+if the complete new round uses7, cumulative attempts across those two rounds
+are8. Never refund that historical attempt, reuse its cap or omit a cache check
+to make the new round appear to fit6.
+
+Retain the proposed live ceilings of10 minutes active execution and10MiB new
+output, the same persistent target at1GiB/no swap/2 CPUs, exact idle spread
+limits8/4/4/12MiB and matched loaded file limit8MiB. Preserve30s fixture/6s
+readiness/5s Service cleanup and60s arm deadlines, frozen child environment,
+same in-budget caller placement, separate observer/database accounting,
+no-generation workload and first-invalid-control stop. Include the repaired
+tooling in a new reviewed inventory; revalidate cache instead of inheriting
+the old202.02MiB state. The current request authorizes neither repair nor this
+fresh live budget; both are proposals for review.
+
+When that future live work is authorized, any metadata/cache/ownership/budget/
+phase failure consumes its reservation and stops; no uncounted retries. Return
+UNKNOWN where controls fail rather than a harness-memory delta. Completion of
+the offline repair or a later controlled readiness comparison does not accept
+F2/I6, explain the original complete-file retention history, authorize document
+generation, change worker/admission policy, run full suite, perform B2 or merge
+product code. B1+C and original PDF baselines remain immutable; no Word export
+or reviewed page is allocated.
+
+Planning preservation checks confirm all five failed as-run/supplemental
+records and13 helper files unchanged,408 prior source/evidence files and358
+F2 inputs preserved, the earlier28-file proof/runner and18-file stable cache
+proof with six helpers retained, clean B1+C and unchanged primary Service
+status. This turn changes only this shared plan; no proposed test is executed.
+
+Documentation verification: Project Control `tools/check.ts` and
+`git diff --check` pass. The only repository change is this bounded proposal;
+no helper source, fixture, old receipt/ledger or runtime input changes.
