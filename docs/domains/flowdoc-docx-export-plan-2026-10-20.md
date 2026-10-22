@@ -11532,3 +11532,95 @@ The outstanding question is the external config-loading route through the
 pinned Vitest entrypoint. No memory/headroom conclusion, product repair, Plan2,
 pagination B2, full suite, integration, release or push. Only this existing
 Project Control document changes; `tools/check.ts` and `git diff --check` pass.
+
+### I6 config source-route guard offline result 2026-10-22
+
+**PASS for the source guard and six bounded offline cases.** GREEN passes6/6
+on round2/2; twelve named executions total,1.468 seconds within120 seconds.
+The actual pinned source supports the CLI→Vitest forwarding→Vite native route.
+This does not confirm a real config load: every decision retains
+runtimeReady=false. No Docker/status command, CLI/help/loader execution,
+observer, cache, Service, A–B–B–A or product suite is run. Plan1's live comparison,
+F2/I6 acceptance and memory attribution remain incomplete. Historical STOP
+receipts and their charged ledgers remain unchanged.
+
+Authority: single-room external-tool implementation and Evidence review;
+Project Control owns this checkpoint, Service owns the unchanged candidate.
+Execution IDs N/A, small/routine, current host model/capability without override.
+The owner's request and preceding source investigation govern this bounded work.
+Proof Budget6 fixed cases,2 complete passes,12 executions,120 seconds,512KiB
+proof; no live budget. Document Budget this existing canonical document only.
+No Work, Phase, map, registry or shared product report is created.
+
+New isolated external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-config-source-offline`.
+The new pure `tools/source_guard.py` replaces keyword proximity with a closed
+hash-pinned profile and separately reported CLI, forwarding and native stages.
+Published Vitest4.1.9/Vite8.3.3 source is read without installation or JS execution.
+All eight selected files match the previous image inventory byte-for-byte;
+that inventory is hash-bound by the old observer-memory proof manifest. Local
+Project Control's different package versions are not substituted for image bytes.
+
+The inspected route includes vitest.mjs→dist/cli.js→CLI option registration,
+the run/start/normalization path, startVitest/prepareVitest/createVitest forwarding
+options.configLoader, Vite's package export/index alias/chunk wrapper, resolveConfig,
+loadConfigFromFile and native import dispatch. CLI description text need not
+mention native; Vite owns that dispatch. Full selected-file identity, package
+metadata and canonical profile identity must pass before source support can PASS.
+Changed or unreadable source remains UNKNOWN. Stage matches on mutated fixture
+bytes are provisional diagnostics, not acceptance of an altered package.
+This is a specific audited profile, not a general JS semantic verifier or a
+proof of Node runtime/module resolution, native loading or absence of all Vite IO.
+
+| Fixed offline case | GREEN outcome |
+| --- | --- |
+|1 Frozen source route | SOURCE_ROUTE_SUPPORTED; three stages true |
+|2 CLI argument declaration removed | UNKNOWN; CLI false; hash mismatch retained |
+|3 options.configLoader forwarding removed | UNKNOWN; forwarding false; hash mismatch retained |
+|4 Native dispatch replaced | UNKNOWN; native false; hash mismatch retained |
+|5 Version and unrelated bytes changed | UNKNOWN identity; three provisional stages true |
+|6 Source read denied | UNKNOWN; forwarding unavailable; read error retained |
+
+RED initially produces0 PASS,5 FAIL and1 missing-contract ERROR against an
+UNKNOWN adapter; these are missing tool contracts, not product failures. GREEN
+has6 PASS,0 FAIL,0 ERROR. Exactly two rounds are consumed with no extra case or
+old suite replay. Audit hooks record zero subprocess/network/live-procfs/cgroup
+attempts inside the fixture process. Python test launchers and read-only Git/file
+preservation checks stay separate from prohibited product/Docker execution.
+
+One fresh static whole-change reviewer identifies a missing Vite public-entry
+bridge. Before GREEN, the eighth pinned file dist/node/index.js is added and
+the checker explicitly connects package exports, index N as createServer,
+chunk createServer$2 as N and its _createServer wrapper. Case1 checks that edge
+without adding another named case. The reviewer confirms resolution without
+imports/tests/live actions or edits. The RED seven-file profile is reconstructed
+byte-exactly against its previously recorded SHA and labelled reconstructed;
+GREEN uses the final eight-file profile. A Windows newline mismatch during
+proof packaging is repaired without rerunning any fixture or changing tested code.
+
+The prepared external run.py copy calls this same guard instead of the old
+text-proximity assertion, using current source bytes only in a future counted
+preparation. Its offline proof and future live-proof/live-scratch paths are
+separate. The copied A command retains --configLoader native. This dormant
+bridge is inspected statically only, not launched or accepted as live behavior.
+Original runners/observers/tools remain intact. No memory, permission, environment,
+package, scenario, cache-control or deadline relaxation is made.
+
+Evidence manifest SHA-256:
+`e53e4406826fcc068945edb027c67a2006a4f43ed16bc6f7bf96ad5a60d30008`.
+It binds27 helpers/profile entries,11 inputs and17 proof files;18 proof files
+including manifest use142,985 bytes within512KiB. Saved adjudication is copied
+from the already-counted case1 GREEN result, not another verifier execution.
+Guard SHA-256:
+`35b6830339a187abbf7d88485a33897ba8b89f65f22252eb8a2f100870a63106`.
+Final profile SHA-256:
+`fe68714c6b5873b1d08b26d69775ab53c63082ec7a958bf807e1b2c33e9a3bf0`.
+
+Before/after preservation agrees:408 prior files,358 F2 inputs, clean B1+C,
+unchanged primary Service/PDF, earlier probe/cache evidence and sixteen pinned
+manifest/helper/input chains. The1GiB policy remains unchanged; no runtime
+memory sample, document export or page-review allocation is made. The authorized
+offline checkpoint is complete and its two-round budget exhausted. No new live
+authorization is inferred. No Plan2, pagination B2, full suite, integration,
+release or push. Only this existing Project Control document changes;
+`tools/check.ts` and `git diff --check` pass. No product/map truth is promoted.
