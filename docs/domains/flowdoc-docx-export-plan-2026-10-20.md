@@ -14,7 +14,9 @@ B2, main integration, release and push remain unauthorized. Full parity and
 integration/I6 NOT ACCEPTED dispositions remain unchanged. Older
 I-stage status/authority paragraphs below are historical, not current permission.
 The subsequent [I6 full-suite diagnosis and closure proposal](#i6-full-suite-blocker-diagnosis-and-proposed-closure-2026-10-22)
-is read-only analysis; its proposed checks and conditional repairs have not begun.
+led to authorized [F0–F1 targeted diagnosis](#i6-f0-f1-targeted-diagnosis-result-2026-10-22):
+F0 passed; F1 stopped after17 cases because a live child and processor lock
+persisted after task-api. F2 repairs and F3 full-suite execution have not begun.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -8436,3 +8438,125 @@ impact/proof decision. Document Budget: this existing Project Control plan plus
 the external inspection receipt; no new Work/map/registry record. Proposed F0–F3
 execution and any repair require subsequent owner authorization. Report this
 diagnosis and stop at the current read-only boundary.
+
+### I6 F0 F1 targeted diagnosis result 2026-10-22
+
+**F0 PASS / F1 BLOCKER at the clean-boundary gate; I6 NOT ACCEPTED.** The owner
+authorized F0–F1 only, at most20 targeted cases, preserving B1+C and original PDF
+baselines. No code repair, full suite, B2 or main integration was authorized or
+performed. This result supplements the preceding proposal without rewriting its
+historical findings. Active roles: Evidence Reviewer / Documentation Synthesizer;
+owner: Service for behavior, Project Control for this checkpoint. Execution IDs
+remain N/A for this bounded single-room verification/discovery continuation.
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-f0-f1-20261022-161434`.
+`receipt.json`, `analysis-summary.json`, the two structured test reports/logs,
+per-second process/cgroup/PG samples and boundary snapshots support this result.
+Manifest SHA256:
+`6ed128465bf1b6c226f5f5fb62922061f2d28cd89514adb850c2a8cb42334e46`;
+20 frozen evidence files,633234 bytes before the manifest, below10MiB.
+
+#### F0 identity and environment
+
+The checks used the exact original I6 image
+`sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0`
+and original Core archive
+`067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+Image inputs were hashed and compared with current Service sources; raw
+differences in29 text files were line endings only. No dependency was installed
+or upgraded. Original vendor verification, build and migration passed inside
+the disposable container; expected build outputs stayed inside that scratch
+container. Service host sources and its pre-existing dirty state were preserved.
+
+Actual inspected settings: Linux/amd64, Node24.21.0, init enabled,2 CPUs,
+memory1073741824 bytes, Docker memory+swap setting1073741824 bytes and actual
+`memory.swap.max=0`. Both plugin roots remained `/candidate`. All four reviewed
+Bai Jamjuree faces and OFL hashes matched; fonts were mounted read-only and the
+only writable host mount was the new proof output. The database used a new isolated container
+and temporary storage, with no host ports. No processor lock/live test child was
+present at the initial boundary or after CLI.
+
+The first setup attempt created no network and executed no cases because Docker's
+automatic subnet pool was exhausted. After inspecting existing networks/host
+routes, a new private10.250.246.0/28 subnet was selected. Existing networks and
+containers were not deleted to make room. Its zero-case setup receipt remains at
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-f0-f1-20261022-161351/receipt.json`.
+
+#### F1 results and stopping point
+
+| Invocation | Executed | Passed | Failed | Observations |
+| --- | ---: | ---: | ---: | --- |
+| CLI, default checker timeout15s | 3 | 3 | 0 | Sanitized-error case9022.5ms; product deadlines unchanged. |
+| task-api, default15s plus existing explicit deadlines | 14 | 5 | 9 | Real-PDF30s and MCP60s timeouts; worker-disconnect assertion failure; native30s timeout; five subsequent processor-lock failures. |
+| Resource-wait processing/scheduler subset | 0 of3 | — | — | Not run: task-api left a live child and held lock. Not PASS or optional skips. |
+
+Total:17 executed cases,8 passed and9 failed, with3 unspent. The two invocations
+took145.687 seconds including runner/observation overhead, within the10-minute
+diagnostic budget. There was no retry or third invocation, and no full suite.
+No `.only`, assertion change or hidden timeout increase was used.
+
+**Confirmed cleanup failure:** after `npm test` returned exit1, the saved
+`task-api-after.json` still shows live Node `server.js` PID1201, stateS, reparented
+to init PID1. PostgreSQL session968 remained connected and held advisory
+key60430404. The last five cases failed with `Processor already active`.
+This establishes an actual live-child/lock leak in the failing test sequence,
+including with init enabled; init alone does not fix it. The retained snapshots
+do not directly map that Node socket to the PG session, so that exact correlation
+is not claimed. Cleanup did not reliably finish before the runner ended, despite
+the source's existing `finally`; the exact suspended await remains unproven.
+
+**Strong memory-admission lead, not a complete hang diagnosis:** source worker
+admission requires `max(memory.current/MiB, credits)+320 <= 768`, so a new worker
+needs total sampled current at or below448MiB. External samples during the first
+real-PDF wait were approximately468–471MiB and during MCP approximately538MiB.
+A live task-state snapshot also retained a queued task/job with no child, while
+earlier interrupted tasks were marked failed. This is consistent with worker
+admission waiting before rendering, independently of the old1.5GiB mismatch.
+Recorded cgroup peak was589455360 bytes (about562MiB), with zero OOM/oom_kill and
+zero memory-pressure totals: this is not evidence of OOM. Aggregate cgroup
+current includes the test runner, other processes and file cache. We have not
+isolated their individual causal contribution, the observer's contribution, or
+the exact coordinator sample/waitReason/freshness at each tick. No memory guard,
+worker credit or product timeout is proposed changed from this evidence alone.
+
+The native case then timed out and left its server alive; the saved process/lock
+timeline supports the cascade into subsequent cases. It does not prove every
+MCP/native wait or every historical full-suite failure has the same cause.
+The scheduler's transient-reservation question remains untested because the
+clean-boundary prerequisite failed. Remaining budget is not a reason to run it
+against contaminated state.
+
+#### Verification limitations, preservation and next boundary
+
+Observation remained outside product/test code. The external reader was adjusted
+to include `memory.stat` and classify Node by `/proc/exe`, because Node24 reports
+its process name as `MainThread`; raw names remain recorded. This avoids a false
+clean-process result. No test instrumentation or runtime source was inserted.
+A later attempt to capture PG client-port correlation occurred after automatic
+cleanup and failed; that failed observation is retained, not counted as proof.
+The post-test in-container input rehash was not reached after the failed gate;
+do not label that check PASS. The immutable original image remains available,
+and inspected host source hashes/status passed preservation checks afterwards.
+
+Before removing only this run's disposable resources, the failing boundary was
+saved. Both owned containers and the new network were removed successfully;
+no live owned container remains. This cleanup ends the test environment and does
+not hide the recorded live-child/lock failure. No pre-existing container, user
+database, original evidence or network was removed.
+
+B1+C stayed clean at `b79f426649e65eadb3fb29e410250395a6d65faa`. All96 D files,
+72 regression files and29 original source/font/reference files were reverified
+against their manifests before and after execution. Original PDFs were not
+regenerated or modified; the new artifact folder is empty. No Word export or
+document review was spent; cumulative162 pages/21 exports remains unchanged.
+Document Budget remains this existing plan and external evidence; no Work/map
+promotion or product commit was made.
+
+Next recommended scope is a narrow proposal for test-owned timeout/child cleanup,
+plus a bounded way to observe the existing memory-admission diagnostics and
+separate runner overhead from product behavior before changing any resource
+policy. A lifecycle repair would not by itself establish that memory admission
+or MCP behavior is correct. F2, another targeted invocation, the remaining three
+cases and F3 have not started. **Report the causes and stop; no code change,
+full-suite run, B2 or integration.**
