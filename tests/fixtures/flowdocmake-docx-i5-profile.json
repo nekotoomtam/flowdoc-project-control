@@ -1,0 +1,9 @@
+{
+  "id": "flowdocmake-docx-i5-candidate",
+  "version": "0.2.8-candidate.docx-i5.1",
+  "supported": {
+    "service": "0.4.9",
+    "core": "0.4.7",
+    "coreArtifactSha256": "067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e"
+  }
+}
