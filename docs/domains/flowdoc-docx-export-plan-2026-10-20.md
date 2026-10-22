@@ -7361,7 +7361,9 @@ Retained boundary ต้องใช้ native semantics และพิสู�
 
 ### Experiment stages, artifacts and checks
 
-- [ ] **E0 — freeze baseline.** เมื่อได้รับอนุญาต ให้สร้างสาม packets กับ public
+- [x] **E0 — freeze baseline.** Closed for baseline preparation, with recorded
+  differences and contract-bound exclusions; see E0 W mixed natural mapping and
+  closure below. เมื่อได้รับอนุญาต ให้สร้างสาม packets กับ public
   validate/prepare/compose APIs; freeze template/request/ResolvedDocument และ
   font/image/package hashes. สร้าง PDF reference ด้วย renderer เดิมครั้งเดียว
   และ DOCX A. Word export A ด้วย build/ขั้นตอนเดียวกัน ตรวจทุกหน้าให้ baseline
@@ -7732,3 +7734,72 @@ freezes61 files including all24 page renders and the new references. Primary
 Core remains clean at `e53e4a284d5eb2596b531b55a12a83ab74ba8528`; pre-existing
 Service changes are untouched. I6 complete-suite blocker and acceptance stay as
 recorded. **Stop and report here; E1 is not authorized.**
+
+### E0 W mixed natural mapping and closure 2026-10-22
+
+**E0 BASELINE PREPARATION COMPLETE WITH RECORDED DIFFERENCES.** The owner
+authorized read-only matching of original W and an E0 close assessment only.
+The last blocking E0 unknown is resolved. This closes preparation of the agreed
+P/T/W+Q/R reference set under the documented contract-bound exclusions, not
+DOCX/PDF parity, candidate effectiveness, I6 acceptance or permission for E1.
+Earlier frozen reports and the qualified/open statuses above remain historical;
+this result supersedes only the unresolved-W/E0-close assessment. No original
+or supplemental artifact was overwritten.
+
+Role: Planning Partner / Evidence Reviewer. Owner: Project Control for this
+record, Core for unchanged runtime behavior. Single-room execution/Phase/Checklist
+IDs: N/A. No new Work, map or registry record. Evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e0/w-line-review-01/`
+contains `results.json`, `e0-closure.json`, verification helpers and a hash manifest.
+
+The original authored template and resolved `w-natural` text are exactly equal:
+**426 Unicode code points**, with zero authored LF. Fresh reads of the original
+PDF and both original Word-exported PDFs match their frozen inspection records.
+Reading original character-stream order avoids geometric extraction reordering
+of Thai marks. No normalization, mark deletion, whitespace collapse or source
+change was used; every code point and source space maps contiguously.
+
+| Physical line | Source interval, code points | PDF page | Word page | Word repeat page |
+| --- | --- | ---: | ---: | ---: |
+| 1 | [0,93) | 5 | 5 | 5 |
+| 2 | [93,187) | 5 | 5 | 5 |
+| 3 | [187,283) | 6 | 6 | 6 |
+| 4 | [283,377) | 6 | 6 | 6 |
+| 5 | [377,426) | 6 | 6 | 6 |
+
+Thus all three wrap signatures are **93,187,283,377,426**, with the same page
+cut at187 and the same2/3 line split. Source locators, extracted text, physical
+coordinates, PDF identities and separately recorded whitespace-only structural
+extraction lines are in `results.json`. Existing full-page PNGs for PDF5/6 and
+Word5/6 were visually reviewed; all nine original W Word/repeat page-PNG hash
+pairs also match on fresh verification. Physical y positions differ, so this is
+line/source/page equivalence, not pixel or vertical-position equivalence to PDF.
+
+W mixed natural is an **unchanged control**, not a first/last-single-line boundary
+target. R's Thai-only body and Latin-only cell provide the exercised natural-wrap
+boundary targets. Any future C still needs preserved signatures and correct
+eligibility/keep semantics before causal attribution. No candidate was created.
+
+Closure coverage in `e0-closure.json` connects seven criteria to the existing
+evidence: frozen source/reference/resource identities; unchanged same-resolved-
+object PDF/DOCX branches; pinned Word procedure and repeat; supported P/T/W+Q/R
+controls and authored text/LF; full80-page visual coverage; exact natural-wrap
+source intervals; scope/budget containment. Original P/T recovered receipt-hash
+limitations remain explicit, not silently upgraded to original engine receipts.
+The prior no-break, visible numbering, repeated-header and rowSpan gaps are
+covered by Q; language-specific targets by R. Unsupported model19 cover and
+per-run emphasis remain exclusions under the agreed plan.
+
+Known baseline differences remain: P extra blank displacement; Q's one-row table
+cut difference and Word-only empty-Section/empty-TOC diagnostic pages; existing
+font/band/vertical-position differences. They are recorded reference behavior,
+not failed baseline reproducibility or waived future regression criteria. I6's
+complete-suite blocker stays open.
+
+Fresh preservation checks pass for37 original files,61 supplemental files, both
+manifests and four retained I6 reference PDFs. This review launched no Word,
+generated no PDF/DOCX, and rendered no new pages. Cumulative review remains80
+unique exported pages and seven Word exports; Q/R used24 of its31-page allowance.
+Only this Project Control prose and external analysis outputs changed. **E0 is
+closed for baseline preparation; stop here. E1 and product code changes remain
+unauthorized, and no future proof budget is activated.**
