@@ -69,6 +69,10 @@ passes16/16 on pass2/3,32 named executions total, with zero external/process
 or live procfs/cgroup operations in the suite. Observer/product bytes remain
 unchanged. Historical runtime cause and live readiness remain unverified;
 F2/I6 and memory attribution are unchanged. No Docker retry follows.
+The owner's next request is the [missing identity evidence and observer acceptance proposal](#i6-pid-namespace-cgroup-evidence-and-observer-acceptance-plan-2026-10-22).
+It specifies a bounded capture-only checkpoint and subsequent observer criteria;
+no collector/observer edit, fixture execution, Docker or additional live round
+is authorized by this planning request.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10601,3 +10605,198 @@ No further helper/observer repair, Docker, A–B–B–A, full suite, B2, integr
 release or push is authorized by this result. Repository change is limited to
 this existing canonical result document. Project Control `tools/check.ts` and
 `git diff --check` pass; no runtime/package/map change is made.
+
+### I6 PID namespace cgroup evidence and observer acceptance plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner asks for the missing-evidence collection
+plan and observer acceptance criteria first. Current authority permits retained
+file/source inspection and this plan only. No collector, observer, orchestrator,
+fixture or product code is changed; no fixture suite, Docker command (including
+status/inspect), live procfs/cgroup access, cache or A–B–B–A work is run.
+Exact1GiB, B1+C, original PDFs and all prior receipts remain fixed. F2/I6 and
+harness/Service attribution remain NOT ACCEPTED / UNKNOWN respectively.
+
+Owner: Project Control for this shared plan, Service for the untouched product
+candidate. Role: Planning Partner / Evidence Reviewer / Documentation
+Synthesizer. Execution IDs N/A, single room. Work Size small, Risk Tier routine.
+Reuse the current O0–O3 contract and offline16/16 proof; do not reopen its
+passing budget. Document Budget: this existing canonical plan only, no new
+Work, map or shared report. Any later execution makes a fresh compact model/
+host availability decision. Blocking unknowns are comparable PID provenance,
+actual database cgroup identity and process lifetime at the failed boundary.
+Missing historical observations cannot be recovered by manufacturing values
+or by a new run: a later capture describes that new run only.
+
+#### P0: evidence contract and collection origins
+
+A future capture must retain raw values and the reader's view before evaluating
+membership. Do not infer the host PID view from --cgroupns=host, assign the
+namespace graph's root by convention, or reuse synthetic identities as runtime
+facts. The prior offline helper supports a supplied host-view model; it cannot
+be fed invented root/ancestry fields to turn this target-PID-view topology into
+CONSISTENT_SNAPSHOT. Keep its diagnostic result and limitations visible.
+
+| Evidence | Required origin and binding | What it resolves |
+| --- | --- | --- |
+| Container identity before/after | Orchestrator records exact full IDs, role, image digest, running state, Docker-reported host PID, StartedAt/restart state and relevant PID/cgroup/memory/mount configuration | Wrong container, restart, resource configuration drift |
+| PID/cgroup/mount views | Each role-local reader records its own PID namespace and cgroup namespace identifiers, raw init/self status including NSpid, raw cgroup entries, relevant procfs/cgroup2 mountinfo and explicit read errors | Which PID numbers and cgroup paths are actually comparable |
+| Stable process identity | Init/reader PID in its declared view, raw stat start-time fields and capture ordering before/after; bind to the same full-ID before/after inspection | Exit, PID reuse or identity change during collection |
+| Target membership | Target-local init membership, plus observer-visible target init/process membership in the shared target PID view | Correct target group and process-list interpretation |
+| Observer separation | Observer-local membership and cgroup identity distinct from target and database; record namespace sharing separately | Observer may share target PID visibility while its memory remains outside target |
+| Database membership | Database-local init membership and stable identity, collected by an invocation addressed to that exact full database container ID | Positive database membership within a view that can observe that database PID |
+| Counter-path binding | Raw observer-visible candidate paths and mount context, independently bound to the role-local cgroup object; retain applicable filesystem/object identifiers and mapping evidence | Correct target/observer/database counter files rather than an assumed sibling path |
+| Failure/persistence record | Reader origin, capture ID/sequence, raw bytes/errors, exit code, write/confirmation result and manifest hashes retained before cleanup | Distinguishes visibility, path, lifetime and collection/output failures |
+
+All three role-local observations must say where they were read, not just what
+numbers they contain. Collect only allowlisted identity/cgroup/mount fields,
+not credentials, complete process environments or unrestricted host procfs.
+NSpid column position alone does not establish host ancestry. No same-number
+PID match across unrelated views is evidence. Do not replace absence with
+wrong-group certainty, accept an arbitrary nonempty membership list, or infer
+namespace ancestry solely from inode numbering.
+
+For database membership, use the database-local PID and its local membership
+file in the same proved view; record observer inability to see that PID as a
+separate visibility result. This is a proposed composite proof, not permission
+to silently set the old databasePidMembershipVerified boolean. A role-local
+receipt must be anchored by an exact-ID invocation and stable before/after
+inspection; an unbound self-report cannot certify the expected database.
+
+Counter-path verification is independent of PID visibility. The current
+container-ID replacement path may be retained as an untrusted candidate for
+comparison, never promoted because the directory exists. Require a documented
+mount/root translation or independently comparable cgroup-object identity
+between the role-local group and observer-visible counter directory. Record
+filesystem/mount context; equal path text or an unexplained inode/device pair
+alone is insufficient. If the supported topology cannot establish that binding,
+return UNKNOWN and stop; do not change namespaces, grant privilege, mount host
+procfs or select a different group to obtain PASS.
+
+#### P1: proposed bounded capture-only round, separately authorized
+
+Use a new isolated external copy and proof root, for example
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-observer-identity-capture`.
+Retain the failed observer/run.py and both accepted offline tools byte-for-byte.
+Proposed additions are a small role-local identity reader, host orchestration
+for this capture only, pure receipt binding/validation and deterministic
+fixtures. Do not replace the measurement observer or weaken its existing guard
+as part of evidence collection. A diagnostic observer-context container may
+hold the existing PID/cgroup placement while the allowlisted reader executes;
+its receipt must say diagnostic capture, not successful measurement observer.
+
+Proposed live cap: **one started preparation/capture scenario**, at most120
+active seconds and2MiB new proof, including provisioning, role-local reads,
+validation and owned cleanup. Reserve and confirm the fresh one-scenario
+capture ledger before the first Docker call; keep the accepted fixed-seven
+comparison budget helper unchanged. No uncounted preflight or retry. Record
+both capture and cleanup errors; failed persistence permits zero Docker work.
+This dedicated ledger is not a resumed comparison or a modified seven-arm cap.
+
+Use the pinned image/database and original PID/cgroup/mount settings with a
+new target at1073741824 bytes, no swap and2 CPUs. Observer and private database
+remain separately accounted, with no host ports or unrelated resource access.
+Record their actual limits; do not move caller/application work outside the
+target. Start no Service or document workload, run no cache warmer/full inventory,
+and collect no A/B arm. This is identity discovery, not a memory delta or cache
+stability measurement. The original native lifecycle and application policy
+are not changed.
+
+Collection order is fixed: (1) inspect identities/configuration; (2) collect one
+bounded snapshot from each of target, observer context and database; (3) confirm
+stable identities and reader completion; (4) validate and persist raw/derived
+receipts, with errors intact; (5) clean owned resources and verify ownership
+boundaries. Per-role process identity must be bracketed inside its snapshot;
+sequential role reads are not claimed to be simultaneous. No automatic
+resnapshot after a race. Each short reader exits, stays in its role's accounting
+and is included in the preparation history; no reader survives into any later
+measurement. Confirm receipt persistence before cleanup when possible; a write
+failure remains an explicit failure even if cleanup succeeds. Never prevent
+necessary owned cleanup merely to retain a broken collector.
+
+Stop before further work on any namespace/path/identity ambiguity, restart,
+permission failure, unreadable counter, OOM, reader timeout, output/budget
+failure or unknown ownership. Keep partial evidence and the charged attempt.
+The capture checkpoint reports H-PID/H-PATH/H-LIFETIME as supported,
+contradicted or unresolved for the captured attempt. It cannot retrospectively
+confirm the old failure's mechanism. No observer-ready marker is written and
+no comparison follows automatically, even if all capture bindings are complete.
+
+#### P2: proposed offline validation for capture tooling
+
+If tooling implementation is separately authorized, add eight fixed cases:
+C01 complete anchored role receipts; C02 receipt bound to another full ID;
+C03 restart between inspections; C04 database-local membership valid but
+observer PID view non-comparable; C05 missing counter-path object/view binding;
+C06 unexplained path-text/inode match across mount views; C07 role reader
+permission/exit failure; C08 receipt persistence failure before external work.
+C04 must retain both the local proof and visibility limitation, never change
+the existing offline diagnosis to live-ready. C05/C06 must stop rather than
+use container-ID replacement as proof. C08 permits zero fake external calls.
+
+Proposed new offline budget: at most2 complete eight-case passes,16 named
+executions,300 active-check seconds and2MiB proof; preserve RED then expected
+outcomes, stop on PASS or exhaustion. Inject filesystem/Docker/write errors
+with real process/procfs/cgroup access forbidden. Reuse the immutable prior
+16/16 evidence; no extra reassurance run or alteration of that helper's contract.
+These proposed cases and the one capture scenario are separate budgets and
+both remain unexecuted/unallocated by the current request.
+
+#### P3: observer acceptance contract, distinct from evidence completion
+
+Complete identity capture is an input to an observer repair proposal. It does
+not verify the existing observer or authorize a namespace switch. Before any
+repair, choose an explicit proof contract from the captured supported topology.
+For the current target-PID placement, the preferred proposed contract requires
+all of: target process-view verification, observer memory-group separation,
+anchored database-local membership, and independent observer database-counter
+path verification. If any component cannot be proved, the outcome is UNKNOWN,
+not a blanket exemption for an invisible database PID. Any replacement of the
+old scalar success flag must name these checks and retain their evidence.
+
+A future candidate observer can be accepted only within its stated coverage:
+
+1. Source/receipt hashes identify the exact reviewed candidate; required raw
+   identities persist before any ready marker, and failure to confirm output
+   produces stop with no stale ready-marker reuse.
+2. Target/observer/database bindings meet P0 and remain distinct and stable.
+   Target memory.max=1073741824 and memory.swap.max=0 are read from the bound
+   group; inspected configuration alone is not the measured proof. Same image,
+   2 CPUs and placement remain fixed; no privilege or budget relaxation.
+3. The real candidate reads all required counters from the proved paths and
+   at least five subsequent1Hz samples survive with valid timestamps, no OOM
+   and complete required fields. Observer/database overhead is recorded
+   separately. Process data is labelled with its actual PID view; unavailable
+   cross-view RSS/PSS is explicit, never fabricated or added to group totals.
+4. Identity is rechecked at the sampling boundary, role-local capture readers
+   are gone, target init-only topology is confirmed and no unexpected child/job
+   exists. Read/permission/identity/output failures in offline fault checks
+   stop safely rather than continue using a previously valid path or marker.
+5. Saved-proof review covers results and missing evidence; owned cleanup and
+   unchanged product/B1+C/PDF hashes are documented. Clean cleanup cannot
+   overwrite an observer sampling failure as PASS.
+
+A five-sample idle pass supports only placement/counter/idle-sampling coverage;
+Service-ready process attribution, matched loaded phases and cache matching
+remain separate comparison prerequisites. Initial observer verification can be
+included in a later explicitly authorized fresh7-scenario comparison's counted
+preparation, rather than an uncounted pilot. Failure stops that charged round.
+No such observer candidate or live verification is created by this plan.
+After a future observer passes, both fresh cache checks and all original
+A–B–B–A controls still apply. Do not inherit old cache state or infer worker
+admission/document generation/F2/I6 acceptance from observer readiness.
+
+Both historical failed live preparations remain charged1 each. A later
+capture-only attempt would add its own charge; it does not consume or unlock
+the previous unused6, and cannot be reused as a comparison's preparation.
+Any subsequent complete comparison still needs separately authorized fresh7.
+B2, full suite, product repair, merge, release and push remain outside scope.
+
+Planning verification: accepted offline manifest
+`d597300be0e41428db465b376d2bc6d5f31f2f911f3b793764fac0a09a0f0d40`,
+its16 proof files,3 helpers and16 fixtures are unchanged; all five earlier
+manifest chains and the observer source are reverified. Preservation still
+covers408 prior source/evidence files,358 F2 inputs,28-file earlier proof/runner,
+18-file cache proof with6 helpers, clean B1+C and unchanged primary Service.
+PDF baselines are preserved. This turn changes only this existing Project
+Control plan. No proposed test, collector, directory or live run is created.
+Project Control `tools/check.ts` and `git diff --check` pass.
