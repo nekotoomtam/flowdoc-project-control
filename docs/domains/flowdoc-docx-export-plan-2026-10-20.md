@@ -1,10 +1,11 @@
 # FlowDoc DOCX Export Implementation Plan
 
-Current discussion route (2026-10-22): the owner's latest request is the
-[pagination-rules experiment plan](#pagination-rules-parity-experiment-plan),
-planning only. It does not authorize product edits or experiments. The latest
-integration and I6 dispositions below remain unchanged; older stage permissions
-are historical and are not authorization for this proposed work.
+Current route (2026-10-22): E0 baseline preparation is closed. The owner authorized
+only E1 B1 on P/T/Q in a separate Core worktree; see
+[E1 B1 result](#e1-b1-ptq-result-2026-10-22). This bounded experiment is complete
+with partial improvement and retained limitations. B2/C/D, merge, release and
+push remain unauthorized. Integration/I6 dispositions remain unchanged. Older
+I-stage status/authority paragraphs below are historical, not current permission.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -7803,3 +7804,96 @@ unique exported pages and seven Word exports; Q/R used24 of its31-page allowance
 Only this Project Control prose and external analysis outputs changed. **E0 is
 closed for baseline preparation; stop here. E1 and product code changes remain
 unauthorized, and no future proof budget is activated.**
+
+### E1 B1 PTQ result 2026-10-22
+
+**Authorized B1-only experiment complete. Validity: PASS within P/T/Q;
+effect: IMPROVED; full boundary-parity target: PARTIAL.** The owner authorized
+implementation in isolated Core and a report before B2/C. No B2/C/D or integration
+acceptance follows from this result. The E1 checkbox remains open for unexecuted
+variants. No release, push, merge or primary product checkout mutation occurred.
+
+Owner Core; role Product Implementation Agent / Evidence Reviewer inline, with
+Project Control owning this prose. Execution/Phase/Checklist IDs: N/A. Work Size
+medium for this bounded experiment, Risk Tier routine. Evidence target is the
+artifact set below; no synthetic Work/registry/map record was added. The approved
+experiment supplied scope and acceptance; `brief.json` records the exact base,
+allowed/forbidden paths, budget and execution rulings.
+
+Isolated checkout:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e1-b1/core-worktree`.
+Branch `codex/docx-pagination-b1-e1`; base
+`e53e4a284d5eb2596b531b55a12a83ab74ba8528`; retained candidate commit
+`bd09ed0a9cf209acf906dfec814abc007258e9d0`. Only two tracked files changed:
+`src/docx/tables.ts` and `tests/docx/paginationRules.test.ts`.
+
+The body writer now queues source page-break requests per Section: leading
+requests are omitted, consecutive interior requests emit one original native
+break paragraph, and pending trailing requests are discarded at that Section's
+end. No measured positions, PDF coordinates or text-dependent heuristics are used.
+Every non-break root conservatively retains its footprint, including empty text,
+LF, fixed spacers and native TOC. Adjacent table separators, intentional blank
+Sections and original native Section geometry/numbering/bands remain intact.
+There is no pageBreakBefore or widowControl treatment and no schema/API change.
+
+Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e1-b1/`.
+Use `results.json`, `source-intervals.json`, `ooxml-proof.json`,
+`preword-results.json`, `package-proof.json`, per-packet receipts,
+`word-results.json`, candidate DOCX/Word PDFs, all19 page renders, and the final
+hash manifest. Old E0 files are referenced read-only, never overwritten.
+
+| Packet | Frozen PDF pages | Baseline Word A | B1 Word | Result |
+| --- | ---: | ---: | ---: | --- |
+| P | 6 | 11 | 7 | IMPROVED: body markers move from pages3,5,7,9,11 to1,2,3,5,7; exact-fit/spacer difference remains. |
+| T | 5 | 7 | 5 | IMPROVED: cover1, table2, wide body3, intentional blanks4/5 now match source-page assignment. |
+| Q | 5 | 7 | 7 | UNCHANGED: full extracted text/geometry equal A, including numbering7→8, repeated header, merged group and empty diagnostics. |
+
+P native page-break paragraphs reduce6→1, T3→0, Q0→0. Source interval evidence
+maps all114 body TextBlocks to their physical pages; repeated header occurrences
+are explicit decorations, not duplicated business text. P's remaining blank
+pages4/6 and Q's one-row table cut difference, empty Section and localized empty
+TOC output are retained; source-relative boundary gaps distinguish these from
+removed leading/repeated/trailing displacement. No body clipping or overlap
+observed in full review of all19 new pages, including blanks and diagnostics.
+
+Proof: before the patch, the new targeted suite failed7/8 cases for the expected
+extra-break counts; after the patch, targeted+affected checks pass26/26. All six
+DOCX test files pass69/69 and the TypeScript build passes. No full Service suite,
+performance trial, SRS98 or I6 regression was run for this independent probe.
+Fresh bounded whole-candidate review reported no material findings; it inspected
+the diff, evidence and frozen hashes without rerunning exports or claiming a
+second visual review.
+
+The exact installed Linux/amd64 candidate archive has SHA-256
+`8c941a7e2494ed42102fa798a3ec4f23d2825f8f4bb2eca25ef09d3e3fbcc794`.
+All208 installed files match the archive. Only `dist/docx/tables.js` differs from
+the original package; all other bytes and file modes match. Recomposition from
+the same templates/requests exactly matches each frozen serialized graph. The
+same frozen object feeds both branches; all three generated PDF hashes exactly
+match the retained P/T/Q references. Comparison bytes were discarded, not saved
+as replacement references or rendered again.
+
+Before Word, OOXML comparison verifies identical content and ordered Section
+properties after removing redundant break paragraphs and accounting explicitly
+for native Section-marker attachment/empty carrier relocation. Word measures
+that carrier footprint; the XML comparison does not assume it costs no space.
+Bookmarks are matched by unchanged names, random font keys are deobfuscated to
+identical Sarabun hashes, timestamps are recorded as metadata exceptions, and
+all other package parts match exactly. The Word build/options/procedure match E0;
+review copies and originals remain byte-identical after close without saving.
+
+Preparation rulings remain visible in `results.json`: writable container npm
+cache; Linux packing to preserve executable modes lost by a preliminary Windows
+archive; serialized-graph equality for null-prototype maps after JSON round trip;
+and source matching that treats repeated headers as decorations and uses token
+boundaries so LEFT2 does not match LEFT20. These affected only harness checks or
+the failed preliminary package; no reference or product repair was introduced.
+
+Budget: three Word exports, **19 new rendered pages** against the nominal25 for
+B1, no contingency used. Cumulative E0+B1 is**99 pages and10 Word exports**;
+the remaining independent-stage allowance is not permission to execute C. All37
+original and61 supplemental frozen files, four I6 reference PDFs and the primary
+Core checkout remain unchanged. Keep the clean committed worktree and report:
+**retain B1 as an experimental candidate with evidence of improvement, not full
+target acceptance. Stop before B2/C, regression expansion or merge.**
