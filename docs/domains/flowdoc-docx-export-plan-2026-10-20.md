@@ -1,10 +1,12 @@
 # FlowDoc DOCX Export Implementation Plan
 
-Current route (2026-10-22): E0 baseline preparation is closed. The owner authorized
-only E1 B1 on P/T/Q in a separate Core worktree; see
-[E1 B1 result](#e1-b1-ptq-result-2026-10-22). This bounded experiment is complete
-with partial improvement and retained limitations. B2/C/D, merge, release and
-push remain unauthorized. Integration/I6 dispositions remain unchanged. Older
+Current route (2026-10-22): E0 baseline preparation is closed. The independently
+authorized E1 [B1 on P/T/Q](#e1-b1-ptq-result-2026-10-22) and
+[C on W/R](#e1-c-wr-result-2026-10-22) experiments are complete in separate Core
+worktrees. C improves all five exercised boundary probes while preserving their
+line signatures; W natural and protected controls remain unchanged. Combined
+B1+C, B2/D, merge, release and push remain unauthorized. Full parity and
+integration/I6 dispositions remain unchanged. Older
 I-stage status/authority paragraphs below are historical, not current permission.
 
 > For agentic workers: execute only the authorized stage. Use
@@ -7897,3 +7899,121 @@ original and61 supplemental frozen files, four I6 reference PDFs and the primary
 Core checkout remain unchanged. Keep the clean committed worktree and report:
 **retain B1 as an experimental candidate with evidence of improvement, not full
 target acceptance. Stop before B2/C, regression expansion or merge.**
+
+### E1 C WR result 2026-10-22
+
+**Authorized C-only experiment complete. Validity: PASS within W/R;
+effect: IMPROVED for all five exercised boundary targets. Full DOCX/PDF parity
+is not claimed.** The owner authorized C independently of B1, using frozen W/R
+and the existing PDF references. No B2, combined candidate, merge, release or
+push was performed. B1 results above remain immutable and independent. The
+broader E1 checkbox is not promoted to full target acceptance.
+
+Owner Core; role Product Implementation Agent / Evidence Reviewer inline, with
+Project Control owning this prose. Work Size medium, Risk Tier routine.
+Execution/Phase/Checklist IDs: N/A for this single-room bounded experiment.
+Evidence target is the external set below; no Work, registry, map or new shared
+Markdown artifact was created. Markdown classification: existing Project Control
+canonical plan/status, with implementation claims limited to retained evidence.
+
+Isolated checkout:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e1-c/core-worktree`.
+Branch `codex/docx-pagination-c-e1`, based directly on original A Core commit
+`e53e4a284d5eb2596b531b55a12a83ab74ba8528`, not the B1 branch. Retained C commit:
+`69d0018e1924dc7c2a9e0d1c5c6764385e4efbd9`. Seven tracked files changed:
+`src/docx/text.ts`, `src/docx/tables.ts`, `tests/docx/paginationRules.test.ts`, and
+four W/R template/request fixtures. The four fixture files match frozen E0 bytes.
+
+C explicitly emits `widowControl:false` only for whole unsplit ordinary body
+or plain breakable-cell paragraphs with no effective keeps, TOC or page fields.
+Semantic context excludes fixed spacers, bands, generated image/TOC paragraphs,
+header/nonbreaking rows, merged cells, both endpoints of protected reading-plan
+relations and cells of heading-associated tables. Entire required prefix-row
+groups are conservatively excluded, including their first member even when it
+has no effective keep-next itself. Existing keep flags, breaks, source text/LF,
+styles, runs, Section carriers and geometry remain unchanged. No source-ID/text
+heuristic, API/schema/environment switch or PDF/layout change was introduced.
+
+Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e1-c/`.
+Use `manifest.json`, `results.json`, `source-intervals.json`, `ooxml-proof.json`,
+`package-proof.json`, `preword-results.json`, per-packet receipts,
+`word-results.json`, candidate DOCX/Word PDFs, all13 page renders and
+`review-result.json`. E0 and B1 are referenced read-only, never overwritten.
+
+| Probe | Frozen PDF line distribution | Word A | Word C | Effect |
+| --- | --- | --- | --- | --- |
+| W first authored lines, pages1/2 | 1 /4 | 0 /5 | 1 /4 | IMPROVED |
+| W last authored lines, pages3/4 | 4 /1 | 3 /2 | 4 /1 | IMPROVED |
+| W ordinary cell, pages7/8 | 1 /4 | 0 /5 | 1 /4 | IMPROVED |
+| R Thai natural body, pages1/2 | 1 /3 | 0 /4 | 1 /3 | IMPROVED |
+| R Latin natural cell, pages3/4 | 4 /1 | 3 /2 | 4 /1 | IMPROVED |
+| W mixed natural control, pages5/6 | 2 /3 | 2 /3 | 2 /3 | UNCHANGED |
+
+W stays9 pages and R stays4; improvement is demonstrated by exact source-line
+page assignment, not page counts. All six probes preserve their full source
+interval and line signatures across original PDF, Word A and Word C. Natural
+signatures remain W **93,187,283,377,426**, R Thai **89,180,269,360**, and R Latin
+**46,92,138,178,198**. Every source code point, space and authored LF is retained.
+Original character-stream order avoids Thai-mark reordering; no normalization or
+whitespace collapse is used. Extraction-only trailing spaces and structural
+whitespace are recorded separately. W ordinary right-cell text also moves8→7,
+matching the original PDF. This is a change within the split ordinary row.
+
+All13 new pages were inspected individually, including intentionally large
+fixed-spacer whitespace and split-table continuations. No clipping, body overlap,
+missing glyphs or source loss observed. W pages5/6 and protected page9 retain
+identical character/image geometry and rendered PNG hashes against Word A;
+R's right-cell control retains its text and geometry. W protected heading/table,
+tail/image and all four Sarabun faces remain intact. These controls do not prove
+full geometry equivalence to the original PDF.
+
+Proof: initial policy tests fail7/9 for the expected missing widow settings;
+two protection/break tests already pass. An additional valid required-row-group
+case fails with3 flags instead of1 before its protection guard, then passes.
+All six affected DOCX files pass**71/71** and the TypeScript build passes.
+`git diff --check` passes. No full suite, Service, SRS98, performance trial,
+B1+C regression or I6 acceptance check was run for this independent probe.
+A fresh read-only whole-candidate review found no Critical, Important or Minor
+issues. It reviewed the diff, fixtures and package/OOXML/PDF receipts; the parent
+owns the actual71-test/build execution, page review and source-line attribution.
+
+Candidate Linux/amd64 package SHA-256:
+`119ac368da57680861be4f34c6f5b4edc9dd57ce38248da48db3f2fd3ade7e43`.
+All208 installed package files match the archive. Only internal compiled
+`dist/docx/tables.js`, `dist/docx/text.js` and `dist/docx/text.d.ts` differ from A;
+all other bytes and all file modes match, including PDF/native/font resources.
+The same frozen resolved object feeds both installed engines. Recomposition
+exactly matches each original serialized graph and both newly generated PDF
+hashes exactly match their retained W/R references. Comparison PDF bytes were
+discarded without saving replacement references or rendering them again.
+
+Before Word, XML proof permits only9 W and3 R eligible widow-false additions.
+All other body/Section properties and package parts are equal, apart from
+verified stable-name bookmark IDs, timestamps and random font-obfuscation keys
+whose deobfuscated font hashes match. No break/Section relocation normalization
+is allowed for this C proof. Word16.0.20430.20182, printer/options and field-refresh
+procedure match E0. Review copies close without saving and retain their hashes.
+
+Execution rulings: retain A's original break emission; use the Core-specific
+external worktree because the native chat worktree tool targets Project Control;
+exclude whole required prefix-row groups conservatively; treat explicit false
+keep properties as disabled in the proof reader; preserve extraction-only spaces
+without source normalization; use the approved Word render procedure instead of
+an additional generic LibreOffice export. These choices neither alter baselines
+nor consume extra Word exports. The fixture setup initially failed source-map
+validation; its test-only group identities were corrected before the meaningful
+RED result. No production validator was changed. No deferred review minors.
+
+Budget: **2 Word exports and13 new rendered pages of16**, no contingency used.
+Cumulative E0+B1+C is**112 reviewed pages and12 Word exports**, below the150-page
+independent-stage ceiling. All37 original and61 supplemental frozen files,
+four retained I6 PDFs, and all57 frozen B1 artifacts retain their hashes. Primary
+Core stays clean at its original base; pre-existing Service edits remain intact.
+
+Remaining limits: native vertical/font/band/border geometry differences remain;
+W natural is an unchanged control; P/T/Q were not rerun under C; combined B1+C
+behavior remains unknown. Conservatively excluded cell/group classes have no
+new visual parity claim. Original contract-bound exclusions, P/Q residual gaps
+and I6 complete-suite blocker remain unchanged. **Retain the clean committed C
+worktree as an experimental candidate and stop here before B2 or code integration.**
