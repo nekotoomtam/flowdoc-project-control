@@ -73,6 +73,12 @@ The owner's next request is the [missing identity evidence and observer acceptan
 It specifies a bounded capture-only checkpoint and subsequent observer criteria;
 no collector/observer edit, fixture execution, Docker or additional live round
 is authorized by this planning request.
+The owner subsequently authorized capture tooling and eight offline cases only.
+The [capture-tool offline result](#i6-identity-capture-tool-offline-result-2026-10-22)
+passes8/8 on pass2/2 (16 named executions total), with no Docker/procfs/cgroup
+access in the suite and no live capture. Observer/product bytes and old proofs
+remain unchanged. Dormant runtime paths and unsupported cross-view binding
+remain unverified; no live capture or A/B retry is authorized by that result.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10800,3 +10806,120 @@ covers408 prior source/evidence files,358 F2 inputs,28-file earlier proof/runner
 PDF baselines are preserved. This turn changes only this existing Project
 Control plan. No proposed test, collector, directory or live run is created.
 Project Control `tools/check.ts` and `git diff --check` pass.
+
+### I6 identity capture tool offline result 2026-10-22
+
+**PASS for the bounded offline capture-tool checkpoint only.** The owner's
+latest instruction authorizes the new capture tooling and eight P2 fixtures
+within two complete passes, followed by this result. All8 expected outcomes
+pass on pass2/2; the16-execution budget is exhausted and testing stops. No
+observer/product repair, Docker command, live procfs/cgroup read, live capture,
+cache/A–B–B–A, B2 or integration is performed. Exact1GiB/no swap, B1+C and
+original PDFs remain fixed. F2/I6 remain NOT ACCEPTED; historical failure cause
+and harness/Service memory attribution remain UNKNOWN.
+
+Authority: external-tool implementation and Evidence review, single room;
+Project Control owns this checkpoint, Service owns the untouched candidate.
+Execution IDs N/A; Work Size small, Risk Tier routine. Current host model/
+capability availability used inline without override. Document Budget is this
+existing canonical record; no new Work, Phase, map or shared report. Proof
+Budget2 complete passes,16 named executions,300 active-check seconds,2MiB proof.
+The separate proposed one-scenario live budget remains unauthorized and unused.
+
+New external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-observer-identity-capture`.
+New tools are an allowlisted role-local reader (`identity_reader.py`), pure
+composite receipt binder (`receipt_binding.py`), one-attempt coordinator and
+confirmed atomic receipt store (`capture.py`), explicit synthetic IO/test suite
+and bounded offline runner. Dormant `docker_capture.py` and `shell_reader.py`
+provide the separate future capture adapter/role-local shell transport; neither
+is executed or runtime-verified here. The shell transport avoids requiring a
+new Python installation in the pinned database image and labels each reader's
+own PID rather than a transient utility PID. Its actual utilities/permissions,
+framing and Docker lifecycle remain unverified runtime prerequisites.
+
+The coordinator reserves/confirms a fresh cap1/used1 capture ledger before
+calling any adapter, persists before/after identity and raw receipts, records
+partial errors, and performs only owned cleanup. Confirmed output uses the
+same encoded bytes for2MiB accounting and binary atomic replacement/readback;
+no power-loss/crash-durability claim is made. The dormant adapter requires
+explicit --live plus separate owner authorization, fresh proof, frozen image
+receipts and accepted network parser bytes. It reserves60 seconds of the
+proposed120-second ceiling for bounded cleanup, uses per-attempt ownership
+labels and removes only IDs whose label is confirmed. No --live invocation,
+live-proof/live-scratch directory or ready marker exists from this checkpoint.
+
+| Offline evidence | Result |
+| --- | --- |
+| Pass1 retained RED | 8 executed:0 pass,6 fail,2 error |
+| Pass2 new tooling | 8 executed:8 pass,0 fail,0 error |
+| Budget | 2/2 passes;16/16 named executions |
+| Active fixture checks | 0.219 seconds /300 seconds |
+| Saved proof | 368,134 bytes /2MiB;18 files including manifest |
+| Fixed fixtures | 8 JSON inputs, hashes unchanged |
+| Forbidden real operations attempted in suite | 0 |
+| Live capture / Docker / observer or product edits | 0/0/0 |
+
+C01 exercises shared role-reader interpretation through the coordinator and
+synthetic IO, anchored receipts, raw target/observer PID-view and init-membership
+proof, confirmed charge and cleanup. C02/C03 reject wrong-ID/restarted bindings.
+C04 retains valid database-local membership while labelling the observer PID
+view NAMESPACE_NOT_COMPARABLE; EVIDENCE_COMPLETE does not assert comparable
+host PIDs or observer acceptance. C05 rejects missing counter binding; C06
+rejects unexplained cross-view path/object matches. C07 retains the injected
+PermissionError/nonzero reader result and stops without retry. C08 rejects
+unconfirmed reservation with zero fake external calls. Every result retains
+observerVerified=false and liveReady=false; no old scalar observer success
+flag is synthesized. Expected/actual results, raw inputs and fake-call order
+are in `proof/pass-2-diagnoses.json`.
+
+RED is the unimplemented new-tool scaffold, not eight alleged product defects.
+Its source/tests/runner are retained. Before GREEN, static review found and
+confirmed fixes for output-size accounting, missing raw shared-PID/init proof,
+and uncertain-create cleanup ownership. C01's existing assertion was
+strengthened, and filesystem guards extended, without adding cases, changing
+fixtures or executing hidden negative scenarios. The same reviewer confirmed
+those findings resolved by source inspection only; no imports/execution/tests
+were performed by the reviewer. These guard/cleanup refinements do not create
+additional dynamic fault coverage beyond the eight named cases.
+
+The binder deliberately supports only a strict matching cgroup namespace and
+mount context plus anchored full container ID and counter-object evidence.
+It does not accept inode/device or equal path text alone. Unsupported private/
+cross-view layouts remain UNKNOWN; actual placement may therefore still stop.
+The old offline diagnosis16/16 helper and its supplied-host-view model are
+unchanged and not coerced into a new proof contract. This fixture checkpoint
+covers the shared reader/binder/coordinator with fake adapters; it does not
+prove dormant shell/Docker behavior, actual permissions/mount support,
+AtomicStore crash behavior or a future observer's five live samples. No
+historical missing PID/namespace/cgroup values are manufactured.
+
+Durable manifest: `proof/manifest.json`, SHA-256
+`8746db0df258fec4d9fd657e5a267ca8d0deb4e01ff480a3a642cd46d34126c6`.
+It binds8 helper files,8 fixtures and17 proof files, including RED/GREEN logs,
+per-case receipts, ledger, frozen inputs, design rulings, review and before/
+after preservation. All helper SHA-256 values are recorded in the manifest;
+principal sources are capture.py
+`7c4def670093ca29aa86db80796306baff05cfb797882365b1c11e03836c4ead`,
+identity_reader.py
+`30755cd8616645c5f506fb21a9a12a6ee409adbef3a5638d435dcb624d018360`
+and receipt_binding.py
+`4d94776a93e7515f2817289472c5d520f7e8f2e41b9f1ff0478d30d6ade6b4fc`.
+
+Final preservation agrees with initial checks: prior offline16 proof files,
+3 helpers and16 fixtures, latest15 live raw/supplemental records and16 helpers,
+all five older manifest references and prelaunch digest,408 prior source/
+evidence files,358 F2 inputs,28-file earlier proof/runner and18-file cache proof
+with6 helpers remain unchanged. The original observer hash is unchanged.
+B1+C stays clean at `b79f426649e65eadb3fb29e410250395a6d65faa`; primary Service
+status and original PDF baseline evidence are unchanged. Both historical live
+preparations remain charged1 each; this offline round adds no live attempt.
+No Word export or reviewed page is allocated.
+
+Next boundary is review of the offline result and remaining runtime/binding
+prerequisites before separately authorizing any one-shot capture-only attempt.
+Do not automatically enable the dormant adapter, switch namespace placement,
+relax identity proof or continue to A–B–B–A. Observer repair/acceptance, product
+changes, full suite, B2, merge/release/push remain outside this checkpoint.
+Repository impact is only this existing Project Control result document;
+`tools/check.ts` and `git diff --check` pass. No runtime/package/map changes.
