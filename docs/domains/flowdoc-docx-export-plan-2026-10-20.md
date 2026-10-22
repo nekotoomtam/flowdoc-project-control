@@ -34,6 +34,10 @@ cache probes because the comparison controls are invalid; M2/M3 were not run.
 Harness/cache attribution remains UNKNOWN and F2/I6 remain NOT ACCEPTED.
 The owner next requested the [reader coverage and cache repeatability revision](#i6-reader-coverage-and-cache-repeatability-revision-plan-2026-10-22).
 That revision is planning only: no helper edit or additional probe is authorized.
+The owner subsequently authorized the revised reader and five cache-only
+scenarios. The [persistent-group cache result](#i6-candidate-reader-and-persistent-cache-result-2026-10-22)
+passes the bounded CACHE-CONDITION-STABLE criterion at5/5 executions. This is
+not a harness/Service comparison or F2/I6 acceptance; M2/M3 were not started.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9476,3 +9480,132 @@ shared Project Control plan and launches no additional probe.
 Documentation verification: Project Control `tools/check.ts` and
 `git diff --check` pass; the only repository diff is this plan. Tooling/source
 changes and all five proposed live scenarios remain unexecuted.
+
+### I6 candidate reader and persistent cache result 2026-10-22
+
+**PASS CACHE-CONDITION-STABLE in the declared cache-only topology; F2/I6 remain
+NOT ACCEPTED.** The owner authorized the revised external reader plus at most5
+cache scenarios, exact1GiB, stopping on an invalid control. Preparation1 plus
+repeats4 completed; no extra scenario, retry, generation request, Service test,
+full suite, B2 or product integration was performed. Stop at the authorized
+cache checkpoint; this does not authorize M2/M3.
+
+Role: Evidence Reviewer / Documentation Synthesizer; Service owns the preserved
+candidate and Project Control owns this shared checkpoint. Work/Phase/Checklist/
+execution IDs: N/A, single-room work using the retained isolated lane. The
+current host model performed the bounded helper implementation and observation
+without a model override; its availability basis is the current host capability
+contract. One static helper review was performed under executing-plans; there
+was no separate product WORK dispatch or historical registry reactivation.
+
+New external helper directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-memory-repeatability`.
+`reader.py`, `observer.py` and `run.py` implement only the proof tooling;
+`test_reader.py` checks its guard behavior. No product repository file, test,
+configuration, package, image layer or original baseline was edited.
+
+Evidence: the directory's `proof/manifest.json`, SHA256
+`c17966c2fba085ba89a15b0a26ad233ba6d2842bfb88edf27402ac9feabbd6e7`,
+binds18 output files/2166816 bytes before the manifest and6 external helper/
+review records. `receipt.json`, `ledger.json`, the full inventory, five reader
+receipts/logs, raw observer samples, placement and Linux guard-test log retain
+the run. The independent `../verify-proof.py` checks the saved proof without
+launching a scenario. No previous evidence directory was overwritten.
+
+#### Reader coverage and preflight
+
+The two frozen image plugin-root variables resolve to `/candidate` and are
+deduplicated. Both required plugin entries are present and hash-bound:
+`/candidate/scripts/server.mjs` and `/candidate/scripts/task-client.mjs`.
+Coverage also includes the declared Service dist/node_modules/vendor/src/scripts,
+package/configuration files and reviewed fonts. There are5452 unique file
+targets/171131670 bytes, with5464 logical file entries retained for aliases.
+This is declared application-root coverage, not a claim to inventory every
+operating-system page or the reader's entire runtime activity.
+
+Metadata/content identity matches preparation and all four repeats. Each of the
+five scenarios streams the same inventory twice with a64KiB buffer; all ten
+passes have content digest
+`cfd750fda734a0570b26a45f5574e73bb85a264aafb18fc7269533e7bae538ca`.
+No configured root was skipped, no dependency escape was added silently and no
+build filled missing inputs.
+
+Host helper checks initially could not create symlinks on Windows (WinError1314):
+three checks passed and the symlink check was explicitly unavailable, not PASS.
+All four helper guard checks then passed unskipped in Linux inside the counted
+preparation: configured roots/deduplication, missing-root failure, alias/escape/
+cycle handling and content-change/missing-file detection. Fixture files used an
+8MiB `/tmp` scratch mount and were removed before measurement; the same mount
+persisted unchanged through the sequence. These are helper checks within setup,
+not additional cache scenarios or Service functional cases.
+
+Fresh static review found two external-orchestrator failure-path issues before
+launch: ownership registration after container creation, and finalization
+exceptions suppressing later cleanup/receipt writing. Both were corrected and
+the fixes were statically confirmed before the first counted scenario. Their
+review record is hash-bound. This run did not inject cleanup failures; it shows
+normal bounded cleanup with no errors, not fault-injection coverage of every
+orchestrator failure path.
+
+#### Same target group, frozen tolerances, observed result
+
+One target container/cgroup survived preparation and all four repeats using
+the retained Linux/amd64 image
+`sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0`.
+It retained1GiB memory/no swap,2 CPUs, init, the same read-only source/fonts and
+no network. Only proof output and the bounded fixture scratch space were
+writable. No Service, database, renderer or build was started. Production
+admission/health/credit/pressure rules are unchanged and were not exercised.
+
+The observer ran in a separate verified cgroup sharing only the target PID
+view for inspection. Its group current memory is separately recorded at
+approximately5.52–5.62MiB; it is not silently deducted from target readings.
+After each reader exited, the first five subsequent1Hz samples were captured,
+with only init/sleep remaining in the target. All25 post-reader samples support
+the table;38 raw samples retain preparation/reading activity as well.
+
+| Measurement across preparation and four repeats | Observed MiB | Max-minus-min MiB | Frozen allowed spread MiB |
+| --- | ---: | ---: | ---: |
+| File charge | 202.015625 in every post-reader sample | 0 | 8 |
+| Anonymous | 0.16015625 in every post-reader sample | 0 | 4 |
+| Kernel | 17.3359375–17.359375 | 0.0234375 | 4 |
+| Total current | 219.51953125–220.6640625 | 1.14453125 | 12 |
+
+Every frozen spread criterion passes. Root/content digests, target lifetime,
+limits and post-reader topology match. No OOM, unexpected post-reader process,
+adaptive cache preparation, cache eviction, forced GC, copied input inode or
+host/VM restart was used. Execution elapsed approximately54.9 seconds and
+output stayed below10MiB, within the5-minute/5-scenario ceilings.
+
+This establishes bounded stability of the observed prepared condition in one
+surviving group. It does not establish a cold/warm contrast, cache ownership
+for every page, stability in fresh groups, exact harness-only memory, or a safe
+headroom claim after an application loads additional files. The unchanged
+202MiB file charge remains part of the target's1GiB accounting; it was not
+subtracted from admission or moved elsewhere to obtain a passing request.
+
+#### Preservation, independent verification and stop
+
+Before/after preservation and the independent saved-proof check confirm all408
+prior source/evidence files, all358 F2 inputs, the old28-file cache proof and
+its runner unchanged. Primary Service status is unchanged. B1+C remains clean
+at `b79f426649e65eadb3fb29e410250395a6d65faa`; the dirty/uncommitted F2 worktree
+is preserved. Original PDF baselines, prior failed/qualified results and all
+old artifacts remain intact. Cumulative162 reviewed pages/21 Word exports is
+unchanged; this round generated no document output.
+
+Both owned containers were removed, no owned container remains and the observer
+exited0 without OOM. There are no cleanup/preservation errors. All18 proof files,
+six bound helper/review records, ten content passes,25 post-reader samples and
+the5/5 ledger were independently checked from saved bytes; no extra live case
+was used for verification.
+
+The authorized reader correction and cache-repeatability checkpoint is complete.
+Any next application/harness comparison needs a separate proposal. The target
+group has been cleaned up, so a future run must revalidate preparation rather
+than inherit a live/stable state from this receipt. M2/M3, F2/I6 acceptance,
+full suite, product-code repair, B2 and product integration remain unperformed.
+
+Project Control documentation checks: `tools/check.ts` and `git diff --check`
+pass. The only repository change is this bounded plan/result update; no product
+commit, map promotion or runtime installation was made.
