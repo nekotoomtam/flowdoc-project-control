@@ -85,6 +85,10 @@ charges1/1 and stops UNKNOWN after18.375 seconds: all three local receipts are
 retained, while cross-cgroup-namespace counter binding is unsupported. Cleanup
 is clean; no retry, observer repair or A–B–B–A follows. The original baselines
 and all previous proofs remain unchanged; F2/I6 are NOT ACCEPTED.
+The owner next requests the [saved-evidence cross-view counter binding proposal](#i6-saved-evidence-cross-view-counter-binding-plan-2026-10-22).
+This is planning only: no validator/observer change, fixture run, Docker or
+new capture/comparison. The original UNKNOWN receipt is retained; proposed
+object/route adjudication does not confer observer or live-sampling acceptance.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -11035,3 +11039,181 @@ real sampling evidence; it is not granted by collecting these receipts.
 No further live budget, A–B–B–A, full suite, B2, product change or merge is
 authorized by this result. Only this existing Project Control document changes;
 `tools/check.ts` and `git diff --check` pass, with no runtime/package/map edit.
+
+### I6 saved evidence cross view counter binding plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner requests a counter-binding plan based on
+saved capture evidence first. This turn reads retained raw/source files and
+primary Linux documentation and changes only this canonical plan. No validator,
+reader, observer, fixture, product or runtime code changes; no fixture cases,
+Docker (including status/inspect), live procfs/cgroup, capture, A–B–B–A or full
+suite run. Exact1GiB/no swap, B1+C, original PDF baselines and historical
+ledgers remain unchanged. F2/I6 are NOT ACCEPTED; memory attribution UNKNOWN.
+
+Owner: Project Control for the shared proof contract, Service for the untouched
+candidate. Role: Planning Partner / Evidence Reviewer / Documentation
+Synthesizer. Single-room planning; execution IDs N/A. Work Size small, Risk
+Tier routine. Document Budget this existing record only, no new Work/map or
+shared report. Reuse current P0–P3, immutable offline16/16 and8/8 evidence,
+and the consumed1/1 live capture. Later implementation resolves its own compact
+model/host availability decision. The blocking issue is an unsupported binding
+profile, not an observed mismatch of the captured object identities.
+
+#### X0: retained evidence and semantic basis
+
+Freeze the eight as-run files under `i6-observer-identity-capture/live-proof`
+with manifest SHA-256
+`9372a5e3e1ca6013ec1110e5441bc3a5429c1ca75ca657cb46effc43cf7ecf12`,
+the prelaunch/source hashes and supplemental manifest
+`48a29a132b8455462e0253dc38942f32417657437737f3e4a0a3bc9a02be6255`.
+Raw role receipts, shell frames, full mountinfo, before/after IDs, local PID
+membership and stat start brackets already exist. No fresh capture is proposed
+as a prerequisite for this bounded offline object/route adjudication.
+
+| Role | Private-view directory | Observer-view directory | Shared captured object data |
+| --- | --- | --- | --- |
+| Target | /sys/fs/cgroup | /sys/fs/cgroup/docker/95e3c0b2e4ad0f5c2548a751673488e10d179241d6872e624f346a7a0548bfb1 | device0:23, inode429, fsid87fb5972662524a3 |
+| Database | /sys/fs/cgroup | /sys/fs/cgroup/docker/234b671ec4a06db2bb83d19c538ba8bbed69f60aa9bc8936fa5af66accbf03c2 | device0:23, inode497, same fsid |
+
+All three relevant raw mountinfo records identify cgroup2, device0:23, root /,
+mountpoint /sys/fs/cgroup. Their mount IDs463/540/631 are recorded per view,
+not expected to be globally equal. Inspection identities are stable and every
+role receipt is tied to its exact invoked full ID and capture ID. The prior
+source review shows the current binder rejects different cgroup namespaces
+before evaluating these object matches; do not simply remove that condition.
+
+Primary references:
+[Linux cgroup v2 namespace semantics](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html#namespace)
+explains that cgroup namespaces alter membership/mount views; a private root
+can show / while another view shows the original hierarchy path.
+[inode identity](https://www.man7.org/linux/man-pages/man7/inode.7.html)
+limits inode-number uniqueness to its filesystem, requiring filesystem/device
+context when comparing observations.
+[mountinfo](https://www.man7.org/linux/man-pages/man5/proc_pid_mountinfo.5.html)
+identifies per-reader mount roots, filesystem types/devices and stacked mounts.
+These support the proposed explicit cross-view profile; namespace inequality
+alone is not an object mismatch, and equal numeric inode alone is not proof.
+The sources do not certify this experiment or its runtime continuity.
+
+#### X1: proposed capture-cross-view-object-v1 contract
+
+Propose a separate pure verifier that consumes only hash-bound saved receipts.
+It must independently recompute its decisions from raw frames/mountinfo and
+anchored metadata, not trust the old derived booleans or a hand-authored map.
+For each target/database pair require every condition below:
+
+1. **One trusted capture provenance:** all raw/derived inputs resolve to the
+   frozen manifest, one capture ID, known reader/source bytes and the same
+   recorded Docker invocation route. Full IDs, image bindings and before/after
+   running/restart/StartedAt/PID metadata match. Reject mixed-session replays;
+   device/inode/fsid values are not cross-host/boot/session persistent IDs.
+2. **Role anchor:** the local reader was invoked against that exact full ID;
+   its local membership and init/reader PID+start identity are intact. Preserve
+   the raw private-cgroup-root view. The observer candidate contains the exact
+   corresponding full ID as a supported path component; ID replacement only
+   proposes a candidate and cannot authorize it. No substring or numeric-PID
+   collision can establish identity.
+3. **Filesystem/mount context:** parse the complete mountinfo for each reader,
+   including root/point/device/type and stacked or nested mounts. Resolve only
+   canonical allowlisted paths under the effective cgroup2 mount. Correlate
+   raw stat device to mount major:minor; require matching cgroup2 filesystem
+   context and consistent fsid. Mount IDs are interpreted locally, not compared
+   as shared object IDs. Missing/ambiguous/escaped unsupported layouts stop.
+4. **Directory object identity:** require matching nonempty device/inode/fsid
+   for the role-local directory and independently anchored observer directory,
+   after the provenance/mount checks. Neither path-text equality, directory
+   existence nor object tuples stripped of context are sufficient. Record the
+   differing cgroup namespaces and the specific cross-view profile used.
+5. **Counter route:** bind the actual captured reads to that matched parent
+   plus the fixed allowed child names: memory.max, memory.swap.max,
+   memory.current, memory.events and cgroup.procs. Use the source-bound shell
+   frame keys/read results and full mountinfo to exclude a mount that hides
+   the parent or any selected child. Do not compare changing counter values
+   for equality across sequential reads as an identity test. Require successful
+   reads and keep errors visible. Target's inspected and captured limits remain
+   exactly1073741824/0 with2 CPUs; preserve OOM/error checks and separate roles.
+6. **Bounded time claim:** stable process/container brackets and known capture
+   order support this18.375-second saved observation only. The artifact does
+   not hold directory/file descriptors, stat each counter leaf, or bracket
+   mount/group-object identity continuously. Do not claim atomic reads,
+   absence of every possible migration/remount/inode-reuse race, or live
+   continuity after cleanup. If a requested claim needs those missing facts,
+   return UNKNOWN rather than infer them from a stable process PID.
+
+The proposed result has separate object-match and counter-route decisions with
+reasons/source locators. `CAPTURED_GROUP_OBJECT_MATCH` is scoped to directory
+observations; `CAPTURED_COUNTER_ROUTE_SUPPORTED` is scoped to the recorded
+fixed-child routes with the stated temporal limits. Contradictory identities
+return BINDING_MISMATCH; absent/ambiguous evidence returns UNKNOWN. Each role
+is adjudicated independently; one match cannot promote the other role.
+All outcomes retain observerVerified=false and liveReady=false.
+
+Target process-view proof, observer memory-group separation, database-local
+membership and cross-view counter-object proof remain distinct. Database PID
+visibility stays NAMESPACE_NOT_COMPARABLE where observed; a successful counter
+route must not invent host PID membership from the recorded zero entries.
+The original capture result remains UNKNOWN as run. A later reviewed derived
+adjudication records its new profile/version and input hashes separately,
+without editing raw ledgers, old booleans, historical acceptance or product maps.
+
+#### X2: bounded offline implementation proposal and twelve named cases
+
+If separately authorized, create a fresh external directory such as
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-counter-crossview-offline`.
+Proposed new files are `crossview_binding.py`, a saved-input loader, twelve
+fixed cases and a bounded runner/proof manifest. Preserve all old helper
+bytes; do not modify receipt_binding.py or the observer to obtain PASS.
+Use the existing raw capture as immutable test input; only fault fixtures
+may contain synthetic changes, explicitly labelled and separately hashed.
+
+| ID | One fixed input/fault | Expected outcome |
+| --- | --- | --- |
+| X01 | Hash-bound saved target pair with complete role/mount/object/route evidence | Proposed captured object/route support within X1 limits, no live readiness |
+| X02 | Hash-bound saved database pair with local membership and non-comparable observer PID view | Same bounded object/route support while retaining PID visibility limitation |
+| X03 | Synthetic valid binding with a different cgroup namespace ID and intact independent anchors | Namespace inequality alone does not reject the object |
+| X04 | Observer-side device differs from local anchored filesystem | BINDING_MISMATCH |
+| X05 | Observer-side inode differs within the same established filesystem | BINDING_MISMATCH |
+| X06 | Nonempty fsid conflicts across the two anchored observations | BINDING_MISMATCH |
+| X07 | Object numbers present but raw mountinfo missing | UNKNOWN; no inode-only shortcut |
+| X08 | Observer path contains a similar ID substring rather than the exact role ID component | BINDING_MISMATCH |
+| X09 | Raw mountinfo has an overmount hiding a selected counter leaf | UNKNOWN; parent identity alone cannot authorize that read route |
+| X10 | Recorded role restart/StartedAt changes across inspections | BINDING_MISMATCH |
+| X11 | A captured role reader/frame records a read error | UNKNOWN, retaining the original error |
+| X12 | Matching object numbers are supplied from another capture ID/session | Reject provenance; no cross-session object inference |
+
+X01/X02 are the actual saved-input checks, included in the twelve-case budget,
+not extra uncounted replays. They are proposed expectations: if raw parsing
+reveals a missing prerequisite, preserve the discrepancy and report UNKNOWN;
+never fabricate a field or weaken X1 to satisfy the expected support. Keep
+initial RED behavior/contract failures and the final source/fixture identity.
+No hidden parameterized cases, live pilots or reruns of the accepted older
+8/16-case suites. Proposed ceiling2 complete passes,24 named executions,
+300 active-check seconds and2MiB proof; collection failure consumes a pass,
+stop on all expected outcomes or exhaustion. Prohibit real process/procfs/
+cgroup operations. Current request authorizes no implementation/test pass.
+
+#### X3: acceptance and future boundary
+
+The offline checkpoint is a reviewed derived evidence decision with exact
+coverage, all twelve expected outcomes, bounded accounting and immutable old
+hashes. It does not make the original binder pass or accept a running observer.
+No new Docker/capture budget is requested to reach that offline checkpoint.
+
+Any later observer/validator implementation must receive separate scope and
+carry the selected composite contract into a new isolated candidate. Live
+observer acceptance still requires P3's actual bound-path sampling, error
+handling, process placement and cleanup coverage. Identity must remain valid
+at that sampling boundary; snapshot-only support cannot replace continuous
+runtime evidence. No namespace/privilege switch, cgroup write/migration,
+memory-policy relaxation or extra cache warmer is proposed. A later complete
+comparison still needs separately authorized fresh7 and both cache checks.
+All three historical charged live attempts remain charged; no resume/refund.
+B2, full suite, product changes, merge, release and push stay out of scope.
+
+Planning checks confirm the current offline/live/supplemental manifests,
+all old helper/fixture chains and original observer source unchanged, with408
+prior source/evidence files,358 F2 inputs,28-file earlier proof/runner,
+18-file cache proof with6 helpers, clean B1+C and unchanged primary Service.
+Original PDF baseline evidence remains preserved. No Docker/status command,
+fixture case, proposed directory or code change is made. Only this existing
+Project Control plan changes; `tools/check.ts` and `git diff --check` pass.
