@@ -32,6 +32,8 @@ The owner subsequently authorized that bounded discovery. Its
 [M0/M1 result](#i6-memory-attribution-m0-m1-result-2026-10-22) stops after2/12
 cache probes because the comparison controls are invalid; M2/M3 were not run.
 Harness/cache attribution remains UNKNOWN and F2/I6 remain NOT ACCEPTED.
+The owner next requested the [reader coverage and cache repeatability revision](#i6-reader-coverage-and-cache-repeatability-revision-plan-2026-10-22).
+That revision is planning only: no helper edit or additional probe is authorized.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9310,3 +9312,167 @@ pass. Independent read-only checks verify all28 new evidence files, the bound
 external runner, all358 candidate inputs, the2/12 ledger, actual separate
 observer placement and no remaining owned containers. Only this Project
 Control document changes in a repository; product code and maps do not change.
+
+### I6 reader coverage and cache repeatability revision plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner's next request covers a plan to include
+`/candidate` and establish repeatable cache preparation, retaining exact1GiB,
+B1+C and original PDF baselines. No reader/orchestrator edit, container/probe,
+functional test, build, B2 or product integration is authorized now. The prior
+2/12 STOP remains historical evidence, not an automatically reusable10-run
+allowance. M2/M3 and F2/I6 acceptance remain closed to execution/not accepted.
+
+Project Control owns the shared proposal; Service owns any later test-boundary
+change. Role: Planning Partner / Evidence Reviewer / Documentation Synthesizer.
+Work/Phase/Checklist/execution IDs: N/A, single-room planning. Work Size: small;
+Risk Tier: routine. Document Budget: this existing document only, no map or new
+Work/registry. Any later WORK resolves its model decision from host availability
+at authorization; it does not inherit a model choice from this plan.
+
+#### R0: correct coverage before another measurement
+
+If separately authorized, create revised external proof tooling in a new
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-memory-repeatability` directory.
+Keep `i6-memory-attribution/run.py`, its28-file proof and all earlier evidence
+immutable. Proposed units are an inventory/reader, external observer and bounded
+orchestrator/ledger. They must not import the old orchestrator as a module:
+its top-level code launches probes. Service/Core source, tests, configuration,
+packages, image layers and original baseline files are forbidden edit targets.
+
+Derive plugin roots from the retained image's `STAGE5_PLUGIN_ROOT` and
+`FLOWDOCMAKE_PLUGIN_ROOT`; both currently resolve to `/candidate`. Resolve
+absolute paths and deduplicate that shared root. Do not assume that relative
+`plugins` is its substitute. Both configured roots must exist/read successfully;
+a missing configured root is a hard preflight failure, never a skipped entry.
+Require at least `/candidate/scripts/server.mjs` and
+`/candidate/scripts/task-client.mjs`, which the frozen case actually invokes.
+Record their content digests and the image/root-variable evidence.
+
+Inventory the actual frozen application roots: `/candidate`,
+`/work/service/dist`, `/work/service/node_modules`, `/work/service/vendor`,
+`/work/service/src`, `/work/service/scripts`, the three package/TypeScript
+configuration files and the reviewed `/i6-fonts` mount. Classify any absent path
+against the retained runtime/build contract before proceeding; do not silently
+skip it or run a build to fill it. Separate application coverage from reader/OS
+activity: this inventory is not proof of every operating-system page accessed.
+Keep reader/runtime versions and their dependencies constant and retain whole
+cgroup accounting rather than attributing every file-charge byte to the inventory.
+
+For each declared entry, record logical path, resolved target, type, size and
+SHA256. Resolve directory/file symlinks with a visited-target set; include an
+actual external dependency only when its target is explicitly added to the
+reviewed root set. Missing/unreadable targets, cycles, unresolved escapes or
+special files cause a recorded stop. Deduplicate content reads while retaining
+all logical aliases. Do not silently omit a dependency or traverse unrelated
+host/proof/storage paths. Content equality must include the newly covered
+plugin files; the old5399-file digest cannot certify the corrected inventory.
+
+The future helper review must check required-root failure, duplicate plugin-root
+deduplication, symlink/escape handling and aggregate-digest construction before
+live execution. These are prospective checks, not claimed passes today.
+
+#### R1: one persistent memory group, one measured cache condition
+
+The proposed change is to match one prepared cache state across repetitions,
+not to manufacture a high/low or cold/warm pair. Use one disposable target
+container/cgroup for the entire cache-only sequence. Retain that same cgroup,
+image layers, mounts, file identities and idle init/sleep until the final
+measurement; do not remove/recreate it between repetitions. Do not copy files
+to fresh inodes, place a priming reader in another cgroup, move the reader
+between groups or perform extra host reads to obtain a desired charge.
+
+The rationale is supported by the Linux kernel's
+[cgroup v2 Memory Ownership documentation](https://docs.kernel.org/admin-guide/cgroup-v2.html#memory-ownership):
+memory is charged when instantiated and process migration does not move prior
+charges; shared-page charging can be indeterminate. Keeping the target alive
+removes the old deletion/recreation step as an experimental variable. It is
+an experimental control proposal, not a guarantee of cache ownership or
+residency. Existing globally cached pages may still be charged elsewhere;
+stable zero target file charge must be reported as such, not as zero RAM use.
+
+The target stays at `memory.max=1073741824`, `memory.swap.max=0`,2 CPUs and the
+same init/idle topology. No pressure/admission/worker-credit rule changes:
+768MiB and320MiB retain their original meaning. The observer stays in its own
+verified cgroup; log both paths and both groups' memory, never subtract the
+observer from a recorded target total. No Service, database, renderer or build
+starts in this cache-only proposal.
+
+One counted preparation scenario inventories and streams/hash-checks the full
+reviewed root set twice inside the target, with the same bounded buffer and
+reader process lifecycle as the later repetitions. Both passes must match.
+The reader then exits. Keep only init/sleep in the target, with no open reader,
+background warmer or resident helper masking the final anonymous footprint.
+Capture the initial/preparation history; exclude it from claims about a cold
+baseline or isolated renderer peak.
+
+Run four counted repetitions with that same reader, file order, bytes and
+process placement, in the same surviving target group. Each repetition reads
+the complete inventory twice, verifies its digest and exits. No mutation,
+between-round cleanup of caches, adaptive preparation, forced GC or retry is
+allowed. A first inconsistent repetition stops the sequence; do not keep warming
+until four favorable readings can be selected.
+
+After preparation and after every repetition, obtain five consecutive1Hz
+post-reader samples, starting only after the reader has exited. Allow at most
+15 seconds per boundary to collect them; do not search indefinitely for a quiet
+window. All expected target processes must be init/sleep. The observer records
+total, anonymous, file, kernel, events and pressure plus available process
+RSS/PSS, while its own measurements remain separate.
+
+Proposed tolerances, frozen before results: across all accepted post-reader
+windows including preparation, max-minus-min must be at most8MiB for file,
+4MiB for anonymous,4MiB for kernel and12MiB for total memory. Require identical
+root/content digests, cgroup identity, limits, process topology and no OOM,
+unexpected process or inventory error. These are operational repeatability
+criteria, not statistical confidence or a Linux guarantee. Any violation means
+STOP/UNKNOWN with the raw readings retained; do not adjust tolerances afterward.
+
+The old80MiB contrast threshold addressed a different high/low experiment and
+does not apply to this proposed single-condition matching test. Preserve that
+old failed result. Four repeats here establish only bounded stability in one
+surviving group; they do not establish reproducibility in fresh containers or
+transferability to an application that subsequently loads more files.
+
+#### Budget, acceptance and return boundary
+
+Propose a fresh ceiling of5 cache-only scenarios:1 preparation plus4 repeats,
+at most5 minutes active execution and10MiB new output. Every started scenario,
+including setup/read failure, counts; observer setup failure belongs to the
+preparation scenario. There are zero functional case/generation executions and
+no nested/automatic retry. Unspent budget after a stop is not permission for
+M2/M3. These proposed limits do not authorize any execution in this planning turn.
+
+Acceptance of a future repeatability probe requires complete declared-root
+coverage including `/candidate`, four valid repeats under the frozen tolerances,
+verified observer separation, no remaining owned process after final cleanup,
+and before/after candidate/B1+C/baseline/evidence preservation. A quiet file
+counter with incomplete coverage is not PASS. Return the manifest/file count,
+bytes, absolute/configured roots, digest, exact cgroup lifetime, every boundary's
+ranges/deltas, event/pressure data, failures and actual ledger use.
+
+If these controls pass, report CACHE-CONDITION-STABLE within this limited
+cache-only topology and stop for a separate proposal for application/harness
+comparison. That later comparison would have to reuse the same live target or
+revalidate preparation, bracket each arm with new measurements, keep all
+preparation memory charged in the1GiB group, and preserve request/order/cleanup
+semantics. Do not move cache outside the budget to make worker admission pass.
+If memory differs by enough to affect admission or an arm loads additional files,
+the cache-only result cannot by itself certify that application comparison.
+
+If repeatability fails, report the first failing control and propose observation
+with explicit confounders rather than a percentage split. No `drop_caches`,
+`memory.reclaim`, file eviction advice, page pinning, host/VM restart, synthetic
+memory pressure, new file copies, larger limit or production-policy change is
+part of this plan. Neither a stable condition nor a tool correction accepts
+F2/I6, proves an exact Vitest-only heap, or authorizes M2/M3, B2, full suite or
+integration. Original PDF baselines and the clean frozen B1+C candidate remain
+immutable; no additional Word export/page review is allocated.
+
+Planning preservation checks confirm the old28-file proof and bound runner
+unchanged,408 prior source/evidence files retained, all358 F2 inputs unchanged,
+B1+C clean and primary Service status unchanged. This turn changes only the
+shared Project Control plan and launches no additional probe.
+
+Documentation verification: Project Control `tools/check.ts` and
+`git diff --check` pass; the only repository diff is this plan. Tooling/source
+changes and all five proposed live scenarios remain unexecuted.
