@@ -63,6 +63,12 @@ The owner now requests the [offline observer PID/cgroup diagnosis proposal](#i6-
 This authorizes saved-source/evidence review and planning only, with no helper
 repair, fixture execution, Docker call or additional comparison. Historical
 charges and the failed observer receipt remain intact.
+The owner subsequently authorized the pure offline unit and sixteen fixtures.
+The [offline observer diagnosis result](#i6-offline-observer-placement-diagnosis-result-2026-10-22)
+passes16/16 on pass2/3,32 named executions total, with zero external/process
+or live procfs/cgroup operations in the suite. Observer/product bytes remain
+unchanged. Historical runtime cause and live readiness remain unverified;
+F2/I6 and memory attribution are unchanged. No Docker retry follows.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10485,3 +10491,113 @@ is clean and primary Service status unchanged; PDF baselines remain preserved.
 No Docker command, fixture case or additional live scenario is executed.
 Only this existing Project Control document changes. Documentation verification:
 `tools/check.ts` and `git diff --check` pass.
+
+### I6 offline observer placement diagnosis result 2026-10-22
+
+**PASS for the bounded offline diagnostic unit only.** The owner authorized
+O0–O3's new external helper and sixteen synthetic cases within three complete
+passes. All16 expected outcomes pass on pass2; testing stops with no third
+pass. The existing observer, live orchestrator, network/accounting tools and
+product source/tests/configuration are unchanged. No Docker command, live
+procfs/cgroup read, Service, cache or A–B–B–A scenario is executed. F2/I6 remain
+NOT ACCEPTED; the historical observer failure's exact runtime cause and the
+harness/Service memory difference remain UNKNOWN.
+
+Owner/role: Project Control for this checkpoint; Evidence Reviewer /
+Documentation Synthesizer implementing external offline tooling. Service owns
+the untouched candidate. Execution IDs N/A, single room; Work Size small,
+Risk Tier routine. Current host model/capability availability used inline,
+without override or separate product dispatch. Proof Budget3 complete passes,
+48 named executions,300 active-check seconds and2MiB proof; Document Budget
+this existing canonical result only. No new Work, Phase, map or shared report.
+
+New external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-observer-placement-offline`.
+New files are `placement_diagnosis.py`, `test_placement_diagnosis.py`,
+`offline_checks.py`, sixteen fixed synthetic JSON fixtures and bounded proof.
+The old observer source is copied as inert `proof/observer-source.txt`; it is
+never imported or executed. The pure helper accepts supplied text/JSON, parses
+identity/namespace/mount/membership evidence and returns typed diagnostics.
+Its sole optional output effect is an injected diagnostic writer; no ready
+writer, Docker adapter, namespace/cgroup operation or live execution interface
+exists. Every diagnosis has liveReady=false and omits the observer's old
+databasePidMembershipVerified success flag.
+
+| Proof stage | Result |
+| --- | --- |
+| Pass1 retained RED | 16 executed,0 pass,12 fail,4 error |
+| Pass2 diagnostic unit | 16 executed,16 pass,0 fail,0 error |
+| Charged offline budget | 2/3 passes;32/48 named executions |
+| Active fixture checks | 0.297 seconds /300 seconds |
+| Retained proof | 87,098 bytes /2MiB;17 files including manifest |
+| Fixed fixture hashes | 16 unchanged JSON inputs |
+| Real process/system-filesystem attempts in suite | 0; subprocess/os.system and live procfs/cgroup file access guarded |
+| Live scenarios / observer changes / product changes | 0/0/0 |
+
+RED uses a supplied-data adapter of the literal old host-PID membership
+comparison, never the live observer. It reproduces an unclassified assertion
+for sibling visibility and lacks the new typed/evidence contract; its sixteen
+nonpassing tests do not mean sixteen original runtime defects. RED source,
+tests, suite runner and results remain preserved. The same sixteen GREEN
+cases retain expected/actual diagnoses and fixture provenance. The only test
+instrumentation addition after RED is per-case diagnosis retention, without
+weakening assertions or adding named/parameterized cases. The fresh static
+review reports no actionable issue within this synthetic scope and performs
+no import, execution, tests, edits or live access.
+
+GREEN outcomes:2 CONSISTENT_SNAPSHOT,3 NAMESPACE_NOT_COMPARABLE,
+6 IDENTITY_MISMATCH and5 SNAPSHOT_INCOMPLETE. The three non-comparable outcomes
+include sibling visibility, numeric PID collision across namespaces and the
+receipt-write-error path. A passing test for a stop means the checker refused
+unsupported identity, not that placement passed. Missing procfs origin,
+malformed NSpid, ambiguous cgroup mount, process disappearance, PID reuse,
+permissions, stale inspect binding, wrong path/ID, wrong target limit and
+observer overlap all give their required explicit results. O16 retains the
+non-comparable diagnosis and reports OSError; no ready marker or adapter call
+occurs. Per-case reasons/provenance are in `proof/pass-2-diagnoses.json`.
+
+The fixture schema explicitly models its namespace graph's unique root as
+the supplied Docker-host PID view. The two complete positives use that reader
+view, including one explicit ancestor/descendant NSpid chain. Other root/view
+bindings require evidence or stop; the helper does not discover a real host
+namespace or trust a PID column as host by position alone. Namespace ancestry,
+role bindings and capture order remain supplied model inputs. Content hashes
+protect their identity, not their real-world truth. General kernels/drivers,
+unsupported views, actual cgroup permissions and crash durability are outside
+this sixteen-case proof. No live1GiB/no-swap confirmation is claimed; exact
+1073741824/0 target limits remain in the synthetic contract without relaxation.
+
+The saved source supports identifying two assumptions in the failed observer:
+comparing Docker's host PID in the observer's PID view, and deriving a database
+path by container-ID replacement. Synthetic sibling/collision inputs establish
+why absence or equal numbers cannot independently prove placement. They cannot
+choose between H-PID, H-PATH and H-LIFETIME for the old run: raw as-run namespace,
+mount, membership and process-start observations were not retained. The old
+error is not rewritten into a confirmed namespace diagnosis or a fixed observer.
+
+Manifest: `proof/manifest.json`, SHA-256
+`d597300be0e41428db465b376d2bc6d5f31f2f911f3b793764fac0a09a0f0d40`.
+It binds3 helper files,16 fixture files and16 proof files. Helper SHA-256:
+
+| File | SHA-256 |
+| --- | --- |
+| placement_diagnosis.py | `1038a30416ba13d21efecba4bdcd530a12bde8d41d3e85693c570ebbc19af1a9` |
+| test_placement_diagnosis.py | `f6238d76e0e0a32c5e2b43867731fbb513c0c81c759cf0ada96f39a8b51b20a4` |
+| offline_checks.py | `aa166c3198a57e7a67bd01302aef2997aa6e1249afc10b62dab173b5d41fe0dc` |
+
+Before/after preservation agrees:408 prior source/evidence files,358 F2 inputs,
+28-file earlier proof/runner,18-file cache proof with6 helpers, the latest15
+as-run/supplemental records and16 live helpers, all original failed-round
+manifests, accepted network-repair proof/source and prelaunch digest remain
+unchanged. The old observer hash is identical. B1+C remains clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`; primary Service status and original
+PDF baseline evidence remain unchanged. No Word export/reviewed page allocated.
+
+Both historical live preparations stay charged1 each. This offline checkpoint
+uses no live budget and does not resume/refund either ledger. Recommended next
+work is a proposal for the minimum future namespace/cgroup identity capture
+and an explicit observer-proof contract before repair or any live retry.
+No further helper/observer repair, Docker, A–B–B–A, full suite, B2, integration,
+release or push is authorized by this result. Repository change is limited to
+this existing canonical result document. Project Control `tools/check.ts` and
+`git diff --check` pass; no runtime/package/map change is made.
