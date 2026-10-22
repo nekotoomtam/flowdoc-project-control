@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is M1 isolated implementation of border-area and wholly empty-header rules, with small two-font tests and owner-assisted Word conversion. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization (2026-10-22) is I3 in the isolated actual flowdoc-core lane: verify the installed candidate package with small PDF/DOCX documents before Service integration. I3 package/consumer checks and final bounded review pass; I4/Service, the98-page SRS and release promotion remain unauthorized. I1/I2 evidence is preserved. No registered execution round is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -21,9 +21,10 @@ PostgreSQL, multipart task transport และ DOCX/OOXML. Stage 0 เลือ�
 **Spec:** ข้อกำหนดเจ้าของและสัญญาในเอกสารนี้ โดยเฉพาะ
 [Agreed design](#agreed-design) และ [API contract](#api-contract).
 รวม design และ staged plan ไว้ไฟล์เดียวตาม Document Budget.
-แผนรวมตัวทดลองรอบปัจจุบันคือ
-[Unified DOCX mapping contract and consolidation plan](#unified-docx-mapping-contract-and-consolidation-plan);
-เป็น contract/profile เป้าหมาย; U1 มี isolated mapping checkpoint แล้วตามท้ายเอกสาร แต่ยังไม่รับรอง writer หรือผลใน Word.
+แผนรอบปัจจุบันคือ
+[Core and Service integration repair plan](#core-and-service-integration-repair-plan).
+[Unified DOCX mapping contract and consolidation plan](#unified-docx-mapping-contract-and-consolidation-plan)
+เป็นแผนต้นแบบและหลักฐานเดิม ไม่ใช่การรับรองการเชื่อมเข้าระบบจริง.
 
 ## Authority Boundary
 
@@ -34,28 +35,33 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **M1 now has bounded Word evidence for the two implemented rules:31 pages reviewed, smaller row-pitch differences, empty-header recovery and preserved sample flow. General baseline matching, exact wrapping and full layout parity remain open; no new tolerance is accepted. Prior130 automated tests/type-check remain valid against the unchanged candidate. SRS/product integration remain stopped**.
+สถานะ: **I1–I3 pass in the isolated Core candidate. The actual Linux/amd64 package builds native resources, passes939 tests and installs through a real dependency lock; all existing PDF consumers and six paired installed PDF/DOCX cases pass offline. Fresh I3 review has no findings. This is not Service, Word visual, SRS or release acceptance.**
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
-Work/Phase/Checklist/execution IDs: N/A สำหรับการวางแผนห้องเดียวนี้.
+Work/Phase/Checklist/execution IDs: N/A สำหรับ single-room work นี้.
 ไม่เปิด execution context ที่ปิดแล้วกลับมา.
 
 Work Size: medium สำหรับการวางแผน; implementation แบ่งตาม stages ด้านล่าง.
 Risk Tier: routine สำหรับเอกสารนี้; product stages มีความเสี่ยงเรื่องความครบถ้วน
 และ compatibility ซึ่งต้องตรวจตามขอบเขต ไม่ใช่เหตุให้ประกาศ critical โดยอัตโนมัติ.
-Work authority รอบปัจจุบัน: verification of frozen M1 outputs และบันทึกผลในแผนนี้;
-ไม่ใช่ product implementation หรือการรับรอง feature ทั้งระบบ.
+Work authority รอบปัจจุบัน: implementation เฉพาะ I3 ใน Core worktree แยก;
+role ปฏิบัติ: Product Implementation Agent / Evidence Reviewer และ Documentation
+Synthesizer สำหรับ checkpoint ในแผนนี้. Work/Phase/Checklist/execution IDs: N/A
+สำหรับ single-room work; ใช้ I3 checklist และ evidence path ที่ระบุด้านล่าง.
 
-Allowed mutation รอบปัจจุบัน: เอกสารแผนนี้และ M1 verification outputs ใหม่
-(`word-review/`, review script/render log) เท่านั้น; ตัวแปลงและหลักฐานที่ตรึงไว้เป็น read-only.
-ขอบเขตทดลองที่เคยอนุญาตในรอบก่อน: dependency เฉพาะพื้นที่แยกและ Word review/export;
-ใช้ installed image แบบ read-only ใน disposable container เพื่อสร้าง Core PDF อ้างอิง.
-รอบ M1 นี้ไม่อนุญาตการติดตั้งเพิ่ม; ใช้ dependency ที่ตรึงไว้ผ่าน read-only junction.
-ไม่แก้ Core, Service, plugin runtime, installed production package/configuration,
-DB, template หรือเอกสารผู้ใช้. ไม่สร้าง release/tag/push/production install
-และไม่เปลี่ยน system/DOCUMENT_MAP.
-เอกสารนี้เป็นแผน ไม่ใช่ implementation Evidence หรือคำรับรอง DOCX readiness.
+Allowed mutation: Core package-check script, Docker consumer/package build,
+consumer checks/fixtures และ package-contract checks โดยไม่เปลี่ยน renderer ใน
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/core`
+และ checkpoint ในแผน Project Control นี้. ใช้ development branch
+`codex/docx-core-integration` จาก Core `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`.
+อนุญาต dependency install ที่ตรึงเวอร์ชันเฉพาะ worktree และ disposable Linux checks.
+
+Forbidden: Core checkout หลัก, PDF implementation/ต้นแบบ, Service, plugin/runtime
+ที่ติดตั้งใช้งาน, DB, SRS, prototype/evidence เดิม, release/tag/push/production
+install และ system/DOCUMENT_MAP. I4 และขั้นถัดไปยังต้องรอเจ้าของอนุญาต.
+เอกสารนี้เป็น work plan/status พร้อม locators; durable code/tests/logs รองรับผล
+เฉพาะ checkpoint ที่ตรวจแล้ว ไม่ใช่คำรับรอง DOCX readiness ทั้งระบบ.
 
 ## Agreed design
 
@@ -5303,3 +5309,1913 @@ Project Control verification: `check:data` exits0, all seven local fragments
 resolve, final diff/whitespace inspection passes, and both M1 manifests
 (93 candidate /69 Word-review entries) pass identity checks. Only this existing
 canonical plan changes in Git; no projection generation is required.
+
+## Core and Service integration repair plan
+
+**2026-10-22 — PLAN_ONLY_FOR_OWNER_REVIEW; IMPLEMENTATION_NOT_STARTED.**
+The owner requests an ordered repair/verification plan in isolated Core and
+Service checkouts, with additional inspection before proceeding. This request
+does not authorize product edits, worktree creation, installation, SRS testing,
+or commits/integration into `release`. This section is the proposed next-work
+authority; earlier experiment checkpoints remain historical evidence.
+
+**Goal:** use the real Core composition/resource contracts to generate PDF or
+DOCX, then deliver the requested artifact through both `/documents` modes;
+absent `Output-Format` preserves PDF. Integration proof precedes further layout
+tuning and the98-page SRS trial.
+
+**Architecture:** one Core composition result and pinned resources feed separate
+PDF and DOCX writers. Core owns validation, capability mapping, native writing
+and byte receipts; Service owns admission/immutable format pins, resource
+preparation, process limits, staged publication, storage and transport. Service
+imports only a built candidate Core package root. The standalone M1 package is
+immutable input/evidence, not the future runtime or a dependency of Service.
+
+**Spec:** owner agreements and API contract earlier in this file, bounded M1
+rules/limits, plus the proposed integration decisions below. Changes beyond
+these decisions return for review; no source repair is implied by planning.
+Terminology: `outputFormat` is separate from a template `format`; artifact
+receipts are distinguished from PDF page receipts. Reusing `PdfImageProvider`
+for prepared-image bytes is context-only reuse of an existing contract, not
+reuse of PDF layout or a second source-data model.
+
+**Authority and budgets:** Project Control owns this shared plan; Core and
+Service own their respective files. Role: Planning Partner / Cross-Repo Boundary
+Reviewer; planning medium size, implementation split into independently checked
+slices below; routine risk with concrete PDF-regression and immutable-task risks.
+Single-room planning, Work/Phase/Checklist/execution IDs N/A. Document Budget:
+this existing plan only, local machine-readable test evidence during future
+execution, no new shared Markdown in product repositories. Future execution
+method is proposed inline with two isolated checkouts; no separate room is
+created here. Before execution, resolve its compact model decision against a
+fresh host availability snapshot; current planning does not claim a model switch.
+Proposed WORK capability is gpt-6-astra/medium for the cross-owner contract,
+resource and immutable-SQL boundaries. The next smaller gpt-6-sol/medium is
+sufficient for mechanical import fixes but is not selected for responsibility
+for the combined contract review. An unavailable model or newly required
+architecture decision returns for review rather than fabricated availability.
+Stop after each slice's mandatory acceptance, not after an output file merely
+exists. Failed prerequisite blocks dependants. Additional checks are required
+for changed/affected boundaries and actual failures; no endless pixel-offset
+search or broad unrelated proof is budgeted.
+
+### Inputs, isolation and fixed boundaries
+
+Read-only audit:
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/core-compat-audit-2026-10-21/report.json`.
+It establishes identical Core0.4.7 archives in M1 and Service (SHA256
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`),
+172 unchanged installed archive entries, three passing small public-composition
+to standalone-writer probes, and the real integration gaps. Those probes do
+not prove a packaged Core DOCX entry, schema2/model19 task integration or Linux
+Service delivery. TypeScript6 itself passed the prototype's old configuration;
+87+58 are compiler diagnostics, not145 independently established runtime bugs.
+
+Pinned proposed bases, refreshed before implementation:
+
+| Owner | Base HEAD | Protected local release ref |
+| --- | --- | --- |
+| Core | `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7` | `ad91e1888835c0ebc31d03c0ef9593d0bd735233` |
+| Service | `32d78570b5c2dc8940efd3452bf5d4dffc55c081` | `ca66f605b02a41d1bc3b05894fbc75f5224d4900` |
+
+After execution approval, reuse suitable active worktrees if ownership/scope
+matches; otherwise create two owner-repository worktrees, never standalone
+copies masquerading as integration. Proposed new branches are
+`codex/docx-core-integration` and `codex/docx-service-integration`, under
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/{core,service}/`.
+Confirm unused paths and exact bases; preserve unrelated work. Record HEAD,
+actual changed files, dependency/resource hashes and protected refs at each
+checkpoint. A base change requires impact review, not silent rebasing.
+
+Global constraints:
+
+- Keep Node `>=24.15.0 <25`, Core/Service TypeScript6.0.3 and existing strict
+  flags. Do not disable `noUncheckedIndexedAccess`/`exactOptionalPropertyTypes`,
+  upgrade TypeScript merely to hide failures, or add blanket casts/suppressions.
+  Commands below use the bundled runtime resolved at execution and the isolated
+  Linux/DB environment where required; a system/global runtime is not a substitute.
+- Port imports to Core's `.js` emitted-module convention and use Core-local
+  types internally. No Core self-import against stale installed declarations.
+- Use `docx@9.13.0`, `pngjs@7.0.0` and directly declared `jszip@3.10.2` where
+  retained; regenerate a real exact lock in the isolated owner checkout.
+  Do not depend on M1's junction, a global install or transitive hoisting.
+- Core PDF writer/layout source, original PDFs, M1/H3/R1–R6 evidence and resource
+  bytes remain unchanged. Shared resource changes require PDF-impact evidence.
+- No production DB/storage, installed service, release-version bump/tag/push,
+  merge into main/release or deployment. Future passing development commits
+  belong only to approved `codex/` branches. Planning permits none of those
+  product commits. Do not overwrite the existing release tarball or manifest.
+- `/jobs`, authoring previews/font-review PDFs and their legacy `.pdf` storage
+  remain PDF-specific. This round adds formats to `/documents` and its queue
+  path. Its task-file store already uses `.bin`; changing legacy `pdf-files.ts`
+  wholesale is unnecessary. Preserve consumers of shared tables/helpers.
+- Unsupported DOCX capabilities fail explicitly before publication; never
+  silently drop content, fall back to PDF or fabricate page counts. Full
+  baseline matching/arbitrary-font support remains outside this repair.
+
+### Proposed interfaces and invariants
+
+Core creates `src/docx/{types,resources,engine}.ts` and private writer modules;
+its existing PDF API stays unchanged. Proposed public contracts:
+
+```ts
+type PreparedImageProvider = PdfImageProvider; // same verified prepared-byte contract
+type DocxResources = Pick<ExportResources, 'fonts'>;
+interface DocxOptions { signal?: AbortSignal; maxBytes?: number }
+interface DocxOutput {
+  write(bytes: Uint8Array): Promise<void>;
+  abort(reasonCode: string): Promise<void>;
+}
+interface DocxArtifact {
+  mediaType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+  byteLength: number; sha256: string; pageCount: null;
+  fieldRefresh: 'required'; wordVerified: false; buffered: true;
+  adaptations: readonly unknown[];
+}
+interface DocxEngine {
+  generateDocxTo(document: ResolvedDocument, images: PreparedImageProvider,
+    output: DocxOutput, options?: DocxOptions): Promise<Result<DocxArtifact>>;
+}
+function createDocxEngine(resources: DocxResources): Promise<Result<DocxEngine>>;
+```
+
+Only `createDocxEngine` is a new runtime package-root export; associated types
+are exported there. No `ResourceSnapshot` requiring a caller to assert embedding
+permission becomes the product API. Core verifies pinned font/license bytes,
+existing face selection and TTF embedding restrictions; bundled fonts already
+carry the hashed OFL resource through `loadResources.ts`. Library font readiness
+and renderer identities must remain valid, not be bypassed for a candidate hash.
+Use existing `validateResolvedDocument` inside Core, then DOCX-specific checks;
+remove duplicated general-model validation from the port after equivalent
+coverage exists. Keep source identity, explicit false emphasis, complex script,
+line breaks, spans, source maps and unsupported-capability diagnostics.
+
+Service reuses its current prepared `jpeg` or `rgb-deflate` images. Core's DOCX
+adapter verifies refs/hashes, passes JPEG bytes to a native JPEG run, and converts
+verified RGB/alpha planes to PNG internally. It preserves resource IDs, pixels,
+frame geometry and alpha. Do not create a second Service decoder/orientation/
+resize policy or send raw RGB as if it were PNG. Internal encoding has bounded
+buffers and aggregate resource accounting. Reuse the verified-stream helpers;
+keep their PDF behavior unchanged. Initial DOCX bounds remain32MiB output,
+16MiB aggregate snapshot resources,4million pixels/image and existing M1 node/
+package limits. Exceeding a bound returns an explicit error; never quietly raise
+it to pass a sample. Buffered packing is disclosed and is not advertised as
+PDF-like constant-memory streaming. Check cancellation before/after packing;
+Service process-group termination covers uninterruptible packing.
+
+Core writes only staged output in chunks at most65536bytes; it does not publish
+or own Service's final commit. On failure/abort it aborts staging. Service seals
+and verifies bytes/SHA256 before making an artifact available, then sends the
+stored file. Its internal result is discriminated by `outputFormat`:
+PDF requires positive actual `pageCount`; DOCX requires `pageCount:null` and the
+DOCX MIME/filename. No copied PDF count, cached DOCX property or `0` surrogate.
+Snapshot the validated document and resource identities before asynchronous
+work; later caller mutation cannot change bytes, selected fonts or receipts.
+
+Service creates `src/tasks/output-format.ts`:
+`readOutputFormat(rawHeaders:readonly string[]):{format:'pdf'|'docx';provided:boolean}`.
+It implements the existing API table exactly, including duplicate raw-header
+rejection before task allocation. JSON lookup rejects a supplied format header
+with `TASK_REQUEST_CONFLICT`; absent header reads the stored format and never
+defaults an existing DOCX task to PDF.
+
+New tasks use a Service-owned normalized envelope version2 containing
+`outputFormat`, the pinned Core identity and the unchanged Core normalized
+`input`. New task job/request receipts use `flowdoc-task-job/2` and
+`flowdoc-task-request/2`, including the same immutable format. Both PDF and DOCX
+use this path; the format does not enter template/data/section semantics.
+Existing version1 task/job records remain immutable and mean PDF. A worker
+checks task/job/envelope/Core pins agree before rendering. Never rewrite an old
+normalized file, original input or prepared input during migration. An old job
+with a different renderer hash is not silently repinned/retried under the new
+package; production queue-upgrade strategy remains a separate release decision.
+
+New forward-only Service migration (proposed next file
+`025_document_output_formats.sql`, recheck numbering at execution) adds immutable
+`output_format DEFAULT 'pdf'` to tasks, generation jobs and document outputs.
+Replace the existing PDF-only media-type check with coherent format/MIME/page
+rules. Historical PDF outputs may retain nullable page counts; newly completed
+task PDFs still require real positive counts at the worker boundary. DOCX counts
+must be null. Extend `protect_job_input` to validate version1 PDF or version2
+format pins without relaxing legacy non-task job guards. Existing migration
+files/checksums are never edited. Freeze format in admission, normalization,
+job creation, worker IPC, storage, lookup and multipart delivery.
+
+### Ordered repair slices and required proof
+
+Every implementation slice follows failing test → confirm intended failure →
+minimal owner change → passing targeted checks → changed/affected regression →
+review actual diff and evidence. No slice may claim its dependants passed.
+
+#### I0 — establish the real owner bases and comparison inputs
+
+Files: future isolated checkout metadata and local evidence only; no product
+behavior yet. I0 is discovery/verification only; source repairs belong to later
+authorized slices. Recheck base commits, protected refs, current owner guides,
+artifact/dependency identities and audit manifests. Freeze M1 sources and four
+Word outputs as references. Select small existing Core fixtures for
+`validateTemplate → prepareGeneration → composeDocument`, plus schema2/model19
+`normalizeTaskInput → composeTaskDocument`. Include two licensed font families,
+plain/merged tables, JPEG/RGB-alpha images, groups and page fields. No98-page SRS.
+
+- [ ] Run Core baseline `npm run build` / `npm test` in the prepared isolated
+  Linux environment, and the relevant Service baseline build/tests with a
+  uniquely named isolated DB/storage. Save environment and actual results.
+- [ ] Freeze default-PDF output from the unchanged released package and exact
+  fixture/resource hashes. Test deterministic output once; if bytes differ,
+  locate nondeterministic metadata before selecting a narrowly defined comparison.
+- [ ] Map each audit gap to I1–I6 and each source fixture to a capability/error
+  expectation. Record candidate package SHA implications for font readiness.
+- [ ] Read the existing frozen Core-composed SRS JSON by its recorded identity
+  only to inventory required node/format/font/resource capabilities. Count and
+  locate unsupported constructs; do not generate or open a new SRS artifact.
+  If a required construct is outside the proposed profile, resolve that scope
+  before I1 rather than discovering it after the whole integration is built.
+
+Expected: clean known bases, reproducible inputs and attributed baseline failures.
+A missing runtime/DB fixture or unresolved baseline defect blocks only affected
+dependants; skipped mandatory checks cannot become PASS. **Stop I0 if these
+identities cannot be established.** A target-required capability gap is a
+blocking design finding; do not silently narrow the SRS criteria or repair the
+source document to hide it. Baseline builds/tests write only to designated
+scratch outputs or exact baseline scratch copies, preserving candidate inputs.
+
+#### I1 — make the writer a buildable Core component
+
+Files: Core `src/docx/` port of M1 writer/types/profile/groups/text/images/
+tables/sections/fields/bands/geometry modules; `src/index.ts`, `package.json`,
+`package-lock.json`, `tests/docx/{port,capabilities}.test.ts`,
+`tests/packageContract.test.ts`. Do not copy M1's tests/configuration wholesale
+and count130 as Core tests. Migrate useful cases to the existing Vitest suite.
+
+- [x] Add tests importing the proposed package-root API and asserting exact
+  source preservation, supported small text/table output and explicit unsupported
+  fixed-text/fixed-format rejection. Confirm missing API fails first.
+- [x] Port `.ts` imports, use real Core types, retain strict flags and implement
+  the entry with existing Core validation plus DOCX-specific capability checks.
+  Resolve undefined-index/optional-field invariants instead of suppressing them.
+  Directly declare used runtime dependencies and a pinned lock.
+- [x] Run `npm run build`,
+  `npm test -- tests/docx/port.test.ts tests/docx/capabilities.test.ts tests/packageContract.test.ts`.
+  Expected exit0, intended export list, emitted `.js` modules and declarations,
+  no prototype/global dependency or accidental Core self-dependency.
+
+Acceptance: zero compiler diagnostics under actual Core configuration. A
+working standalone invocation does not close I1. **Do not start Service edits
+while this build prerequisite fails.**
+
+#### I2 — implement the Core resource/output bridge without layout retuning
+
+Files: Core `src/docx/{resources,images,engine,types}.ts`, private port modules;
+tests `tests/docx/{resources,writer,geometry}.test.ts`. Existing font selection/
+validation and prepared-stream helpers are consumed; modify shared code only
+for a demonstrated required extraction with dedicated PDF regressions.
+
+- [x] Failing tests: real Core bundled/library resources are accepted without
+  fabricated release IDs; wrong font/license/image hashes and prohibited
+  embedding fail before publication; JPEG and RGB/alpha become valid native
+  images preserving prepared pixels and frame identity.
+  Oversized byte/pixel metadata must fail before opening/decompressing streams,
+  not after an unbounded allocation. Invalid maxBytes/options cannot loosen caps.
+- [x] Assert whole-grid exact authored4pt→75twips rule, near4pt/mm/default cases,
+  mixed-header fallback/zero-only-when-both-empty, CS/emphasis-off and unchanged
+  source. Assert no general baseline offset or forced Exact spacing is added.
+- [x] Adapt output to `byteLength`/SHA256/null-page receipt and staged
+  write/abort lifecycle. Test chunk ceiling65536, cancellation, sink failure,
+  corrupt/truncated resources, caller mutation during async work and each
+  declared byte/pixel/node cap.
+- [x] Run `npm run build` and
+  `npm test -- tests/docx/resources.test.ts tests/docx/writer.test.ts tests/docx/geometry.test.ts`.
+  Expected exit0; compare canonical XML/text/font hashes with frozen M1 after
+  excluding only identified package timestamps/random relationship identities.
+
+Acceptance: actual Core composition results feed both writers from the same
+frozen source object/resources. JSON fixtures alone cannot replace composition
+proof. Record unsupported semantics as explicit failures, not missing content.
+
+#### I3 — prove the packed Core artifact on Linux before Service consumes it
+
+Files: Core `scripts/checkPackedConsumer.mjs`, `Dockerfile.consumer`,
+`tests/consumer/{package.json,checkDocx.mjs}` and lock generation; package exports/
+files checks. Keep all existing PDF consumer checks. The consumer script's
+current no-runtime-dependency lock assumption must be replaced with a real
+resolved graph for the candidate archive and pinned runtime dependencies.
+
+- [x] Add failing isolated consumer checks that import only `@flowdoc/core`,
+  compose schema1/model18 and schema2/model19 inputs, load bundled/library
+  fonts and prepared JPEG/alpha images, then write DOCX and PDF.
+- [x] Build/install the candidate in a clean Linux/amd64 consumer with no M1
+  junction, source-tree imports, globally supplied docx or install-time builds.
+  Permit dependency acquisition only during isolated image preparation; run
+  the consumer with network disabled. Keep exact archive/lock/image identities.
+- [x] Run `npm test` and `npm run check:package` in that isolated environment.
+  Expected all required tests/consumer results PASS; exercise cancellation and
+  caps, and verify PDF bytes or the I0 justified comparison remain unchanged.
+
+Produce a uniquely named candidate tarball/hash; never overwrite
+`flowdoc-core-0.4.7-release.tgz`. New Core hash may invalidate Service font
+readiness reviews: revalidate in the isolated normal workflow, never manually
+mark a stale font review approved. **No passing packed artifact means no I4.**
+
+#### I4 — persist and protect format selection in Service
+
+Files: Service `src/tasks/output-format.ts`, `src/http/documents.ts`,
+`src/tasks/{intake,repository,normalize,processing}.ts`, the new migration;
+tests `tests/{output-format,output-format-migration}.test.mjs` and affected
+`task-{api,intake,normalization,queue-api,queue-intake}.test.mjs`.
+
+- [ ] Failing header tests: absent→PDF; PDF/DOCX/mixed case/edge whitespace;
+  reject blank, unknown, comma-list and duplicate headers even if equal before
+  durable allocation. Preserve authentication, authorization and accept checks.
+- [ ] Add isolated-DB migration tests for old PDF records/unchanged normalized
+  digests, forward schema checks, immutable format, coherent output MIME/page
+  counts, version1 compatibility and version2 task/job/envelope agreement.
+- [ ] Implement new-task version2 envelope/receipts and checks in one path for
+  both formats. Add tampering/restart tests and lookup-header conflict tests.
+  Legacy `/jobs` and preview behavior remain intact.
+- [ ] Run `npm run build` and targeted Service Vitest files above. Expected
+  exit0 with actual DB assertions, not mocked queries or skipped DB suites.
+
+Acceptance: task format is frozen once; every later boundary can prove its
+identity. No changes to old migrations or old immutable records. Stop on any
+weakening of existing task ownership/input guards.
+
+#### I5 — connect the candidate Core package and generic task artifacts
+
+Files: Service `vendor/flowdoc-core-docx-candidate.tgz`, isolated candidate
+manifest, package/lock pin and vendor-identity reader as required; new
+`src/tasks/artifact.ts`, `src/tasks/{render-child,render,processing,wire,public,
+output-buffer,policy}.ts`. Tests `tests/{task-docx-processing,task-docx-wire,
+task-output-format-lifecycle}.test.mjs` and existing task processing/wire/buffer
+regressions. No source-path import from the Core worktree.
+
+- [ ] Failing tests: DOCX delivered as DOCX with verified bytes/hash and null
+  page count; PDF still uses real positive count, original MIME/filename and
+  existing multipart behavior. Wrong format/MIME/receipt combinations fail.
+- [ ] Call only the packed Core `createDocxEngine` for DOCX and existing PDF
+  engine for PDF. Use the same composed source and current prepared image
+  providers; no second resize/orientation route. Add a trusted32MiB DOCX output
+  bound to the frozen policy without changing PDF limits/queue mode detection.
+- [ ] Let Service staging/sealing own publication. Preserve65536byte IPC,
+  quotas/backpressure, hash validation, process-group abort and cleanup; do not
+  represent the internally buffered DOCX writer as constant-memory streaming.
+- [ ] Keep old PDF public errors; map DOCX unsupported/failed cases safely with
+  no file paths leaked. Async failures use the existing multipart error/task
+  terminal contract; they do not fall back to a PDF artifact.
+- [ ] Run Service build and named lifecycle/processing/wire/buffer tests against
+  the isolated DB/storage and packed artifact. Expected exit0; no artifact is
+  available after cancellation, worker death, disk-full, hash mismatch or a
+  partial send. Quota/retention/TTL cleanup and lookup retain the frozen format.
+
+Acceptance: both `/documents` modes use the actual candidate package through
+the real parent/child/stored-artifact route. A direct Core call is not I5 proof.
+If package pinning causes stale font readiness, resolve it through the existing
+isolated readiness APIs before claiming generation passed.
+
+#### I6 — end-to-end acceptance, PDF regression and Word checkpoint
+
+Files: Service `tests/task-docx-api.test.mjs`, affected task queue/client tests;
+small template/request fixtures in existing Core/Service fixture folders,
+code-adjacent owner README/usage docs with Authority Boundary where required;
+local results/coverage manifests. No plugin implementation or SRS expansion.
+
+- [ ] Submit paired raw multipart requests to the real candidate service:
+  no format header, explicit PDF and DOCX, both normal and queue-v1. Cover two
+  font families/four faces, JPEG/alpha, multiline/mixed Thai-English, merged
+  tables, repeated headers, heading/icon groups, visible/empty/mixed headers,
+  TOC/page fields and explicit unsupported capabilities.
+- [ ] Compare the no-header and explicit-PDF outcomes to I0 and retain old
+  PDF/queue/authoring client regressions. For paired Service jobs, check exact
+  business input/template/resource hashes and account individually for generated
+  per-task resource IDs; never normalize away content/layout differences.
+  The Core consumer additionally proves literal same-document-object branching.
+- [ ] Run `npm run build`, complete Service `npm test` with isolated DB/env,
+  and affected API/container checks. Run `npm run check:api` with candidate-only
+  addresses/credentials and required scratch fixtures; if its helper cannot
+  isolate state, run its equivalent requests in the isolated integration harness
+  and record why. Required assertions may not be replaced with skipped tests.
+- [ ] Final Word budget: at most four small DOCX files, two from packed Core and
+  two from Service, selected for complementary coverage rather than duplicates.
+  Request owner PDF conversion only after concrete paths/packages pass checks.
+  Inspect every output page and structured content; compare frozen M1 behavior
+  and paired unchanged PDF references. No baseline/pixel tuning in this slice.
+- [ ] Verify cold-start/restart, wrong pins and hash tampering, disconnect during
+  intake/render/send, expiry/TTL and failed cleanup retry. Capture peak worker/
+  parent RSS under the bounded DOCX trial separately from file bytes; stop on
+  actual Service memory limits. Smaller serialized files do not prove less RAM.
+
+Acceptance: criterion-to-evidence coverage includes compiler, packed consumer,
+real DB/process/transport, PDF compatibility and all-page Word review. Partial
+PASS or an owner-accepted visual limitation does not waive mandatory integration
+prerequisites. One bounded repair/recheck pass is allowed for actual failures;
+an architectural/contract expansion returns for review rather than another
+unbounded experiment. Freeze candidate identities after passing; subsequent
+repairs invalidate affected proof and must be retested.
+
+#### I7 — review result and decide whether to authorize SRS
+
+Review actual diffs and coverage in both owner checkouts. Separate PASS / FAIL /
+BLOCKER / RISK / UNKNOWN; list intentionally unsupported semantics and retained
+M1 text-origin/wrapping limits. When the chosen execution skill requires a fresh
+reviewer, budget one whole-change read-only review, not one agent per probe.
+No automatic SRS run or release integration follows a passing I6.
+
+Return a recommendation only: either identify a concrete remaining blocker,
+or propose the existing98-page SRS as the next compatibility trial through the
+real Core/Service path. Reconcile the I0 read-only SRS capability inventory
+against the final supported profile before its generation; it is not first
+deferred until this last slice.
+Production queue upgrades, old pinned-worker draining, release versioning,
+tagging/pushing, plugin DOCX support and deployment remain separate decisions.
+
+### Review Focus and planning self-review
+
+Five failure classes assigned to explicit tests above:
+
+1. Omitted/duplicate format headers and stale version1 jobs: I4 parsing,
+   migration/restart and mismatch tests; old PDF records remain immutable.
+2. Source formats valid in Core but unsupported by DOCX: I1 capability failures,
+   I2 source preservation and I6 no-silent-fallback cases.
+3. JPEG versus RGB/alpha and font/license hash/readiness mismatch: I2 provider
+   tests, I3 clean consumer and I5 real resource snapshot tests.
+4. Buffered packing, cancellation,64KiB acknowledgements and cleanup under caps:
+   I2 sink tests, I5 lifecycle checks and I6 measured process/resource failures.
+5. Legacy PDF consumers, page counts and database format/MIME inconsistencies:
+   I4 SQL constraints, I5 discriminated receipts and I6 full PDF/API regression.
+
+Self-review: each audit gap has an owning slice and a mandatory proof; producers
+and consumers use the same Core artifact and format/receipt types. The shared
+composition, image preparation and immutable task pins are inspected beyond
+the original compiler audit. No step depends on a package merely being present,
+on old130 tests being relabeled Core tests, or on a generated Word file alone.
+Unknowns about packed Linux integration, schema2/model19 and Service lifecycle
+are blocking at I3/I5/I6, not presumed solved by the three small audit probes.
+General baseline matching/remaining visual differences are deferred and cannot
+silently expand this integration repair. Document volume is one existing plan;
+no separate room, implementation or dependency change is performed now.
+
+Planning verification (2026-10-22): Project Control `tools/check.ts` and
+`git diff --check` passed. The only changed file is this existing plan.
+Core and Service working trees are clean; their HEAD and protected local
+`release` refs still match the pinned values above. No product compilation,
+package installation, integration test or Word conversion was run in this
+planning checkpoint; those remain explicit future acceptance requirements.
+
+## I0 real-owner baseline and source inventory checkpoint
+
+2026-10-22 — **PARTIAL_BASELINE_SERVICE_NOT_PASS; I1_NOT_STARTED.**
+Owner authorized only the first step. Role: Evidence Reviewer / Cross-Repo
+Boundary Reviewer / Documentation Synthesizer. Single-room discovery and
+verification, execution IDs N/A, routine risk. Scope: exact owner-source scratch
+copies, frozen inputs, isolated Linux/DB tests and this existing status record.
+No product source, release ref, original PDF or SRS input was changed.
+
+Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-integration-i0/`;
+machine-readable result `report.json`, original attempts retained in logs.
+These new results are distinct from the historical compatibility audit.
+
+### Inputs and isolation actually used
+
+- The pinned Core and Service HEAD/release values above were rechecked; their
+  `src`, package metadata and tsconfig still match local release content.
+  Both owner working trees remained clean. `owner-identities.json` binds exact
+  `git archive HEAD` scratch copies and lockfile hashes. No feature worktree,
+  product commit or dependency update was made.
+- Tests installed each owner's exact lockfile into disposable container scratch
+  directories, then built the unchanged source. Linux runtime image:
+  `sha256:cea4f320f199914fbb56387f172244b1b2f41c499d072d2b4a2b631a67213261`;
+  Node24.21.0, TypeScript6.0.3, Vitest4.1.9. The Core native/font resources came
+  from the unchanged released tarball whose SHA is recorded above.
+- PostgreSQL18.6 image
+  `sha256:2e182ed2ff8f5d0835353864264437a26dffc542a9a6c677ec495aa54e491627`
+  ran in a newly named DB/container/network with tmpfs storage. Existing user
+  containers/databases were not started or reused. The test DB and network were
+  removed after results were retained. Core/M1 and Word checkpoints preserved
+  all93/69 files; all15 original audit files also match their saved hashes.
+- Current Truth Snapshot was rebuilt read-only from validated canonical sources;
+  its unrelated frontend roadmap provides no DOCX execution authority. The
+  current explicit request and this plan govern I0. No model override or agent
+  dispatch was made; the available host model metadata was already provided in
+  session context, and this bounded discovery remained in the current session.
+
+### Actual results and attribution
+
+| Criterion | Result and retained evidence |
+| --- | --- |
+| Core baseline build | PASS, `core-build.log` |
+| Core baseline tests | PASS,87 files/878 tests, `core-tests.log` |
+| Service baseline build | PASS, `service-build.log` |
+| Relevant Service baseline tests | NOT PASS:10 files,7 passed/3 failed;111 passed/16 failed tests, `service-tests.log` |
+| Small unchanged PDF references | PASS: binding text and table each generated twice, including a delay; bytes/SHA identical, source object unchanged; `pdf-baseline.json` and saved PDF pairs |
+| Frozen source/resources | PASS for checked identities; `preservation.json`, `fonts.json`, `srs-font-package-identity.json`, `srs-capabilities.json` |
+| Audit gaps mapped to owner slices | `audit-gap-routing.json`; package SHA change still requires font readiness revalidation through the normal isolated path |
+
+Core's first run lacked the explicit old native-helper fixture. Supplying the
+real Core0.4.0 helper in scratch closed that harness failure; no test/source was
+edited. Service's initial invalid DB mount, missing fixed1GiB cgroup, stale image
+plugin and absent legacy-plugin path were identified and corrected in scratch.
+The last run used a1GiB limit, current FlowDocMake source mounted read-only and
+the image's historical plugin at the legacy path. Its result still failed.
+No observed OOM/OOM-kill explains the final run.
+
+The last run includes four processing timeout failures (disconnect during send,
+transport finish rejection, processing deadline and changed normalized bytes),
+real API timeouts/disconnect observation failure, and subsequent
+`Processor already active` advisory-lock failures. Those are not sixteen
+independently proven product bugs. Earlier harness attempts and their differing
+results are retained; remaining source-versus-harness causality is **UNKNOWN**.
+No source, timeout constant or assertion was repaired to obtain PASS.
+
+### Read-only SRS capability inventory
+
+Frozen `inputs/resolved.json` matched SHA
+`920976069d27da172193fb253e1c3b313299327a6f7994755fb2b927bfdfa301`:
+schema1/model18,7 sections,5658 nodes including bands,200 tables,197 merged cells,
+377 image placements,13 unique image resources, one TOC and12 page-field inlines.
+No missing image/hash mismatch, nonempty fixed text frame, fixed format budget
+or unknown node/inline family was identified by this inventory. This is not a
+claim of complete DOCX geometry/glyph support or native Word acceptance.
+
+SRS fonts match the released Core faces. The two retained small-fixture families
+are Sarabun and Bai Jamjuree,8 faces total; font/license hashes match and every
+checked OS/2 fsType is0. Fixture identities and the actual schema2/model19 test
+and example locators are in `fixtures.json` and `task-font-fixtures.json`.
+
+One original PNG is2048x2048 (4194304 pixels), above M1's4000000-pixel cap.
+Its authored frame becomes33x33 at Service's existing200dpi image preparation;
+the largest conservative frame bound across SRS placements is317568 pixels.
+Thus an original-image-size rejection would be the wrong boundary for the
+Service path. Preserve its shared preparation and check the prepared provider
+bytes/dimensions in I2/I5; no resizing or fresh SRS generation was done here.
+Retain the Core-only behavior as an explicit resource contract, not a hidden
+second resizing pipeline. Service can prepare up to8000000 pixels while the
+proposed DOCX cap is4000000: exceeding the DOCX cap must fail explicitly, and
+that narrower supported limit must remain visible to consumers.
+
+### Exit decision
+
+I0 is not an overall PASS. Core source/build prerequisites and reproducible
+small PDF references are established. The Service lifecycle/API/queue baseline
+is unresolved and blocks those dependent integration claims in I4–I6. The next
+recommended action is bounded read-only isolation of the final Service timeout
+and processor-lock failures, with test profiles/prerequisites recorded, before
+any Service implementation. Do not infer a general Service defect or repair it
+under discovery authority. I1 remains unstarted because this authorization is
+I0 only. No new SRS DOCX/PDF, PDF layout change, installed service change, commit,
+release integration or push was performed.
+
+## I0 Service timeout and processor-lock diagnosis
+
+2026-10-22 — **DIAGNOSIS_COMPLETE_NO_PRODUCT_EDIT; I1_NOT_STARTED.**
+The owner authorized read-only cause isolation and a report before step2.
+Roles: Evidence Reviewer / Cross-Repo Boundary Reviewer / Documentation
+Synthesizer; single-room discovery/verification, execution IDs N/A. Reused the
+existing I0 exact Service archive and pinned Linux/runtime/package identities;
+fresh scratch container,1GiB cgroup and dedicated temporary databases. No
+product source, repository tests, assertions, quotas or timeout constants were
+edited. The Current Truth Snapshot was rebuilt read-only; this explicit request
+governs the bounded diagnosis. No agent dispatch or model override was made.
+
+Evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-service-i0-diagnosis/report.json`,
+with34-file `checkpoint.json`, logs and externally collected observations.
+The original I0 report and failed attempts were preserved unchanged.
+
+### Timeout: memory admission under the test environment
+
+Service's `src/tasks/queue-resources.ts` reserves320MiB per worker and permits
+admission only when `max(observed current memory, reserved credits)+cost` is at
+most768MiB. With no other credit limiting the request, measured current memory
+above448MiB therefore prevents another worker from starting. The valid1GiB
+cgroup limit by itself does not guarantee that the test has this headroom.
+
+An isolated verbose run reproduced a queued image job for approximately57s.
+Across274 snapshots of that stalled job, cgroup memory was452.54–464.81MiB;
+there were zero observed PostgreSQL lock waits and zero traced SQL errors.
+The processor still held its expected leader lock and polled normally.
+`processing-monitor.jsonl` and `processing-pg.jsonl` retain these observations.
+
+A controlled environment-only intervention advised the disposable container's
+scratch/npm file cache out of memory using per-file `posix_fadvise(DONTNEED)`.
+Observed current memory dropped from488247296 to332468224 bytes, without
+changing file contents or using a host-wide cache flush. The same queued job
+resumed and passed in59.15s; all four previously failing processing cases then
+passed in that run. This establishes a concrete memory-admission cause for the
+reproduced wait, rather than merely increasing the test's timeout.
+
+This is actual Service admission policy reacting to the harness's memory use.
+Production pressure could also cause waiting, so these findings do not waive
+the policy or prove production capacity. The prior run's individual timing is
+not reconstructed as sixteen independent defects.
+
+### Processor lock: singleton ownership and timeout cleanup
+
+`src/jobs/processor.ts` uses session advisory key60430404 for one processor per
+database. `tests/isolatedDatabase.mjs` isolates schemas, which does not isolate
+this database-wide key. Two explicit controls used the unchanged Service:
+
+- `lock-control.json`: processor A in schema A holds the key; processor B in
+  schema B is rejected with `Processor already active`. After A's normal stop,
+  zero such locks remain and B starts successfully.
+- `timeout-lock-control.json`: an observer timeout leaves a real Service
+  processor child running and its key held. A second processor is rejected;
+  awaiting child shutdown releases the lock and a new processor starts.
+
+This explains the cascade consistent with the earlier observed live native
+Service child after a timed-out test. Timing out a test does not cancel its
+pending promise or automatically stop its subprocess; its normal `finally`
+cleanup may not yet have run. A live holder is expected singleton contention,
+not evidence of a permanently leaked PostgreSQL lock. These controls do not
+claim every historical timeout followed identical scheduling.
+
+### Clean verification and scope of the result
+
+The final verification removed the diagnostic preload, retained the real1GiB
+limit, used a fresh test process and dedicated DB per independent file, and
+started from low-cache disposable scratch state. No source/test repair or
+relaxed resource bound was needed.
+
+| Previously failing file | Clean result | Evidence |
+| --- | --- | --- |
+| `tests/task-processing.test.mjs` |28/28 PASS | `processing-clean.log`, exit0 |
+| `tests/task-api.test.mjs` |14/14 PASS | `api-clean.log`, exit0 |
+| `tests/task-queue-api.test.mjs` |8/8 PASS | `queue-clean.log`, exit0 |
+
+All50 tests in those files passed. This is focused clean verification, not a
+retroactive PASS for the old combined127-test invocation. One diagnostic run
+was27/28: its inherited `NODE_OPTIONS` preload conflicted with the separate
+native4096-byte file-ceiling test before the target file was created. The clean
+run without the preload passed28/28; the traced run is not acceptance evidence.
+
+Exit decision: the requested timeout/processor-lock diagnosis is complete.
+The observed symptoms are attributable to test memory state/admission and
+subprocess/singleton isolation; no product-code repair is supported by these
+findings. Future Service proofs must record the real memory profile, use
+dedicated DBs for independent singleton-processor runs, and await process
+cleanup before reuse. Do not add hidden fixture-specific product branches or
+disable memory/lock controls. Broad baseline/integration acceptance still uses
+the planned checks at the appropriate later stage.
+
+Core/Service working trees, HEADs and protected release refs remain unchanged.
+Only this existing Project Control record and new local diagnostic evidence
+were written; the temporary diagnosis containers/network/DBs were removed.
+No step2/I1, SRS generation, product commit, release integration or push occurred.
+
+## I0 RAM-only trial at1.5GiB
+
+2026-10-22 — **TRIAL_COMPLETE_QUEUE_PROFILE_INCOMPATIBLE.**
+The owner requested increasing RAM to1.5 and trying again. Scope was interpreted
+as1.5GiB (1536MiB) on the disposable Service container only. Discovery/verification
+roles and single-room IDs N/A continue; no product guard, policy, test or source
+change was authorized or made. Evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-service-ram-1536/report.json`
+and its checkpoint/logs.
+
+The same built source/runner was probed first at1073741824 bytes, then changed
+to1610612736 bytes using Docker's memory limit. Combined memory/swap limit
+remained2147483648 bytes. Dedicated DBs isolated the selected HTTP/PDF tests.
+
+| Probe/check |1GiB control |1.5GiB trial |
+| --- | --- | --- |
+| Real cgroup read / coordinator | enabled and ready | disabled and unready, `invalid_sample` |
+| Existing queue-capability HTTP test |1 selected PASS |1 selected FAIL: capability is null |
+| Existing real-child PDF/delivery test | not repeated |1 selected PASS |
+
+Queue checks intentionally selected one test and left seven unselected; the
+PDF check selected one and left27 unselected. These are targeted behavioral
+checks, not a full-suite result or a throughput/memory improvement measurement.
+
+Cause: `src/tasks/queue-resources.ts` rejects a memory sample when
+`v.max !== 1024 * MiB`. Thus the current two-worker queue trial is validated for
+exactly1GiB. Increasing the container limit does not scale the fixed768MiB
+admission budget or320MiB worker credit either. Ordinary PDF delivery passing
+does not establish queue compatibility at1.5GiB.
+
+Conclusion: RAM increase alone cannot be used with this queue profile. Supporting
+1.5GiB requires a separately authorized memory-profile design/change and tests;
+do not merely remove the max guard or assume a new capacity. No product repair
+or step2 began. Core/Service HEADs, working trees and protected release refs
+remain unchanged. The trial containers, DBs and network were removed after
+retaining results; installed/production settings were not changed. No commit
+or release integration occurred.
+
+## I0 per-case timeout phases and retained-memory findings
+
+2026-10-22 — **READ_ONLY_DIAGNOSIS_COMPLETE; NO_PRODUCT_REPAIR.**
+The owner asked where each timeout occurs, whether the test improperly includes
+queue wait, and why memory does not become available. Roles: Evidence Reviewer /
+Cross-Repo Boundary Reviewer / Documentation Synthesizer; single-room IDs N/A,
+routine risk. Authority remains discovery/verification, with this existing
+Project Control record as the only repository mutation. Current Truth Snapshot
+was rebuilt read-only; explicit request and relevant plan govern this work.
+
+Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-service-timeout-phases/`.
+`report.json`, `matrix-results.json`, per-case logs, memory-profile measurements
+and `observations.jsonl` bind14 independent selected-test invocations. Source
+archive SHA remained
+`5127093d99632c2c56e82ad680d2a3eb7a084ce450cb0293ed717cf086af20c6`.
+Each invocation had its own DB and a fresh test process; source, tests,
+assertions, dependency lock and1GiB cgroup limit were unchanged.
+
+### What was observed for each named case
+
+Seven cases from the original failure log were replayed first with the natural
+cache remaining after install/build, without artificial cache filling. They
+were then replayed after per-file cache advice confined to disposable scratch
+and npm cache. The observer ran in a separate container, reading the runner's
+actual cgroup/processes and each test DB every50ms; its memory was outside the
+runner limit. No runtime preload or product instrumentation was injected.
+
+**In all seven retained-cache replays, a task reached `queued` but neither
+`processing_started_at` nor `send_started_at` was set.** Every resulting error
+was Vitest's wall-clock timeout. Each cold-cache replay passed the original
+assertions and had an observed processing start.
+
+| Named test / intended check | Test wall limit | Retained-cache observed failure point | Cold-cache control |
+| --- | --- | --- | --- |
+| Disconnect during sending |30s | queued; PDF write/abort callback not reached | PASS, processing/sending observed |
+| Reject transport finish |30s | queued; response end not reached | PASS, processing/sending observed |
+| Enforce processing deadline |5s | queued; explicit50ms processing timer not yet armed | PASS, processing then failure observed |
+| Detect modified normalized bytes |30s | queued; renderer integrity check not yet reached | PASS, processing observed and expected integrity rejection asserted |
+| Stream real PDF over HTTP |30s | queued; no PDF generation/delivery start | PASS, processing/success observed |
+| FlowDocMake stdio/proxy integration |60s | first direct generation request queued, before later MCP generation assertions | PASS, processing/sending/success observed |
+| Start real Service entrypoint and deliver PDF |30s | Service had started; its document task was queued | PASS, processing/success observed |
+
+These are7 intentional failure reproductions plus7 passing controls, not a
+14/14 suite PASS. Other tests were unselected, not silently passed. The old I0
+run had no per-task phase trace; its exact historical failure phases remain
+retrospectively UNKNOWN. This new evidence establishes each named replay's
+phase and must not be used to rewrite the original record.
+
+### Which clock expires, and whether counting queue wait is wrong
+
+The5/30/60-second clocks belong to the selected Vitest test callback and cover
+fixture work, queue wait, rendering, transport and assertions. Service instead
+has an absolute task expiry of3h from creation (including queue wait), a normal
+processing budget of90min armed after worker admission/processing start, a
+sending budget of30min armed after its send grant/start, and a per-write60s
+budget. The deadline test overrides processing to50ms; that timer cannot expire
+while its job has not started. Source: `processing.ts`121/259/284,
+`policy.ts`7 and `022_task_intake.sql`13/19.
+
+The FlowDocMake client also has its own defaults (total3h, headers31min,
+idle60s). These replay logs specifically report Vitest wall timeout, not
+`TASK_REQUEST_TIMEOUT` from the client or `TASK_TIMEOUT` from Service. Some
+observed `WORKER_INTERRUPTED` terminal records occur during teardown after the
+test times out; they are not the original timer firing.
+
+Counting queue time is legitimate for a whole-request/end-to-end budget: the
+request really did not complete in that budget. The mistake is using that
+failure to claim that a processing or sending deadline malfunctioned. Tests
+intended to isolate a particular stage need a bounded and observable admission
+precondition, followed by the stage-specific timer/assertion. Preserve a
+separate overall end-to-end limit and queue/expiry checks; neither deleting
+the overall timeout nor simply enlarging every timeout resolves the issue.
+
+### Why RAM stayed charged despite no PDF worker starting
+
+Before any test, with only setup shell/sleep processes left after build, one
+observed sample had anonymous memory0.21MiB, file cache261.25MiB and kernel
+memory25.63MiB, including205.19MiB of inactive file pages. That charge was
+therefore not a live PDF worker retaining its document.
+
+During the seven queued replays, median cgroup current memory ranged from
+488.3 to575.8MiB. Service counts `memory.current`, including file cache, and
+requires `max(current,credits)+320MiB <= 768MiB` to admit a worker. All those
+medians exceed the448MiB single-worker admission boundary. The report retains
+the per-case anonymous/file/active/inactive/kernel breakdown and process RSS;
+RSS values are not summed as unique memory because pages can be shared.
+
+No cgroup high/max/OOM events or reclaim scans were observed during these
+queued intervals. With the container still below its1GiB hard limit, there
+was no observed kernel pressure to evict the clean cache. Service paused
+admission at a lower threshold and waited; its admission loop neither creates
+that allocation pressure nor requests cache reclamation. After scoped cache
+advice, all seven original tests passed under the same source and RAM limit.
+
+**Correction to earlier attribution:** the test harness/cache state exposes
+a real conservative Service accounting/liveness risk: counting reclaimable
+cache as busy memory can prevent otherwise bounded work from starting. It is
+incomplete to call this only an environmental problem. This is not evidence
+of a PDF worker memory leak, and this diagnostic does not prove that every
+production workload will stall. It does identify a policy/precondition that
+needs design review before treating the baseline as generally ready.
+
+### Remaining boundary and next decision
+
+Independent DBs prevented cross-case singleton-lock contention. The retained
+native-entry replay still left a live `dist/server.js` child after the test
+timed out; its PID/owned cleanup and leader lock were observed. Explicit
+cleanup kept that from contaminating later cases, consistent with the prior
+lock controls. One sampled native-entry relation-lock wait occurred while the
+test was dropping its schema and the remaining processor still queried it;
+there were no task rows in that snapshot. This is teardown contention, not
+the earlier queued stall. No PostgreSQL lock wait explains the seven queued
+intervals.
+
+Recommended next design scope: decide how Service memory admission should
+account for reclaimable cache while preserving real hard bounds; separately
+define stage-test admission preconditions, overall queue/test budgets and
+awaited child cleanup. No cache-subtraction formula, automatic cache eviction,
+threshold increase, production fix or revised test was implemented here.
+Do not conflate that policy review with I1/step2 DOCX porting.
+
+Core/Service source trees, HEADs and protected release refs remain unchanged.
+Temporary observer/runner/DB containers and their network were removed after
+capturing evidence. No SRS generation, product commit, release integration or
+push occurred. Earlier evidence is retained; this checkpoint supersedes only
+the overbroad environment-only explanation, not the historical test results.
+
+## I0 phase-aware diagnostic waiting harness
+
+2026-10-22 — **DIAGNOSTIC_HARNESS_VERIFIED_NO_PRODUCT_CHANGE.**
+The owner approved treating the prior time limits as diagnostic observation
+points, then requested execution. Scope: verification helper instrumentation
+and derivative tests in disposable scratch only, existing record update;
+Core/Service source, repository tests/assertions and resource limits unchanged.
+Roles: Evidence Reviewer / Cross-Repo Boundary Reviewer / Documentation
+Synthesizer; single-room execution IDs N/A, no separate room or model override.
+Current Truth Snapshot was rebuilt read-only; the explicit request governs.
+
+Artifact/evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-service-phase-aware-wait/`.
+Reusable runner `run-observed.py`, wrapper `observed-it.mjs`, exact copy recipe
+`prepare-copies.py`, `report.json`, callback/control events and DB/cgroup trace
+are retained. Reviewable diagnostic test copies are under `review-copies/`.
+
+### Implemented diagnostic behavior
+
+- Scratch copies preserve the original callback bodies/assertions and relative
+  imports; only Vitest `it` registration is wrapped. Provenance hashes bind the
+  original source archive and generated copies. Git archive uses CRLF here;
+  diagnostic copies normalize line endings to LF without changing callback
+  text. The original archive and repository files remain unchanged.
+- Crossing the old5/30/60s wall threshold records actual task state, identity
+  and RAM; it does not cancel the request or produce a failed assertion.
+- Queue wait is reported until `processing_started_at`. Processing-to-send and
+  send-to-terminal intervals use the corresponding DB timestamps, separately
+  from total callback duration. These are lifecycle intervals, not CPU timings.
+  Diagnostic stage advisories remain observable after processing starts.
+- Product processing/send/write timers, task expiry,1GiB cgroup limit,
+  768MiB admission budget and320MiB worker credit are unchanged. The original
+  explicit50ms processing-deadline assertion still passes.
+- The scratch callback has a10min emergency watchdog and controller observation
+  window150s. An unfinished observation would be reported as unfinished, not
+  as Service timeout/PASS. Neither limit was reached. A maximum2s post-assertion
+  latch lets the external observer read terminal rows before normal teardown;
+  this latch is outside the reported callback end.
+
+### Actual verification
+
+All seven selected diagnostic copies passed their original callback assertions.
+This is not an unmodified-timing baseline or a full127-test PASS. Each case used
+an independent DB and fresh test process; other tests were unselected.
+
+| Selected case | Callback duration | Observed queue wait(s) | Result |
+| --- | --- | --- | --- |
+| Disconnect during sending |37.857s |36.957s | PASS; old30s threshold became advisory |
+| Reject transport finish |0.885s |0.036s | PASS |
+| Processing deadline |0.255s |0.022s | PASS, expected50ms Service timeout asserted |
+| Modified normalized bytes |0.394s |0.020s | PASS, expected integrity rejection asserted |
+| HTTP PDF stream |1.033s |0.019s | PASS |
+| FlowDocMake stdio/proxy |105.819s |89.905s,11.499s,0.010s | PASS; old60s threshold became advisory |
+| Native Service entrypoint/PDF |1.281s |0.039s | PASS |
+
+At30.014s in the first case, the observer recorded the task still queued with
+no processing start and no cancellation. After capturing that cause, scoped
+cache advice allowed the same task ID to proceed and finish the original
+disconnect assertions. The FlowDocMake case similarly crossed60s, recorded its
+queued state and eventually passed after a separately recorded scoped cache
+control. Its waiting task retained its identity; requests were not restarted.
+
+### What remains unresolved
+
+Queue waiting is now distinguished from a processing timeout in this diagnostic
+workflow. Removing the old wall cutoff did not itself cure memory admission:
+cache/readiness advice was used before later cases and for the two live waits.
+Those actions affect disposable scratch/npm cache only; no production cache
+eviction or recovery behavior was installed. Autonomous queue recovery and the
+memory-accounting/liveness concern remain unproven/unfixed.
+
+The reusable driver generalizes the same evidence-first cache intervention
+rule after an advisory; in this run the first was automatic and the stdio
+intervention was recorded externally during live observation. This is explicit
+experiment control, not an accepted production remedy. Historical failures and
+their original time limits remain available as evidence.
+
+Core/Service HEADs, protected release refs and working trees remain unchanged.
+Temporary runner/observer/DB containers and network were removed after evidence
+capture. No I1/step2 DOCX port, SRS generation, product commit, release integration
+or push occurred.
+
+
+## I1 actual Core integration checkpoint — 2026-10-22
+
+Authority: owner authorized “ไปข้อ 2” after I0/phase-aware diagnostic results.
+This closes I1 only. It does not reopen old execution contexts or authorize I2,
+Service, SRS, packed publication or release integration. Markdown gate: existing
+Project Control canonical plan; Product Implementation Agent / Evidence Reviewer
+with Documentation Synthesizer for this checkpoint; single-room IDs N/A.
+
+### Candidate and containment
+
+- Actual owner repository: flowdoc-core, isolated worktree
+  `C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/core`.
+- Branch `codex/docx-core-integration`, base
+  `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`, terminal development commit
+  `76d6c106f54da9e9e6eac3f603ec170dc774ef5b`. Clean after commit; retained for I2.
+- Changed25 files: private `src/docx/` modules and root entry; pinned
+  package/lock; three new `tests/docx/` files and package export assertion.
+  Dependencies: docx9.13.0, pngjs7.0.0, jszip3.10.2. TS6.0.3, Node range and
+  strict/noUncheckedIndexedAccess/exactOptionalPropertyTypes remain unchanged.
+- No Core self-import, prototype junction/global-module dependency, compiler
+  suppression, shared PDF implementation edit or duplicated fixture model.
+  Local imports emit `.js` and real declarations under `dist/docx/`.
+- Core main checkout HEAD `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7` and
+  release `ad91e1888835c0ebc31d03c0ef9593d0bd735233` remain unchanged.
+  Service HEAD `32d78570b5c2dc8940efd3452bf5d4dffc55c081` and release
+  `ca66f605b02a41d1bc3b05894fbc75f5224d4900` remain unchanged/clean.
+
+### Implemented boundary and recorded ruling
+
+Only new runtime root export: `createDocxEngine`; associated API types are
+exported deliberately. It accepts actual Core font resources and
+`ResolvedDocument`, calls existing Core document validation/font selection,
+then DOCX capability/preflight mapping. Legacy font resources retain actual
+Core identities without invented release UUIDs; bytes/license hashes and font
+embedding flags are checked. The public API does not accept prototype
+`embeddingPermitted:boolean` as evidence.
+
+Ruling: I1 includes the minimum private font/staged-output adapter needed to
+exercise this real API. Full prepared JPEG/RGB-alpha conversion and robustness
+matrices remain I2; any source image in body or section bands is explicitly
+rejected in this slice. This prevents a pretend factory or silently omitted
+content. Cost if wrong: private adapter refactoring in I2, with no release
+promotion yet. Output is staged in chunks at most65536 bytes and returns
+byteLength/SHA256, pageCount:null, fieldRefresh:required, wordVerified:false.
+
+### Evidence and acceptance coverage
+
+Durable local evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i1-evidence`.
+`coverage.json`, `candidate-manifest.json`, `final-manifest.json` and
+`final-review.json` connect the criteria, tested input and terminal candidate.
+
+| Criterion | Evidence | Result |
+| --- | --- | --- |
+| Missing API observed before port | red.log | Intended failure before implementation |
+| Actual Core strict build | build-final.log; linux-build.log | PASS, zero diagnostics, JS+d.ts emitted |
+| Root API / actual composition / complete text and table / unchanged source | targeted-final.log; tests/docx/port.test.ts | 2 port cases PASS; text checked inside DOCX XML, table/header flags and embedded family checked |
+| Fixed text/fixed format / malformed resolved document rejected before writes | tests/docx/capabilities.test.ts | 3 cases PASS |
+| Root export contract | tests/packageContract.test.ts | 2 cases PASS;7 targeted total |
+| Existing Core regressions | linux-tests.log | 89 files,883/883 PASS; baseline878 plus5 new cases |
+| Built entrypoint, actual composition and bundled resources used by both writers | smoke-results.json; smoke.mjs | PASS for binding-text and table fixtures; source unchanged |
+| PDF regression comparison | core-binding-text.pdf; core-table.pdf; smoke-results.json | Both outputs byte-identical to I0 saved PDF references |
+| Fresh read-only review | final-review.json | zero Critical/Important; one deferred Minor |
+
+Linux uses the same pinned baseline image
+`sha256:cea4f320f199914fbb56387f172244b1b2f41c499d072d2b4a2b631a67213261`,
+Node24.21.0 and the pinned legacy helper required by the existing suite.
+Verification extracted a frozen candidate archive into disposable scratch;
+released runtime inputs were read-only. Initial Docker entrypoint/LF/cache
+setup errors were test-environment issues, followed by the successful final
+run; no product/configuration repair resulted. Containers were removed.
+After review, only an extra trailing test-file blank line was removed;
+final-manifest proves the tested and terminal inputs text-equivalent after
+LF/EOF normalization. No behavioral change invalidated Linux proof.
+
+### Explicit remaining limits and next step
+
+The reviewer reproduced one Minor: a plain sink.write failure returns
+DOCX_SERIALIZATION_FAILED but passes DOCX_RESOURCE_INVALID to output.abort.
+It still cleans up and reports failure; carry reason-code alignment into I2
+output diagnostics. No broader failure-handling acceptance is inferred.
+
+The saved `core-binding-text.docx` and `core-table.docx` are structural/API smoke
+artifacts, not newly Word-verified layout evidence. Full prepared images,
+malformed/truncated resource and cancellation/budget/mutation matrices,
+geometry/XML equivalence with frozen M1 and library-font breadth remain I2.
+Packed installation and consumer-lock changes remain I3; `check:package` was
+not run or claimed PASS in I1. Service changes start only in later authorized
+stages; the earlier RAM/cache admission-liveness concern remains unresolved.
+No SRS trial, prototype change, PDF source edit, main/release merge, tag, push
+or installed production change occurred. Project Control canonical data/maps
+are unchanged; this plan update passes `check:data` and whitespace checks.
+
+Decision: **PASS I1 only, with one deferred Minor.** Recommended next: owner may
+authorize I2 resource/image/output bridge and its bounded tests; do not begin it
+from this checkpoint alone.
+
+
+## I2 resource and staged-output checkpoint — 2026-10-22
+
+Authority: owner explicitly authorized I2 images/fonts/output and the pending
+failure-code fix in the existing isolated Core lane. No Service, SRS or release
+integration. Role: Product Implementation Agent / Evidence Reviewer and
+Documentation Synthesizer for this canonical plan checkpoint; single-room IDs
+N/A. Same named development branch/worktree as I1, I2 base
+`76d6c106f54da9e9e6eac3f603ec170dc774ef5b`; terminal commit
+`89a5d4bda12a731a34e048c1d0e5d73db407681b` on `codex/docx-core-integration` only.
+
+### Changes and ownership
+
+Core13 files: six private DOCX modules; existing private PDF module now exports
+its unchanged JpegCheck class for synchronous JPEG snapshot verification;
+four DOCX test/helper files; Bai Jamjuree regular font and its OFL fixture.
+Public root API, package/lock/compiler policy and PDF behavior stay unchanged.
+No new decoding/orientation policy was added to Service.
+
+- Uses existing snapshotImageProvider/verifiedImageStream. Native JPEG retains
+  the verified prepared bytes. Verified RGB and optional alpha are encoded to
+  PNG internally; tests compare exact decoded RGBA pixels, dimensions and native
+  drawing frame. Body and header image cases pass; source graphs are retained.
+- Checks4million pixels/image and16MiB aggregate prepared/encoded resources
+  before opening referenced streams and before packing. Checks source50000
+  nodes and10000 image references before image IO. Byte/pixel/XML/output caps
+  fail explicitly;32MiB output cannot be raised through options.
+- Reads verified font/license files through bounded owned handles, checking
+  identities, hashes, UTF-8 licenses, concrete weight/style and embedding flags.
+  Every license hash is checked. Real Core library selection for Sarabun and
+  Bai Jamjuree works; no invented legacy release ID or caller permission flag
+  becomes the Core API.
+- Pins source document, prepared metadata, options and output methods before
+  asynchronous work. Output remains staged, buffered, chunks<=65536 bytes,
+  SHA256/byteLength verified, pageCount:null, fieldRefresh:required and
+  wordVerified:false. Cancellation and write/abort failure preserve cleanup.
+- The I1 pending diagnostic is fixed: ordinary sink-write failure gives
+  DOCX_SERIALIZATION_FAILED consistently to caller and staging abort. A failing
+  cleanup preserves the primary issue and adds DOCX_CLEANUP_FAILED.
+
+### Mapping ruling and cost
+
+Actual Core composition omits heightMode for ordinary content-height text;
+Core's TextBlock makes it optional and layout branches only on fixed mode.
+The port had required an explicit content value for table eligibility.
+Tests first reproduced the default/exact4pt table fallback, then verified the
+correction: omitted and explicit content use the same whole-grid rule.
+Eligible cells now use75twip vertical margins instead of the prior80twip
+fallback; if that interpretation were wrong, default table spacing would be
+wrong. Source fields are not rewritten, and Word visual acceptance is still
+required later. This is a semantic-default correction, not a general text
+baseline offset or a new Exact-line rule.
+
+Near4pt, mm and one-mismatching-cell cases retain native margins for the entire
+table. Header distance is zero only when both effective headers are empty;
+mixed visibility retains its conservative policy. CS and explicit bold/italic
+true/false tests pass. No forced row heights or baseline shifts were added.
+
+### Verification and durable proof
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i2-evidence`.
+`coverage.json`, `candidate-manifest.json`, `final-manifest.json`,
+`proof-reuse.json` and `final-review.json` connect each criterion to its proof.
+
+| Check | Result / locator |
+| --- | --- |
+| Actual strict Core build | PASS; build-current.log and linux-build.log |
+| Resource/writer/geometry matrix plus existing PDF stream tests |64/64 PASS; targeted-3.log (56 new I2 cases,8 existing stream cases) |
+| Full Core Linux regression |92 files,939/939 PASS; linux-tests.log |
+| Same actual composed graph, prepared provider and resources through both writers | PASS for native JPEG, RGB, RGB-alpha and real Bai library selection; shared-resource-results.json / shared-smoke.log |
+| PDF regression | Both I0 text/table reference hashes unchanged; smoke-results.json |
+| Frozen M1 canonical comparison |6 small cases PASS; m1-equivalence.json and m1-compare-2.log |
+| Fresh independent review | PASS; no Critical/Important/Minor findings; final-review.json |
+
+M1 comparison checks all XML/relationship parts, logical text and media, plus
+SHA256 of original embedded fonts after reversing per-file obfuscation.
+Normalizations are limited to created/modified timestamps, font GUIDs and
+native drawing numeric package identities. Cases: plain, bold, italic,
+bold+italic, explicit-content table and native RGBA drawing. The table uses
+explicit content supported by both; the omitted-mode difference is the
+intentional correction tested separately above, not silently normalized away.
+Historical M1-only release/permission fields exist only in the read-only
+comparison adapter, never in the candidate public API.
+
+The Linux candidate was frozen into an archive and verified in disposable
+scratch with the pinned I0 image/runtime/helper. Three files were subsequently
+returned to existing formatting to minimize diff; identical TypeScript syntax
+trees are recorded in proof-reuse.json, with a fresh current build. No semantic
+change invalidated the passing Linux run. The copied OFL is byte-identical to
+its licensed source; its original line21 trailing space is retained, and only
+that license is excluded from the otherwise passing code-whitespace check.
+No candidate changes were made after the final independent review.
+
+### Remaining boundaries and decision
+
+**PASS I2 only.** No findings remain from the I2 review, and the I1 Minor is
+resolved. Saved DOCX/PDF files are small structural/integration artifacts;
+no new Word visual inspection or SRS trial occurred. Existing static-TTF,
+Thai/Latin, native face-slot and geometry capability limits remain; this is
+not support for every font, script, layout or document size. Packing remains
+bounded buffered work and does not become constant-memory streaming.
+
+Next recommended work is I3: isolated packed Core consumer and lock graph,
+while retaining PDF consumer checks. No passing packed artifact is claimed;
+check:package is not an I2 PASS. Service and its earlier RAM/cache admission
+concern remain untouched. No original Core/Service checkout, protected release,
+prototype/source evidence, installed production package, main/release merge,
+tag or push changed. Canonical maps/data remain unchanged; the existing plan
+is the only Project Control prose update.
+
+
+## I3 installed-package checkpoint — 2026-10-22
+
+Authority: owner authorized I3 verification of installed Core with small PDF
+and DOCX documents before Service. Role: Product Implementation Agent / Evidence
+Reviewer; Documentation Synthesizer for this existing canonical checkpoint;
+single-room Work/Phase/Checklist/execution IDs N/A. Same isolated Core worktree,
+branch `codex/docx-core-integration`; base
+`89a5d4bda12a731a34e048c1d0e5d73db407681b`, terminal development commit
+`e53e4a284d5eb2596b531b55a12a83ab74ba8528`. No I4/Service,98-page SRS or release authority.
+
+### Package candidate and immutable identities
+
+Artifact directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/core/artifacts/1792638992048`.
+
+- Archive: `flowdoc-core-0.4.7-docx-candidate-1792638992048.tgz`.
+- Archive SHA256:
+  `067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+- Offline consumer image:
+  `sha256:9508d3ba4027d5443426fd14a47dfad9f488c8deb76a746a17e25bc55cd01374` (Linux/amd64).
+- Consumer-lock SHA256:
+  `01456c322e2d5018254329922f4717e31b8276cb603b328caf56d537e63a78b2`.
+- Version remains0.4.7 in this isolated candidate; its unique filename/hash
+  identifies it. No release archive was overwritten and no version/tag/release
+  promotion is inferred.
+
+The result.json in that directory contains the consumer outputs and actual
+checked isolation (`network:none`, no mounts). consumer-package-lock.json has
+22 real resolved entries and the exact Core runtime dependencies; the installed
+npm graph is retained as consumer-dependency-graph.json. Dependency acquisition
+occurs during preparation; npm ci disables install scripts. Final consumers
+run offline against installed @flowdoc/core, with no source/M1/global-module
+or host-folder dependency. Existing package root exports/files policy remains.
+
+### Changes and packaging prerequisite ruling
+
+Exactly4 files changed: scripts/checkPackedConsumer.mjs, Dockerfile.consumer,
+Dockerfile.package and tests/consumer/checkDocx.mjs. Runtime src, package
+version/dependency declarations and renderers are unchanged.
+
+The original harness fabricated a lock assuming zero runtime dependencies.
+It now resolves the immutable candidate archive and its real graph with npm
+inside the pinned preparation image, preserves the lock, installs it with
+scripts disabled, records npm ls, and checks actual final network/mount state.
+All prior PDF consumer checks remain in the command sequence and result gate.
+
+Ruling: expand the bounded packaging edit to Dockerfile.package. The initial
+actual run failed13 native cases because it ran tests before building their
+native binaries/resources. Reorder those prerequisites before the unchanged
+full suite and supply its explicitly required prior helper through a build-only
+named context. Cost if wrong: package-build plumbing would need revision;
+rendering/source/release behavior was not changed. Skipping the native tests
+would not establish package correctness.
+
+The prior helper is extracted to scratch from the retained0.4.0 archive, with
+SHA256 `b80f4e94bc52d38477f11070ade15f97781aa0eeb5927afa8b4d37dedbc7644d`.
+Reproduction supplies FLOWDOC_LEGACY_SEGMENTER explicitly; the script copies
+and hashes its owned bytes into build proof. The helper is not shipped in the
+Core archive or final consumer. Package inspection also verifies no source-tree
+or node_modules entries in the archive.
+
+### Verification and coverage
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i3-evidence`.
+coverage.json, candidate-manifest.json, final-manifest.json, package-summary.json
+and final-review.json connect the passing candidate to the final commit.
+
+| Criterion | Result and evidence |
+| --- | --- |
+| Consumer detects missing installed API | Intended RED against prior package; red-installed-api-valid.log |
+| Original native packaging failure | Preserved in red-package-baseline.log; prerequisite repair verified by final run |
+| Actual strict build, native/resources build and full npm test |92 files,939/939 PASS in package-2.log |
+| npm run check:package | Final exit0; package-2.log and artifact result.json |
+| Actual schema1/model18 text/table and images, schema2/model19 library composition |6 paired PDF/DOCX cases PASS; docx-result.json |
+| Bundled and real Bai library resources, JPEG/RGB/alpha provider | Installed public root API PASS; same frozen source/provider through both writers |
+| ByteLength/SHA256, immutable source, cancellation/output cap/write-abort failure | PASS; docx-result.json |
+| ZIP/XML/relationships and embedded fonts |6 DOCX packages PASS structural inspection; docx-result.json |
+| Prior PDF consumers including streamed/task/memory cases | All retained checks PASS; artifact result.json and individual results |
+| I0 baseline preservation | Binding and table PDF hashes remain exact; docx-result.json / prior PDF results |
+| Actual isolation, archive identity and resolved graph | network:none, mounts:[]; result.json and saved lock/graph |
+| Fresh independent final review | PASS with no Critical/Important/Minor findings; final-review.json |
+
+First candidate preparation installed successfully and passed text/table/library
+cases; its new image fixture contained a dangling old Area schema. Only that
+fixture was corrected. Initial syntax/fixture setup errors are preserved and
+not counted as intended RED or Core rendering defects. The failed container's
+state/logs/output were captured before removal. Final successful containers
+were removed by the harness; archive, image and lock remain for reproduction.
+
+No candidate edits followed final review; final manifest hashes match the
+reviewed/tested files. All old PDF tests remain, including small automated
+fixtures named srs-basic; the owner's98-page SRS was not run or generated.
+The Project Control change is only this existing plan; canonical data/maps
+are unchanged and check:data plus whitespace checks pass.
+
+### Decision and limits
+
+**PASS I3 only.** A real installed package now supports the bounded PDF/DOCX
+cases. Artifacts include the six small DOCX/PDF pairs; wordVerified remains
+false, fields require Word refresh, and DOCX pageCount remains null. Word visual
+layout/pagination and SRS fidelity remain unaccepted. This is a development
+candidate, not a published/released or installed production package.
+
+Next recommended stage is I4 format selection/task persistence in Service,
+subject to a new owner authorization. Service checkout/configuration/DB and
+protected releases remain unchanged. A different Core archive hash can invalidate
+Service font-readiness reviews; revalidate through the normal isolated workflow,
+never manually approve stale review rows. The prior Service RAM/cache admission
+finding remains unresolved and is not discharged by this Core package result.
+
+## I4 Service output-format persistence checkpoint — 2026-10-22
+
+Authority: owner explicitly authorized I4 only. Owner flowdoc-service; active
+role Product Implementation Agent and Evidence Reviewer; single-room execution
+IDs N/A. Existing I4 scope and checklist above remain authoritative. No I5,
+SRS98, production installation or release/main integration was authorized.
+
+Service lane: `C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/service`,
+branch `codex/docx-service-integration`, base
+`32d78570b5c2dc8940efd3452bf5d4dffc55c081`, terminal development commit
+`b9ce2f7f9b4572bde2bdd1ad74a0b5d9366b6ef3`. Clean retained worktree.
+
+### Behavior and migration
+
+- `/documents` accepts one Output-Format header: PDF or DOCX, case-insensitive,
+  with optional surrounding ASCII spaces/tabs. Absence selects PDF. Blank,
+  unknown, comma lists and duplicates, including equal duplicates, fail before
+  task allocation. Existing authentication, access and Accept checks remain.
+- Format is frozen in task metadata, normalization summary and the hashed V2
+  normalized envelope. Both V2 request/job descriptors carry the same format;
+  the database rejects disagreements and later format/version changes. Lookup
+  returns the frozen selection and rejects any attempt to select it again.
+- Forward-only `025_task_output_format.sql` preserves old immutable data and
+  checksummed migrations. Existing tasks/jobs/outputs backfill PDF; old tasks
+  retain normalization V1. New tasks default to V2. Output format, MIME and page
+  count constraints are coherent; historical PDF rows with no page count remain
+  valid, new V2 PDF outputs require a positive count, DOCX count must be null.
+- Existing legacy job ownership/input guards are retained. No dependency,
+  package lock, vendor archive or Core identity changed.
+
+Bounded ruling: include `src/tasks/render.ts`, `render-child.ts` and `public.ts`
+so the real consumer verifies envelope version/format and lookup exposes the
+frozen value. Without this, DOCX intent could fall through the PDF writer.
+This is not I5: the actual child explicitly returns UNAVAILABLE for DOCX before
+composition/output. The real-process test proves no PDF artifact is published.
+
+Migration-list assertions in affected historical tests append025. The Stage1
+upgrade fixture now seeds its historical schema directly instead of executing
+current intake against an unmigrated database. It verifies unchanged original
+rows/events/files and actual V1 normalization after upgrading. Product code does
+not add an obsolete-schema fallback to accommodate a test fixture.
+
+### Evidence and acceptance coverage
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i4-evidence`.
+`coverage.json`, `candidate-manifest.json`, `proof-reuse.json`, `final-manifest.json`
+and `final-review.json` connect criteria, files, immutable identities and review.
+Final Linux image:
+`sha256:0570a9264a2a91a270c135fd119816f6ba813026a9da5a0cdaa667b439cf7ef1`.
+
+| Criterion | Passing evidence |
+| --- | --- |
+| Header selection, no allocation, HTTP normal/queue modes, restart/lookup and envelope tampering | format-confirm.log; output-format26/26 |
+| Real DB migration, immutable format/version/job pins, MIME/page coherence and unchanged historical metadata/digests | format-confirm.log; output-format-migration1/1 with DB assertions |
+| Historical V1 and current normalization including existing integrity/limits | format-confirm.log; task-normalization16/16 |
+| Intake, queue intake, DB/upgrade and affected migration/font repository checks | affected-db-1.log; other9 files69/69 unchanged |
+| Actual child PDF processing and DOCX refusal without fallback | affected-runtime-1.log; task-processing29/29 |
+| Real API and current/historical clients | task-api-confirm.log14/14; task-queue-api-confirm.log8/8 |
+| Legacy jobs/render/output, wire/buffer/client | legacy-regressions.log; other6 files24/24 |
+| Preview/authoring and upload acceptance | authoring-upload-confirm.log; authoring7/7 and upload6/6 |
+| Strict build and final diff | candidate-image.log; TypeScript build exit0; git diff --check exit0 |
+| Fresh whole-candidate review | final-review.json; no Critical/Important/Minor findings |
+
+Union: **200 unique tests across23 files PASS**, using the final passing result
+for each affected file. This is several focused invocations, not a claim that
+full `npm test` ran. Earlier failed attempts are retained rather than relabeled.
+The prior and final image differ only in two revised test files, both retested
+in the final43/43; product files and other test hashes are unchanged.
+
+Initial baseline fixture errors were corrected separately from intended RED.
+The first API run used the image's stale plugin and lacked its historical path;
+preparation now copies current Project Control plugin sources and preserves the
+image plugin at `/legacy-plugin`. API14/14 and queue8/8 then pass unchanged.
+A parallel legacy run collided with the API processor's database-wide advisory
+lock despite isolated schemas. Serial authoring rerun passes7/7. These are test
+environment corrections; no processor lock, queue timeout or RAM policy changed.
+Runtime verification remains at1GiB, with a dedicated scratch PostgreSQL DB and
+an explicitly non-overlapping task network. No unrelated Docker state changed.
+
+### Decision and next boundary
+
+**PASS I4 only.** All four I4 checklist acceptance bullets above are satisfied
+by the coverage table; their earlier unchecked planning text is retained as
+history. No source edits followed final review. The Service primary checkout
+stays clean at32d7857 and protected Service/Core release refs are unchanged.
+Only the existing Project Control plan is updated; no map/product truth or
+canonical data promotion. Development commit only; no merge, push or release.
+
+Next recommended work is I5, requiring owner authorization: install the exact
+I3 packed Core candidate in this isolated Service lane and connect generic
+artifact generation/delivery. Actual Service DOCX creation remains unavailable
+until then. SRS98, Word visual acceptance, full Service-suite acceptance and
+production/mixed-version fleet rollout remain outside this checkpoint.
+
+## I5 installed Core and actual DOCX delivery candidate — 2026-10-22
+
+**Status: implementation candidate available; I5 acceptance NOT PASS.**
+Owner authorized I5 only in the existing isolated Service lane, with small
+PDF/DOCX documents; no SRS98 or release/main integration. Active role Product
+Implementation Agent and Evidence Reviewer; single-room execution IDs N/A.
+Service base remains `b9ce2f7f9b4572bde2bdd1ad74a0b5d9366b6ef3` on
+`codex/docx-service-integration`. I5 changes are retained uncommitted because an
+affected compatibility regression is still failing. Do not treat this as I6
+execution authority or a production-ready candidate.
+
+### Implemented and exercised
+
+- The Service vendors the exact I3 archive as `vendor/flowdoc-core-docx-candidate.tgz`,
+  SHA256 `067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+  package/lock and the isolated vendor manifest identify it. npm ci installs
+  the actual package graph including docx9.13.0. Existing released archive
+  SHA13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad is unchanged.
+- Both formats share composition, font snapshots and the existing prepared
+  JPEG/RGB-alpha image provider. The child invokes only installed package-root
+  APIs. No Core source/layout implementation was edited or imported directly.
+- Actual DOCX traverses child process,64KiB IPC, owned staging, sealing/hash
+  verification, DB output metadata and stored-file multipart delivery in both
+  normal and queue modes. DOCX uses its own trusted32MiB output bound, exact
+  MIME/document.docx and null page count; PDF retains its original bound,
+  filename/MIME and positive count. Public receipts disclose buffered packing,
+  required Word field refresh and wordVerified:false.
+- Parent/transport reject inconsistent format/MIME/count/hash observations.
+  Failure usage and public errors retain format instead of naming DOCX as PDF.
+  Additional repository.ts/documents.ts edits are bounded dependencies for
+  that failure accounting/transport context; existing ownership guards remain.
+
+### Checked evidence
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i5-evidence`.
+Final tested image:
+`sha256:7ad080b9a0d48136ca5a571a349b07789659ea98bc4a3b77f7c810f9d203a26a`.
+`candidate-manifest.json` freezes all18 changed/untracked files. No product
+changes followed the fresh final review.
+
+| Check | Result |
+| --- | --- |
+| Strict TypeScript build, archive verification and installed dependency graph | PASS; image-5.log, installed-package-identity.log |
+| New DOCX/wire/lifecycle suites |21/21 PASS; final-docx.log |
+| Existing actual child PDF/processing and retained library-font checks |29/29 PASS; final-task-processing.log |
+| Intake/normalization/output-format/DB/wire/buffer/client contracts |98/98 PASS; final-contracts.log |
+| Actual queue and historical direct client |8/8 PASS; final-task-queue-api.log |
+| Legacy jobs/render/output, preview and font pipelines |22/22 PASS; final-legacy.log |
+| Actual API suite including FlowDocMake MCP tool |13/14; one FAIL, final-task-api.log |
+| Fresh whole-candidate review | No concrete changed-source defect; Important1 failed API acceptance gate, final-review.json |
+
+Union:191 passed /1 failed,192 unique tests across20 files. Full Service npm test,
+I6 matrix and Word visual review were not run. This is not an overall PASS.
+Real failure tests cover wrong format/MIME/page count after the real child,
+Core pin mismatch, output budget, parent storage ENOSPC, stored-byte tampering,
+output cancellation, killed process group, partial-send deletion retry and TTL.
+Failures leave no available artifact, and cleanup accounting is checked.
+
+Saved small artifacts: child-small.docx, child-small.pdf, http-normal.docx and
+http-queue.docx. The three DOCX packages passed ZIP/XML/relationship/font/image
+inspection in artifact-inventory.json; none has been visually verified in Word.
+
+### Attributed compatibility failure and held acceptance
+
+The failing API test calls the unchanged FlowDocMake generate_document_task
+MCP tool. Current plugin scripts/compatibility.mjs pins released Core SHA
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`.
+Its task-tools.mjs line14 requires that exact hash. The I3 candidate has a
+different hash, so the tool correctly returns TASK_CAPABILITY_UNSUPPORTED with
+taskId:null before allocating its job. Service direct HTTP and historical
+direct PDF clients pass; this is an intentional plugin compatibility guard,
+not an unlocated rendering timeout. Attribution is saved in
+plugin-compatibility-attribution.json; the original failing test is unchanged.
+
+No plugin runtime, compatibility allowlist or test expectation was changed to
+force acceptance. Its owner scope is outside the authorized I5 paths. I5 stays
+unaccepted until compatible candidate-plugin handling is reviewed/authorized
+and the affected positive check passes. No commit was made while this check
+remains failed. The final review's Important finding is retained.
+
+### Retained limits and next decision
+
+The exact Core package has two explicit limits encountered here: required
+text/image groups need a bounded authored tail, and unavailable image placements
+cannot be written through its complete-resource DOCX API. The measured long
+line envelope is523.848pt against481.89pt available width; it is retained as an
+unsupported/no-artifact test. A supported short Thai/Latin fixture exercises
+actual image delivery. Missing/unusable placements return DOCX_UNSUPPORTED;
+Service neither fabricates placeholders nor silently deletes source nodes.
+PDF's omission behavior remains covered and unchanged. No Core guard was
+weakened to pass a fixture. Details: group-envelope-diagnosis.json and failure
+logs; initial raw XML text-run assertion was corrected to parsed joined text.
+
+Next recommended work is an explicitly bounded candidate compatibility plan for
+FlowDocMake before further acceptance/I6. Preserve the released plugin pin and
+package; do not auto-bless or bypass an unknown Core hash. SRS98, Word fidelity,
+full semantic coverage, production/mixed-worker rollout, main/release merge and
+publishing remain unaccepted and untouched. Isolated scratch containers/network
+are removed after proof capture; the worktree, candidate image and evidence are
+retained for the next authorized decision.
+
+## I5 scope amendment plan — isolated FlowDocMake candidate compatibility
+
+Status: **PLAN ONLY, 2026-10-22**. The owner asked to finish the compatibility
+blocker inside I5 and see scope/tests before implementation. This amendment
+replaces the earlier prohibition on candidate-plugin implementation only for
+the isolated paths below. It does not authorize I6, SRS, installation or release.
+I5 remains NOT ACCEPTED until its failed positive API regression passes.
+
+Goal: a separately built FlowDocMake candidate accepts exactly the reviewed I3
+Core artifact and passes the original MCP/PDF integration check, while release
+FlowDocMake keeps its existing exact pin and refusal behavior.
+
+Architecture: retain one compatibility checker for preflight and task tools;
+extract its expected version/hash tuple into a small fixed profile module.
+Release source keeps the release profile. The existing package builder gains
+an explicit candidate-output mode which emits a separate bundle with the
+reviewed candidate profile. Selection happens when building that bundle, never
+from HTTP claims, request arguments, a runtime allowlist or an environment hash.
+
+Spec: this plan's I3 archive identity, I5 acceptance/checkpoint and this owner's
+2026-10-22 scope amendment. Owner Project Control for FlowDocMake runtime/tests
+and packaging; Service is the unchanged I5 integration consumer. Active role
+Planning Partner, with Cross-Repo Boundary Reviewer responsibility. Single-room
+execution/Phase/Checklist IDs N/A; target is the existing I5 checklist. Work Size
+M; Risk Tier bounded because compatibility trust changes are confined to a
+non-installed artifact. No production trust decision is implied.
+
+### Exact bases and isolation
+
+- Project Control verified base: `c950688823a9fc436e0302045d9319a389f4bf6a`.
+  Planned development branch `codex/docx-flowdocmake-i5`; worktree
+  `C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/project-control`.
+  Verify/reuse a suitable attached lane or create this isolated owner worktree
+  at implementation time; do not edit runtime in the primary main checkout.
+- Keep using Service lane `.../docx-core-service-integration/service`, HEAD
+  `b9ce2f7f9b4572bde2bdd1ad74a0b5d9366b6ef3` plus the18 frozen I5 files in
+  `i5-evidence/final-manifest.json`. Recheck every hash before work. Preserve
+  the uncommitted candidate; no reset, stash replacement or blanket copy.
+- Reviewed tuple: Service0.4.9 / Core0.4.7 / SHA256
+  `067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+  Archive remains `vendor/flowdoc-core-docx-candidate.tgz`.
+- Release tuple remains Service0.4.9 / Core0.4.7 / SHA256
+  `13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`.
+- Output/proof root: a new `i5-evidence/compatibility/` directory. Candidate
+  package id/version: `flowdocmake-docx-i5-candidate` /
+  `0.2.8-candidate.docx-i5.1`; no tag/publish/install or global MCP registration.
+  Configuration, credentials, scratch DB/storage/network and loopback port are
+  separate. Require explicit FLOWDOCMAKE_CONFIG; no home-config fallback for
+  the candidate entry. Primary plugin/cache/global config remain untouched.
+
+### Allowed files and interfaces
+
+Project Control isolated source lane only:
+
+- Add `plugins/flowdocmake/scripts/compatibility-profile.mjs` exporting the
+  existing three-field `supported` tuple with unchanged release values, plus
+  separate candidate metadata. Do not put channel/id into supported: existing
+  assess() deliberately compares every tuple field against runtime identity.
+- Modify `plugins/flowdocmake/scripts/compatibility.mjs` only to import/re-export
+  that tuple. Preserve exact equality, contract, port, font and reader checks.
+  task-tools.mjs and server.mjs continue consuming this same checker/profile;
+  do not weaken their checks or independently maintain two hash lists.
+- Add `plugins/flowdocmake/scripts/candidate-entry.mjs`, a thin entry used only
+  by the generated candidate bundle. Require explicit absolute config, verify
+  config.pluginRoot resolves to that bundle and its URL is loopback, and check
+  the selected Service's vendor archive against the reviewed profile before
+  loading the existing server runtime. No global defaults or automatic retry.
+- Extend `tools/build-flowdocmake.mjs` with explicit
+  `--candidate-profile <path> --out <new-directory>` mode. The reviewed input
+  fixture is `tests/fixtures/flowdocmake-docx-i5-profile.json` containing the
+  exact tuple/id/version above. Hash actual archive bytes and compare with
+  that supplied expected pin; never derive approval from observed bytes.
+- Candidate output contains the same server/task/client/checker code, its fixed
+  profile module, and a thin server.mjs wrapper around the copied original
+  server runtime. Candidate entry is not used by default release packaging.
+  Generate package metadata and guide snapshot through this builder, including
+  source/provenance and per-file hashes. Reject an existing output, source
+  package, installed-cache destination, or unknown/malformed profile before
+  writing. Do not patch generated guide snapshots manually.
+- Add `tests/flowdocmake-candidate-compatibility.test.mjs` and
+  `tests/flowdocmake-candidate-preflight.test.mjs`; extend
+  `tests/flowdocmake-task-tools.test.mjs` only for the new strict negative cases.
+  Existing release assertions remain intact. No unrelated authoring changes.
+
+Service source, Core code/archive and `tests/task-api.test.mjs` remain unchanged.
+Select the built candidate through STAGE5_PLUGIN_ROOT in the verification image;
+retain independent release/historical plugin copies for negative/old-client
+checks. This change is to the test environment's selected package, not to the
+positive assertion that failed. Keep the actual Service source/package hashes
+identical to the frozen I5 candidate when reusing results.
+
+### Execution order and test contract
+
+Required execution skill: executing-plans with TDD, inline in this chat. Do not
+spawn implementers or create separate Work-room ceremony. Future implementation
+records its current host/model decision; one fresh final reviewer may use the
+available gpt-6-astra/medium independently. This turn makes no model override.
+
+1. **Freeze inputs and reproduce the blocker.** Inventory the two owner lanes,
+   approved archive, primary release-plugin/cache/config hashes and existing
+   I5 proof. Start only dedicated scratch resources. Run the unchanged failing
+   MCP/API case with release plugin against candidate Core: expect
+   TASK_CAPABILITY_UNSUPPORTED, taskId:null, no additional job/output. Record
+   this RED; do not change the test's success expectation.
+2. **Build the candidate with failing-first tests.** Tests require distinct
+   package metadata and exact supported tuples; reject wrong/missing hash,
+   incorrect versions, invalid profile, absent explicit config, redirected
+   pluginRoot and overlapping/existing output. Implement the small profile,
+   wrapper and builder changes above. Assert default release outputs/behavior
+   and canonical guide bytes remain unchanged; candidate inventory binds the
+   approved profile, Core archive and actual emitted files. Build twice into
+   fresh directories to detect accidental dependence on global configuration.
+3. **Prove both profile boundaries.** Run the existing release compatibility and
+   task-tool tests plus the new candidate tests. Set their Service dependency
+   environment explicitly; a skipped native/MCP suite is not PASS. Exercise:
+
+   | Plugin profile | Core identity in isolated Service | Expected |
+   | --- | --- | --- |
+   | Release | Released pin13673... | Accept unchanged contracts |
+   | Candidate | Reviewed pin067b... | Accept unchanged contracts |
+   | Release | Candidate pin067b... | Reject before allocation |
+   | Candidate | Released pin13673... | Reject before allocation |
+   | Either | Unknown hash, wrong version or missing capability | Reject before allocation |
+
+   Representative command in the owner lane:
+   `node --test tests/flowdocmake.test.mjs tests/flowdocmake-snapshot.test.mjs tests/flowdocmake-task-tools.test.mjs tests/flowdocmake-candidate-compatibility.test.mjs`.
+4. **Check actual preflight, not only advertised HTTP metadata.** Start the
+   frozen candidate Service on a dedicated loopback port. Call the candidate
+   MCP get_flowdocmake_context with explicit config and verify ready:true,
+   actual Docker identity/port, computed vendor hash and guide integrity before
+   mutation. Test a mismatched advertised hash, wrong port/container identity,
+   corrupted guide/profile and tampered vendor archive in disposable runtime
+   clones; require ready:false and no task creation. Never alter the accepted
+   worktree/archive or real installed plugin for negative tests. Check source
+   equality, restore/remove the disposable clone, then repeat the positive
+   preflight. Do not claim Docker inspection happens on every task request;
+   retain the existing independent preflight and task capability checks.
+5. **Close the original I5 regression.** Prepare a test image from the unchanged
+   I5 Service with the built candidate at the selected plugin root. Run the
+   complete `tests/task-api.test.mjs`: require14/14, including the original
+   MCP/proxy generation, keyed/anonymous images, partial findings, model18,
+   lookup and cancellation assertions. Keep release-profile rejection as an
+   additional negative test, never replace this positive test with rejection.
+   Run affected queue/client checks with the selected package. Retain old PDFs
+   and actual DOCX HTTP normal/queue outputs. Reuse the earlier21 DOCX,29
+   processing,98 contracts and22 legacy results only when corresponding files,
+   dependencies, configuration and relevant environment are demonstrably equal;
+   otherwise rerun the affected file, without broadening to I6/full SRS.
+6. **Review and finish I5.** Map every criterion to final passing evidence and
+   the exact built plugin/Service/Core identities. One whole-extension review
+   covers the new owner paths and trust boundary; no reviewer per probe. If
+   Important findings need repair, allow one bounded correction/recheck, then
+   stop for scope review rather than growing a compatibility framework.
+   Commit only tested bounded changes on the two development lanes after
+   affected checks pass. Leave main/release, tags, installed cache and global
+   configuration unchanged. Update this existing checkpoint to PASS I5 only
+   after the positive regression and required new guards all pass.
+
+### Acceptance, limits and stop rules
+
+Required: release behavior unchanged; candidate build/config isolated; exact
+archive checks still active at preflight and exact capability matching active
+at task tools; positive MCP/API14/14; negative cross-profile/tamper cases;
+source-to-proof identity and relevant regression coverage; no skipped mandatory
+checks; one final review with no unresolved Important finding.
+
+I5 closes compatibility for existing FlowDocMake PDF task/lookup tools and the
+already implemented Service DOCX API. It does not add a DOCX argument/parser to
+FlowDocMake's PDF client. Service DOCX normal/queue support remains covered by
+I5 tests. Broader tool-level DOCX UX, Word/all-page fidelity and I6 remain separate
+scope. Retain the existing DOCX limits for required text/image relations and
+unavailable image placements; no source deletion, placeholders or Core retuning.
+
+Proof Budget: one initial RED, focused profile/build/preflight/MCP tests, one
+complete affected API run and necessary queue/client regressions, identity-based
+proof reuse, one final review and at most one bounded repair pass. Document
+Budget: this existing plan plus the existing I5 proof directory; no new Work,
+Evidence/map records or release guide promotion. Canonical data/maps unchanged.
+Docker CLI, Poppler and Python pypdf/Pillow are available in this planning
+inspection; Engine readiness and isolated host/container wiring must still pass
+at execution. If a guard can pass only by trusting HTTP's claimed hash, changing
+the release profile, changing the accepted Service/Core candidate or weakening
+an old assertion, stop and return the concrete conflict. No silent scope growth.
+
+Planning disposition: scope is defined for completing I5; no runtime, package,
+worktree, database, installed plugin or release change is performed by this
+amendment. The owner requested this summary before implementation.
+
+## I5 compatibility execution checkpoint — PASS, 2026-10-22
+
+Authority Boundary: Project Control owns this bounded cross-repository status.
+This checkpoint accepts I5 in isolated development only. It does not establish
+release, SRS, Word fidelity, I6 or production readiness. The earlier rejected
+I5 checkpoint and planning amendment above remain historical evidence.
+
+The owner authorized implementation of the I5 amendment in this chat. Active
+roles Product Implementation Agent / Evidence Reviewer; execution IDs N/A for
+single-room work. No separate execution registry or map promotion was created.
+
+Implemented and committed on isolated development branches:
+
+- Project Control `codex/docx-flowdocmake-i5`, commit
+  `ac8b6103f43c04a88d4f5c6d54a0f154d0f877ee`, seven files: fixed compatibility
+  profile extraction, candidate entry, existing builder extension, reviewed
+  profile fixture and two focused test files. Actual native-managed checkout:
+  `C:/Users/nekot/.codex/worktrees/docx-flowdocmake-i5/flowdoc-project-control`.
+  Same approved base; only the proposed checkout locator changed.
+- Service `codex/docx-service-integration`, commit
+  `8690193b73b14554c63a9aebe5c888edcf780946`, exactly the18 previously frozen
+  I5 files. All18 byte hashes still match `i5-evidence/final-manifest.json`;
+  this extension changed no Service/Core source or original API assertion.
+- Core remains the reviewed I3 archive SHA256
+  `067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+  Released profile still requires `13673f22...`; exact equality is preserved.
+
+Proof root (local durable files):
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i5-evidence/compatibility/`.
+Final identity/coverage inventory: `final-verification.json`. Built package:
+`candidate-final/`, id `flowdocmake-docx-i5-candidate`, version
+`0.2.8-candidate.docx-i5.1`; all52 emitted-file hashes verified.
+Guide snapshot identifies the canonical guide base; final-verification also
+binds the actual seven committed source/test file hashes, so it does not
+misrepresent that guide base as the candidate implementation commit.
+
+Acceptance evidence:
+
+- Reproduced original release-plugin/candidate-Core refusal in
+  `red-original-api-repeat.log`: TASK_CAPABILITY_UNSUPPORTED, taskId:null.
+  The first fresh run timed out and remains inconclusive, not hash evidence.
+- Unchanged complete `tests/task-api.test.mjs` **14/14** in `task-api.log`;
+  queue/API and client checks **11/11** in `queue-client.log`.
+- Native release, snapshot, task gates, builder and actual Docker preflight
+  **12/12**, no skipped checks, in `final-native.log`. Review corrected two
+  negative probes to supply a valid archive and assert the intended failure;
+  affected builder tests rerun **3/3** in `final-builder-guards.log`.
+- Both exact profile pairs accept; opposite/unknown hash, wrong version and
+  missing capability refuse task tools before allocation. Config redirection,
+  nonloopback URL, absent explicit config, wrong archive/profile, existing or
+  source/cache output are rejected. Default release packaging retains guide
+  bytes and release values. Two fresh candidate builds agree except the
+  intentional absolute launcher location.
+- Real preflight verifies Docker identity/computed archive hash and loopback
+  port. Wrong container/port, guide corruption and disposable-container archive
+  tampering refuse readiness; original bytes restored and positive repeated.
+- Fresh whole-extension review: no Critical/Important finding. One Minor test
+  coverage issue corrected and checked. `final-verification.json` records it.
+- Reused prior DOCX21, processing29, contracts98 and legacy22 checks only after
+  confirming frozen source/package/image equality. These are bounded affected
+  checks, not a claim that the full Service suite or Word acceptance ran.
+- Final bundle generated real MCP/model18 PDFs in `artifacts/`; the focused
+  capture selected one test and left13 unselected. It does not replace the
+  complete14/14 run. Full run and final capture use identical consumed runtime
+  bytes; only the generated launcher locator differs.
+
+Explicit plan interpretation: the existing independent checks are preserved.
+Preflight verifies actual Docker/archive/port/guide identity. Advertised
+`documents` hash/version mismatch is checked by task capability before task
+allocation. Step4's literal request for preflight ready:false on that HTTP field
+is not claimed as passed; it was corrected to the architecture's two distinct
+checks, with the fresh reviewer finding no material safety defect. No HTTP hash
+was promoted to runtime authority and no compatibility guard was weakened.
+
+The generated MCP launcher binds its absolute build location so configuration
+cannot redirect loading to a different plugin. Rebuild to relocate it. The
+builder requires explicit `--core-archive` input and compares actual bytes to
+the reviewed expected profile; it does not learn an allowed hash from the input.
+
+Boundary verification: both development checkouts clean after commits; all99
+primary release-plugin/cache/global-config file hashes unchanged. Primary
+runtime/release branches, installed plugin and global MCP config are untouched.
+This status append remains in the existing Project Control plan; no main/release
+integration, publish, install, tag or push was performed.
+
+I5 is now accepted. FlowDocMake's existing task client still produces PDF;
+Service's normal/queue API supports DOCX from the same Core input, with omitted
+Output-Format retaining PDF. Existing DOCX required text/image envelope and
+unavailable-image limitations remain explicit. SRS, Word/all-page comparison and
+broader tool-level DOCX UX remain outside this checkpoint. Stop here as requested.
+
+## I6 execution checkpoint — IN PROGRESS / WORD PENDING, 2026-10-22
+
+Authority Boundary: Project Control owns this bounded acceptance status under
+this existing plan. Owner authorized I6 only and explicitly forbids I7, SRS98
+and release integration. This entry does not accept I6 or promote product maps.
+Single-room execution IDs N/A; active roles Product Implementation Agent for
+the acceptance harness, then Evidence Reviewer. Runtime candidate stays frozen.
+
+Service lane remains at I5 commit8690193b73b14554c63a9aebe5c888edcf780946 with
+six uncommitted I6-owned files: README.md, docs/usage.md,
+tests/task-docx-api.test.mjs and three tests/fixtures/docx-i6 JSON files. No
+Core/Service runtime or plugin code changed. Owner docs retain Authority Boundary;
+README installed-artifact pin and latest migration now match candidate/025.
+All18 frozen I5 source/package/archive hashes and99 protected plugin/cache/config
+hashes match. Release branches and installed/global configuration are untouched.
+No commit until mandatory I6 acceptance checks are resolved.
+
+Proof root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/i6-evidence`.
+`current-checkpoint.json` binds the actual files, frozen verification image,
+per-file test evidence, limits and pending Word paths. Verification image
+sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0
+contains a copied immutable harness; subsequent checks did not edit it.
+
+Completed bounded checks:
+
+- Actual paired Service HTTP/DB/parent-child path:18/18. Three small fixtures
+  cover Bai Jamjuree four real faces with mixed Thai/English multiline text,
+  headings/images (JPEG and alpha PNG), merged table cells, and model19 TOCs,
+  visible/empty headers and compact page fields. Each uses default PDF,
+  explicit PDF and DOCX in both normal and queue-v1 modes. Original business,
+  template and multipart hashes match within each pair; per-task generated
+  image IDs and original-image checksums remain individually recorded.
+- Packed Core consumer exports four paired small fixtures through the literal
+  same frozen document object; unchanged I0 binding/table PDF byte hashes pass.
+  Sarabun four faces and a24-row table exercise repeated column headers across
+  two PDF pages. This uses existing small Core fixtures, not the98-page SRS.
+- Every small DOCX ZIP/XML/relationship graph passes; actual embedded fonts,
+  image drawings, enabled repeated headers, horizontal/vertical merges and
+  fields are inventoried. ZIP directories and OOXML false properties are not
+  counted as images/enabled headers. Nine selected paired-PDF reference pages
+  were rendered and visually reviewed. No Word appearance claim yet.
+- Six default/explicit-PDF pairs are either exactly byte-identical or differ
+  only in the recorded PDF trailer IDs for image-bearing tasks. All bytes
+  outside those exact ID ranges are identical. Full raw hashes/IDs retained
+  in pdf-pair-identity.json; no content/layout difference was normalized away.
+- npm run build passes. Actual npm run check:api passes three distinct PDFs,
+  consumption410, queued/running/succeeded restart handling, retained repeat
+  downloads and post-restart consumption. Default Docker subnet allocation
+  first failed because available pools were exhausted; only this trial received
+  explicit10.250.248/249 subnets. No unrelated network was removed. Actual
+  runtime image's Core archive independently hashes to reviewed067b...f4c3e.
+- Sampled Linux VmRSS separates Service-manager parent and real render workers;
+  raw samples/peaks in isolated/task-docx-api/rss.json. These are not output
+  file sizes or a whole-machine memory guarantee. Supported paired jobs used
+  actual1GiB containers without changing memory/worker guards.
+
+Full-suite result must not be flattened into PASS:
+
+The first one-process npm test at1GiB failed60 tests (452passed,56skipped) after
+an MCP timeout and an orphaned native Service holding the DB-wide processor
+lock. The diagnostic1.5GiB run was also not green:11failed,552passed,23skipped,
+8errors. It cannot qualify the queue path because queue-resources.ts checks
+memory.max equals exactly1GiB; extra RAM makes that capability unavailable.
+Some skips in those failed runs are failed-hook fallout, not acceptance proof.
+The I6 harness was being prepared during the diagnostic and its failed setup
+is superseded only by the final frozen18-test run, not represented as passing.
+
+Seven affected files were then checked independently in fresh1GiB containers
+and dedicated DBs: new API18, output-format26, DOCX processing6, processing29,
+queue API8, scheduler13 all pass. CLI's unchanged assertions pass3/3 with an
+explicit15s runner budget: its existing test includes a5s DB connection timeout
+plus multiple child starts, exceeding the default5s test budget. Product
+connection/render/queue deadlines were not changed. Existing owner authorization
+to relax the checker timer is reused; no production timeout was removed.
+
+Source-matched aggregate coverage across122files is581passed/5optional skipped
+using the documented runs. This is per-file coverage, not a claim that the
+one-process default command passed. The five optional external-fixture tests
+remain skipped, never PASS. Monolithic-suite setup remains a reported limitation
+for I6 acceptance; no guard or assertion was weakened to hide it.
+
+Existing capability limits remain explicit. The original long scoped-header
+fixture fails the conservative band envelope without publishing bytes, and
+fixed-width page-field slots remain unverified. Their original inputs/failures
+are retained. The short-header/empty-header/compact-field fixture is separately
+authored and hashed; it is not a rewrite or claimed successful export of the
+rejected original. No Core/PDF baseline tuning or silent content deletion.
+
+Word checkpoint requested from owner, max four files, in
+`.../i6-evidence/word-review/`:01-core-navigation.docx,02-core-table-flow.docx,
+03-service-typography.docx,04-service-merged.docx. Owner should update every TOC
+and page field in01, then save same-name PDFs beside these DOCX files. Frozen
+paired references remain separately under reference-pdf/ to prevent overwrite.
+No Word PDFs have been received at this checkpoint. All-page/content comparison,
+I6-only fresh final review, explicit full-suite limitation disposition and
+acceptance/commit remain pending. This does not start I7.
+
+Dedicated trial containers/networks/volumes were stopped/removed after saving
+proof. Frozen source/image and evidence remain recoverable. No SRS98, installation,
+main/release integration, publish, push or tag was performed. Resume only the
+remaining I6 work when the owner returns Word PDFs; stop before I7.
+
+## I6 Word return and acceptance disposition — NOT ACCEPTED, 2026-10-22
+
+Authority Boundary: bounded I6 verification status only, owned by Project
+Control under this existing plan. The owner returned the four requested Word
+PDFs. This completes their inspection; it does not waive an integration gate,
+start I7, authorize SRS98, or promote release/map truth.
+
+All four PDFs identify Microsoft Word for Microsoft365 as producer. Every one
+of their9 pages was rendered and visually inspected against the preserved paired
+PDFs. Physical page counts agree: navigation5, table-flow2, typography1, merged1.
+The24 table rows keep the14/10 page split and repeated column header. Horizontal
+and vertical merges, cell text, mixed Thai/English, four visible face styles,
+JPEG and alpha PNG remain present. Whole-document/Section TOCs retain their
+entries, displayed targets3/8,12 valid links to physical pages3/5, and logical
+footer sequence1,2,3,7,8. Empty headers remain empty. Raw PDF text and all source/
+returned/reference hashes are saved; no reference or DOCX input was overwritten.
+
+Recorded differences are not hidden or tuned away:
+
+- Word adds dot leaders after native TOC refresh; the reference has none.
+- Sample ROW01/14/15/24 extracted word boxes are2.511–2.627pt lower and0.291pt
+  right of reference. These are Poppler word bounds, not glyph baselines.
+- The empty-header Section title on physical page4 has word-box yMin86.444pt
+  versus79.892914pt reference, delta6.551086pt. Footer bounds differ1.283149pt.
+- The last bolditalic Thai descender sits very close to the first image, closer
+  than reference. Paired high-resolution crops were inspected; this supports
+  reporting tight spacing, not a definitive clipping or pixel-equivalence claim.
+- Word text extraction can separate combining marks with spaces. Visible text
+  was reviewed independently. TimesNewRoman appears only for whitespace in the
+  PDF resources; it is not evidence of a visible main-text fallback. Embedded
+  Word subset aliases alone do not establish the original family identity.
+
+Evidence lives in the existing i6-evidence directory: word-review-result.json,
+word-inspection.json, word-geometry-links.json, word-font-usage.json and rendered
+word-inspection/ pages/crops. current-checkpoint.json now points to this receipt;
+its earlier pending-Word state remains in pre-word-current-checkpoint.json.
+The two Core files use existing small fixtures, including the historical table
+fixture label containing SRS; no98-page SRS document was run.
+
+One fresh whole-I6 read-only review (executing-plans requirement, not I7) found
+no Critical source issue and two Important findings. The missing test setup
+instructions were corrected in Service README/usage: dedicated DATABASE_URL,
+exact1GiB Linux memory.max, reviewed Bai Jamjuree four-face/OFL input folder,
+existing writable FLOWDOC_TASK_PROOF_DIR and explicit candidate plugin roots.
+The15s checker budget leaves product deadlines intact. Existing setup/artifact/
+migration documentation check passes1 test;3 optional external-height tests
+remain skipped, not PASS. No test, runtime, Core or plugin behavior changed in
+this bounded documentation correction; earlier affected test evidence is retained.
+
+The other Important finding remains OPEN: I6 explicitly requires a passing
+complete Service npm test. Actual combined runs failed;581 passing aggregate
+assertions from source-matched runs across122files do not replace that mandatory
+gate. The owner has supplied no waiver, and Word inspection does not provide one.
+I6 is therefore NOT ACCEPTED, with its Word small-case checkpoint completed and
+the complete-suite prerequisite blocking closure. No I6 commit was made.
+
+All18 frozen runtime/package/archive files and99 protected plugin/cache/config
+files still match their earlier hashes. Only the six I6-owned test/fixture/docs
+files remain uncommitted. No broad retry, converter/PDF tuning, SRS98, I7, release
+integration, install, publish, push or tag follows this disposition. The remaining
+issue belongs to I6's test-runner/environment setup; it must not be relabelled as
+an accepted limitation to report a false I6 PASS.
+
+## Local development integration and lane cleanup — 2026-10-22
+
+Authority Boundary: Project Control records the owner's explicit local integration
+and cleanup request in this conversation. Single-room inline scope; execution IDs
+are not applicable. This is development integration, not I6 acceptance or release.
+
+The previously accepted commits were integrated by exact fast-forward:
+
+- Core primary `codex/template-binding`: `8f8a739` to `e53e4a2`.
+- Service primary `codex/template-registry`: `32d7857` to `8690193`.
+- Project Control `main`: `c950688` to `ac8b610` before this status checkpoint.
+
+There were no merge conflicts or runtime source repairs. Primary Core and Service
+lockfile dependencies were installed with scripts disabled; both TypeScript builds
+passed. The selected Core DOCX/package checks passed63 assertions, Service DOCX
+receipt checks passed3, and Project Control candidate packaging checks passed3.
+A Windows invocation of two DB-dependent Service files failed at their explicit
+DATABASE_URL prerequisite; it is not PASS and does not replace Linux evidence.
+I5 evidence is reused against unchanged Git candidate trees and the exact pinned
+Core archive. All18 frozen Service file hashes matched before restoring native
+checkout line endings; the archive hash remains unchanged. This check establishes
+identity, not a new complete Linux/DB test run.
+
+I6 remains NOT ACCEPTED: the combined Service suite gate is still unresolved.
+Its six uncommitted test/fixture/documentation files were copied byte-for-byte to
+`C:/Users/nekot/Documents/GitHub/flowdoc-service` and independently preserved under
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/integration-preserved/i6-pending`.
+They remain uncommitted in the primary Service checkout; no I6 PASS or waiver is
+inferred from the integration request.
+
+Before removing product worktrees,583 files (ignored artifacts/dist and pending
+I6 inputs) were preserved and SHA-256 verified. The preservation manifest is
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-core-service-integration/integration-preserved/manifest.json`.
+Existing i1–i6 evidence directories and the location-bound candidate bundle remain
+at their original sibling paths. Historical source locators ending in `/core` or
+`/service` now refer to removed trial checkouts: use the primary repositories for
+current source, immutable commit IDs for history, and integration-preserved for
+saved local outputs. Historical test configuration may require explicit root
+rebinding before reuse; installed plugin/global configuration was not changed.
+
+Only the three fully merged DOCX task lanes are cleanup targets. Core/Service
+worktrees and local task branches were removed normally after transferring I6;
+Project Control's managed lane is archived through the native worktree tool.
+Primary development/release branches, tags, unrelated work, Docker evidence
+images and original Word/PDF artifacts are retained. No SRS98, I7, release,
+installation, remote push or remote branch deletion is authorized by this closure.
