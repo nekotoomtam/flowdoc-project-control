@@ -16,9 +16,11 @@ I-stage status/authority paragraphs below are historical, not current permission
 The subsequent [I6 full-suite diagnosis and closure proposal](#i6-full-suite-blocker-diagnosis-and-proposed-closure-2026-10-22)
 led to authorized [F0–F1 targeted diagnosis](#i6-f0-f1-targeted-diagnosis-result-2026-10-22):
 F0 passed; F1 stopped after17 cases because a live child and processor lock
-persisted after task-api. F2 repairs and F3 full-suite execution have not begun.
+persisted after task-api. F3 full-suite execution remains unauthorized.
 The requested [F2 cleanup and memory investigation plan](#i6-f2-cleanup-and-memory-headroom-plan-2026-10-22)
-is now proposed; only planning is authorized at this checkpoint.
+was subsequently authorized and reached a [partial F2 checkpoint](#i6-f2-partial-result-2026-10-22)
+at its36-execution cap. Targeted cleanup and four critical API cases pass;
+complete-file/resource coverage and memory attribution remain open. F3 has not begun.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -8743,3 +8745,143 @@ This planning turn changes only this existing canonical plan. No source/test
 instrumentation, worktree creation, container launch, Service test run or new PDF
 generation was performed. B1+C, all baseline/evidence files, production behavior,
 B2 and main integration remain outside its mutation scope.
+
+### I6 F2 partial result 2026-10-22
+
+**PARTIAL / RISK / UNKNOWN — F2 not accepted; I6 NOT ACCEPTED.** The owner
+authorized the preceding F2 plan in a separate worktree, at most36 executions,
+preserving B1+C and original PDFs, with no full suite/B2/main integration.
+Role: Product Implementation Agent for test-only repair, then Evidence Reviewer
+for the unchanged candidate, and Documentation Synthesizer for this checkpoint.
+Service owns the test code; Project Control owns this shared status. Work/Phase/
+Checklist/execution IDs remain N/A for this single-room continuation.
+
+Worktree:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-f2/service-worktree`, branch
+`codex/i6-f2-cleanup`, base `8690193b73b14554c63a9aebe5c888edcf780946`.
+The six frozen pending I6 files were copied with exact hashes before editing.
+The candidate remains **uncommitted, dirty and unmerged** because affected
+acceptance coverage is incomplete; retain it for review, do not clean/reset it.
+
+Evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-f2/proof`.
+`ledger.json`, `analysis-summary.json`, per-invocation reports, process/cgroup/PG
+snapshots, `candidate-source-manifest.json`, `preservation.json` and `review.json`
+separate implementation, measured outcomes and unknowns. The final manifest
+includes the earlier manifest/summary correction so that the serial coverage
+requirement is not silently replaced by adding separate subsets.
+Final manifest SHA256:
+`0be100cdebead04f7065f852e8992b6be2b8d170a4b791a8da664b8b9538e5c6`;
+165 frozen evidence files,1048241 bytes before the manifest. Recorded environment
+and scenario boundary intervals total approximately160 seconds.
+
+#### Changes and targeted outcomes
+
+Only five test sources were changed/added beyond the retained pending I6 files:
+`tests/task-api.test.mjs`, `tests/helpers/taskTestLifecycle.mjs`,
+`tests/task-test-lifecycle.test.mjs`, and fixture `child.mjs`/`runner.fixture.mjs`
+under `tests/fixtures/task-test-lifecycle/`. No production source, package/lock,
+vendor, migration, plugin or renderer changed.
+
+The test lifetime now propagates runner cancellation to owned HTTP/MCP calls,
+body reads and polling; registers cleanup independently before resource awaits;
+shares idempotent disposers for manually stopped resources; and bounds cleanup
+at8s. Native children have early close listeners, start-identity checks and owned
+group SIGTERM/SIGKILL escalation. The pinned SDK's public close/pid lifecycle
+owns MCP teardown. Existing business assertions and30s/60s deadlines remain.
+Optional memory snapshots and phase markers are test-only and disabled by default.
+
+The fresh review identified outer nested-runner timeout ownership, invisible late
+disposer failures and reusable stale fixture markers. One repair pass added outer
+lifetime ownership, invalidated a completed boundary on new late registration,
+and created unique per-execution directories. Read-only follow-up found those
+three issues resolved; it ran no tests and does not cover unexecuted cases.
+
+| Checkpoint | Counted executions | Outcome |
+| --- | ---: | --- |
+| Initial lifecycle red | 4 outer +4 nested =8 | Four outer failures retained; already-exited child exposes the old late `once(exit)` hang. Three timeout-report readers failed before completing the leak assertion, so their red proof is qualified. |
+| Initial lifecycle green | 4 outer +4 nested =8 | Three outer passes; native outer failed on an asynchronous timeout-marker write race, not a product assertion. |
+| Native diagnostic-reader repair check | 1 outer +1 nested =2 | Pass; waits for the timeout marker to finish writing. |
+| Vitest memory case with observation | 1 | Original real-PDF case passes. |
+| First direct-Service scenario | 1 | PDF generated, but controller incorrectly required exact creator equality instead of the original partial field match; scenario FAIL retained. |
+| Corrected direct-Service scenario, fresh database | 1 | Same semantic inputs and substantive HTTP/output assertions pass. |
+| Late-disposer red after review | 1 outer +1 nested =2 | Reproduces a fulfilled cached boundary hiding the late disposal error. |
+| Final lifecycle green after review repair | 4 outer +4 nested =8 | All four outer regressions pass. Three intentional nested timeouts stay visible; the already-exited/repeated/late-disposal case passes normally. |
+| Vitest memory case with passive counters | 1 | Original real-PDF case passes. |
+| Critical original task-api subset, serial/shared DB | 4 | Real PDF, actual MCP, actual native Service, and the following fixed-omission case all pass. |
+
+Total **36/36 executions**, including nested cases, failed attempts and diagnostic
+rechecks. Filtered tests are unexecuted, not optional skips or PASS. The final
+task-api report contains4 passes and10 filtered cases; it is not a14-case pass.
+There was no full-suite invocation. Existing CLI3/3 evidence is reused because
+its source, deadlines and dependencies did not change.
+
+To remain within the cap, recorded rulings reallocated the3 resource-wait cases
+to the native/direct diagnostic repairs, and later replaced the planned14-case
+API invocation with review regression proof plus4 critical cases. These are
+coverage losses, not completion waivers. They are disclosed here rather than
+expanding budget or silently rerunning until green.
+
+The last lifecycle/critical-API boundaries show no live owned Node process,
+advisory lock or owned PG session **before** teardown. The actual native case and
+its successor pass without the F1 lock cascade in this run. This is bounded
+evidence for cleanup, not proof that every F1 timeout condition was reproduced
+under the same memory/cache state or that all existing API cases are unaffected.
+
+#### Memory outcome and remaining unknowns
+
+All live scenarios retain exact1GiB/no swap,2 CPUs, Linux/amd64, init and the
+original Core archive/plugin/font identities. The external direct controller
+runs outside the constrained Service cgroup; that topology difference is explicit.
+
+Observed current maxima during the brief scenarios were approximately308MiB for
+instrumented Vitest and107MiB for the successful direct recheck. At those samples,
+file charges were approximately14MiB versus1MiB; F1 had much larger file charges
+(approximately157MiB in its late sampled window). These are sample observations,
+not comparable process-only peaks, guaranteed overhead savings or production RAM
+capacity results. PSS is retained separately and is not added to cgroup current.
+Cgroup lifetime peaks also include the preparation build and are not render peaks.
+
+Internal test snapshots show coordinator health/timing and sampled current; native
+preloads observe the existing channel without inventing an internal memory
+snapshot. Neither live scenario reproduced the original long admission stall.
+The passive scenario also passes, but at most1Hz sampling undersamples these
+short generations, and cache charging was not held identical. Host cache dropping
+or global tuning was not performed. Therefore the causal attribution of F1's
+headroom failure remains **INCONCLUSIVE**. No OOM was recorded. The admission
+formula/credits/guard and production timeouts remain unchanged; lower measured
+memory alone does not establish a fix.
+
+#### Preservation, coverage and handoff
+
+The final in-container source/package/vendor hash check matches the original
+image for all non-test inputs. Host comparisons confirm only the five allowed
+test sources differ from the starting candidate; the six pending I6 files retain
+their copied hashes. The preservation reader needed Windows path separator
+normalization before evaluating allowed paths; no candidate repair was performed
+to satisfy that check. Direct-controller preparation also needed the image's
+shell builtin `kill`; its failed scenario and cleanup are retained, not counted
+as a passing generation scenario.
+
+B1+C stays clean at `b79f426649e65eadb3fb29e410250395a6d65faa`. All96 D artifacts,
+72 regression artifacts,29 source/font/reference files and20 frozen F1 evidence
+files pass their retained hashes. Primary Service status is unchanged. Original
+PDFs were neither regenerated nor edited. Normal tiny PDF outputs exist only in
+the new proof directory; no Word exports or page reviews were spent, retaining
+162 review pages/21 exports. Saved scenario and preparation/build boundary
+intervals are separately recorded in `timing-boundaries.json`, including the
+failed direct scenario's delayed cleanup, within the20-minute check budget;
+proof output remains below10MiB. Implementation/planning wall time is separate.
+
+Final boundary was saved, then only this run's two containers and network were
+removed. The unmerged worktree and all evidence remain. No release, push, merge,
+B2 or system/DOCUMENT_MAP promotion occurred. Only this Project Control prose is
+eligible for a documentation commit after its checks; product code is not committed.
+
+Remaining mandatory coverage: a **fresh complete14-case task-api invocation on
+one shared database**, then3 resource-wait cases after clean boundaries. A later
+10-case subset plus the four selected passes cannot manufacture that gate.
+That is a proposed17 additional executions if separately authorized, alongside
+a separately bounded memory probe design before claiming the original root cause.
+Do not spend them now. F3/full-suite acceptance is a separate future prerequisite,
+even if those checks pass. **Stop at36; report partial results and gaps.**
