@@ -11454,3 +11454,81 @@ The authorized stop checkpoint is complete; Plan1's A–B–B–A result remains
 blocked by external config startup. Only this existing Project Control document
 changes; `tools/check.ts` and `git diff --check` pass. No map/registry/package
 truth is promoted.
+
+### I6 config-loader-only retry result 2026-10-22
+
+**BLOCKER in preparation: Vitest config-loader route remains UNKNOWN.** The
+owner authorized only external config-loading repair and fresh A–B–B–A within
+seven live scenarios, keeping1GiB/B1+C/PDF and stopping at the first blocker.
+This round consumes1/7,17.953 seconds, then stops. No current observer, cache
+inventory/verification, A/B arm, Service startup or document generation runs.
+The proposed fix is not accepted as working; Plan1 comparison and memory
+attribution remain incomplete. Prior observer/cache PASS retain their original
+scope and are not presented as fresh acceptance. F2/I6 remain NOT ACCEPTED.
+
+Authority: single-room external-tool implementation/Evidence review; Service
+owns the unchanged candidate and Project Control owns this checkpoint. Small,
+routine, execution IDs N/A; current host model/capability without override.
+Canonical context is the explicit request and preceding I6 result. Proof Budget
+fresh7 live phases in the same order and with the same controls; focused offline
+one-case RED/GREEN, two executions. Document Budget this existing document only.
+No new Work, Phase, map, product report or registered execution is created.
+
+New isolated external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-plan1-config-native`.
+The only proposed A/B invocation change is `--configLoader native` on A. The
+plain `.mjs` config, B launcher, scenario, observer, reader, controls, environments,
+fixtures, package versions, read-only mounts, deadlines and thresholds are
+unchanged. Supporting changes add three prior-round preservation pins and a
+counted-preparation source-support inspection. The copied generic ledger wording
+now correctly states unchanged Linux guard proof is reused, not rerun.
+The official Vite configuration reference supports native loading of plain JS:
+<https://v8.vite.dev/config/>. That reference alone does not establish the pinned
+Vitest CLI's forwarding behavior.
+
+The focused AST contract fails before the native flag is added and passes after:
+exactly one `--configLoader native` pair on A, all other invocation AST and eleven
+guarded tool/fixture files unchanged. Two named offline executions total, no
+old suite reruns or offline budget deviation. One fresh static whole-change
+review finds the first-occurrence-only support excerpt fragile; it is corrected
+to inspect every `configLoader` occurrence before live. The reviewer confirms
+that correction without imports/tests/live access. This contract proves the
+narrow source change, not that a live config load succeeds.
+
+Actual preparation records Node24.21.0, Vitest4.1.9 and Vite8.3.3 from the pinned
+image. Saved Vite source excerpts include accepted native-loader values and
+dispatch to nativeImportConfigFile. The new inspection retains no matching
+Vitest excerpt, and its assertion stops with
+`pinned Vitest native CLI support unconfirmed` before migrations or observer
+creation. This is a stop by the newly added tool inspection, not a Vitest CLI
+runtime rejection. The inspection scans `.js` and saves bounded excerpts only
+when both `configLoader` and `native` occur nearby; it does not exhaustively
+resolve `.mjs`/`.cjs` or a forwarding path. Empty matches therefore do not prove
+the feature is absent. No CLI/help/loader pilot or actual A1 invocation follows.
+The source-only GREEN must not be promoted to runtime repair PASS.
+
+The fresh ledger is retained as preparation STOP,1/7. Remaining six scenarios
+are not used, retried or refunded into another round. Original historical
+ledgers, including the prior4/7 round, remain unchanged. Configured target limits
+are inspected as memory1073741824, memorySwap1073741824 and nanoCpus2000000000,
+with read-only root and tools; no counter sampling occurs in this round. Owned
+target/database containers and internal network are removed with verified token
+ownership. No owned containers remain, no final OOM or cleanup error, and equal
+before/after preservation verifies408 prior files,358 F2 inputs, clean B1+C,
+unchanged primary Service/PDF, old probe/cache proof and thirteen later pinned
+manifest/helper/input chains. No source changes after live launch.
+
+| Frozen manifest | SHA-256 |
+| --- | --- |
+| `offline/manifest.json` | `d0770b2905061085130ed4035fcfb3ae2489a786c0d8023fb73b51ce3b4fcbf9` |
+| As-run `proof/manifest.json` | `59df0599411132fa3fb82eca3325c89b93b704bf1536576f34166b76a1120673` |
+| Derived `postrun/manifest.json` | `9b634118bf1598582b6a889a9bb74c12a828598bee2054431a509d9885cf05ea` |
+
+The as-run manifest binds3 proof files and22 helper entries; saved proof including
+manifest is32,653 bytes. The postrun supplement verifies source/file hashes,
+ledger, limits, final container state, no execution artifacts and preservation;
+it preserves the original STOP receipt and documents the probe limitation.
+The outstanding question is the external config-loading route through the
+pinned Vitest entrypoint. No memory/headroom conclusion, product repair, Plan2,
+pagination B2, full suite, integration, release or push. Only this existing
+Project Control document changes; `tools/check.ts` and `git diff --check` pass.
