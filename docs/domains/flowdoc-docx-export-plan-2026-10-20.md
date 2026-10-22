@@ -11342,3 +11342,115 @@ silently removed, no namespace/privilege/memory change is made, and captured
 route support does not authorize Docker, another capture, A–B–B–A, full suite,
 B2 or merge/release/push. Only this existing Project Control result document
 changes; `tools/check.ts` and `git diff --check` pass. No runtime/package/map edit.
+
+### I6 Plan1 observer and readiness comparison result 2026-10-22
+
+**BLOCKER at A1 startup; Plan1 comparison is not complete.** The owner authorized
+external-tool repair, current observer acceptance and fresh A–B–B–A within seven
+live scenarios, stopping on the first blocker. Preparation and both cache
+verifications PASS; A1 is charged and STOP. B1, B2-arm and A2 never execute.
+Actual live budget4/7,62.703 seconds; no retry or use of the remaining three.
+Observer acceptance is supported for this current bounded run; memory attribution
+between the test harness and loaded Service remains UNKNOWN. F2/I6 are NOT ACCEPTED.
+
+Authority: single-room external proof-tool implementation and Evidence review;
+Project Control owns the shared checkpoint, Service owns the untouched candidate.
+Execution IDs N/A, small/routine work; current host model/capability without an
+override or product dispatch. Document Budget this existing canonical document
+only. The loaded generated cockpit is an older overview; the explicit owner
+request and this current DOCX/I6 record govern the narrow execution. No old room,
+execution context or historical ledger is resumed. Original three charged live
+attempts remain charged separately from this fresh4/7.
+
+New external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-plan1-observer-memory`.
+Only copied/new proof tools change: current-round binder, observer, launcher,
+preservation checker and synthetic checks. Original helpers/validators and every
+old capture/verdict remain intact. The current binder reuses the accepted raw
+mount/object parsing in a separately named current-preparation profile; it does
+not relabel old saved observations as current success. Exact role IDs, images,
+before/after lifetime metadata, namespace/mount context, local membership and
+cross-view device/inode/fsid bind this round. Database host PID membership is
+explicitly not claimed across its noncomparable PID namespace.
+
+The new observer holds21 counter descriptors across three distinct group objects.
+Directory and leaf FD/path identities and effective mounts are checked at opening
+and around each read. It checks current source hashes, sampler placement, target
+init lifetime, exact target1073741824-byte/no-swap counters, and all three roles'
+OOM counters. Actual target/observer metadata remains1GiB/no-swap/2CPUs; DB stays
+outside the measured target. Five real post-ready samples pass before cache work.
+The retained37 actual samples span36.049 seconds with valid bindings and no OOM;
+sampler stop is exit0/error null. This is bounded continuous evidence for the
+observed run, not an atomic kernel snapshot, new-host guarantee or loaded-Service
+acceptance. No privilege/namespace or memory-policy relaxation is made.
+
+| Live phase | Result |
+| --- | --- |
+| Preparation: empty private DB migrations, current binding, observer, initial cache | PASS;1 charged |
+| Cache verification1 | PASS;1 charged |
+| Cache verification2 | PASS;1 charged |
+| A1: Vitest launcher | STOP before runner-only marker;1 charged |
+| B1, B2 repetition arm, A2 | NOT RUN;0 charged |
+
+The initial cache inventory and two verification windows retain identical file
+charge243.84375MiB. Across all accepted idle windows including A1's pre-launch
+boundary, spreads are file0,anon0,kernel0.015625,total1.1171875MiB, within the
+unchanged8/4/4/12MiB limits. Pre-cache observer-validation samples are retained
+but not mixed into warmed idle spreads. No loaded matched-phase window exists.
+Separate observed observer memory.current is18.828125–20.19921875MiB and DB is
+210.703125–214.40625MiB; these unpaired ranges do not establish harness overhead
+or Service headroom. Four private databases were empty at their checked
+boundaries; no Service launch or document request occurs.
+
+The concrete blocker is saved in `proof/a1-launcher.log`: Vite/Vitest's default
+bundled config loader attempts a timestamped `.mjs` beside
+`/tools/vitest.config.mjs`; `/tools` is intentionally read-only, producing EROFS.
+This happens before the runner-only marker and before native Service launch.
+It is an external config-loading/startup failure, not a measured memory failure
+or evidence of a product regression. The owner-directed stop is honored; no
+live repair/retry follows. A next bounded remedy would address only external
+config loading while preserving immutable tools/candidate inputs and1GiB.
+The comparison remains pending; Plan2 and pagination rule B2 are not entered.
+
+Offline validation is reported without hiding a planning deviation. Eight fixed
+cases run twice: pass1 has2 PASS/6 FAIL against the initial adapter; pass2 has
+7 PASS/1 ERROR. The error is a Windows mock reaching Linux-only `os.major`, not
+a live observer failure. Repair only that mock and execute its single case once:
+PASS. Final coverage reuses the other seven unchanged passing cases; there is no
+claim of an all-green complete second pass. Actual named offline executions17,
+one above the self-planned16, explicitly recorded before the targeted retry;
+the owner's seven-live-scenario limit is unchanged. No old8/12/16-case suite is
+replayed. One fresh static whole-change reviewer identified a held-FD coverage
+gap; the fixed case keeps group/leaf paths stable and changes only the held leaf
+FD inode. The reviewer confirmed resolution without tests/imports/live access.
+
+Frozen evidence:
+
+| Manifest | SHA-256 |
+| --- | --- |
+| `offline/manifest.json` | `463b9c0f389575b6326496d92293cb8c1275e171ac6b06b78a72a664d7a5f950` |
+| As-run `proof/manifest.json` | `080043efce4f4b0c62b34d5eaa238ebd7d9f2e68c8b498c7d92611cac86b30a9` |
+| Derived `postrun/manifest.json` | `21a7999727442fc050261f15bc5b4c9559b10aa15ace13ca761e4bd266ee48e4` |
+
+The as-run manifest binds30 proof files and22 helper/source entries; proof plus
+scratch is2,355,373 bytes within10MiB. The supplement independently verifies
+as-run files/helpers, all retained sample bindings/limits/OOM counters and equal
+before/after preservation. It clarifies one copied generic ledger sentence:
+old Linux helper guards are reused by unchanged source hashes, as the actual
+receipt states; those guards were not rerun during this preparation. As-run
+ledger and manifests are not rewritten to correct this inherited wording.
+
+Cleanup is clean: token-owned containers/network removed, no owned containers
+remain, sampler stops normally, final container states have no OOM, and no
+cleanup/preservation error. Preservation agrees before/after:408 prior files,
+358 F2 candidate inputs, clean B1+C at
+`b79f426649e65eadb3fb29e410250395a6d65faa`, unchanged primary Service,28-file old
+probe/runner,18-file stable-cache proof with6 helpers, and ten later pinned
+manifest/helper/input chains. Original PDF baseline evidence is unchanged.
+No Word export or reviewed-page budget is used. No product change, document
+generation, full suite, Plan2, pagination B2, integration, release or push.
+
+The authorized stop checkpoint is complete; Plan1's A–B–B–A result remains
+blocked by external config startup. Only this existing Project Control document
+changes; `tools/check.ts` and `git diff --check` pass. No map/registry/package
+truth is promoted.
