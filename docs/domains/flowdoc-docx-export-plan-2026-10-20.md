@@ -1,5 +1,9 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [M1b-R1 stopped on an import error](#2026-10-23--m1b-r1-import-blocker-at-proof-cap).
+Both rounds0/16 PASS;32/32 case executions are consumed. The four planned
+dummy-process cases never reached process launch. No M2/live readiness claim.
+
 Latest recovery checkpoint (2026-10-23): [M1b offline wiring is incomplete](#2026-10-23--m1b-offline-wiring-incomplete-at-proof-cap).
 Final round7/8 synthetic cases pass; all16 authorized case executions are spent.
 The operational evidence port and interruptible process supervision remain open;
@@ -12687,3 +12691,52 @@ ledger; do not advance to M2 or treat7/8 as acceptance. Status-document checks
 are evidence/coverage review, preservation/archive hash comparison and
 `git diff --check`; no canonical data/map changed, so projection regeneration
 is not applicable. I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — M1b-R1 import blocker at proof cap
+
+Authority Boundary: owner-approved external-tool M1b-R1 only,16 named offline
+cases at most two rounds, including four planned Windows dummy-process cases.
+External-tool implementer / Evidence Reviewer; single-room execution IDs N/A.
+Disposition: **FAIL_M1B_R1_IMPORT_BLOCKER_BUDGET_EXHAUSTED**, not accepted.
+
+Evidence root is
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-runner-m1b-r1`.
+Read `result.json`, `brief.json`, `review.json`, `proof/ledger.json` and both
+`proof/cases-*.json`; tested source hashes remain frozen in the ledger.
+Round1 is0/16 PASS with the implementation module absent. Final round2 is0/16
+PASS because `repair.py:23` binds the class attribute `time` before evaluating
+`time.sleep`, producing `AttributeError: 'staticmethod' object has no attribute
+'sleep'`. All cases stop during import. The implementer introduced this error;
+static syntax parsing did not detect it. No case establishes behavioral proof.
+
+All32/32 authorized executions are spent. Cases13–16 were attempted but never
+reached DummyBackend.start: **zero actual dummy processes or verified joins**.
+The fixture's `realDummy:true` and `realDummyCases:4` fields are planned-case
+labels, not launch evidence. No third round, repair after final verification,
+hidden pilot, refund or ledger reset occurs.
+
+Concrete command/evidence adapters, nested config receipts, raw-byte hashes,
+source/cache/observer/DB provenance, asynchronous deadlines, Linux pidfd Service
+join and Windows Job subtree supervision were written in the separate area but
+remain unverified. One fresh static reviewer found four important issues;
+corrections were written before round2, but the import failure prevents their
+behavioral confirmation. External diagnostic config/scenario is consistently
+45s because the original15s config/30s fixture conflict cannot accommodate three
+five-sample windows plus readiness/cleanup. Planned outer bounds remain60s per
+arm,600s active session and a separate60s cleanup; none was demonstrated live.
+
+Preservation comparison passes for1547 prior recovery/evidence files and390
+pending P2.0b files, including all17 retained PDFs and original M01/M1b records.
+B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`.
+Service policy remains1GiB, swap0,2CPUs, admission768/320 unchanged; no new memory
+measurement or actual limit-enforcement evidence. No Docker, M2, Service, full
+suite, B2, Word/PDF generation, product edit or integration occurred.
+
+Verified same-machine backup:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-runner-m1b-r1.zip`,
+SHA256 `229fb809997006d0b740726858c82c704fada85a0df0359691f9d224b50cafd6`;
+all40 archive members match their saved content hashes. Next work requires a
+bounded import repair and fresh explicitly approved proof budget, preserving
+both failed rounds. Status checks are evidence/meaning review, preservation and
+archive hash comparison, final diff review and `git diff --check`. No canonical
+data/map changed; projection regeneration N/A. I6 remains NOT ACCEPTED.
