@@ -14898,3 +14898,46 @@ R13 continuation — source grouping and generated native paragraph fragments:
   mapping; exact source paragraph grouping and authored text remain mandatory.
   Unsupported navigation/field/group relations must retain their existing
   mapping rather than disappear. No unproved product adoption or integration.
+
+- Recommended continuation under the same owner authorization: a proof-only
+  positioned-word route may use native editable text boxes inside those source
+  paragraph groups. Positions come exclusively from shared source measurement
+  and ICU4X-safe spans, not PDF/draw input or fitted coordinates. This further
+  changes native Word selection, copying and editing; report that tradeoff and
+  retain regeneration as the path to restored fidelity. Keep the semantic model,
+  logical table topology, text, fonts, old evidence and numeric targets intact.
+  No new public mode or product adoption is implied by preparing the prototype.
+
+R13 positioned-word checkpoint — bounded visible ink, not full acceptance:
+
+- Source-controlled editable word boxes with ordinary fixed-width wrapping,
+  font-owned ink/Windows ascent-descent canvas room, and source-derived inner
+  line frames pass visible-ink checks in all24natural-wrap development cases:
+  Sarabun/Bai Jamjuree, genuine4faces,10/12/16pt. All21777font components have
+  identical contours, identity native transforms, no clipped/unknown-clipped
+  glyphs, and unchanged positive page/line membership. Maximum component-anchor
+  error is0.346pt X/0.24068pt Y; worst per-case p95 is0.182pt X/0.20168pt Y.
+  These are component-ink metrics, not invented compound glyph-origin metrics.
+- Native Word Save As retains the exact authored text and6source paragraph
+  groups in the bounded Regular probe. Generated native boundaries and word-box
+  selection/copy/edit tradeoffs remain declared; this does not establish general
+  interactive editing fidelity. Earlier no-wrap/inset prototypes clipped marks
+  and remain failed evidence; no fitted text-position correction was adopted.
+- Evidence: `fidelity-system-r13/positioned-word-checkpoint.json`,
+  `probes/corrected-positioned-words-square/visible-ink-assessment.json`,
+  `probes/corrected-positioned-words-square-allfaces/visible-ink-assessment.json`,
+  and`word-roundtrip-grouping.json`. Saved-file effort inventory is distinct
+  from unique case coverage; repeated exports and failed preparation are not
+  additional accepted cases.
+- All-layout source guides now cover57paragraphs per packet and2821lines across
+  the8development packets. Authored section margins and table widths/padding
+  determine measurement; every line text and glyph matches diagnostic draw.
+  Draw remains comparison-only. The first guide draft used book margins for
+  narrow sections and was rejected before native use. Corrected evidence:
+  `probes/corrected-word-spacing-alllayouts-v2-allfaces/source-guide-audit.json`.
+- Table/page-flow native proof, zero-ink whitespace/logical-cluster accounting,
+  product DOCX adoption, frozen heldout96, original regression treatment and
+  final independent/package review remain open. No full-case/phase PASS follows
+  from visible ink alone. Old17PDFs/22inputs/14R11outputs/200compiled files and
+  frozen16input packets still pass preservation; heldout outputs remain absent.
+  Core remains clean at`5d9d6bf`; no main/release merge, push or release.
