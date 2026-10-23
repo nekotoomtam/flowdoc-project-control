@@ -14741,3 +14741,62 @@ R13 checkpoint — development baseline captured, acceptance still pending:
 - Heldout96inputs remain frozen; no heldout native output or score generated or
   inspected. S1 diagnosis and S2 implementation remain open; S3/S4 have not run.
   No Service/I6 work, full suite, B2, merge, release or push.
+
+R13 checkpoint — paragraph-frame probes and source-guided line experiment:
+
+- Word binary metadata rechecked:16.0.20430.20182. Initial96native cases plus
+  two24case Regular-face probe batches ran;144native case evaluations total.
+  Both probes are external OOXML artifacts, not product changes or accepted code.
+- Requested-height Exact alone is rejected: Sarabun table clip intersections
+  increase13->38; Bai10->9. Both packets still have8of12cases with line/page
+  membership differences. Original reference PDFs remain unchanged.
+- Source-only frame probe computes ascent/descent from the same frozen fonts and
+  source text, then uses the LibreOffice fixed-line4/5 ascent model and native
+  half-point positioning. This is a tested interop hypothesis, not Word source
+  or a universal rule. Pinned references are LibreOffice
+  `2fab1ff3b12eee3702ad67089e4ea990d755cc4f:sw/source/core/text/itrform2.cxx`
+  and ONLYOFFICE
+  `9d2138866d929be32f1d107e8b5bfae36156e097:word/Editor/Paragraph_Recalculate.js`.
+  ONLYOFFICE's line-local exact-spacing calculation differs; it is not evidence
+  that every engine uses4/5.
+- All six short Regular cases have complete identical contour sequences. Source
+  frame Y maxima are Sarabun10/12/16:0.180/0.096/0.032pt and Bai
+  0.210/0.144/0.240pt. X remains failing in five of those six cases. This verifies
+  a limited general-font metric effect, not complete fidelity.
+- Paragraph-wide source frames remain rejected for general adoption:8of12cases
+  per packet still have membership differences; table clip intersections are
+  Sarabun13/Bai18. Bai packet count becomes16matching reference16, but per-case
+  layout and clipping still fail. No PASS from that packet count.
+- Source draw inspection finds variable line heights/baselines in334of456
+  paragraphs across all eight development packets. One Sarabun Regular16pt body
+  varies line height24..26.608pt and baseline17.888..21.328pt across42lines.
+  This is the measured reason a single paragraph-wide frame/offset is insufficient;
+  it does not prove all possible native Word controls incapable.
+- Coverage clarification: provenance counts above cover visible-ink glyphs.
+  Authored DOCX strings/order include whitespace and pass exact comparison, but
+  zero-ink advance mapping and compound one-to-many origin scoring remain open.
+  Native font inventory's Times New Roman entries paint only whitespace; all
+  non-whitespace contours map to the declared embedded source-font provenance.
+  Do not treat that as full glyph-origin acceptance. Three marked clipping crops
+  and one complete table page were visually reviewed; full-matrix visual acceptance
+  has not run. The marked Sarabun glyph bounds agree with true outline bounds.
+- Proposed next architecture: source-guided line layout using the same semantic
+  document and fonts, retaining source paragraph identities and PDF behavior.
+  Explicit rendered line/page guides or table continuation fragments can change
+  native Word reflow, copying and editing behavior. Those are contract tradeoffs,
+  not another spacing coefficient. Owner subsequently selected
+  "ทดลองให้ FlowDoc คุมจุดตัด (แนะนำ)" in this chat, accepting source-derived
+  rendered line guides and the need to regenerate for restored fidelity after
+  editing text/fonts in Word. Proceed autonomously with that experiment under
+  the same model/PDF preservation, font matrix and acceptance criteria. Preserve
+  source paragraphs, authored text/explicit breaks and logical table topology;
+  record generated layout controls separately. No table-topology change or new
+  public product mode is accepted merely by this choice. No such controls,
+  fragments or product mode existed at this checkpoint. No unilateral threshold
+  reduction or acceptance claim.
+- Fresh preservation check PASS17oldPDF/22inputs/14R11outputs/200compiled files;
+  Core remains clean at`abac048`. Heldout96native outputs/scores remain unopened.
+  S1 full geometry and S2-S4 remain open. Evidence locators:
+  `fidelity-system-r13/probes/{exact-line,source-frame}/result.json`,
+  `development/source-frame-variation.json`, `provenance-controls.json`,
+  `preservation-checkpoint.json`. No merge, push, release or Service work.
