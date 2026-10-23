@@ -12340,3 +12340,68 @@ No P2.0c, P2.1, full suite, B2, release or integration follows recovery itself.
 Completion for this proposal is a clear old-versus-new boundary and staged
 return checkpoints. Present-turn verification is manual plan/scope review and
 `git diff --check` only; no test/check suite is run under the owner's restriction.
+
+### 2026-10-23 — continuous evidence recreation: Word blocker
+
+Authority Boundary: Project Control recovery/evidence status only. The owner
+subsequently authorized recreating the evidence with a checklist and continuous
+execution. This supersedes the preceding proposal-only stop for necessary
+recovery and fresh evidence, without authorizing B2, full-suite acceptance,
+product repair, integration, release or push. Single-room execution IDs remain
+not applicable. Active roles are Evidence Reviewer and Documentation Synthesizer;
+Core and Service retain their product ownership.
+
+Current result is **BLOCKER**, not complete evidence recovery or I6 acceptance.
+Durable working root is
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23`.
+Its `checklist.json`, `result.json`, `final-manifest.json` and
+`backup-receipt.json` provide the detailed checkpoint. The deleted date folder
+was not recreated and no new PDF is labelled as the lost original.
+
+| Checklist scope | Current evidence and disposition |
+| --- | --- |
+| Recover candidate sources | PASS: isolated Core `codex/recovery-b1c` at `b79f426649e65eadb3fb29e410250395a6d65faa`, clean, seven changed blobs checked against Git; isolated Service `codex/recovery-p20` at `8690193b73b14554c63a9aebe5c888edcf780946`, all360 original P2.0 candidate file hashes match. Service retains recovered candidate dirt; it is not a clean accepted branch. |
+| Preserve pending P2.0b | PASS for the inventoried source/supporting files: separate local copy, post-copy hash comparison. Its old eight spent offline cases remain spent; no remaining round was launched. Historical script reconstruction has ten unresolved intermediate patch contexts and is not blanket proof of original tool identity. |
+| Freeze E0-R1 | PASS: separately named new family,22 frozen input/asset files for P/T/Q/W/R; reconstructed/re-authored sources, not claimed to be original lost input bytes. |
+| Generate reference and candidate artifacts | PASS for generation: reference package matches all208 retained archive members; new reference PDF/DOCX and candidate-image DOCX use the same frozen resolved graphs. Candidate differs from reference in three DOCX distribution files. The digest-to-B1+C-source relationship is retained historical context; a new source-to-build attestation was not established. |
+| Review reference PDF |29 pages rendered and visually inspected: P6/T5/Q5/W9/R4. Character bounds checks pass. Boundary spacers, intentional blanks and expected text splits remain visible. Reference PDF hashes are frozen. |
+| Review Word and compare B1+C layout | BLOCKER: private Word automation attempted only the first reference P, produced no PDF/page count after338 seconds, and was stopped after saving process/file diagnostics. Exact COM stage and root cause remain unknown. No candidate Word export, repeatability, page/line-offset comparison or layout acceptance. |
+| Check DOCX contents | PASS only for five packets in both arms: source text order and authored LF match; image media and decoded embedded font bytes match between arms. This is not proof of Word pagination. |
+| Recreate P2.0 offline proof | Six new synthetic offline scenarios PASS in one round. The14-case registry is checked without executing its real callbacks. Zero functional cases or live database equivalence claims. |
+| Recreate config/observer/memory proof | Eight pinned Vitest/Vite source files copied from the retained image; closed profile identity and source route supported, `runtimeReady:false`. Observer/cache/A–B–B–A execution remains unperformed; no memory result is reused as a new PASS. |
+| Coverage and backup | Partial coverage explicitly recorded. Source, new reference PDFs and partial proof archived and hash-verified in a separate local folder. Same-machine backup is not off-device recovery. |
+
+Fresh allocations were recorded before execution, independently of old spent
+budgets:12 Core preparation/generation attempts,18 Word exports,180 rendered
+pages,12 P2.0 offline cases and seven readiness scenarios. Actual usage is five
+Core invocations (including one failed temporary-directory setup before any
+artifact generation), one Word attempt with zero completed exports,29 rendered
+reference pages, six P2.0 offline cases and zero readiness scenarios. Twelve
+Word exports were reserved; eleven were unattempted. Failed attempts were not
+refunded. The resource-directory repair changed only the external harness.
+
+All five Core invocations specified1GiB memory, zero swap and2CPUs with network
+disabled. This is container configuration evidence; no universal host/Word
+memory ceiling or peak-memory measurement is claimed. Service768/320 admission
+and product files were not changed. Creation-verified owned Word and launcher
+processes were closed; existing unrelated containers were left untouched.
+
+Fresh static review identified additional harness prerequisites before more
+execution: retain container identity and guarantee timeout cleanup, reserve
+render-page work cumulatively before rendering, preserve font-family identity
+in multi-family comparisons, and establish source-to-candidate-package linkage
+before accepting B1+C equivalence. Current fonts are one Sarabun family and the
+only completed render pass covered29 pages; these limitations are not new
+pagination or memory results. Detailed review/disposition is retained with the
+external checkpoint.
+
+Next work begins with a bounded, per-phase Word diagnostic on the existing
+frozen P input and a watchdog. Do not regenerate PDF/input sources to work around
+the failure. Complete Word reference/repeat/candidate page and source-offset
+coverage, then fresh observer/cache/memory proof, before resuming held P2.0b.
+No B2, full suite, P2.0c, P2.1 or product integration was performed.
+
+Verification for this status change: inspect current evidence and coverage,
+compare source/input/reference hashes, verify archive contents, review the
+single-document diff and run `git diff --check`. No generated map or canonical
+record changed, so projection generation is not applicable.
