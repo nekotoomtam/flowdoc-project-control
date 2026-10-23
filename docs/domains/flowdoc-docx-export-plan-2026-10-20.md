@@ -12019,3 +12019,193 @@ checks, original-prefix comparison, candidate14/14 and resource-wait3/3 remain
 unexecuted. There is no new finding that closes an old I6 failure or establishes
 causal memory savings. No P2.1/P2.2, full suite, B2, product repair, release,
 integration or push follows automatically.
+
+### I6 P2.0b/P2.0c proposal: bind executor and prove lifecycle 2026-10-23
+
+**PROPOSED / NOT EXECUTED.** The owner requests a plan for the missing real
+executor/config/observer connection and process/database checks. This turn
+inspects saved source and hashes and updates this existing canonical document
+only. No candidate/tool implementation, offline scenario replay, Docker,
+database connection, Service, document generation or full suite occurs.
+
+Goal: establish a trustworthy execution boundary before the original P2.1
+prefix comparison. Owner Service for test adapters; Project Control owns this
+proposal/checkpoint. Planning Partner/Evidence Reviewer, single-room IDs N/A,
+medium Work Size/routine Risk Tier; current host model/capability prepares the
+bounded proposal without override. A later execution resolves its own compact
+model decision. Document Budget this existing document only. Inputs are the
+preceding P2.0 source map/result and the accepted config-source/observer/live
+manifests, not a reopened historical execution context.
+
+#### Source findings and recommended design
+
+P2.0 has serial `execute`, `cleanup`, `verifyBoundary` and durable `persist`
+interfaces but no concrete target executor. Its worker entry already emits
+PID/start/cgroup/PID-namespace identity. Use these interfaces and the accepted
+native config-loading/source/observer route; do not restart A–B–B–A discovery.
+An unchanged readiness script is unsuitable: its root/include and30s test/5s
+hook timeouts are for another fixture. Its DB boundary also demands zero task
+and job rows, which would destroy the shared-history contract if reused here.
+
+Recommend a host-side orchestration bridge plus a small target-side invocation
+supervisor. Orchestration carries IDs, descriptors and proof only. Vitest
+coordinator/workers, original fixture/image construction, in-process/native
+Service, MCP/proxy/client and rendering children all stay in the same target.
+A long-lived Vitest process would preserve the retention being investigated;
+moving Vitest outside the target would change the memory boundary. Neither
+alternative fits this experiment.
+
+Keep exact1073741824-byte target memory.max, memory.swap.max=0 and2CPU.
+Keep queue max(current,credits)+cost<=768 and worker320, slots/FIFO, pressure,
+freshness/recovery, existing assertions and deadlines. No heap flags, GC,
+package installation/upgrade, VM restart, host-cache flush or memory subtraction.
+The original B1+C, PDFs, frozen F2 and P2.0 roots remain immutable inputs.
+
+#### P2.0b — implement binding and check it offline, only after authorization
+
+Create a fresh Service worktree/branch `codex/i6-p2-binding` under a new external
+`C:/Users/nekot/Documents/Codex/2026-10-23/i6-p2-binding` root. Materialize and
+hash-lock the complete current P2.0 candidate, including its inherited F2
+inputs, rather than editing the old dirty worktree. Retain source-map hashes
+and a before/after allowed-path manifest. No candidate commit before its owner
+guide's real checks; no integration.
+
+Proposed external units: `bridge.mjs` binds the existing controller callbacks;
+`target-invocation.mjs` starts one fresh whole Vitest invocation and records its
+leader; `vitest.config.mjs` selects explicit task or control-probe mode;
+`boundary.mjs` adjudicates process/session/lock evidence; `schema-owner.mjs`
+performs short-lived owned-schema administration; a control fixture and offline
+tests/proof live beside them. Preserve accepted observer/source-reader files
+byte-for-byte and bind them to a fresh current descriptor. Do not modify frozen
+helpers in place or blindly call the readiness runner's `main`.
+
+Service edits, if required, are limited to `tests/task-api.test.mjs` for a bounded
+owned-mode identity handshake, and `tests/helpers/taskApiRunDatabase.mjs` for
+releasing an owner connection without dropping its schema and later finalizing
+through a new checked connection. Existing case bodies/hooks/fixtures,
+`task-api.cases.mjs`, shared DB/lifecycle helpers, runtime/config/package/CI
+files and Core stay unchanged. If another product path is required, stop and
+report that boundary rather than expanding silently.
+
+- Bind `execute(caseSpec)` to the target supervisor, never the host Docker
+  client PID. Bind `cleanup({id,report})` to abort/join that owned invocation,
+  and `verifyBoundary({id,report})` to independent saved observer/SQL evidence.
+  Preserve `persist(snapshot)` reservation-before-launch and STOP/no-retry.
+  A prefix has partial evidence, never the controller's all14 aggregate PASS.
+- Invoke pinned Vitest directly with `--configLoader native`, an explicit
+  external config, cwd/root `/work/service`, forks, maxWorkers1, no file
+  parallelism, isolation and passWithNoTests=false. Task mode includes only
+  `tests/task-api.test.mjs`; the owned case ID registers exactly one original
+  case. Keep testTimeout15000 and original explicit overrides; preserve the
+  locked original hook limit10000 and explicit setup30000. Check the effective
+  loaded values rather than assuming CLI forwarding. Probe mode uses a named
+  external control fixture and must never claim original I6 coverage.
+- Record round/case, config/source digest, actual effective root/include/mode,
+  timeout/pool settings and actual worker marker. Unknown mode, stale config,
+  missing/duplicate receipt, zero/skipped/multiple tests or a wrong title fails.
+  A config import marker or echo of its exported object alone is insufficient:
+  retrieve resolved settings through a hook supported by the pinned source,
+  prove that route offline, and stop before live if support cannot be established.
+  The config-load receipt is checked before case work. Task-mode body execution
+  remains outside this binding checkpoint.
+- Match supervisor/worker PID+start, namespace and cgroup to the current target
+  descriptor and independent observer evidence. A short bounded handshake may
+  occur during owned-mode collection, before original hooks/body deadlines
+  begin. No sleep/ack is inserted inside an original callback. A1Hz sample alone
+  cannot prove a short-lived child existed: use startup identity receipts plus
+  explicit census/join evidence. Retain the native/MCP detached groups too.
+- Keep one newly owned database/schema across ordered workers; migrations and
+  initial templates run once. The external controller retains the capability
+  descriptor, not a permanent DB session. Short-lived schema administration
+  runs inside the target and closes its pool before worker boundaries. Worker
+  close retains rows/schema. Later finalization opens a checked connection,
+  verifies ownership, drops only this run's schema and closes the connection.
+- Inspect the dedicated DB through the existing PG container. Excluding only
+  the inspection connection, require zero remaining sessions/transactions and
+  zero advisory locks at between-worker boundaries. Query the explicit owned
+  schema; keep its marker and task/job/template/finding history. Do not require
+  rows=0 or reinitialize between cases. A connection tagged as an owner is not
+  an excuse for an unexplained lingering session.
+- Signal only revalidated owned PID/start/group identities, preserve original
+  failure plus cleanup/inspection errors and bound termination/join time. Do not
+  continue until the target census matches the saved init/sleep baseline and
+  DB checks pass. Unknown ownership or an escaped/remaining process is STOP;
+  removing an owned container during final cleanup cannot turn that into PASS.
+
+Propose eight fixed offline scenarios, maximum two rounds/sixteen executions:
+
+| Scenario | Required assertions |
+| --- | --- |
+| 1. Config and launch contract | Exact target/cwd/native route, effective timeouts, one selected original case; probe/task modes cannot substitute for each other |
+| 2. Actual identity binding | Valid cross-view identity passes; host-client PID, stale start/namespace/cgroup or wrong round refuses |
+| 3. Coverage receipt | Wrong config/title, missing/duplicate/zero/skipped/multiple tests refuses |
+| 4. Reservation and abort | Durable charge precedes launch; setup/launcher failure remains charged; no retry or continue |
+| 5. Timeout and detached children | All owned groups joined; nested execution/cleanup errors retained; stale PID never signalled |
+| 6. Shared schema handoff | Two fake workers retain rows, initialization once; owner release closes pool without DROP; later checked finalization only |
+| 7. Database boundary | Preserved rows accepted; session/transaction/advisory-lock residue or foreign ownership refuses |
+| 8. Observer/budget/finalization | Missing/stale samples, OOM/policy drift, write/budget/cleanup failure cannot produce PASS |
+
+Use fake spawn, filesystem/process evidence and fake pools; no Docker/PG/Service
+imports or actual child launches in these scenarios. Reuse unchanged P2.0 and
+accepted helper proof by source hash, without replaying their exhausted suites.
+Stop after this offline checkpoint; it alone does not authorize P2.0c.
+
+#### P2.0c — proposed actual control-only proof, separately authorized
+
+Only after binding/offline acceptance, propose five charged scenarios on one
+new disposable1GiB target with a separate accepted observer and owned PG DB:
+
+| Scenario | Actual work and acceptance |
+| --- | --- |
+| C0 preparation | Pin image/source/mounts and fresh descriptor; create owned schema and release admin pool; accept five bound1Hz samples, exact memory/swap/CPU and no OOM |
+| C1 normal worker A | One fresh probe Vitest invocation; actual loaded-config and PID receipts, synthetic initialization/history marker, one owned helper child, normal complete cleanup |
+| C2 normal worker B | Another fresh invocation on the same schema; read A's marker, prove initialization once, retain both markers; foreign-capability attach refuses without deleting/changing history |
+| C3 deliberate timeout | Third fresh probe invocation retains shared history, holds an owned test transaction/advisory lock and two helper descendants including a detached group, then intentionally reaches its declared timeout; raw failure survives and complete process/session/lock cleanup is proven |
+| C4 finalization | Save proof and confirm census/DB boundaries, recheck correct ownership, finalize only owned schema/DB/resources, stop observer and recheck preservation |
+
+Maximum five started scenarios: three Vitest invocations and two short-lived
+target schema-admin invocations, plus the declared helper descendants. Record
+actual coordinator/worker/child starts instead of hiding them as warm-ups.
+Source/identity reads and PG inspection commands belong to those charged
+scenarios; there are no extra readiness, CLI-help, ABBA or generation pilots.
+Any started setup failure consumes its slot; no refund, resume or retry.
+
+C3's raw Vitest result remains FAIL. Only the control fixture's predeclared
+timeout plus successful independent cleanup can satisfy that negative probe.
+It cannot produce an original-case PASS or reopen a stopped case controller;
+only C4 finalization follows. Unexpected test/policy/observer/ownership/OOM or
+cleanup failure stops immediately, with cleanup and retained failure evidence.
+
+Propose a6-minute active-live ceiling and4MiB retained diagnostics, with bounded
+operations: preparation<=120s, normal probes<=45s each, timeout probe<=60s and
+finalization<=60s, all additionally subject to the overall ceiling. Preserve
+original task deadlines; these are outer control-proof limits. Offline proof
+has a separate1MiB ceiling. Budget exhaustion is STOP, never permission to omit
+mandatory evidence. No payload/image generation, actual Service/MCP/native
+Service startup, original task-api case, PDF export or resource-wait subset is
+part of these control probes.
+
+This proves wiring/lifecycle, not cache comparability or retention savings.
+Probe initialization/history uses test-only data in this disposable control DB;
+it does not certify real migrations/templates. This DB is never reused for an
+original task arm; P2.1 prepares its own new databases as already proposed.
+Inventory the new input roots and freeze hashes for later cache control; do
+not flush caches or apply readiness's8MiB file guard to different task payloads.
+Real task-mode collection and original-case identities still require P2.1.
+The older28-scenario P2.1/P2.2 proposal is neither consumed nor increased here;
+it must be reconciled before any later authorization, without hiding new proof
+inside old preparation budgets.
+
+#### Return and present-turn verification
+
+Return per-scenario raw outcomes, config receipts, worker/child identities,
+before/after process and DB boundaries, original/shared-state preservation,
+budget/cleanup errors and frozen-input hashes. P2.0b offline PASS and P2.0c
+control PASS are separate claims; neither closes I6. Stop before P2.1 until the
+owner accepts the evidence and authorizes original-prefix work. Full suite,
+B2, integration and product repair remain outside scope.
+
+Present planning rechecks P2.0's unchanged manifest17 files and three candidate
+hashes plus the two preceding live manifest hashes, without running a scenario.
+Only this canonical plan changes. Project Control `tools/check.ts` and
+`git diff --check` pass; no shared map/status promotion or runtime acceptance.
