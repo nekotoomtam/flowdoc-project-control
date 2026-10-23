@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [R8 unchanged R6 combined offline16 PASS](#2026-10-23--r8-unchanged-r6-combined-offline16-pass-without-external-progress-reads).
+Fresh load PASS; one original worker passes16/16 in41.15s. No external journal/log
+reads while active; all four actual dummy roots have zero-active/closed cleanup.
+17/17 consumed; STOP. This closes the combined offline gate only, not live M1b/I6.
+
 Latest checkpoint (2026-10-23): [Unchanged R6 combined offline run stops15/16](#2026-10-23--r7-unchanged-r6-combined-offline15-of16-and-stop).
 Fresh load PASS. One original16 worker completes in36.59s; case11 fails on a
 WinError5 journal replacement, all other15 PASS, including four real dummy cases.
@@ -13145,6 +13150,62 @@ source edit, integration or Word/PDF generation occurred.
 Verified same-machine archive:
 `C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-r6-combined-r7.zip`,
 SHA256 `d17b789becb479c6a9c4527f8cdc23d0a47e6077bd9b0ccdb4ee7826c3647fa3`;
+all594 members match saved hashes. Status-document checks: scope/evidence review,
+candidate/preservation/archive comparison, final diff review and
+`git diff --check`. No canonical data/map change; projection regeneration N/A.
+I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — R8 unchanged R6 combined offline16 PASS without external progress reads
+
+Authority Boundary: owner-approved verification only, load1 + original16 once,
+new cap17. Evidence Reviewer; inline execution IDs N/A. Keep R6 sources,
+exact-two, original timeout and1GiB; no Docker/M2/Service full suite/B2,
+candidate/product edit, integration or Word/PDF generation authorized.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-r6-combined-r8`.
+Read `result.json`, `brief.json`, `baseline.json`, `review.json`, `ledger.json`,
+`manifest.json`, `candidate/proof/load.json`, `candidate/proof/suite.json`, and
+`candidate/proof/journal-suite/01.json` through `16.json` plus events.
+All37 sources are byte-identical to R6, before and after execution. The outer
+adapter is byte-identical to R7; its static review is reused for unchanged
+content, not described as a fresh review or runtime PASS. Both load and suite
+run fresh against a new ledger/output directory; old receipts are not reused.
+
+**Combined offline16 gate PASS.** Fresh load exits0 before fixture dispatch;
+one original main worker passes01–16 together in41.15s within the unchanged60s
+outer limit. Case11 now satisfies its original arm-deadline/cleanup assertions;
+its retained journal is PASS with7.031s elapsed. Original case15 exact-two and
+cancellation assertions PASS. Actual cases13–16 all PASS with roots26520,20268,
+36076 and5096; ready records include child32020 in15 and29904 in16. Each actual
+root has activeAfter0 and closed=true. No recorded forbidden operations or live
+Docker commands. All original per-case assertions and timeouts remain unchanged.
+
+Read discipline is fulfilled for this run: after suite dispatch, the assistant
+only waits through the exec process-session pipe until parent completion;
+no external journal/log/result read, proof hashing or archive operation occurs
+while the worker is active. Original worker-internal writes/readback stay
+unchanged. Results, journals, cleanup and hashes are inspected after completion.
+This excludes the assistant's external progress reads for R8; it does not prove
+absence of unrelated system readers, identify R7's file holder or establish
+retrospective causality for the R7 WinError5. R7 remains a preserved failed run.
+
+Consumed17/17; ledger halted. Load/suite retain the same candidate/adapter
+manifest digest `9a99dcb98997d63bd79b2fa42ff16d34abf504fe14224a511a15770940efacd0`.
+No second suite, retry, source repair or additional proof after PASS. This closes
+the combined synthetic/host offline gate only. Live config/observer/cache/memory,
+M2 and mandatory combined Service acceptance for I6 remain unverified. Next
+work requires a separately bounded proposal; no live step begins here.
+
+Preservation hashes match3314 prior recovery files,390 pending P2.0b files and
+all17 PDFs. B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`.
+Policy stays1GiB, swap0,2CPUs, admission768/320 unchanged; no live Service
+memory/enforcement claim. No Docker/M2/Service full suite/B2, candidate/product
+source edit, integration or Word/PDF generation occurred.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-r6-combined-r8.zip`,
+SHA256 `40cf0bcf7c06f4cfe117e3fa85fe9d7ae8cd51b2b65c9e04c5b77122b6487de5`;
 all594 members match saved hashes. Status-document checks: scope/evidence review,
 candidate/preservation/archive comparison, final diff review and
 `git diff --check`. No canonical data/map change; projection regeneration N/A.
