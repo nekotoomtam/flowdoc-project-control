@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [Case15 diagnostic captures an extra Job member](#2026-10-23--m1b-r4-case15-diagnostic-captured-and-stopped).
+Load and six simulated checks PASS. One unchanged case15 capture reads3 active
+members: two Python processes plus conhost.exe.8/9 consumed; STOP with no repair.
+The diagnostic succeeds; case15 still FAILS before cancellation and M1b stays open.
+
 Latest checkpoint (2026-10-23): [M1b-R3 reaches final15/16 without worker timeout](#2026-10-23--m1b-r3-focused-pass-final15-of16-and-stop).
 Load passes and the corrected focused checks pass4/4. Final unchanged suite
 finishes within60s; case15 fails before cancellation.26/26 consumed; STOP.
@@ -12871,4 +12876,67 @@ SHA256 `8c50be711d93df9bfa7d09738b2204c219737d59bbea1676c1b23788550acb42`;
 all823 members match saved hashes. Status-document checks are evidence/scope
 review, source/function/preservation/archive comparison, final diff review and
 `git diff --check`; no canonical data/map change, projection regeneration N/A.
+I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — M1b-R4 case15 diagnostic captured and stopped
+
+Authority Boundary: explicit owner-approved diagnostic instrumentation only,
+in an isolated external copy; no behavior repair. External-tool implementer /
+Evidence Reviewer; single-room execution IDs N/A. Budget9: load1, simulated6,
+at most two case15 captures. Preserve original assertions, deadlines and1GiB.
+No Docker/M2, Service full suite, B2, product edits or integration authorized.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-case15-m1b-r4`.
+Read `result.json`, `brief.json`, `review.json`, `baseline.json`, `manifest.json`,
+`diagnostic-proof/ledger.json`, `load-1.json`, `simulated-1.json`, `case15-1.json`
+and `case15-1-snapshot.json` under `diagnostic-proof` for the latter four files.
+All33 copied inputs, including original case15, launch flags, supervisor,
+dummy helper and cleanup code, remain byte-identical to R3. Instrumentation
+returns the same original count to the assertion, recording the Job member list,
+query-only process identities, creation times and available parent IDs.
+Supplementary reads are marked non-atomic. Native queries follow Microsoft
+QueryInformationJobObject / JOBOBJECT_BASIC_PROCESS_ID_LIST declarations.
+
+**Diagnostic goal PASS; original case15 FAIL; overall M1b NOT ACCEPTED.** Load
+passes before any fixture/process dispatch. All six simulated interpretation
+checks pass (exact two, too few, extra member, wrong membership, missing ready,
+query error). One actual case15 capture reproduces the same exact-two assertion
+failure, reading ActiveProcesses3. The Job list independently reports all three:
+parent Python23972, child Python32612 and `C:/Windows/System32/conhost.exe`24308.
+All three process handles confirm membership; parent metadata for24308 is23972.
+The extra member explains the reproduced count mismatch; cancellation is never
+requested because the original assertion still fails. After original harness
+cleanup, activeAfter0 and closed=true; no cleanup/instrumentation errors or
+forbidden operations. Capture time0.313s; original3s readiness,2s cancellation,
+3s cleanup and60s outer timeout stay unchanged.
+
+This is a reproduction on identical R3 copied inputs, not recovery of R3's
+missing instantaneous count/member list. The specific launch/console remedy is
+unverified: no launch flags changed and no alternative launch was tested.
+Do not infer that merely waiting longer, excluding a name, or weakening the
+exact-two assertion fixes ownership or cancellation. Next scope is a bounded
+proposal for dummy launch/console isolation with exact-two and zero-member
+cleanup retained; no repair is authorized by this diagnostic result.
+
+Consumed8/9:1 load +6 simulated +1 capture. Sufficient evidence durably halts
+the ledger; the second capture is unused. Sources match the same load/simulation/
+capture manifest after execution. A fresh static reviewer identified cleanup
+fallback preservation and snapshot persistence exception handling; both were
+corrected before the counted load. Simulations cover interpretation, not native
+ABI emulation or injected disk failures; native APIs were exercised by the one
+capture. No additional test rounds were run to broaden those claims.
+
+Preservation hashes match2533 prior recovery files,390 pending P2.0b files and
+all17 PDFs. B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`.
+Service policy stays1GiB, swap0,2CPUs, admission768/320 unchanged; no live memory
+or enforcement claim. No Word/PDF generation, behavior repair, Docker/M2,
+Service full suite, B2, product edit or integration occurred.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-case15-m1b-r4.zip`,
+SHA256 `31670efdea8f31ca6bfe9ea9d9c47518fa12558c57589ee437b3a8b7cf8f1919`;
+all51 members match their saved hashes. Status-document checks: evidence/scope
+review, source/preservation/archive comparison, final diff review and
+`git diff --check`. No canonical data/map change; projection regeneration N/A.
 I6 remains NOT ACCEPTED.
