@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [Unchanged R6 combined offline run stops15/16](#2026-10-23--r7-unchanged-r6-combined-offline15-of16-and-stop).
+Fresh load PASS. One original16 worker completes in36.59s; case11 fails on a
+WinError5 journal replacement, all other15 PASS, including four real dummy cases.
+17/17 consumed; STOP. A live journal read is an unresolved observational confound.
+
 Latest checkpoint (2026-10-23): [Detached parent and child pass bounded host checks](#2026-10-23--m1b-r6-detached-parent-and-child-bounded-pass).
 Load PASS, simulated8/8 PASS, original host cases15/13/14/16 PASS. Case15 has
 exactly two owned Python members, cancellation PASS and zero-member cleanup.
@@ -13073,5 +13078,74 @@ Verified same-machine archive:
 SHA256 `97811e9d9f3bfb402ba1d3c202a833c7a60931b91848b7173cae4ea13bd4e15c`;
 all69 members match saved hashes. Status-document checks: scope/evidence review,
 source/function/preservation/archive comparison, final diff review and
+`git diff --check`. No canonical data/map change; projection regeneration N/A.
+I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — R7 unchanged R6 combined offline15 of16 and STOP
+
+Authority Boundary: owner-approved verification only of unchanged R6 candidate
+sources, with a new external adapter and budget17 (load1 + combined16 once).
+Evidence Reviewer; inline execution IDs N/A. Keep source, exact-two, original
+timeouts,1GiB and PDF/B1+C. No Docker/M2, Service full suite, B2, product edits
+or integration authorized. Frozen original main retains its existing per-case
+recording and continuation behavior; cases after a failed case remain part of
+the same reserved worker, not an additional run.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-r6-combined-r7`.
+Read `result.json`, `brief.json`, `baseline.json`, `review.json`, `ledger.json`,
+`manifest.json`, `candidate/proof/load.json`, `candidate/proof/suite.json`,
+`candidate/proof/journal-suite/01.json` through `16.json` and events. The failed
+temporary filename survives in the trace; the temporary file itself is absent.
+All37 candidate source files exactly match R6 before
+and after verification; no source edit or inherited-ledger reset occurs.
+`run_combined.py` lives outside the candidate, durably reserves before dispatch
+and binds candidate hashes plus its own hash to the new load/suite receipts.
+Fresh static review found no important/certain issue for sequential invocation;
+outer and child Python use optimization0, with bytecode writes disabled.
+
+**Combined gate FAIL / STOP:15/16 PASS.** Fresh unchanged load probe PASS exits0
+before any fixture launch. One unchanged original main runs01–16 in one worker,
+finishing in36.59s within the original60s outer timeout. Cases01–10 and12–16 PASS.
+Case11 expects an arm deadline, but instead receives PermissionError/WinError5
+during atomic replacement of `11.json.17nzj1wg.tmp` to `11.json` in the per-case
+journal. That error becomes repair.Stop and fails the expected-deadline assertion.
+It is a recorded failure, not a skipped case, timeout, memory result or PASS.
+The holder of the file and underlying cause remain UNKNOWN.
+
+Observational limitation: while the suite was active, the assistant used a
+read-only PowerShell Get-Content scan of the live per-case journal JSON to inspect
+progress. Reader interference with Windows replacement is a possible confound;
+the existing evidence does not record the relevant handle sharing or establish
+causality. Do not attribute the failure conclusively to that reader, an antivirus,
+the candidate or a persistent permission defect. Future investigation must
+account for the assistant's live read, rather than silently dismissing the run.
+No additional capture, retry, refund or source repair follows this result.
+
+Actual cases13–16 PASS in this combined worker. Their retained ready/root
+evidence identifies roots22700,35184,35372 and24396; child5520 in15 and34564 in16.
+Each root's cleanup is activeAfter0 and closed=true. Original case15 exact-two
+and cancellation assertions PASS; no new raw member snapshot is claimed for
+this combined run. No recorded forbidden operations or live Docker commands.
+The failed case11 is simulated and has no actual dummy root.
+
+Consumed17/17; ledger halted. Both stages retain manifest digest
+`9a99dcb98997d63bd79b2fa42ff16d34abf504fe14224a511a15770940efacd0`.
+No extra focused tests or second suite round. Whole offline16, M1b live evidence,
+M2 readiness and I6 acceptance remain open. Next recommended scope is read-only
+diagnosis of retained journal replacement evidence and progress-reader risk
+before proposing a bounded remedy; no larger verification is authorized here.
+
+Preservation hashes match2717 prior recovery files,390 pending P2.0b files and
+all17 PDFs. B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`.
+Policy remains1GiB, swap0,2CPUs, admission768/320 unchanged; no live Service
+memory/enforcement claim. No Docker/M2/Service full suite/B2, candidate/product
+source edit, integration or Word/PDF generation occurred.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-r6-combined-r7.zip`,
+SHA256 `d17b789becb479c6a9c4527f8cdc23d0a47e6077bd9b0ccdb4ee7826c3647fa3`;
+all594 members match saved hashes. Status-document checks: scope/evidence review,
+candidate/preservation/archive comparison, final diff review and
 `git diff --check`. No canonical data/map change; projection regeneration N/A.
 I6 remains NOT ACCEPTED.
