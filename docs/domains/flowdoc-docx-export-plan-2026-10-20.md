@@ -12540,3 +12540,68 @@ under this request. Further acceptance disposition belongs to the owner.
 Verification is metadata/hash inspection, comparison to existing manifests,
 record/backup equality, manual meaning/scope review and `git diff --check`.
 No new pages, exports, runtime scenarios or product tests were consumed.
+
+### 2026-10-23 — M0–M1 external memory tools offline checkpoint
+
+Authority Boundary: owner-authorized M0–M1 tool preparation only,12 named
+synthetic cases in at most two rounds. External tool implementer / Evidence
+Reviewer; Project Control owns status. Single-room execution IDs N/A. No M2,
+Docker, Service cases, full suite, B2, product code, PDF generation or integration.
+Word limitations remain as recorded; the original17 retained PDF files are
+unchanged. This checkpoint does not claim a live1GiB measurement.
+
+Separate tool/evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-tools-m01`.
+Read `brief.json`, `baseline.json`, `proof/ledger.json`, per-round case JSON/logs,
+`review.json`, `result.json`, `manifest.json` and `backup-receipt.json`.
+The verified same-machine archive is
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-tools-m01.zip`,
+SHA256 `c213c4f1c89422b2617d019447508d01c256f4dcf4df8f6c7d4144af132b9183`.
+
+**M0 PASS:** one baseline inventory and final hash comparison preserve1478
+existing recovery/evidence files plus390 pending P2.0b files, including all17
+PDFs and recovered product sources. B1+C remains clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`. Nine old helpers were copied into
+the new area; seven remain byte-identical and only the reader/observer copies
+changed. The eight pinned Vitest/Vite source files are reused unchanged.
+Historical raw live proof is still missing; source reuse is not live proof reuse.
+
+**M1 PASS for offline contracts:** first round0 PASS/12 FAIL against missing
+contracts; final round12 PASS/0 FAIL with both fixture processes exiting0.
+Exactly24 named case executions in two rounds are consumed. No third round,
+pilot or automatic retry. Fixture processes report zero forbidden process,
+network or live proc/cgroup operations; only the bounded Node/Python fixture
+launchers run. Temporary fixtures are confined to the new proof area for GREEN.
+
+| Named cases | Verified offline scope |
+| --- | --- |
+|01–03|Resolved readiness config receipt; wrong root/include/pool/worker/isolation rejection; config path/context and publication failure. Uses a fake configureVitest context, not a real Vitest launch. |
+|04–06|Pinned source route and synthetic cross-namespace group-object binding; PID/namespace/limit rejection; held counter FD/path identity and all-descriptor close attempts, including injected close failure. |
+|07–09|Reader includes `/candidate`; rejects noncanonical roots; temporary-file content and inventory drift; idle/loaded spread checks and malformed/NaN samples. |
+|10–12|Durable reservation before create; phase-order and network-metadata refusal; exact owner-token/container-ID checks; timeout stop/removal confirmation; cleanup/publication failures remain STOP with original errors retained. |
+
+Changes are limited to the copied `reader.py` and `observer.py`, new composable
+`readiness.py` and `readiness-config.mjs`, and their fixtures/runner/records.
+Reader CLI now uses the shared root list including `/candidate`. Observer IO
+injection exercises the actual BoundGroup methods; normal Linux defaults remain
+in place. Cleanup attempts all owned descriptors and retains failed descriptors
+and errors. The lifecycle adapter requires explicit transport injection, checks
+1GiB/no-swap/2CPU creation/inspection contracts and confirms absence after removal.
+It supplies no Docker transport or enabled live entrypoint in this checkpoint.
+
+One fresh static reviewer identified missing SEEK_SET in the fake, runner
+acceptance ignoring nonzero process exits, and early-aborting observer cleanup.
+All three were corrected before the final round and statically confirmed after
+GREEN without another test run. Raw shell frame encoding and fixture transport
+limits were corrected before GREEN; the12 named case identities remain fixed.
+
+Disposition: **PASS_M0_M1_OFFLINE_ONLY**. Service policy remains1GiB, swap0,
+2CPUs and unchanged768/320 admission; actual limit enforcement, loaded config,
+observer placement, cache stability and A–B–B–A memory have not been reverified.
+Before M2, a separately scoped runner/transport must connect these guards to the
+frozen readiness scenario and actual environment; this checkpoint is not a
+ready-to-launch M2 driver. Old counters are preserved, and M01's standalone
+24-case ledger does not reset/refund historical budgets. P2.0b/I6 remain pending.
+Status-document verification is source/evidence coverage review, preservation
+and archive hash checks, final diff review and `git diff --check`; no canonical
+data/map changed and projection generation is not applicable.
