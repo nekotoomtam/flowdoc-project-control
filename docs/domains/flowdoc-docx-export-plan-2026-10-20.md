@@ -1,5 +1,13 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current spacing checkpoint (2026-10-23): [Seven native position probes rejected; issue3 remains open](#2026-10-23--spacing-probes-rejected-with-candidate-preserved).
+Seven isolated W probes retain9 pages and visible line strings, but none improves
+the measured glyph positions. Four are raster-identical to the accepted W;
+three slightly worsen X. No product setting is adopted. Candidate `bae91c9`,
+the accepted29 pages, PDF17 and input22 hashes remain unchanged. This is a
+negative diagnostic result, not closure of issue3 or a claim that native DOCX
+cannot improve further. No integration.
+
 Current W checkpoint (2026-10-23): [W natural wrapping verified; prior extraction interpretation corrected](#2026-10-23--w-natural-wrapping-verified).
 Issue2 is closed for the existing W packet: all5 natural lines map exactly to
 all426 authored codepoints on the same pages. Earlier W wrapping-gap statements
@@ -13664,3 +13672,67 @@ Documentation classification: existing Project Control canonical checkpoint;
 no data/map edit or projection regeneration. Checks: exact real-data assertions,
 source/artifact hash preservation, crop visual review, locator/final-diff review
 and `git diff --check`. No product commit is created for an unchanged tree.
+
+## 2026-10-23 — Spacing probes rejected with candidate preserved
+
+**NOT ACCEPTED for issue3.** The owner authorized residual glyph position work
+in isolation, preserving the existing PDF baseline, page counts and closed line
+breaks, with no integration. Single-room implementation/evidence review; execution
+IDs are not applicable. Core owns product behavior. Existing checkpoint owns
+shared status; no new Work, map, data or product Markdown is introduced.
+
+- Worktree: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-spacing-r4/core`,
+  branch `codex/docx-spacing-r4`, clean at the accepted
+  `bae91c9a718a55f07d171cfaee503f578b453fea`. No product files changed.
+- Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-spacing-r4`.
+  `brief.json` bounds the work; `measure.py` and `result.json` retain real probe
+  comparisons; `baseline-diagnosis.py` and `baseline-diagnosis.json` separate
+  baseline, descriptor-box, pitch and X-advance observations.
+- Seven external W DOCX probes were converted in actual Word with the same
+  field-refresh procedure: run position; position with spacing compatibility;
+  position including paragraph marks; kerning thresholds0 and24 half-points;
+  removal of the East Asian font slot; and paragraph text alignment center.
+  These are diagnostic packages, not product candidates or new reference PDFs.
+- All seven retain9 pages, visible text per page and visible line strings. The
+  position-with-compatibility, paragraph-mark-position, font-slot and alignment
+  probes have identical visible geometry at0.001pt and identical65dpi pixels on
+  all nine pages. The remaining three slightly worsen horizontal placement;
+  none improves vertical placement. Rejected probes do not establish complete
+  authored-whitespace or clipping acceptance and are not adopted.
+- For W natural page5, mean absolute X error remains0.408699pt in the unchanged
+  result and becomes0.411181pt in the worsening probes; page6 is0.074838pt versus
+  0.079867pt. The `AT` advance remains unkerned in the tested Word outputs,
+  differing by0.72pt from the source PDF despite Word displaying kerning enabled.
+- Normalizing each PDF's baseline matrix by its own page height confirms W
+  signed baseline displacement of1.224236–1.334236pt, independently of the font
+  descriptor box. The source line pitch is18pt; observed Word pitches are18,
+  18.020 or18.024pt. The source centers extra leading, and Sarabun hhea and typo
+  metrics agree; leading allocation remains a hypothesis, not a proven cause.
+  PDF character boxes are not actual ink bounds and do not prove clipping safety.
+- The whole-packet diagnostic matches only unambiguous equal logical lines with
+  equal PDF character segmentation: P5/T5/Q43/W22/R4. Duplicate, unmatched and
+  differently segmented lines are coverage limits; these counts do not claim
+  full-packet positional equivalence. W natural separately retains all426
+  authored codepoints across its original five exact lines, including spaces.
+- Preservation: original PDF17/17 and frozen input22/22 hashes match; all five
+  accepted DOCX and Word PDF hashes match the P-R2 manifest. Accepted counts stay
+  P6/T5/Q5/W9/R4, total29. Because no product candidate changed, these existing
+  artifacts retain the previously verified page/line behavior. No new product
+  test/build pass is claimed; the94-test/build proof belongs to unchanged P-R2.
+- Independent read-only source/evidence review rejects adopting any tested
+  setting and closes the earlier paragraph-mark probe coverage gap. It does not
+  conclude that further native improvement is impossible. An exact-height switch
+  or arbitrary baseline/character shift is not justified by these results.
+
+Remaining technical work is a metric-derived baseline/shaping policy with actual
+glyph-ink and stacked-mark coverage, including fixed-height text, tables and page
+boundaries. A fixed vertical offset would leave the observed pitch difference;
+the tested native kerning settings do not correct the observed X advance. This
+diagnostic checkpoint must not be reported as issue3 complete. Issue1/2 remain
+closed for the existing packets. No full suite, B2, merge, release or push ran.
+
+Documentation classification: existing Project Control canonical status only.
+Checks are real-PDF comparisons, all63 diagnostic page raster comparisons,
+read-only source/artifact preservation and final diff/link checks. The evidence
+backup is `C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-spacing-r4-final-2026-10-23.zip`;
+its separate receipt records the archive hash and verified member hashes.
