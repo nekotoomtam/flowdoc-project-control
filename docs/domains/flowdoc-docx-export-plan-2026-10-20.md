@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [M1b-R3 reaches final15/16 without worker timeout](#2026-10-23--m1b-r3-focused-pass-final15-of16-and-stop).
+Load passes and the corrected focused checks pass4/4. Final unchanged suite
+finishes within60s; case15 fails before cancellation.26/26 consumed; STOP.
+M1b remains open. No M2, Service full suite, B2 or integration authorized.
+
 Latest checkpoint (2026-10-23): [M1b-R2 fixes time loading, then stops on suite timeout](#2026-10-23--m1b-r2-load-pass-and-offline-suite-timeout).
 The counted load check passes before any16-case reservation. One suite attempt
 exceeds60s without a complete case report.17/35 consumed; overall acceptance open.
@@ -12803,3 +12808,67 @@ all114 members match saved hashes, including partial evidence. Status-document
 checks: evidence/scope review, source/preservation/archive hash comparison,
 final diff review and `git diff --check`. No canonical data/map changed;
 projection regeneration N/A. I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — M1b-R3 focused PASS final15 of16 and STOP
+
+Authority Boundary: owner-approved isolated external-tool repair and bounded
+offline verification only. External-tool implementer / Evidence Reviewer;
+single-room execution IDs N/A. Load before scenarios; stop on failed load or
+final timeout; total cap26. No Docker/M2, Service full suite, B2, product edit
+or integration authorized. Historical checkpoints above remain immutable results.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-runner-m1b-r3`.
+Read `result.json`, `source-input-manifest.json`, `review.json`, `proof/ledger.json`,
+`proof/load-2.json`, both `proof/focus-*.json`, `proof/suite-1.json`, and durable
+`proof/journal-suite-1/01.json` through `16.json`. Source digests and per-case
+real/virtual timing, phase progress and terminal outcomes survive independently
+of the final aggregate. Interrupted work is never inferred PASS.
+
+Both counted load probes PASS. Focus round1 against the inherited polling model
+records1 PASS/3 FAIL: terminal files are rewritten and status polling mutates
+the filesystem. After the bounded fixture correction, fresh load2 PASS and
+focus round2 passes4/4. `Job.poll()` only reads state, each job retains its arm,
+terminal files emit once, and the frozen descriptor digest is cached with a
+change guard. Observer completion advances on virtual sleep. New journal and
+focused-check modules preserve diagnostics and inspect these conditions.
+
+Only inherited `load_probe.py`, `run_offline.py` and `test_repair.py` change;
+all28 other copied inputs, `repair.py`, runtime helpers, original16 function
+bodies and assertions are unchanged. Fresh static review found no important
+scoped defect; it does not establish live readiness. Final load/focus/suite
+share source digest
+`795960a57f273d9a9d8fe93383d0a8008d15ae0bdb353b10ac85ce709e27ccf5`;
+current source hashes match that frozen manifest after execution.
+
+**Final offline suite15/16 PASS; overall NOT ACCEPTED.** The worker completes
+in42.21s within the unchanged60s host bound. Cases01–14 and16 PASS; case15 FAILS
+at `assert h.active()==2` after its ready file appears, before cancellation is
+requested. Its ready evidence lists parent21340 and child16700, but the failing
+active count was not recorded. The exact cause remains UNKNOWN; no claim of a
+cancellation PASS, scheduling race, incorrect count or missing descendant is
+supported yet. Cases13/14/16 demonstrate their original deadline/join checks;
+all four launched dummy roots have durable cleanup evidence: activeAfter0 and
+closed=true, including failure cleanup for15. No live Docker commands or
+forbidden operations were recorded. These are host dummy checks, not Linux
+cgroup, real cache/memory or Service acceptance.
+
+Budget is fully consumed:2 loads +8 focused executions (two rounds) +16 final
+executions =26/26. The ledger is halted; no third focus, repeat suite, timer
+increase or post-final source repair. Next recommended scope is read-only
+diagnosis of the case15 Windows Job process-count prerequisite, then a bounded
+proposal if repair is needed. M1b remains open; M2 is not started or accepted.
+
+Preservation hashes match1707 prior recovery files plus390 pending P2.0b files,
+including all17 retained PDFs. B1+C stays clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`. Service policy remains1GiB,
+swap0,2CPUs, admission768/320 unchanged; no live enforcement/memory claim.
+No Word/PDF generation, product change, B2 or integration occurred.
+
+Verified same-machine backup:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-runner-m1b-r3.zip`,
+SHA256 `8c50be711d93df9bfa7d09738b2204c219737d59bbea1676c1b23788550acb42`;
+all823 members match saved hashes. Status-document checks are evidence/scope
+review, source/function/preservation/archive comparison, final diff review and
+`git diff --check`; no canonical data/map change, projection regeneration N/A.
+I6 remains NOT ACCEPTED.
