@@ -1,5 +1,12 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current P checkpoint (2026-10-23): [P exact-fit extra page closed](#2026-10-23--p-exact-fit-extra-page-closed).
+P now has6 pages with text per page matching the frozen PDF. All five packets
+now total29 pages, equal to the reference count. The other23 pages retain
+identical65dpi pixels and visible-character geometry against fidelity R1.
+Core DOCX94/94 and TypeScript build PASS. This closes issue1 only: W mixed-script
+wrapping and remaining font/position differences are open. No main integration.
+
 Current fidelity checkpoint (2026-10-23): [DOCX fidelity R1 verified improvements](#2026-10-23--docx-fidelity-r1-verified-improvements).
 The owner redirected execution to DOCX-to-PDF fidelity, with relevant fixes
 managed autonomously in isolation. Memory/ABBA work is deferred; its old caps
@@ -13504,3 +13511,73 @@ Bounded implementation/verification of these two fixes is complete. Full parity
 is open. Next fidelity work is the P exact-fit boundary and W mixed-script lines,
 using the same immutable PDF references. Service full-suite/I6 acceptance stays
 separate and NOT ACCEPTED. No merge, release, push or map promotion occurred.
+
+
+## 2026-10-23 — P exact-fit extra page closed
+
+Disposition: PASS for the owner's requested issue1 (P extra page). This is an
+inline Core implementation/evidence review; Work/Phase/Checklist execution IDs
+are not applicable. W text-layout rules, PDF renderer/baseline, original B1+C,
+Service full-suite/memory work and integration are outside this bounded change.
+The worktree is `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-p-r2/core`,
+branch `codex/docx-p-exact-fit-r2`, base `008dbca2ed190467d70b8f225cba3b1974cb43b3`.
+Terminal Core commit: `bae91c9a718a55f07d171cfaee503f578b453fea`.
+
+### Cause, fix and evidence coverage
+
+The native empty footer still contains a paragraph. Its previous footer distance
+of36pt placed that paragraph at the body boundary even when the source had no
+footer content. An isolated DOCX probe changing only the footer distance from
+720 to0 twips restores P from7 to6 pages, with source text on the correct pages.
+Grid disabling and independent exact-visible-line, smaller-empty-mark and
+line-plus-after spacer diagnostics retain7 pages. No such speculative change
+is implemented; diagnostic inputs/results remain preserved.
+
+The fix sets native footer distance to0 only when both effective first and
+default footers are absent or disabled. It retains offsets for visible and mixed
+`all`/`first`/`continuation` modes, source geometry, content, line spacing, fixed
+spacer budgets and authoring graph. An `empty-footer-space-policy` adaptation
+records the decision. Source changes: `src/docx/geometry-policy.ts`,
+`src/docx/sections.ts`, `src/docx/writer.ts`; tests: `tests/docx/geometry.test.ts`.
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-p-r2`.
+`manifest.json` binds source/compiled hashes, pinned tool and consumer images,
+frozen inputs, generation receipts, unchanged post-Word DOCX hashes and PDF
+hashes. The compiled source was mounted into the pinned consumer; no packed
+release validation is claimed. `result.json`, `footer-probe.json`,
+`diagnostics.json` and `comparison/summary.json` retain the bounded results.
+
+- TypeScript build PASS; final complete DOCX suite PASS94/94. Five added cases
+  cover absent/disabled/all/first/continuation footers, serialized distances,
+  footer-part content counts and source immutability. Correct RED was observed
+  before the source fix. The initial test read a private receipt field through
+  the public artifact; it was corrected before the RED/implementation cycle.
+- All five final DOCXs were opened in Word16.0.20430.20182, internal fields
+  refreshed, and exported through native Save As PDF Standard. DOCX hashes still
+  match their generation receipts after closing without DOCX saves.
+- P6/6 pages have text per page matching the frozen reference: below on page3,
+  exact-fit on page4, empty overflow page5, above on page6. The distinct
+  below/exact/above decisions remain intact. All packets now count P6/T5/Q5/W9/R4
+  =29, versus reference29 and prior fidelity R1 total30.
+- T/Q/W/R23 pages retain identical rendered pixels at65dpi and identical visible
+  character geometry at0.001pt against R1. Empty-footer whitespace coordinates
+  move; they are excluded only from the visible-character comparison, while the
+  full-page pixel comparison includes the entire rendered page.
+- All29 pages were rendered and visually reviewed. No new visible clipping,
+  overlap, missing glyphs, or footer-field loss was found in that review.
+- Fresh independent review found no source blocker. Its footer-part-content
+  coverage gap was addressed before the final94/94 run. Direct unit cases for
+  document-level fallback and cross-section inheritance were not added; the
+  predicate matches actual construction, and real multi-section packets retain
+  their footer fields. This is a bounded limitation, not global footer proof.
+- All17 original PDFs and22 frozen inputs retain hashes. B1+C and R1 remain
+  unchanged; source candidate stays clean and isolated. No data/map edits or
+  projection regeneration are needed for this prose checkpoint.
+
+The P extra-page issue is closed. Font/position differences and W mixed-script
+wrapping/extraction remain open; pre-existing R Thai extraction differences are
+unchanged. Equal page count does not imply pixel parity with the source PDF.
+No Service full suite, I6 acceptance, merge, release or push occurred. Next work
+is the separately identified mixed-script layout issue, not a return to memory
+instrumentation. Documentation verification is scoped evidence coverage,
+locator/final-diff review and `git diff --check`.
