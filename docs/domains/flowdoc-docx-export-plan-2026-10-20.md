@@ -14671,7 +14671,7 @@ success. Existing frozen PDFs are never regenerated; new matched PDF references
 are additional immutable artifacts generated with the unchanged R11 PDF engine.
 
 Approach and execution plan:
-- [ ] S0: Pin eight font files, licenses and identities; freeze generator/partition
+- [x] S0: Pin eight font files, licenses and identities; freeze generator/partition
   manifests and acceptance config; verify original baseline/R11 preservation.
 - [ ] S1: Generate font-matched PDF/development DOCX and evaluate by stratum. First
   validate the matcher with known controls; complete coverage is a prerequisite.
@@ -14704,3 +14704,40 @@ to diagnose, not a request for another small approval. A new numerical guess is
 not sufficient justification for another round. No claim of universal parity.
 Stop when the complete hard criteria and evidence coverage pass; otherwise state
 exact unmet criteria and concrete blocker. Do not lower thresholds after results.
+
+R13 checkpoint — development baseline captured, acceptance still pending:
+
+- S0 frozen matrix192cases/24strata, eight font files and two licenses. Sarabun
+  bytes remain exactly R11; Bai Jamjuree is pinned to Google/fonts revision
+  `c936464ebf3a837c3f9e4164f81a707bf9231dcb`. Source font metadata confirms real
+  400/700 normal/italic faces; no global font installation.
+- Unchanged R11 generated8paired PDF/DOCX development packets,96cases and127
+  reference pages. Native Word Standard PDF exports captured8packets/126pages.
+  Bai Jamjuree Regular is16reference/15native pages; all other packet counts
+  match. Equal packet counts do not establish line or per-case page parity.
+- `fidelity-system-r13/development/s1-checkpoint.json` binds every PDF/DOCX/native
+  PDF hash and exact authored text/order in all8DOCX packages. Original17PDF and
+  22input hashes remain equal. Core source remains unchanged atR11.
+- The raw glyph-byte matcher was insufficient: PDF subset encoding and draw
+  order differ, and native shaping uses font-declared contextual substitutions,
+  ligatures and Sara Am decomposition. Proof tooling now binds every reference
+  glyph to unchanged source draw geometry, and validates native contours against
+  actual source-font cmap/GSUB provenance in all96cases. Table column ownership
+  follows the declared grid; it does not choose the nearest geometric match.
+  `provenance-controls.json` records12positive/negative controls. Provenance
+  equivalence never counts a different contextual outline as identical ink.
+- Full glyph-origin scoring is still incomplete where one glyph corresponds to
+  multiple native glyphs, or vice versa. Preliminary contour/component reports
+  are diagnostics, not acceptance scores. The earlier flat-sequence reports
+  remain retained with their mapping failures visible. No case is dropped.
+- Source diagnosis: `metric-baseline.ts` admits only pinned Sarabun sizes8/12/18
+  and retains native `atLeast` outside that domain. Source PDF line frames use
+  actual positioned ink, including marks that can exceed requested1.5x height.
+  Thus fixed paragraph-wide spacing cannot be accepted solely from nominal
+  font metrics. A proof-only24case Exact-line probe tests this specific mechanism
+  on the two Regular development packets. It changes only the OOXML line rule,
+  retains all text/fonts/run positions, and requires clipping/mark review before
+  any product adoption. No new fitted PDF offset is authorized by this probe.
+- Heldout96inputs remain frozen; no heldout native output or score generated or
+  inspected. S1 diagnosis and S2 implementation remain open; S3/S4 have not run.
+  No Service/I6 work, full suite, B2, merge, release or push.
