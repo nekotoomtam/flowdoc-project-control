@@ -14941,3 +14941,50 @@ R13 positioned-word checkpoint — bounded visible ink, not full acceptance:
   from visible ink alone. Old17PDFs/22inputs/14R11outputs/200compiled files and
   frozen16input packets still pass preservation; heldout outputs remain absent.
   Core remains clean at`5d9d6bf`; no main/release merge, push or release.
+
+R13 S2 source candidate — implementation, still awaiting native acceptance:
+
+- The existing test branch now contains experimental source-driven DOCX code at
+  `1da6191`, following`bf5e6a7`and`a9af240`. It uses shared pure source text
+  measurement and ICU4X-safe words, owned font bytes, native editable word boxes,
+  grouped source paragraphs and an embedded source-span map. It does not consume
+  PDF/draw output or change the semantic model. Full shaper+segmenter resources
+  select this candidate route; fonts-only and legacy shaper-only paths retain
+  their existing behavior. No public fidelity guarantee or release promotion.
+- Initial behavior tests fail8/8 before implementation and pass8/8 afterward.
+  Affected DOCX/runtime/layout checks subsequently pass445/445, including real
+  library-font capabilities and cancellation cleanup. Two identity-only resource
+  fixtures originally supplied Node as a placeholder executable; they now test
+  fonts-only embedding, while a separate genuine Bai Jamjuree integration checks
+  the real shared helpers. No invalid executable is silently treated as valid.
+- The first generated package exceeds the unchanged50000XML-node guard because
+  its word correspondence map used one XML element per word. Lossless line-local
+  span arrays and shared unchanged paragraph-mark character styles reduce that
+  overhead. DOCX checks pass130/130 after these changes, with10/10 final targeted
+  mapping/style-reference checks. These overlap earlier checks and are not added
+  as unique coverage. Microsoft documents character styles as valid children of
+  [paragraph-mark run properties](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.paragraphmarkrunproperties?view=openxml-3.0.1);
+  native Word verification remains required.
+- Eight source-generated development DOCX packets are saved, each retaining
+  57source paragraphs,12sections and36logical cells; expanded XML counts range
+  45891–47184, below the existing guard. Source text/span identity, unique control
+  IDs and style references are checked. The Regular word-box attributes match
+  the native-tested prototype, but different package bytes require fresh Word
+  conversion rather than automatic proof reuse. Evidence:
+  `fidelity-system-r13/source-layout-v3-binding.json`,
+  `development/source-layout-v3/source-package-audit.json`and the named test JSON.
+- Broader prototype coverage now includes24Regular cases across all4layouts,
+  and24natural-wrap font/face/size cases. This is not full96case acceptance.
+  Source-font component origins provide explicit bounds where native glyph
+  splitting differs; no unique one-to-one compound origin is invented. Every
+  contour control point is additionally checked. Two prototype strata exceed
+  0.25pt for outline-point p95, an additional diagnostic distinct from the
+  original glyph-origin gate; those values remain visible. No threshold changed.
+  All748authored empty-ink space glyphs in the2Regular prototypes are mapped;
+  native box terminators and flow/cell/band control spaces are reported separately.
+- Fresh source-candidate native Word proof, complete combined coverage review,
+  heldout96 after freeze, original49page regression treatment, final package
+  binding and independent review remain open. Prepared guides outside the plain
+  left-aligned Thai/ASCII body/simple-cell profile retain native content and
+  disclose fallback reasons; they receive no fidelity PASS. Old PDFs, R11,
+  frozen inputs, main/release branches and Service/I6 remain outside mutation.
