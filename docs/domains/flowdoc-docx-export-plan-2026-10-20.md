@@ -1,5 +1,12 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current testing workspace after owner-authorized consolidation (2026-10-23):
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11/core`
+on `codex/docx-horizontal-r11`, unchanged Core `abac048`. One linked testing
+worktree remains across this DOCX/Core and historical Service/I6 experiment set.
+Older worktree/source locators below are historical; output/evidence folders remain.
+[Cleanup and recovery record](#2026-10-23--docx-testing-worktrees-consolidated).
+
 Current R1/R2 peak-residual checkpoint (2026-10-23): [Four-word windows reduce the peak residual](#2026-10-23--four-word-windows-reduce-the-peak-residual).
 Core `abac048` lowers both R1/R2 maximum absolute X errors from0.232 to0.190pt
 (18.1%). The former maximum on ง drops to0.184pt. R1/R2 means also improve;
@@ -14438,3 +14445,66 @@ Remaining: R1/R2 still have up to0.190pt horizontal residual. Reference characte
 segmentation gaps Q4/Q5/W1/W2/R3 remain excluded from reference-X metrics, while
 native guards cover every page. Other content/fonts, future edits, Word builds
 and engines remain unproven. No complete horizontal parity or I6 acceptance claim.
+
+
+## 2026-10-23 — DOCX testing worktrees consolidated
+
+Authority Boundary: owner-authorized workspace/branch maintenance in the existing
+inline DOCX work. Owner explicitly included archival/removal of the two dirty
+historical Service/I6 worktrees. Active role: Lane Reconciliation Reviewer;
+registered execution IDs N/A. No product-behavior or I6 acceptance promotion.
+
+Kept exactly one linked testing worktree:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11/core`,
+branch `codex/docx-horizontal-r11`, commit
+`abac0487b9c78a2749a21518b2ae2cb207cafc3d`. R11 already contains the retained
+Core B1+C through horizontal-R11 sequence; no duplicate merge/cherry-pick was
+necessary. All11 physically removed Core worktrees were clean and their HEADs
+were ancestors of R11. The independent old B1-only branch was a superseded
+alternative, preserved in the verified complete Git bundle before its explicit
+removal; it was not merged into the retained candidate.
+
+Removed13 existing linked worktrees (11Core,2Service), pruned5 missing worktree
+registrations (3Core,2Service), and deleted18 experiment branches (14Core,4Service).
+Primary repositories remain: Core `codex/template-binding`, Service
+`codex/template-registry`, both `release` branches and remote refs untouched.
+Primary Service uncommitted I6 changes remain exactly as inventoried; they were
+not reset, accepted or merged. Project Control remains the existing main checkout.
+
+Backup root:
+`C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-worktree-cleanup-2026-10-23`.
+- `cleanup-plan.json`: original paths, actions, statuses, branch commit IDs,
+  complete Service worktree file hashes and backup bindings.
+- `cleanup-result.json`: final inventories, preservation checks and proof reuse.
+- `flowdoc-core.bundle`: complete pre-cleanup Git history and refs; SHA256
+  `d31187af4940d96bde079104dc6292b602139e8db5e6b65e4c012591a8d304f1`.
+- `flowdoc-service.bundle`: complete pre-cleanup Git history and refs; SHA256
+  `7272c44861b6a46b8abeed1cd6451a9ceaf17c18b9dd1cc3da395221606eb767`.
+- `service-binding-uncommitted.zip`:360 files plus base commit, binary diff,
+  original Git index, status and per-file hash inventory; SHA256
+  `0aa85bb636fa8408d0113dcb2fdfb8bc887700b5677fd7fb3a2f3affc35b9e71`.
+- `service-p20-uncommitted.zip`:360 files with the same restoration metadata;
+  SHA256 `7a583d874e89b1d869533ac71db187b1510a20b5897a2c5f6d59ebbb7cf2c057`.
+
+Both bundles verified before and after cleanup. Both Service ZIPs passed CRC
+and every saved file SHA check; live files were rechecked immediately before
+removal. User-authorized dirty Service removal occurred only after preserving
+all bytes, including untracked files and original line endings. These are
+unaccepted historical snapshots, not accepted candidate commits. To recover,
+use the recorded base/ref from the bundle, overlay `worktree/` from the snapshot,
+and consult `restore/` metadata; do not apply the patch again over overlaid files.
+No restore was performed during cleanup.
+
+Preservation verification: R11 source, compiled outputs and14 output artifact
+hashes unchanged; original17 PDFs and22 inputs unchanged; R5's16 output files
+and R6-R10's14 files each unchanged. Evidence/output folders and earlier sealed
+backups were retained. Historical worktree source paths below intentionally no
+longer exist; retrieve those source versions from retained Git history or the
+bundles. Their prior commands are historical evidence, not instructions to rerun
+against deleted paths. The current R11 worktree is the next experiment location.
+
+No source/configuration/dependency change or rendering occurred. Reused existing
+DOCX120/120, pinned build and49 native-page proof for the unchanged candidate;
+this maintenance did not run a new test suite or establish new layout acceptance.
+No main/release integration, publication, Docker/full-suite/B2 run or Service
+product repair. Stop after inventory, backup and preservation coverage pass.
