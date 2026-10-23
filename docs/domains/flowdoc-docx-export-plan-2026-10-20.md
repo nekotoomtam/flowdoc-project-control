@@ -1,5 +1,13 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current W5/R1-R2 checkpoint (2026-10-23): [Bounded token advances improve W5; R1/R2 remain unresolved](#2026-10-23--bounded-token-advances-improve-w5-r1r2-remain-unresolved).
+Core `11ddc2c` reduces W5 mean absolute X error from0.392072 to0.112265pt
+(71.4%); W6 also improves. R1/R2 remain0.152899/0.157727pt after real native
+controls; no R correction is adopted. DOCX117/117 and pinned build PASS.
+All29 packet pages plus20 mark/edge pages retain accepted lines, glyph Y,
+outlines and sizes. PDF baseline and B1+C remain unchanged. This is a verified
+partial improvement, not closure of W5 or R1/R2 horizontal parity. No integration.
+
 Current W/R checkpoint (2026-10-23): [Width-preserving horizontal fallback verified](#2026-10-23--width-preserving-horizontal-fallback-verified).
 Core `b398016` improves W5 mean absolute X0.409 to0.392pt and R4 0.251 to0.037pt.
 P/T/Q remain position-identical; all29 packet pages and20 Thai mark/edge pages
@@ -14065,3 +14073,81 @@ and PDFs, plus the unchanged verified R6 archive/receipt containing the earlier
 comparison chain. Existing backups remain intact. Scoped final diff, anchor,
 locator and hash checks apply. This checkpoint preserves the verified gains
 and explicit residuals without promoting complete horizontal parity.
+
+## 2026-10-23 — Bounded token advances improve W5; R1/R2 remain unresolved
+
+Authority Boundary: canonical bounded DOCX fidelity checkpoint in the existing
+plan. Explicit owner request governs this inline implementation/review; execution
+IDs are not applicable. Owner is Core; no separate WORK room or integration.
+The current generated snapshot still describes unrelated Editor work and does
+not supersede this explicit request and existing DOCX evidence chain.
+
+- Candidate `11ddc2c32061a4df9c8dd9ef2eb7c2d2923de3a7`, branch
+  `codex/docx-horizontal-r8`, base `b398016017a1a5ba1dd15b92a37d0ab5167a7079`.
+  Isolated worktree:
+  `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r8/core`.
+  Only `src/docx/metric-baseline.ts` and `tests/docx/metricPairs.test.ts` change.
+  Evidence root is the parent `fidelity-horizontal-r8`; `result.json`,
+  `manifest.json`, `comparison.json` and `review.json` bind the final candidate.
+- Existing exact font-metric baseline admission remains prerequisite. Uncertain
+  width ordinary section-root paragraphs may use existing ASCII source-pair
+  advances only when every whitespace-delimited token fits the pinned font's
+  maximum envelope inside both source and native-twip body widths, with1.5pt
+  reserve. W's bound455.52pt fits available521.775591pt. Oversized tokens,
+  cells and bands retain R7 fallback. This envelope admits a bounded experiment;
+  it is not a Word wrapping predictor or universal line-safety proof. No Thai
+  tracking, font bytes, baseline formula, source geometry, semantic data or PDF
+  renderer change; no PDF-derived positions or forced source line breaks.
+  The immutable-content calibrated C4/C5 experimental exception still applies.
+- Final pinned TypeScript build and117/117 DOCX tests PASS; source is unchanged
+  after checks. The added admission test has a failing-before result. Independent
+  read-only review finds no actionable issues. Build/consumer retain1GiB and
+  pinned images. The committed Core worktree is clean.
+- Final native acceptance covers P6/T5/Q5/W9/R4=29 pages plus20 Thai mark/edge
+  pages. Every glyph Y has0pt delta; outlines, sizes, line membership and raw
+  per-page text/whitespace remain identical to R7. All426 authored W codepoints
+  retain the accepted5 natural lines without X sorting or Unicode normalization.
+  Thai coverage retains2772 clusters across4 faces,11088 instances and16 edge
+  lines. Relative zero-advance mark attachment drift is at most0.012pt, within
+  the existing0.121pt guard. No clipping, unknown clip mapping, font fallback
+  or physical-page overflow is found.
+- W is freshly exported through Word16.0.20430.20182. P/T/Q/R and edge native
+  evidence is reused only after exact rendering-part and decoded-font-byte
+  identity to R7; reused PDF bytes retain exact SHA256. Final DOCX hashes match
+  generator receipts. All49 pages are rendered; W9 pages and W5/W6/R1 comparison
+  crops are freshly reviewed. Passing visual proof for the other40 unchanged
+  pages and16 edge strips is reused through exact PDF identity.
+- W5 mean absolute X error improves0.392072 to0.112265pt (71.4% lower); W6
+  improves0.075505 to0.059190pt. W's618 comparable characters improve0.150718
+  to0.070016pt. All1805 comparable characters improve0.118911 to0.091280pt.
+  P/T/Q/R glyph positions remain unchanged. R1/R2 remain0.152899/0.157727pt;
+  R4 retains its earlier improvement. Q4/5, W1/2 and R3 segmentation gaps stay
+  excluded from reference character metrics; native old/new checks cover every
+  page. W5 retains a residual and R1/R2 are explicitly UNRESOLVED.
+- Diagnosis corrects a possible overinterpretation: PDF `/Widths` advances are
+  nominal font widths, not source Rustybuzz advances. Actual source shaping of
+  R yields360 glyphs, all advances equal hmtx, with30 nonzero mark offsets.
+  The pinned font has no glyph instruction bytes. Word TJ placement differs;
+  its precise internal cause is not established. Neither hinting nor a universal
+  native-rounding explanation is proved.
+- Fourteen native diagnostic pages were inspected: five run-control arms,
+  five segmentation arms and a four-page real-R transfer check. Spacing0,
+  kern1 and Thai language controls leave positions unchanged. Inferred script
+  changes line/Y placement and is rejected. Segmentation changes X in a synthetic
+  context, but the promising word-plus-spacing0 arm leaves every glyph X/Y
+  unchanged in real R. No R patch is adopted; this does not prove improvement
+  impossible. Diagnostic receipts preserve both negative and contextual results.
+- Frozen PDF17/17 and input22/22 hashes remain unchanged, as do R7 fourteen,
+  R6 fourteen and R5 sixteen final artifacts. B1+C remains clean at `b79f426`.
+  No Service/full-suite/B2/I6 acceptance, merge, release or push. No map, new
+  Work record or generated projection is changed.
+
+Recoverability: `core-horizontal-r8.bundle` is verified complete Git history.
+External archive:
+`C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-horizontal-r8-final-2026-10-23.zip`.
+SHA256 `ce2aa9cc40a904743a484bd836f855ef91cd0de40ea09872df74e9cdb4bda9f5`;
+26,973,484 bytes, all362 outer members byte-verified, with separate receipt.
+It includes frozen PDFs/inputs, final source binding, native/diagnostic/visual
+proof and the unchanged verified R7 archive/receipt containing the prior chain.
+Existing backups remain intact. Scoped diff, anchor, locator and hash checks
+close this checkpoint; full horizontal parity remains open.
