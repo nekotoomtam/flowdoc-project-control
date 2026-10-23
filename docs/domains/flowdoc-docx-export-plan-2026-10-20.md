@@ -1,5 +1,15 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current horizontal checkpoint (2026-10-23): [Bounded horizontal metrics candidate verified](#2026-10-23--bounded-horizontal-metrics-candidate-verified).
+Core candidate `9168ab0` reduces measured mean absolute X error from0.267 to
+0.122pt across1805 comparable visible characters (54.2%). P6/T5/Q5/W9/R4 and
+every accepted glyph baseline/line membership remain unchanged. All29 packet
+pages and20 mark/edge pages pass native checks and visual review; DOCX114/114
+and build PASS. Ambiguous mark-cluster paragraphs and unsafe/wrapping tables
+retain native horizontal behavior, including W5/6 and R. Residual differences
+and reference segmentation gaps remain explicit. PDF17/input22 and B1+C are
+preserved. This extends the bounded immutable-content experiment; no integration.
+
 Current baseline checkpoint (2026-10-23): [Bounded font-derived baseline candidate verified](#2026-10-23--bounded-font-derived-baseline-candidate-verified).
 Core candidate `5403627` improves measured vertical placement while retaining
 P6/T5/Q5/W9/R4, all29 pages and accepted line membership. Native Word checks
@@ -13848,3 +13858,108 @@ Documentation classification: existing Project Control canonical checkpoint.
 Scoped final diff/anchor and whitespace checks apply; no canonical data/map or
 projection changes. Further proof is deferred until a changed candidate or
 specific unresolved behavior justifies it. No integration is authorized.
+
+## 2026-10-23 — Bounded horizontal metrics candidate verified
+
+**PASS for the bounded candidate; residual horizontal differences remain.**
+The owner authorized completing horizontal differences in a separate worktree,
+keeping the existing PDF baseline, closed page/line/baseline results and Thai
+mark safety, without integration. Core owns implementation; Product
+Implementation Agent / Evidence Reviewer operates inline. Execution IDs are
+not applicable. Documentation classification is this existing Project Control
+canonical checkpoint; no new Work, map, product Markdown or projection.
+
+- Worktree: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r6/core`;
+  branch `codex/docx-horizontal-r6`, clean at
+  `9168ab051cac71d0db39500fdb3f1617cd593498`, based on `5403627`.
+  Six changed files are `src/docx/metric-baseline.ts`, `metric-pairs.ts`,
+  `text.ts`, `tables.ts`, `tests/docx/metricPairs.test.ts` and `geometry.test.ts`.
+- Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r6`.
+  `manifest.json`, `result.json`, `comparison.json`, `native-proof-reuse.json`,
+  generation receipts, raw reports, `visual-final` and the verified full-history
+  `core-horizontal-r6.bundle` bind source, build and outputs. Only final
+  `dist-verified`, `generated-final` and `edge-accepted` are the adopted output
+  lane. Earlier builds, probes and rejected native outputs remain diagnostic.
+
+### Source-derived rule and native fallback
+
+Pinned source-shaper advances differ from Word's native nominal advances for
+some ASCII letter pairs. Native OpenType feature activation probes did not
+repair that difference; the initial missing-gate hypothesis was rejected. The
+PRINTER-labelled activation row duplicates control and is not printer-metric
+evidence. The candidate transfers only measured one-scalar/one-glyph ASCII
+letter-pair deltas into twip tracking within one authored text span. Both ends
+must be scalar-proven, without glyph offsets or substitutions. Thai runs and
+marks receive no tracking; no PDF layout or synthetic line/page breaks enter
+the DOCX path. The existing baseline policy and scalar/source geometry remain.
+
+A Latin prefix can nevertheless change wrapping later in a Thai paragraph.
+Pair tracking is therefore withheld when duplicate or multiscalar clusters
+prevent a native nominal-width proof. Baseline admission stays independent.
+Whole-table admission additionally requires every cell's complete authored
+line to fit its old native width, with1.5pt border/rounding reserve. One unsafe
+cell withholds pair tracking for the entire table. Width-proven plain grids
+with the existing exact4pt padding/bounded border mapping also receive the
+measured half-stroke horizontal inset: left/right80 to75twips. Table widths,
+row/cell topology, vertical margins and original document data are unchanged.
+
+These rules extend the recorded **experimental C4/C5 exception** for the same
+immutable-content, pinned-Sarabun/Word calibration domain. They do not replace
+the default native policy or prove future Word edits, other fonts/engines or
+arbitrary wrap contexts. Fonts-only callers remain unchanged; receipts retain
+`wordVerified:false`. Artifact verification establishes these outputs only.
+
+### Acceptance, rejected trials and retained differences
+
+- Affected Core DOCX suite passes114/114 and pinned TypeScript build passes.
+  Meaningful regressions cover pair/span/script boundaries, ligature exclusion,
+  substituted-width uncertainty, unsafe marks, ambiguous mark-cluster wrapping,
+  whole-table width fallback and border admission. No source changed after the
+  final passing build. Containers retain1GiB and pinned images; no Service or
+  memory work is used as a prerequisite.
+- Independent read-only source review identified second-cluster ligature and
+  nominal-width risks; both were fixed with failing-before/passing-after cases.
+  Final parent diff review also verifies the later ambiguous-cluster fallback.
+- The first R product trial kept4 pages but moved `eighth` from page4 to3;
+  rejected. Whole-table width fallback restores every original R glyph line.
+  The pre-mark-guard edge trial kept20 pages but moved110 glyphs by18pt on
+  page8; rejected. The final paragraph fallback restores all edge baselines.
+  Neither page counts nor passing unit tests alone constituted acceptance.
+- Final P6/T5/Q5/W9/R4 retain all29 pages, exact raw PDF text/whitespace streams
+  per page, native glyph outline/size sequences and every glyph Y coordinate
+  against R5: maximum baseline delta0pt. W's426 authored codepoints retain the
+  accepted5 natural lines through unchanged stream order and glyph Y, without
+  Unicode normalization or X sorting. Normalized DOCX layout XML differs only
+  by the admitted horizontal adjustments and equivalent split text runs.
+- P/T/Q/R native exports from the immediately preceding candidate are reused
+  only after exact equality of every rendering part and deobfuscated font byte.
+  Only ZIP metadata, document properties and reversible random font keys differ.
+  `native-proof-reuse.json` binds both DOCX hashes and reused PDF hashes. W and
+  edge were freshly exported in Word16.0.20430.20182 after the final guard.
+  Every final DOCX still matches its generation receipt hash.
+- The20-page mark/edge packet reuses the frozen R5 input:2772 Thai clusters
+  across4 faces,11088 instances and16 top/bottom edge lines. All native glyphs
+  retain baseline/line/outline/size; no glyph clipping, unknown clip mapping,
+  physical-page overflow or font fallback is found across all49 pages. Relative
+  zero-advance Thai mark attachment drift is0pt. Full-page visual review covers
+  all49 pages, with16 edge strips and representative T2/Q2/W9 comparison crops.
+- Mean absolute X error across1805 comparable non-whitespace characters changes
+  **0.267055 to0.122379pt (54.2% lower)**. Every comparable page improves or
+  retains its previous mean. Examples: T2 0.528 to0.025pt; Q2 0.292 to0.086pt;
+  W7 0.315 to0.032pt; W8 0.201 to0.039pt; W9 0.866 to0.052pt.
+  Q4/5, W1/2 and R3 retain incompatible reference character segmentation and
+  are excluded from this reference metric, while native old/new checks cover
+  every page. W5/6 and R deliberately retain previous horizontal differences.
+  Native rounding and uncalibrated/fallback content remain outside full parity.
+- Original PDF17/17, frozen input22/22, accepted P-R2 five DOCX/five Word PDFs
+  and R5 final16 artifact hashes remain unchanged. B1+C remains clean at
+  `b79f426`. No main merge, release, push, B2, Service full suite or I6 acceptance.
+
+Backup: `C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-horizontal-r6-final-2026-10-23.zip`,
+SHA256 `9317a03925532a4d4a90ba31d3e46e2f31657b27fb391e52d7f17f4ac746b547`.
+All1436 members are byte-verified with a separate member-hash receipt. It stores
+the final/diagnostic evidence, compiled builds, frozen PDFs/inputs, accepted
+comparison artifacts and complete source bundle outside the recovery root.
+The older R5 backup remains intact. Scoped diff/anchor/locator and whitespace
+checks apply to this checkpoint. Stop at this verified candidate; integration
+and further residual work require their own authorized scope.
