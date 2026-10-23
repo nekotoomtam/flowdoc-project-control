@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [Child no-window flag remedy stops on case15](#2026-10-23--m1b-r5-child-flag-remedy-fails-case15-and-stops).
+Load and six simulated checks PASS, but unchanged case15 reads4 active members:
+two Python processes and two conhost.exe processes.8/11 consumed; STOP.
+Cases13/14/16 are not run. The proposed remedy is not accepted; M1b stays open.
+
 Latest checkpoint (2026-10-23): [Case15 diagnostic captures an extra Job member](#2026-10-23--m1b-r4-case15-diagnostic-captured-and-stopped).
 Load and six simulated checks PASS. One unchanged case15 capture reads3 active
 members: two Python processes plus conhost.exe.8/9 consumed; STOP with no repair.
@@ -12938,5 +12943,65 @@ Verified same-machine archive:
 SHA256 `31670efdea8f31ca6bfe9ea9d9c47518fa12558c57589ee437b3a8b7cf8f1919`;
 all51 members match their saved hashes. Status-document checks: evidence/scope
 review, source/preservation/archive comparison, final diff review and
+`git diff --check`. No canonical data/map change; projection regeneration N/A.
+I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — M1b-R5 child flag remedy fails case15 and stops
+
+Authority Boundary: owner-approved isolated external-tool child-creation flag
+change only. External-tool implementer / Evidence Reviewer; inline execution
+IDs N/A. Budget11: load1, simulated6, original actual cases15/13/14/16 once each,
+stopping at the first failure. Keep exact-two, all original timeouts,1GiB,
+PDF/B1+C; no Docker/M2/full suite/B2/product edits or integration authorized.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-case15-m1b-r5`.
+Read `result.json`, `brief.json`, `baseline.json`, `review.json`, `manifest.json`
+and `flag-proof/ledger.json`, `flag-proof/load.json`, `flag-proof/simulated.json`,
+`flag-proof/case15.json`, `flag-proof/case15-snapshot.json`.
+The sole inherited change is `creationflags=subprocess.CREATE_NO_WINDOW` on
+the child Popen in `dummy_worker.py`. All33 other copied inputs, original16
+function bodies/assertions, `repair.py`, Job/GO/cleanup and native diagnostic
+remain unchanged. New bounded checks dispatch only the planned paths.
+The preserved R4 actual count3/conhost failure is reused as observed RED;
+no unbudgeted pre-fix scenario or second simulation round was run.
+
+**Remedy FAIL / STOP; overall M1b NOT ACCEPTED.** Fresh counted load passes
+before scenarios. Six simulated helper checks pass: tree, orphan, hang, leaf,
+spawn failure, and rejected GO; they verify arguments/protocol with Popen and
+sleep intercepted, and start no actual processes. A fresh static reviewer found
+no important/certain scoped defect; this did not establish runtime success.
+
+The first actual case15 still fails the unchanged `assert h.active()==2`
+before setting cancellation. Its observed count is4, confirmed by the raw Job
+list: parent Python36488, child Python29252, conhost3372 and conhost29780.
+All four native process handles report Job membership; parent metadata links
+3372 to36488 and29780 to29252. Supplementary reads are non-atomic and retained
+as such. This observation rejects the proposed flag-only remedy in this
+environment; no claim that the flag removes console-host processes is accepted.
+Capture takes0.407s, not a timeout. The original failure cleanup reaches
+activeAfter0 and closed=true with no cleanup/instrumentation errors or recorded
+forbidden operations. Cancellation behavior remains unverified in this round.
+
+Consumed8/11:1 load +6 simulated +1 actual. Ledger is halted; cases13/14/16 and
+the remaining3 executions are unused. No retry, timeout increase, name filtering,
+assertion weakening, rollback or further source repair follows final failure.
+Sources match the same load/simulation/case15 manifest after execution.
+The failed isolated candidate remains evidence, not an integration candidate.
+Next recommended work is read-only review of Windows console creation and the
+two retained console-host identities before proposing another bounded remedy.
+No alternative launch method has been tested or authorized here.
+
+Preservation hashes match2587 prior recovery files,390 pending P2.0b files and
+all17 PDFs. B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`.
+Policy remains1GiB, swap0,2CPUs, admission768/320 unchanged; no live Service
+memory/enforcement claim. No Docker/M2/full suite/B2, product change, integration
+or Word/PDF generation occurred.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-case15-m1b-r5.zip`,
+SHA256 `8d27201a00ac14ef2b87f10c9e81abdfd5c691c24eea1a8f897a8448cb295f0d`;
+all55 members match saved hashes. Status-document checks: scope/evidence review,
+source/function/preservation/archive comparison, final diff review and
 `git diff --check`. No canonical data/map change; projection regeneration N/A.
 I6 remains NOT ACCEPTED.
