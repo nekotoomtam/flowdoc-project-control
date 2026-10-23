@@ -1,5 +1,13 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current W checkpoint (2026-10-23): [W natural wrapping verified; prior extraction interpretation corrected](#2026-10-23--w-natural-wrapping-verified).
+Issue2 is closed for the existing W packet: all5 natural lines map exactly to
+all426 authored codepoints on the same pages. Earlier W wrapping-gap statements
+below are superseded interpretations of coordinate-sorted extraction, not a
+reproduced DOCX line-break failure. No product code changed; candidate remains
+`bae91c9`. P and all packet artifacts retain their hashes and total29 pages.
+Only remaining text-position/font differences (issue3) are open in this scope.
+
 Current P checkpoint (2026-10-23): [P exact-fit extra page closed](#2026-10-23--p-exact-fit-extra-page-closed).
 P now has6 pages with text per page matching the frozen PDF. All five packets
 now total29 pages, equal to the reference count. The other23 pages retain
@@ -13581,3 +13589,78 @@ No Service full suite, I6 acceptance, merge, release or push occurred. Next work
 is the separately identified mixed-script layout issue, not a return to memory
 instrumentation. Documentation verification is scoped evidence coverage,
 locator/final-diff review and `git diff --check`.
+
+
+## 2026-10-23 — W natural wrapping verified
+
+Disposition: PASS for the existing W natural Thai/English wrapping case, by
+correcting the earlier diagnosis. The owner authorized completing issue2 in a
+separate worktree while retaining the frozen PDF and protecting P/other packets.
+Single-room discovery/evidence verification; owner Core; Work/Phase/Checklist
+execution IDs are not applicable. No new product implementation was necessary.
+
+Isolation: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-w-r3/core`,
+branch `codex/docx-w-mixed-wrap-r3`, clean at the unchanged candidate
+`bae91c9a718a55f07d171cfaee503f578b453fea`. Original P, R1 and B1+C worktrees
+remain untouched. This is not a main integration or a reactivated registered round.
+
+### Corrected cause and exact coverage
+
+The earlier comparison used coordinate-sorted PDF extraction. A shaped Thai tone
+mark can have zero advance and an x origin slightly to the right of the next
+base glyph. Sorting by x reverses their logical order, then a spacing heuristic
+can insert a space. The frozen PDF therefore appears as `แบง่ บรรทัด` in that
+extraction even though its content stream preserves `แบ่งบรรทัด`. The same
+coordinate-sorting issue affects some Word-extracted text. This evidence does
+not support changing DOCX word-breaking or adding line-break characters.
+
+Read the native content stream in its existing character order, group physical
+lines by baseline, and map each line directly to the frozen `w-natural` source:
+
+| Physical location | Source codepoint range, zero-based half-open |
+| --- | --- |
+| W page5 line1 | [0,93) |
+| W page5 line2 | [93,187) |
+| W page6 line1 | [187,283) |
+| W page6 line2 | [283,377) |
+| W page6 line3 | [377,426) |
+
+Both reference and actual Word PDFs have exactly those5 line strings and page
+memberships. Concatenation equals all426 authored codepoints, including authored
+spaces. The logical DOCX paragraph also equals that frozen string exactly.
+No Unicode normalization, character reordering, or authored-whitespace trimming
+is used. Whitespace-only structural groups are recorded separately; no authored
+character is dropped. The exhibited tone-mark/next-glyph x inversion is retained.
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-w-r3`.
+`inspect-w.py` performs the bounded real-data assertions. `result.json` records
+exact line strings, source ranges, original glyph positions, naive extraction,
+excluded structural whitespace and the x-order example. `page5-comparison.png`
+and `page6-comparison.png` show source/Word crops at144dpi; both were visually
+reviewed. Line endings and the page5-to-page6 continuation match. Remaining
+vertical top offsets are1.224–1.334236pt; maximum corresponding x offset across
+these lines is0.902pt. Those are issue3 position differences, not line-wrap gaps.
+
+### Protection, verification reuse and remaining scope
+
+- Fresh assertions verify unchanged hashes for all17 original PDFs,22 frozen
+  inputs, and all5 current candidate PDFs/DOCXs, including P. No new output is
+  substituted for the frozen reference or prior Word result.
+- The isolated Core tree is unchanged at the exact prior candidate commit.
+  Prior complete DOCX94/94/build evidence is reused for that unchanged source;
+  no fresh runtime-suite PASS is claimed. No Docker, Word conversion or document
+  generation session was run for this correction. The fresh checks are evidence
+  mapping, artifact/source preservation, visual review and scoped documentation.
+- No product source, package, configuration, template or baseline changes occurred.
+  Earlier records/results remain historical; their W wrapping-gap interpretation
+  is superseded by this explicit correction. The W/R comparison JSON extraction
+  inequalities remain observable and are not relabeled as raw text equality.
+- This closes the requested existing W natural wrapping case. It does not prove
+  all Thai strings, different Word versions, or pixel parity. Remaining font and
+  position differences belong to issue3. P stays6 pages; all packets total29.
+  Service/I6 status is unchanged, with no full suite, memory work, merge or release.
+
+Documentation classification: existing Project Control canonical checkpoint;
+no data/map edit or projection regeneration. Checks: exact real-data assertions,
+source/artifact hash preservation, crop visual review, locator/final-diff review
+and `git diff --check`. No product commit is created for an unchanged tree.
