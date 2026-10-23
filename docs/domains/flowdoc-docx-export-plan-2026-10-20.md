@@ -1,5 +1,14 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current R1/R2 peak-residual checkpoint (2026-10-23): [Four-word windows reduce the peak residual](#2026-10-23--four-word-windows-reduce-the-peak-residual).
+Core `abac048` lowers both R1/R2 maximum absolute X errors from0.232 to0.190pt
+(18.1%). The former maximum on ง drops to0.184pt. R1/R2 means also improve;
+some individual characters worsen, so full horizontal parity remains open.
+W5 and all other packet/edge positions remain intact. DOCX120/120, pinned build,
+independent review and49 native-page line/Y/mark guards PASS. Frozen PDFs,
+inputs and B1+C unchanged. Isolated candidate only; no integration. This
+supersedes the older0.232pt-current interpretation below; historical results remain.
+
 Current R1/R2 residual checkpoint (2026-10-23): [Source word windows reduce means; maxima remain unresolved](#2026-10-23--source-word-windows-reduce-means-maxima-remain-unresolved).
 PARTIAL: Core `5dde06b` improves R1 mean X0.104494 to0.075663pt and
 R2 0.085004 to0.069114pt. Both maxima remain0.232pt; full parity is open.
@@ -14345,3 +14354,87 @@ The archive preserves source/final/diagnostic/visual proof, frozen inputs/PDFs
 and the unchanged verified R9 archive/receipt containing the earlier chain.
 Scoped final diff, source/compiled/output bindings, anchors, locators and hashes
 are checked. Full horizontal parity remains open.
+
+
+## 2026-10-23 — Four-word windows reduce the peak residual
+
+Scope and authority: explicit user request to investigate the0.232pt R1/R2
+maximum and retain a verified remedy in an isolated Core worktree. Inline
+Product Implementation/Evidence Reviewer work, routine risk; registered
+execution IDs N/A. This existing Project Control checkpoint owns the bounded
+status claim; no Work/map/readiness promotion. Earlier checkpoints remain history.
+
+Core base `5dde06b104701a532f24fcb78e2950c8f6e8f6a8`; candidate
+`abac0487b9c78a2749a21518b2ae2cb207cafc3d` on `codex/docx-horizontal-r11`,
+clean worktree
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11/core`.
+Only `src/docx/metric-baseline.ts` and `tests/docx/metricPairs.test.ts` changed.
+No merge, release, push, Service/full-suite, B2 or PDF-renderer changes.
+
+Diagnosis: the old maximum is a nonzero-advance ง in ต้อง, at visible character
+indices83/174 on R1/R2. Its0.232pt error decomposes into0.184pt native run-origin
+error plus0.048pt within-run prefix error. Nine Windows font measurements used
+process-private source font bytes, verified by GetFontData SHA256 readback;
+all360 glyph IDs match the source shaper at three logical heights. Integer
+advances/mark offsets vary with height; this does not establish Word's internal
+shaping or rounding path. No Windows runtime dependency or font installation
+was added to Core.
+
+Three structurally unique native arms were exported on6 pages: unchanged
+three-word control, four-word cap, and width-only font-envelope groups. The
+control exactly reproduces old R1/R2 glyph positions. The four-word arm lowers
+both maxima; width-only improves means further but retains the0.232pt maximum.
+Structurally equivalent alternatives were deduplicated before native export;
+an unused16page draft was never exported. The selected candidate changes only
+the private cap3 to4, preserving complete words, the source/native font-envelope
+width limit and every prior admission gate. No PDF positions, scalar offsets,
+forced line breaks, nonzero tracking, font, geometry or baseline changes.
+This remains an empirical pinned-content profile, with `wordVerified:false`,
+not a universal font, language or Word rule.
+
+Fresh final product-generated R was exported directly through Word
+16.0.20430.20182, internal field refresh Yes, F12 PDF Standard, DOCX unchanged.
+Its R1/R2 glyph X/Y positions exactly reproduce the selected diagnostic arm.
+Measured against the unchanged frozen PDF:
+
+| Page | Old mean absolute X | New mean absolute X | Old maximum | New maximum |
+| --- | --- | --- | --- | --- |
+| R1 | 0.075663pt | 0.071978pt | 0.232pt | 0.190pt |
+| R2 | 0.069114pt | 0.065306pt | 0.232pt | 0.190pt |
+
+The former maximum character drops to0.184pt on both pages. R1 has30 characters
+improve,21 worsen and38 unchanged; R2 has110 improve,81 worsen and80 unchanged.
+This meets the bounded maximum-reduction target; full parity is still open.
+
+Evidence coverage: red regression14pass/1expected failure before the fix;
+final DOCX120/120 and pinned TypeScript build PASS. Tests now explicitly cover
+width-triggered shorter groups as well as the four-word cap and complete text.
+Independent review found no actionable issues. All29 packet pages plus20
+mark/edge pages preserve glyph sequence, outlines, size, line membership and Y
+(max Y delta0). Relative zero-advance Thai-mark X drift is at most0.036pt,
+within the existing0.121pt native-step guard, with no clipping, fallback or
+page overflow. Fresh R4 full pages and enlarged R1/R2 crops were reviewed;
+other45 native pages reuse exact rendering-part/decoded-font identity to R10,
+including W5 and all edge strips. Every PDF baseline17/input22 hash and prior
+R5-R10 output hash remains unchanged; B1+C `b79f426` stays clean.
+
+Durable local evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11`.
+Key files: `result.json`, `manifest.json`, `comparison.json`, `residuals.json`,
+`residual-glyphs.json`, `maximum-decomposition.json`, `native-results.json`,
+`windows-shapes.json`, `docx-suite.json`, `review.json`,
+`native-proof-reuse.json`, `generated-final/R-word.pdf`, and
+`visual-final/horizontal-comparison.png`. Verified complete Git bundle:
+`core-horizontal-r11.bundle`.
+
+Sealed backup:
+`C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-horizontal-r11-final-2026-10-23.zip`.
+SHA256 `67c994f597c474506a029a472582f6af659b855fd019a04d5d3121efc665a4a2`,
+44,242,971 bytes,358 members, CRC and every member hash verified. Receipt
+`.receipt.json` binds the source commit and prior verified R10 chain. No prior
+archive overwritten. Product memory boundary remains1GiB.
+
+Remaining: R1/R2 still have up to0.190pt horizontal residual. Reference character
+segmentation gaps Q4/Q5/W1/W2/R3 remain excluded from reference-X metrics, while
+native guards cover every page. Other content/fonts, future edits, Word builds
+and engines remain unproven. No complete horizontal parity or I6 acceptance claim.
