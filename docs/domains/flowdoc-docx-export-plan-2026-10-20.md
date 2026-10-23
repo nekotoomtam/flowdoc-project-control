@@ -1,5 +1,9 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [M1b-R2 fixes time loading, then stops on suite timeout](#2026-10-23--m1b-r2-load-pass-and-offline-suite-timeout).
+The counted load check passes before any16-case reservation. One suite attempt
+exceeds60s without a complete case report.17/35 consumed; overall acceptance open.
+
 Latest checkpoint (2026-10-23): [M1b-R1 stopped on an import error](#2026-10-23--m1b-r1-import-blocker-at-proof-cap).
 Both rounds0/16 PASS;32/32 case executions are consumed. The four planned
 dummy-process cases never reached process launch. No M2/live readiness claim.
@@ -12740,3 +12744,62 @@ bounded import repair and fresh explicitly approved proof budget, preserving
 both failed rounds. Status checks are evidence/meaning review, preservation and
 archive hash comparison, final diff review and `git diff --check`. No canonical
 data/map changed; projection regeneration N/A. I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — M1b-R2 load PASS and offline suite timeout
+
+Authority Boundary: owner-approved isolated time-name repair and load-before-suite
+gate only. External-tool implementer / Evidence Reviewer; execution IDs N/A
+for this single-room scope. The latest explicit owner instruction requires
+immediate STOP after a failed load, overriding any automatic retry interpretation.
+No broader R1 runtime repair, Docker/M2/full suite/B2 or integration authorized.
+
+Root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-runner-m1b-r2`.
+Read `result.json`, `brief.json`, `source-input-manifest.json`, `review.json`,
+`proof/ledger.json`, `proof/load-1.json` and retained partial `proof/tmpjwkdgsss`.
+The inherited R1 failing artifact remains the RED reference and was not rerun.
+
+**Time/load subtask PASS:** the only copied-runtime change is `_clock_time`
+and three explicit SystemClock bindings in `repair.py`; all28 other copied
+inputs, including the16 cases and runtime helpers, remain byte-identical to R1.
+New `load_probe.py` imports repair and test_repair in a fresh process from the
+new directory, verifies paths/hashes, finite clock calls, unstarted supervisor
+and all16 case definitions. No test dispatch, dummy launch or forbidden import
+operation occurs. Its first counted attempt exits0/PASS. This establishes
+working imports/clock binding, not whole-runner correctness.
+
+New `run_offline.py` uses a durable split ledger: load cap3, case cap32 in at
+most two16-case rounds, total cap35. Reservation is flushed/read back before
+launch. A failed load durably halts; suite reservation requires the latest
+successful load manifest to match current candidate bytes. A fresh static
+review found no critical/important issue within this bounded change; it did
+not run checks or attest runtime behavior.
+
+**Suite STOP / overall NOT ACCEPTED:** after the load PASS, one unchanged
+16-case fixture process exceeds the inherited60s host timeout. No completed
+`cases-1.json` exists, so whole-case PASS/FAIL counts and the four dummy-process
+case outcomes are UNKNOWN, not0/16 or16/16. The surviving synthetic phase ledger
+has preparation, both cache checks and a1 marked PASS, with b1 STARTED; those
+partial protocol marks do not establish whole-case or live acceptance. No
+durable per-case progress survived to establish which cases finished.
+
+Consumed budget is **1 load +16 reserved case executions =17/35**.18 checks
+remain unused, but the ledger is halted: no silent timeout increase, unchanged
+rerun, second suite round or out-of-scope runtime fix. Candidate sources match
+the same load and suite manifests after verification. Next recommendation is
+read-only diagnosis of retained suite timing/progress evidence before proposing
+a separately bounded remedy; increasing the host timeout is not yet justified.
+
+Preservation hashes match1590 prior recovery/evidence files plus390 pending
+P2.0b files, including all17 PDFs and older M01/M1b/R1 ledgers. B1+C remains clean
+at `b79f426649e65eadb3fb29e410250395a6d65faa`. Service policy remains1GiB,
+swap0,2CPUs, admission768/320 unchanged; no new live memory/limit claim. No Docker,
+M2, Service, full suite, B2, product edit, Word/PDF generation or integration ran.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-runner-m1b-r2.zip`,
+SHA256 `c44a703cf42f79f2fb81398c897e3a591a53f8fbe066c1949fb4a1749782b410`;
+all114 members match saved hashes, including partial evidence. Status-document
+checks: evidence/scope review, source/preservation/archive hash comparison,
+final diff review and `git diff --check`. No canonical data/map changed;
+projection regeneration N/A. I6 remains NOT ACCEPTED.
