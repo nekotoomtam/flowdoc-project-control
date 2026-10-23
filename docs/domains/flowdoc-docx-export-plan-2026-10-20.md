@@ -12405,3 +12405,63 @@ Verification for this status change: inspect current evidence and coverage,
 compare source/input/reference hashes, verify archive contents, review the
 single-document diff and run `git diff --check`. No generated map or canonical
 record changed, so projection generation is not applicable.
+
+### 2026-10-23 — human Word exports: interim B1+C artifact comparison
+
+Authority Boundary: read-only Evidence review of the ten human-exported Word
+PDFs against the frozen E0-R1 PDF family. The owner explicitly authorized this
+interim comparison while W/R repeats are being prepared. No product change,
+integration, B2, Docker, new document generation or full-suite execution.
+Single-room execution IDs remain not applicable. The preceding automation
+failure remains historical; these files unblock artifact review without proving
+that the automated Word route is repaired.
+
+Evidence is retained at
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/word-comparison-01`:
+`input-manifest.json`, `inspection.json`, `analysis.json`, `result.json`,
+`visual-review.json`, `render-ledger.json`, `manifest.json` and
+`backup-receipt.json`. The separate local archive includes all ten Word PDFs,
+five unchanged reference PDFs, analysis outputs and tools. Older checkpoints
+are preserved. No map or canonical data record changed.
+
+| Packet | Frozen PDF pages | Reference DOCX through Word | B1+C DOCX through Word | Observation |
+| --- | ---: | ---: | ---: | --- |
+| P |6|11|7|Four excess pages removed; EDGE at remains on5 rather than4, EDGE above on7 rather than6. |
+| T |5|7|5|Both excess pages removed; all five tracked source text blocks now occupy baseline physical pages, including retained intentional blank sections. |
+| Q |5|7|7|Unchanged: both Word arms break after row25, baseline after row26. Empty-section blank6 and localized empty-TOC diagnostic7 remain. |
+| W |9|9|9|Three tracked line/page mismatches corrected; mixed Thai/Latin natural-wrap control unchanged. |
+| R |4|4|4|Two tracked line/page mismatches corrected, covering Thai body and Latin cell natural wrapping. |
+| Total |29|38|32|Excess pages fall from9 to3: six removed, a66.7percent reduction in this page-count excess metric. |
+
+Source coverage locates all114 P/T/Q text blocks across all three arms. Among
+113 uniquely placed blocks, wrong-physical-page counts decrease12 to5 and
+summed absolute page distance27 to5. Q's repeated header is located separately.
+All six W/R probes map1256 source code points over29 physical lines, with
+identical wrap signatures across baseline/reference Word/B1+C Word. Their
+line/page mismatches decrease5 to0. Authored LF offsets and Word-emitted extra
+boundary spaces are recorded explicitly; no Unicode normalization or general
+whitespace collapse is used to claim matching.
+
+All70 new pages were rendered once and visually inspected in17 contact sheets.
+No character-bounds failures or newly apparent clipping/overlap/missing glyphs
+were observed. Q's complete extracted page geometry is identical before/after;
+W's protected control page9 also remains identical before/after. All ten source
+DOCX hashes,22 frozen input/asset hashes and five frozen PDF hashes remain
+unchanged. Measured W/R line-top differences from baseline still range
+approximately+0.432 to+1.614pt; matching physical pages does not establish pixel
+or complete geometric identity.
+
+Disposition: **observed improvement; interim, repeatability pending**. Word
+metadata identifies Microsoft365 for all ten PDFs, but exact build, settings
+and manual field-update procedure are not independently attested. W/R repeat
+exports and fresh candidate-image-to-source build linkage remain unresolved;
+do not close E0-R1, accept I6 or integrate from this comparison. Page-count
+improvement is not a global document-fidelity percentage.
+
+Budget:70 pages were reserved before rendering, added to the prior29 for a
+cumulative99/180. This comparison performed zero Word launches, generation
+attempts, Docker scenarios or product tests. Ten completed human export files
+are inventoried; human retry/attempt counts are not observed. The next bounded
+step is to compare the pending W/R repeat files for page/text/line geometry
+stability. Status documentation checks are manual evidence/coverage review and
+`git diff --check`; no full suite is implied.
