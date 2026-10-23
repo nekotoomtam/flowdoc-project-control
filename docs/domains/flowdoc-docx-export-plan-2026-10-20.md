@@ -1,5 +1,11 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Active system-fidelity reframe R13: [Two-family independent acceptance framework](#system-fidelity-r13--two-family-independent-acceptance-framework).
+Owner authorizes continuous inline execution through acceptance or a concrete
+blocker. Scope: Sarabun+Bai Jamjuree,4faces,10/12/16pt,4layout families;
+96development+96heldout cases. R11/original PDFs remain immutable regression
+inputs. No system-level PASS yet; earlier small-fixture results remain bounded.
+
 Latest source-rule replacement experiment (2026-10-23): [Homogeneous source context rejected; R11 retained](#2026-10-23--homogeneous-source-context-rejected-r11-retained).
 FAIL replacement criterion: source-context candidate gives R1/R2 maximum X errors
 0.432/0.480pt versus allowed0.190pt. DOCX120/120/build and49page geometry/line/Y/mark
@@ -14605,3 +14611,96 @@ reproducible controls; source shaping correctness alone is not proof of native
 Word placement. Do not reintroduce another word-count sweep or copy an engine's
 rounding constant as a Word rule. No main merge, push, release, B2, Service/full
 suite, or broader-engine parity claim. Stop at this rejected-candidate checkpoint.
+
+
+## System fidelity R13 — Two-family independent acceptance framework
+
+Authority Boundary: owner requests reframe and autonomous execution until success
+or a concrete blocker, and explicitly selects Sarabun and Bai Jamjuree. Project
+Control owns this scope/acceptance framework; Core owns implementation. Inline
+Product Implementation/Evidence Reviewer work; Work Size large, Risk Tier routine,
+execution IDs N/A. No new room, Work registry, map promotion or extra worktree.
+Current retained Core is `abac0487b9c78a2749a21518b2ae2cb207cafc3d`, branch
+`codex/docx-horizontal-r11`, same sole testing worktree under
+`FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11/core`.
+R13 evidence root is the sibling `fidelity-system-r13` folder. The machine
+`plan.json` is an executable/checklist projection of this section, not a second
+authority. R11 and earlier baselines/archives remain immutable; R12 stays rejected.
+
+Goal: one source-grounded DOCX rendering policy that meets the declared fidelity
+criteria across both font families and unseen acceptance content, while retaining
+R11's accepted behavior. Success is not a smaller residual on one old phrase,
+unit-test counts, or a claimed universal rule. Windows Word build is pinned and
+recorded; cross-platform viewers and font weights other than400/700 are outside
+this first declared acceptance domain, without implying a per-font tuning rule.
+
+Scope matrix, fixed before examining new native results:
+- Sarabun and Bai Jamjuree; true Regular400, Bold700, Italic400, BoldItalic700
+  source font files, no synthesized style. Private resources only, no system install.
+- Font sizes10,12,16pt; source line height1.5x. This gives24font/face/size strata.
+- Four layout families in every stratum: short Thai/Latin/mark lines; natural
+  Thai/Latin/number wrapping; ordinary table cell wrapping/row flow; ordinary
+  paragraph flow across pages. Images/generated bands remain covered by original
+  regressions rather than a new cross-feature product expansion.
+- One development and one distinct heldout case for each combination:96+96=192.
+  Heldout content differs, with identical generator rules and declared domain.
+  Include common Thai marks, clusters, punctuation/numbers and near-width/end-page
+  boundaries. Source object and resource hashes must be identical within each pair.
+
+Hard acceptance criteria, chosen engineering targets before measurement (not an
+external standard and not a statement of current capability):
+1.100% authored content, order and semantic relations preserved. PDF encoding
+  differences require explicit source-cluster mapping; no silent Unicode cleanup.
+2.100% page and line membership match the paired PDF for every accepted case.
+3.No clipped/missing/fallback glyphs or page/cell overflow. Thai attachments remain
+  intact; source glyph/cluster coverage must be complete. Ambiguous matching is a
+  coverage failure, not grounds to drop a case or hide it in an aggregate.
+4.Absolute glyph-origin X and Y errors: p95<=0.25pt and maximum<=0.5pt for every
+  font/face/size stratum and overall. Report distributions, counts and worst cases.
+5.Original49native pages retain accepted page/line/Y/mark behavior. W5 remains
+  exact R11 identity; originalR1/R2 maxima stay<=0.190pt. No relaxing old criteria
+  to pass the broader set. Native output and full-page visual review required.
+
+Validation design: development and heldout input manifests are frozen before
+product changes. Keep heldout native outputs/scores unopened during development;
+freeze candidate source/package/configuration before acceptance. A failed evaluated
+heldout set is consumed evidence and may guide further work, but is no longer an
+independent acceptance set; generate a fresh seeded set using the same declared
+matrix/criteria for the next candidate. No selection/filtering based on measured
+success. Existing frozen PDFs are never regenerated; new matched PDF references
+are additional immutable artifacts generated with the unchanged R11 PDF engine.
+
+Approach and execution plan:
+- [ ] S0: Pin eight font files, licenses and identities; freeze generator/partition
+  manifests and acceptance config; verify original baseline/R11 preservation.
+- [ ] S1: Generate font-matched PDF/development DOCX and evaluate by stratum. First
+  validate the matcher with known controls; complete coverage is a prerequisite.
+  Group actual failures by source owner: font/style selection, shaping context,
+  advance/offset conversion, run emission, line/page flow, or output quantization.
+- [ ] S2: Implement only evidence-backed source rules, each with RED/GREEN targeted
+  regression and affected tests. Keep a concise hypothesis/ruling ledger. No phrase,
+  document-ID, word-count or measured-PDF-offset exception. Retain R11 rollback.
+- [ ] S3: Freeze candidate, evaluate96heldout cases and original49native pages;
+  compare all criteria and render/inspect every new output page. No PASS from code
+  tests alone, partial coverage, or only an aggregate across font families.
+- [ ] S4: Fresh independent whole-change review; bind tested compiled/package/source
+  identities; seal recoverable evidence and leave the candidate clean and unmerged.
+
+Proof budget:192declared cases, initially96development native cases; batch exports.
+Candidate iterations rerun only affected strata; exact unchanged rendering identity
+may reuse native proof. Evaluate96heldout only after candidate freeze, and original49
+at final acceptance. Maintain1GiB/CPU2/networknone for runtime containers; record
+commands/actual cases/exports. No fixed-count retries or word-count sweeps. Font
+acquisition uses official source with pinned revision/hash/license outside runtime.
+No Service/I6/cache/observer/full-suite detour, PDF-source repair, extra branches or
+worktrees, main/release integration, push or publication. Model choice: existing
+host model/current chat, user-directed autonomous inline implementation; no silent
+model override. Return route: this chat; checkpoints update this existing section.
+
+Stop conditions: a security/irreversible approval boundary, unavailable external
+prerequisite, resource failure, correctness/contract conflict, or no remaining
+source-backed next hypothesis within this scope. Ordinary test failures are work
+to diagnose, not a request for another small approval. A new numerical guess is
+not sufficient justification for another round. No claim of universal parity.
+Stop when the complete hard criteria and evidence coverage pass; otherwise state
+exact unmet criteria and concrete blocker. Do not lower thresholds after results.
