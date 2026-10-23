@@ -1,5 +1,14 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current W/R checkpoint (2026-10-23): [Width-preserving horizontal fallback verified](#2026-10-23--width-preserving-horizontal-fallback-verified).
+Core `b398016` improves W5 mean absolute X0.409 to0.392pt and R4 0.251 to0.037pt.
+P/T/Q remain position-identical; all29 packet pages and20 Thai mark/edge pages
+retain glyph baselines, line membership, outlines and sizes. DOCX116/116 and
+build PASS. W6 has a measured0.000667pt mean increase from native run rounding;
+W/R residuals remain, especially W5 and R1/2. This verifies the bounded candidate,
+not closure of every horizontal difference. Frozen PDFs/inputs and B1+C remain.
+No integration.
+
 Current horizontal checkpoint (2026-10-23): [Bounded horizontal metrics candidate verified](#2026-10-23--bounded-horizontal-metrics-candidate-verified).
 Core candidate `9168ab0` reduces measured mean absolute X error from0.267 to
 0.122pt across1805 comparable visible characters (54.2%). P6/T5/Q5/W9/R4 and
@@ -13963,3 +13972,96 @@ comparison artifacts and complete source bundle outside the recovery root.
 The older R5 backup remains intact. Scoped diff/anchor/locator and whitespace
 checks apply to this checkpoint. Stop at this verified candidate; integration
 and further residual work require their own authorized scope.
+
+## 2026-10-23 — Width-preserving horizontal fallback verified
+
+**PASS bounded candidate; remaining horizontal parity is not fully closed.**
+The owner authorized continuing W/R horizontal differences autonomously in a
+separate worktree, preserving frozen PDFs, accepted pages/lines/baselines and
+Thai mark safety, without integration. Core owns implementation; Product
+Implementation Agent / Evidence Reviewer acts inline. Execution IDs are not
+applicable. This is an existing Project Control canonical checkpoint, with no
+new Work, product Markdown, map, canonical data or projection changes.
+
+- Worktree: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r7/core`;
+  branch `codex/docx-horizontal-r7`, clean at
+  `b398016017a1a5ba1dd15b92a37d0ab5167a7079`, based on `9168ab0`.
+  The same six Core DOCX implementation/test files as R6 are changed.
+- Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r7`.
+  `brief.json`, `manifest.json`, `result.json`, `comparison.json`, `review.json`,
+  raw reports, generation receipts, `native-proof-reuse.json`, `visual-final`
+  and verified full-history `core-horizontal-r7.bundle` bind the result.
+  Final outputs are `dist-verified`, `generated-final`, `edge-accepted`.
+
+### Adopted behavior and boundary
+
+For a paragraph whose native nominal-width proof is uncertain, independently
+proven ASCII words can now receive source-derived pair tracking plus opposite
+terminal compensation. The sum of tracking within each complete word is zero
+twips. Every scalar must map to one glyph without offsets/substitution; the
+whole word must fit a single authored text span. Unmodified ligature words
+remain unsplit. This fallback can be triggered by uncertain clusters generally,
+including unrelated Latin substitutions, not only Thai marks. Thai and mark
+runs receive no tracking. Baseline admission/calculation is unchanged.
+
+Unsafe tables still withhold all pair tracking. Baseline-proven plain grids
+with exact4pt side padding can instead align the measured half-stroke origin
+using left75/right85twips, conserving the old80+80 total and native text width.
+Previously safe grids retain R6's75/75 mapping. Source dimensions, table
+topology, native line/page decisions, semantic data and PDF renderer remain.
+This stays within the recorded experimental C4/C5 immutable-content exception;
+it is not a universal policy for future Word edits, versions or other engines.
+
+### Evidence coverage and remaining limits
+
+- Meaningful failing-before tests cover uncertain-cluster word compensation and
+  width-preserving table mapping. Final DOCX116/116 and pinned TypeScript build
+  PASS, including complete-span and ligature rejection tests. Source is unchanged
+  after final checks. Build/consumer containers retain1GiB and pinned images.
+- Independent read-only review finds no actionable correctness issues in all
+  six files. Diagnostic interpretation is explicit: legacy receipt `pairs`
+  counts tracking entries including compensation;0.025pt quantization is per
+  source pair. Terminal compensation accumulates those errors, so this is not
+  a global pointwise position-error guarantee.
+- Real Word16.0.20430.20182 exports of final W/R/edge preserve all29 packet and
+  20 edge pages, per-page raw text/whitespace, native glyph outlines/sizes and
+  every glyph Y: maximum baseline delta0pt. All426 W authored codepoints stay
+  on the accepted5 natural lines. P/T/Q native evidence is reused only after
+  exact rendering-part and deobfuscated-font-byte equality against R6; their
+  glyph positions remain identical. All final DOCX hashes match receipts.
+- Thai coverage retains2772 clusters across4 faces,11088 instances and16 edge
+  lines. No active glyph clipping, unknown clip mapping, page overflow or font
+  fallback is found across49 pages. Relative zero-advance mark attachment drift
+  is at most0.024pt, within the existing0.121pt native-rounding guard; outlines,
+  sizes and Y remain exact. All49 page images and16 high-resolution edge strips
+  were reviewed, plus W5/W6/R4 source-versus-R6-versus-R7 crops.
+- W5 mean absolute X changes0.408699 to0.392072pt; W6 changes0.074838 to
+  0.075505pt, a0.000667pt increase recorded rather than hidden. R4 improves
+  0.250824 to0.036706pt. W's comparable618 characters improve in aggregate
+  0.154958 to0.150718pt; R's377 improve0.160785 to0.151130pt. Across995 W/R
+  comparable characters,0.157166 becomes0.150874pt. Across all1805 comparable
+  characters,0.122379 becomes0.118911pt. Q4/5, W1/2 and R3 remain excluded
+  from reference character metrics due segmentation mismatch, while native
+  old/new acceptance still covers every page.
+- R1/R2 retain native Thai position residuals, means0.152899/0.157727pt.
+  W5 retains cumulative offset because neutral tracking deliberately preserves
+  total word width. No unsupported claim that these differences are impossible
+  to improve is made. Unconstrained pair compression is not reintroduced after
+  the documented R6 wrap regression. Full horizontal parity remains open.
+- A third diagnostic actually adds `usePrinterMetrics=true` to R settings;
+  all4 native pages and every glyph X/Y remain identical. No improvement, no
+  adoption, and no OS/printer changes. `printer-probe.json` records the negative
+  result. The [Microsoft definition](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.useprintermetrics?view=openxml-3.0.1)
+  is supporting setting semantics, not evidence of native improvement.
+- PDF17/17, input22/22, accepted P-R2 ten artifacts, R5 sixteen artifacts and
+  R6 fourteen final artifacts preserve their hashes. B1+C remains clean at
+  `b79f426`. No Service/full-suite/B2/I6 acceptance, merge, release or push.
+
+Backup: `C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-horizontal-r7-final-2026-10-23.zip`,
+SHA256 `8d6d2b062f43f539acda315ba60dd1568f7967b43c1c4f22d8d8eb9cd07e78f2`.
+All553 outer members are byte-verified; a separate receipt binds every hash.
+The archive includes source history, final/diagnostic evidence, frozen inputs
+and PDFs, plus the unchanged verified R6 archive/receipt containing the earlier
+comparison chain. Existing backups remain intact. Scoped final diff, anchor,
+locator and hash checks apply. This checkpoint preserves the verified gains
+and explicit residuals without promoting complete horizontal parity.
