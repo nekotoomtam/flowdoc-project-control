@@ -1,5 +1,11 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [G1-R10 passes source/observer/cache and stops in A2](#2026-10-23--g1-r10-source-observer-cache-pass-with-a2-receipt-read-blocker).
+Source205 exact byte profiles PASS; native config receipts and separate sampling
+verified within this readiness session. A1/B1/B2 PASS, A2 stops on receipt access
+denial; balanced memory conclusion remains open.88/89 reserved, offline/live
+subcaps exhausted. Clean owned cleanup; PDF17/B1+C preserved. I6 NOT ACCEPTED.
+
 Latest checkpoint (2026-10-23): [G1 real readiness stops at source-image prerequisite](#2026-10-23--g1-real-readiness-blocked-at-source-image-prerequisite).
 External bridge checks and final original16 PASS; real sessions3/3 STOP during
 preparation.85/89 units reserved; live/load subcaps exhausted. Final pinned image
@@ -13305,3 +13311,108 @@ backup receipt is excluded from its own archive. Documentation checks: scoped
 Evidence coverage and final diff review, preservation/archive comparison and
 `git diff --check`. No canonical data/map change; projection regeneration N/A.
 I6 remains NOT ACCEPTED.
+
+
+### 2026-10-23 — G1-R10 source observer cache pass with A2 receipt read blocker
+
+Authority Boundary: owner approved the proposed new89-unit G1 round and continuous
+execution within scope. External tools/readiness only; Project Control owns this
+status, not product/runtime acceptance. Roles external tool implementer/Evidence
+Reviewer; inline Work/Phase/Checklist execution IDs N/A, existing DOCX I6 target.
+Product source, image build/pull, document requests, full Service suite, B2 and
+integration remain forbidden. Previous R9/R8/R6 Evidence stays immutable.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/live-g1-r10`.
+Read `authorization.json`, `rulings.json`, `baseline.json`, `input-pins.json`,
+`line-ending-profile.json`, `review.json`, `budget.json`, `result.json`,
+`manifest.json`, numbered load/identity/offline/live results and original
+`candidate/proof/regression-5.json` and `regression-9.json`. Each session retains
+commands, outputs, port events and phase ledger. Final result SHA256:
+`81a3cec8335adb92c789414e7ee455d89d1c98823e7a7a7130547be39ee166c5`.
+
+**G1 remains BLOCKER; stop at offline/live subcaps.** New budget reservations:
+loads3/4 + offline64/64 + live3/3 reserving21 phase slots =88/89. One remaining
+load unit cannot purchase another test or live session. All7 phase slots were
+reserved before the first Docker command per session, without refunds; actual
+started phases total9. No new Docker command, fixture/test run or source repair
+after session3.600s active/60s cleanup/60s arm and original per-command limits
+stay unchanged, as do1GiB/swap0/CPU2 and admission768/320.
+
+Source identity tools now retain complete per-file diagnostics with expected
+and actual byte counts/hashes, distinguishing missing/read failure/content
+mismatch/line-ending-only. Binary bytes never normalize. Exact host preservation
+pins remain separate from runtime pins. Service HEAD
+`8690193b73b14554c63a9aebe5c888edcf780946` supplies canonical Git blob identity;
+150 Service pins include tsconfig, plus51 mounted plugin files and4 fonts.
+
+Initial runtime inventory in session2 records113 exact matches and92 CRLF-only
+text differences, with no missing files or content mismatch. All92 actual hashes
+and byte counts independently equal the frozen host copies; those copies differ
+from their pinned Git blobs solely by CRLF/LF. Ruling: select the exact preserved
+CRLF byte profile for those92 named files, retaining each canonical Git hash and
+size in the new manifest. The113 other pins remain unchanged. No arbitrary hash
+is learned as authority, runtime normalization is not an acceptance rule, and no
+image/file is rewritten. Package-lock and package.json in the image match the
+canonical LF form; mixed line endings explain the earlier raw-host pin failure.
+Final manifest SHA256:
+`a58280d087c8ee1d5dbb49bb9dd7a138607404db7575aeddd5e45c596e22c159`.
+This proves the bounded source byte profiles against the retained image, not a
+fresh reproducible image build or correspondence to the experimental B1+C package.
+
+Three fresh loads PASS. New identity cases12 RED then12 GREEN cover exact/LF,
+CRLF diagnostic refusal, changed content, missing files, binary preservation,
+UTF8/BOM, empty files, complete inventory, read errors and unsafe paths. Existing
+bridge8/8 PASS; unchanged original16 passes twice. Total offline64 executions:
+52 PASS,12 expected RED failures. One independent static reviewer reports no
+concrete r10-vs-r9 blocker before live; Git derivation/results are not independently
+verified by that review. The92-file profile selection follows it; no second review
+is claimed. No product test or full combined Service suite ran.
+
+| Session | Result | Cleanup |
+| --- | --- | --- |
+|1, event6|Original5s discovery deadline; no resource created.|All8 command trees closed/zero.|
+|2, event7|Complete205-file inventory refuses92 line-ending-only profiles; no content mismatch.|All49 command trees closed/zero; three containers/network removed; final owned lists empty.|
+|3, event10|Six phases PASS: preparation, cache1, cache2, A1, B1, B2. A2 starts but stops reading runner-only receipt with PermissionError errno13.151.109s elapsed.|Observer stops exit0/error null; all127 command trees closed/zero; three containers/network removed; final owned lists empty.|
+
+Bounded live coverage from session3:
+
+- `runtime-source-inventory.json`:205/205 exact byte profiles PASS, no runtime
+  normalization used; inventory SHA256
+  `72e518af8f2d094cca5e846b7a31b6f35a23e62a923ae0cbf69880dd06823b9e`.
+- Native config receipts for A1 and A2 match exact source/config digests and
+  resolved one-fork settings/test45000/hook10000. A1 completes; A2 does not.
+- Observer is separate, binds the current descriptor with21 held counter FDs,
+  and records127 samples with valid binding, target max1073741824/swap0 and
+  zero oom/oom_kill. Database process visibility remains
+  NAMESPACE_NOT_COMPARABLE; no host DB PID-membership claim.
+- Cache reader0/1/2 each covers5664 files with two content passes, matching
+  metadata/content across receipts and passing the planned idle controls.
+- A1/B1/B2 readiness results PASS, noGenerationRequest=true, owned Service join
+  confirmed. Raw memory/process/cgroup evidence is retained. Missing A2 prevents
+  a balanced A-B-B-A result, harness-vs-Service conclusion or RAM-savings claim.
+
+A2 runner-only JSON is readable after worker join, but that does not validate
+its failed phase. Consumer `get` waits for existence then reads once; publisher
+already uses exclusive temp write plus rename. The specific file holder/cause
+of transient access denial is unproven; do not call the publisher non-atomic or
+blame an external reader. No external journal/log/result reads or proof hashing
+occurred while any worker was active. Next recommended work: a bounded proposal
+for transient expected-receipt access denial within the original deadline,
+retaining identity/content checks and atomic publication; prove simulated failures
+before a newly budgeted complete A-B-B-A. No such repair is performed here.
+
+Preservation passes5273 prior recovery files,390 pending P2.0b files,150 Service
+files,51 plugin files and4 fonts. All17 PDF hashes match; B1+C is clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`. No product source, PDF baseline,
+original Evidence, memory policy or timeouts changed. No full suite/B2,
+image build/pull, document generation, integration, release or push performed.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/live-g1-r10.zip`,
+SHA256 `e735e4edca691f47f014f54798cf855aed7034c7aecba8f6e4bb0072ea2fbb1a`;
+all1691 members compared against saved files and ZIP integrity checked. External
+backup receipt is excluded from its own archive. Documentation checks: scoped
+Evidence coverage/final diff review, preservation/archive comparison and
+`git diff --check`. No canonical data/map changes; regeneration N/A.
+G1 memory comparison remains incomplete; I6 NOT ACCEPTED.
