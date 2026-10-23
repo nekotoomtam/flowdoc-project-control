@@ -1,5 +1,14 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current fidelity checkpoint (2026-10-23): [DOCX fidelity R1 verified improvements](#2026-10-23--docx-fidelity-r1-verified-improvements).
+The owner redirected execution to DOCX-to-PDF fidelity, with relevant fixes
+managed autonomously in isolation. Memory/ABBA work is deferred; its old caps
+are historical and are not prerequisites for this fidelity experiment.
+Q improves from7 to5 pages and row26 returns to reference page2. Current total
+is30 vs reference29 pages; P retains one extra page. Core DOCX89/89 and build
+PASS. Source/reference PDFs and B1+C remain unchanged. No integration/release;
+full parity and I6 acceptance remain open.
+
 Latest checkpoint (2026-10-23): [G1-R10 passes source/observer/cache and stops in A2](#2026-10-23--g1-r10-source-observer-cache-pass-with-a2-receipt-read-blocker).
 Source205 exact byte profiles PASS; native config receipts and separate sampling
 verified within this readiness session. A1/B1/B2 PASS, A2 stops on receipt access
@@ -13416,3 +13425,82 @@ backup receipt is excluded from its own archive. Documentation checks: scoped
 Evidence coverage/final diff review, preservation/archive comparison and
 `git diff --check`. No canonical data/map changes; regeneration N/A.
 G1 memory comparison remains incomplete; I6 NOT ACCEPTED.
+
+
+## 2026-10-23 — DOCX fidelity R1 verified improvements
+
+Authority: the owner explicitly refocused on making DOCX converted through Word
+match the unchanged PDF as closely as practical, and authorized relevant fixes
+without stepwise questions. This is single-room Core implementation and evidence
+review; Work/Phase/Checklist execution IDs are not applicable. Risk is routine.
+The previous Service memory investigation is deferred, not completed or accepted.
+No old registered execution context is reactivated.
+
+### Candidate and source boundary
+
+- Isolated Core worktree: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-r1/core`.
+- Branch: `codex/docx-pdf-fidelity-r1`; base `b79f426649e65eadb3fb29e410250395a6d65faa`.
+- Commits: `e89ff83` omits ordinary Sections and empty TOCs without PDF layout content;
+  `008dbca` extends bounded border-centre padding to validated text-only merged grids.
+- Source changes are restricted to `src/docx/sections.ts`, `tables.ts`, `writer.ts`,
+  `geometry-policy.ts`, plus `tests/docx/paginationRules.test.ts` and `geometry.test.ts`.
+  The shared graph, input templates, PDF renderer and original B1+C are unchanged.
+- Intentional blank/cover Sections and populated TOCs remain. Omitted Sections
+  are identified in adaptations. Merged topology, vertical continuation,
+  repeating headers and row splitting rules remain; image/mismatched-padding
+  tables keep native padding. Fixed text-cell capability is not expanded.
+
+### Evidence and results
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-r1`.
+`result.json` and `manifest.json` bind the source commit, compiled files, pinned
+build/consumer images, frozen inputs, DOCX receipts and actual Word PDF hashes.
+This is a compiled-source mounted consumer experiment, not packed-release acceptance.
+
+| Packet | Frozen PDF pages | Previous B1+C Word pages | Current Word pages |
+| --- | ---: | ---: | ---: |
+| P | 6 | 7 | 7 |
+| T | 5 | 5 | 5 |
+| Q | 5 | 7 | 5 |
+| W | 9 | 9 | 9 |
+| R | 4 | 4 | 4 |
+| Total | 29 | 32 | 30 |
+
+Q no longer creates an ordinary empty page or an empty-TOC diagnostic page.
+The merged-table correction moves row26 from page3 to page2; extracted text
+matches the frozen reference on each of all5 Q pages. For example, row25's
+vertical top delta improves from15.320pt to1.520pt. This is a matched-line
+measurement, not a whole-document visual similarity percentage.
+
+Final Q/T/W were converted using installed Word's native UI, accepting internal
+field refresh and Save As PDF with Standard quality. Their DOCX hashes still
+match generation receipts. T/W retain their previous text per page and page
+counts; only affected table positions change, closer on matched lines.
+P/R reuse the same-session native Word PDFs: final source generation has exactly
+identical document/header/footer XML for those packets. No PDF reference was
+regenerated. Earlier failed COM exports are retained as failed attempts, not proof.
+
+All30 first-milestone pages were rendered and reviewed, followed by all19 affected
+Q/T/W final pages. No new visible clipping, missing glyphs, or overlap was found
+in that bounded review. `comparison/summary.json`, `comparison-merged/summary.json`,
+page images, inspections and `position-deltas.json` preserve exact scope/results.
+The final TypeScript build and DOCX suite PASS89/89. Fresh review found no source
+blocker; its invalid fixed-cell test and continuation/image coverage gaps were
+corrected before final passing verification. This is not a full Service suite.
+All17 original PDFs and22 frozen input files retain hashes. B1+C stays clean.
+
+### Remaining differences and next work
+
+P still overflows at the exact page-bottom boundary, producing7 vs6 pages.
+An isolated one-twip downward fixed-spacer probe also produces7 pages, so that
+probe is rejected and no fixed-spacer quantization change is implemented.
+Native font baselines, page dimensions and some line positions are not identical.
+W pages5/6 retain mixed-script wrapping/extraction differences versus reference;
+this candidate does not worsen their previous text per page. Broader merged-table
+corpora and different Word versions are unverified. Original human-conversion
+Word provenance qualifications remain historical limitations.
+
+Bounded implementation/verification of these two fixes is complete. Full parity
+is open. Next fidelity work is the P exact-fit boundary and W mixed-script lines,
+using the same immutable PDF references. Service full-suite/I6 acceptance stays
+separate and NOT ACCEPTED. No merge, release, push or map promotion occurred.
