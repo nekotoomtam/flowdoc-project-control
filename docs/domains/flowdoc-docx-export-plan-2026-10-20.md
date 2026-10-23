@@ -14839,3 +14839,62 @@ R13 checkpoint — source-guided line prototypes, not accepted product changes:
   `probes/guided-word-spacing/{manifest,x-diagnosis,native-fixed-frame-diagnosis}.json`,
   `probes/guided-word-spacing-allfaces/{manifest,reused-native-receipts}.json`.
   No merge, push, release, Service/I6 or full-suite work.
+
+R13 owner-authorized shared shaping repair:
+
+- Owner approved repairing Thai/Latin script itemization in the shared shaper
+  and generating additional corrected reference PDFs, with autonomous routine
+  decisions inside the fidelity goal. Existing PDF files, R11 compiled output
+  and inputs remain immutable. This explicitly supersedes the frozen-PDF-engine
+  restriction for this shared itemization repair; it does not authorize replacing
+  old evidence, changing authored text/model, merging or releasing.
+- Source-only18checks demonstrate that the current whole-string script guess
+  changes Thai mark glyphs after a Latin prefix. A separate18check segmentation
+  hypothesis restores the standalone Thai glyph choices using unchanged fonts
+  and native binary. These are diagnosis, not product acceptance.
+- All24natural-wrap prototype cases now have native Word outputs. Membership
+  checks pass24/24, but positive-origin X maxima fail4/24 and component coverage
+  remains incomplete; measured different mark outlines are not accepted as the
+  same ink. No complete case or R13 phase is promoted to PASS.
+- Implementation first adds failing shared-runtime regressions, then itemizes
+  the supported Thai/Latin profile at grapheme-safe boundaries. Cluster offsets,
+  ink extents, advances, cancellation and cleanup remain covered. Other script
+  behavior is retained. Affected runtime/layout/PDF/DOCX checks are required.
+- Reference policy is now dual-track: preserve and hash-check all old R11
+  evidence, while evaluating corrected candidate PDF and DOCX from the same
+  frozen semantic input/fonts. Report old-to-corrected PDF changes explicitly.
+  Old W5/R1/R2 numbers remain historical R11 acceptance, not a guarantee about
+  corrected shaping. The declared new matrix geometry/page/line/coverage targets
+  are unchanged; no filtering or threshold relaxation. Heldout stays unopened
+  until candidate freeze. Source evidence lives in
+  `fidelity-system-r13/probes/guided-word-spacing-allfaces/`.
+
+R13 continuation — source grouping and generated native paragraph fragments:
+
+- Shared runtime repair is committed only on the test branch at`5d9d6bf`.
+  Five actual-font prefix regressions fail before repair and pass after;502
+  affected tests pass, plus the real segmenter reuse consumer. The separate
+  legacy-helper rejection test is not run because its explicit legacy executable
+  prerequisite is unavailable; it is not a PASS claim. Independent8face source
+  checks pass72/72. Corrected references bind111108visible glyphs, retain127pages
+  and2821painted lines in aggregate; individual changed line cuts and geometry
+  remain audited, not inferred unchanged from those totals.
+- The owner also authorized following recommended subsequent decisions without
+  routine questions. Use that authority for a proof-only native-fragment route:
+  preserve one logical source paragraph, its exact text/order and source node ID,
+  while permitting generated native Word line paragraphs grouped by that source
+  identity. This explicitly supersedes the prototype's one-native-paragraph
+  restriction; it does not change the semantic document or logical table grid.
+  Generated native paragraph boundaries must be declared as layout controls,
+  never counted as authored text. Word editing/copying behavior changes and
+  regeneration is needed to restore fidelity after edits, as already accepted.
+- Reason: half-point run positioning plus a uniform native frame still leaves
+  failing Yp95 in the source-guided prototype. Test per-line frames derived from
+  source ascent/descent and source height, retaining the unspent frame height as
+  declared spacing. No PDF-fitted baseline offset, phrase rule or word-count gate.
+  This is an experiment, not proof of its correctness or a new public mode.
+- Numeric geometry, coverage, clipping, line/page and heldout criteria remain
+  unchanged. Native fragment counts are checked against the generated-control
+  mapping; exact source paragraph grouping and authored text remain mandatory.
+  Unsupported navigation/field/group relations must retain their existing
+  mapping rather than disappear. No unproved product adoption or integration.
