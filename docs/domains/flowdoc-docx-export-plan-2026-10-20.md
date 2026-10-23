@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [Detached parent and child pass bounded host checks](#2026-10-23--m1b-r6-detached-parent-and-child-bounded-pass).
+Load PASS, simulated8/8 PASS, original host cases15/13/14/16 PASS. Case15 has
+exactly two owned Python members, cancellation PASS and zero-member cleanup.
+13/13 consumed; STOP. Whole M1b/I6 remain NOT ACCEPTED; no larger suite or M2 ran.
+
 Latest checkpoint (2026-10-23): [Child no-window flag remedy stops on case15](#2026-10-23--m1b-r5-child-flag-remedy-fails-case15-and-stops).
 Load and six simulated checks PASS, but unchanged case15 reads4 active members:
 two Python processes and two conhost.exe processes.8/11 consumed; STOP.
@@ -13002,6 +13007,71 @@ Verified same-machine archive:
 `C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-case15-m1b-r5.zip`,
 SHA256 `8d27201a00ac14ef2b87f10c9e81abdfd5c691c24eea1a8f897a8448cb295f0d`;
 all55 members match saved hashes. Status-document checks: scope/evidence review,
+source/function/preservation/archive comparison, final diff review and
+`git diff --check`. No canonical data/map change; projection regeneration N/A.
+I6 remains NOT ACCEPTED.
+
+### 2026-10-23 — M1b-R6 detached parent and child bounded PASS
+
+Authority Boundary: explicit owner-approved isolated external-tool remedy only.
+External-tool implementer / Evidence Reviewer; inline execution IDs N/A. Budget13:
+load1 + simulated8 + original host cases15/13/14/16 once each, with STOP at first
+failure. Keep exact-two, original deadlines,1GiB and PDF/B1+C. No Docker/M2,
+full suite, B2, product edits or integration authorized.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-case15-m1b-r6`.
+Read `result.json`, `brief.json`, `baseline.json`, `review.json`, `manifest.json`
+and `flag-proof/ledger.json`, `flag-proof/load.json`, `flag-proof/simulated.json`,
+`flag-proof/case15.json`, its raw snapshot and the case13/14/16 JSON records.
+Behavior changes are exactly two flag substitutions: CREATE_NO_WINDOW becomes
+DETACHED_PROCESS on the parent Popen in `repair.py` and child Popen in
+`dummy_worker.py`. `flag_tests.py` and `run_flag_checks.py` add the approved
+eight simulated checks and cap13 gate. All33 other copied sources, including
+all16 original test functions/assertions and the native diagnostic, are unchanged.
+Job assignment, GO through the pipe, streams, cancellation and cleanup logic
+remain intact. R5's observed count4 assertion failure is immutable reused RED;
+no extra pre-fix run, hidden pilot or repeat round is charged or performed.
+
+**Bounded remedy PASS; whole M1b/I6 NOT ACCEPTED.** Counted load passes before
+any simulated or actual dispatch. Eight simulated protocols pass: parent launch
+with assignment before GO, tree, orphan, hang, leaf, child spawn failure,
+rejected GO and parent assignment failure. Native Job/Popen/sleep are intercepted
+in these simulations; no actual process starts. Assignment failure preserves
+kill/wait/Job closure and stream closure. A fresh static review found no
+important/certain scoped issue; runtime claims below rely on counted evidence.
+
+Original case15 now PASS: its same active query reads2, and the raw Job list
+identifies parent Python19896 plus child Python33352 with confirmed membership,
+matching ready IDs and no console-host member in that list. The original
+exact-two assertion and cancellation path both pass. Cleanup has activeAfter0
+and closed=true. Original case13 command timeout, case14 missing-receipt
+timeout and case16 parent-exit/descendant join checks also PASS; all four actual
+roots have zero-member, closed cleanup evidence. Case durations are0.297s,
+0.391s,0.359s and0.500s respectively (15/13/14/16). No recorded forbidden operation,
+instrumentation/cleanup error or outer timeout. Native supplementary reads
+remain marked non-atomic; no excluded-name counting is used.
+
+Consumed13/13:1 load +8 simulated +4 actual; ledger halted. All stages and final
+sources match the same frozen manifest digest
+`bfd7207c6e28936e6b3200f430a118e684d51badf8417777b8e4334940f9a8d4`.
+Readiness3s, cancellation2s, cleanup3s, original command/receipt/join waits and
+outer60s timeout are unchanged. No further proof follows this bounded PASS.
+It closes the inspected console-host/exact-two blocker for these four host
+cases only; it does not replace the outstanding whole offline16 combined run,
+live config/observer/cache/memory proof, or mandatory I6 combined Service suite.
+Next work is a separately bounded verification proposal; no larger run starts.
+
+Preservation hashes match2645 prior recovery files,390 pending P2.0b files and
+all17 PDFs. B1+C remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`.
+Policy stays1GiB, swap0,2CPUs, admission768/320 unchanged; no live Service
+memory/enforcement claim. No Docker/M2/full suite/B2, product edit, integration
+or Word/PDF generation occurred.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-case15-m1b-r6.zip`,
+SHA256 `97811e9d9f3bfb402ba1d3c202a833c7a60931b91848b7173cae4ea13bd4e15c`;
+all69 members match saved hashes. Status-document checks: scope/evidence review,
 source/function/preservation/archive comparison, final diff review and
 `git diff --check`. No canonical data/map change; projection regeneration N/A.
 I6 remains NOT ACCEPTED.
