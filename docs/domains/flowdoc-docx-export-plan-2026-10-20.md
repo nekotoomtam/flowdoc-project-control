@@ -12465,3 +12465,29 @@ are inventoried; human retry/attempt counts are not observed. The next bounded
 step is to compare the pending W/R repeat files for page/text/line geometry
 stability. Status documentation checks are manual evidence/coverage review and
 `git diff --check`; no full suite is implied.
+
+### 2026-10-23 — reference W/R repeat exports verified
+
+Authority Boundary: read-only verification of the owner's two reference Word
+repeat PDFs, supplied as `reference-W-word2.pdf` and `reference-R-word2.pdf`.
+No candidate/product edits, Word launch, Docker, B2, full suite or integration.
+The evidence at
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/word-repeat-01`
+contains input hashes, results, pre-reserved rendering ledger, all rendered
+pages and a verified separate local backup receipt.
+
+**PASS for reference W/R repeatability:** W remains9 pages and R remains4.
+All text, character/font/line coordinates, page dimensions and image/annotation
+counts match their first Word exports. All13 rendered page PNGs are byte-identical
+to the previously reviewed first-export PNGs; all13 pages were also visually
+reviewed. PDF container bytes differ, so no PDF-file byte-identity claim is made.
+The five frozen E0-R1 reference PDF hashes remain unchanged.
+
+This closes the reference W/R repeatability gap in the preceding comparison.
+Its observed result remains page excess9to3 and tracked W/R line/page mismatches
+5to0. It does not supply independent candidate-repeat evidence, exact manual
+Word build/settings attestation, fresh source-to-candidate build linkage, or
+full E0/I6/integration acceptance. No additional exports are requested by this
+bounded check. Rendering adds13 pre-reserved pages for cumulative112/180.
+Verification is exact extraction/pixel/hash comparison, complete visual review,
+backup-content checks and `git diff --check`; source/runtime tests are inapplicable.
