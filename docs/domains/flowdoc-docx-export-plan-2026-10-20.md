@@ -12209,3 +12209,134 @@ Present planning rechecks P2.0's unchanged manifest17 files and three candidate
 hashes plus the two preceding live manifest hashes, without running a scenario.
 Only this canonical plan changes. Project Control `tools/check.ts` and
 `git diff --check` pass; no shared map/status promotion or runtime acceptance.
+
+### Recovery proposal after loss of the 2026-10-22 artifact root 2026-10-23
+
+**PROPOSED / NO RECOVERY EXECUTED.** The owner requests a recovery plan after
+confirming deletion of the external artifact root. This turn changes this
+existing canonical plan only; no file restoration, worktree creation, baseline
+generation, Docker, database connection, functional test or product edit occurs.
+Earlier preservation statements describe their historical checkpoints, not a
+claim that the deleted files remain available now.
+
+Project Control owns the recovery decision/prose; Core owns B1+C and Service
+owns P2.0/test adapters. Role Planning Partner/Evidence Reviewer; bounded
+single-room discussion, IDs N/A, medium Work Size/routine Risk Tier. Current
+host-provided model/capability prepares the proposal without override; later
+execution resolves its own model decision. Document Budget this existing plan
+only, no new Work/Phase/map or promotion of historical evidence.
+
+#### What can retain its original identity
+
+| Material | Verified recovery input | Permitted claim after recovery |
+| --- | --- | --- |
+| B1+C source | Core commit `b79f426649e65eadb3fb29e410250395a6d65faa` and its source/test/fixture blobs exist; separate B1 `bd09ed0` and C `69d0018` commits also exist | Restore the exact committed candidate; this does not restore its runtime proof |
+| P2.0 Service candidate | New P2.0b worktree holds all360 locked paths;358 match its pre-edit manifest | Those358 files can be reused byte-for-byte |
+| Two pre-P2.0b files | Session source for task-api entry1649 bytes and DB helper4066 bytes matches the locked hashes below | Exact P2.0 versions can be recovered without guessing implementation |
+| Core0.4.7 package | Existing vendor archive SHA256 `067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`, all208 members present | Reuse original package bytes, including Sarabun faces and native helpers; it does not contain the deleted PDFs |
+| Observer/reader code | Nine copied accepted helper sources match the new lane's starting hashes | Reuse source identity, not missing live observations or an unverified old PASS |
+| Earlier PDF controls | Existing bound-text/table-short PDFs match recorded hashes | Reuse only their own earlier control scope; they are not the E0 P/T/Q/W/R baseline |
+
+The two exact Service targets are:
+`tests/task-api.test.mjs` SHA256
+`48586907eb779893c66a10967a563c153b9399670732681b4431071c20ddf862`,
+and `tests/helpers/taskApiRunDatabase.mjs` SHA256
+`4dcad1caa885c864579cd3947a699fc96228770b090e810b315cb2e9b1e42dee`.
+Source locators are this chat's saved session at lines6979 and7123/7124,
+respectively:
+`C:/Users/nekot/.codex/sessions/2026/10/22/rollout-2026-10-22T10-28-07-01a161a6-db52-7f42-9c7e-581bd3b8dc5e.jsonl`.
+Validate contents by hash, not line number alone. Original
+task-api14-case/three-hook source map, candidate manifest and current offline
+ledger also survive in the new lane.
+
+The read-only audit did not find a verified E0 PDF set. It examined PDFs in the
+named work/source/backup/download/desktop roots including ignored artifacts,
+archive member listings and readable Recycle Bin metadata. None of the three
+repositories' reachable histories contains a PDF object. This is a bounded
+negative search, not proof that no copy exists on another device or backup.
+Historical plans/results remain records; they cannot replace missing PDF bytes,
+raw memory/cache/observer samples or their complete provenance chain.
+
+P2.0b is interrupted and NOT ACCEPTED. Its ledger remains8 RED executions in
+one round, live0; the final eight-case round was not started. Static review
+identified unresolved coverage-fixture, supervisor/child-group ownership and
+join/identity gaps. Preserve the partial candidate rather than silently finish,
+promote or overwrite it during recovery. The deletion does not refund any
+previous P2.0/P2.0b budget.
+
+#### G0–G2 — proposed source recovery, then stop before any experiment
+
+- **G0 preserve survivors.** Use a new non-daily recovery root, proposed
+  `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23`, with
+  an independently located copy under the existing worktree-backup directory.
+  First inventory/hash only the relevant surviving source, metadata, nine
+  helpers and pending P2.0b changes. Retain the current lane unchanged. Record
+  missing files as missing; do not recreate the deleted path or fabricate a
+  replacement manifest with an old name/hash. Keep source excerpts/locators
+  narrowly scoped rather than copying an entire chat history unnecessarily.
+- **G1 recover B1+C.** Create an isolated Core worktree at the existing exact
+  B1+C commit on a `codex/recovery-b1c` branch. Verify commit/tree identity and
+  tracked source/test/fixture bytes, including the seven inspected blobs.
+  Retain B1/C commits as references; restoring three separate lanes is not
+  necessary. Do not reset the main checkout, prune stale registrations, merge,
+  rebuild or run tests. Return “source recovered”, not “experiment passed”.
+- **G2 recover P2.0.** Create an isolated Service worktree from base
+  `8690193b73b14554c63a9aebe5c888edcf780946` on `codex/recovery-p20`. Copy the358
+  exact survivors, recover the other two files from the hash-matching session
+  source, and require360/360 matches to the surviving pre-edit manifest. Keep
+  inherited F2 dirt as frozen input, with no cleanup of the primary checkout.
+  Validate the retained14-case map by static inspection only, without importing
+  the Service or invoking hooks/case bodies. Recover external controller/proof files
+  only individually when bytes and recorded hashes can be established;360/360
+  candidate recovery must not be called recovery of the entire deleted P2.0
+  evidence root. Record each raw result as recovered, missing or historical-only.
+
+Proposed G0–G2 proof is one inventory and one independent final hash comparison:
+360 candidate paths, seven B1+C blobs, nine copied helpers and the original
+package hash, plus explicitly inventoried pending metadata/source. No functional
+test, Docker, Service, Word export or generated PDF is allocated. Keep metadata
+proof within1MiB; copied source/package bytes are separately inventoried and
+not concealed as diagnostic proof. Any expected hash mismatch or missing input
+stops the affected recovery claim. No automatic source repair or expansion.
+Stop with a recovery manifest, exact Git/file identities and a gap list.
+
+#### G3 — resolve PDF/evidence identity before proposing new execution
+
+There are two routes, decided per packet rather than silently relabelling:
+
+1. **An original copy is later found.** Match its bytes against an independently
+   retained original hash and recover its input/resource/provenance records.
+   Admit only the recovered scope. A filename, page count, visual resemblance
+   or newly computed hash alone cannot establish identity with a lost original.
+   Full recovery of a previous proof chain may permit scoped proof reuse;
+   missing prerequisites remain visible.
+2. **No verifiable original is available.** Propose a separately named
+   `E0-R1` evidence family. Recover or explicitly re-author and freeze P/T/Q/W/R
+   sources, prepared/resolved graphs, resources and environment first. Git's
+   W/R fixtures are useful inputs, not automatic proof of all original E0 bytes;
+   missing P/T/Q or resolved snapshots require explicit gap decisions. Generate
+   reference PDF/DOCX from the pre-B1+C Core source/package, never by declaring
+   B1+C output to be its own reference. Freeze new PDF bytes once generated.
+   Run reference and B1+C DOCX arms against the same new inputs and Word setup
+   in later authorized work; compare each to that fixed new PDF family. New
+   runs remain newly dated even if a hash happens to match an old record.
+
+G3 currently authorizes planning only. Return a recovered-versus-reconstructed
+source inventory and a proposed fresh budget for all reference generation,
+Word exports, page review and candidate comparisons before generating anything.
+Do not silently reuse the old31-page or other spent allocations. If the old
+Word/native/font environment cannot be matched, record a new environment and
+obtain an explicit comparison ruling. Old numerical parity/memory conclusions
+are historical; new measurements cannot be spliced into them as one experiment.
+
+Memory/cache/observer evidence needs its own disposition, independently of PDF
+identity: retain the old aggregates as historical, reuse only a complete verified
+recovered chain, otherwise propose bounded fresh config/observer/lifecycle and
+comparison proof. Exact1GiB/no-swap/2CPU and unchanged768/320 admission remain
+constraints. P2.0b's remaining round is not launched by source recovery; any
+restart budget and the outstanding review fixes must be reconciled explicitly.
+No P2.0c, P2.1, full suite, B2, release or integration follows recovery itself.
+
+Completion for this proposal is a clear old-versus-new boundary and staged
+return checkpoints. Present-turn verification is manual plan/scope review and
+`git diff --check` only; no test/check suite is run under the owner's restriction.
