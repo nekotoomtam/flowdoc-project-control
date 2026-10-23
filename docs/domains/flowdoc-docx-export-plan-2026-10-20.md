@@ -1,5 +1,11 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest checkpoint (2026-10-23): [G1 real readiness stops at source-image prerequisite](#2026-10-23--g1-real-readiness-blocked-at-source-image-prerequisite).
+External bridge checks and final original16 PASS; real sessions3/3 STOP during
+preparation.85/89 units reserved; live/load subcaps exhausted. Final pinned image
+fails the preserved Service package-lock byte pin. No ABBA/memory conclusion;
+owned resources removed, PDF17 and B1+C preserved. G1 and I6 remain open.
+
 Latest checkpoint (2026-10-23): [R8 unchanged R6 combined offline16 PASS](#2026-10-23--r8-unchanged-r6-combined-offline16-pass-without-external-progress-reads).
 Fresh load PASS; one original worker passes16/16 in41.15s. No external journal/log
 reads while active; all four actual dummy roots have zero-active/closed cleanup.
@@ -13208,5 +13214,94 @@ Verified same-machine archive:
 SHA256 `40cf0bcf7c06f4cfe117e3fa85fe9d7ae8cd51b2b65c9e04c5b77122b6487de5`;
 all594 members match saved hashes. Status-document checks: scope/evidence review,
 candidate/preservation/archive comparison, final diff review and
+`git diff --check`. No canonical data/map change; projection regeneration N/A.
+I6 remains NOT ACCEPTED.
+
+
+### 2026-10-23 — G1 real readiness blocked at source-image prerequisite
+
+Authority Boundary: human-authorized whole config/observer/cache/memory heading,
+external-tool implementation and owned disposable readiness only. Role: external
+tool implementer and Evidence Reviewer; Project Control owns this canonical
+status. Inline Work/Phase/Checklist execution IDs N/A; existing DOCX I6 scope
+remains the acceptance target. No product source, document requests, full Service
+suite, B2 or integration authorized. This adds evidence, not product/map truth.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/live-g1-r9`.
+Read `authorization.json`, `baseline.json`, `input-pins.json`, `budget.json`,
+`result.json`, `manifest.json`, numbered load/offline/native/network results,
+`candidate/proof/regression-5.json`, `regression-13.json`, and
+`live-6.json`, `live-7.json`, `live-14.json`. Each session directory retains
+command arguments/stdout/stderr, image/context receipts, phase ledger and events.
+Result SHA256: `314bc12296f7aeaf5344e7a6cb756f8ec3d842d6b60ac1a6ba87e923805a2bff`.
+
+**G1 BLOCKER; stop at subcaps, no more execution.** Approved caps: loads4,
+offline case executions64, live sessions3 with7 reserved phase slots each;
+total89. Actual reservations:4 +60 +21 =85/89. All3 live sessions and4 load slots
+are exhausted; the4 unused offline units cannot buy another live session/load.
+Each session reserves all7 slots before any Docker command; no refund for early
+failure. Only preparation starts in each session; no phase completes.
+
+External tools were copied from R6 into `candidate`; originals stay immutable.
+New accounting/bridge/session tools bind matching module load to authorization,
+fixed inputs, runtime source manifests and active global live reservation.
+Native commands start suspended, enter an owned Windows Job, then resume;
+completion requires closed handles and zero descendants. Destructive operations
+require token/role/image-confirmed exact IDs. Runtime preflight checks mounted
+plugin/fonts and Service source/dependency-lock pins before any measurements.
+One static reviewer identified input binding and direct-session budget gaps;
+they were corrected before load2. No second independent post-repair review is
+claimed. A private internal subnet was added after automatic IPAM exhaustion;
+only `10.253.239.0/28` is permitted, with Docker rejecting overlaps. No foreign
+resource was removed, reconfigured or adopted.
+
+All4 fresh loads PASS. The initial8-case RED run records2 PASS/6 FAIL; later
+bridge runs pass8/8 twice. Two actual host process checks PASS, including owned
+descendant cancellation/join. Original16-case regression passes twice, including
+its four dummy-process cases, with original assertions/timeouts. Explicit subnet
+constraint is RED then GREEN. Total offline60 executions:53 PASS and7 deliberate
+RED failures. Latest source has bridge8/8, subnet1/1 and original16/16 PASS.
+This is external-tool verification, not the mandatory Service combined suite.
+
+| Real session | Preparation outcome | Cleanup / boundary |
+| --- | --- | --- |
+|1, event6|Token-filtered container discovery exceeds its unchanged5s deadline.|No create command issued; all8 command trees closed/zero. Cause of the transient latency is unproven.|
+|2, event7|Discovery succeeds; Docker rejects network creation because automatic address pools are fully subnetted.|No resource created; final token-filtered container/network lists empty; all14 command trees closed/zero.|
+|3, event14|Explicit internal subnet and three containers created. Runtime preflight stops at `/work/service/package-lock.json` source pin.|All three containers and network removed; final token-filtered lists empty; all49 command trees closed/zero.|
+
+Saved inspect receipts confirm all three created containers have memory and
+memory-swap1073741824, CPU2, and OOMKilled=false. Policy/admission768/320 and
+600s active/60s cleanup/60s arm limits remain unchanged. These receipts do not
+establish workload memory headroom. Session3 target/observer image is
+`sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0`;
+PostgreSQL image is
+`sha256:29754c7520f4b9654cf8ff98e19ac73b88e255c3a53f6236ebe9d52249bb6df3`.
+The lock-pin guard combines missing-file and unequal-byte conditions; saved
+failure does not distinguish these, dependency changes, or line-ending changes.
+Do not weaken the guard or claim all remaining image files match. No Docker
+commands or tests run after session3. No external journal/log/result reads or
+hash/archive operations occur while any worker is active.
+
+Live config resolution, observer binding, cache stability and A-B-B-A memory
+comparison remain NOT VERIFIED/NOT RUN. The existing font fixture path was
+unavailable; four preserved Sarabun TTFs were pinned read-only for readiness.
+No document rendered and no claim about document font/parity follows. Next
+recommended work: read-only reconcile saved image metadata/build recipe with
+preserved Service source/lock, then propose a reproducible pinned runtime and
+new bounded live budget. This recommendation is not execution authorization.
+
+Preservation comparison passes3911 prior recovery files,390 pending P2.0b files,
+37 original R6 sources,51 plugin files,149 Service source/lock files and4 fonts.
+All17 PDFs retain their prior hashes. B1+C remains clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`; no product source edited. No full
+Service suite, B2, merge, release, push or document generation performed.
+
+Verified same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/live-g1-r9.zip`,
+SHA256 `9f2f2cbdd4f49644a85af029229ff48cb076b7caa4007dc552bd9e5e4790d27f`;
+all1361 members compared with saved files and ZIP integrity checked. The external
+backup receipt is excluded from its own archive. Documentation checks: scoped
+Evidence coverage and final diff review, preservation/archive comparison and
 `git diff --check`. No canonical data/map change; projection regeneration N/A.
 I6 remains NOT ACCEPTED.
