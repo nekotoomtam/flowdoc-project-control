@@ -1,5 +1,14 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current R1/R2 checkpoint (2026-10-23): [Bounded Thai word placement improves R1/R2](#2026-10-23--bounded-thai-word-placement-improves-r1r2).
+Core `356a6f9` reduces R1 mean absolute X0.152899 to0.104494pt (31.7%)
+and R2 0.157727 to0.085004pt (46.1%); maximum error on both becomes0.232pt.
+W5's R8 gain and all other packet/edge positions remain intact. DOCX119/119,
+pinned build and native49-page line/Y/mark guards PASS. This closes the bounded
+word-boundary remedy, with nonzero residuals and native-engine limits explicit;
+it does not claim complete horizontal parity. Frozen PDFs and B1+C unchanged.
+No integration.
+
 Current W5/R1-R2 checkpoint (2026-10-23): [Bounded token advances improve W5; R1/R2 remain unresolved](#2026-10-23--bounded-token-advances-improve-w5-r1r2-remain-unresolved).
 Core `11ddc2c` reduces W5 mean absolute X error from0.392072 to0.112265pt
 (71.4%); W6 also improves. R1/R2 remain0.152899/0.157727pt after real native
@@ -14151,3 +14160,92 @@ It includes frozen PDFs/inputs, final source binding, native/diagnostic/visual
 proof and the unchanged verified R7 archive/receipt containing the prior chain.
 Existing backups remain intact. Scoped diff, anchor, locator and hash checks
 close this checkpoint; full horizontal parity remains open.
+
+## 2026-10-23 — Bounded Thai word placement improves R1/R2
+
+Authority Boundary: existing canonical DOCX checkpoint; inline explicit owner
+request, execution IDs not applicable. Core implementation and evidence review
+remain isolated. Routine risk; acceptance is lower R1/R2 mean and maximum X error
+with accepted pages/lines/Y/marks and W5 preserved. No separate WORK dispatch,
+product map promotion or integration. The current generated snapshot is still
+unrelated Editor context; this explicit request and DOCX chain govern scope.
+
+- Candidate `356a6f96c20ac18ff11457c41d396ae545513ef2`, branch
+  `codex/docx-horizontal-r9`, base `11ddc2c32061a4df9c8dd9ef2eb7c2d2923de3a7`.
+  Worktree:
+  `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r9/core`.
+  Only `src/docx/metric-baseline.ts`, `src/docx/text.ts` and
+  `tests/docx/metricPairs.test.ts` change. Evidence is in the parent R9 folder:
+  `result.json`, `manifest.json`, `comparison.json`, `residuals.json`,
+  `native-results.json`, `native-proof-reuse.json`, `review.json` and visual files.
+- Causal isolation advances beyond R8: source font tables show no Thai glyph
+  in kerning coverage; source R advances already equal hmtx, with mark offsets
+  traced separately. The simple nominal-to0.12pt-grid/PDF-truncation model
+  explains only122/254 ordinary pairs exactly (167 within0.012pt); it is
+  rejected as a complete cause and supplies no nonzero Thai compensation.
+- Three real-R native controls total12 pages: explicit100% scale changes no
+  glyph X/Y. Alternating absent and explicitzero spacing at word or grapheme
+  boundaries changes X while preserving glyph sequence, outline, size and Y.
+  The word arm has lower mean error than the grapheme arm on both R1/R2.
+  Uniformzero from R8 had no effect; effective alternating run boundaries are
+  the experimentally demonstrated distinction. Word's internal run-coalescing
+  and rounding implementation remains unknown; no universal cause is asserted.
+- The pinned docx dependency drops numeric `characterSpacing:0` through its
+  truthiness check (`dist/index.mjs:3827`). An initial implementation test
+  catches the omitted element. Core now emits an explicit native zero for
+  selected alternating runs. This does not insert nonzero Thai tracking or
+  modify glyph/font bytes, source text, source geometry or the PDF renderer.
+- Admission requires genuine source-shaper evidence, the pinned SarabunRegular
+  font at12pt/18pt, an ordinary section-root paragraph, one complete text span,
+  all-Thai/no-whitespace text and the existing native fallback for variable
+  source-line baseline. Every word start must also be a grapheme and source
+  UTF8 glyph-cluster start; every word fits the source/native font-envelope
+  width bound with1.5pt reserve. Cells, bands, fixed/Exact, mixed-script,
+  multispan and fonts-only paths retain prior behavior. Existing baseline
+  decisions are unchanged. Runtime receipt remains `wordVerified:false`.
+  The immutable calibrated-content experimental boundary still applies;
+  native proof does not establish future Word wrapping or arbitrary edit safety.
+- Final pinned build and119/119 DOCX tests PASS. The regression was observed
+  failing before the fix; mixed/span/fonts-only negatives pass. Source is
+  unchanged after final checks and the committed worktree is clean. Independent
+  read-only review finds no actionable findings. Direct negative unit coverage
+  for every gate, including cluster rejection/oversized words, remains limited;
+  the final native affected-output proof is separately required and passes.
+- Final acceptance retains P6/T5/Q5/W9/R4=29 pages plus20 mark/edge pages.
+  Every glyph Y has0pt delta; all per-page raw text/whitespace, glyph outlines,
+  sizes and accepted line membership remain exact. All426 W codepoints retain
+  the same5 natural lines. P/T/Q/W/R3/R4 and edge glyph X/Y remain unchanged.
+  W5 stays0.112265pt and W6 0.059190pt mean absolute X, preserving R8 gains.
+- R1 mean absolute X improves0.152899 to0.104494pt (31.7%); maximum0.432
+  to0.232pt. R2 improves0.157727 to0.085004pt (46.1%); maximum0.480 to
+  0.232pt. R's377 comparable characters improve0.151130 to0.087427pt.
+  Across1805 comparable characters,0.091280 becomes0.077975pt. This improves
+  mean and maximum, not every character:39/89 on R1 and80/271 on R2 worsen
+  individually. Nonzero residuals remain; Q4/5, W1/2 and R3 reference extraction
+  gaps stay excluded from X metrics, while native guards cover every page.
+- Thai coverage retains2772 clusters across4 faces,11088 instances and16 edge
+  lines. Relative zero-advance mark drift is at most0.036pt, within the existing
+  0.121pt guard; Y, outlines and sizes stay exact. No clipping, unknown clip
+  mapping, font fallback or physical-page overflow is found across49 pages.
+- Fresh real4page R native proof uses Word16.0.20430.20182, verified executable
+  version, Yes field refresh and F12 PDF Standard. Its full canonical rendering
+  XML and decoded font bytes match the final generated R; only document XML
+  declaration/attribute order requires canonicalization. P/T/Q/W and edge reuse
+  R8 after exact rendering-part and decoded-font identity. All DOCX hashes match
+  generation receipts. All49 pages are rendered; finalR4 and R1/R2 comparison
+  crops are freshly reviewed. Other45 native pages and16 edge strips retain
+  exact PDF identity and reuse prior passing visual evidence.
+- Frozen PDF17/17, input22/22, R8 fourteen, R7 fourteen, R6 fourteen and R5
+  sixteen artifacts retain hashes. B1+C remains clean at `b79f426`. No PDF
+  baseline replacement, Service/full-suite/B2/I6 acceptance, merge/release/push,
+  new Work record, generated projection or map change.
+
+The bounded remedy meets mean/max improvement and preservation criteria; stop
+without broadening it. Full horizontal equality and other engines remain unproved.
+Verified complete-history `core-horizontal-r9.bundle` and external archive preserve
+source, final/diagnostic proof, frozen inputs/PDFs and the unchanged R8 archive
+containing the earlier chain:
+`C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-horizontal-r9-final-2026-10-23-r2.zip`.
+SHA256 `801b7f584b75fd3b22aebb701b319445669c2c3f0ce15b5f5fbadf2f21cd12ab`;
+32,956,343 bytes, all361 outer members byte-verified with separate receipt.
+Scoped final diff, source/output bindings, anchor, locator and hash checks apply.
