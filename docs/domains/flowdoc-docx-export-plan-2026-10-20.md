@@ -12491,3 +12491,52 @@ full E0/I6/integration acceptance. No additional exports are requested by this
 bounded check. Rendering adds13 pre-reserved pages for cumulative112/180.
 Verification is exact extraction/pixel/hash comparison, complete visual review,
 backup-content checks and `git diff --check`; source/runtime tests are inapplicable.
+
+### 2026-10-23 — manual Word conversion record completed with limitations
+
+Authority Boundary: documentation of existing Word export evidence and the
+owner's recollection only. Evidence Reviewer / Documentation Synthesizer;
+Project Control owns this shared status, execution IDs N/A. No source/product
+repair, new PDF, Word launch, render, Docker or integration is authorized here.
+
+Record:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/word-export-record-01.json`.
+SHA256 `65a2886465e6bc26df0bbd780bb215db0633c89299fb8bf12b47ca232290e3b2`.
+Separate same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/word-export-record-01.zip`,
+SHA256 `72acbc1b8f87d3e575a4609f3d8154b421aa300f03b6c0f0d242b504e25dfaef`.
+The record includes all12 existing Word PDF paths, full hashes, page counts,
+raw metadata, source locators, ten unchanged DOCX hashes and the owner's exact
+answers. Original evidence and older status records are preserved.
+
+**File observations:** all12 PDFs identify Microsoft Word for Microsoft365
+as Creator and Producer and contain the tagged-PDF marker. Candidate exports
+have recorded creation times11:52:40–11:53:33, reference exports11:56:00–11:57:18,
+and reference W/R repeats12:06:14/12:06:31 on2026-10-23, UTC+07. These are PDF
+metadata values, not independently audited export-session timestamps. All12
+hashes match the comparison/repeat input manifests; the five baseline PDF and
+ten source DOCX hashes remain unchanged. Existing host evidence records
+WINWORD file version16.0.20430.20182 at the earlier failed automation attempt;
+it does not establish the build actually used for every manual conversion.
+
+| Asked | Owner's exact answer | Recorded meaning |
+| --- | --- | --- |
+| Same machine and no Word update across12 exports? | ไม่แน่ใจ | Common machine/build remains UNKNOWN. |
+| Export menu and PDF quality/options? | น่าจะใช้ค่าเดิมนะเราแค่เปิดไฟสแล้วแปลงให้เลยนะ | Owner recalls opening and converting with probably default settings. Exact menu, quality and options remain UNKNOWN. |
+| Fields/TOC update and close/reopen for repeats? | กดตลอดนะมันให้ตกลงนะ | Owner reports accepting prompts. Prompt identity, explicit Fields/TOC update and close/reopen method remain UNKNOWN. |
+
+Do not attribute the intended options in `word-review.ps1` to these manual
+exports: the automated attempt produced no PDF. Default/Standard quality,
+field updates, identical builds or a specific prompt are not inferred from
+the owner's uncertain recollection or PDF metadata. No repeated confirmation
+is required merely to make an uncertain answer look certain.
+
+Disposition: **conversion record complete with explicit environment
+limitations**. The observed B1+C comparison and reference W/R repeatability
+remain supported. Strict same-environment Word experiment acceptance is still
+not established, and this record does not close full E0-R1/I6 acceptance or
+implicitly waive that requirement. No regeneration is proposed or executed
+under this request. Further acceptance disposition belongs to the owner.
+Verification is metadata/hash inspection, comparison to existing manifests,
+record/backup equality, manual meaning/scope review and `git diff --check`.
+No new pages, exports, runtime scenarios or product tests were consumed.
