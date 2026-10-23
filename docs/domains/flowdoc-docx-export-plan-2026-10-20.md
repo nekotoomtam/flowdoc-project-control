@@ -14800,3 +14800,42 @@ R13 checkpoint — paragraph-frame probes and source-guided line experiment:
   `fidelity-system-r13/probes/{exact-line,source-frame}/result.json`,
   `development/source-frame-variation.json`, `provenance-controls.json`,
   `preservation-checkpoint.json`. No merge, push, release or Service work.
+
+R13 checkpoint — source-guided line prototypes, not accepted product changes:
+
+- The owner's source-guided line decision is now exercised in external OOXML
+  prototypes. Shared `measureText` plus the original fonts and ICU4X derive
+  rendered line strings; no PDF or captured draw file is an input to generation.
+  Authored text and paragraph counts remain exact. Generated breaks, and in the
+  later prototype leading tab controls for source ink headroom, are separate
+  layout controls. Copying native Word text can include those generated controls;
+  no new public product mode or table-topology change has been adopted.
+- Both Regular fonts at10/12/16pt have exact checked positive-anchor line/page
+  membership in all6natural-wrap cases, with zero clip intersections there.
+  This is a useful line-control result, not full glyph/mark/whitespace acceptance.
+- Width experiments distinguish grapheme fitText, whole-line fitText, native
+  kerning and ICU4X word spans. `w:kern=0` did not enable the measured effect;
+  setting the threshold explicitly to each font size did. These are native Word
+  observations, not a claim that another engine's internals match Word.
+- Current word-span/source-pair-spacing prototype uses cumulative source advance
+  rounding, font hmtx versus shaped ASCII advances, and source ink headroom.
+  No phrase, document ID, four-word limit, fitted PDF offset or font-specific
+  correction is used. Positive one-to-one origin maxima for Sarabun10/12/16 are
+  0.28424/0.64400/0.32708pt; Bai0.40000/0.43600/0.39600pt. Sarabun12 still fails
+  the0.5ptmaximum. Several p95X/Y values also fail0.25pt. Zero-advance mark and
+  compound origin coverage is still incomplete, so none is a full-case PASS.
+- Source-only derivation and DOCX preparation now cover all24natural-wrap font,
+  face and size strata under the unchanged rule. Eight development DOCX packets
+  are prepared; the2Regular packets and their guides are byte-identical to the
+  measured prototype, permitting explicit hash-bound native proof reuse.
+  Six other face packets await native conversion. Heldout96outputs remain closed.
+- This checkpoint added9native packet conversions/108packet-case evaluations,
+  138native pages; cumulative R13 native packet-case evaluations are252. Most
+  packet cases are unchanged guards; only declared natural-wrap cases are altered.
+  All probes remain unaccepted and no product source changed. Fresh preservation
+  check passes17oldPDFs/22inputs/14R11outputs/200compiled files and16frozen inputs;
+  Core remains clean at`abac048`. S1geometry and S2-S4remain open.
+- Evidence: `fidelity-system-r13/guided-layout-checkpoint.json`,
+  `probes/guided-word-spacing/{manifest,x-diagnosis,native-fixed-frame-diagnosis}.json`,
+  `probes/guided-word-spacing-allfaces/{manifest,reused-native-receipts}.json`.
+  No merge, push, release, Service/I6 or full-suite work.
