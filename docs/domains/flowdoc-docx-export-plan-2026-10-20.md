@@ -1,5 +1,15 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current baseline checkpoint (2026-10-23): [Bounded font-derived baseline candidate verified](#2026-10-23--bounded-font-derived-baseline-candidate-verified).
+Core candidate `5403627` improves measured vertical placement while retaining
+P6/T5/Q5/W9/R4, all29 pages and accepted line membership. Native Word checks
+cover2772 Thai clusters across4 faces,16 top/bottom edge lines and all29 packet
+pages; no candidate glyph clipping is found. DOCX100/100 and build PASS.
+This closes the bounded immutable-content baseline experiment, not all issue3
+horizontal/uncalibrated differences. PDF17/input22 and B1+C are preserved.
+The calibrated Exact/run-position policy is an explicit experimental C4/C5
+exception; future Word edits/versions are outside its proof. No integration.
+
 Current spacing checkpoint (2026-10-23): [Seven native position probes rejected; issue3 remains open](#2026-10-23--spacing-probes-rejected-with-candidate-preserved).
 Seven isolated W probes retain9 pages and visible line strings, but none improves
 the measured glyph positions. Four are raster-identical to the accepted W;
@@ -13736,3 +13746,105 @@ Checks are real-PDF comparisons, all63 diagnostic page raster comparisons,
 read-only source/artifact preservation and final diff/link checks. The evidence
 backup is `C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-spacing-r4-final-2026-10-23.zip`;
 its separate receipt records the archive hash and verified member hashes.
+
+## 2026-10-23 — Bounded font-derived baseline candidate verified
+
+**PASS within the frozen-content experiment.** The owner authorized deriving
+baseline alignment from actual fonts, checking Thai marks and page edges,
+preserving closed pagination/wrapping and the existing PDF baseline, and working
+in isolation without integration. Core owns implementation; Product
+Implementation Agent / Evidence Reviewer operates single-room inline. Execution
+IDs are not applicable. This updates the existing canonical checkpoint only;
+no new Work, map, product Markdown or generated projection is introduced.
+
+- Worktree: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-baseline-r5/core`;
+  branch `codex/docx-baseline-r5`, clean at
+  `5403627956f99a7db4696f95c318433c036ac83d`, based on accepted `bae91c9`.
+  Changes are restricted to `src/docx/metric-baseline.ts`, `engine.ts`, `text.ts`,
+  `writer.ts` and `tests/docx/baselineRules.test.ts`.
+- Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-baseline-r5`.
+  `brief.json`, `manifest.json`, `result.json`, `comparison.json`, raw test reports,
+  calibration/shape data, `generated-r2`, `edge-r2`, `visual-final` and a verified
+  complete-history `core-baseline-r5.bundle` bind source, build and native outputs.
+  Pilot/rejected results remain separate; only final `dist-r2` generated the
+  accepted final packages. No original reference PDF is regenerated or replaced.
+
+### Rule and explicit contract boundary
+
+The source PDF centers extra leading around the font ascent/descent, expanding
+them for actual shaped ink. The candidate derives the corresponding baseline
+interval from private hash-pinned Sarabun bytes, shaping each authored line and
+isolated graphemes. It admits only a narrow interval, sufficient ink headroom,
+and the measured font/size/line-height domain. It uses unchanged line height
+with native Exact spacing and a quantized actual-run baseline position, leaving
+the paragraph mark unchanged. Word still decides native wrapping; no PDF layout,
+forced line break or per-line positional reconstruction enters the DOCX path.
+
+This is an **experimental exception to C4's default atLeast and C5's rejection
+of font-specific corrections**, authorized for this bounded investigation.
+Scalar unit conversion, authored geometry, cell/row dimensions and keep rules
+are unchanged. It does not silently redefine C4/C5 as a universal product rule.
+Exact-frame baseline `0.8H` is measured calibration for Word16.0.20430.20182,
+not an OOXML guarantee. The interval/half-point bound is at most0.375pt plus
+native calibration residual. Whole-line/isolated shaping is bounded evidence,
+not proof of every possible Word wrap context. Later text/font edits in Word,
+other Word versions or other fonts invalidate this exported-content proof.
+
+Only the4 pinned bundled Sarabun faces and measured size/frame combinations
+qualify. Expanded unsafe marks, fixed/generated/band content, empty authored
+lines, unsupported scripts/metrics and exhausted proof budgets retain native
+minimum spacing. Fonts-only API callers retain prior behavior; callers providing
+optional `shaperPath`, including full ExportResources, intentionally enable the
+experimental adaptation. Receipts retain `wordVerified:false`; independent
+artifact checks below establish the specific final native outputs.
+
+### Acceptance and remaining differences
+
+- Affected Core DOCX suite passes100/100, including6 new meaningful metric,
+  fallback, owned-font and cleanup tests; pinned TypeScript build passes.
+  The source is unchanged after those checks. Build/consumer containers retain
+  1GiB limits and pinned image identities. No Service full suite or memory work.
+- Actual Word conversions of the final5 packages retain P6/T5/Q5/W9/R4=29 pages.
+  All PDF stream text including whitespace matches the prior accepted output
+  per page. DOCX text/whitespace vectors match. Normalized layout XML differs
+  only by the bounded Exact/run-position policy. Native glyph outlines and sizes
+  match accepted glyphs and the pinned source fonts; displacement stays below
+  2pt vertically and1pt horizontally, preserving accepted18pt line membership.
+  W additionally retains all426 authored codepoints on its exact original5 lines.
+- The final candidate adapts P5/T5/Q104/W13/R2 paragraphs; P3/T1/Q4/W5/R3 retain
+  native behavior. A conservative pilot exposed2 pre-existing W9 `p` descender
+  clips. Accounting for the real0.12pt hhea overhang safely admits those paragraphs;
+  final native inspection confirms both clips are repaired, with no clipped or
+  unknown-mapped glyphs in any final packet. No arbitrary special-case `p` fix.
+- Native stress control/candidate each contain20 pages,2772 source Thai clusters
+  across4 faces (11088 instances), and16 top/bottom edge lines. All32964 inked
+  glyphs retain outline/size/line membership; no active-clip or physical-page
+  overflow is found. Adapted glyphs also fit their unchanged18pt line frames.
+  Large mark combinations retain native spacing. Page-edge claims distinguish
+  physical page clipping from source body-margin overhang retained by fallback.
+- Full-page visual contact review covers all29 final packet pages, both20-page
+  stress PDFs,5 calibration pages and144dpi crops of all16 edge lines. This
+  complements actual outline/clip checks, not just text-extraction survival.
+- On exact comparable PDF character segmentation, mean absolute Y-top error
+  changes P1.268→0.064pt, T1.355→0.183pt, Q1.501→0.188pt,
+  W1.357→0.117pt and R0.508→0.448pt. Coverage is1805 visible characters.
+  Q4/5, W1/2 and R3 have incompatible reference character segmentation; no
+  per-character reference metric is claimed for those pages. All comparable
+  pages improve or retain their previous mean. Horizontal errors remain.
+- Independent read-only review finds the interval algebra sound within the
+  stated bound and requires the native closure gates above. This accepts the
+  bounded baseline candidate only. Issue1/2 stay closed; remaining issue3 X
+  advance, uncalibrated/fallback placement, full parity and I6 remain open.
+- Original PDF17/17, frozen input22/22, accepted5 DOCX/5 Word PDF hashes match.
+  Original B1+C remains clean at `b79f426`. No main merge, release or push.
+
+Backup: `C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-baseline-r5-final-2026-10-23.zip`,
+SHA256 `2275c7f40b974ef1cc4aa446811b7ebc9b6b557e702ab2634b8cbbbe23b47ef3`.
+All609 archive members are byte-verified; a separate receipt records each hash.
+It includes final evidence/builds, frozen inputs/references, accepted comparison
+artifacts and the source Git bundle outside the recovery root.
+
+Documentation classification: existing Project Control canonical checkpoint.
+Scoped final diff/anchor and whitespace checks apply; no canonical data/map or
+projection changes. Further proof is deferred until a changed candidate or
+specific unresolved behavior justifies it. No integration is authorized.
