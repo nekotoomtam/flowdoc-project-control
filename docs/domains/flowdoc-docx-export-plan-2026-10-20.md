@@ -1,5 +1,12 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest source-rule replacement experiment (2026-10-23): [Homogeneous source context rejected; R11 retained](#2026-10-23--homogeneous-source-context-rejected-r11-retained).
+FAIL replacement criterion: source-context candidate gives R1/R2 maximum X errors
+0.432/0.480pt versus allowed0.190pt. DOCX120/120/build and49page geometry/line/Y/mark
+guards pass, but do not waive the X criterion. Fresh R11 control reproduces0.190pt
+on both pages. Candidate patch/evidence archived; same sole worktree restored
+clean to `abac048`. No product commit, integration or new testing branch/worktree.
+
 Current testing workspace after owner-authorized consolidation (2026-10-23):
 `C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11/core`
 on `codex/docx-horizontal-r11`, unchanged Core `abac048`. One linked testing
@@ -14508,3 +14515,93 @@ DOCX120/120, pinned build and49 native-page proof for the unchanged candidate;
 this maintenance did not run a new test suite or establish new layout acceptance.
 No main/release integration, publication, Docker/full-suite/B2 run or Service
 product repair. Stop after inventory, backup and preservation coverage pass.
+
+
+## 2026-10-23 — Homogeneous source context rejected; R11 retained
+
+Authority Boundary: explicit owner-authorized inline Core experiment to replace
+the4word rule with source-derived segmentation while retaining R11, frozen PDFs,
+W5, page/line/baseline/mark results and R1/R2 maximum<=0.190pt. Active role:
+Product Implementation/Evidence Reviewer; routine risk; execution IDs N/A.
+This checkpoint records a rejected experiment, not product readiness or I6
+acceptance. Current source remains `abac0487b9c78a2749a21518b2ae2cb207cafc3d` on
+`codex/docx-horizontal-r11`, in the same sole testing worktree:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-horizontal-r11/core`.
+
+Candidate followed homogeneous shaping context principles from ONLYOFFICE
+`9d2138866d929be32f1d107e8b5bfae36156e097` (`word/Editor/Paragraph/TextShaper.js`,
+`common/libfont/textshaper.js`) and LibreOffice
+`c2c53029370c1fd95fff099d5c8c900c6504e99b`
+(`sw/source/core/txtnode/fntcache.cxx` context measurement). It preserved the
+previous root/single-span/pure-Thai/pinned Regular12pt/18pt native fallback
+admission. Each admitted complete same-property source span stayed one native
+run, with no internal cut. It removed word-count grouping, width-triggered
+synthetic segmentation and alternating explicit-zero spacing. Word retained
+natural wrapping responsibility. No source flags were invented; whole-span
+preservation requires no internal cluster cut. This did not implement a general
+cross-format semantic-run merger or HarfBuzz unsafe-to-concat protocol extension.
+
+Candidate changes were limited to `src/docx/metric-baseline.ts`,
+`src/docx/text.ts`, `tests/docx/metricPairs.test.ts`. No PDF/native shaper/font,
+semantic geometry, inputs, Service, dependencies or configuration changes.
+No other-engine576pt/fixedpoint/device-pixel rounding constants or PDF-derived
+positions were imported. Red phase13pass/2expected failures on old R11;
+candidate DOCX120/120 and pinned TypeScript build PASS under1GiB.
+
+All5 candidate DOCX packets were generated from the unchanged frozen source
+objects and final compiled candidate. Fresh native Word16.0.20430.20182 exported
+candidateR4pages with Yes internal field refresh, F12 PDF Standard, original
+DOCX unchanged. P/T/Q/W and20edge pages reused45native pages only after exact
+rendering-part and decoded-font identity to R11. Native geometry guards cover
+all29packet+20edge pages: same glyph sequence/outlines/sizes/line membership,
+maxYdelta0; zero-advance Thai mark relative X drift at most0.036pt within the
+existing0.121pt native-step bound; no clipping, fallback or page overflow.
+W5 is exact R11 identity. Fresh R4 contact sheets and enlarged R1/R2 crops were
+reviewed; other45page prior visual proof reused through exact PDF identity.
+
+| Page | Retained R11 mean X | Candidate mean X | Retained R11 maximum X | Candidate maximum X |
+| --- | --- | --- | --- | --- |
+| R1 | 0.071978pt | 0.152899pt | 0.190pt | 0.432pt |
+| R2 | 0.065306pt | 0.157727pt | 0.190pt | 0.480pt |
+
+**FAIL replacement acceptance.** No count sweep or numeric tuning followed.
+A fresh original-R11 control was exported to a new4page PDF in the same Word
+session/procedure. Its glyph sequence/outline/size/X/Y exactly reproduces saved
+R11 and its maxima remain0.190pt on both pages. CandidateR4 exactly reproduces
+pre-grouping R8 glyph sequence/outline/size/X/Y. This supports a native-run-boundary
+contribution, with no observed native-environment drift. It does not establish
+Word's internal advance-quantization algorithm or rule out every source-based
+replacement. Homogeneous source shaping alone is insufficient for this target.
+Total fresh native budget8pages (candidate4+control4); no original PDF replaced.
+
+Rejected patch, exact candidate source bytes, source hashes, final compiled
+candidate, DOCX/PDF receipts, comparison, raw test report and visual proof live in
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/fidelity-source-r12`.
+Key files: `candidate.patch`, `candidate-source/`, `candidate-source-hashes.json`,
+`dist-verified/`, `result.json`, `manifest.json`, `comparison.json`, `residuals.json`,
+`native-control.json`, `R11-control.pdf`, `historical-native-identity.json`,
+`native-proof-reuse.json`, `restoration.json`, `visual-final/`.
+
+After preserving the rejected candidate, restored only the three experiment
+files from saved exact R11 bytes. Worktree and index are clean at unchanged
+`abac048`; no product commit or branch/worktree created. Hash checks confirm
+original17PDF/22input files, R11's14output artifacts and every retained compiled
+file unchanged. No test rerun was needed for byte-identical restored R11;
+fresh native R11 control and earlier unchanged-source proof remain distinct.
+Reference character-metric gaps Q4/Q5/W1/W2/R3 remain explicit; native guards
+still cover all49pages.
+
+Sealed independent backup:
+`C:/Users/nekot/Documents/FlowDoc-evidence-backups/docx-source-r12-rejected-2026-10-23.zip`.
+SHA256 `b52bfbe1e41415d05f9c17aa11b73040ed8d44953e24ab9042274fdf5391b649`,
+7,047,195bytes,367members; CRC and every member hash verified. Includes rejected
+experiment and restoration bytes, frozen inputs/PDFs, retainedR11artifacts,
+source bundle and fonts. Separate `.receipt.json` binds retainedCore commit and
+prior sealedR11 SHA256. Earlier backups unchanged.
+
+Next recommendation: keep R11. Before another replacement, identify a
+Word-compatible measurement/placement boundary with declared units/context and
+reproducible controls; source shaping correctness alone is not proof of native
+Word placement. Do not reintroduce another word-count sweep or copy an engine's
+rounding constant as a Word rule. No main merge, push, release, B2, Service/full
+suite, or broader-engine parity claim. Stop at this rejected-candidate checkpoint.
