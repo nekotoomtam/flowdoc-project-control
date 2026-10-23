@@ -1,5 +1,11 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest recovery checkpoint (2026-10-23): [M1b offline wiring is incomplete](#2026-10-23--m1b-offline-wiring-incomplete-at-proof-cap).
+Final round7/8 synthetic cases pass; all16 authorized case executions are spent.
+The operational evidence port and interruptible process supervision remain open;
+M2 is not authorized or ready. Existing PDF/B1+C/M01 evidence is preserved.
+The2026-10-22 route below is retained historical context, not recovered live proof.
+
 Current route (2026-10-22): E0 baseline preparation is closed. The independently
 authorized E1 [B1 on P/T/Q](#e1-b1-ptq-result-2026-10-22) and
 [C on W/R](#e1-c-wr-result-2026-10-22) experiments are complete in separate Core
@@ -12605,3 +12611,79 @@ ready-to-launch M2 driver. Old counters are preserved, and M01's standalone
 Status-document verification is source/evidence coverage review, preservation
 and archive hash checks, final diff review and `git diff --check`; no canonical
 data/map changed and projection generation is not applicable.
+
+### 2026-10-23 — M1b offline wiring incomplete at proof cap
+
+Authority Boundary: owner-approved M1b external-tool implementation and eight
+named synthetic cases in at most two rounds. External tool implementer / Evidence
+Reviewer; Project Control owns status. Single-room execution IDs N/A. This
+record reports a failed/incomplete checkpoint, not M1b acceptance or M2 readiness.
+No Docker, Service scenarios, full suite, B2, product edit or integration ran.
+The policy remains Service1GiB, swap0,2CPUs and admission768/320; no new live
+enforcement or memory result is claimed. Word limitations remain unchanged.
+
+External lane:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-pagination-2026-10-23/memory-runner-m1b`.
+Read `brief.json`, `baseline.json`, `session_runner.py`, `test_runner.py`,
+`proof/ledger.json`, `proof/cases-1.json`, `proof/cases-2.json`, `review.json`,
+`result.json`, `manifest.json` and `backup-receipt.json`.
+Same-machine archive:
+`C:/Users/nekot/Documents/FlowDoc-worktree-backups/20261023-docx-recovery/memory-runner-m1b.zip`,
+SHA256 `de5d1fb051937c64a4c30d8ff3c3f0eb35b03af3c6fc079015cc45b41ed30d06`.
+All25 archive members were compared by content hash.
+
+**Disposition: FAIL_M1B_INCOMPLETE_BUDGET_EXHAUSTED.** Two rounds consume16/16
+case executions. Round1 is0/8 PASS because the implementation module was absent;
+these import failures do not prove the individual negative acceptance conditions.
+Round2 is7/8 PASS, process exit1: case01 completes the synthetic seven-phase
+session and then fails its operational-port completeness check. Cases02–08
+pass their offline checks. No third round, pilot, retry or counter reset occurs.
+
+| Case | Final result and bounded meaning |
+| --- | --- |
+|01|FAIL: same-target synthetic session/command schedule and cleanup pass their assertions, but the operational config/observer/process/DB evidence port is missing. Injected fake receipts cannot close M1b. |
+|02|PASS: no command without the offline permit; no implicit live backend. |
+|03|PASS: malformed target-create response recovers by token/full-ID discovery and leaves foreign resources alone. |
+|04|PASS: wrong config/include stops at a1; this consumes synthetic config receipts, not an actual Vitest launch. |
+|05|PASS: malformed worker start identity is rejected. Coordinator uniqueness and target-placement checks are implemented but not independently proven by a live process tree. |
+|06|PASS: missing candidate cache coverage and inventory drift are rejected. |
+|07|PASS: command timeout is injected at a1 node launch, followed by synthetic child-join and owned-resource cleanup. OS cancellation/descendant joining are not proven. |
+|08|PASS: dirty DB receipt, cleanup failure and terminal evidence persistence failure remain aggregate STOP. No real database was queried. |
+
+Implemented tools contain Docker argv/JSON decoding with explicit backend
+injection, one persistent target across the seven ordered phases, durable phase
+reservation, exact resource ID/token ownership, partial-create recovery, and
+fresh ownership checks before removal. Copied M01 guards validate descriptor,
+config selection, cache and memory receipt contracts. Final source additionally
+binds descriptor round/images/digest, sample phase/target/digest and nonoverlapping
+time windows, worker target placement and distinct coordinator identities.
+Complete validated receipts and their digests cross the persistence boundary
+before a phase can PASS. These remain synthetic protocol checks, not connected
+current observation proof.
+
+One fresh whole-change static reviewer found six material issues. The final
+round strengthens expected-error assertions and corrects the original fixture
+which timed out during DB preparation instead of an arm. Descriptor/sample
+binding, coordinator freshness and receipt persistence were tightened before
+that round. Two important integration gaps remain explicitly open: there is no
+operational config/observer/asynchronous-handshake/process/DB evidence port;
+and synchronous callbacks lack an interruptible timeout/cancellation supervisor.
+The offline scaffold must not be presented as the completed runner promised by
+M1b. No accepted OS backend or enabled live entrypoint is supplied. The immutable
+PostgreSQL image digest and restored font/runtime prerequisites are also still
+unresolved; a floating image must not replace them silently.
+
+Preservation hash comparison passes for1519 prior recovery/evidence files and390
+pending P2.0b files, including all17 retained PDFs. All11 M01 helper copies remain
+byte-identical to M01. B1+C is clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`. Historical budgets and the exhausted
+M01 ledger remain unchanged. The fixture audit records zero forbidden process,
+socket or live proc/cgroup operations; only its bounded Python launcher ran.
+
+Next recommendation: a separately bounded M1b repair scope for the operational
+evidence port and interruptible process supervision, with a fresh explicitly
+approved offline proof budget. Preserve this failed checkpoint and its original
+ledger; do not advance to M2 or treat7/8 as acceptance. Status-document checks
+are evidence/coverage review, preservation/archive hash comparison and
+`git diff --check`; no canonical data/map changed, so projection regeneration
+is not applicable. I6 remains NOT ACCEPTED.
