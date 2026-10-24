@@ -15680,3 +15680,50 @@ versus candidate98; other fonts, whole-document compatibility and remaining
 table offsets remain open. Durable local evidence is under `spacing-e4/`,
 including `comparison-result.json`, frozen input hashes, calibration revisions,
 factor PDFs and `page14-comparison.png`. No DOCUMENT_MAP promotion.
+
+### Meeting-table boundary experiment E5, 2026-10-24
+
+Owner authorized the remaining2.85pt meeting-table residual investigation and
+experiment in the same Core worktree, preserving E4 page14 and other pages.
+Single-room scope, execution IDs not applicable. Core commit `8ab0ecb` adds an
+internal opt-in boundary probe, four tests and the reproducible meeting audit.
+Shared scope/evidence remain governed by this record; no default layout change.
+
+The residual grows at consecutive table boundaries rather than uniformly
+within rows. Native Word XML has14 meeting-to-meeting separator paragraphs,
+each Exact20twips=1pt, with0.5pt table bottom borders. DOCX serializes these
+separators; PDF root flow previously placed tables contiguously. The measured
+native boundary envelope includes the separator plus the half-point stroke.
+Two factors test1pt alone (M1) and1.5pt boundary space (M2), applied only between
+the15 source meeting tables. Fresh-page starts do not inherit a leading gap.
+Existing E4 calibration and all source documents/native Word files are retained.
+
+Retained artifact:
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/spacing-e5/SRS-M2-boundary.pdf`,
+98pages, SHA256
+`6899f2518264b018dd5fa7f66d3c2f06eefbb18c67dfbf5eeb02e2af9e0f5553`.
+The37 matched unique Latin/numeric meeting anchors on17-26 remain on the same
+Word pages. Mean absolute baseline error improves1.007->0.249pt; maximum
+2.850->0.560pt. M1 maximum0.850pt isolates the structural paragraph effect.
+Across all111 introduction anchors the M2 mean is0.309pt and maximum0.590pt;
+these metrics do not bound every glyph or prove full-page identity.
+
+Raster comparison of all98pages against C2 changes only18-26. Page14 and all
+other pages are pixel-identical at scale1. All361REQ IDs retain order/page/
+baseline; image placements by page, footer strings and extracted body character
+multiset match C2. Draw-level comparison checks435 source introduction plain
+text nodes with zero mismatches after whitespace normalization and allowance
+for exact repeated copies; this is not complete glyph identity. All10 meeting
+pages17-26 were visually reviewed in three paired sheets and selected3xThai
+detail; no new visible clipping was observed. Original baselines, C2, source
+JSON and native Word PDF/DOCX hashes are unchanged.
+
+Compilation and275 layout/cache tests pass. Three of the four added cases
+fail before implementation; the intervening-paragraph containment case already
+passes before implementation. Tests cover boundary application, fresh-page
+reset, intervening content and invalid negative input. Both full-source PDF
+factors ran offline with1GiB memory/swap limits. Local evidence is under
+`spacing-e5/`; Core retains `scripts/experiments/word-meeting-result.json`.
+No merge, default promotion, Service/full suite, B2 or native Office conversion.
+Word remains100pages versus PDF98. Font/style generalization and remaining
+sub-point residuals remain open; no DOCUMENT_MAP promotion.
