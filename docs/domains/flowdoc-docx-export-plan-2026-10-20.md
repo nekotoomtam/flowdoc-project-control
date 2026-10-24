@@ -16139,3 +16139,84 @@ default or package/release acceptance. No baseline replacement, native Office
 conversion, Service change, DOCUMENT_MAP promotion or merge occurred. Next
 bounded work should distinguish the four remaining start/continuation cases
 from the separate wrapping residual before changing another factor.
+
+### E12 — four residual starts and padded paragraph cuts (2026-10-24)
+
+Owner request: trace and repair the four remaining early starts while retaining
+E11 and the original/native baseline PDFs, using the same worktree and checking
+the complete document before reporting; no integration. Core inline discovery,
+bounded implementation and Evidence Reviewer; execution IDs are not applicable.
+Core commit `e4f4cc2` on `codex/docx-horizontal-r11` contains the selected probe
+runner, paragraph-cut correction, regression and retained machine-readable
+evidence `scripts/experiments/word-top-result.json`. E11 commit/artifacts remain
+historical evidence without modification.
+
+Two interacting causes were isolated rather than adding REQ-specific breaks.
+The frozen native body section has1620-twip/81pt top margin and a half-point
+table stroke. E11 body flow begins at80.950841pt. Native margin alone does not
+close the four starts. Full-stroke and half-stroke top probes against the old
+E11 paragraph cut correct those starts but cause18 previously aligned starts
+to move late, reducing alignment to343/361; both are rejected as candidates.
+The rejected half-stroke factor exposes a separate padded-cut defect: E11
+chooses nextLineStart minus top padding, which excludes the preceding retained
+line and its trailing padding. The subsequent whole-line carry then moves one
+extra line. The existing zero-padding cases did not detect this interaction.
+
+A new nonzero-padding regression first fails, then passes after changing the
+cut to nextLineStart plus bottom padding. This keeps the intended preceding
+line and positions only the selected suffix with top padding on the next page.
+The corrected cut alone preserves E11's357 starts and the same four residuals.
+Combining it with81pt native top plus half the actual0.5pt stroke selects81.25pt
+for the body start; the measured first repeated-header paragraph box begins at
+84.5pt, corresponding to the retained native header box/clip edge. This is a
+source-derived bounded geometry hypothesis, not a generic Word/table rule or
+a fitted per-REQ offset. Existing cell margins, row stroke, line metrics,
+footer/body bottom, shaping and public document contracts are unchanged.
+
+The retained candidate is
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e12/SRS-K2-padding-half-top.pdf`,
+SHA256 `2218b60f89ca7ba68eb80d40e2cd5939e3e34f5fdfccb4f7a1d89052249c2028`.
+It has100 pages, matching frozen native Word. All361REQ starts retain exact
+source/native order and start on the native page; all357 previously aligned
+starts remain aligned. REQ0280 is now82/82, REQ0298 84/84, REQ0314 86/86 and
+REQ0324 88/88. Draw-data results are corroborated by actual PDF text extraction.
+Long REQ0041 retains12/32/32/2 text lines on physical50–53. Among724 selected
+paragraphs,26 split across pages and none has a singleton first/last fragment.
+This closes the four-start checkpoint for the frozen SRS; it does not imply
+all paragraph split points or every position/glyph agrees with Word.
+
+The factor inventory retains six complete PDFs, all generated offline with
+a1GiB memory/swap ceiling. Four initial margin/stroke factors were followed
+by two correction factors after the padded regression established a correctness
+defect; this limited proof extension is recorded in `pagination-e12/plan.json`.
+No owner-set numerical budget applied to this request. The control PDF is
+byte-exact E11. TypeScript compilation and affected layout/cache tests pass307
+with zero failures; the new padded regression's red report has one failure.
+Independent review found no critical or important issue in the bounded runtime
+or evidence, and rehashed all24 frozen inputs without a mismatch. A separate
+reviewer low-level check explored asymmetric padding and image adjacency; it
+does not replace the recorded307-test suite or establish generalized parity.
+
+Source/draw coverage again passes1814 plain text nodes modulo whitespace and
+exact repeat copies. All371 source-image dimensions/order match the frozen
+native sequence, and396 internal destinations reference existing output pages.
+These checks do not establish image-byte/paint identity or semantic/XY link
+correctness. All282 common consecutive same-page source-row intervals are
+unchanged from E11; native row-interval error is mean0.032418pt/max0.13pt.
+Distinct source line text/x/height/baseline-offset/glyph-count signatures remain
+E11's except updated generated TOC references. No heading/table-header split,
+empty page or body text-box overflow is detected; maximum bottom763.39pt stays
+within the frozen767.7pt cap.
+
+All100 candidate pages were rendered and reviewed in nine overview sheets;
+detailed native comparisons cover53,82,84,86,88 and100. Introduction11–26,
+including page14 and meeting tables, is pixel-identical above775pt to E11.
+Header-band and footer raster regions are unchanged on all100 pages. No new
+clipping was observed within this review scope. Small body baseline offsets,
+heading spacing, REQ0178 wrapping and other glyph/image positioning differences
+remain outside this checkpoint; matching361 starts is not100% visual fidelity.
+The prior heading-plus-minimum oversize preflight limitation, merged cells,
+row groups and general fonts remain unaccepted. Full Service suite/B2, new
+Office conversion, baseline replacement, DOCUMENT_MAP promotion and merge were
+not performed. Next work, if requested, should address remaining measured
+baseline/wrapping differences without reopening the now-matched start pages.
