@@ -15415,3 +15415,79 @@ TOC refresh, full-document pagination and final image continuation before
 accepting any rule. No render/PDF output or actual geometric improvement is
 claimed for these probes. This preserves the established owner-conversion
 route after native Office failures; no automated Word recovery is attempted.
+
+### Owner-converted B/C spacing comparison, 2026-10-24
+
+Owner supplies both native PDFs and authorizes comparison with unchanged control
+and original baseline, without merge. Same clean Core `772144e`, single-room
+Evidence Reviewer, execution IDs N/A. Both requested DOCX hashes, prior A,
+control and original baseline retain their frozen hashes. No product changes,
+Docker, native conversion or runtime suite in this continuation.
+
+Native inputs under `spacing-e2/`:
+
+- `SRS-spacing-B-transition.pdf`:101pages,1308931bytes, SHA256
+  `240fb35a116162eaab0606117123c22970a649714e65a9091230bbd27d965a19`;
+- `SRS-spacing-C-transition-origin.pdf`:100pages,1313153bytes, SHA256
+  `31b4a248d470040b053465e8f965bead6864541dc8e7ab987ed258dfc5ad3c19`.
+
+**Positive bounded result: B repairs the sampled transition and C also improves
+the origin; frames do not undergo the systematic0.48pt shrink observed in A.**
+Physical27 has the same seven simple tables in all four PDFs:
+
+| Measured value (pt unless pages) | Original baseline | Control | B | C |
+| --- | ---: | ---: | ---: | ---: |
+| First table center-to-center height |55.680|55.680|55.680|55.680|
+| First bottom-center to next top-center gap |24.000|24.480|24.000|24.000|
+| First table top-center error from baseline |0|+2.349|+2.349|+0.309|
+| First Features List text-top error |0|+5.040|+5.040|+3.000|
+| Seventh Features List text-top error |0|+8.240|+5.240|+3.320|
+| Complete physical page count |98|101|101|100|
+
+Broader measurement retains141ordered simple two-row table occurrences in each
+PDF. Each has a valid measured frame, and all141source-following headings bind
+uniquely to complete heading text on one baseline in each PDF. For the identical
+80source table pairs that remain contiguous in source and on the same page in
+all four PDFs, median transition error decreases from+0.480pt in control to0
+in both B/C; maximum absolute error decreases from0.560to0.120pt. Excluded
+cross-page pairs are not silently counted as passes.
+
+Frame heights are **not exactly invariant at every rendered occurrence**.
+Across141paired tables the median height change from control is0; maximum
+absolute change is0.150pt in B and0.15003pt in C, about0.053mm. The first
+table remains55.680pt. Control already has comparable height variation relative
+to baseline. This is measured render variation, not a proven internal rounding
+cause or a blanket claim that all200tables retain exact geometry. It supports
+retaining the prior height range instead of A's systematic shortening.
+
+Every361requirement ID remains in exact baseline/control order. B has471image
+objects; C470, consistent with371source image placements plus100/99body-page
+headers. This is count consistency, not pixel or glyph identity. All body
+footer page/total strings match physical pagination. B moves60requirement IDs
+to different pages versus control; C270. C29 now admits User Group Management,
+which control/B move30. Talent Group still begins28 whereas its baseline
+heading is27: full page equivalence remains unproved.
+
+All101B and100C pages were rendered and reviewed in nine overview sheets each;
+physical26-31 reviewed side by side and final continuation reviewed full size.
+B retains the near-empty image-only101. C100 contains several remaining lines
+of REQ0366 and its trailing image; the image-only101 disappears, but the final
+page still has substantial whitespace. No overview-level gross overlap/clipping
+seen; this is not exhaustive Thai glyph/diacritic certification. Early pages
+1-26 outside TOC match raster-exactly after excluding dynamic footer totals;
+TOC differences are retained in the results, not treated as body-font drift.
+
+`spacing-e2/comparison-r1/measurements.json` and `result.json` retain hashes,
+metadata, all141frame measurements, source-heading matches, common-pair
+selection, footer and requirement checks. Six-sheet
+`SRS-spacing-BC-comparison.pdf` retains physical26-31 at the same origin without
+independent content registration, SHA256
+`42d983622556ddb612faeb6d2d8a0de23c3029f67c3bf5e7dbed509766a61a02`.
+
+**PASS for the bounded measured improvement; product rule NOT ACCEPTED.** C is
+the preferable retained artifact for the next comparison. Native text inside
+the first frame still differs by about3pt in its text-top measurement; page
+membership/heading grouping and first-line compensation after a page break
+remain open. Font/style/build generalization, all200table geometry, W regression,
+automated Office conversion and Service/I6 acceptance are not established.
+Baseline/control/A/B/C remain preserved; no code or map promotion or merge.
