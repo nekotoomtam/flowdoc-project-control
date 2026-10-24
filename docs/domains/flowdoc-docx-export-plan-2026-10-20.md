@@ -15907,3 +15907,72 @@ issue for retaining this bounded experiment. A minor finalizer filename mismatch
 was corrected to prefer current `scope-rows.json` with legacy fallback; final
 evidence assembly passes again without regenerating PDFs. This review does not
 approve default behavior, generic compatibility, packaging or integration.
+
+### Native body-bottom capacity experiment E9, 2026-10-24
+
+Owner authorized the remaining footer/body-capacity experiment using the same
+baseline, source and Core worktree, retaining E8 row geometry, E7 grouping,
+page14 and meeting improvements. Inline Product Implementation Agent then
+Evidence Reviewer; execution IDs not applicable. Core `0c13e0c` retains an internal
+opt-in body-bottom cap and `scripts/experiments/word-footer-result.json`.
+This checkpoint does not promote a default layout rule or authorize integration.
+
+Frozen native DOCX has seven sections, matching the seven source sections. The
+last body section serializes page height16838twips and bottom margin1484twips,
+giving native body bottom767.70pt. Existing PDF bottom is770.712598pt,3.012598pt
+later. DOCX sections.ts reserves offset+prepared band height+gap in the bottom
+margin; bands.ts includes native structural paragraphs/maximum reservation that
+PDF painted-band geometry does not share. That reservation is still provisional
+in the DOCX writer; native XML is the authority for this frozen-artifact factor,
+not a universal footer rule or proof that all3.01pt are visible blank space.
+
+F1 caps only source section `body` at767.70pt. It does not move footer painting,
+change header origins, alter source, or modify E8 cell geometry/line heights.
+The same reduced capacity feeds text, table flow and E7 table-start preflight;
+inactive sections retain their existing bottom and the cap cannot expand normal
+body space. Two full-source factors ran offline with1GiB memory/swap limits.
+F0 is byte-exact to E8 R2. Preferred F1 artifact:
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e9/SRS-F1-native-bottom.pdf`,
+99pages, SHA256
+`d77b1b169553587d9e3e7bd571c7e76411b0ccb2168cd5b3a907590f56b198e8`.
+Native Word remains100pages. The page-count gap is not closed and no further
+capacity tuning is used to force a100page result.
+
+All361REQ occurrences retain order; starts on the same physical Word page
+increase266->304, with57 still one page earlier. Heading/table separations
+remain0. A common cohort of231 consecutive same-table row pairs that stay on
+one page in F0/F1/Word retains its intervals within1e-8pt: native relative-height
+error mean0.031307/max0.130pt in both. This differs from E8's229pair cohort and
+does not bound absolute glyph positions or every split-row continuation.
+Distinct source line signatures remain unchanged except generated TOC.
+Plain-source text coverage1814nodes,371non-header image source dimensions/order,
+396internal destination bounds and no-empty-page checks pass. Coverage allows
+whitespace normalization/exact repeated copies; it is not every-glyph identity
+or complete semantic link verification. Largest measured body text-box bottom
+is764.290841pt, within the767.70pt cap.
+
+All99pages were raster-compared with E8: only TOC9 and body45/47-99 change.
+Page14 and meeting17-26 remain whole-page pixel-identical, as do all11-26.
+Footer pixels below775pt remain identical on all99pages. Changed body pages
+were reviewed in seven overview sheets and detailed native pairs45/45,99/100;
+TOC9 was reviewed against E8. Unchanged pages reuse E8 review supported by
+pixel equality. No new visible clipping was observed at those scales; this is
+not high-resolution review of every glyph. All frozen reference hashes and
+inherited calibration values are unchanged.
+
+Compilation and295 layout/cache tests pass. Nine added cases cover reduced
+text capacity, exact fit, inactive/non-expanding containment, five invalid
+bottom values and heading/table grouping under the reduced capacity; seven
+fail before implementation and two containment cases already pass. First audit
+attempt used the wrong E8 control filename and stopped before measurement;
+corrected audit and final geometry checks pass without regenerating PDFs.
+Evidence remains under `pagination-e9/`. No new Word conversion, baseline
+replacement, Service/full suite, B2, integration or DOCUMENT_MAP promotion.
+The remaining one-page/57REQ start discrepancy stays open; this factor does not
+establish its remaining cause or justify further row/footer tuning.
+
+Read-only final review finds no Critical/Important issue for retaining E9.
+Minor audit reproducibility checks now assert actual99page counts before fixed
+raster loops and read red-test counts from the retained report. Final evidence
+assembly and script parsing pass after those corrections without new PDFs.
+Review acceptance is bounded artifact retention, not default rule or merge approval.
