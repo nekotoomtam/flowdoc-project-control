@@ -15314,3 +15314,44 @@ their hashes. Native A/control comparison remains BLOCKED; no result percentage,
 new table rule, source line-height/TOC repair, product commit or merge is claimed.
 Next prerequisite is usable native conversion, followed by like-for-like
 control/probe exports and text/frame measurements.
+
+### Owner-converted spacing A result, 2026-10-24
+
+The owner supplied `spacing-e1/SRS-spacing-A.pdf`, closing this diagnostic's
+missing-PDF prerequisite. Earlier native crash evidence remains historical;
+automated conversion is not proved fixed. Same clean Core `772144e`,
+single-room Evidence Reviewer, execution IDs N/A; no product changes or merge.
+Original baseline, control PDF and both DOCX inputs retain their frozen hashes.
+A has101pages,1308940bytes, SHA256
+`9d0cf32d278410dde49bb506520b817d03a1b09f917fe8befbe802e3a8defad1`.
+
+**A reduces text drift by shrinking frames; it is not an accepted rule.**
+On physical27 the first Features List text top error remains+5.040pt;
+the seventh decreases from+8.240to+5.240pt. However the first table's border
+center-to-center height changes from55.680pt (matching baseline55.680) to
+55.200pt, introducing a0.480pt frame-height error. The center-bottom to next
+center-top gap stays24.480pt in both Word exports versus baseline24.000pt.
+Thus terminal cell padding is not the location of the measured gap mismatch.
+Next investigation should preserve frame heights while tracing native
+table-to-paragraph transition spacing and separately the initial frame/text
+offset. This result does not establish a global line-height adjustment.
+
+Control and A raster-match exactly on22of the first26pages. The other four
+are TOC6-9: extracted word differences are31updated dot-leader/page-reference
+tokens. This supports stable preceding layout but does not independently pin
+Word build/export settings or all field-update behavior. All361requirement
+IDs remain in exact baseline/control order;471image objects and all100body
+footer page/total values are consistent. These checks are not full glyph or
+decoded-image identity proof. Sixty requirement IDs start on different pages
+than control: the change has downstream pagination effects despite unchanged
+total101pages. Baseline remains98pages. Talent Group still moves from baseline27
+to Word28; final101 still contains only the small trailing image and page bands.
+
+All101A pages were rendered and reviewed in nine overview sheets. Physical27-30
+and boundary26/31 were reviewed side by side with baseline/control; final101
+was inspected full size. This is bounded geometry plus all-page overview review,
+not exhaustive subpoint/glyph certification. `spacing-e1/comparison-r1/` retains
+`measurements.json`, `result.json`, renders and the six-sheet
+`SRS-spacing-A-comparison.pdf` (physical26-31; same origin, no independent
+registration). The earlier blocked checkpoint is preserved. Product promotion,
+full fidelity, W regression and Service/I6 acceptance remain outside this result.
