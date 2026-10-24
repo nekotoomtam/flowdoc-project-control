@@ -16285,3 +16285,37 @@ Prior tiny-page minimum-group, merged-cell and row-group limitations remain.
 The next work should resolve those actual differences against the same outcome,
 not treat a completed probe as overall PASS. No new Word conversion, baseline
 replacement, Service full suite/B2, release or merge occurred.
+
+### Three-family SRS input trial (2026-10-24)
+
+Owner defers text-spacing/wrapping repairs and requests three different font
+families to observe variation. Inline Core artifact generation and Evidence
+Reviewer scope only; no registered execution IDs, product edits or merge.
+Current Core stays clean at `1f9b505`. Artifact/evidence folder is
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/three-font-trial`;
+`manifest.json` pins all six deliverables and concrete regular/bold font inputs.
+
+The complete frozen SRS is exported as DOCX/PDF for Sarabun, Bai Jamjuree and
+Prompt. Style inputs use schema2 library font identities; source nodes, sections,
+page/table geometry, requested sizes and line heights are unchanged. Existing
+G1 body font-metric policy remains; Sarabun-specific introduction calibration
+is retained only for Sarabun, not transferred to the other fonts. No new tuning
+is introduced. Prompt static files and OFL come from Google Fonts' official
+`ofl/prompt` source. DOCX embeds the selected regular/bold family; emitted run
+font names and LibreOffice-rendered PDF font names confirm that family.
+
+FlowDoc PDFs have100/100/101 pages respectively. Each retains361 distinct REQ
+labels and1814 checked text nodes modulo whitespace/repeated whole-text copies.
+Against this trial's Sarabun, Bai changes84 text-block line signatures and64REQ
+start pages; Prompt changes145 signatures and200REQ start pages. These measure
+font variation inside FlowDoc, not errors against Word. Complete PDF overview
+review covers301 pages. `render_docx.py` rendered all three DOCX files through
+LibreOffice;303 pages were reviewed in numerically ordered overview sheets.
+LibreOffice layout/TOC differences remain QA observations, not Word acceptance.
+The initial default expanded-XML budget rejects the full SRS; retained failure
+is followed by the same supported300000-node option used for the prior full SRS.
+Generation remains offline1GiB. The six delivery files and three font licenses
+are bundled in `SRS-three-font-trial.zip`. Original/native/G1 PDF hashes remain
+unchanged. Status: trial artifacts delivered; same-family PDF-versus-Word
+fidelity comparison awaits the owner's Word conversions. No spacing/wrapping
+fix, product test/release acceptance or integration is claimed.
