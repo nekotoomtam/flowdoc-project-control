@@ -15491,3 +15491,63 @@ membership/heading grouping and first-line compensation after a page break
 remain open. Font/style/build generalization, all200table geometry, W regression,
 automated Office conversion and Service/I6 acceptance are not established.
 Baseline/control/A/B/C remain preserved; no code or map promotion or merge.
+
+### C-based cell-baseline probe D, 2026-10-24
+
+Owner authorizes the remaining approximately3pt text-in-frame investigation,
+retaining C's improved frame heights/transitions, original baseline and same
+worktree, through a DOCX for owner conversion, without merge. Single-room
+artifact implementation followed by structural verification; execution IDs N/A.
+Budget: one full-source probe, one build and one separate structural audit.
+Core `772144e` remains clean/unchanged. No product code, Docker, runtime suite,
+native Word automation or new PDF in this continuation.
+
+**Diagnosis separates cell-relative baseline from frame origin and font ink.**
+Decoded C embedded Sarabun Regular SHA256
+`b8150084e25734e6f31696c57ff009f5564efa09d295848b717d9e2328c0311d`
+has units1000, hhea ascent1068/descent232. `measureText.ts` centers the shaped
+ascent/descent envelope inside the source line; `textRuntime.ts` expands it
+for glyph ink. In these repeated11pt/19.84pt cells, English source baseline is
+18.518pt below the row border center. Thai `ไม่พบข้อมูล` has glyph `ู` reaching
+yMin-332, increasing the source descent to3.652pt; source baseline becomes
+17.968pt,0.55pt higher. Both formulas match all141corresponding frozen PDF
+occurrences within0.000002pt. This is a corroborated local case, not generic
+unpositioned-glyph substitution for full GSUB/GPOS shaping.
+
+C measured native baselines are about21.24/21.26pt below row top for the
+English/Thai cases. Median cell-relative deltas are2.722009/3.291989pt.
+Probe D uses nearest-twip compensation54/66twips (2.70/3.30pt), separately
+for these two observed profiles, rather than one global3pt shift. It reallocates
+cell top/bottom padding75/75to21/129twips for header and9/141for body, retaining
+the total150twips in every affected cell. No native font baseline model or
+general script/font rule is claimed; these remain empirical native profiles.
+
+`spacing-e3/SRS-spacing-D-cell-baseline.docx` is904660bytes, SHA256
+`b6133d488ca6c182d8375467b82b1bc5b12b8e8b75600a9b6288852348edb6b8`.
+It starts from frozen C DOCX, not A/control. Only `word/document.xml` changes:
+141simple two-row tables,282cells,564top/bottom value attributes. Independent
+recursive comparison admits only those balanced changes. All1932cell vertical
+padding sums are preserved; the other59table trees are exact. C paragraph/line
+heights and spacing,141transition frames470twips, body top margin1620twips,
+run properties, table borders/grids, horizontal padding, row splitting/keep/
+repeat flags, text, drawings and all other ZIP parts remain exact. ZIP integrity
+and all XML parsing pass. Predicted font-ink clearance within the row remains
+at least6.14pt above and6.11pt below for the measured11.04pt native size;
+this calculation is not a native clipping test.
+
+`spacing-e3/trace.json`, `probe-manifest.json`, and `structural-audit.json`
+retain font/glyph measurements, all282row baselines, bounded profiles and
+input/output hashes. The provisional pooling of English/Thai baselines was
+discarded before building; only separate profiles enter D. The structural
+auditor's initial row child-index/ordinal mismatch was repaired and the check
+rerun; no candidate mutation was needed. Frozen original/control/A/B/C inputs
+retain their hashes. No source acceptance or map promotion.
+
+**PASS for artifact construction/containment only; native layout PENDING.**
+Owner converts D with its original stem. Compare against C and original baseline
+for141frame heights, shared transition gaps, English and Thai cell-relative
+baselines, upper/lower marks, page membership/TOC and final continuation.
+Preserved padding sums retain the nominal budget, not proved rendered row
+height or100page pagination. Reject any frame/gap regression against C; do
+not promote from improved text positions alone. Mixed/long text, other tables,
+fonts/styles/builds and whole-product fidelity remain outside this diagnostic.
