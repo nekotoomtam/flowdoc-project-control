@@ -16051,3 +16051,91 @@ inspected before accepting that counting correction. The containment check now
 uses complete Git status and an explicit five-file diagnostic allowlist, rather
 than inferring configuration state from four directory prefixes. Corrected
 diagnostic assertions pass; no candidate was changed by these review repairs.
+
+### E11 — native paragraph widow/orphan experiment (2026-10-24)
+
+The owner selected E10 option1: experiment with native paragraph first/last-line
+control in PDF, keeping long rows splittable and preserving E9 capacity, E8 row
+metrics, E7 heading/table starts and M2 introduction. Inline Core implementation
+then Evidence Reviewer; registered execution IDs are not applicable. The same
+isolated `codex/docx-horizontal-r11` worktree is retained, with no integration.
+Core commit `69aee4c` contains the opt-in probe, tests, reproducible preparation,
+audit/finalizer and `scripts/experiments/word-widow-result.json` evidence.
+
+The experiment derives724 selected nonempty text-block IDs by matching rows,
+cells and paragraph text against the retained native DOCX across26 ordinary
+unmerged requirement tables. Native direct/default widow declarations are
+checked rather than fitting a page count. The PDF cut reserves at least two
+first/last paragraph lines where feasible; a three-line paragraph moves intact
+when it can fit a fresh page, while long paragraphs continue across pages.
+Impossible small-page minima relax in the low-level row path. Heading/table
+preflight includes the same first-paragraph minimum. No font, line-height,
+horizontal shaping, cell-padding, footer-paint or DOCX contract change is made.
+
+Two complete PDFs were generated offline with a1GiB memory/swap ceiling.
+`V0-E9-control` is byte-exact E9, SHA256
+`d77b1b169553587d9e3e7bd571c7e76411b0ccb2168cd5b3a907590f56b198e8`.
+The retained candidate is
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e11/SRS-V1-paragraph-minimum.pdf`,
+SHA256 `945626f1792b2ea798a1b7f40514d8f0cd4baebc3dae135961cc42ffc8a4fe61`.
+It has100 pages, matching the frozen native Word100 rather than E9's99.
+All361REQ occurrences retain their source/native order;357 now start on the
+native page, compared with304 before. The original57 early starts reduce to4:
+REQ0280 PDF81/Word82, REQ0298 83/84, REQ0314 85/86 and REQ0324 87/88.
+This is53 corrected starts, not a97% or99% whole-document similarity claim.
+
+Among the724 selected paragraphs,25 split across pages and none has an isolated
+first/last single text line. Long REQ0041 now follows the native12/32/32/2 text
+distribution on physical50–53. Text-block boundaries determine this check;
+images, blank text and separate anonymous/empty-table rows are not counted as
+paragraph text lines. E10 native per-REQ line buckets remain historical locator
+evidence: REQ0083 includes the following empty-table placeholder, while Core
+draws an authored blank text line in REQ0006. E11 therefore does not infer a new
+all361 native line-count parity result from those buckets. REQ0178 remains the
+previously observed PDF2/native1 wrapping difference. Distinct source draw-line
+signatures retain E9 text, x, line height, baseline offset and glyph count;
+only generated TOC content changes as page references update. This signature
+does not prove identity of every glyph or horizontal position against Word.
+
+Fresh source/draw coverage passes for1814 plain source text nodes modulo
+whitespace and exact repeat copies. All371 source-image dimensions/order match
+the native sequence; this does not compare image bytes. All396 internal
+destinations reference existing output pages, without asserting destination XY
+or semantic target correctness. No empty page or heading/table-header
+separation is detected. All253 common consecutive source-row intervals that
+stay on one page in all three PDFs are unchanged from E9; their native interval
+error is mean0.032024pt/max0.13pt. This is a row-interval cohort, not an absolute
+glyph-position bound. Maximum body text-box bottom764.340841pt remains within
+the frozen767.7pt body cap.
+
+All100 output pages were rendered and reviewed in nine overview sheets, with
+detailed same-page Word comparisons14,49,53,58,82 and100. Content above775pt
+on introduction11–26, including page14 and meeting tables, is pixel-identical
+to E9. Whole-page equality is not claimed: the total-page footer field changes
+99 to100. No new clipping was observed in that review scope. Some native line
+wrapping/spacing differences and an image-only continuation on82 remain visible;
+equal total pages and357 aligned starts do not close complete native fidelity.
+
+TypeScript compilation and the affected layout/cache suite pass306 tests,
+including11 new cases. Initial targeted red has6 failures/3 passes; an extra
+preflight red captured the three-line reservation before its correction. Tests
+cover two/three-line paragraph starts, singleton last lines, long-row progress,
+separate paragraphs, impossible minima, non-selected containment, preflight and
+parallel label/repeated-header movement. Python parsing, runner syntax, artifact
+audit/finalizer and diff whitespace checks pass. Full Service suite/B2 are not
+run or relabelled as PASS. Frozen source, image streams, original baseline,
+native DOCX/PDF and E7–E10 evidence hashes are unchanged; all three consumed E10
+geometry/feature caches were added to the hash inventory after independent
+review identified that reproducibility gap.
+
+Independent code/evidence review found no critical or important issue within
+the frozen scope. Generalized promotion remains excluded: a heading plus the
+requested paragraph minimum can exceed a fresh page (54pt capacity,18pt heading,
+three18pt lines), where existing heading/table preflight rejects instead of
+relaxing. Low-level paragraph relaxation does not fix that group constraint.
+Row-group/merged-cell behavior and general fonts are not accepted by this trial.
+The retained candidate improves the approved SRS experiment; it is not a new
+default or package/release acceptance. No baseline replacement, native Office
+conversion, Service change, DOCUMENT_MAP promotion or merge occurred. Next
+bounded work should distinguish the four remaining start/continuation cases
+from the separate wrapping residual before changing another factor.
