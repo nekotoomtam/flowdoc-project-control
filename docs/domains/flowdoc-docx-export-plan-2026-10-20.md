@@ -16899,3 +16899,66 @@ contains the three cases' DOCX and both PDF variants plus summary. Original
 source/PDF/template/payload/DOCX/Word-PDF hashes still match. No source tests are
 rerun for unchanged product code. Stop at this artifact/review checkpoint; do
 not repair form rules or merge without the owner's next instruction.
+
+### 2026-10-25 — SB1 two Sections with owned Areas
+
+Owner clarifies that the original Model18 SB1 is two documents represented by
+two Sections; the later single-Section Model19 copy intentionally tested Area
+variable definitions and was not evidence that the original structure was wrong.
+Saved original `install-049-028/draft-before-af9015b7-df78-4af7-9444-15bd56a05f11.json`
+confirms declaration/cargo Sections; the fixed Model19 revision4 copy has one
+Section. These retained snapshots are not fresh reads of current live state.
+
+Owner now authorizes a local two-Section Model19 template trial, each Section
+containing its own Area, retaining all previous files and testing long names and
+30cargo rows in PDF/DOCX. Inline artifact authoring/Evidence Reviewer; execution
+IDs not applicable. Existing clean Core worktree remains `8bbd7d6`; no product
+repair, live draft mutation, Service operation, release or integration.
+
+New local template/request files are in
+`FlowDoc-recovery/sb1-docx-2026-10-25/two-sections-r1/`. Declaration keeps its
+Section ID and declaration Area; cargo gets a new Section ID/private page-layout
+copy and retains its cargo Area. The manual page break is removed; the Section
+boundary owns the next-page transition. Both retain the disclosed auto-flow
+Format definitions, fonts, styles, global schema and exact business values from
+the four prior cases. Declaration has no header/footer content. The existing
+business signature footer is scoped to all cargo Section pages, including its
+first page, rather than all continuation pages of a combined document. This is
+not a new last-page-only signature rule. `conversion.json` records changes.
+
+Eight public-port exports under1GiB pass validation/composition and produce four
+PDFs/four DOCX files. Ownership metadata confirms two format instances in their
+respective Sections; DOCX contains two sectPr elements and no manual page break.
+Both default/first footer parts of the declaration Section are explicitly empty
+to prevent inheritance; cargo footer parts contain the signing block. All source
+body text is present in DOCX XML ignoring whitespace;30-row markers are complete
+in the PDFs, DOCX XML and LibreOffice renders, with no omission warnings.
+
+| Case | PDF pages / cargo starts | DOCX LibreOffice pages / cargo starts |
+| --- | --- | --- |
+| Control | 2 / 2 | 2 / 2 |
+| Long names | 2 / 2 | 3 / 3 |
+| 30rows | 7 / 2 | 8 / 2 |
+| Combined | 16 / 2 | 18 / 3 |
+
+No declaration page has the cargo Signature footer; all cargo pages have it.
+Its coordinates remain constant within each output mode. Long-name declaration
+signatures still shift downward87.59pt in PDF and87.55pt in LibreOffice versus
+their own controls. In the new LibreOffice long/combined renders all three
+signature labels fit page1, but the customs date paragraph alone flows to
+declaration page2. The unintended cargo footer on that page is gone. Separation
+therefore fixes document/Area/footer ownership but does not keep the entire
+signature/date group together or fix absolute business-signature placement.
+
+All27 PDF pages and31 LibreOffice pages have visual coverage:54/58 page rasters
+are exactly identical to previously inspected images at the same resolution;
+the four changed declaration pages are freshly inspected in detail. No character
+boxes exceed the physical page; the date-only continuation remains a material
+layout issue. `analysis.json`, `verification.json`, structural checks and
+`raster-comparison.json` retain criteria, coordinates, hashes and review limits.
+`SB1-two-sections-review.zip` contains the four PDF/DOCX pairs, local template,
+conversion and verification. Original source/template/payload/PDF/DOCX/Word PDF
+hashes are unchanged. Product code is unchanged, so no source suite is rerun.
+Native Word conversion of these new files is pending; LibreOffice page counts
+are not Word acceptance. Stop at this reviewable artifact checkpoint; no merge
+or additional signature-rule change is performed.
