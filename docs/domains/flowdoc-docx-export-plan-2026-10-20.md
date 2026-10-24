@@ -1,6 +1,6 @@
 # FlowDoc DOCX Export Implementation Plan
 
-Latest whole-UAT candidate (2026-10-24): [DOCX generated in an unmerged worktree](#2026-10-24--uat-native-merged-cell-candidate).
+Latest whole-UAT candidate (2026-10-24): [Explicit cell-border trial](#explicit-cell-border-trial), in the same unmerged worktree.
 Owner clarified that the requested table behavior is native vertical merging,
 with one group name. The candidate exports the retained UAT, including fractional
 sizes, Sarabun Light and fixed bands. Full native Word/PDF fidelity is not accepted;
@@ -16682,3 +16682,39 @@ layout; several image placements and line breaks visibly differ. This review
 does not establish full fidelity or waive the border issue. Evidence:
 `docx-r1/word-user-review/inspection.json`, all page renders,13 sheets and
 `missing-top-edge-context.png`. Product candidate remains a63c09c, clean/unmerged.
+
+### Explicit cell-border trial
+
+Owner authorizes a bounded inline Core correction in the existing
+`uat-real-2026-10-24/docx-worktree`, branch `codex/uat-docx-merged-groups`.
+Execution IDs are not applicable. Candidate commit `bd190c4` follows `a63c09c`;
+no integration, release, PDF generation or Service changes. The existing ledger
+is the authority; no new Work or shared plan is created.
+
+Each physical DOCX cell now declares its perimeter using the existing table
+border color and0.5pt stroke. Vertical merge restart/middle/end cells suppress
+internal horizontal edges. Horizontal spans, shading and table-level borders
+remain intact. New tests first fail without cell borders and pass after the
+correction. Build and323 affected DOCX/composition/font cases across25 files
+pass under the retained1GiB Linux limit; this is not Service/I6 acceptance.
+
+Artifact: `C:/Users/nekot/Documents/FlowDoc-recovery/uat-real-2026-10-24/docx-r2-cell-borders/UAT-cell-borders.docx`,
+2172937bytes, SHA256 `269e3a40724b405d4aba817aac5b3f174eb1fbd49d76f3f77a8383d1d8a13294`.
+All526 physical cells have explicit borders. Removing only those new border
+nodes makes the main document XML byte-equivalent after XML serialization to
+the previous candidate. Other Word XML parts match, except random font embedding
+keys. Thus source text, spacing, padding, widths, row/paragraph rules and merge
+instructions remain unchanged. All60REQ IDs remain once in original order;
+135 original image assets match by decoded pixels, including75 byte-identical
+JPEGs. Native merges remain3 restarts/four continuations. Original PDF, previous
+baseline, prior DOCX and user-converted Word PDF hashes remain unchanged.
+
+LibreOffice renders73 pages, with identical per-page extracted text to the prior
+LibreOffice preview. All73 pages are inspected in three overview sheets; no new
+gross clipping or overlap is observed at that scale. This does not establish
+Word border resolution or identical Word geometry. The owner will convert this
+new DOCX through Word; the missing upper-edge defect remains pending that
+comparison. Outcome: trial artifact and scoped checks PASS; Word fix UNKNOWN.
+Evidence root: `uat-real-2026-10-24/docx-r2-cell-borders/`, especially
+`targeted-tests.json`, `structural-native-verification.json`,
+`border-invariance.json`, `libreoffice-comparison.json`, and rendered pages.
