@@ -15229,3 +15229,51 @@ SRS PDFs, the old DOCX,17older PDFs,22inputs,14R11outputs and200compiled
 R11files retain their hashes. Next action is safe recovery of Word followed by
 native SRS/W exports and visual comparison; no merge, release, Service/I6 full
 suite or B2 occurs.
+
+### Ordinary-flow SRS comparison using owner-converted PDF, 2026-10-24
+
+The owner supplied `natural-flow-r1/run/SpaceShip-SRS-trial.pdf` from the
+requested trial DOCX. This closes the missing-PDF prerequisite for this SRS
+comparison; it does not prove automated Word export, native W regression or
+full fidelity. Same Core candidate `772144e`, unchanged/clean worktree,
+single-room Evidence Reviewer; execution IDs N/A. No product changes, Docker
+or new runtime tests occur in this continuation.
+
+The supplied PDF parses and renders all101pages,1307989bytes, SHA256
+`bd7cb2c4e4e5041a131d0183bc00fcb686954fc33190a59d6d788e4d18451fca`.
+Metadata identifies Microsoft365 Word; the owner's exact build, export settings
+and field-update sequence are not independently recorded. The requested DOCX
+still has SHA256
+`34621f09401ae7274d3ff6af385d962df6356f16c2122895049752687310b54b`.
+The previous107page Word PDF and original98page baseline retain their hashes.
+
+**The reported whitespace defect improves in the actual PDF.** REQ0019 now
+starts on physical48 with items1-15; items16-17 continue on49. Previously all
+17items moved to49, leaving large whitespace on48. The whole document decreases
+from107to101pages; its page-count difference from baseline decreases from9to3.
+All361requirement identifiers occur in exactly the baseline order. All100body
+footer page/total texts match physical pagination.471image objects are consistent
+with371source placements plus100body headers; this is count consistency, not
+decoded-pixel proof or exhaustive authored-glyph equivalence.
+
+All101native and98baseline physical pages were inspected in13paired overview
+sheets, with full-resolution native48/49/101 and selected overlay-PDF pages.
+The cover remains one page and native column headers repeat at table splits.
+Table heights, spacing and line layout still accumulate page drift; TOC
+leaders/styling differ. **Native101 is an undesirable near-empty continuation
+containing only the small trailing image, repeated column header and page bands
+after REQ0366 on100.** Ordinary flow removes the excessive keep but can leave
+an image alone; this remains visible, not hidden by dropping the page or image.
+Pagination/layout equivalence remains NOT ACCEPTED. No fidelity percentage or
+transfer of prior R13 coordinate acceptance is claimed.
+
+`natural-flow-r1/SRS-baseline-natural-flow-overlay.pdf` has101sheets,
+SHA256 `0576b2447013cc8479c5d98b2ae21647ee1b8f75accfb8196a9b0ea216bf042b`.
+Cyan is original baseline, red is native Word, black overlap; physical page
+origins are retained at100.8dpi without independent content alignment. Its
+monotone text-based pairing retains all98baseline pages and labels native-only
+34/65/101; these are provisional content/page matches, not geometric scoring.
+`REQ0019-before-after.png` shows physical48 before/after. Supporting inventory,
+alignment, renders and `user-pdf-comparison.json` retain hashes and limitations.
+The earlier blocked checkpoint stays historical; this later observation is the
+current SRS comparison result. No merge, release or broad acceptance occurs.
