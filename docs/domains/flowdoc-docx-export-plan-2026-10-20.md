@@ -16718,3 +16718,24 @@ comparison. Outcome: trial artifact and scoped checks PASS; Word fix UNKNOWN.
 Evidence root: `uat-real-2026-10-24/docx-r2-cell-borders/`, especially
 `targeted-tests.json`, `structural-native-verification.json`,
 `border-invariance.json`, `libreoffice-comparison.json`, and rendered pages.
+
+### Owner disposition: PDF upper-border issue deferred
+
+On2026-10-24 the owner reports that borders display normally inside Word and
+accepts retaining the current candidate with the PDF-export defect recorded as
+a known issue. Stop border repair/investigation; no further trial is requested.
+This is an accepted limitation, not a claim that the defect is fixed or that
+full DOCX/PDF fidelity passes. Keep candidate `bd190c4` unmerged and preserve
+all original PDFs and trial artifacts.
+
+The supplied `docx-r2-cell-borders/UAT-cell-borders.pdf` has73 pages, SHA256
+`f309a0b36210a4f303e0ecb8d6cfa730ca02d37d3448a9752ee3850cfed2d8d2`.
+The upper-edge defect remains visible at shaded table headers, including
+pages5 and7. Comparison at72dpi finds71 of73 pages pixel-identical to the prior
+Word PDF; all73 pages have identical extracted text. Pages5 and6 differ;
+their maximum character-box deltas are1.56pt and0.48pt respectively. Explicit
+cell borders therefore did not fix the PDF symptom and do affect native Word
+placement despite unchanged DOCX spacing instructions. Exact cause is unresolved
+and deferred by owner decision. Word-editor appearance is owner-reported,
+not independently reproduced. Evidence: `docx-r2-cell-borders/word-user-review/`
+(`comparison.json`, `character-comparison.json`, and page renders).
