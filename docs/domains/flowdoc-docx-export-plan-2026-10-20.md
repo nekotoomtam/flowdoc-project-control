@@ -16319,3 +16319,22 @@ are bundled in `SRS-three-font-trial.zip`. Original/native/G1 PDF hashes remain
 unchanged. Status: trial artifacts delivered; same-family PDF-versus-Word
 fidelity comparison awaits the owner's Word conversions. No spacing/wrapping
 fix, product test/release acceptance or integration is claimed.
+
+Prompt native-font diagnosis: the owner supplies `three-font-trial/SRS-prompt.pdf`
+(SHA256 `728daad42094dcf0066061b01349f37d1a86112e8f8784b8b61267b92d9293ef`),
+produced by Microsoft365 Word with99 A4 pages versus FlowDoc's101. Actual Thai
+body text, including the SRS definition, uses AngsanaNew while Latin retains
+Prompt. The original DOCX remains hash-exact and contains no Angsana reference.
+Read-only inspection confirms explicit Prompt ascii/hAnsi/eastAsia/cs slots.
+All six embedded faces across the trial decode byte-exact to frozen source
+fonts, eliminating corrupt/missing font bytes in this package as that cause.
+However all six `w:sig` records contain the same hardcoded Latin-oriented
+signature, omitting Thai despite Thai support in each font's actual OS/2
+code-page flags. Installed docx9.13.0 `createEmbeddedFont` supplies these constants;
+Core currently passes bytes without correcting that signature. This is a
+confirmed package metadata defect and a strong substitution hypothesis, not yet
+a proven sole cause of native Word fallback. Microsoft FontSignature documents
+this metadata's role in font substitution. Evidence is retained in
+`three-font-trial/font-signature-diagnosis.json`. No product/candidate changes or
+Word repair conversion occurred; a signature-only native control is needed
+before attributing the entire99-versus101-page difference to this defect.
