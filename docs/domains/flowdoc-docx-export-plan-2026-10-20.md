@@ -16962,3 +16962,109 @@ hashes are unchanged. Product code is unchanged, so no source suite is rerun.
 Native Word conversion of these new files is pending; LibreOffice page counts
 are not Word acceptance. Stop at this reviewable artifact checkpoint; no merge
 or additional signature-rule change is performed.
+
+### 2026-10-25 — Final Area bottom alignment implementation scope
+
+Owner authorizes final authored root Area to select verticalAlign bottom, retaining
+normal top-to-bottom content order, one occurrence and normal overflow. Core
+Product Implementation Agent, inline; execution IDs not applicable. Existing
+isolated codex/uat-docx-merged-groups worktree at 8bbd7d6 is the product lane;
+no integration, release, installed Service/draft mutation or changes to prior
+SB1/PDF artifacts. Risk routine; native Word behavior is an unverified acceptance
+boundary, not a reason to claim preview results are Word results.
+
+Implementation/checklist (existing ledger is work authority):
+- [ ] Validate optional Area props.verticalAlign top/bottom; bottom only on the
+  final top-level Area of a body Section. Carry an explicit resolved endingArea
+  boundary, including empty/multiple format entries; reject invalid metadata.
+- [ ] PDF: fit a one-page ending Area as a group into the remaining final body
+  space or next page, bottom aligned; oversized Areas flow without retry loops,
+  with the final fragment bottom aligned. Preserve drawings, links and numbering.
+- [ ] DOCX: prototype native page-bottom footnote storage for this logical Area,
+  with no reference number/separator, no repeated footer, no floating textbox and
+  no extra semantic Section. Preserve arbitrary supported body children and
+  record the native storage adaptation. Word remains editable in its note area.
+  Generated/source-word boxes are not used in the ending Area. Long note overflow
+  remains native; incompatible contents must fail explicitly, not disappear.
+- [ ] Add failing contract/layout/package tests first; run affected template,
+  composition, PDF layout and DOCX checks/build, plus one focused independent
+  read-only review. Proof budget: up to 3 repair passes for new failures, two SB1
+  cases with up to 3 artifact iterations; stop at artifacts and review or a real
+  native-capability blocker. No unrelated full Service suite.
+- [ ] Generate new short and 30-row two-Section SB1 PDF/DOCX pairs using unchanged
+  business values, move the cargo signature footer into its own final Area,
+  remove cargo header/footer content, review every output page and report the
+  remaining native Word conversion prerequisite. Compare hashes of old files.
+
+Model: use this current host model for bounded inline Core work; no model switch
+or separate work room. Document budget: this ledger section plus existing Core
+API/template guidance only. Ruling: evaluate native Word footnote placement as a
+renderer detail rather than fixed coordinates; it is not the user's requested
+semantic footnote and must be disclosed and rejected if visible note artifacts,
+content loss or unsupported relationships remain. Do not substitute a footer or
+floating object without returning the concrete limitation to the owner.
+
+### 2026-10-25 — Final Area trial result: PDF verified, native Word pending
+
+Core candidate commit `82a9478f4b0e07104dae244096417fb369ea3881` is preserved in
+`codex/uat-docx-merged-groups`, same isolated worktree, clean and unmerged.
+The explicit owner's request is the inline authority; execution IDs not applicable.
+No release/version bump, primary-branch integration, Service change or live draft
+mutation. Core README and template guide describe the narrow candidate contract
+and pending native Word acceptance, not FlowDoc-wide readiness.
+
+Implemented model18/19 final root Area props.verticalAlign top/bottom, default
+ordinary flow, resolved endingArea suffix/ownership validation, bounded PDF
+measurement/group placement with actual page-band capacity and table-boundary
+gaps, and final-fragment alignment for oversized Areas. Empty Areas add no page.
+DOCX maps the logical Area once to editable native page-bottom footnote content;
+there is no repeated signing footer, floating object or extra native Section.
+An invisible custom mark suppresses the reference number; generated separators
+are removed. Ending content bypasses source-word boxes. Package tests retain
+native tables, images, hyperlinks and resolved note relationships. This is an
+experimental renderer adaptation; native Word layout is not accepted yet.
+
+All18 new ending-Area tests pass. The complete Core Linux suite passes1177/1177
+in118 files under1GiB; TypeScript build and diff checks pass. Test log:
+`FlowDoc-recovery/sb1-docx-2026-10-25/ending-area-r2/linux-core-verified-checks.log`.
+Earlier host checks lacked native metric capabilities; the Linux verification
+also initially lacked the required legacy segmenter. The final complete run uses
+the actual retained0.4.0 helper with SHA b80f4e94bc52d38477f11070ade15f97781aa0eeb5927afa8b4d37dedbc7644d.
+Those prior unsuccessful runs remain visible; they are not counted as PASS.
+Three focused review findings (authored break before note anchor, continuation
+capacity, and table boundary gap after bottom placement) have fixes/regression
+tests and a read-only recheck with no concrete residual source blocker.
+
+Final trial artifacts are in `FlowDoc-recovery/sb1-docx-2026-10-25/ending-area-r3/`:
+control-flow-pdf.pdf / control-flow-docx.docx and
+many-rows-flow-pdf.pdf / many-rows-flow-docx.docx. Both retain two Sections;
+cargo has its ordinary table Area and a new final signing Area. The old footer
+columns become a borderless body table with the same weights/text/bindings.
+Bottom now means the18pt body edge, replacing the previous22pt physical footer
+offset; this4pt difference is explicit in conversion.json. Business values and
+31 prior PDF/DOCX artifact hashes remain unchanged. Source file hashes at export
+match the committed candidate; verification.json records the manifest/commit.
+
+PDF control is2pages with signing only on2;30rows is7pages with all30 row
+markers once and signing only on7. Signature/Date coordinates match across the
+cases; Date ink ends823.38pt within the18pt body edge. No character boxes exceed
+the physical page. All9 PDF pages have full-page visual coverage, including
+verified-identical declaration pages; no signing/table overlap is observed.
+
+The LibreOffice preview is2/7pages and retains all cargo rows, but its table-note
+signing block displays only Date, not the other labels. A normal numbered-note
+control exhibits the same loss; a paragraph-only custom-marker control displays
+all labels. This isolates the observation to the table-note display path; it
+cannot prove native Word correctness. Every signing label/cell remains in DOCX
+XML exactly once, both Sections' header/footer parts have no text, and the note
+reference is invisible. All9 preview pages are inspected and recorded FAIL for
+signing display, not passed or substituted for Word acceptance. Final18 page
+rasters are pixel-identical to reviewed R2 renders at the same resolution.
+
+Result: PDF behavior/checkpoint PASS; DOCX candidate generated, native Word
+UNKNOWN and preview limitation RISK. SB1-ending-area-review.zip contains the four
+files plus template/conversion/verification. Existing files and prior trial
+iterations are retained. Stop at this artifact checkpoint; the next required
+proof is opening/converting these exact DOCX files in Word and reviewing the
+last-page signing block, completeness and pagination before accepting the DOCX
+behavior or considering integration. No blanket arbitrary-content parity claim.
