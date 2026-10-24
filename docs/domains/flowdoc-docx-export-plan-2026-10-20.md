@@ -15621,3 +15621,62 @@ D is the preferable retained artifact for these cell profiles. Paint variation,
 absolute origin, heading/page membership, the other59table types and general
 font/script coverage remain separate open issues. No product rule acceptance,
 map promotion, integration, merge or automated Office-recovery claim.
+
+### Word-referenced PDF spacing experiment E4, 2026-10-24
+
+Owner authorized inspection of native header space followed by a PDF-side
+baseline/row-stroke experiment in the existing Core worktree. Single-room
+experimental implementation and evidence review; execution IDs not applicable.
+Scope is the frozen SRS introduction section (physical11-26), not a general
+Word spacing rule or replacement baseline. Existing PDF/DOCX inputs remain
+hash-identical. Core commit `2ab3282` retains the opt-in internal probe, six
+tests, reproduction scripts and `scripts/experiments/word-spacing-result.json`.
+The default PDF output remains byte-identical to the retained current-source
+PDF SHA256 `7f60d0068eacf071c0c58067133461f1bc10b626a22d272bc813e7f6ef3fa644`.
+
+Native header image ends68.95pt; XML section margin is83pt and the physical
+table border centre is83.288pt. The exporter includes2pt of structural
+reservation. Painted image bounds alone do not prove that native paragraph
+footprint unnecessary; the DOCX and header reservation were retained.
+
+Six full PDF artifacts separate control, header-only, border, line-box and
+combined effects. The first combined probe also adjusted source-guided native
+paragraphs; the retained C2 probe excludes their IDs from native baseline
+adjustment using the existing custom XML mapping. The two calibration anchors
+are page14 MOM's first baseline relative to its row and heading6's baseline
+relative to the table end. Sarabun11/19.84 and bold13/24 use measured native
+line boxes, plus0.5pt per ordinary unmerged row. This is measured calibration,
+not a font-derived general formula; no Bai Jamjuree or other-size acceptance.
+
+Retained artifact:
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/spacing-e4/SRS-C2-combined.pdf`,
+98pages, SHA256
+`deb759b01315760c0a3b71c5eba3390fce7bc7ea2f3a81a9b0b399e5f1db6e73`.
+On14 the14 non-calibration Latin/numeric anchor baselines improve mean absolute
+error6.456->0.168pt and maximum8.325->0.409pt. The last7.5 description line
+continues on15 as in native Word. Across11-26,111 unique matched anchors all
+have the same physical page as Word; same-page mean absolute error0.562pt,
+maximum2.850pt. The control has109/111 on the same page, same-page mean16.183pt
+and maximum36.044pt; these same-page aggregates have different denominators.
+These anchor metrics do not bound every glyph or establish full-page identity.
+
+All98pages were raster-compared against control: only11-26 differ;1-10 and
+27-98 are pixel-identical at the inspected render scale. Four paired overview
+sheets cover all changed pages; a3xThai detail shows intact selected marks.
+All361REQ IDs retain order, page and baseline. Image placements by page and
+footer strings remain exact. Raw extracted body reading order is NOT exact:
+pagination changes repeated header positions, and the control's meeting2
+header occurs on17 and again18, while C2 begins it only on18. The39-character
+count reduction equals that one source-authored header's duplicate occurrence;
+no claim of complete source glyph identity is made from this accounting.
+
+Compilation and271 layout/cache tests pass after six new cases were observed
+failing first. The first green run had270PASS/1FAIL because an assertion also
+compared intentionally different node IDs; corrected assertion compares the
+unaffected line metrics, then271PASS/0FAIL. Containers remained offline with
+1GiB memory/swap limits. No Service/full-suite/B2 execution, native Office
+conversion, default behavior promotion, release or merge. Word remains100pages
+versus candidate98; other fonts, whole-document compatibility and remaining
+table offsets remain open. Durable local evidence is under `spacing-e4/`,
+including `comparison-result.json`, frozen input hashes, calibration revisions,
+factor PDFs and `page14-comparison.png`. No DOCUMENT_MAP promotion.
