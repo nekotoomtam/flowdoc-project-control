@@ -15039,3 +15039,80 @@ Owner requested a real example from the existing SRS structure. This inline Core
 Public validation/preparation/composition pass:7sections,5622nodes,200tables,933rows,1932cells and371image placements. PDF generation from the same resolved document/resources succeeds with98pages, SHA256 `7f60d0068eacf071c0c58067133461f1bc10b626a22d272bc813e7f6ef3fa644`; this new PDF has not received full visual acceptance. **DOCX generation fails before output** with `DOCX_REQUIRED_RELATION_UNSUPPORTED` at heading `I. Revision History`: `Heading/description exceeds bounded table-start envelope`. The conservative source-font reading-plan admission rejected the required heading/table relationship; this is not evidence of actual Word overflow. No DOCX exists to review, and the synthetic R13 text-profile PASS does not establish real full-SRS support. Do not remove the relationship, shrink the document, raise limits or substitute the historical disposable adapter and call it this candidate's output.
 
 Evidence is `C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/{source-freeze,composition,image-original-pdf-binding,docx-result,pdf-result,result}.json`. The initial staging attempt used an oversized image stream chunk; only the external staging provider was corrected to64KiB chunks, preserving the initial failure receipts. Next product work must address bounded real heading/table admission and then rerun the unchanged complete SRS; this trial does not prove that later SRS requirements or package budgets will pass.
+
+### Full SRS continuation 2026-10-24 with native review blocked
+
+The owner authorized repair of the actual-text admission guard and subsequent
+blockers in the existing Core worktree, preserving PDFs and prohibiting merge.
+This is single-room Core implementation/evidence review; execution IDs N/A.
+Core checkpoint `3b7a558d4b87a43803a5f906aad733f6a97d13d4` is committed and
+clean on `codex/docx-horizontal-r11`; it is not integrated or full-SRS accepted.
+
+Private intent-owned measurements now use the shared source shaper/line
+measurement for reading relationships, bands and cover content, with bounded
+shaping and cleanup. Table-start admission uses available body space after
+native band reservations, repeated headers and the first legal row fragment.
+Measured cover admission replaces the arbitrary80% allowance with measured
+content, one point per text line and closing headroom; this remains an estimate
+requiring native one-page review. Rules retain native eighth-point thickness
+quantization receipts; the actual cover0.566929pt maps to0.625pt. The immutable
+measured reading plan is reused across tables instead of recomputing it200times.
+
+**The whole SRS does not pass the unchanged default XML limit.** After structure
+admission it contains254335 expanded XML elements. An explicit public
+`maxXmlNodes` option now retains default50000 and permits at most300000,
+independently of the unchanged50000source-node,10000image-reference,16MiB
+resource and32MiB output limits. The whole-SRS experiment explicitly selects
+300000 and records its actual count. This changes an opt-in package budget;
+it is not an optimization claim or a default-profile PASS. Earlier statements
+prohibiting limit changes describe the previous trial; this newly authorized
+implementation records the changed bound rather than disguising it as the
+unchanged candidate. No text, source relationship or image is removed to fit.
+
+Compilation and170DOCX tests pass, including real-text/cover admission,
+oversized-cover rejection, explicit XML-budget validation and atomic default
+budget failure. An isolated Linux consumer of packed artifact SHA256
+`e791e202268910a5d1628fcae9ddbf6578deb43368be706eb9ed974533e10ef1`
+generates the full SRS plus all6original and16matrix packages with network off
+and a1GiB container limit. All214compiled package files match the tested build.
+All22regression packages retain exact render-part/decoded-font equivalence to
+the previous accepted candidate; existing bounded text evidence is reusable,
+not fresh native SRS acceptance. Independent read-only product review found no
+remaining concrete guard/budget-forwarding defect and explicitly required
+native cover/field/layout verification.
+
+Full candidate DOCX is
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/runs/packed-r1/SpaceShip-SRS-trial.docx`,
+904476bytes, SHA256
+`6e3e284e1f374fd8ef41ba7c44e69d006055963d8adb7e1308e18c5ea827a2db`.
+An ordered semantic audit preserves all76974authored text characters in
+2184blocks,200tables and371image placements. The one genuine native TOC SDT's
+4156generated text characters are separately identified/excluded from authored
+comparison, not dropped from the output. Frozen SRS inputs, original98page PDF,
+additional trial PDF,17older PDFs,22older inputs,14R11outputs and200R11compiled
+files retain their saved hashes.
+
+**BLOCKER: native whole-SRS review remains incomplete.** Word opens the complete
+package without a repair prompt and can reach its last source table, but
+Standard PDF export remains unresponsive with active CPU and no saved PDF.
+The initial full TOC refresh, a no-manual-refresh run, a diagnostic without TOC,
+and a diagnostic retaining all content/field instructions while locking223
+fields do not produce a native PDF within their observed bounded runs. The
+last two are diagnostic copies only, not alternative deliverables or valid
+page-number evidence. Source XML review finds balanced field nesting, all198
+PAGEREF targets, maximum authored keep chain3, and matching23unbreakable/
+910breakable row flags; these findings do not identify the stall's cause.
+Only task-owned unresponsive Word processes were cleaned up. Packaged DOCX
+rendering also cannot run because LibreOffice is absent; no installation is
+performed. No native page count, one-page cover certification, full-page visual
+review or SRS/PDF fidelity percentage is claimed.
+
+Evidence is under `C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24`:
+`current-checkpoint.json`, `reading-measurement-green-r10.json`,
+`package-render-equivalence.json`, `srs-semantic-audit.json`,
+`packed-srs-r1`, `runs/packed-r1`, `diagnostic-field-lock-binding.json`, and
+`native-word-*-hang.json`. Previous failed receipts remain historical evidence.
+The next unresolved technical investigation is native pagination isolation by
+bands/table ranges while preserving the complete delivery source; do not weaken
+keep relations, substitute a shortened document, or label ZIP generation as
+native acceptance. No Service/I6 full suite, B2, release or main merge occurs.
