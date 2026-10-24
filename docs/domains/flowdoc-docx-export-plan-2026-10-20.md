@@ -15181,3 +15181,51 @@ blocked checkpoint. Next product investigation is source-derived table
 spacing/fragmentation and reproducible native field/export preparation; it is
 not accepted full-SRS equivalence. No new Docker/full-suite run, B2, release,
 installation or integration occurs.
+
+### Owner-directed ordinary-flow correction, 2026-10-24
+
+The owner identified excessive whitespace before SRS REQ0019 and authorized
+ordinary content to flow across pages. The former automatic text/image keep
+was an experimental exporter inference, not an authored FlowDoc requirement or
+a demonstrated ONLYOFFICE/LibreOffice rule. Core candidate `772144e` removes
+that inference in the same sole test worktree. Ordinary text before images no
+longer receives whole-paragraph `keepLines`/`keepNext`, an invented final-tail
+fragment, or a rejection merely because that inferred group cannot fit a page.
+The corresponding whole-chain first-row reservation is removed. Authored row
+`allowBreak`, repeated headers, explicit row-start groups and heading/table
+relations remain intact. PDF code, semantic source and prior artifacts are
+unchanged. This is inline Core implementation/evidence review; execution IDs N/A.
+
+Five new cases fail under the prior implementation and pass after the change:
+17/180line body and cell lists plus a multi-page paragraph without an authored
+final newline. Compilation and all175DOCX tests pass. Three old assertions
+that expected the superseded tail protection are updated to assert ordinary
+flow and preserved text order. Independent read-only review reports no
+actionable finding; measured/native verification remains a separate gate.
+
+The isolated packed consumer runs with network disabled and1GiB, producing the
+unchanged complete SRS source and all6original regression packages. All214
+compiled package files match the tested build. Exact ordered package text,
+200tables,371image placements and row flags remain intact; REQ0019 now has
+false keepLines/keepNext. P/T/Q/R/edge retain exact render-part and decoded-font
+association equivalence; W changes and needs fresh native review. Previous
+W/R13 acceptance is historical and is not silently transferred to this candidate.
+
+**Native verification remains BLOCKED.** The new complete SRS opens without a
+repair prompt; full TOC refresh and Print Preview report101pages versus the old
+107. This is a preview observation, not a saved-PDF result or accepted reduction.
+Standard PDF export remains unresponsive with active CPU and no completed PDF
+at the checkpoint; Escape requests cancellation without recovery observed.
+The shared Word process also owns user documents and is not terminated. No new
+overlay, all-page visual acceptance, native W regression PASS or permanent Word
+hang fix is claimed. The generated DOCX is an explicitly unaccepted trial.
+
+Trial and proof are under
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/natural-flow-r1/`:
+`run/SpaceShip-SRS-trial.docx`, `red.json`, `green.json`, `packed/`,
+`package-audit.json`, `regression-equivalence.json`, `preservation.json`,
+`native-stalled.json` and `checkpoint.json`. Existing SRS inputs, both prior
+SRS PDFs, the old DOCX,17older PDFs,22inputs,14R11outputs and200compiled
+R11files retain their hashes. Next action is safe recovery of Word followed by
+native SRS/W exports and visual comparison; no merge, release, Service/I6 full
+suite or B2 occurs.
