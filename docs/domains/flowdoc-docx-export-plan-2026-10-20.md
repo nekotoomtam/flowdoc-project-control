@@ -15355,3 +15355,63 @@ not exhaustive subpoint/glyph certification. `spacing-e1/comparison-r1/` retains
 `SRS-spacing-A-comparison.pdf` (physical26-31; same origin, no independent
 registration). The earlier blocked checkpoint is preserved. Product promotion,
 full fidelity, W regression and Service/I6 acceptance remain outside this result.
+
+### Frame-preserving transition and origin probes B/C, 2026-10-24
+
+Owner authorizes continuing the transition/origin investigation in the same
+Core worktree, retaining original PDF and table-frame geometry, through DOCX
+artifacts for owner conversion, without merge. Single-room bounded artifact
+implementation and structural verification; execution IDs N/A. Scope is two
+full-source probes, one build and one separate structural audit. Source candidate
+`772144e` remains clean/unchanged; no runtime/package changes, Docker, native
+conversion or full suite. Canonical status stays in this existing document;
+no separate Work/registry/map promotion is created.
+
+Source tracing finds zero before/after paragraph spacing and no inserted
+separator at these table-to-heading boundaries. The measured24.480pt gap versus
+source24pt is consistent with a native emitted0.5pt outer-stroke footprint, but
+this is still a hypothesis, not established Word internal behavior. B starts
+from the frozen pre-A control and reduces only the following single-line
+heading's native minimum frame480to470twips, deriving10twips from border
+size4/8pt. All141eligible following headings bind to exact full heading text
+on one baseline in the control PDF. **This changes local line height, not
+paragraph before/after spacing.** It is not a general multiline solution; a
+heading reflowed onto another page can lose its preceding-table context and
+must be inspected before any promotion. Native `atLeast` remains; no Exact
+clipping, manual page breaks, altered run size or compressed cell padding.
+
+Separately, `bands.ts` reserves image height plus1pt and adds another1pt for
+the full-width header wrapper. `header-space.ts` excludes explicit placement
+from dynamic policy, so `sections.ts` uses that conservative maximum. Body
+header image68.9508406pt plus source gap12pt rounds up to1620twips, while the
+emitted top margin is1660twips. C adds only body-section top1660to1620twips
+to B. Actual header content is unchanged and Word may impose its own minimum;
+this source-derived2pt origin experiment does not fix the separate native
+text baseline inside the frame or prove the original reservation unsafe.
+
+Artifacts under `srs-real-2026-10-24/spacing-e2/`:
+
+- `SRS-spacing-B-transition.docx`,904629bytes, SHA256
+  `1e12067f51402b4fa485dfadca0780e8933832d7619559b0e767cf3bbb39e294`;
+- `SRS-spacing-C-transition-origin.docx`,904628bytes, SHA256
+  `306e533c62067bc1563d36ab148780305ff20cb6ec0fc137279d1dd9d0575de1`.
+
+Both modify only `word/document.xml`. Independent recursive XML audit permits
+exactly141line attributes in B and those141plus one section-margin attribute
+in C. All200table trees and raw table XML bytes are unchanged, including all
+cell padding, row flags, repeated headers and borders. Text/run properties,
+drawings, bookmarks and every other package part are exact. ZIP integrity and
+XML parsing pass. Frozen baseline/control/A PDFs and control/A DOCX retain
+their hashes. `trace.json`, `probe-manifest.json` and `structural-audit.json`
+retain source links, assumptions, frozen inputs and checks.
+
+**PASS for artifact construction/structural containment only; native layout
+PENDING.** Owner converts both complete files, retaining their stems. First
+compare physical27-30 and26/31 boundaries against control and the original
+baseline: center-to-center table height must retain55.680pt for the first
+simple table, transition gap should approach24pt, and C should separate an
+approximately2pt origin shift from B. Inspect newly moved/page-top headings,
+TOC refresh, full-document pagination and final image continuation before
+accepting any rule. No render/PDF output or actual geometric improvement is
+claimed for these probes. This preserves the established owner-conversion
+route after native Office failures; no automated Word recovery is attempted.
