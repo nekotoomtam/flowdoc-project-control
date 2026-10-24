@@ -15976,3 +15976,78 @@ Minor audit reproducibility checks now assert actual99page counts before fixed
 raster loops and read red-test counts from the retained report. Final evidence
 assembly and script parsing pass after those corrections without new PDFs.
 Review acceptance is bounded artifact retention, not default rule or merge approval.
+
+### Remaining57REQ cause investigation E10, 2026-10-24
+
+Owner requested investigation of the57 requirement starts still one native
+physical page later than E9, preserving the same baseline/worktree, row spacing,
+heading/table grouping, page14 and meeting improvements. This checkpoint is
+read-only against the candidate: no renderer change, new PDF, Docker/Word run,
+integration or default-rule promotion. Inline Evidence Reviewer; execution IDs
+not applicable. Core `2bcf673` retains `scripts/experiments/word-residual-result.json` and
+four read-only extraction/diagnosis/view/assertion helpers. Full local geometry,
+all361REQ pairs, mismatch groups and six visual sheets are under
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e10/`.
+
+All361REQ occurrences still match native order,304start on the same page and57
+one page earlier. The57 are covered exactly once by33 contiguous mismatch runs
+in source order; these are not claimed to be33 independent root causes. The
+first divergence is REQ0027: PDF splits its two-line paragraph48:1/49:1, while
+native Word puts both lines on49. Its native row is splittable and keepNext/
+keepLines are false. Native requirement paragraphs and their default styles
+omit widowControl. The standard default therefore prevents isolated first/last
+paragraph lines, as documented by
+[Microsoft WidowControl remarks](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.widowcontrol?view=openxml-3.0.1).
+This is a paragraph-line constraint, not a whole-requirement keep rule.
+
+Source ownership explains the difference: `src/docx/tables.ts` uses protected
+flow for tables incident to heading/table reading-plan edges, so those cell
+paragraphs do not receive the ordinary-body override. `src/docx/text.ts` emits
+widowControl=false only for ordinary paragraphs; the frozen native package
+confirms that the override is absent here. `src/layout/cellTableFlow.ts` fits
+whole measured lines and padding without a paragraph widow/orphan minimum.
+The existing native first/last-line behavior is therefore not represented in
+that PDF path. No judgment that Word is wrong is implied.
+
+Across the frozen requirement text paragraphs, PDF has22 split paragraphs,
+including9 with a single first/last fragment; Word has26 split paragraphs and
+no such singleton fragment. The9 are REQ0027,0035,0041,0087,0108,0163,0199,0248,
+0337. For long REQ0041, PDF text fragments are13/32/32/1lines and native Word
+12/32/32/2; REQ0087 is4/1versus3/2. These examples support a first/last-line
+constraint while keeping long rows flowing. They do not quantify how many of
+the later57 starts would align after a counterfactual reflow.
+
+Counting explicitly separates two authored anonymous note rows following
+REQ0028/0063. Two native Thai mark-only extraction fragments in REQ0346/0365
+are retained as glyph fragments associated with nearby lines, not extra text
+lines. Corrected feature-paragraph line counts match for360/361requirements;
+REQ0178 is PDF2/native1, visibly a wrapping difference that reduces native
+height and cannot by itself explain earlier PDF starts. ASCII locator equality
+holds for287/361rows; ligature/encoding extraction differences remain visible,
+so this diagnostic does not claim complete text or glyph equivalence from that
+locator. The E9 draw/source coverage evidence is separate and unchanged.
+
+Six reviewed frozen views cover48/49(first divergence),52/53(long-row end),
+57/58(last-line singleton),68(REQ0178),95/99(mark extraction checks and later
+displacement). Full-page geometry is scanned across both complete PDFs, but
+these selected views are not a new all-page visual acceptance. Frozen source,
+native DOCX/PDF, original baseline, E7/E8 and E9 hashes remain unchanged;
+therefore page14, meeting, row and grouping results are preserved by the same
+candidate. Runtime tests are not rerun or relabelled as fresh PASS. Diagnostic
+assertions and Python parsing pass; no affected product behavior exists here.
+
+Recommended next isolated factor: represent native paragraph widow/orphan
+boundaries in PDF, preserving E9 capacity/E8 row metrics/E7 grouping. Keep at
+least two text lines at a paragraph start/end where feasible, retain long-row
+flow and explicit progress/oversize fallback; evaluate against a byte-exact E9
+control and all361REQ. REQ0178 remains a separate wrapping issue. No claim that
+this factor already closes all57 starts or99/100pages; its exact contribution
+requires an actual reflow experiment. No B2, Service/full suite, new Office
+conversion, baseline replacement, integration or DOCUMENT_MAP update.
+
+Read-only evidence review found that the first REQ0365 comparison rendered98,
+while its separated native mark occurs on99. The view was corrected to99 and
+inspected before accepting that counting correction. The containment check now
+uses complete Git status and an explicit five-file diagnostic allowlist, rather
+than inferring configuration state from four directory prefixes. Corrected
+diagnostic assertions pass; no candidate was changed by these review repairs.
