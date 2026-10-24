@@ -16650,3 +16650,35 @@ by this result. Evidence root: `uat-real-2026-10-24/docx-r1/`, including generat
 structural verification, native rendering, per-attempt diagnostics and final
 verification receipts. Outcome: DOCX output/merge support PASS, native Word/PDF
 comparison PARTIAL, integration intentionally not performed.
+
+### User-provided Word conversion review
+
+The owner supplies `docx-r1/UAT-merged-cells-native.pdf` from Microsoft Word;
+SHA256 `6b4bef4274b78742994ae5557c64e90b430a96c2f30d2809a89d430636702260`,
+3180634bytes,73pages. This is new native evidence following the earlier COM
+conversion failures; those diagnostics are retained. Read-only Evidence Reviewer
+scope: inspect the artifact and Core source, with no product edits or integration.
+The DOCX and original70-page PDF hashes remain unchanged.
+
+All73 Word pages are rendered and inspected in13 overview sheets. All60REQ IDs
+are present; the TOC now contains page numbers, including Basic Feature7 and
+the final subsection71. Vertical merges are visible. Upper horizontal borders
+are visibly absent at shaded table headers and summary total-row boundaries;
+examples include pages2,5 and7. This is broader than vertical merges alone.
+The earlier interim observation that the top frame remained visible was too
+narrow; full review confirms missing outer header top edges as well.
+
+Source defines all six table-level borders as single0.5pt black but does not
+set explicit per-cell borders. Some visually missing boundaries still have
+border-paint rectangles in the Word PDF, so simple omission of the table-border
+command is not proven. Exact drawing/shading/conflict cause remains unresolved.
+A controlled explicit-cell-border trial respecting merged-cell topology is a
+candidate next step, not an already verified fix. Do not change fonts, wrapping,
+source geometry or the original PDF merely to hide this defect.
+
+REQ page-start deltas versus the original PDF are +1 for18 IDs, +2 for29,
++3 for11 and +4 for2. Count equality of73 with LibreOffice does not prove identical
+layout; several image placements and line breaks visibly differ. This review
+does not establish full fidelity or waive the border issue. Evidence:
+`docx-r1/word-user-review/inspection.json`, all page renders,13 sheets and
+`missing-top-edge-context.png`. Product candidate remains a63c09c, clean/unmerged.
