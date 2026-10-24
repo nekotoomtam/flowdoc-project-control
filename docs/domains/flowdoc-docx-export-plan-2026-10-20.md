@@ -1,5 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Latest whole-UAT trial (2026-10-24): [PDF generated; DOCX blocked](#2026-10-24--whole-uat-trial-on-core048).
+The retained UAT requires fractional-point sizes and per-fragment row-group
+labels that the current DOCX path rejects. Core integration/package test PASS
+therefore does not establish full UAT DOCX readiness. No release is made.
+
 Current local development integration (2026-10-24): Core0.4.8 is integrated
 as one squash commit `8c2332d` on the verified GitHub default branch
 `codex/template-binding`. [Integration evidence and limits](#2026-10-24--core048-local-development-integration).
@@ -16482,3 +16487,75 @@ Documentation/source-link checks, retained FlowDocMake snapshot check and Servic
 vendor checksum pass; this round changes no runtime/package pin and runs no
 product suite, Docker/PDF generation or release operation. Service's I6 files
 remain intentionally dirty/untracked, not lost or silently accepted.
+
+
+## 2026-10-24 — Whole UAT trial on Core0.4.8
+
+Owner requests an output trial using the existing UAT structure. Inline Evidence
+Reviewer; execution/Phase/Checklist IDs N/A. Candidate owner: Core. Scope is a
+frozen full-UAT artifact trial, not a live Service deployment, authoring mutation,
+full Service suite, release or product repair. Evidence/output root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/uat-real-2026-10-24/`.
+Existing Service I6 changes remain intact; no product file, branch or worktree is
+created/edited. Document budget: this existing ledger only. Stop at a real
+capability blocker; do not remove required semantics to obtain an artifact.
+
+Inputs are the retained model19/schema2 full-UAT definition/payload from
+`Codex/2026-10-20/uat-volume-verification/recovery/inputs/`, not a fresh extraction
+or a claim about the current live draft. Definition SHA256
+`7003f53ba4ffcd616b8ccf527217f49ff19cd6501fa48eba6c50f4fe0584c024`;
+payload SHA256
+`ce41d91a21dc969c70b8bcf11516f954d74be8d7979c06b9d75fdae1c7aebf3e`.
+Its source-derived extraction/spacing/placeholder differences remain inherited.
+The previous70-page PDF is frozen separately; this is not certification against
+the original72-page source. Uses the installed, previously verified Core0.4.8
+artifact SHA256 `73108448f61abea8728aaa0bd006702f862cccc4875f0d55deb8af82d96c7eec`;
+current Core455d69b differs from8c2332d only in documentation.
+Execution uses network:none,1GiB memory/swap total and2CPU. No PDF experiment or
+SRS calibration hooks are injected; the ordinary public PDF engine is used.
+
+The old host image directory is missing. All135 original image byte hashes were
+found and copied from the read-only retained Docker volume
+`flowdoc-uat-full-source-1792332726397_staging`; storage/database state is unchanged.
+75 JPEG identities match source filename hash prefixes. For60 Accept PNGs,
+unique exact decoded-pixel matches against the frozen baseline identify original
+bytes and ordered REQ row intervals prove placement, including continued
+REQ0202 and REQ0384. All189 input image references map to135 originals; no
+placeholder or image substitution. Sarabun300/400 font bytes and original OFL
+license are also copied from the retained volume and hash-verified.
+Typed task image wrappers are explicitly converted to legacy Core image UUID
+values; reversing that conversion reproduces the complete business input JSON.
+The first harness attempt incorrectly preserved the task-only wrapper and was
+rejected with TYPE_MISMATCH; only the external adapter was corrected.
+
+Original-input PDF `UAT-Core048.pdf`:70pages,3655005bytes, SHA256
+`f3c883f77c2e8e8ec8e94815f725fc57108a63dd9511a87138be23f1c0efdc05`.
+All60 REQ IDs match exactly once in input order;258 image draws include recurring
+headers; all36 internal links target existing pages. Poppler renders every page
+at100dpi without diagnostics. All70 pages inspected through12 full-page overview
+sheets; no gross overlap, clipping, missing image or footer collision observed.
+Short table continuations on40/42, split rows21-22 and59-60, source-derived Thai
+spacing and source placeholders remain visible; no arbitrary visual repair.
+This is bounded output/data/image review, not an every-glyph or original-source
+fidelity acceptance. Original font sizes are preserved in the delivered PDF.
+
+DOCX original-input trial fails explicitly with DOCX_GEOMETRY_UNREPRESENTABLE at
+style00e50118-37af-47c1-b1d4-119e3c1c2e98.fontSize=11.1pt. The current native run
+mapping requires exactly representable half-points. An isolated input copy rounds
+six styles only:11.1→11,8.2→8(two styles),8.4→8.5,8.1→8,10.8→11; it does not alter
+the source definition or delivered PDF. Its separate PDF also has70pages. This
+trial remains an explicit adaptation experiment, not an accepted size policy.
+With those sizes admitted, DOCX fails with DOCX_CAPABILITY_UNSUPPORTED at
+`summary-dynamic/v100.rowGroups.groupLabel`: per-fragment group labels are deferred.
+No group label is removed, no static rowSpan replacement is made and no DOCX is
+emitted. Further unsupported cases may exist after these first blockers.
+Native Word/LibreOffice comparison is unavailable because there is no DOCX.
+
+Receipts: `docx-result.json`, `compatible-docx-result.json`, PDF receipts,
+`generation.json`, `generation-compatible.json`, `recovery.json`,
+`verified-image-map.json`, `matched-pngs.json` and final `verification.json`.
+PARTIAL: original PDF artifact is delivered with scoped checks; full UAT DOCX
+acceptance FAIL. Next implementation would need a declared font-size adaptation
+policy and actual per-fragment group-label support, then the same unchanged UAT
+input and native Word comparison. Existing Core tests, SRS evidence and I6 status
+remain bounded; none waives these newly demonstrated capability gaps.
