@@ -15551,3 +15551,73 @@ Preserved padding sums retain the nominal budget, not proved rendered row
 height or100page pagination. Reject any frame/gap regression against C; do
 not promote from improved text positions alone. Mixed/long text, other tables,
 fonts/styles/builds and whole-product fidelity remain outside this diagnostic.
+
+### Owner-converted D cell-baseline comparison, 2026-10-24
+
+Owner supplies D PDF and authorizes comparison against C and retained original
+baseline. Same clean Core `772144e`, single-room Evidence Reviewer, execution
+IDs N/A; no product changes, new DOCX/native conversion, Docker or runtime
+suite. Frozen original/control/A/B/C inputs and D DOCX retain their hashes.
+`spacing-e3/SRS-spacing-D-cell-baseline.pdf` has100pages,1313838bytes, SHA256
+`0cec02a089f19fea49721f86fe1635b8b1fa67987902dc16798fba7c1c651faa`;
+metadata identifies Microsoft365 Word, without independently pinning build or
+export settings. Owner conversion closes this probe's native-PDF prerequisite.
+
+**PASS for the bounded text-in-cell improvement and C frame/gap/pagination
+preservation; retain paint variation below.** All141simple two-row table
+occurrences bind in source order. Measured top/middle/bottom border centers,
+center-to-center heights and physical page membership are exactly equal to C.
+All121successive same-page simple-table gaps are unchanged. First table remains
+55.67999pt and first transition24pt. Existing height variation against original
+baseline, up to0.15003pt, remains; D does not introduce additional height drift.
+
+Cell-relative baseline error against original baseline,141rows per profile:
+
+| Profile | C median pt | D median pt | C maximum absolute pt | D maximum absolute pt |
+| --- | ---: | ---: | ---: | ---: |
+| English header |2.722009|0.081999|2.872019|0.112019|
+| Thai body |3.291989|0.031999|3.421989|0.091981|
+
+These are row-relative baseline measurements, **not absolute-page or global
+fidelity bounds**. On physical27 absolute header text-top error decreases from
+3.000439to0.360439pt for the first table, and3.320439to0.560439pt for the
+seventh. First frame-origin error stays+0.30916pt. Frame-origin and subsequent
+page membership differences against baseline are not hidden by registration.
+
+All282native rows retain their C character sequence, x positions, sizes and
+relative glyph y offsets, allowing whole-row translation only. Embedded native
+font-stream hashes match C. All100pages retain exactly the same extracted text
+after whitespace removal, all361requirement IDs and their C start pages,
+470image objects and correct body footer page/total strings. Count/text checks
+do not prove original-source glyph/pixel identity. Measured baselines plus the
+bounded ink envelopes leave at least6.08pt above and6.17pt below within rows;
+selected3xrendered strips show upper marks and lower vowel intact. This covers
+the two repeated cell contents, not arbitrary Thai/mixed/long text.
+
+All100D pages were rendered and reviewed in nine overview sheets. Physical27-30
+were reviewed alongside baseline/control/C/D; eight3xThai row strips span the
+first/last rows and page transitions through57. Boundary26/31 and final100 are
+retained. C pagination is preserved: baseline98versus D100, Talent Group still
+begins28versus baseline heading27, and final100 retains its continuation and
+whitespace. No full-document layout acceptance or font/style generalization.
+
+**Exact paint equivalence is not PASS.** A strict raster check masking only
+target text regions differs on19pages27-45. Native PDF shading rectangles and
+vertical border fragments split at different positions after padding changes:
+for example27table3 inner shading312.53..332.45becomes309.89..329.69pt.
+Horizontal border-center geometry stays exact, but raw all-gray-border-rectangle
+equality fails because vertical segments differ. Fill/stroke overlap edges show
+minor raster changes. The stricter failure remains recorded; masking the whole
+affected table envelopes separately shows all other page pixels exact on all
+100pages. That broader containment result does not erase the paint difference
+or prove the complete Word painting algorithm.
+
+`spacing-e3/comparison-r1/measurements.json` and `result.json` retain hashes,
+all141frame/282row measurements, glyph/font checks and strict/broader pixel
+results. Seven-sheet `SRS-spacing-D-comparison.pdf` includes physical26-31 at
+unchanged origins and a border-relative Thai detail sheet, SHA256
+`4a2ee4920fba44428607a57a9c64b553aae91a123bf711ab9472f02ec8408685`.
+D is the preferable retained artifact for these cell profiles. Paint variation,
+absolute origin, heading/page membership, the other59table types and general
+font/script coverage remain separate open issues. No product rule acceptance,
+map promotion, integration, merge or automated Office-recovery claim.
