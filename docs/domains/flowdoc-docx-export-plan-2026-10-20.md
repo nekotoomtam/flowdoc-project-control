@@ -16338,3 +16338,20 @@ this metadata's role in font substitution. Evidence is retained in
 `three-font-trial/font-signature-diagnosis.json`. No product/candidate changes or
 Word repair conversion occurred; a signature-only native control is needed
 before attributing the entire99-versus101-page difference to this defect.
+
+Owner-authorized signature-only control is prepared at
+`three-font-trial/font-signature-r1/SRS-prompt-font-signature-r1.docx`, SHA256
+`86c5248e2a6fee8c67fa47df7f120e2bbec0b19195de06af97865ce0d8e729b6`.
+Only the six attributes of `w:sig` in `word/fontTable.xml` change, derived from
+the actual embedded regular/bold OS/2 tables after verifying both signatures
+agree. Every other ZIP entry is byte-exact to the frozen original; fontTable
+bytes outside the signature are also unchanged. Text, geometry, images and
+embedded font bytes retain identity. Package integrity checks pass. The initial
+checker reused a mutable ZipInfo and failed its own CRC check; the isolated
+builder now copies ZIP metadata and the final independent entry comparison
+passes. `render_docx.py` produces101 LibreOffice QA pages; all101 rendered pages
+are pixel-identical to the previously reviewed Prompt QA control. This reuses
+the unchanged visual proof, not native Word acceptance. Evidence is
+`font-signature-r1/verification.json`; original DOCX/WordPDF/FlowDocPDF are
+preserved. Core stays unchanged at `1f9b505`; no product fix or merge occurs.
+The causal result remains pending the owner's Word export of this unique copy.
