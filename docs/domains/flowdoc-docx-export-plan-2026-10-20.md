@@ -15787,3 +15787,59 @@ each against M2 and Word while retaining14/meeting pixel gates. Counterfactual
 proof is still required to quantify each mechanism's contribution to the final
 two-page difference; no claim that these fixes already yield100pages. No merge,
 default rule promotion, B2, full suite, Office conversion or DOCUMENT_MAP update.
+
+### Native heading/table-start experiment E7, 2026-10-24
+
+Owner authorized PDF-only grouping in the retained Core worktree, preserving
+M2/page14/meeting improvements, source and native Word files. Row footprint and
+footer/body capacity changes are explicitly excluded. Single-room Product
+Implementation Agent/Evidence Reviewer; execution IDs not applicable. Core
+`a104a67` retains the opt-in probe, six tests, audit tools and compact result
+`scripts/experiments/word-grouping-result.json`. No default renderer promotion.
+
+The frozen DOCX maps183 body headings uniquely by Latin/numeric fingerprint;
+167 have explicit keepNext+keepLines. For selected headings followed by a table
+or one plain description then table, the PDF probe reserves heading/description,
+complete table headers and the first body item. Breakable long rows keep flowing;
+it does not reserve the whole list. Oversized minimum groups fail once rather
+than retrying pages indefinitely. The probe rejects row-spanning cells in its
+minimum group; this experiment does not establish generic merged-table support.
+
+Two full-source outputs ran offline with1GiB memory/swap limits. G0 is byte-exact
+to retained M2, SHA256
+`6899f2518264b018dd5fa7f66d3c2f06eefbb18c67dfbf5eeb02e2af9e0f5553`.
+G1 is retained at
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e7/SRS-G1-table-start.pdf`,
+99pages, SHA256
+`a1cce985ef4cbcaeebc308424a343ac396e6b31f3288a76a0f965a63a9afbab1`.
+Native Word remains100pages; this bounded change reduces the total-page gap
+from2 to1 and does not claim complete pagination parity.
+
+All17 previously separated matched heading/table-header pairs now share a page.
+All361REQ occurrences retain their source/native order. Same-physical-page REQ
+starts increase88->240; the remaining121 start one page earlier than Word.
+Previously262 were one page earlier and11 two pages earlier. All371 non-header
+image source dimensions/order remain exact. Per-node plain-source text coverage
+checks1814 nodes with zero mismatches after whitespace normalization and allowance
+for exact repeated copies, not full glyph identity. Draw-level plain-text line
+metrics are unchanged; the only changed source-node metric set is generated TOC.
+No empty output pages were found. All396 internal annotations resolve to existing
+page destinations; this is a bounds/existence check, not full semantic link proof.
+
+Raster content above the footer on11-26, including14 and meeting17-26, is
+pixel-identical to M2 at scale1. Strict whole-page equality fails on2-26 because
+footer totals change98->99; TOC content on4-9 also changes with page references.
+These failures remain explicit and are not relabelled as whole-page PASS.
+Body27-99 was visually reviewed in nine overview sheets, with detailed native
+pairs27/27,45/45,46/46 and99/100; no new visible clipping was observed at those
+review scales. This is not a high-resolution inspection of every glyph.
+Inherited M2 calibration is exact, and frozen input hashes remain unchanged.
+
+Compilation and281 layout/cache tests pass. Of six added tests, four fail before
+implementation and two containment/exact-fit cases already pass. Coverage includes
+heading/description grouping, a30-line flowing row, exact fit, oversized minimum
+failure and inactive-probe containment. Evidence is retained under `pagination-e7/`,
+including red/green results, draw manifests, frozen hashes, per-node coverage and
+paired renders. No row-space/footer-capacity change, new Word conversion, Service
+or full suite, B2, integration, baseline replacement or DOCUMENT_MAP promotion.
+The remaining row/footer mechanisms from E6 are open and outside this checkpoint.
