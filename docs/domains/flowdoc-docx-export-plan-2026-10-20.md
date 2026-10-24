@@ -1,9 +1,10 @@
 # FlowDoc DOCX Export Implementation Plan
 
-Latest whole-UAT trial (2026-10-24): [PDF generated; DOCX blocked](#2026-10-24--whole-uat-trial-on-core048).
-The retained UAT requires fractional-point sizes and per-fragment row-group
-labels that the current DOCX path rejects. Core integration/package test PASS
-therefore does not establish full UAT DOCX readiness. No release is made.
+Latest whole-UAT candidate (2026-10-24): [DOCX generated in an unmerged worktree](#2026-10-24--uat-native-merged-cell-candidate).
+Owner clarified that the requested table behavior is native vertical merging,
+with one group name. The candidate exports the retained UAT, including fractional
+sizes, Sarabun Light and fixed bands. Full native Word/PDF fidelity is not accepted;
+the earlier blocked trial below retains its historical outcome. No release is made.
 
 Current local development integration (2026-10-24): Core0.4.8 is integrated
 as one squash commit `8c2332d` on the verified GitHub default branch
@@ -16559,3 +16560,93 @@ acceptance FAIL. Next implementation would need a declared font-size adaptation
 policy and actual per-fragment group-label support, then the same unchanged UAT
 input and native Word comparison. Existing Core tests, SRS evidence and I6 status
 remain bounded; none waives these newly demonstrated capability gaps.
+
+## 2026-10-24 — UAT native merged-cell candidate
+
+Owner authorizes implementation through a deliverable DOCX, preserving original
+PDFs and prohibiting integration. The owner clarifies the required behavior as
+one label in a vertically merged cell, not automatic repeated continuation text.
+This is a new bounded inline Product Implementation scope in Core; execution,
+Phase and Checklist IDs N/A. Existing trial status and Service I6 obligations
+remain historical/unchanged. Work size medium, routine risk; no shared-model,
+PDF, dependency, package-version, Service, DB or release changes. Reuse the
+frozen UAT definition/payload, image identities, fonts and PDF evidence above.
+Document budget: this ledger plus existing Core README/template guide. Proof:
+failing feature tests, affected DOCX/font/composition checks, build, unchanged
+inputs/PDF hashes, complete DOCX content/image checks and full-page review.
+
+Isolated checkout:
+`C:/Users/nekot/Documents/FlowDoc-recovery/uat-real-2026-10-24/docx-worktree`,
+branch `codex/uat-docx-merged-groups`, base455d69b; terminal commit
+`a63c09c31882057af45d90417c3aa3923769eb12`. Primary Core remains455d69b.
+No merge, push, tag, release, Service install or pin update. Native application
+processes created by these checks are tracked and stopped without touching
+pre-existing user processes. Docker generation/checks retain network:none,
+1GiB memory/swap total and2CPUs; this is not a whole-host Word memory limit.
+
+Group-label metadata now validates and maps through the existing native
+vertical-merge writer. Ordinary member rows retain their source split policy;
+no whole-group keep, hard-coded UAT page breaks or invented continuation label.
+Explicit adaptations record native-rowspan and non-repeated continuation names.
+Tests cover0/1/3/80 members, empty groups, malformed metadata and a short prefix.
+This is a declared DOCX renderer policy; PDF fragment-label repetition is retained.
+
+Additional actual blockers are repaired in the same isolated candidate:
+fractional font sizes round only in the engine-owned DOCX snapshot to nearest
+half-point with source/native/error receipts; source input is immutable and
+measurement uses emitted sizes. The low-level preflight remains strict.
+Sarabun Light300 uses its verified legacy family name and unchanged embedded
+bytes, alongside Sarabun400. Ambiguous weight-family/embedding slots still fail.
+Fixed header/footer content must fit its declared source bound; native
+structural paragraph overhead is reserved explicitly instead of clipping.
+UAT header79pt reserves81pt; footer40pt reserves40.998pt. Min/max content-band
+support and arbitrary font/layout guarantees are not promoted.
+
+The first source-word-box artifact generates but LibreOffice misrenders some
+text; Word automated update/export does not finish within180s. A new explicit
+`textLayout:'native'` engine option retains shared reading measurements while
+omitting VML word boxes. Its requested/effective policy is in the receipt.
+Default source behavior and existing SRS paths remain unchanged. Fonts-only
+native export is insufficient for this UAT's footer fit; it is retained as a
+failed attempt, not used to bypass measurement guards.
+
+Deliverable:
+`C:/Users/nekot/Documents/FlowDoc-recovery/uat-real-2026-10-24/docx-r1/UAT-merged-cells-native.docx`,
+2170150bytes, SHA256
+`3cb15426099692c15dee080bd3df14260d416fc27bfd9c68664c2635367876d9`.
+All594 body text blocks are present after whitespace normalization; all60 REQ
+IDs occur once in input order. All135 original image assets match decoded RGBA
+pixels, and all75 JPEGs retain exact original bytes. ZIP/XML checks pass; three
+merge origins/four continuation cells match the four summary groups, including
+the one-member group with no vertical merge required. No document protection.
+Original UAT/PDF and previous-baseline hashes match the earlier frozen receipts.
+
+Build passes. Linux affected-area verification passes319 cases, followed by
+four public-port checks including two new option failures, yielding321 unique
+passing cases at unchanged source. Reports: `targeted-tests-native-final.json`
+and `port-tests-final.json`; no complete Service suite or I6 acceptance claim.
+Windows-only measured geometry initially fails without Linux helpers; the
+same actual native tests pass in the bounded Linux environment. Two initial
+Linux harness attempts lack dependencies/resources; corrected harness results
+above are the authoritative feature checks.
+
+LibreOffice renders all73 pages of the native artifact; all13 overview sheets
+are inspected. Native text/merged cells, image presence and header/footer
+separation show no gross clipping or overlap at that review scale. This is
+not glyph-by-glyph fidelity acceptance. Summary group4 continues to page6;
+the original PDF has70 pages. The TOC preview lacks page numbers and requires
+Word verification. PDF text extraction has Thai mapping differences, so it is
+not used as an exact Unicode oracle; original DOCX XML provides that check.
+
+Word COM opens the final artifact read-only and reaches export after a field
+update, but automated ExportAsFixedFormat times out at180s. A bounded SaveAs2
+fallback returns a COM argument-conversion error; this is tooling failure,
+not proof of malformed DOCX. All owned Word/worker processes are cleaned up.
+No native Word PDF exists and no native Word/PDF fidelity PASS is claimed.
+The generated DOCX and explicitly labelled LibreOffice preview are reviewable
+artifacts; native Word conversion/TOC verification remains open. No additional
+visual tuning, broad PDF changes, merged-lane cleanup or release is authorized
+by this result. Evidence root: `uat-real-2026-10-24/docx-r1/`, including generation,
+structural verification, native rendering, per-attempt diagnostics and final
+verification receipts. Outcome: DOCX output/merge support PASS, native Word/PDF
+comparison PARTIAL, integration intentionally not performed.
