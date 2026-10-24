@@ -15843,3 +15843,67 @@ including red/green results, draw manifests, frozen hashes, per-node coverage an
 paired renders. No row-space/footer-capacity change, new Word conversion, Service
 or full suite, B2, integration, baseline replacement or DOCUMENT_MAP promotion.
 The remaining row/footer mechanisms from E6 are open and outside this checkpoint.
+
+### Native requirement-row footprint experiment E8, 2026-10-24
+
+Owner authorized PDF row-spacing work in the same retained Core worktree, keeping
+E7 heading/table starts, page14, meeting improvements and frozen references.
+Footer/body capacity and integration remain excluded. Inline Product
+Implementation Agent then Evidence Reviewer; execution IDs not applicable.
+Core `7fd5594` retains the opt-in probe and `scripts/experiments/word-row-result.json`;
+no public/default renderer rule is promoted.
+
+The actual frozen DOCX confirms26 requirement tables with3pt (60twip) vertical
+cell margins, single0.5pt borders and native text minimum397twips (19.85pt),
+versus source19.84pt. R1 reserves half the native border at each vertical side
+of a cell, including headers. R2 additionally rounds measured text line heights
+to native twips before summing cell height. Image frame sizes, horizontal space,
+line cuts, baseline offsets within a line and source nodes are not adjusted.
+Table-start preflight consumes the same geometry; long breakable rows still
+flow. These are source/native-profile factors, not an average residual added
+to arbitrary rows, and do not establish generic merged-table or font support.
+
+Three full-source factors ran offline under1GiB memory/swap limits. R0 is
+byte-exact to E7 G1. R1 and R2 both remain99pages versus native Word100.
+Preferred factor:
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e8/SRS-R2-twips.pdf`,
+SHA256 `9d6974bc8c126fefd7d9b8160a7cfcd4f5ae6d788941c12e366579b8ffc6cad0`.
+R1 SHA256 is `269cd7b79737183cae14bfe06106fac502add9160db08b5a16f3db71388195bc`.
+
+The fixed common cohort contains229 adjacent requirement-row pairs, consecutive
+within a source table and on one page in all three factors and Word. Absolute
+REQ-baseline-interval error is mean0.52730/max0.730pt in R0,
+mean0.03874/max0.230pt in R1, and mean0.03084/max0.130pt in R2. All229 improve
+against R0. This relative row-height metric is not an absolute glyph-position
+bound, complete split-row comparison or the older E6 cohort of257pairs.
+All361REQ occurrences retain order; starts on the same physical native page
+increase240->266, with95 still one page earlier. Heading/table separations stay0.
+
+Raster comparison of all99pages against R0 changes only TOC9 and body45-99.
+Pages11-26, including14 and meeting17-26, are whole-page pixel-identical at
+scale1. Footer pixels below775pt remain identical on all99pages. Inherited M2/E7
+calibration and all frozen hashes are unchanged. All1814 plain source text nodes
+pass whitespace-normalized coverage with allowance for exact repeated copies;
+all371 non-header images retain source-pixel dimensions/order. Distinct source
+line signatures remain unchanged except generated TOC. All396 internal annotation
+destinations remain in bounds. No empty output page was found. Body27-99 was
+reviewed in nine overview sheets, detailed native pairs45/45,46/46,80/81,99/100,
+and the changed TOC9 pair; no new visible clipping was observed at those scales.
+This does not prove every glyph at high resolution or every link's semantic target.
+
+Compilation and286 layout/cache tests pass, including five added tests for
+header/body border envelope, twip summation, inactive containment, long-row
+continuation and invalid border rejection. Corrected red run has3 failures and
+2 pre-existing passes. The first red attempt used the wrong measured-line text
+property; corrected before implementation. The first broad green launcher
+omitted fixtures and failed with ENOENT; the complete fixture-copy rerun passes.
+No such setup failure is counted as PASS. Local evidence is under `pagination-e8/`.
+Remaining native inline-image/paragraph residual and footer-capacity difference
+are not silently corrected. No new Word conversion, baseline replacement,
+Service/full suite, B2, integration or DOCUMENT_MAP update.
+
+Read-only final code review found no Critical/Important renderer or evidence
+issue for retaining this bounded experiment. A minor finalizer filename mismatch
+was corrected to prefer current `scope-rows.json` with legacy fallback; final
+evidence assembly passes again without regenerating PDFs. This review does not
+approve default behavior, generic compatibility, packaging or integration.
