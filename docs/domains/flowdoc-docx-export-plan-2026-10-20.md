@@ -15116,3 +15116,68 @@ The next unresolved technical investigation is native pagination isolation by
 bands/table ranges while preserving the complete delivery source; do not weaken
 keep relations, substitute a shortened document, or label ZIP generation as
 native acceptance. No Service/I6 full suite, B2, release or main merge occurs.
+
+### Full SRS native PDF and original-baseline overlay, 2026-10-24
+
+This additive checkpoint supersedes the previous claim that no native SRS PDF
+exists; earlier failed observations remain valid history. Same Core worktree,
+unchanged candidate `3b7a558d4b87a43803a5f906aad733f6a97d13d4`, single-room
+artifact/evidence review, execution IDs N/A. No product repair or merge occurs
+in this continuation.
+
+**Native conversion achieved; full-SRS fidelity and repeatability remain open.**
+The already-open complete SRS reached a responsive107page layout. Standard
+Save As PDF succeeded, producing `native-r2/SRS-Word-paginated.pdf`,
+1315319bytes, SHA256
+`7807343ecaf30a1e0368b5c0e59f27261397afc2c9652181617d2427321a5109`.
+The PDF identifies Microsoft Word Microsoft365 as producer, parses/renders
+through all107pages and retains the final REQ0366 delivery table. Its cover
+occupies one physical page; footer text reports the actual page and total on
+all106body pages. The original packed DOCX bytes remain unchanged. The user's
+pre-existing Word session's field-update history before observation is unknown.
+
+The earlier Not Responding label alone did not establish a permanent deadlock:
+the successful export also temporarily became unresponsive while a temporary
+PDF grew, then finalized and recovered. However, a fresh byte-identical copy
+with explicit full TOC refresh subsequently reports "Export failed. The
+document could not be prepared for exporting" after reaching107pages. Saving
+that diagnostic copy also remains busy at the final observation. Therefore
+waiting for complete pagination is a successful observed route in one session,
+**not a proved general fix**. TOC/field refresh, layout and export preparation
+remain candidate causes; no specific product defect or permanent remedy has
+been established. The shared Word process is not terminated because it also
+owns the user's original window. Diagnostic failures do not invalidate the
+already-saved successful PDF or authorize weakening source content/relations.
+
+The original98page baseline remains SHA256
+`cd2fde00ea5273c889498eb490ff2e1fa945f7e4fbdc74cd65f25bbb9643ebf1`.
+`native-r2/SRS-baseline-Word-overlay-r3.pdf` overlays it against the native PDF
+at the same physical page origin: cyan original, red Word, black overlap.
+Its107sheets retain all98baseline pages with nine additional Word continuation
+pages at34/48/57/67/77/84/95/101/106. Page pairing is provisional monotone
+text matching, not a claim that a whole source page has a one-to-one content
+match. Captions are outside the image area; no independent content alignment
+or rescaling hides drift. The earlier caption-overlap PDF is retained as a
+diagnostic; r3 is the review artifact.
+
+All107native and98baseline physical pages were inspected through paired
+overview sheets, with selected native/overlay pages examined at render
+resolution. Tables accumulate different vertical spacing, row height and page
+breaks; long kept rows leave larger whitespace. TOC leaders/styling also
+differ. The SRS **does not pass pagination/layout equivalence**. All361unique
+requirement identifiers are present in both PDFs;477native image objects are
+consistent with371source placements plus106repeated body headers, versus
+468in the baseline. These are bounded coverage checks, not exhaustive authored
+glyph, link-target or decoded-image equivalence; Thai PDF extraction differs
+and raw character totals are unsuitable for a fidelity percentage. The prior
+synthetic R13 coordinate bounds do not transfer to this SRS.
+
+Evidence remains under
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/native-r2/`:
+`native-audit.json`, `pdf-inventory.json`, `page-alignment.json`, all page
+renders, paired overviews, successful native PDF and r3 overlay. A fresh
+checkpoint binds preservation and current outcomes without overwriting the old
+blocked checkpoint. Next product investigation is source-derived table
+spacing/fragmentation and reproducible native field/export preparation; it is
+not accepted full-SRS equivalence. No new Docker/full-suite run, B2, release,
+installation or integration occurs.
