@@ -16779,3 +16779,48 @@ version, Service, release or default branch is changed. No new PDF baseline or
 Word conversion is produced. Deferred upper-edge issue remains accepted/open;
 these checks do not claim it fixed, native Word visual acceptance, or Service/I6
 acceptance. Stop after scoped feature acceptance; integration is not authorized.
+
+### 2026-10-25 — SB1 recovered image and native DOCX inspection trial
+
+Owner requests recovery of the missing Garuda asset, a replacement local image
+path and a fresh DOCX for inspection. Inline artifact generation/Evidence Review;
+execution IDs not applicable. No product edits, live draft mutation, service
+restart, integration or release. Existing Core candidate remains `8bbd7d6`.
+
+Retained inputs found under `Codex/2026-10-20/layout-profile/inputs/` are the
+stage6 model19/schema2 SB1 test copy, not a fresh read of the live draft.
+FlowDocMake currently returns SERVICE_UNREACHABLE; current live identity remains
+unverified. Template SHA256 `c65df6513838d065c1b3262011d77b3c4c1128f3c19e2bf0ddd67d3f0386898a`;
+payload `c8bc2fbe66f68c4261a19c3ca0a611cfc265f93b46e85eaefb01c0a884647605`.
+The two-page retained source PDF is
+`Codex/2026-10-20/record-reuse-stage3/full/sb1-on/pdfs/sb1-existing.pdf`, SHA256
+`baa0b40ae8b9bfae469c44e869bf3f908fea38d596dc6166a5b8cb5803c2629f`.
+Extracted page1 image XObject Im1,216x199 RGB plus its original alpha mask,
+into `FlowDoc-recovery/sb1-docx-2026-10-25/assets/garuda.png` without repainting or
+resizing. Decoded RGBA matches the PDF image/mask exactly. PNG SHA256
+`e03842c09f7b6d97d742b5d9244175d9a7786378b62de8d295784b752162e9d3`.
+New `images.json` points to that absolute local asset; old source files and
+manifest remain unchanged. Core request separately replaces the upload marker
+with the prepared image resource UUID; business values are preserved.
+
+The unmodified fixed805/700pt Format budgets fail with
+DOCX_CAPABILITY_UNSUPPORTED, "Fixed format budgets are deferred". A disclosed
+inspection-only copy changes both Format sizing values to auto; its native
+footer then fails the fixed61.69pt envelope check. A second disclosed copy
+changes only footer sizing to content, retaining its placement. All three
+changes are recorded in `generation.json` and `trial-native-flow.template.json`.
+This does not implement or accept fixed-budget DOCX forms. Both failed receipts
+are retained; capability guards are unchanged, not bypassed by product repair.
+
+Delivered trial: `FlowDoc-recovery/sb1-docx-2026-10-25/SB1-native-flow-trial.docx`,
+136161bytes, SHA256 `a65abc0f2508884a0fb15c7fa59ad353f5e325933468e76b55a714e305e2a31a`.
+Generated through the unchanged public Core DOCX port with native text layout,
+the retained actual Sarabun Light font and recovered transparent Garuda under
+1GiB. XML inspection finds all54 source body/footer text blocks ignoring
+whitespace and exact recovered Garuda RGBA. Source template/PDF hashes remain
+unchanged. LibreOffice renders two pages; both inspected without gross clipping
+or overlap. Native Word appearance, fixed-height behavior, pixel fidelity and
+long/multi-row form acceptance remain unverified. This is a reviewable native-flow
+artifact, not 0.5.0 form acceptance. Proof root is the same recovery directory:
+`recovery.json`, `verification.json`, generation/failed receipts and
+`libreoffice-review/`. No Core test rerun is needed for unchanged product source.
