@@ -15727,3 +15727,63 @@ factors ran offline with1GiB memory/swap limits. Local evidence is under
 No merge, default promotion, Service/full suite, B2 or native Office conversion.
 Word remains100pages versus PDF98. Font/style generalization and remaining
 sub-point residuals remain open; no DOCUMENT_MAP promotion.
+
+### Frozen98/100page cause investigation E6, 2026-10-24
+
+Owner requested investigation of the retained M2 PDF98pages versus native
+Word D100pages, preserving14/meeting improvements and using the same worktree.
+This checkpoint is diagnostic: no renderer change, new PDF, Docker run,
+counterfactual layout experiment or integration. Core `91589c0` retains the
+read-only audit and compact result; execution IDs not applicable. The full
+local diagnosis and six selected paired transition views are under
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/pagination-e6/`.
+
+Both artifacts contain361REQ occurrences in identical order and371non-header
+image placements in identical source-pixel dimension order. Image height
+differences are below0.00018pt. These inventories do not prove every source
+glyph. The final Word100contains continuing REQ0366 text and its icon, not an
+empty page. Differences accumulate through body27onward, rather than appear
+as two discrete inserted blank pages.
+
+Three source-backed mechanisms remain:
+
+-17matched headings occupy a different PDF page from the following table's
+ first header, while native Word places each heading/header pair together.
+ First example: Talent Group is PDF27/header28, Word28/header28. DOCX reading
+ planning emits heading/description keep-next edges; PDF text root flow checks
+ individual line capacity independently. Not every observed heading belongs
+ to the same direct edge (parent headings can move through other constraints).
+-257consecutive same-table REQ row pairs that stay on one page in both
+ artifacts have native extra baseline-to-baseline height mean0.53281pt,
+ median0.520pt, range0.400..0.760pt. Example REQ0001->0002 is41.84versus42.36pt.
+ These requirement cells retain3pt top/bottom margins and0.5pt native borders;
+ the existing half-stroke accommodation covers4pt padding only. PDF row flow
+ sums content and padding without the stroke. Native text/image paragraph
+ rounding also contributes; the observed residual is not assigned wholly
+ to image footprint or to a universal0.533pt row correction.
+-The frozen PDF footer compact/rule/columns footprint is38.5pt. Body capacity
+ is689.762pt from source bands, versus686.700pt from D's XML margins. Native
+ bottom767.700pt is3.013pt earlier than PDF770.713pt. These values describe this
+ source/footer/native reservation, not a general footer sizing rule or proof
+ that the provisional DOCX reservation is unnecessary.
+
+REQ0001 already starts226.52pt lower on native physical45; firstREQ page
+offset1appears at0005(PDF45/Word46), offset2first appears at0280(PDF80/Word82).
+Across361occurrences,88start on the same physical page,262one page later and
+11two pages later in Word. Offsets can return to a smaller value at subsequent
+page breaks; they are not a monotonic per-ID page counter.
+
+Six visual pairs cover27/27,28/28,45/45,75/76,80/82and98/100. Read-only checks
+verify17heading separations,257row pairs, requirement/image inventories and
+unchanged hashes of M2, native Word PDF/DOCX, original baseline, resolved source
+and M2 draw evidence. Runtime tests were not rerun because runtime is unchanged.
+The first audit attempt failed on a result-dictionary key before writing the
+diagnosis; corrected audit and evidence assertions pass. No previous evidence
+is promoted by this diagnostic checkpoint.
+
+Recommended next experiment: align PDF heading/description/table-start grouping,
+then isolate3pt requirement-row stroke accounting and body footer capacity,
+each against M2 and Word while retaining14/meeting pixel gates. Counterfactual
+proof is still required to quantify each mechanism's contribution to the final
+two-page difference; no claim that these fixes already yield100pages. No merge,
+default rule promotion, B2, full suite, Office conversion or DOCUMENT_MAP update.
