@@ -16739,3 +16739,43 @@ placement despite unchanged DOCX spacing instructions. Exact cause is unresolved
 and deferred by owner decision. Word-editor appearance is owner-reported,
 not independently reproduced. Evidence: `docx-r2-cell-borders/word-user-review/`
 (`comparison.json`, `character-comparison.json`, and page renders).
+
+### Optional borderless tables; existing white layout tables retained
+
+Owner authorizes a bounded inline Core addition: table-wide border none, with
+default single0.5pt black and existing intentionally white layout tables retained.
+Role: Product Implementation Agent; execution IDs not applicable. The same
+`codex/uat-docx-merged-groups` worktree remains isolated/unmerged. Core commit
+`8bbd7d6621ae6a00be552ebb616ea4703533188b` follows `bd190c4`.
+
+Models18/19 accept optional table `props.borderStyle:"single"|"none"` through
+template validation, composition, resolved validation and DOCX preflight.
+Omitted or single retains the previous0.5pt/color rules; omitted color is black.
+None suppresses actual PDF table strokes and emits explicit none for all DOCX
+outer/internal table and cell borders, respecting merged-cell topology. Fills,
+content and existing measurement/pagination/spacing instructions remain intact.
+This does not guarantee identical native Word placement after borders change.
+Invalid styles fail validation; an explicit color must still be valid RGB even
+when none prevents its painting. No per-cell override or thickness option is added.
+
+Source audit traces72 white table instances to10 explicitly white template
+definitions: six cover tables, one legend,46 desktop figures,18 mobile figures
+and one approval table. Source structure and representative baseline review
+strongly support intentional concealment; original author intent is inferred.
+Owner explicitly retains those forms. No automatic white-to-none migration.
+Audit: `uat-real-2026-10-24/white-border-audit/inventory.json` and CSV; image asset
+candidate pages may include repeated uses and are labelled accordingly.
+
+Acceptance evidence: initial feature checks fail before implementation; final
+build passes and981 affected cases in93files pass under the1GiB Linux limit,
+including12 new cases for none, defaults, explicit white, multi-page fills and
+merged cells, model19 group expansion, unchanged non-border DOCX XML and invalid
+values. Read-only code review finds no blocking issues. README/template guide
+document the local option and limits. Proof root:
+`uat-real-2026-10-24/table-border-none/affected-tests.json` and `verification.json`.
+Frozen hashes for original/previous PDFs, original template and retained DOCX/Word
+PDF candidates still match. No existing72 white tables, UAT payload, package
+version, Service, release or default branch is changed. No new PDF baseline or
+Word conversion is produced. Deferred upper-edge issue remains accepted/open;
+these checks do not claim it fixed, native Word visual acceptance, or Service/I6
+acceptance. Stop after scoped feature acceptance; integration is not authorized.
