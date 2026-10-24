@@ -16824,3 +16824,22 @@ long/multi-row form acceptance remain unverified. This is a reviewable native-fl
 artifact, not 0.5.0 form acceptance. Proof root is the same recovery directory:
 `recovery.json`, `verification.json`, generation/failed receipts and
 `libreoffice-review/`. No Core test rerun is needed for unchanged product source.
+
+Owner subsequently supplies `sb1-docx-2026-10-25/SB1-native-flow-trial.pdf`,
+Microsoft Word producer, two pages,83358bytes, SHA256
+`957aacf59f923c1380fc337167c5e121694ef1ef7ee4dfee1edc55bd4ad79695`.
+Both pages rendered and visually inspected: Garuda, declaration/signature blocks,
+cargo table and page2footer are visible without gross clipping or overlap.
+This is the disclosed native-flow trial, not fixed-budget or exact-fidelity
+acceptance; source PDF, DOCX and product code remain unchanged. Native evidence:
+`sb1-docx-2026-10-25/word-user-review/inspection.json` and both page renders.
+
+Owner raises future frontend editing of existing runtime capabilities as a
+design concern, explicitly deferred rather than a new implementation scope.
+Planning suggestions: distinguish data entry from template layout controls;
+use the existing shared semantic source, preserving settings on read/save;
+present supported controls in user language and disclose PDF/DOCX capability
+differences before export rather than silently replacing behavior. Fixed-format
+budgets in the SB1 trial are a concrete example of that distinction. These are
+future considerations, not a verified Editor contract, new release prerequisite
+or authorization for frontend/runtime changes. No new Work or plan is opened.
