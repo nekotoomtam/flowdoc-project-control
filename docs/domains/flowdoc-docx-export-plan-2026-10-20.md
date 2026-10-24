@@ -1,5 +1,13 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current local development integration (2026-10-24): Core0.4.8 is integrated
+as one squash commit `8c2332d` on the verified GitHub default branch
+`codex/template-binding`. [Integration evidence and limits](#2026-10-24--core048-local-development-integration).
+Earlier workspace/current-checkpoint statements below retain their historical
+scope; the current integrated tree is `eb8ba19dcad3ca2a9157d443dbfda01ed5cecdd0`.
+This is development integration, not a release, Service/I6 acceptance or full
+DOCX/PDF fidelity PASS. Original PDFs and experiment history remain preserved.
+
 Active system-fidelity reframe R13: [Two-family independent acceptance framework](#system-fidelity-r13--two-family-independent-acceptance-framework).
 Owner authorizes continuous inline execution through acceptance or a concrete
 blocker. Scope: Sarabun+Bai Jamjuree,4faces,10/12/16pt,4layout families;
@@ -16355,3 +16363,64 @@ the unchanged visual proof, not native Word acceptance. Evidence is
 `font-signature-r1/verification.json`; original DOCX/WordPDF/FlowDocPDF are
 preserved. Core stays unchanged at `1f9b505`; no product fix or merge occurs.
 The causal result remains pending the owner's Word export of this unique copy.
+
+
+## 2026-10-24 — Core0.4.8 local development integration
+
+Owner authorizes squash integration and a version increase after returning the
+native Word signature-control PDF. Inline Product Implementation / Evidence
+Reviewer work; execution/Phase/Checklist IDs N/A. Owner repository: Core.
+Acceptance: preserve the tested accumulated tree and original baselines, fix
+actual embedded-font metadata on the ordinary writer path, verify the affected
+Core/package surface, and advance the default development branch by one commit.
+Document budget: existing Core README/template guide and this existing record.
+No new shared plan, map promotion, release or Service state change.
+
+GitHub `ls-remote --symref origin HEAD` confirms `codex/template-binding` at
+`e53e4a284d5eb2596b531b55a12a83ab74ba8528` before integration. Candidate
+`b46266e0a041b739f25011bfaedfb98e4eadb82d` includes the accumulated fidelity work
+and the final metadata fix. One squash commit
+`8c2332d7261f31613128d4f904045140b84b682e` advances that base. Candidate and
+integrated trees are identical: `eb8ba19dcad3ca2a9157d443dbfda01ed5cecdd0`.
+Version0.4.8 agrees in package/lock and package documentation. The clean source
+experiment branch/worktree remains available to preserve history after squash.
+
+The owner's returned `SRS-prompt-font-signature-r1.pdf` has102 pages and no
+Angsana New font resources; SHA256
+`6610ebc3a38c2cb975cb5c2f7861ead372634a6f7a09506852f8c3a1bde5e65d`.
+The signature-only control removes the observed Thai fallback in this Word
+conversion. FlowDoc Prompt remains101 pages, so this does not close pagination
+or full-document fidelity. Production now derives the six font-table signature
+attributes from each family's actual regular-face OS/2 table. It serializes the
+corrected ZIP even when native source-layout capabilities are absent. Regression
+coverage includes Sarabun/Bai public output, version0 fonts, invalid extents and
+real Packer escaping. Actual font bytes are unchanged.
+
+TypeScript build and all126 Core suites /1125 tests PASS. Native-session checks
+PASS16 exact one-shot comparisons plus malformed-frame/EOF checks. The first
+full command found a node:test experiment file discovered by Vitest; changing
+that test's import to Vitest fixes runner discovery without product behavior
+changes. Initial failure and final JSON reports remain retained. Final independent
+read-only review reports no Critical/Important finding. The later npm cache and
+Windows symlink-copy failures affected proof preparation only; the successful
+package uses an explicit temporary npm cache and copies only packaged files.
+
+Packed Linux/amd64 consumer PASS across27 result groups, using actual installed
+0.4.8 and docx9.13.0/jszip3.10.2/pngjs7.0.0. Execution has no network, no mounts,
+1GiB memory/swap cap, exit0 and no OOM. Native binaries are reused unchanged from
+the retained installed package; no native source changed in this candidate.
+Tarball SHA256: `73108448f61abea8728aaa0bd006702f862cccc4875f0d55deb8af82d96c7eec`.
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/integration-048/`;
+`integration-result.json` links suite, native-session, consumer/dependency and
+baseline checks. Original98-page, native100-page and G1 PDFs retain their recorded
+hashes. No redundant rerun follows squash because tested content, dependencies,
+configuration, environment and integrated tree retain identity.
+
+Boundaries remain explicit: supplying both native shaping and segmentation
+selects fixed line paragraphs and editable VML word boxes; Word text/font edits
+may require regeneration. Private SRS PDF calibration stays opt-in, outside
+ordinary PDF defaults. No promise of arbitrary-font or complete native fidelity.
+No remote push, release snapshot/tag, Service installation, Service full suite,
+I6 acceptance or B2 is performed. PASS: requested local Core integration and
+version bump; remaining fidelity differences remain visible and open.
