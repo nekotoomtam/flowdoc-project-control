@@ -10,6 +10,9 @@ History: source coverage was introduced in package 0.1.2; goal/stage routing
 was clarified in 0.1.7. Those changes left the then-current Service/Core 0.3.0
 and draft-only tool contract unchanged; that is not the current runtime pin.
 
+Core0.4.8 development is a separate DOCX/fidelity lane; it does not change this
+client pin. See [version and DOCX boundaries](verification.md#core048-development-and-docx-boundary).
+
 ## Extract source data before designing a template
 
 First select the requested deliverable using the workflow guide's goal/stage

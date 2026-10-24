@@ -17,6 +17,24 @@ Authority Boundary: Project Control reference ของ local Area18 และ S
 บน FlowDocMake 0.2.8 / Service 0.4.9 / Core 0.4.7 ตาม [baseline](README.md).
 ไม่มีการอนุญาต publish จากเอกสารนี้; ตรวจ live get_authoring_contract ก่อนใช้งาน.
 
+## DOCX development transport
+
+ส่วนนี้อธิบาย Service development DOCX candidate ไม่ใช่ความสามารถใหม่ของ
+FlowDocMake0.2.8 tools หรือคำยืนยันว่าชุดติดตั้งใช้ Core0.4.8.
+ใช้ template และข้อมูลธุรกิจเดิมผ่าน `POST /documents` โดยเลือก header
+`Output-Format: DOCX`; ใช้ได้กับโหมดปกติและ `Task-Mode: queue-v1` ของ candidate.
+ละ header หรือส่ง PDF จะคง PDF. อย่าส่ง outputFormat เพิ่มใน template/data
+หรือ arguments ของ authoring tools ที่ไม่ได้ประกาศรับมัน.
+
+ผล DOCX ใช้ MIME `application/vnd.openxmlformats-officedocument.wordprocessingml.document`,
+นามสกุล.docx, pageCount:null, fieldRefresh:required, wordVerified:false และ
+buffered:true. เก็บ receipt/hash กับไฟล์จริงและรอ output เสร็จก่อนใช้งาน;
+32MiB เป็น output cap ไม่ใช่เพดาน RAM ทั้งงาน. ถ้าความสามารถไม่รองรับต้องรายงาน
+DOCX failure ไม่แทนด้วย PDF. ตรวจ fields/TOC และ native Word PDF แยกตาม
+[verification boundary](verification.md#core048-development-and-docx-boundary).
+Service ยัง pin Core0.4.7; อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
+และ vendor manifest ของ candidate ที่เรียกจริงก่อนใช้เส้นทางนี้.
+
 ## 1. วงจรชีวิต
 
 create identity → get draft → เตรียม definition/request → validate → save →

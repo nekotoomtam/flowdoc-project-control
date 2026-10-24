@@ -17,6 +17,39 @@ FlowDocMake `0.2.8` ตรึง Service `0.4.9` / Core `0.4.7`,
 หัวข้อ Release/Installation/Native chat verification (ไม่ได้รวมใน snapshot คู่มือ).
 การแก้คู่มือครั้งนี้ตรวจความสอดคล้องเอกสาร ไม่ได้รันผลทดสอบหรือ PDF ด้านล่างใหม่.
 
+## Core0.4.8 development and DOCX boundary
+
+| ชุด | ตัวตน/สถานะ |
+| --- | --- |
+| Core development0.4.8 | implementation `8c2332d` บน `codex/template-binding`; build,126 suites/1125 tests และ27 packed-consumer groups ผ่านตามหลักฐานรอบ2026-10-24 |
+| Core release ปัจจุบัน | `v0.4.7`; การเพิ่มรุ่น development ไม่ได้สร้าง release0.4.8 |
+| Service development0.4.9 DOCX | source `8690193`; vendor ยังเป็น Core0.4.7, hash `067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`; I6 ยังไม่รับงาน |
+| FlowDocMake0.2.8 / ชุดติดตั้ง | ใช้ pin/preflight ของรุ่นเดิม ไม่ได้เปลี่ยนเป็น Core0.4.8 และไม่เพิ่ม DOCX task UX จากการแก้คู่มือ |
+
+ผลตรวจ Coreข้างต้นใช้ Linux/amd64,1GiB, consumer ปิด network/ไม่มี source mounts.
+หลักฐานอยู่ใน [บันทึก integration](../../domains/flowdoc-docx-export-plan-2026-10-20.md#2026-10-24--core048-local-development-integration)
+และ `srs-real-2026-10-24/integration-048/integration-result.json` ใต้ FlowDoc-recovery.
+เป็นผลตรวจ implementation ก่อนปรับคู่มือรอบนี้ ไม่ใช่การทดสอบผลิตภัณฑ์ใหม่รอบนี้.
+แพ็กเกจ release ที่จะสร้างจากคู่มือใหม่ต้องมี checksum/source ของตัวเอง.
+
+PDF/DOCX ใช้ข้อมูล semantic เดียวกัน แต่ตัวจัดหน้าคนละตัว. DOCX receipt มี
+pageCount:null/wordVerified:false และต้อง refresh fields/TOC ใน Word.
+การส่ง native shaper+segmenter เข้า Core เลือก source-line/VML-word-box mode
+สำหรับข้อความที่เข้าเกณฑ์โดยอัตโนมัติ; หลังแก้ข้อความ/ฟอนต์ใน Word อาจต้องสร้างใหม่.
+การวัดความตรงต้องระบุไฟล์/font hashes, ขนาด/น้ำหนัก, ขอบเขตเอกสาร, Word/export
+และผลทุกหน้าที่เกี่ยวข้อง แยก QA ของ LibreOffice ออกจาก native Word.
+Prompt control แก้ metadata แล้วไม่พบ Angsana New แต่ Word102/FlowDoc101หน้า
+ยังต่างกัน; ห้ามยุบเป็นเปอร์เซ็นต์ความตรงทั้งระบบ. Sarabun/Bai และผล SRS เดิม
+เป็นหลักฐานตามขอบเขตนั้น ไม่ครอบคลุมทุกฟอนต์. PDF baseline เก็บไว้ตามเดิม;
+private PDF calibration ยังเป็น opt-in ไม่ใช่กฎ PDF ปกติ.
+
+ก่อน release: ตรวจเอกสารและ candidate จริง, pinแพ็กเกจ/affected consumers,
+ข้อจำกัดและ mandatory gates ของขอบเขตที่จะส่ง แล้วทำ snapshot/tag เมื่อมีอำนาจ
+ตาม [กติกา release](../../domains/flowdoc-export-working-release-rules-draft-2026-10-09.md).
+Coreผ่านไม่ได้ปิด complete combined Service-suite gate ของ I6. คู่มือ canonical
+รอบนี้ไม่เขียนทับ snapshot คู่มือที่บรรจุใน FlowDocMake0.2.8; ใช้ preflight hash เดิม
+และเตรียม snapshot รุ่นใหม่แยกเมื่อออกรุ่น FlowDocMakeจริง.
+
 ## 1. Implementation baseline เดิม — 0.3.0 (ประวัติ)
 
 ข้อกำหนด versions:[18] และจำนวนผลตรวจต่อไปนี้ใช้เฉพาะรอบเดิม ไม่ใช่เพดาน

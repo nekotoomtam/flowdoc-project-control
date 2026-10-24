@@ -12,6 +12,11 @@ Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญ
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ draft/publication/API
 ตัวอย่างใช้ข้อมูลสมมติ ไม่มีข้อมูล SRS ส่วนตัว
 
+Core development0.4.8 รวมงาน DOCX แล้ว แต่ไม่เปลี่ยน Service/Core pin หรือ snapshot
+ของ FlowDocMake0.2.8 ในคู่มือนี้. สำหรับ DOCX และข้อจำกัดการแก้ข้อความใน Word
+อ่าน [คู่รุ่นและหลักฐาน](../developer/authoring/verification.md#core048-development-and-docx-boundary);
+การสร้าง DOCX สำเร็จไม่ใช่การตรวจ PDF หรือ native Word ผ่าน.
+
 ## Developer Documentation ที่ต้องเปิดตามงาน
 
 สำหรับการเริ่มงาน ใช้ [ทางเข้าสั้นตามช่วง](../developer/authoring/workflow-start.md)

@@ -4,9 +4,12 @@ Current local development integration (2026-10-24): Core0.4.8 is integrated
 as one squash commit `8c2332d` on the verified GitHub default branch
 `codex/template-binding`. [Integration evidence and limits](#2026-10-24--core048-local-development-integration).
 Earlier workspace/current-checkpoint statements below retain their historical
-scope; the current integrated tree is `eb8ba19dcad3ca2a9157d443dbfda01ed5cecdd0`.
+scope; the verified integration checkpoint tree was `eb8ba19dcad3ca2a9157d443dbfda01ed5cecdd0`.
 This is development integration, not a release, Service/I6 acceptance or full
 DOCX/PDF fidelity PASS. Original PDFs and experiment history remain preserved.
+Current working entrypoint: `C:/Users/nekot/Documents/GitHub/flowdoc-core`.
+[Pre-release documentation and cleanup](#2026-10-24--pre-release-documentation-and-cleanup)
+records the later documentation commits, archive and testing-worktree retirement.
 
 Active system-fidelity reframe R13: [Two-family independent acceptance framework](#system-fidelity-r13--two-family-independent-acceptance-framework).
 Owner authorizes continuous inline execution through acceptance or a concrete
@@ -16424,3 +16427,58 @@ ordinary PDF defaults. No promise of arbitrary-font or complete native fidelity.
 No remote push, release snapshot/tag, Service installation, Service full suite,
 I6 acceptance or B2 is performed. PASS: requested local Core integration and
 version bump; remaining fidelity differences remain visible and open.
+
+
+## 2026-10-24 — Pre-release documentation and cleanup
+
+Owner requests all affected manuals updated before release and unused local
+branches/worktrees removed. Inline Documentation Synthesizer / Lane Reconciliation
+Reviewer; execution/Phase/Checklist IDs N/A, routine risk. Authority is this existing
+record. Scope: Core README/template guide, Service README/usage notes and current
+Project Control authoring/release entrypoints. Historical design/test results and
+packaged FlowDocMake0.2.8 guide snapshots retain their original identities.
+Acceptance is accurate usage/version/editing/verification boundaries, valid links,
+no runtime/pin mutation, preserved pending evidence and only accepted-lane cleanup.
+Proof budget: source/API/profile review, local Markdown links, check:data, retained
+snapshot test, vendor identity and exact byte/Git integration/archive checks;
+no repeated product suite or PDF regeneration for documentation-only changes.
+
+Core documentation commit `455d69b` specifies resource-dependent native versus
+source-line paths, VML editing/regeneration, table continuation policy, API and
+receipt/field-refresh contracts, XML/output/resource limits and native comparison.
+It corrects model18 versus19 example input and records the required explicit legacy
+segmenter fixture for Linux verification. Service documentation commit `cbff610`
+adds only the separable current-version notes; its pre-existing I6 manual changes
+and four untracked fixture/test files remain pending with exact bytes preserved.
+The Service still pins Core0.4.7; no archive/lock/package version changes occur.
+Project Control manuals distinguish Core0.4.8 development from installed/pinned
+Service0.4.9/Core0.4.7 and the still-open I6 gate. Existing successful Core evidence
+is cited as prior implementation proof, not a newly rerun suite or release approval.
+A release artifact rebuilt after documentation changes needs its own identity.
+
+Cleanup inventory: Core has one clean DOCX experiment worktree/branch,
+`codex/docx-horizontal-r11` at `b46266e`. Its complete tree equals integrated
+`8c2332d`; later Core differences are documentation only. There are no ignored or
+untracked files in the removable checkout. It is owner-authorized inline work,
+not an app-managed or separately owned active lane. Full commit history is retained
+in verified `docx-horizontal-r11.bundle` under
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/integration-048/pre-release-docs-cleanup/`.
+`inventory-before.json` and `cleanup-decision.json` record classification and refs;
+`service-before/` plus its patch retain pending Service files independently.
+Primary/development and release branches/tags in Core, Service and Project Control
+are retained. Remote branch deletion, runtime/dependency/DB edits, guide snapshot
+rebuild, release/tag/push/install and additional fidelity tuning are out of scope.
+
+
+Cleanup completed: the clean `fidelity-horizontal-r11/core` worktree and local
+`codex/docx-horizontal-r11` branch are removed. Squash integration was proven by
+exact tree equality at8c2332d before retirement; complete pre-squash history is
+in the verified standalone bundle. The old-tip-checked local ref deletion is
+bounded to the archived branch; no force filesystem removal or remote deletion.
+Core/Service/Project Control each retain their primary checkout and development /
+release branches. PDF baseline hashes and every original pending Service byte
+are unchanged. Final receipt: `pre-release-docs-cleanup/cleanup-result.json`.
+Documentation/source-link checks, retained FlowDocMake snapshot check and Service
+vendor checksum pass; this round changes no runtime/package pin and runs no
+product suite, Docker/PDF generation or release operation. Service's I6 files
+remain intentionally dirty/untracked, not lost or silently accepted.

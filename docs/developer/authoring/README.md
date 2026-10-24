@@ -20,6 +20,15 @@ Section19 Stage3 รองรับคู่กับ18ในชุดปัจ�
 [API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:3`, `scopedToc:true`.
 TOC ของ19ต้องระบุ scope;18คงเดิม. การแก้คู่มือไม่เปลี่ยนรุ่นที่ติดตั้ง.
 
+## Core0.4.8 กับชุดที่ติดตั้งอยู่
+
+Core development รวมงาน DOCX/fidelity เป็นรุ่น0.4.8 แล้ว แต่ชุด FlowDocMake0.2.8 /
+Service0.4.9 ที่ตรึงไว้ยังใช้ Core0.4.7. เลขรุ่นอย่างเดียวบอกตัวตน candidate ไม่พอ;
+ตรวจ archive/hash/source และ live contract ก่อนใช้ ไม่เปลี่ยน pin ด้วยการแก้คู่มือ.
+ดู [คู่รุ่น หลักฐานและข้อจำกัด DOCX](verification.md#core048-development-and-docx-boundary)
+และ [API ส่งออก DOCX](api.md#docx-development-transport).
+คู่มือ API ของ Core อยู่ใน [template guide](../../../../flowdoc-core/docs/template-guide.md#docx-development-output-in-048).
+
 ## อ่านจากตรงไหน
 
 เริ่มจาก [ทางเข้าแบบอ่านตามช่วง](workflow-start.md) แล้วเปิดเฉพาะหัวข้อของช่วงที่ทำ.

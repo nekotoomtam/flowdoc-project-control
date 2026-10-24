@@ -6,6 +6,9 @@ Owner: FlowDoc Project Control. Scope: FlowDocMake 0.2.8 client workflow over
 Service 0.4.9 / Core 0.4.7 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
+Core0.4.8 development is a separate DOCX/fidelity lane; it does not change this
+client pin. See [version and DOCX boundaries](verification.md#core048-development-and-docx-boundary).
+
 ## Authoring preflight
 
 Read this section only when entering draft authoring. Require the actual
