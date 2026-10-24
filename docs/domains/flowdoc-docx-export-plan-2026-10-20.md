@@ -16220,3 +16220,68 @@ row groups and general fonts remain unaccepted. Full Service suite/B2, new
 Office conversion, baseline replacement, DOCUMENT_MAP promotion and merge were
 not performed. Next work, if requested, should address remaining measured
 baseline/wrapping differences without reopening the now-matched start pages.
+
+### G1 — font-derived placement outcome checkpoint (2026-10-24)
+
+The owner requests management toward the PDF/DOCX similarity outcome rather
+than approval of successive small tasks. This remains inline Core work in the
+existing isolated worktree, with Product Implementation and Evidence Reviewer
+roles; execution IDs are not applicable. The outcome is closer native Word
+placement while preserving E12's100 pages/361REQ start pages and protected
+page14/meeting results. This section is Project Control canonical reporting;
+Core implementation/evidence commit `1f9b505` supports the bounded claims.
+No DOCUMENT_MAP or product-wide acceptance is promoted.
+
+The selected experiment reads actual font hhea descent and unitsPerEm to place
+the baseline from the line bottom, clamped to retained glyph ink extents. It
+does not alter line height. A separate node-scoped shaping hook uses actual
+font hmtx advances for single printable ASCII characters, retaining glyph IDs,
+offsets, Thai clusters and multi-character ligatures. Both hooks are opt-in;
+default product behavior is unchanged. This ASCII hypothesis is experimental,
+not a universal Word kerning rule. No phrase/REQ-specific correction is added.
+
+The retained candidate is
+`C:/Users/nekot/Documents/FlowDoc-recovery/srs-real-2026-10-24/fidelity-goal-g1/SRS-S3-scoped-font-policy.pdf`,
+SHA256 `a84425e2c4a260f783c34b72fe79741ba57477a40a7bc3e1c79c3c76187edb87`.
+It retains100 pages and all361REQ start pages, corroborated by actual PDF text
+extraction. REQ0178 now fits the native single text line, removing the resulting
+page69 displacement. Across361REQ label baseline origins, absolute error falls
+from E12 mean3.405025pt/p953.422pt/max19.708pt to mean0.225385pt/p950.618pt/
+max1.112pt. These are label-origin measurements, not every glyph or a percentage
+of visual identity. Protected pages11–26 are pixel-identical to E12; footer
+regions are unchanged on all100 pages. All100 pages were reviewed in overview
+sheets, with detailed native comparisons on68/69; this is not full-resolution
+every-glyph acceptance.
+
+Eight retained native control packets cover Sarabun and Bai Jamjuree, Regular,
+Bold, Italic and BoldItalic at10/12/16pt. Exact native paragraph text and XML
+AtLeast rules select policy scope. The96CASE marker-origin checks comprise80
+treated cases and16 unchanged controls. Maximum absolute origin error is0.096pt
+for Sarabun and0.04pt for Bai Jamjuree. This does not prove complete paragraph
+wrapping or glyph fidelity. Some historical controls lack an original native
+PDF hash in their provenance report; fresh hash pins preserve identity from this
+checkpoint and are not relabelled new Word conversions.
+
+TypeScript compilation and affected layout/cache suite pass313 tests; two helper
+tests also pass. Red evidence precedes the baseline and node-scope fixes. An
+independent reviewer found no blocking implementation finding and reran both
+helper tests. Source-text coverage passes1814 nodes modulo whitespace/repeated
+whole-text copies, so exact multiplicity remains unproven. All371 native image
+dimensions/order agree and396 internal target pages exist; image-byte identity
+and semantic/XY link identity are not established. Machine-readable evidence
+and reproducible tools are retained in Core `scripts/experiments/font-goal-*`.
+
+All71 frozen inputs rehash unchanged, including original/native PDFs and E12.
+Twelve PDFs were generated offline with1GiB memory/swap: four SRS factors and
+eight font packets. The initial two-SRS proof budget was extended because the
+baseline-only factor exposed wrapping and global nominal shaping affected the
+protected introduction; both rejected factors remain available. The selected
+node-scoped factor preserves that introduction.
+
+Status: improved and preserved, not complete general fidelity acceptance.
+Remaining measured baseline/geometry error up to1.112pt, full body glyph/line
+alignment and broader font paragraph behavior still need outcome evidence.
+Prior tiny-page minimum-group, merged-cell and row-group limitations remain.
+The next work should resolve those actual differences against the same outcome,
+not treat a completed probe as overall PASS. No new Word conversion, baseline
+replacement, Service full suite/B2, release or merge occurred.
