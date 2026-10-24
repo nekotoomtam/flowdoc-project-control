@@ -17068,3 +17068,75 @@ iterations are retained. Stop at this artifact checkpoint; the next required
 proof is opening/converting these exact DOCX files in Word and reviewing the
 last-page signing block, completeness and pagination before accepting the DOCX
 behavior or considering integration. No blanket arbitrary-content parity claim.
+
+### 2026-10-25 — DOCX cell margin trial scope
+
+Owner authorizes the proposed DOCX-only cell-margin experiment on the same clean
+Core worktree, base82a9478, retaining line heights, original PDFs, prepared SB1
+business values and final signing Area. Inline Product Implementation Agent;
+execution IDs not applicable; Risk routine. No merge, release, version change,
+Service/draft operation, shared-model/PDF renderer repair or new Core PDF export.
+
+Plan/checklist: add failing DOCX contract tests for unequal vertical cell margins;
+normalize eligible row margins to their row minima and represent each cell's
+remaining offset through first/last paragraph before/after spacing. Retain exact
+line rules/heights, fonts, horizontal padding, content, borders and row controls.
+Keep uniform rows, vertical/complex merges, empty/image/fixed/source-guided cells
+on the existing path. Record per-cell offset adaptation in the existing table
+receipt. Verify the two SB1 DOCX files against the exact prior R3 source/request
+and package parts, especially unchanged signing notes, then render/check all
+preview pages. Native Word conversion is the owner's next proof checkpoint;
+preview results do not close the existing table-note display limitation.
+
+Proof budget: targeted new/affected DOCX tests plus build; one broader DOCX run
+if impact requires it, one focused review and up to3 artifact iterations for
+these two cases. Preserve failed trials and their reasons. Document budget:
+append this existing ledger and update existing Core template guidance only if
+the candidate behavior changes. Reuse prior PDF evidence and hashes. Stop at the
+two reviewable DOCX files and an explicit outcome/remaining Word gap. Current
+host model for bounded inline work; no separate registered execution or new room.
+
+### 2026-10-25 — DOCX cell margin trial outcome
+
+Artifact checkpoint PASS; native Word layout UNKNOWN. Core candidate
+`2c211a5235eef619ea53dae28fa3d3192f2c548e` is committed on the same
+`codex/uat-docx-merged-groups` worktree, not merged. Only DOCX table/text mapping,
+its tests and existing template guidance changed. Eligible unequal-margin rows
+use common minimum top/bottom margins and residual first/last paragraph offsets.
+Final Area tables are explicitly excluded, including unequal-margin ones.
+
+Evidence directory:
+`C:/Users/nekot/Documents/FlowDoc-recovery/sb1-docx-2026-10-25/cell-margins-r2`.
+Deliver `control-flow-docx.docx` and `many-rows-flow-docx.docx` for owner Word
+conversion. `verification.json`, `verify.py`, generation results, DOCX test log
+and all9 preview page rasters are retained there. Exact R3 template/requests and
+resolved documents match; all53 previously inventoried PDF/DOCX hashes match.
+No new Core PDF was generated. R1 trial and failed checks remain preserved.
+
+All221 DOCX tests across23 files pass in the Linux runtime with1GiB limit;
+TypeScript build and diff check pass. The first broad run had219/220 passing:
+the existing custom-padding test asserted unchanged native margin alone. It now
+checks native margin plus residual paragraph offset, retaining the original
+total-inset contract. Initial host geometry checks had3 native-helper-dependent
+failures; the complete affected DOCX suite subsequently passes in Linux. Focused
+read-only review found a missing final-Area exclusion; its regression failed
+before the guard and passes afterward. Final review found no further issues.
+No Service/full-product suite run or integration acceptance is claimed.
+
+LibreOffice preview remains2/7pages with all30 unique cargo markers present.
+Cargo header height falls from176.2pt to109.4pt; original FlowDoc PDF header is
+108.964pt, leaving about0.436pt height difference in this preview. Body row height
+remains107.1pt and line height/rule XML is unchanged. All9 preview pages were
+reviewed. This does not assert identical table start positions or native Word
+pagination. After removing only allowed cell-margin/paragraph-before-after XML
+differences, document content/geometry matches R3. Decoded embedded font bytes
+match; other package differences are timestamps and font obfuscation key.
+
+Signing note XML and relationships remain byte-identical, with the same single
+reference and two Sections; last-page bottom preview text positions match R3.
+The existing LibreOffice table-note limitation still displays only Date rather
+than the complete signing block. It remains RISK, not a new PASS: Word conversion
+must verify the full final-page signing Area together with header spacing and
+pagination. No change to line height, PDF renderer/baselines, source model,
+business data, Service, release/version, or main integration. Stop at these two
+DOCX files and retain the Word proof gap.
