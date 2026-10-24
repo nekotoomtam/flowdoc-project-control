@@ -16843,3 +16843,59 @@ differences before export rather than silently replacing behavior. Fixed-format
 budgets in the SB1 trial are a concrete example of that distinction. These are
 future considerations, not a verified Editor contract, new release prerequisite
 or authorization for frontend/runtime changes. No new Work or plan is opened.
+
+### 2026-10-25 — SB1 long-name / 30-row exploration
+
+Owner authorizes four bounded artifact cases in the same Core worktree, retaining
+all earlier files and no integration: original control, long names,30cargo rows,
+and combined. No product/template-source repair is requested. Inline artifact
+generation/Evidence Reviewer; execution IDs not applicable. Core remains clean
+at `8bbd7d6`. Synthetic long owner has220 characters; consignor/consignee152/149.
+Long-only preserves original cargo values apart from names. Multi-row cases use
+unique ROW-001 through ROW-030 markers. Source business input is not truncated.
+
+Twelve fresh exports under1GiB use the frozen Sarabun/recovered Garuda and public
+ports: original fixed805/700pt PDF, disclosed auto-flow PDF, and native DOCX from
+that same auto-flow/footer-content template. The additional flow PDF separates
+format-budget effects from renderer differences; original fixed budgets are
+still unsupported for DOCX. No capability guard, source definition or product
+code changes. Evidence/output root:
+`FlowDoc-recovery/sb1-docx-2026-10-25/stress-r1/`.
+
+| Case | Original fixed PDF | Same-flow PDF | DOCX LibreOffice preview |
+| --- | --- | --- | --- |
+| Control | 2pages,1/1rows | 2pages,1/1 | 2pages,one row visible |
+| Long names | 2pages,1/1rows | 2pages,1/1 | 3pages,one row visible |
+| 30rows | 2pages,4/30rows | 7pages,30/30 | 8pages,30/30 |
+| Combined | 2pages,2/30rows | 16pages,30/30 | 18pages,30/30 |
+
+Both incomplete fixed PDFs succeed with FORMAT_CONTENT_OMITTED; pending item
+indices4 and2 respectively identify the first omitted input rows. They are
+incomplete demonstrations, not complete usable30-row exports. All input business
+values and row markers remain in DOCX XML; flow PDF and preview retain all30
+markers. Thai exact-string extraction from LibreOffice PDF is not reliable for
+the one-row cases, so their visible row is manually checked and extraction
+uncertainty is recorded rather than reported as missing data.
+
+Long names move all three declaration-body signature labels downward87.59pt
+(30.90mm) in each PDF mode versus its own control. In the LibreOffice DOCX
+preview the first two move87.55pt; the customs signature/date moves to page2
+while its preceding explanatory content stays on page1. Cargo then starts on
+page3. Footer Signature coordinates stay invariant within each mode across all
+cases/pages, but positions differ between fixed/flow/LibreOffice modes. Footer
+repeats on continuation pages, including the declaration-only continuation,
+following the retained Section footer rule; this is not a new conditional cargo
+footer feature. Many rows alone leave declaration signatures unchanged.
+
+All35 generated PDF pages and31 LibreOffice pages are inspected in11 overview
+sheets; detailed long-name continuation and cargo pages are also inspected.
+No gross page-edge overflow/table-footer overlap is observed at this review
+scale; pagination/association and fixed-frame omissions above remain material.
+Native Word conversions of the three new cases remain pending; preview counts
+are not Word counts. No whole-form/fixed-position or0.5.0 acceptance is claimed.
+`summary.json`, generation/result receipts, both coordinate analyses and
+`visual-review/index.json` retain results and limits. `SB1-stress-review.zip`
+contains the three cases' DOCX and both PDF variants plus summary. Original
+source/PDF/template/payload/DOCX/Word-PDF hashes still match. No source tests are
+rerun for unchanged product code. Stop at this artifact/review checkpoint; do
+not repair form rules or merge without the owner's next instruction.
