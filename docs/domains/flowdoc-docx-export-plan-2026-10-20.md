@@ -15277,3 +15277,40 @@ monotone text-based pairing retains all98baseline pages and labels native-only
 alignment, renders and `user-pdf-comparison.json` retain hashes and limitations.
 The earlier blocked checkpoint stays historical; this later observation is the
 current SRS comparison result. No merge, release or broad acceptance occurs.
+
+### Table-transition diagnostic A, 2026-10-24: native conversion blocked
+
+The owner approved starting the spacing experiment. Same Core worktree and
+candidate `772144e`; single-room artifact discovery, execution IDs N/A. No
+product code changes. The first isolated hypothesis charges the native emitted
+half-point terminal border against the last cell's bottom margin in141simple
+two-row, one-column text-only tables with a header. Diagnostic
+`spacing-e1/SRS-spacing-A.docx` changes only those margins75to65twips.
+All paragraph/line spacing, run properties, styles/TOC, row flags, images,
+sections and other ZIP parts remain unchanged. This is a probe, not an accepted
+rule: reducing a margin may improve following text while worsening frame
+height; both must be measured before promotion. Full source content is retained;
+the initial comparison requests only physical27-30 for control/probe.
+
+**No measured native result was obtained.** Word opens A without repair and
+Print Preview reports101pages. Default page-number-only field refresh is used,
+not full TOC reconstruction. Standard PDF export for27-30 immediately reports
+document preparation failure. The fallback Microsoft Print to PDF attempt for
+the same range then loses the Word process and produces no PDF. Windows
+Application event1000 at13:07:38+07 identifies WINWORD16.0.20430.20182,
+PID37184, fault module `mso40uiwin32client.dll`, exception `0xc0000005`.
+Event1001 at13:08:07 reports `OFFICE_MODULE_VERSION_MISMATCH`. This is concrete
+native-environment failure evidence for this attempt; it does not establish a
+single cause for all prior hangs or prove that the spacing hypothesis works.
+Word subsequently exposes a replacement process/blank Document1; the agent
+does not alter the Office installation or dismiss recovered user material.
+
+Probe SHA256 is
+`f17ed15724792e1e43000bb1f1eb032a7d3943a6f71ce2c274b49b74560a9312`.
+`spacing-e1/probe-manifest.json` and `spacing-e1/checkpoint.json` bind the input,
+bounded mutation, failed native attempts and event evidence. Original trial
+DOCX, user101page PDF, earlier107page PDF and original98page baseline retain
+their hashes. Native A/control comparison remains BLOCKED; no result percentage,
+new table rule, source line-height/TOC repair, product commit or merge is claimed.
+Next prerequisite is usable native conversion, followed by like-for-like
+control/probe exports and text/frame measurements.
