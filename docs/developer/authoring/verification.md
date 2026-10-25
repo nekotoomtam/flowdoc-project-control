@@ -31,6 +31,9 @@ FlowDocMake `0.2.8` ตรึง Service `0.4.9` / Core `0.4.7`,
 
 ## Core0.4.8 development and DOCX boundary
 
+Historical checkpoint2026-10-24: ตารางด้านล่างเก็บคู่รุ่น/ผลตรวจ ณ วันนั้น
+ไม่ใช่ candidate0.5.0 ของรอบปัจจุบัน.
+
 | ชุด | ตัวตน/สถานะ |
 | --- | --- |
 | Core development0.4.8 | implementation `8c2332d` บน `codex/template-binding`; build,126 suites/1125 tests และ27 packed-consumer groups ผ่านตามหลักฐานรอบ2026-10-24 |
