@@ -17140,3 +17140,48 @@ must verify the full final-page signing Area together with header spacing and
 pagination. No change to line height, PDF renderer/baselines, source model,
 business data, Service, release/version, or main integration. Stop at these two
 DOCX files and retain the Word proof gap.
+
+### 2026-10-25 — 0.5.0 release preparation scope
+
+Owner explicitly authorizes closing the remaining work through a release-ready
+candidate: integrate accepted Core features, verify Service and refresh manuals
+and FlowDocMake. Inline Product Implementation Agent / Evidence Reviewer /
+Documentation Synthesizer; execution IDs N/A. This is a new bounded scope using
+this ledger, not a reopened historical registered round. Work size large, risk
+routine; use current host model for inline preparation and existing tools.
+Core candidate starts2c211a5, development455d69b; Service startscbff610 with
+preserved pending I6 files. Project Control owns shared release status and plugin.
+
+Checklist/plan (normal existing TypeScript/Node/Linux packaging architecture):
+- [ ] Preserve source inputs, all pending Service bytes and baseline artifacts;
+  prepare Core0.5.0 in its existing isolated lane and a separate Service lane.
+- [ ] Build and pack Core with runtime/licenses; run complete Core coverage and
+  isolated Linux packed consumer. Update Core README/template guide for the exact
+  accepted behavior, final-Area storage and editable/regenerate limitations.
+- [ ] Pin that immutable archive in Service0.5.0 with checksum/source provenance,
+  include retained I6 fixture/tests, build and run complete combined Service suite
+  against an isolated database under1GiB. Repair scoped failures without changing
+  production databases, released migrations or original evidence.
+- [ ] Update Service README/usage and Project Control authoring/manual contracts;
+  align a new FlowDocMake package/profile and regenerated guide snapshot with
+  tested versions. Preserve released0.2.8/cache; no live draft publication.
+- [ ] Review final diff, artifact identity, package/tool/guide compatibility and
+  evidence coverage; integrate accepted development trees and report readiness.
+
+Acceptance: complete required suites/builds and packed consumers pass, Service
+uses exact reviewed Core bytes, plugin/snapshot checks pass, manuals describe
+actual defaults/setup/migrations/backup/recovery/limitations, no original evidence
+or unrelated pending work lost. Reuse prior bounded Word/PDF evidence within its
+valid scope; owner's latest SB1 usability acceptance is retained, with independent
+Word measurements not invented. Accepted/deferred upper-border issue stays open.
+PDF defaults and 1GiB policy remain. No layout retuning merely for release.
+Proof budget: one baseline/full run per changed product, up to3 scoped repair
+cycles per concrete failure then one complete acceptance rerun; one final package
+and documentation/plugin verification. Broader new product defects stop this
+scope with evidence rather than silently expanding it. Document budget: existing
+ledger, affected existing Core/Service manuals and current authoring/plugin files;
+no synthetic Work reports. Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/release-prep-050-2026-10-25`.
+Ruling: prepare local release-ready development candidates only; no release
+snapshot/tag/push, package/image publication, live installation or user DB changes
+until that exact candidate is ready and those delivery steps are in scope.

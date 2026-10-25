@@ -9,8 +9,8 @@ let profile=null,plugin=sourcePlugin;
 if(args.length){
  if(!options['--candidate-profile']||!options['--out']||!options['--core-archive'])throw Error('Candidate profile, output and reviewed Core archive required');
  profile=JSON.parse(readFileSync(resolve(options['--candidate-profile']),'utf8'));
- const reviewed=JSON.parse(readFileSync(join(repo,'tests/fixtures/flowdocmake-docx-i5-profile.json'),'utf8'));
- if(JSON.stringify(profile)!==JSON.stringify(reviewed))throw Error('Unknown candidate profile');
+ const reviewed=['flowdocmake-docx-i5-profile.json','flowdocmake-050-profile.json'].map(name=>JSON.parse(readFileSync(join(repo,'tests/fixtures',name),'utf8')));
+ if(!reviewed.some(p=>JSON.stringify(profile)===JSON.stringify(p)))throw Error('Unknown candidate profile');
  if(createHash('sha256').update(readFileSync(resolve(options['--core-archive']))).digest('hex')!==profile.supported.coreArtifactSha256)throw Error('Reviewed Core archive hash mismatch');
  plugin=resolve(options['--out']);
  // Resolve the existing parent so junctions cannot redirect output into source/cache.
@@ -42,7 +42,7 @@ function copy(path){
 }
 for(const root of roots)copy(root);
 const packageVersion=JSON.parse(readFileSync(join(plugin,'.codex-plugin/plugin.json'),'utf8')).version;
-writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.4.4',sourceCommit,files},null,2)+'\n');
+writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.5.0',sourceCommit,files},null,2)+'\n');
 if(profile){
  const inventory={};
  function walk(path=''){for(const entry of readdirSync(join(plugin,path),{withFileTypes:true})){const p=(path?path+'/':'')+entry.name;if(entry.isDirectory())walk(p);else inventory[p]=createHash('sha256').update(readFileSync(join(plugin,p))).digest('hex');}}

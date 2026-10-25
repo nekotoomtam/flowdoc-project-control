@@ -199,3 +199,31 @@ complete. Status and `save_preview_pdf` retain warnings, saved revision and
 fingerprint. Successful partial PDF is not a complete reconstruction. A visible
 reference/TOC to omitted content fails `LAYOUT_FAILED` with reason
 `omitted-destination`; do not erase links or retry on guessed pages.
+
+
+## 0.5.0 candidate: final Area and DOCX spacing
+
+Core0.5.0 เพิ่ม `props.verticalAlign:"bottom"` ให้ Area สุดท้ายที่เป็น root
+ของ body Section (model18/19); omitted/top ยังคง flow ปกติ ไม่ใช่ CSS position
+และไม่ใช่ footer ที่พิมพ์ซ้ำทุกหน้า. ห้ามใช้ใน cell/cover; fixed Format budgets,
+page breaks และ TOC ภายใน Area นี้ไม่รองรับ. แต่ละเอกสารย่อยที่มีหน้า/หัวท้าย
+ของตัวเองควรเป็น Section; Area คุมเนื้อหาภายใน Section ไม่เปลี่ยน page settings.
+
+PDF เก็บ Area ที่พอหนึ่งหน้าเป็นกลุ่มชิดขอบ body ล่างในหน้าสุดท้าย; ถ้าไม่พอ
+ย้ายไปหน้าถัดไป. ถ้ายาวเกินหน้าให้ไหลและชิดล่างเฉพาะ fragment สุดท้าย.
+DOCX เก็บครั้งเดียวใน native page-bottom note ที่ไม่มีเลขอ้างอิง/เส้นคั่น;
+แก้ไขได้ใน note area ของ Word ไม่ใช่ floating textbox. คำว่า bottom ไม่ได้
+รับประกันตำแหน่งเดียวกันทุก renderer. LibreOffice มีข้อจำกัดการแสดงตารางใน
+note ที่ทราบแล้ว; ศบ.1 แบบสั้น/30แถวได้รับการยอมรับการใช้งานจากเจ้าของ แต่
+ไม่ขยายผลเป็น arbitrary-content parity หรือผลวัด Word ที่ไม่ได้ทำ.
+
+ขอบเซลล์บน/ล่างที่ไม่เท่ากันในแถวข้อความ native ที่เข้าเกณฑ์ จะถูกแทนด้วย
+ค่าต่ำสุดร่วมของแถวและระยะก่อน/หลังย่อหน้าแต่ละเซลล์ รวม inset เดิมเท่าเดิม.
+line height, ฟอนต์และขอบซ้าย/ขวาไม่เปลี่ยน; ตาราง Area ลงนาม, merged,
+fixed/source-guided/image/empty rows ใช้เส้นทางเดิม. Receipt
+`table-space-policy.verticalOffsetPolicy` บอกการปรับ ห้ามลด line height
+เพื่อชดเชย padding โดยยังไม่ตรวจฟอนต์/ข้อความไทยจริง.
+
+DOCX และ PDF ใช้ข้อมูล semantic ชุดเดียวกัน แต่เป็นคนละ renderer. เมื่อใช้
+source-layout editable word boxes การแก้ข้อความ/ฟอนต์ใน Word อาจต้องสร้าง
+จาก FlowDoc ใหม่เพื่อคืน fidelity. การสร้างไฟล์สำเร็จไม่ใช่ผลทาบ PDF.

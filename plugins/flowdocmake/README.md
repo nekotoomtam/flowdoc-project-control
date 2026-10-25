@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.2.8** targets **Service0.4.9 / Core0.4.7 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
+Package **0.3.0** targets **Service0.5.0 / Core0.5.0 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
@@ -20,8 +20,8 @@ unknown capabilities fail preflight. Fixed caps the current page remainder,
 reserving that effective height; only zero space skips the whole frame.
 Diagnostic envelopes remain version1. See the existing layout chapter as needed.
 
-Delivery: Core source `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`, artifact SHA-256
-`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`. Service0.4.9 and this plugin pin that exact
+Delivery: Core source `b5218a81a5bd81d8c1885bdb893044bc8fad0793`, artifact SHA-256
+`2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1`. Service0.5.0 and this plugin pin that exact
 artifact. Earlier candidate archives/packages remain immutable. Context returns
 `groupLabelSpans` v1.
 Definitions using groupLabel require its exact model/schema/suffix contract;
@@ -50,7 +50,7 @@ continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
-Requires Node, a matching Service 0.4.9 checkout with built `dist` and dependencies,
+Requires Node, a matching Service 0.5.0 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
 `pdftoppm`, and Python with pypdf/Pillow. This package is for that local
 deployment, not a remote or public plugin distribution.
@@ -115,7 +115,7 @@ name image source objects in the original JSON. Both payload and images are read
 incrementally. Exact old/new task capability and package identities are required
 before upload. Existing authoring/preview calls keep their original contracts.
 
-The FlowDocMake 0.2.8 client opts into `queue-v1` when the authenticated Service
+The FlowDocMake 0.3.0 client opts into `queue-v1` when the authenticated Service
 advertises that capability. It uploads the whole body while reading early feedback;
 Services without that capability retain the existing task path, subject to the
 same exact package/runtime preflight. Documentation-only edits do not reissue

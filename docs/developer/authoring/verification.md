@@ -7,7 +7,19 @@ Owner: Project Control; documentation synthesis ตามคำขอผู้�
 recordแผนเดิม. ไม่เปลี่ยนCore/Service/runtime/ข้อมูลผู้ใช้; ไม่มีpublish.
 Execution IDsไม่เกี่ยวข้องกับงานinlineนี้. ไม่ปรับDOCUMENT_MAPหรืออ้างglobal readiness.
 
-## รุ่นอ้างอิงปัจจุบันสำหรับ FlowDocMake 0.2.8
+## 0.5.0 release preparation — 2026-10-25
+
+ชุดเตรียมใหม่คือ Service0.5.0 / Core0.5.0 และ FlowDocMake รุ่นใหม่ที่ตรึง
+archive/checksum ของชุดนี้โดยตรง. ต้องผ่าน combined Service suite, packed
+consumer และ plugin/guide preflight ก่อนเรียกพร้อม release. Package version
+ไม่ใช่ tag, การติดตั้ง หรือการเปลี่ยน Service ที่รันอยู่. สถานะและ source/hash
+สุดท้ายอยู่ใน `flowdoc-docx-export-plan-2026-10-20.md` หัวข้อ0.5.0 preparation.
+ไม่ใช้ snapshot คู่มือเก่ามาอ้างว่ารองรับ border none/final Area ใหม่.
+
+เก็บการยอมรับ ศบ.1 จากเจ้าของและข้อจำกัดเส้นบนของ Word-PDF ไว้ตามจริง;
+ไม่เปิดปรับจูนซ้ำหรือสร้างเปอร์เซ็นต์ fidelity รวมจากตัวอย่างเฉพาะจุด.
+
+## ชุดอ้างอิงก่อนหน้า: FlowDocMake 0.2.8
 
 FlowDocMake `0.2.8` ตรึง Service `0.4.9` / Core `0.4.7`,
 `nodeModelVersions:[18,19]`, `schemaVersions:[1,2]` และ definition.version1.
