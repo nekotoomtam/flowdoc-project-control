@@ -17323,3 +17323,47 @@ remote state, missing mandatory proof, identity mismatch or rejected push.
 Proof budget: these identity/ref/ancestry checks, current Project Control data and
 diff checks; no unchanged product-suite reruns. Document budget: this ledger.
 Evidence root: `release-prep-050-2026-10-25/git-release/` beside prior proof.
+
+### 2026-10-25 — 0.5.0 Git release delivered
+
+PASS. Owner-authorized Git snapshot/tag delivery is complete on GitHub:
+
+| Component | Development source | Release snapshot | Annotated tag |
+| --- | --- | --- | --- |
+| Core0.5.0 | `b5218a81a5bd81d8c1885bdb893044bc8fad0793` | `38a8f68673b77b4193bb8ca81edfb5bcc256c739` | `v0.5.0` |
+| Service0.5.0 | `5b4ac341c44df5e5664d0cdb87f1cfc9a54f36ec` | `a6c71e5b20fbe5728f96c69d3ee43cf5cc414d83` | `v0.5.0` |
+| FlowDocMake0.3.0 | Project Control `2c26f091888a4c8365f5a8d7fb241bddb2c55056` | `a3b76f721e91653d5977b2c973d3f9f18f626e77` | `flowdocmake-v0.3.0` |
+
+Actual GitHub default branches were verified before promotion:
+Core `codex/template-binding`, Service `codex/template-registry`, Project Control
+`main`. Ref refresh and target-tag absence checks passed. Each snapshot tree
+exactly equals its frozen development candidate; each has only the preceding
+release snapshot as parent. Every commit in each release ancestry has an
+annotated component-version tag, with old and new tag targets confirmed on
+GitHub. A focused read-only pre-push review reports no concrete issue.
+
+Each repository's development/release branches and new annotated tag were
+pushed atomically, without force or moved prior tags. Fresh remote readback
+matches the expected branch tips, annotated tag objects and peeled snapshot
+targets for all three components. Git bundles preserve all pre-delivery refs.
+Evidence: `git-release/before.json`, `prepared.json`, `remote-verified.json`,
+the three push logs, tag messages and verified before bundles.
+
+Accepted runtime/package/input identities are unchanged, so the prior complete
+Core/Service and consumer proofs are reused, not represented as newly rerun
+tests. Core archive SHA256 remains
+`2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1`;
+standalone FlowDocMake ZIP SHA256 remains
+`eab1c72a10899792a2847dec4de38068b4e494d7430abddbace91055e35a0238`.
+Preparation wording in immutable candidate/package snapshots records the
+pre-publication verification checkpoint; this delivery receipt records the
+subsequent Git release. Neither is a claim of installation or universal Word
+fidelity. Optional checks and accepted Word-PDF/LibreOffice limitations remain
+exactly as disclosed in the readiness record and tag annotations.
+
+No actual installation, plugin-cache/configuration switch, service/container
+restart, database mutation, image/package registry upload or GitHub Release-page
+asset publication occurred in this Git delivery. Primary development checkouts
+remain selected; no worktree, stash, baseline or pending backup was removed.
+This post-delivery status receipt is committed/pushed on Project Control main;
+the immutable component release snapshot/tag is not moved to include it.
