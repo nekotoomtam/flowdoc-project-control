@@ -9,9 +9,12 @@ Execution IDsไม่เกี่ยวข้องกับงานinlineน�
 
 ## 0.5.0 release preparation — 2026-10-25
 
-ชุดเตรียมใหม่คือ Service0.5.0 / Core0.5.0 และ FlowDocMake รุ่นใหม่ที่ตรึง
-archive/checksum ของชุดนี้โดยตรง. ต้องผ่าน combined Service suite, packed
-consumer และ plugin/guide preflight ก่อนเรียกพร้อม release. Package version
+ชุดที่ตรวจคือ Service0.5.0 / Core0.5.0 และ FlowDocMake0.3.0 ที่ตรึง
+archive/checksum โดยตรง. Core1183/1183 และ packed consumer ผ่าน; Service
+combined581ผ่าน/0ล้ม/5optionalไม่รัน รวม mandatory I6ครบ18กรณี ภายใต้1GiB
+และ init. Plugin checks42ผ่าน/4optionalไม่รัน พร้อม live25-tool preflight และ
+production-image draft-to-PDF ผ่าน. Optional checksไม่รวมเป็นPASS; รายการ
+และเหตุผลอยู่ในบันทึกเดิม. ชุดนี้พร้อมขั้น release ตามขอบเขตที่ตกลง. Package version
 ไม่ใช่ tag, การติดตั้ง หรือการเปลี่ยน Service ที่รันอยู่. สถานะและ source/hash
 สุดท้ายอยู่ใน `flowdoc-docx-export-plan-2026-10-20.md` หัวข้อ0.5.0 preparation.
 ไม่ใช้ snapshot คู่มือเก่ามาอ้างว่ารองรับ border none/final Area ใหม่.
