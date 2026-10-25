@@ -17291,3 +17291,35 @@ accepted/disclosed; no arbitrary-document parity or native wordVerified flag is
 invented. Ready for the separate authorized release snapshot/tag/push stage.
 No release refs/tags, remote pushes, published packages/images, installed plugin,
 live user drafts or production data were changed. Stop at release readiness.
+
+### 2026-10-25 — Authorized 0.5.0 Git release delivery
+
+Owner explicitly authorizes release0.5.0, annotated tags and GitHub pushes,
+together with FlowDocMake0.3.0, retaining documented limitations and excluding
+installation. Inline Lane Reconciliation Reviewer / Evidence Reviewer; execution
+IDs N/A, routine risk, medium work size. Existing ledger is the work authority.
+Core/Service own their release refs; Project Control owns the FlowDocMake
+component snapshot and shared release record. This is Git release delivery;
+no registry/image publication, live plugin installation, service restart, user
+database change or draft mutation is included.
+
+Frozen products: Coreb5218a8/treec5ce62a4, Service5b4ac34/tree6860398b,
+Core archive SHA2562bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1.
+FlowDocMake0.3.0 package/runtime and30 guide hashes remain those verified in the
+preceding preparation. Its release tree uses the complete current Project Control
+candidate, as in prior component snapshots; only this Git delivery scope/receipt
+may be appended to shared status. Prior tests, final source review and explicit
+optional/Word limitations are reused only after confirming unchanged candidate
+content, package, dependencies and relevant configuration. No retuning/repacking.
+
+Checklist: verify actual GitHub defaults, refreshed remote tips and absent target
+tags; preserve Git bundles and before refs; audit every existing release ancestor
+for its annotated component tag; create one single-parent snapshot per component
+with the exact frozen candidate tree/source provenance; verify identity and all
+tag targets locally; atomically push each repository's development branch, release
+branch and new tag; read back GitHub refs including peeled targets; record exact
+results and limitations. No force push or moved existing tags. Stop on divergent
+remote state, missing mandatory proof, identity mismatch or rejected push.
+Proof budget: these identity/ref/ancestry checks, current Project Control data and
+diff checks; no unchanged product-suite reruns. Document budget: this ledger.
+Evidence root: `release-prep-050-2026-10-25/git-release/` beside prior proof.
