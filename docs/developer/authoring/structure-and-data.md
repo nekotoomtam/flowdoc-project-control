@@ -1,9 +1,9 @@
 # โครงสร้าง Template และตัวแปร
 
-Core development0.4.8 ไม่เปลี่ยนโมเดลหรือ pin ของชุด FlowDocMake ด้านล่าง; ดู
-[คู่รุ่นและขอบเขต DOCX](verification.md#core048-development-and-docx-boundary).
+ชุดเตรียม0.5.0 ใช้ Section19 Stage3 หรือ Area18 ตามโมเดลต้นทาง;
+ดู [คู่รุ่น/ขอบเขต DOCX](verification.md). การเปลี่ยนคู่มือไม่เปลี่ยนรุ่นติดตั้ง.
 
-Section19 Stage3 ใน FlowDocMake 0.2.8 / Service 0.4.9 / Core 0.4.7
+Section19 Stage3 ใน FlowDocMake 0.3.0 / Service 0.5.0 / Core 0.5.0
 (เริ่มใน candidate `0.4.2-dev.3`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
 `nameBase`; ไม่มี Section.key/formats. Request ส่ง `sections:[{id,data,header?,footer?}]`
 ครบทุก saved ID และพิมพ์ตาม definition order. เปลี่ยนชื่อ/ลำดับคง ID;
