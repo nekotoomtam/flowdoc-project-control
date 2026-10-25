@@ -1,6 +1,6 @@
 # Authoring API และ MCP tools
 
-Section19 Stage3 ในชุด FlowDocMake 0.2.8 เพิ่ม `create_draft_section` → `POST /authoring/drafts/:id/sections`
+Section19 Stage3 ในชุด FlowDocMake 0.3.0 เพิ่ม `create_draft_section` → `POST /authoring/drafts/:id/sections`
 รับ expectedRevision/pageLayoutId/idempotencyKey และ `import_draft_sections` →
 `POST /authoring/drafts/:id/sections/import` รับ sourceTemplateId/sourceRevision/
 sourceSectionIds/expectedRevision/beforeSectionId/idempotencyKey กับ globalFieldRenames
@@ -14,13 +14,13 @@ TOC ของ19ต้องมี props.scope kind section/document; preview ต
 19จาก candidate เก่าที่ไม่ระบุ scope ต้องกำหนดชัดเจน;18คงเดิม ไม่แปลงอัตโนมัติ.
 
 Authority Boundary: Project Control reference ของ local Area18 และ Section19 Stage3
-บน FlowDocMake 0.2.8 / Service 0.4.9 / Core 0.4.7 ตาม [baseline](README.md).
+บน FlowDocMake 0.3.0 / Service 0.5.0 / Core 0.5.0 ตาม [baseline](README.md).
 ไม่มีการอนุญาต publish จากเอกสารนี้; ตรวจ live get_authoring_contract ก่อนใช้งาน.
 
 ## DOCX development transport
 
 ส่วนนี้อธิบาย Service development DOCX candidate ไม่ใช่ความสามารถใหม่ของ
-FlowDocMake0.2.8 tools หรือคำยืนยันว่าชุดติดตั้งใช้ Core0.4.8.
+FlowDocMake0.3.0 tools หรือคำยืนยันว่าชุดติดตั้งถูกเปลี่ยนแล้ว.
 ใช้ template และข้อมูลธุรกิจเดิมผ่าน `POST /documents` โดยเลือก header
 `Output-Format: DOCX`; ใช้ได้กับโหมดปกติและ `Task-Mode: queue-v1` ของ candidate.
 ละ header หรือส่ง PDF จะคง PDF. อย่าส่ง outputFormat เพิ่มใน template/data
@@ -32,7 +32,7 @@ buffered:true. เก็บ receipt/hash กับไฟล์จริงแล
 32MiB เป็น output cap ไม่ใช่เพดาน RAM ทั้งงาน. ถ้าความสามารถไม่รองรับต้องรายงาน
 DOCX failure ไม่แทนด้วย PDF. ตรวจ fields/TOC และ native Word PDF แยกตาม
 [verification boundary](verification.md#core048-development-and-docx-boundary).
-Service ยัง pin Core0.4.7; อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
+Service candidate ตรึง Core0.5.0; อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
 และ vendor manifest ของ candidate ที่เรียกจริงก่อนใช้เส้นทางนี้.
 
 ## 1. วงจรชีวิต
@@ -169,7 +169,7 @@ Authoring MCPไม่มีpublish toolและpublicationEnabled:falseในc
 การเผยแพร่ต้องผู้ใช้ยืนยันแยกต่างหากผ่านเส้นทางที่ได้รับอนุญาต.
 อย่าส่งfinalว่ากำลังทำต่อเมื่อturnจบ; ใช้progressระหว่างทำและรายงานblockerจริง.
 
-## คลังฟอนต์ (FlowDocMake 0.2.8; เริ่มใน Service/Core 0.4.0)
+## คลังฟอนต์ (FlowDocMake 0.3.0; เริ่มใน Service/Core 0.4.0)
 
 `get_font_catalog({cursor?,limit?:1..100,familyId?})` → GET /authoring/fonts;
 คืน releases/nextCursor และ faces จริงพร้อมน้ำหนักสามค่า; retired ไม่เปิดเลือกเพิ่ม.
@@ -182,7 +182,7 @@ save สำเร็จแยกจาก fontReadiness ready/blocked/incomplete
 ขั้นเลือกฟอนต์อยู่ใน [TextStyle](layout.md#2-textstyle-และความสูงข้อความ).
 ผู้ดูแลใช้ Service CLI/API ด้วย credential แยก; FlowDocMake ไม่ได้เครื่องมือนำเข้า/ออกใช้.
 
-## ตัวช่วยความสูงฟอนต์ (FlowDocMake 0.2.8)
+## ตัวช่วยความสูงฟอนต์ (FlowDocMake 0.3.0)
 
 ใช้ pt จริงตามปกติ; เปลี่ยนฟอนต์ธรรมดาคง pt เดิม. ถ้าเจ้าของเลือกปรับความสูง ให้เรียก
 `propose_font_height_adjustment({templateId,expectedRevision,styleId,targetFont,idempotencyKey})`
@@ -198,7 +198,7 @@ Service เปลี่ยน font+pt พร้อมกัน คง lineHeight
 Catalog heightProfile บอกผล review เบื้องต้น; availability จริงต้องผ่าน propose/confirm อีกครั้ง.
 หลังยืนยันตรวจ readiness/preview ตามเดิม; ผลบันทึกไม่ใช่หลักฐาน PDF/ความเหมือนทางภาพ.
 
-## Format sizing v2 (FlowDocMake 0.2.8)
+## Format sizing v2 (FlowDocMake 0.3.0)
 
 Use `areaFormats[id].sizing`, never Area props or invocation data: omitted retains
 legacy auto; `{mode:"auto"}` opts in; `{mode:"fixed",height:{value:100,unit:"pt"}}`
@@ -213,7 +213,7 @@ auto can omit an image too tall for a fresh page, while legacy auto keeps its
 existing failure. No automatic text/image shrink.
 
 Require `formatSizing.version:2` and `diagnosticsVersion:1` in the live contract.
-Version1 uses the prior whole-frame gate and is incompatible with FlowDocMake 0.2.8.
+Version1 uses the prior whole-frame gate and is incompatible with FlowDocMake 0.3.0.
 Partial success carries `FORMAT_CONTENT_OMITTED`, `FORMAT_FRAME_NOT_SHOWN` or
 `FORMAT_IMAGE_NOT_SHOWN`, with Section/Area/Format and original entry index.
 These are rendering warnings, not removed input: request/draft arrays remain

@@ -76,7 +76,7 @@ deployment, not a remote or public plugin distribution.
 The context tool uses read-only Docker inspection to associate the loopback port
 with its running image ID and Service/Core package versions. HTTP font capability and the pinned Core artifact must match; Docker inspection
 supplies the runtime identity; remote runtime identity remains unsupported.
-Historical 0.3.0 packages remain unchanged. `snapshot.json.guideRelease:0.4.4`
+Historical 0.2.8 packages remain unchanged. `snapshot.json.guideRelease:0.5.0`
 is the independent documentation baseline, not the current Service/Core or plugin version.
 
 ## Verification and limits
