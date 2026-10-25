@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Project Control เป็นเจ้าของแนวทางถอดแบบนี้ สำหรับ candidate ตาม
+Project Control เป็นเจ้าของแนวทางถอดแบบนี้ สำหรับชุดปัจจุบันตาม
 [baseline](README.md). เป็นคำแนะนำการเลือกใช้ ไม่เพิ่ม schema หรือรับรองว่า
 ทุกกรณีผ่าน renderer. งานปรับคู่มือแบบ single-room ตามคำขอผู้ใช้;
 execution IDs ไม่เกี่ยวข้อง. ไม่เปลี่ยน runtime, draft หรือสิทธิ์ publish.
@@ -66,7 +66,7 @@ headerRowCount:0 เฉพาะเมื่อไม่มีหัวจริ
 ชื่อผู้ลงนาม และเลขหน้า ไม่เหมารวมว่าทุกหัวข้อต้องกลางหรือทุกข้อความต้องซ้าย.
 
 - `textAlign:center` จัดข้อความในพื้นที่ที่ block ได้รับ ไม่เลื่อน block ไปกลางหน้า.
-  ใช้ได้ใน cell หรือ band ตาม candidate ปัจจุบัน; root text-block ใน body
+  ใช้ได้ใน cell หรือ band ตามสัญญาปัจจุบัน; root text-block ใน body
   ไม่รับ property นี้. หากต้องจัดกลางใน body ให้พิจารณา table-cell ที่มีกรอบ
   พื้นที่ตามต้องการ พร้อมข้อจำกัดเส้นตารางในบท 3; ไม่ย้ายเนื้อหาไป header เพื่อเลี่ยงข้อจำกัด.
 - ไม่กำหนด textAlign จะใช้ left. ชื่อ style เช่น title/heading ไม่ได้ทำให้กลางเอง.

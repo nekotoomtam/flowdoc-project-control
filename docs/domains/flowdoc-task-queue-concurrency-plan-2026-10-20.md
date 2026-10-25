@@ -15,7 +15,9 @@ file. No closed execution context is reopened.
 Status: Stage 0 contract closed; Stages 1–4 verified on isolated candidates
 on 2026-10-20 under the owner's subsequent implementation and verification
 requests. Development integration and clean merged-lane cleanup were subsequently
-approved and completed; release and installation remain unapproved. Numeric
+approved and completed; the subsequent authorized Git release is recorded below.
+The subsequent authorized installation and native chat discovery are verified,
+as recorded below. Numeric
 resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
@@ -892,3 +894,108 @@ checks are separate future work; no 0.4.9 running-image identity is claimed.
 No Core/Service runtime source, actual local config, DB, installed plugin or Docker state was
 changed by this preparation. Execution/Phase/Checklist IDs remain N/A for this
 bounded inline preparation; no system map is promoted.
+
+## Git release result — 2026-10-20
+
+The owner subsequently authorized Git snapshots, annotated tags and GitHub pushes
+only. Service `release` / `v0.4.9` is snapshot
+`ca66f605b02a41d1bc3b05894fbc75f5224d4900`, from verified development source
+`32d78570b5c2dc8940efd3452bf5d4dffc55c081`; its only parent is release 0.4.8.
+FlowDocMake `release/flowdocmake` / `flowdocmake-v0.2.8` is snapshot
+`85f7ea7e0c116f73ab1bd41a3dd12ab9834c168f`, from frozen Project Control source
+`53677e28eac141e4bde440c0e11da96d4ad0a85e`; its only parent is component 0.2.7.
+Each snapshot's complete tree equals its frozen source tree. All 12 Service
+release ancestors and all 3 plugin component ancestors have their own annotated
+version tags, including remote peeled targets. Old tags were not moved.
+
+Default development branches, release branches and new tags were pushed atomically
+per repository and read back from GitHub. Development histories remain complete;
+this subsequent closeout changes only this record, not the frozen candidate.
+Core 0.4.7 source, artifact, local/remote branches and tags remain unchanged.
+The delivery hashes and passing readiness evidence above are reused without a
+repack or runtime change. Verified pre-release Git bundles and publication proof
+are retained at `C:/Users/nekot/Documents/Codex/2026-10-20/release-049-028/`.
+No GitHub Release page, package/image registry publication, installation, actual
+configuration, DB or Docker state change was performed. The existing 1.5-GB trial
+scope and separately authorized installation checks remain applicable.
+
+## Installation checkpoint — 2026-10-20
+
+The owner authorized installation with backup and queue/document/chat checks.
+The previous actual instance was Service/Core 0.4.3; its configured launcher
+still selected plugin 0.2.4 while the plugin manager listed 0.2.6. The installed
+set is now Service **0.4.9**, Core **0.4.7**, FlowDocMake **0.2.8**, on the original
+loopback endpoint `http://127.0.0.1:3018`. The running image ID is
+`sha256:9d76527509c0bed79350dc823e34d7e5fa1ab7ea4176e95277bb57af5a06b723`.
+The image was built from the frozen released source archive; installed plugin
+bytes match its frozen ZIP. Core archive identity remains unchanged from delivery.
+
+Before changing the actual instance, a quiescent custom DB dump, both storage
+volumes, configuration/credentials and old plugin copies were backed up with
+hashes in an access-restricted local folder. Restore into an isolated DB and
+file volume preserved all four drafts; migrations 022–024 and idempotent replay
+passed there before the actual upgrade. Actual migration/replay, image identity,
+1-GiB / 2-CPU / child-reaping-init settings, restart persistence and permission
+checks pass. Four original definitions, revisions and fingerprints, the font
+library/defaults and the zero published-template count remain unchanged.
+
+Nine real streamed requests using the installed image in the isolated restored
+DB produce UAT3/SRS6 PDFs, 798 pages, with two overlapping processing intervals.
+All nine tasks were admitted before the first finished; normal scheduling overlaps
+intake and processing, so this installation run does not claim all nine were
+normalized before the first completion. Durable task/usage/hash receipts match;
+success files and reservations reach zero after asynchronous cleanup. A separate
+processing disconnect stops safely, retains received originals to their original
+three-hour expiry and leaves no partial PDF. No native child or zombie remains.
+Temporary test containers, volumes and their network were removed; user data and
+the verified backup remain. The observed test-cgroup peak is about 545.8 MiB,
+not a general capacity or performance guarantee.
+
+Four unchanged actual drafts produce 115 pages. Those plus the nine queued PDFs
+total 13 PDFs / 913 pages, all rendered and compared with prior reviewed output:
+pixels, text, drawn image bytes/alpha/order, page sizes and link targets/geometry
+match, with no new rendering diagnostics. The image checker follows actual `Do`
+paint operations; unused resource-dictionary entries are not drawn images.
+Existing `IMAGE_LOW_RESOLUTION` warnings remain: four for SRS and ten for the
+UAT representative; both ศบ.1 variants have none. No source assets were enhanced.
+This proves regression parity, not new source-document fidelity.
+
+Fresh independent MCP startup reports `ready:true`, plugin0.2.8, Service0.4.9,
+Core0.4.7 and 25 tools. The active chat still exposes no FlowDoc tool, so native
+chat discovery is **not yet verified**. The owner previously chose to reopen Codex
+manually; no app-wide restart was performed. After reopening, call the native
+context/contract tools in this chat before marking this remaining item complete.
+Evidence, PDFs and the explicit pending item are retained at
+`C:/Users/nekot/Documents/Codex/2026-10-20/install-049-028/receipt.json`.
+No product source, release/tag or user-template publication was changed by this
+installation. Execution/Phase/Checklist IDs are N/A for this bounded inline work.
+
+## Native chat verification complete — 2026-10-20
+
+After the owner reopened the whole app, this chat exposed all 25 plugin tools.
+The first native context/contract calls found Service unreachable because Docker
+was stopped. Starting Docker and the existing original DB/API containers restored
+the endpoint; no further Codex shutdown, reinstall or draft mutation was needed.
+Native `mcp__flowdocmake__get_flowdocmake_context` now returns `ready:true`,
+package0.2.8, Service0.4.9, Core0.4.7 and the exact delivered Core SHA256/image ID.
+Native `get_authoring_contract` succeeds with queue-v1, maxOutstanding10 and
+maxProcessing2. The installation's final pending item is complete.
+Raw native tool evidence is retained in `native-chat-proof.json` alongside the
+installation receipt above; earlier failures and pending checkpoints remain
+historical observations. Prior queue/PDF checks are reused unchanged, not rerun.
+
+## คู่มือ FlowDocMake — พักการออกรุ่นตามคำสั่งเจ้าของ 2026-10-20
+
+ปรับคู่มือต้นทางและสำเนาเอกสารใน development ให้ตรงกับ FlowDocMake0.2.8 /
+Service0.4.9 / Core0.4.7 แล้ว โดยแยกคำแนะนำปัจจุบันจากประวัติรุ่นและผลตรวจเดิม.
+Commits: `1361221`, `5e598d3`, `501c944`, `50d2278`.
+ผลตรวจเอกสาร: รุ่นและลิงก์ที่เพิ่มสอดคล้อง, ประวัติผลตรวจยังอยู่,
+สำเนาและ checksum ครบ30ไฟล์ตรงต้นทาง, check:data และ diff whitespace ผ่าน.
+ไม่มีการแก้ runtime หรือรันทดสอบ PDF ใหม่ในงานคู่มือนี้.
+
+สำเนาคู่มือในแพ็กเกจ0.2.8ที่ติดตั้งยังเป็น snapshot เดิม ไม่ได้อัปเดตตาม development.
+ข้อเสนอออกรุ่นแก้คู่มืออย่างเดียว (เช่น0.2.9) **พักไว้**: เจ้าของสั่งให้ mark
+ใน Project Control เท่านั้น ยังไม่เตรียมออกรุ่น ไม่สร้าง release/tag ไม่ push
+และไม่ติดตั้งหรือรีสตาร์ตแอป. กลับมาทำเมื่อเจ้าของสั่งอัปเดตปลั๊กอินในรอบใหม่;
+Core/Service คงรุ่นเดิม. ผลตรวจการติดตั้ง0.2.8ที่ปิดแล้วด้านบนยังคงสถานะเดิม
+ไม่เปิดงานติดตั้งเก่ากลับมาเป็น pending.

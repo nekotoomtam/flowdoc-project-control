@@ -119,6 +119,20 @@ candidate ที่จะใช้ให้ตรงกัน. การเป�
 การอนุญาตแก้คู่มือก่อนหน้านี้ไม่ใช่อำนาจออกรุ่น; รอบออกรุ่นด้านล่างใช้คำสั่งใหม่
 ของเจ้าของที่ระบุให้ทำข้อ 2–3 และส่ง GitHub. การ deploy ยังคงเป็นคนละขอบเขต.
 
+## จุดเตรียมคู่มือ Core0.4.8 — 2026-10-24
+
+Core development0.4.8 รวม implementation `8c2332d` แล้ว; releaseปัจจุบันยังเป็น
+0.4.7. ก่อนตรึง candidate ให้ใช้ Core README/template guide และ
+[คู่รุ่น/ขอบเขต DOCX](../developer/authoring/verification.md#core048-development-and-docx-boundary)
+ที่แยก source-layout editing, Word field refresh, native PDF comparison และ
+ข้อจำกัดฟอนต์/งบออกจากการสร้างไฟล์สำเร็จ. ผล Core build/1125 tests/packed
+consumer อยู่ใน [บันทึก integration](flowdoc-docx-export-plan-2026-10-20.md#2026-10-24--core048-local-development-integration).
+รอบปรับคู่มือไม่รันผลิตภัณฑ์ใหม่หรือสร้าง snapshot/tag; แพ็กเกจจาก tree ที่มี
+คู่มือใหม่นี้ต้องบันทึก checksum/source ของตัวเอง ไม่ใช้ hash ของ artifact ก่อนแก้คู่มือ.
+Service0.4.9 ยัง pin Core0.4.7 และ I6 mandatory combined-suite gate ยังเปิด;
+ไม่ถือว่าการผ่าน Core หรือการแก้คู่มือเป็นการเปลี่ยน pin/รับงาน Service.
+FlowDocMake0.2.8 และ snapshot คู่มือที่ออกแล้วคงเดิม; ไม่มีการเขียนทับรุ่นเก่า.
+
 ## ประวัติหลังจัด release ข้อ 1 และข้อยกเว้นวันที่ 2026-10-16
 
 | Repo | Development/default branch | release และ tag v0.3.0 |

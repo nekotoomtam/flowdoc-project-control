@@ -7,10 +7,25 @@ description: Use when the user asks for flowdocmake, PDF source-data extraction 
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Package 0.2.8 routes draft-only tools;
+Owner: FlowDoc Project Control. Package 0.3.0 routes draft-only tools;
 it changes no Core/Service behavior or publication permission. Target versions:
-Service0.4.9 / Core0.4.7, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
+Service0.5.0 / Core0.5.0, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.
+
+## 0.5.0 authoring additions
+
+Use `table.props.borderStyle:"none"` for intentionally hidden table borders;
+omitted/single remains0.5pt black. Preserve explicit white borders unless the
+owner asks to migrate them. Group labels/rowSpan use native merged DOCX cells;
+`allowBreak` permits ordinary flow, not guaranteed splitting of merged groups.
+Only the final root Area of a body Section can choose `verticalAlign:"bottom"`.
+It appears once at the final body bottom, not as a repeated footer. DOCX stores
+it as an editable unnumbered page-bottom note; see layout/verification for
+known preview limits and the bounded SB1 owner acceptance.
+PDF previews/tasks remain the existing plugin route. Service `Output-Format:
+DOCX` is a separate output route; never feed DOCX into PDF-only task parsing or
+claim that native Word pagination was verified by a successful PDF preview.
+Source-layout Word edits can require regeneration for the same fidelity.
 
 ## Read only the current stage
 

@@ -1,6 +1,7 @@
 # Node และ Inline Reference
 
-Authority Boundary: Project Control reference ของ candidate Area18.
+Authority Boundary: Project Control reference ของ Area18 และ Section19 Stage3
+ตาม [baseline ปัจจุบัน](README.md); ข้อยกเว้นของแต่ละ model ระบุแยกด้านล่าง.
 อ่าน [โครงสร้าง](structure-and-data.md) และ [baseline](README.md) ประกอบ.
 ทุก node มี id/type Required; property ที่ไม่อยู่ในรายการไม่ใช่ช่อง CSS อิสระ.
 
@@ -84,10 +85,15 @@ reference.target ต้องตรงกับ anchor ที่มีจริ�
 | props.headerRowCount | integer 0 หรือ 1 | Required; ไม่เกินจำนวนแถว |
 | props.repeatHeaderRows | boolean | Required; ไม่เพิ่มแถวหัวเอง ต้องมี headerRowCount |
 | props.headerFillColor | hex RGB 6 ตัวไม่มี # | Optional; ไม่สั่งเติมสีหัวเมื่อไม่มีค่า |
-| props.borderColor | hex RGB 6 ตัวไม่มี # | Optional; renderer default black |
+| props.borderColor | hex RGB 6 ตัวไม่มี # | Optional; default black `000000` |
+| props.borderStyle | `single` / `none` | Optional default single; เส้น 0.5pt; none ซ่อนทั้งตารางโดยยังคง fills/padding/โครง |
 
 ความกว้างตารางคือผลรวม widths ไม่ใช่ 100% ของพื้นที่อัตโนมัติ.
 ไม่มี width/align บน table.props และไม่มี columnAutoFit.
+`borderStyle:"none"` ใช้แทนการวาดเส้นสีขาวเมื่อจงใจซ่อนเส้น; ไม่เปลี่ยน
+`borderColor:"FFFFFF"` เดิมอัตโนมัติ สีขาวยังเป็นเส้นที่วาดจริง.
+DOCX ส่ง rowSpan/group-label เป็นเซลล์รวมแนวตั้ง; การอนุญาตแบ่งแถวไม่ทำให้
+ทุก merged group แบ่งได้เหมือน PDF ต้องตรวจผล Word ตามเนื้อหาจริง.
 หัวคอลัมน์คือ cell/text-block จริง ไม่ใช่ชื่อ metadata ของ columns.
 หัวตารางซ้ำไม่ใช่หัว Section; ต้องตรวจทั้งสองอย่างเมื่อแถวข้ามหน้า.
 
@@ -151,7 +157,7 @@ Frame กว้างเกินพื้นที่ cell/band เป็น la
   วางก่อนหัวบทใน Format หรือเลือก new-page Format ใน request.
 - area: `{id,type:"area",props:{areaId}}`; ไม่มี width/height หรือ data ใน node.
 - table-of-contents: `{id,type:"table-of-contents",props:{textStyleId}}`;
-  candidate19ช่วง3เพิ่ม required `props.scope:{kind:"section"|"document"}`;
+  Section19 Stage3 ต้องมี `props.scope:{kind:"section"|"document"}`;
   kind section อ้าง Section เจ้าของ ไม่รับ Section ID ใน scope. Model18ใช้รูปเดิม.
   ไม่รับ items/pageNumbers/title/maxLevel. ชื่อ “สารบัญ” เป็น text-block แยก.
   ดู [สารบัญ](contents-and-repetition.md) เรื่องระดับและลิงก์.
