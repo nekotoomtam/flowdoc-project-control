@@ -85,10 +85,15 @@ reference.target ต้องตรงกับ anchor ที่มีจริ�
 | props.headerRowCount | integer 0 หรือ 1 | Required; ไม่เกินจำนวนแถว |
 | props.repeatHeaderRows | boolean | Required; ไม่เพิ่มแถวหัวเอง ต้องมี headerRowCount |
 | props.headerFillColor | hex RGB 6 ตัวไม่มี # | Optional; ไม่สั่งเติมสีหัวเมื่อไม่มีค่า |
-| props.borderColor | hex RGB 6 ตัวไม่มี # | Optional; renderer default black |
+| props.borderColor | hex RGB 6 ตัวไม่มี # | Optional; default black `000000` |
+| props.borderStyle | `single` / `none` | Optional default single; เส้น 0.5pt; none ซ่อนทั้งตารางโดยยังคง fills/padding/โครง |
 
 ความกว้างตารางคือผลรวม widths ไม่ใช่ 100% ของพื้นที่อัตโนมัติ.
 ไม่มี width/align บน table.props และไม่มี columnAutoFit.
+`borderStyle:"none"` ใช้แทนการวาดเส้นสีขาวเมื่อจงใจซ่อนเส้น; ไม่เปลี่ยน
+`borderColor:"FFFFFF"` เดิมอัตโนมัติ สีขาวยังเป็นเส้นที่วาดจริง.
+DOCX ส่ง rowSpan/group-label เป็นเซลล์รวมแนวตั้ง; การอนุญาตแบ่งแถวไม่ทำให้
+ทุก merged group แบ่งได้เหมือน PDF ต้องตรวจผล Word ตามเนื้อหาจริง.
 หัวคอลัมน์คือ cell/text-block จริง ไม่ใช่ชื่อ metadata ของ columns.
 หัวตารางซ้ำไม่ใช่หัว Section; ต้องตรวจทั้งสองอย่างเมื่อแถวข้ามหน้า.
 

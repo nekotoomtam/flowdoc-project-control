@@ -17153,19 +17153,19 @@ Core candidate starts2c211a5, development455d69b; Service startscbff610 with
 preserved pending I6 files. Project Control owns shared release status and plugin.
 
 Checklist/plan (normal existing TypeScript/Node/Linux packaging architecture):
-- [ ] Preserve source inputs, all pending Service bytes and baseline artifacts;
+- [x] Preserve source inputs, all pending Service bytes and baseline artifacts;
   prepare Core0.5.0 in its existing isolated lane and a separate Service lane.
-- [ ] Build and pack Core with runtime/licenses; run complete Core coverage and
+- [x] Build and pack Core with runtime/licenses; run complete Core coverage and
   isolated Linux packed consumer. Update Core README/template guide for the exact
   accepted behavior, final-Area storage and editable/regenerate limitations.
-- [ ] Pin that immutable archive in Service0.5.0 with checksum/source provenance,
+- [x] Pin that immutable archive in Service0.5.0 with checksum/source provenance,
   include retained I6 fixture/tests, build and run complete combined Service suite
   against an isolated database under1GiB. Repair scoped failures without changing
   production databases, released migrations or original evidence.
-- [ ] Update Service README/usage and Project Control authoring/manual contracts;
+- [x] Update Service README/usage and Project Control authoring/manual contracts;
   align a new FlowDocMake package/profile and regenerated guide snapshot with
   tested versions. Preserve released0.2.8/cache; no live draft publication.
-- [ ] Review final diff, artifact identity, package/tool/guide compatibility and
+- [x] Review final diff, artifact identity, package/tool/guide compatibility and
   evidence coverage; integrate accepted development trees and report readiness.
 
 Acceptance: complete required suites/builds and packed consumers pass, Service
@@ -17185,3 +17185,109 @@ no synthetic Work reports. Evidence root:
 Ruling: prepare local release-ready development candidates only; no release
 snapshot/tag/push, package/image publication, live installation or user DB changes
 until that exact candidate is ready and those delivery steps are in scope.
+
+Preparation rulings/evidence, before final Service acceptance:
+
+- Core0.5.0 source `b5218a81a5bd81d8c1885bdb893044bc8fad0793` passes
+  1183 tests/120 files, build/native checks and the isolated packed consumer.
+  The first build exposed a shared-/tmp cleanup assertion racing other workers;
+  its own temp root now isolates the leak check, without changing rendering.
+  A second complete packed-consumer run passes under1GiB with network disabled.
+  Development `codex/template-binding` is fast-forwarded to that identical tree;
+  primary checkout selects development. Release branch/tag remain unchanged.
+- The immutable Core archive SHA256 is
+  `2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1`.
+  Service0.5.0 candidate pins it through manifest and npm-generated lock integrity.
+  Original pending Service bytes are retained in `service-before/` with hashes;
+  all53 previously inventoried PDF/DOCX artifacts still match their hashes.
+- Docker initially could not initialize its secrets-engine socket. The inspected
+  directory contained only a zero-byte stale socket. That directory was retained
+  under `docker-secrets-engine.flowdoc-050-retained-20261025` and the engine started
+  successfully; no factory reset, image/volume deletion or user DB change.
+  Exhausted automatic network pools were handled with a nonoverlapping explicit
+  test subnet, not by deleting existing networks.
+- Service's first run was invalidated by an acceptance API sharing its database
+  coordinator lock and a missing historical client mount. The API now uses its
+  own database, and the exact0.2.7 client is retained from its annotated source tag.
+  The second full run has579 pass/2 fail/5 optional skips. Its two failures are:
+  a container lacking the Compose-required init reaper, and a test still expecting
+  the mixed-language relation rejected by the old Core. The updated test retains
+  that exact input and asserts real DOCX, text, MIME, stored format and null page
+  count; both affected files now pass12/12 with init and1GiB. No Service product
+  runtime repair or relaxed deadline/limit is involved. Complete r3 is pending.
+- FlowDocMake0.3.0 has the same exact0.5.0 runtime pin, refreshed30-file canonical
+  guide snapshot and retained old0.2.8 installation. All46 plugin checks report
+  42 pass/4 environment-specific optional skips, no failures; live candidate and
+  negative compatibility checks pass7/7. The final standalone0.3.0 bundle returns
+  ready:true with25 tools against the actual inspected0.5.0 runtime. Production
+  image authoring also creates/saves/validates/previews/downloads one isolated
+  revision through native MCP; its one-page PDF is hash-checked and visually
+  reviewed, with no warnings. No publication or live user draft is touched.
+- Focused review found outdated manual hashes/version pairs and a DOCX exclusion;
+  those are corrected in Service manuals and canonical authoring guides before
+  snapshot regeneration. Recheck finds no further concrete source/package/doc
+  issue. Source Markdown links resolve in the normal sibling checkout layout.
+  Historical evidence and accepted upper-border/Word-preview limitations remain.
+
+### 2026-10-25 — 0.5.0 preparation completed
+
+PASS for the agreed release-ready development scope, with disclosed retained
+limitations. Core `codex/template-binding` is clean at
+`b5218a81a5bd81d8c1885bdb893044bc8fad0793`; Service
+`codex/template-registry` is clean at
+`5b4ac341c44df5e5664d0cdb87f1cfc9a54f36ec`. Each primary development tree equals
+its reviewed isolated candidate tree. Original pending Service files were
+hash-verified again, then preserved in a named Git stash and raw backup before
+the unchanged fast-forward; their fixture/test content is included in the new
+candidate, while current manuals supersede their older version/status wording.
+The stash locator is retained in `service-before/preserved-stash.txt`; it was not
+popped over the accepted0.5.0 manuals. No dirty or unmerged work was deleted.
+
+The complete Service r3 run succeeds:581 pass,0 fail,5 optional not run across
+the complete selected suite, including all18 mandatory I6 paired API cases.
+Environment is Linux,1GiB memory/swap limit,2CPUs,init reaper, dedicated database,
+reviewed Bai Jamjuree four-face fixtures and retained historical0.2.7 client.
+`service-proof-r3/combined-suite.json`, `i6/service-pairs.json` and Docker identity
+bind the result; this closes the former mandatory combined-suite blocker.
+Earlier NOT ACCEPTED decisions remain historical and are not rewritten.
+Current five optional exercises need supplied font/admin delivery fixtures:
+three delivery binding guard cases, one nonidentity Pridi proposal and one
+supplied seven-family intake case. They remain NOT RUN, not PASS; no new claim
+about those external font/admin deployments is made. `optional-checks.json`
+enumerates them. The changed DOCX, default PDF, queue and normalization paths
+are covered by the successful complete run and mandatory I6 cases.
+
+Final source/doc review reports no outstanding concrete issue. Only completion
+wording in Service manuals changed after r3; package/runtime/tests/dependencies
+are unchanged, and the README artifact/version/migration guard passes on the
+final bytes. Existing complete proof is reused for that unchanged behavior,
+not rerun for prose alone. Canonical guides label historical pins, distinguish
+user SB1 usability acceptance from independent Word measurements, and describe
+the supported final-Area/native-note and regeneration behavior explicitly.
+
+Final FlowDocMake0.3.0 has30 hash-verified guide files from canonical source
+`1eb51fff977f917073bc5d1fefd69e669ee8c2cb`, guideRelease0.5.0, exact reviewed
+Service/Core0.5.0 and Core archive checksum above. Its runtime scripts are
+byte-identical to those exercised by r3; final guide/package preflight returns
+ready:true with25 tools against the production image. Plugin tests42 pass,
+0 fail,4 optional environment-specific exercises not run; the7 live compatibility
+and negative cases pass. No optional count is added as passing coverage.
+The separate production-image native MCP path creates/saves/validates/previews
+one draft revision and downloads a warning-free, visually inspected one-page PDF.
+All draft mutations occurred in the disposable acceptance database.
+
+Durable delivery/evidence root is `release-prep-050-2026-10-25` above:
+`release-ready.json` binds commits, trees, checksums, coverage and limitations;
+`flowdocmake-0.3.0.zip` contains only the final package, not local credentials;
+`core-artifact.json` identifies the Core archive; production preview/test logs,
+raw backups, failed attempts and preserved inputs remain available. All53 older
+inventoried artifacts and both latest accepted SB1 DOCX hashes still match.
+Runtime resources of this round are stopped without deleting their evidence.
+
+Scope checklist completed: preserved inputs; integrated/tested Core; pinned and
+combined-tested Service; updated manuals/plugin; reviewed and bound final trees.
+Known Word-PDF upper-border and LibreOffice table-note limitations remain
+accepted/disclosed; no arbitrary-document parity or native wordVerified flag is
+invented. Ready for the separate authorized release snapshot/tag/push stage.
+No release refs/tags, remote pushes, published packages/images, installed plugin,
+live user drafts or production data were changed. Stop at release readiness.

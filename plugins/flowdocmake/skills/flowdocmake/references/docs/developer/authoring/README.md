@@ -4,13 +4,13 @@
 
 เจ้าของเอกสาร: FlowDoc Project Control; บทบาท Documentation Synthesizer.
 ขอบเขต: เอกสารอ้างอิงสำหรับผู้เขียน Template และผู้เรียก authoring API ของ
-FlowDocMake 0.2.8 กับ Service 0.4.9 / Core 0.4.7 ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
+FlowDocMake 0.3.0 กับ Service 0.5.0 / Core 0.5.0 (candidate) ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ storage/transport.
 งานนี้เป็น single-room ตามคำขอผู้ใช้; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
 ไม่เปลี่ยน runtime, template ของผู้ใช้, ข้อมูลต้นทาง หรือ publish.
 
 Baseline ปัจจุบัน: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
-FlowDocMake `0.2.8`, Service `0.4.9` และ `@flowdoc/core@0.4.7`;
+FlowDocMake `0.3.0`, Service `0.5.0` และ `@flowdoc/core@0.5.0`;
 ต้องผ่าน preflight ของ package/runtime จริง. ตัวอย่าง Area18 เดิมยังเป็น model18
 ไม่ใช่ตัวอย่าง Section19. อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md)
 โดยแยกผลตรวจในอดีตออกจากรุ่นปัจจุบัน.
@@ -19,6 +19,15 @@ Section19 Stage3 รองรับคู่กับ18ในชุดปัจ�
 อ่านข้อยกเว้นสั้นที่ต้น [โครงสร้าง/ข้อมูล](structure-and-data.md) และ
 [API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:3`, `scopedToc:true`.
 TOC ของ19ต้องระบุ scope;18คงเดิม. การแก้คู่มือไม่เปลี่ยนรุ่นที่ติดตั้ง.
+
+## คู่รุ่น candidate กับชุดที่ติดตั้งอยู่
+
+ชุด0.5.0 รวม DOCX/fidelity, เซลล์รวม, `borderStyle:none`, Area สุดท้ายชิดท้าย
+และการปรับขอบเซลล์โดยไม่เปลี่ยน line height. รุ่นติดตั้งเดิมไม่เปลี่ยนตามคู่มือนี้.
+ตรวจ archive/hash/source และ live contract ก่อนใช้. PDF/DOCX ใช้ source เดียวกัน;
+ผล source-layout ใน Word ที่แก้ข้อความ/ฟอนต์อาจต้องสร้างใหม่เพื่อคืน fidelity.
+ดู [หลักฐานและข้อจำกัด](verification.md) และ [API DOCX](api.md#docx-development-transport).
+Core API อยู่ใน [template guide](../../../../flowdoc-core/docs/template-guide.md).
 
 ## อ่านจากตรงไหน
 

@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญญาการทำงานและคำอธิบายสำหรับ
-ผู้สร้างโครง ใช้กับ FlowDocMake `0.2.8`, Service `0.4.9` / Core `0.4.7`
+ผู้สร้างโครง ใช้กับ FlowDocMake `0.3.0`, Service `0.5.0` / Core `0.5.0` candidate
 รองรับ `nodeModelVersion:18/19`, `schemaVersion:1/2` ตาม package preflight ที่ตรวจจริง.
 ตัวอย่าง Area18 เดิมยังคงรูปแบบ model18; Section19 ใช้สัญญาใน Developer Documentation.
 ไม่ใช่การอนุญาตให้ publish หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้กับชุด local ที่ตรงรุ่น
@@ -11,6 +11,11 @@ Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญ
 สถานะการย้ายรุ่นอยู่ใน [transition record](flowdoc-area-document-transition-2026-10-14.md)
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ draft/publication/API
 ตัวอย่างใช้ข้อมูลสมมติ ไม่มีข้อมูล SRS ส่วนตัว
+
+ชุดเตรียม0.5.0 รวม DOCX, เซลล์รวม, border none และ final Area alignment;
+FlowDocMake0.3.0 ตรึงชุดนี้โดยตรง แต่ไม่ได้เปลี่ยนรุ่นที่ติดตั้งจากการแก้คู่มือ. สำหรับ DOCX และข้อจำกัดการแก้ข้อความใน Word
+อ่าน [คู่รุ่นและหลักฐาน](../developer/authoring/verification.md#core048-development-and-docx-boundary);
+การสร้าง DOCX สำเร็จไม่ใช่การตรวจ PDF หรือ native Word ผ่าน.
 
 ## Developer Documentation ที่ต้องเปิดตามงาน
 
@@ -373,7 +378,7 @@ members[] อยู่ในกลุ่ม, name สมาชิกอ่าน
 ไม่ใช้คำว่า PASS แทนขั้นที่ยังไม่รัน การรับรอง publish แยกจากการจบงาน draft
 ไม่แก้ไฟล์โค้ด/validator เพื่อให้โครงที่ผิดของตนผ่าน
 
-## 9. ช่องทางสร้างโครงผ่าน tool (FlowDocMake 0.2.8)
+## 9. ช่องทางสร้างโครงผ่าน tool (FlowDocMake 0.3.0)
 
 แผนและหลักฐานอยู่ใน [Template authoring tools plan](flowdoc-template-authoring-tools-plan.md)
 วิธีตั้งค่าท้องถิ่นอยู่ใน README ของแพ็กเกจ FlowDocMake และ Service ที่ตรงรุ่น.
@@ -408,7 +413,7 @@ local MCP ปัจจุบันใช้ชื่อ server `flowdocmake`; ho
    ตรวจตามเกณฑ์บท 8 แก้ draft แล้ว preview ใหม่จนงานในขอบเขตครบ
    ส่งไฟล์และผลตรวจให้เจ้าของ โดยรอการยืนยันเฉพาะขั้น publish
 
-ตารางนี้เป็นเครื่องมือพื้นฐานของวงจร draft ไม่ใช่รายการครบทั้ง25เครื่องมือของ0.2.8;
+ตารางนี้เป็นเครื่องมือพื้นฐานของวงจร draft ไม่ใช่รายการครบทั้ง25เครื่องมือของ0.3.0;
 เครื่องมือ clone/Section/ฟอนต์และงานส่งออกอยู่ในบทอ้างอิงและ README ของแพ็กเกจ.
 
 | Tool | รับ | คืน / ผลข้างเคียง |
