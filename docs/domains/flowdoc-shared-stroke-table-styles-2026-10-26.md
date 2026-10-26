@@ -184,3 +184,44 @@ Core terminal candidate commit:
 `C:/Users/nekot/.codex/worktrees/shared-stroke-table-styles/flowdoc-core`.
 Project Control record remains isolated on
 `codex/shared-stroke-table-styles-pc`. No shared branch was pushed or merged.
+
+## Actual Word PDF review, 2026-10-26
+
+The owner supplied both converted PDFs in the preserved `word-conversion`
+directory. PDF Creator and Producer identify Microsoft Word for Microsoft 365;
+the exact build and export settings are not inferred. This review supersedes
+only the pending native Word comparison boundary above, preserving that earlier
+preview receipt and all candidate/source files. Active role: Evidence Reviewer;
+single-room read-only comparison, execution IDs not applicable.
+
+- Word and FlowDoc both have 1 page for 20 items and 3 pages for 60 items.
+  All row values and order match the unchanged request data exactly. The page
+  distribution is 20 and 20/24/16 in both renderers, without missing or duplicate
+  items. Headers, correct page numbers and whole-report footer totals appear on
+  every page. All four pages from each renderer were visually inspected.
+- The actual Word PDFs confirm the continuation-border difference: the 60-item
+  table has no dotted horizontal closing rule on pages 1 and 2, whereas FlowDoc
+  closes both fragments. Both renderers paint the final bottom edge, and the
+  double footer rule is visible on every page. Native Word behavior is now
+  observed directly; this is no longer merely a LibreOffice preview limitation.
+- Other differences remain: Word's dotted strokes use a 0.48pt width and
+  different dash density versus FlowDoc's nominal 0.5pt strokes. Word row text
+  starts 5.530pt lower on page 1 and 3.323pt lower on continuation pages; the last
+  row offsets are 5.606pt, 3.399pt and 3.373pt for the 60-item pages. These are
+  extracted text-box positions, not a claim about exact glyph ink or baseline.
+  Word's footer rules are filled 0.48pt bands, extending roughly 1.44pt farther
+  left and 1.59pt farther right than FlowDoc. No footer clipping or overlap seen.
+
+Ruling: PASS for scoped content, pagination, repeated headers and footer
+presence; remaining visual differences are explicitly retained, including the
+missing continuation closing rule. This does not establish universal PDF/DOCX
+fidelity or authorize integration. No product repair or additional test run was
+performed. Core candidate commit and all original PDF/DOCX inputs are unchanged.
+
+Comparison evidence under the same root: `word-review-20261026/comparison.json`
+contains input hashes, Word provenance, every-page row/value checks and vector
+stroke measurements; `page1-table-end-comparison.png` shows the fragment-end
+difference side by side. Actual Word PDF SHA-256 values:
+
+- 20 items: `fa1b34419cc1763b4986c298e72592314e83a75bc5befb530fd4eb40f235ca22`.
+- 60 items: `54ddbb3ad56390e1257ed7b01caf5bc2222155dca7cc035ba62a9dfb9fa29b62`.
