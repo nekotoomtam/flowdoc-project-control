@@ -44,16 +44,17 @@ test('candidate entry refuses redirected roots, nonloopback URLs and tampered lo
  const manifest=JSON.parse(await readFile(join(clone,'vendor/manifest.json')));await writeFile(join(clone,'vendor',manifest.file),'tampered');
  await writeFile(configPath,JSON.stringify({...base,url:'http://127.0.0.1:3018',serviceRoot:clone}));assert.throws(()=>validateCandidateConfig(configPath,candidate),/identity mismatch/);
  const pluginClone=join(root,'profile-clone');await cp(candidate,pluginClone,{recursive:true});
- const profilePath=join(pluginClone,'scripts/compatibility-profile.mjs');await writeFile(profilePath,(await readFile(profilePath,'utf8')).replace('2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1','0'.repeat(64)));
+ const selectedPin=(await import(pathToFileURL(join(candidate,'scripts/compatibility-profile.mjs')))).supported;
+ const profilePath=join(pluginClone,'scripts/compatibility-profile.mjs');await writeFile(profilePath,(await readFile(profilePath,'utf8')).replace(selectedPin.coreArtifactSha256,'0'.repeat(64)));
  const altered=await import(pathToFileURL(join(pluginClone,'scripts/candidate-entry.mjs')));await writeFile(configPath,JSON.stringify({...base,pluginRoot:pluginClone,url:'http://127.0.0.1:3018'}));assert.throws(()=>altered.validateCandidateConfig(configPath,pluginClone),/identity mismatch/);
 });
 test('real Docker preflight checks actual archive, loopback mapping and guides',async()=>{
- const url=process.env.FLOWDOCMAKE_TEST_URL,container=process.env.FLOWDOCMAKE_TEST_CONTAINER,python=process.env.FLOWDOCMAKE_TEST_PYTHON;
- assert.ok(url&&container&&python,'Actual isolated Docker endpoint and reader required');
- assert.match(container,/^flowdoc-prep050-api$/);
- const config={...base,url,container,python};
+ const url=process.env.FLOWDOCMAKE_TEST_URL,container=process.env.FLOWDOCMAKE_TEST_CONTAINER,python=process.env.FLOWDOCMAKE_TEST_PYTHON,credentialFile=process.env.FLOWDOCMAKE_TEST_CREDENTIAL_FILE;
+ assert.ok(url&&container&&python&&credentialFile,'Actual isolated Docker endpoint, reader and selected credential file required');
+ assert.match(container,/^flowdoc-prep052-api$/);
+ const config={...base,url,container,python,credentialFile};
  const call=cfg=>withClient(cfg,async client=>value(await client.callTool({name:'get_flowdocmake_context',arguments:{}})));
- const first=await call(config);assert.equal(first.ready,true,JSON.stringify(first));assert.equal(first.runtime.coreArtifactSha256,'2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1');assert.match(first.runtime.identitySource,/Docker/);
+ const first=await call(config);assert.equal(first.ready,true,JSON.stringify(first));assert.equal(first.runtime.coreArtifactSha256,(await import(pathToFileURL(join(candidate,'scripts/compatibility-profile.mjs')))).supported.coreArtifactSha256);assert.match(first.runtime.identitySource,/Docker/);
  assert.equal((await call({...config,container:'flowdoc-docx-i5c-does-not-exist'})).ready,false);
  const proxy=createServer(async(req,res)=>{const response=await fetch(new URL(req.url,url),{headers:{authorization:req.headers.authorization}});res.writeHead(response.status,{'content-type':'application/json'});res.end(await response.text());});await new Promise(r=>proxy.listen(0,'127.0.0.1',r));
  try{assert.equal((await call({...config,url:'http://127.0.0.1:'+proxy.address().port})).ready,false);}finally{proxy.closeAllConnections();await new Promise(r=>proxy.close(r));}

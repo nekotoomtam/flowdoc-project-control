@@ -7,6 +7,62 @@ Owner: Project Control; documentation synthesis ตามคำขอผู้�
 recordแผนเดิม. ไม่เปลี่ยนCore/Service/runtime/ข้อมูลผู้ใช้; ไม่มีpublish.
 Execution IDsไม่เกี่ยวข้องกับงานinlineนี้. ไม่ปรับDOCUMENT_MAPหรืออ้างglobal readiness.
 
+## 0.5.2 prerelease verification — 2026-10-27
+
+ชุดเตรียมใหม่: Core/Service0.5.2 และ FlowDocMake0.3.1 ยังไม่ tag/push/release/install
+Core source0401b87 และ archive SHA-256
+`647235de33308ecf99aa201c63ff1e663e15c17c3b9259bde0ecf5f6dc819318`
+ถูกตรึงตรงกันใน Service manifest/lock และ plugin profile
+ผล Linux packed-consumer ของ18/19/20 ผ่าน PDF/DOCX และตรวจ PDF ครบ4หน้า;
+20ยังเป็น direct-Core experimental ไม่ใช่ Service contract
+
+ผลก่อนแก้ storage: Service combined609ผ่าน/0ล้มเหลว/5optionalไม่รัน,
+I6บังคับ18/18ผ่าน; ผลนี้ไม่ใช้แทนผลหลังแก้ storage
+การทดสอบจริงพบ empty `areaFormats: {}` ถูกตัดออกตอนเก็บ ทำให้ fingerprint
+อ่านกลับไม่ตรง แก้เฉพาะการรักษา empty marker โดยไม่ลดการตรวจ ownership/hash
+ผล focusedหลังแก้22/22ผ่านรวม7กรณีใหม่ทั้งunitและDBจริง ส่วนผล combinedสุดท้าย
+และ bundleอ้างตาม [บันทึกงาน](../../domains/flowdoc-output-file-names-plan-2026-10-26.md)
+หลักฐานแยกรอบเก็บที่ `C:\Users\nekot\Documents\FlowDoc-recovery\release-prep-052-2026-10-27`
+ไม่เขียนทับรายงานรอบก่อน
+
+FlowDocMake mock/live checks46ผ่าน/0ล้มเหลว/4optional font-sessionไม่รัน
+มี preflightกับproduction imageที่แยกเองและ PDFจริง ไม่ใช่การติดตั้งบนระบบหลัก
+Service production normal/queued PDF/DOCX ผ่านบนโครงข้อความที่รองรับ
+พร้อมตรวจชื่อไทย ความครบ bytes และ checksum; DOCXยังเป็น `wordVerified:false`
+
+ข้อจำกัดที่คงไว้: legacy company/member row-group example ออกPDFได้ แต่ DOCX
+ถูกปฏิเสธด้วย `DOCX_REQUIRED_RELATION_UNSUPPORTED` เช่นเดียวกับ0.5.0
+ผลเทียบเก็บใน relation-050.json/relation-052.json ไม่ใช่ regressionใหม่
+ไม่มีการผ่อน renderer guard; การฟื้น snapshotเก่าที่เคยเสียต้องลงทะเบียน
+versionใหม่ที่แก้แล้ว ไม่เขียนทับ immutable history ไม่มีการรับรอง Wordใหม่รอบนี้
+
+## 0.5.2 documentation checkpoint — 2026-10-27
+
+Historical checkpoint before the prerelease package preparation above.
+
+คู่รุ่นพัฒนาที่รวมแล้วคือ Core0.5.2 / Service0.5.2 การเพิ่มเลข/ทำคู่มือไม่ใช่
+การออก release หรือติดตั้งใหม่ FlowDocMake0.3.0 ยังคง profile0.5.0 เดิม
+ตารางนี้แยกความสามารถที่มีหลักฐานออกจากขั้นตอนที่ยังไม่ทำ:
+
+| หัวข้อ | หลักฐาน/ขอบเขต |
+| --- | --- |
+| Core | integration-052:1086 affected tests ผ่าน; direct-Core20 ยังเป็นการทดลอง |
+| Service | integration-052:120 affected tests ผ่าน รวมชื่อไฟล์/queue/migration026/PDF/DOCX; รับ18/19 เท่านั้น |
+| คู่มือ/แพ็กอ้างอิงรอบ integration |15 checks ผ่าน; รอบทำคู่มือนี้ต้องตรวจ references ใหม่หลังแก้ canonical |
+| B table profile | ขอบเขต literal ASCII/ไม่รวมเซลล์/ไม่ลงสี/แถวข้อมูลหนึ่งบรรทัด; เส้นปิดระหว่างหน้า Word และ phase ยังมีข้อจำกัด |
+| ชื่อไฟล์ | defaultFileName ใน definition; fileName เฉพาะ multipart payload ของ documents; Output-Format เลือกนามสกุล |
+| Model20 ผ่าน Service/MCP | ยังไม่รับ; ไม่ใช้ผล direct-Core แทนการเชื่อม Service |
+| Native Word เปรียบเทียบรอบ0.5.2 | ไม่มีผลใหม่จากการทำคู่มือ; ผลเก่าใช้ได้เฉพาะขอบเขตเดิม |
+| Full Service/I6 ของ candidate0.5.2 | ยังไม่ใช้ affected120 cases ปิด complete-suite gate; ผล0.5.0 ด้านล่างเป็นประวัติ |
+| Plugin/release/install/restore0.5.2 | ยังต้องเตรียม compatibility รุ่นใหม่ ตรวจ package หลังคู่มือ และทำขั้นตอนที่ได้รับอนุญาตแยก |
+
+บันทึกหลัก: [output-name integration](../../domains/flowdoc-output-file-names-plan-2026-10-26.md)
+และ [Section assembly](../../domains/flowdoc-repeatable-section-assembly-plan-2026-10-26.md)
+หลักฐานอยู่ `FlowDoc-recovery/shared-stroke-table-styles-2026-10-26/integration-052`
+ผลเดิมไม่ได้รันใหม่ในงานเอกสารนี้ เก็บ archive/hash เดิมไว้; ก่อน release
+ต้องแพ็กจาก source หลังคู่มือแล้วตรวจ checksum/pin/consumer ใหม่ อย่าเปลี่ยน
+checksum ใน manifest เฉย ๆ โดยไม่สร้าง/ตรวจแพ็กเกจที่ตรงกัน
+
 ## 0.5.0 release preparation — 2026-10-25
 
 ชุดที่ตรวจคือ Service0.5.0 / Core0.5.0 และ FlowDocMake0.3.0 ที่ตรึง

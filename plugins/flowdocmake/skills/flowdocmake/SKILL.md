@@ -7,10 +7,20 @@ description: Use when the user asks for flowdocmake, PDF source-data extraction 
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Package 0.3.0 routes draft-only tools;
+Owner: FlowDoc Project Control. Prepared package0.3.1 routes draft-only tools;
 it changes no Core/Service behavior or publication permission. Target versions:
-Service0.5.0 / Core0.5.0, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
+Service0.5.2 / Core0.5.2, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.
+
+## 0.5.2 prepared compatibility
+
+This source package pins the exact reviewed0.5.2 archive; it does not change an
+installed0.3.0 cache. New shared stroke/B properties require this matched runtime;
+see the node reference for B's ASCII/unmerged/one-line body profile and known
+Word continuation borders. Output defaultFileName is template metadata; request
+fileName belongs to direct Service documents payload, not new MCP arguments.
+Local outputPath is still chosen by the client. Core20 remains experimental
+and must not be sent through these18/19 tools. DOCX is still a separate route.
 
 ## 0.5.0 authoring additions
 

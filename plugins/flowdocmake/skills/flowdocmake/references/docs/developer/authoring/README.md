@@ -4,12 +4,12 @@
 
 เจ้าของเอกสาร: FlowDoc Project Control; บทบาท Documentation Synthesizer.
 ขอบเขต: เอกสารอ้างอิงสำหรับผู้เขียน Template และผู้เรียก authoring API ของ
-FlowDocMake 0.3.0 กับ Service 0.5.0 / Core 0.5.0 (candidate) ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
+FlowDocMake0.3.0 กับ baseline Service0.5.0/Core0.5.0 ที่บันทึกไว้ ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ storage/transport.
 งานนี้เป็น single-room ตามคำขอผู้ใช้; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
 ไม่เปลี่ยน runtime, template ของผู้ใช้, ข้อมูลต้นทาง หรือ publish.
 
-Baseline ปัจจุบัน: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
+Baseline ชุดติดตั้งที่บันทึกไว้: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
 FlowDocMake `0.3.0`, Service `0.5.0` และ `@flowdoc/core@0.5.0`;
 ต้องผ่าน preflight ของ package/runtime จริง. ตัวอย่าง Area18 เดิมยังเป็น model18
 ไม่ใช่ตัวอย่าง Section19. อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md)
@@ -21,6 +21,21 @@ Section19 Stage3 รองรับคู่กับ18ในชุดปัจ�
 TOC ของ19ต้องระบุ scope;18คงเดิม. การแก้คู่มือไม่เปลี่ยนรุ่นที่ติดตั้ง.
 
 ## คู่รุ่น candidate กับชุดที่ติดตั้งอยู่
+
+ชุดพัฒนาใหม่: Service/Core0.5.2 เพิ่มชื่อไฟล์เริ่มต้น `defaultFileName` และ
+ชื่อแทนที่จาก API `fileName` ตาม [API](api.md#ชื่อไฟล์ใน-servicecore-development052)
+Core มี Model20 แบบทดลองสำหรับการเรียก Section ซ้ำผ่าน Core โดยตรง;
+Service0.5.2 ยังรับ18/19 จึงไม่ใช้ request20 กับ Service/MCP ปัจจุบัน
+ชุดเตรียม FlowDocMake0.3.1 ตรึง Service/Core0.5.2 พร้อม checksum ของ Core
+ใน compatibility profile โดยตรง ต้องใช้คู่รุ่นที่ preflight ยืนยันเท่านั้น
+ชุดติดตั้ง FlowDocMake0.3.0/profile0.5.0 ยังคงเดิม การรวมกิ่งพัฒนาไม่ใช่ release
+รายละเอียดผลตรวจชุดเตรียมอยู่ใน [verification](verification.md#052-prerelease-verification--2026-10-27)
+
+สไตล์เส้นร่วม/ขอบตารางแต่ละด้านและแบบ B ของ0.5.1 ยังคงอยู่ใน0.5.2 อ่าน
+[Node reference](nodes.md#รูปแบบเส้นในชุดพัฒนา052) สำหรับค่าที่รับและข้อจำกัด DOCX
+และ [สถานะก่อน release](verification.md#052-documentation-checkpoint--2026-10-27)
+ก่อนสรุปว่าคู่รุ่นใหม่พร้อมเผยแพร่ อย่าขยายความสามารถของ baseline0.5.0 ตาม
+คู่มือชุดพัฒนาโดยไม่ตรวจ target
 
 ชุด0.5.0 รวม DOCX/fidelity, เซลล์รวม, `borderStyle:none`, Area สุดท้ายชิดท้าย
 และการปรับขอบเซลล์โดยไม่เปลี่ยน line height. รุ่นติดตั้งเดิมไม่เปลี่ยนตามคู่มือนี้.

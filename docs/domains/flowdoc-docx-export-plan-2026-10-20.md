@@ -17323,3 +17323,162 @@ remote state, missing mandatory proof, identity mismatch or rejected push.
 Proof budget: these identity/ref/ancestry checks, current Project Control data and
 diff checks; no unchanged product-suite reruns. Document budget: this ledger.
 Evidence root: `release-prep-050-2026-10-25/git-release/` beside prior proof.
+
+### 2026-10-25 — 0.5.0 Git release delivered
+
+PASS. Owner-authorized Git snapshot/tag delivery is complete on GitHub:
+
+| Component | Development source | Release snapshot | Annotated tag |
+| --- | --- | --- | --- |
+| Core0.5.0 | `b5218a81a5bd81d8c1885bdb893044bc8fad0793` | `38a8f68673b77b4193bb8ca81edfb5bcc256c739` | `v0.5.0` |
+| Service0.5.0 | `5b4ac341c44df5e5664d0cdb87f1cfc9a54f36ec` | `a6c71e5b20fbe5728f96c69d3ee43cf5cc414d83` | `v0.5.0` |
+| FlowDocMake0.3.0 | Project Control `2c26f091888a4c8365f5a8d7fb241bddb2c55056` | `a3b76f721e91653d5977b2c973d3f9f18f626e77` | `flowdocmake-v0.3.0` |
+
+Actual GitHub default branches were verified before promotion:
+Core `codex/template-binding`, Service `codex/template-registry`, Project Control
+`main`. Ref refresh and target-tag absence checks passed. Each snapshot tree
+exactly equals its frozen development candidate; each has only the preceding
+release snapshot as parent. Every commit in each release ancestry has an
+annotated component-version tag, with old and new tag targets confirmed on
+GitHub. A focused read-only pre-push review reports no concrete issue.
+
+Each repository's development/release branches and new annotated tag were
+pushed atomically, without force or moved prior tags. Fresh remote readback
+matches the expected branch tips, annotated tag objects and peeled snapshot
+targets for all three components. Git bundles preserve all pre-delivery refs.
+Evidence: `git-release/before.json`, `prepared.json`, `remote-verified.json`,
+the three push logs, tag messages and verified before bundles.
+
+Accepted runtime/package/input identities are unchanged, so the prior complete
+Core/Service and consumer proofs are reused, not represented as newly rerun
+tests. Core archive SHA256 remains
+`2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1`;
+standalone FlowDocMake ZIP SHA256 remains
+`eab1c72a10899792a2847dec4de38068b4e494d7430abddbace91055e35a0238`.
+Preparation wording in immutable candidate/package snapshots records the
+pre-publication verification checkpoint; this delivery receipt records the
+subsequent Git release. Neither is a claim of installation or universal Word
+fidelity. Optional checks and accepted Word-PDF/LibreOffice limitations remain
+exactly as disclosed in the readiness record and tag annotations.
+
+No actual installation, plugin-cache/configuration switch, service/container
+restart, database mutation, image/package registry upload or GitHub Release-page
+asset publication occurred in this Git delivery. Primary development checkouts
+remain selected; no worktree, stash, baseline or pending backup was removed.
+This post-delivery status receipt is committed/pushed on Project Control main;
+the immutable component release snapshot/tag is not moved to include it.
+
+### 2026-10-25 — Authorized local 0.5.0 installation scope
+
+Owner authorizes installation of released Service/Core0.5.0 and FlowDocMake0.3.0,
+first preserving the installed set, then checking connectivity and short PDF/DOCX
+outputs. Inline Product Implementation Agent / Evidence Reviewer; execution IDs
+N/A. Existing ledger is authority; risk routine with concrete database/rollback
+controls, medium work size. Service owns local deployment/migrations; Project
+Control owns plugin configuration and shared status. Use the actual configured
+local installation at127.0.0.1:3018, not the previous disposable acceptance API.
+
+Checklist/plan:
+- [x] Inventory the stopped old API/DB, actual images, volumes, credentials/config,
+  installed plugin and host adapter. Preserve cold volume copies, old image,
+  config/plugin/host files and a logical DB dump; hash and restore-check backups
+  in a separate database before migration. Never print/share secret values.
+- [x] Verify released trees/archive/hash, build exact0.5.0 runtime, update host
+  dependencies/adapter, and apply only forward migrations after backup checks.
+  Reuse user data/volumes, credentials, loopback port,1GiB+init and2CPU API policy.
+- [x] Install0.3.0 using the configured local marketplace/CLI, retain0.2.8 and old
+  configuration, then select the installed new pluginRoot. Verify actual native
+  context/tool discovery, exact runtime/guide/artifact identity and health.
+- [x] Generate short PDF and DOCX through the installed Service using authorized
+  existing test definitions/contracts, preserve outputs/receipts, inspect every
+  scoped PDF page and DOCX content/package/font structure. No user template
+  publication or replacement is authorized merely by this smoke test. If a real
+  authorized generation path is unavailable, report the precise prerequisite.
+- [x] Check retained draft/revision/catalog inventories and migration state,
+  preserve original artifact hashes, document actual results/rollback locators
+  and commit the existing record. No release/tag changes or registry publication.
+
+Acceptance: restorable old set retained before mutations; released0.5.0/0.3.0
+actually installed and exact-pin connected; short actual PDF/DOCX succeed with
+correct MIME/receipts and complete test content; existing user records/resources
+retained. Native Word visual parity is not implied by package verification.
+Known optional checks and Word-PDF/LibreOffice limitations remain as recorded.
+Proof budget: backup/restore validation, migration replay, exact identity and
+connectivity, one short pair plus one bounded repair/retry per concrete issue;
+reuse release suites for unchanged product code. Document budget: this ledger.
+Evidence/backup root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/install-050-2026-10-25`.
+Stop before unsafe migration/switch on unverifiable backup, active user-work
+conflict, identity mismatch or a product defect outside this installation scope.
+
+#### Installation receipt — PASS with current-chat connection refresh required
+
+All five installation checklist targets above are complete. Actual configured
+Service/Core0.5.0 is running at `http://127.0.0.1:3018`, using image
+`sha256:da9913af00ea3592cdaf051850f644257cc82f1d10dfbe471229ce5c42cbac52`.
+Core archive SHA256 remains
+`2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1`.
+Existing volumes, credentials, loopback binding,1GiB memory/swap,init and2CPU
+limits were retained. Only migration025 applied; immediate replay applied none.
+Host dependencies and adapter build completed without tracked product changes.
+
+Before migration, preserved cold copies of all three volumes, old API/DB images,
+logical DB dump, original deployment/configuration/credentials,0.2.8 plugin and
+host adapter/dependencies under the evidence root's `backup/`. Backup manifest
+and file inventories pass. Restoring the dump into a separate isolated database
+reproduced120 records across14 protected tables exactly. Post-install comparison
+also confirms all120 original records unchanged, including four existing drafts
+and five font releases. All53 original artifact hashes remain unchanged.
+Backups and private environment/inspection files contain secrets and user data;
+retain locally and exclude from Git/publication.
+
+Official local marketplace CLI installed/enabled FlowDocMake0.3.0 and local
+configuration selects its installed pluginRoot;30 guide hashes verified. A fresh
+native MCP client reports ready:true,25 tools and exact Service/Core identities
+at3018. Installer removed the old cache; restored its original verified0.2.8
+bytes for rollback without changing active0.3.0 selection. This chat's already
+running MCP process still holds the old connection and returned a configuration
+error; it is not counted as a passing0.3.0 connection. A fresh chat or app reload
+is required to load the newly installed connection into the conversational host.
+
+Actual installed authoring preview through the fresh0.3.0 client succeeded and
+downloaded a one-page PDF from3018. It adds only a new unpublished smoke draft
+`ffef8315-24fe-40eb-977f-a26a9bd7e3b7`; original drafts were not replaced.
+Because live user storage has zero published template versions, the short task
+PDF/DOCX pair used synthetic model19 data in a separate smoke database/API with
+the exact installed image and same1GiB limit. This avoids publishing user
+templates. Both real HTTP task requests succeeded with verified format, MIME,
+length, magic and receipt hashes; omitted format produces PDF, explicit DOCX
+produces DOCX. Installed plugin task inspection also succeeded.
+
+Artifacts under `smoke-output/`:
+- `FlowDocMake-0.3.0-installed-preview.pdf`: one page,14162bytes,
+  SHA256 `fb5661c7a5338997b7d04f548daee971f970e88dae1b1ae8d186f586212d14b9`.
+- `FlowDoc-0.5.0-short.pdf`: one page,23656bytes,
+  SHA256 `aa6cb367fce6fafd4eb30e6a4bb36a89411ac14c7e2b303fe584bb1cf4943f3f`.
+- `FlowDoc-0.5.0-short.docx`:188685bytes,
+  SHA256 `e3fc180a38a8d4d055a569e9663d4c3a2c4da8500b9a6d8ec541fdd239be677f`.
+
+Every scoped PDF page and the single rendered DOCX page was visually inspected:
+complete short Thai/English text, combining marks visible, no clipping. DOCX ZIP
+integrity, exact logical source text and four embedded Sarabun font parts pass.
+DOCX rendering used an isolated LibreOffice helper; this is not native Word
+parity acceptance. Test API/render/restore helpers are stopped; actual installed
+API and database remain running. Existing accepted limitations are unchanged.
+
+Evidence: `backup/manifest.json`, `restore-check.json`, `upgrade.json`, migration
+and replay logs, `native-client-preflight.log`, `installed-authoring-preview.json`,
+`smoke-pair.json`, `inventory-before.json`, `inventory-after.json`,
+`final-check.json`, rendered pages and original-artifact hash recheck53/53.
+Unchanged product suites reuse the release proofs; no product source repair,
+release/tag movement or registry publication occurred.
+
+Operational deployment locator: use Service `compose.yaml`, original
+`artifacts/authoring-local-ready-20261014/override.json`, project
+`flowdoc-authoring-local-ready`, and this evidence root's `install.private.env`
+for subsequent Compose operations. The original secrets.env intentionally still
+pins the preserved old deployment and must not be used to recreate this upgrade.
+Rollback is a matched-set restore of old DB/files/images/config/plugin/adapter;
+do not point0.4.9 at the migrated025 database. The separate successful restore
+test is evidence, not an instruction to overwrite live data. No rollback was
+performed.

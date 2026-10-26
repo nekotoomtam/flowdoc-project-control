@@ -4,7 +4,8 @@
 
 Owner: FlowDoc Project Control. Scope: reference-reconstruction workflow in
 flowdocmake; this record does not add Core schema or certify visual fidelity.
-Current package: FlowDocMake 0.3.0 with Service 0.5.0 / Core 0.5.0;
+Prepared package: FlowDocMake 0.3.1 with Service 0.5.2 / Core 0.5.2;
+installed baseline remains FlowDocMake 0.3.0 with Service/Core 0.5.0.
 use the live preflight described in [draft selection](draft-selection.md).
 History: source coverage was introduced in package 0.1.2; goal/stage routing
 was clarified in 0.1.7. Those changes left the then-current Service/Core 0.3.0

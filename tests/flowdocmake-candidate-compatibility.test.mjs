@@ -19,20 +19,20 @@ test('candidate build fails closed before writing without reviewed archive or on
 });
 test('default release packaging retains the release profile and canonical guide bytes',()=>{
  const fixture=join(root,'release-source');mkdirSync(fixture);
- const paths=['tools/build-flowdocmake.mjs','plugins/flowdocmake','docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
+ const paths=['tools/build-flowdocmake.mjs','plugins/flowdocmake','docs/examples/clis-model19','docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
  for(const p of paths){mkdirSync(dirname(join(fixture,p)),{recursive:true});cpSync(resolve(p),join(fixture,p),{recursive:true});}
  for(const args of [['init','-q'],['add','.'],['-c','user.name=Fixture','-c','user.email=fixture@local.invalid','commit','-qm','fixture']]){const r=spawnSync('git',args,{cwd:fixture,encoding:'utf8'});assert.equal(r.status,0,r.stderr);}
  const run=spawnSync(process.execPath,['tools/build-flowdocmake.mjs'],{cwd:fixture,encoding:'utf8'});assert.equal(run.status,0,run.stderr);
  assert.equal(readFileSync(join(fixture,'plugins/flowdocmake/scripts/compatibility-profile.mjs'),'utf8'),readFileSync(resolve('plugins/flowdocmake/scripts/compatibility-profile.mjs'),'utf8'));
  const actual=JSON.parse(readFileSync(join(fixture,'plugins/flowdocmake/snapshot.json'))),original=JSON.parse(readFileSync(resolve('plugins/flowdocmake/snapshot.json')));
- assert.equal(actual.packageVersion,'0.3.0');assert.deepEqual(actual.files,original.files);
+ assert.equal(actual.packageVersion,JSON.parse(readFileSync('plugins/flowdocmake/.codex-plugin/plugin.json')).version);assert.deepEqual(actual.files,original.files);
 });
 test('candidate bundle preserves release pin, exact candidate profile and reproducible inventory',async()=>{
  assert.ok(process.env.FLOWDOCMAKE_CORE_ARCHIVE,'explicit reviewed archive required');
  const outputs=[join(root,'one'),join(root,'two')];
  for(const out of outputs){const r=build(out,['--core-archive',process.env.FLOWDOCMAKE_CORE_ARCHIVE]);assert.equal(r.status,0,r.stderr);}
  const release=await import('../plugins/flowdocmake/scripts/compatibility-profile.mjs');
- assert.equal(release.supported.coreArtifactSha256,'2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1');
+ assert.deepEqual(release.supported,JSON.parse(readFileSync('tests/fixtures/flowdocmake-052-profile.json')).supported);
  const candidate=await import(pathToFileURL(join(outputs[0],'scripts/compatibility-profile.mjs')));
  assert.deepEqual(candidate.supported,expected.supported);
  assert.equal(JSON.parse(readFileSync(join(outputs[0],'.codex-plugin/plugin.json'))).name,expected.id);

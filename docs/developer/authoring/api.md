@@ -1,5 +1,11 @@
 # Authoring API และ MCP tools
 
+ชุดเตรียม FlowDocMake0.3.1 ใช้ API/tools เดิมกับ Service/Core0.5.2 และตรึง
+Core checksum ตาม compatibility profile; ข้อความ0.3.0/0.5.0 ด้านล่างระบุ
+baseline ที่ติดตั้งเดิม ไม่ใช่คู่รุ่นของ bundle0.3.1 ใหม่ เครื่องมือสร้างงานยังเป็น
+PDF-only; การขอ DOCX ใช้ Service โดยส่ง `Output-Format: DOCX` ตามสัญญาเดิม
+Service ยังรับ Model18/19 ไม่รับ Model20 อ่าน [ผลตรวจและข้อจำกัด](verification.md#052-prerelease-verification--2026-10-27)
+
 Section19 Stage3 ในชุด FlowDocMake 0.3.0 เพิ่ม `create_draft_section` → `POST /authoring/drafts/:id/sections`
 รับ expectedRevision/pageLayoutId/idempotencyKey และ `import_draft_sections` →
 `POST /authoring/drafts/:id/sections/import` รับ sourceTemplateId/sourceRevision/
@@ -32,8 +38,66 @@ buffered:true. เก็บ receipt/hash กับไฟล์จริงแล
 32MiB เป็น output cap ไม่ใช่เพดาน RAM ทั้งงาน. ถ้าความสามารถไม่รองรับต้องรายงาน
 DOCX failure ไม่แทนด้วย PDF. ตรวจ fields/TOC และ native Word PDF แยกตาม
 [verification boundary](verification.md#core048-development-and-docx-boundary).
-Service candidate ตรึง Core0.5.0; อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
+Service development0.5.2 ตรึง Core0.5.2; ชุดติดตั้ง0.5.0 ไม่เปลี่ยนตามคู่มือ
+อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
 และ vendor manifest ของ candidate ที่เรียกจริงก่อนใช้เส้นทางนี้.
+
+## ชื่อไฟล์ใน Service/Core development0.5.2
+
+ตั้ง `defaultFileName` ระดับ root ของ definition ข้าง `docKey` ได้ เช่น
+`"defaultFileName":"CLIS"` การบันทึก/อ่าน/clone และ immutable version รักษาค่านี้
+และค่านี้มีผลต่อ fingerprint แต่ไม่เปลี่ยนเนื้อหาหรือการจัดหน้า
+สำหรับ `POST /documents` ส่งชื่อแทนที่ด้วย `fileName` ใน JSON ของ multipart
+part `payload` ข้าง `data`/`sections` โดย `Doc-Key` ยังเป็น HTTP header เดิม
+
+```json
+{"fileName":"รายงาน CLIS 2602S","data":{},"sections":[]}
+```
+
+ตัวอย่างแสดงตำแหน่งชื่อ ต้องเติมข้อมูล Section ตามโครงจริง ชื่อไม่มีนามสกุล
+ใช้ `Output-Format` เลือก PDF/DOCX ตามเดิม ลำดับคือชื่อที่ส่งมา → ค่าเริ่มต้น
+ของโครง → `document` ช่องว่างล้วนถือว่าไม่กำหนด ชื่อถูก trim/NFC จำกัด200
+Unicode code points และ240 UTF-8 bytes; ชื่อ request ก่อน trim จำกัด240 bytes
+ไม่รับ non-string, controls/format characters, path, อักขระ/ชื่ออุปกรณ์ต้องห้าม
+Windows, จุดท้ายชื่อ หรือ suffix `.pdf`/`.docx` ไม่แก้ชื่อผิดให้เงียบ ๆ
+
+ค่าเริ่มต้นถูกตรึงเมื่อสร้าง task และชื่อจริงถูกตรึงเมื่อ seal ก่อนเข้าคิว
+การแก้โครงภายหลังไม่เปลี่ยนชื่องานเก่า task/output/artifact metadata คืน
+`fileName` ที่ไม่มีนามสกุล; attachment header มีนามสกุล ชื่อไทยใช้ UTF-8
+`filename*` พร้อม ASCII fallback `document` ไม่เปลี่ยน UUID ของ storage
+ต้องใช้ migration026 กับ candidate นี้
+
+ค่าตัวอย่าง: override `CLIS Bangkok` + DOCX ได้ `CLIS Bangkok.docx`;
+ไม่ส่ง override และ default `รายงาน CLIS` + PDF ได้ `รายงาน CLIS.pdf`;
+ไม่กำหนดทั้งคู่ได้ `document.pdf` ไม่เติมนามสกุลที่สองให้ชื่อที่ส่งผิด
+
+ตัวอย่างเตรียม payload จากข้อมูล Section19 ที่มีอยู่ โดยรันจาก Project Control:
+
+```powershell
+$sample = Get-Content docs/examples/clis-model19/request-20.json -Raw |
+  ConvertFrom-Json -AsHashtable
+$docKey = $sample.docKey # ใช้เป็น Doc-Key header ของ target ที่ลงโครงนี้ไว้แล้ว
+$payload = @{
+  fileName = 'รายงาน CLIS 2602S'
+  data = $sample.data
+  sections = $sample.sections
+} | ConvertTo-Json -Depth 100
+```
+
+นี่เป็นการเตรียมข้อมูล ไม่สร้าง draft/เผยแพร่หรือเรียก API ต้องมีโครงและฟอนต์
+ของ target ที่ตรงกันก่อนใช้ อย่าส่ง `$sample` ทั้งก้อนเป็น multipart payload:
+`docKey`/`version` ของ legacy sample ไม่ใช่ root keys ที่ `/documents` รับ
+payload root รับเฉพาะ `data`, `sections`, `meta`, `fileName` ตาม contract
+ส่วน lookup ใช้ JSON `{taskId}` ไม่ส่ง fileName เพื่อเปลี่ยนชื่องานที่ seal แล้ว
+ผล `/documents` เป็น multipart feedback+artifact ไม่ใช่ PDF/DOCX ล้วน;
+ต้องแยก binary part ตรวจจำนวนไบต์/hash และรอ response จบก่อนถือว่าได้ไฟล์ครบ
+ชื่อที่บันทึกบนเครื่องของ client อาจมาจาก outputPath ของ client เอง ไม่เปลี่ยน
+เพียงเพราะ server ส่ง Content-Disposition ใหม่
+
+ส่วนนี้เป็น direct Service API; อย่าเติม arguments ให้ MCP tool ที่ไม่ได้
+ประกาศรับ ชุดติดตั้ง FlowDocMake0.3.0 และ compatibility profile0.5.0 ยังเดิม
+Core20 เป็นการทดลองผ่าน Core โดยตรง; Service0.5.2 ยังรับ Model18/19
+ชื่อไฟล์ไม่ได้เพิ่มความสามารถเรียก Section ซ้ำใน Service
 
 ## 1. วงจรชีวิต
 

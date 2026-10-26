@@ -32,6 +32,7 @@ Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้า
 | nodeModelVersion | integer `18`, Required สำหรับตัวอย่าง model18 ในตารางนี้ | Service ปัจจุบันรับ18และ19; รูปแบบ Section19 อยู่ต้นบท ห้ามผสมโครงสองรุ่น |
 | templateId | string, Required | ใช้ ID ที่ create คืนมา ห้ามสร้างเองสำหรับ save |
 | docKey | string, Required | key ที่สร้างไว้ ต้องตรงกับ request และ identity |
+| defaultFileName | string, Optional เฉพาะ Core/Service0.5.2 | ชื่อดาวน์โหลดเริ่มต้น ไม่มีนามสกุล; ไม่ใช่ชื่อโครงหรือ path ดู [API ชื่อไฟล์](api.md#ชื่อไฟล์ใน-servicecore-development052) |
 | version | positive integer, Required | authoring draft ต้องเป็น `1`; ไม่ใช่ revision |
 | name | nonblank string, Required | ชื่อโครง |
 | book | object, Required | `{contentSlot:"body",defaultPageLayoutId:"normal"}` |
@@ -43,6 +44,12 @@ Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้า
 | examples | array, Required | ปกติใช้ `[]`; ถ้ามีเป็น `{name,request}` ชื่อไม่ซ้ำ |
 
 ไม่มี top-level `formats`, `header`, `footer` สำหรับ Area18.
+`defaultFileName` ใช้กับ18/19 ได้ในชุด0.5.2 ไม่เปลี่ยนรูปแบบ Section ของโมเดลนั้น
+ไม่ใส่ `fileName` ใน definition: เป็น transport override ของ `/documents` เท่านั้น
+ไม่เติม field ใหม่ให้ Service0.5.0 ที่ strict validation ไม่รับ
+Core20 มีสัญญาแยกสำหรับเรียก Section ซ้ำผ่าน Core โดยตรง ตาม
+[คู่มือ Core](../../../../flowdoc-core/docs/template-guide.md#experimental-model20-section-definitions-and-uses)
+Service0.5.2 ยังไม่รับ20; อย่านำ sectionKey/instanceKey ไปแทน ID ของ19
 Examples ใน definition ต้องมี request.version ตรงกับ definition.version;
 อย่าใส่ uploadId ใน examples เพราะเป็นข้อมูล transport ของ Service.
 `page` และ `TextStyle` ดู [Layout](layout.md).
