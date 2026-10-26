@@ -50,7 +50,12 @@ capabilities or approved implementation truth.
   the pilot; no continuous mid-page Section start is added.
 - A header repeats according to the definition's band mode within that use.
   Final totals remain ordinary content when the definition places them there.
-  Existing Inward CLIS footer behavior is not silently replaced with Outward's.
+  For the current CLIS delivery, every selected use has its complete report header
+  on its first and continuation pages. Totals are body nodes following that use's
+  table; there is no visible repeating footer. The older Inward-derived A/B/A
+  band fixture is test-only and is not the current CLIS delivery definition.
+  This CLIS rule does not remove the general optional header/footer capabilities
+  from Core or change unrelated18/19 documents.
 - Empty request assembly is rejected. Empty data in a selected use follows its
   authored content and existing empty-content rules; it does not silently select
   a different definition or manufacture an extra page.
@@ -150,6 +155,15 @@ contents/provenance validators. Audit direct and streamed normalization paths.
 
 ### Task3: prove PDF and native Word before wider transport rollout
 
+Owner scope correction on2026-10-26: renderer-fidelity tuning and native Word
+edit/save reliability are removed from this round's remaining work. Preserve
+their observations as deferred limitations, not PASS. The conversion/reflow
+and native header isolation evidence already collected remains reusable; the
+Word save hang no longer blocks Task4. Do not spend more Word or spacing trials.
+Current CLIS proof uses the Outward fixture with full headers and body totals,
+not the older synthetic fixture's visible footer. The unchecked historical proof
+items below are not to be completed by silently resuming the cancelled work.
+
 Files: affected src/pdf, layout, src/docx/sections.ts, profile/fields/bands and
 their focused tests. Modify only where new resolved semantics require it.
 
@@ -161,9 +175,9 @@ their focused tests. Modify only where new resolved semantics require it.
   substitution for general Section headers.
 - [ ] In a copy in Word, edit the first A enough to change its page count. Confirm
   its header follows its continuation pages and does not alter B or the second A.
-- [ ] Acceptance: normal Word reflow preserves use boundaries and per-use bands;
-  content is complete. Byte-identical pagination across renderers is not claimed.
-  Stop and report if native Word cannot satisfy this behavior within the contract.
+- [ ] Original acceptance (superseded as a Task4 gate by the owner correction):
+  normal Word reflow preserves use boundaries and per-use bands; content is
+  complete. Preserve incomplete checks and known differences without a PASS claim.
 
 ### Task4: connect Service, discovery and caller display identity
 
@@ -191,8 +205,11 @@ Any DB change uses a new forward-only migration, never rewrites old definitions.
 - [ ] Use checked source records to make a small multi-Port Outward sample with
   at least one Port spanning pages. Preserve source field meanings and blanks;
   no invented dimensions or corrected totals. Each group total follows its items.
-- [ ] Export both formats, convert DOCX through Word, inspect all sample pages
-  and verify row-once coverage, group headings, totals and document page numbering.
+- [ ] Export both formats and inspect Core PDF pages plus native DOCX structure.
+  Verify row-once coverage, full per-use headers on first/continuation pages and
+  one body total after each use's last item. No visible repeating footer. Native
+  Word conversion may be checked by the owner; fidelity tuning and edit/save
+  proof are deferred and do not block this round's transport acceptance.
 - [ ] Run only affected Core/Service/FlowDocMake checks and unchanged-model CLIS
   regressions. Record coverage, failures and accepted limits in this plan's result
   section; no full-system PASS from selected tests.
@@ -212,12 +229,12 @@ No arbitrary performance claim follows from these functional samples.
 
 ## Current result
 
-Resumed on the owner's instruction after the Core checkpoint. Task1 and Task2
-remain complete for the isolated candidate. Task3 now has native Word conversion
-and actual edit/reflow evidence, but is BLOCKED on saving the edited DOCX: Word
-stops responding during Ctrl+S, and the copy on disk still lacks the edits.
-Task4 Service/discovery has not started. Task5 has a direct-Core bounded Outward
-sample, but its Word conversion and Service delivery remain unverified. Do not
+Task1 and Task2 remain complete for the isolated candidate. The owner has removed
+PDF/DOCX fidelity tuning and Word edit/save reliability from this round's remaining
+scope; their incomplete evidence and known issues are retained, not marked PASS.
+Task4 Service/discovery is the remaining implementation target and has not started.
+Task5 has a direct-Core bounded Outward sample with complete per-use headers and
+body totals, no visible footer. Its Service delivery remains unverified. Do not
 claim whole-plan acceptance or that the installed API accepts repeated Sections.
 
 ## Execution ledger
@@ -342,3 +359,32 @@ images, `consumer-result.json`, both generated artifact pairs, and checked sourc
 rows in section-assembly-r2. Product source, Service vendor/pins, installed
 FlowDocMake and all original baselines remain unchanged in this resume. Service
 source inspection was read-only; no API/discovery/task integration PASS is claimed.
+
+### Owner scope correction: full CLIS headers, body totals, transport remains
+
+The owner explicitly removed remaining-work items1 (PDF/DOCX fidelity) and2
+(native Word edit/save) from this round. Do not continue those investigations or
+keep the save hang as a transport gate. Their prior BLOCKER/NOT PASS observations
+remain historical evidence; this is an owner scope decision, not a successful fix.
+No merge, push, release, installation or publication was authorized.
+
+Clarification verified against the retained fixtures: plain-template.json and
+its A/B/A request are synthetic tests of independent bands and still contain the
+old Inward-derived repeating footer. They are not the final CLIS structure.
+The current clis-template.json defines header roots title/vessel/port, no footer,
+and body roots table/total. Every ningbo/shanghai/xiamen use supplies its own full
+header data and section total. Native DOCX has independent default/first headers
+for all three uses with the correct Port. Its six footer parts are empty (no
+text, fields or tables); they do not contain the old repeating totals. Existing
+Core PDF pages confirm the full header repeats on Shanghai's continuation and
+each sample total follows that group's final item. No new artifact was rendered
+for this inspection and no product behavior was changed.
+
+Task4 and its real delivery fixtures must use this full-header/body-total shape.
+If an A/B/A transport test is retained, adapt its test data to the same shape;
+do not deliver the legacy visible-footer fixture as the requested CLIS output.
+Reassessed proof scope after the three Core batches: reuse the final packed Core
+and existing source rows. Remaining proof is the already-planned isolated Service
+PDF/DOCX delivery and affected compatibility checks under1GiB, with at most an
+initial and responsible-repair delivery batch. No further native Word automation,
+spacing tuning or unrelated renderer experiment is part of that proof.
