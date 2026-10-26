@@ -320,3 +320,36 @@ New deliverables are under `border-inheritance-r1/artifacts/`:
   `4bd1d0f9e46eda3bd35b03c39158920726ac7ff8b8b878ab64caa48af3f4f9ee`.
 - `CLIS-border-inheritance-R1-60.docx`, SHA-256
   `fb2dd9e4dbd68e0261584a03c4d796996b2d92fdfef0e3277b83207ecc456018`.
+
+## Native Word dash-style probe R1, 2026-10-26
+
+The owner authorized trying Word border patterns against the supplied close-up.
+This is a bounded discovery spike, Evidence Reviewer role, Core owning any later
+renderer change; execution IDs not applicable. Product source and the pending
+CLIS border-inheritance candidate remain unchanged. No merge or publication.
+
+Read-only vector inspection of the original CLIS source PDF identifies Crystal
+Reports as producer, with 16 dashed lines using [1,3]pt, phase 0 and width 0
+(device hairline), plus two solid lines. A screenshot cannot establish a fixed
+hairline thickness in points. The earlier 0.5pt dense dotted trial is therefore
+not an exact representation of that source pattern.
+
+Before tuning PDF to an unobserved Word preset, one native OOXML probe was
+derived from the preserved FlowDoc-generated R1 package. It contains six
+editable 2-row/3-column tables: dashed, dotted and dashSmallGap, each at 0.25pt
+and 0.5pt. Labels A-F allow matching the converted vectors and intersections.
+This is explicitly a native Word research file; dashSmallGap is not claimed as
+a FlowDoc API capability. Report totals were removed from the probe to avoid
+presenting its synthetic grids as CLIS data. Original CLIS files are intact.
+
+Checks: ZIP integrity, six exact native border styles/widths, table topology,
+one LibreOffice preview page, every sample label, full-page visual review and
+unchanged non-document package parts passed. Preserved input hashes match.
+No Core suite was rerun because no product files changed. LibreOffice preview
+is not evidence of Word's actual dash lengths/gaps or intersection painting.
+
+Deliver `dash-style-probe-r1/CLIS-Word-border-samples-R1.docx` under the same
+evidence root, with provenance/checks in `manifest.json`. Next prerequisite is
+the owner's actual Word PDF conversion of this single file, saved beside it.
+Measure that output before choosing a preset or adjusting PDF. The earlier
+20/60 R1 continuation-border Word review remains pending independently.
