@@ -1,0 +1,186 @@
+# Shared line and table styles implementation plan
+
+> Execution: use superpowers:executing-plans inline; no separate WORK room.
+
+## Authority Boundary
+
+Owner: FlowDoc Project Control for this bounded owner-approved scope and its
+acceptance record. Core owns implementation, API and tests. This plan is not
+Evidence of implementation, release, installation, native Word fidelity or map
+truth. Execution/Phase/Checklist IDs are N/A for this single-room scope. Current
+generated snapshot still concerns the separate frontend roadmap; it does not
+override the owner's explicit CLIS export request. No old registered round is
+reactivated.
+
+Goal: share line/table stroke style, color and width across PDF and DOCX while
+preserving omitted/default behavior; deliver CLIS20/60 candidate artifacts.
+Scope: Core implementation and code-adjacent guide, this canonical plan/receipt,
+and task-local evidence/artifacts. No merge, push, release/tag/version change,
+production installation, draft publication, Service vendor update or text-style
+expansion. Existing PDF/DOCX sources and live drafts remain immutable inputs.
+Roles: Product Implementation Agent, then Evidence Reviewer inline.
+Work size: medium; risk: routine, with backwards-compatibility and merged-grid
+paint coverage. Models: current host-provided inline runtime, no override and
+no separately dispatched WORK; no synthetic room/return records.
+
+Architecture: preserve one semantic graph for both renderers. Resolve shared
+stroke defaults and per-table-edge overrides centrally, then encode native DOCX
+borders and PDF drawing instructions. No image flattening or renderer-specific
+style data in the CLIS business input. Reuse the approved CLIS native DOCX flow.
+
+## Contract decisions
+
+- Shared kinds: `single`, `none`, `dashed`, `dotted`, `double`.
+- Line adds `props.lineStyle`; existing thickness/color/spacing remain.
+- Table extends `props.borderStyle`, adds `props.borderWidth:Length`, and
+  `props.borders` overrides for top/right/bottom/left/insideHorizontal/
+  insideVertical/headerBottom. Override shape: `{style?,width?,color?}`.
+- headerBottom is a targeted CLIS need: retain the rule below repeated labels
+  while hiding horizontal rules between data rows.
+- Override -> table property -> original default: single0.5pt black. White stays
+  painted white; none suppresses paint without removing cells or padding.
+- New table widths use the shared DOCX range0.25..12pt, exact eighth-points;
+  Length supports pt/mm with equivalent conversion. Existing line inputs retain
+  their prior accepted behavior; new non-single kinds must be representable.
+- Double width is the nominal component-line weight; two strokes plus equal
+  gap occupy3x that weight. Dash/dot are portable named styles, not a promise
+  that Word's native dash phase equals PDF pixels.
+- Borders follow native cells/merges; no interior stroke through a merged cell.
+  Repeated headers retain headerBottom; physical continuation fragments close
+  with the configured outer borders. Paint each shared PDF edge once.
+- Do not silently apply legacy half-point DOCX geometry accommodations to custom
+  widths/styles. Preserve existing paths for omitted/single/none defaults.
+- For styled PDF rules/edges, keep the complete stroke envelope within the page
+  or fixed frame; reject an impossible frame rather than silently clipping.
+
+## Acceptance and proof budget
+
+1. Validator accepts supported combinations and rejects invalid nested keys,
+   colors, widths/kinds at authored and resolved boundaries and DOCX profile.
+2. PDF buffered/streamed writers encode single/dash/dot/double/none and honor
+   color/width. Native DOCX XML preserves corresponding kind/width/color and
+   effective per-cell outer/interior borders, including merged grids.
+3. Existing defaults, explicit white and border-none tests remain passing;
+   legacy/default CLIS outputs remain equivalent under unchanged inputs.
+4. Candidate CLIS20/60 uses dotted vertical grid, no body horizontal rules,
+   solid header separator and double footer rule; preserve repeating footer,
+   header rows, row values/order and live page numbers. Render/review every PDF
+   page and native DOCX preview page. Native Word conversion remains owner-run.
+5. Preserve baseline hashes, package/run identities and receipts, final clean
+   reviewed commits on isolated branches; do not integrate them.
+
+Proof budget: one selected baseline run; RED/GREEN cycles on stroke, validation,
+merged/pagination and writer tests; affected Core suite/build plus one packed
+Linux consumer and CLIS matrix. Repeat only after an actual repair or uncovered
+affected area. Document budget: this plan/receipt and Core template guide; no
+synthetic Work/Evidence registry or product-repo shared plan.
+
+## Tasks
+
+- [x] Baseline: Core at b5218a81a5bd81d8c1885bdb893044bc8fad0793;
+  branch codex/shared-stroke-table-styles, sibling of this managed PC worktree.
+  Native creation is bound to PC; Core isolation uses owner-repo Git worktree
+  fallback. PC base312dc6d2f10382358dcac3eae9dbf154f265f9a4.
+- [x] RED: add focused tests in tests/layout/strokeStyles.test.ts and
+  tests/docx/strokeStyles.test.ts using existing genuine composition helpers.
+  Exercise defaults, all styles, invalid input, mixed edges, repeated headers,
+  merged cells, and physical stroke envelopes.
+- [x] GREEN: shared types/resolution in src/composition/strokeStyle.ts;
+  extend resolvedDocument/template graph and DOCX profile validation. Update
+  line/table layout, draw contract and PDF primitives; preserve default output.
+- [x] GREEN: map native DOCX border styles/widths for lines, tables and merged
+  cells; restrict legacy geometry accommodations to their proven inputs.
+- [x] Verify: final diff, selected/affected suites and build; package candidate
+  and test the public API in isolated Linux. Preserve actual reports and gaps.
+- [x] CLIS: derive unchanged20/60 requests and font snapshots; keep live Service
+  and draft untouched. Render candidate PDFs/DOCX using candidate public package,
+  inspect all pages, reconcile rows/labels/footer/geometry and baseline hashes.
+- [x] Record results, known Word/dash-phase boundary, commit isolated branches
+  after checks; retain lanes and evidence for owner review without merging.
+
+## Review focus
+
+- Hidden/partial edges on merged spans must not regain unwanted native strokes.
+- Header/body seam and page-fragment closures must use the intended edge style.
+- Non-default widths must not inherit half-point-only spacing compensation.
+- Wide/double strokes at zero margins or fixed frames must not clip silently.
+- Omitted properties and explicit old defaults must retain legacy rendering.
+
+## Status
+
+Candidate implementation in isolated Core worktree; not installed capability.
+
+Ruling: use shared style kinds/properties now, not named table-style presets —
+the owner selected the first line/table capability slice, before reusable sets.
+
+Ruling: Windows full-suite native metric failures reproduce on the unchanged
+base (four baselineRules, three geometry, seven metricPairs cases); require the
+complete Linux run rather than treating those host results as PASS. The first
+Linux run had1203 passing plus a new test-fixture error and a missing explicit
+legacy-helper prerequisite. Correct the test fixture and supply the preserved
+real old helper; neither is a product-source repair or a waived prerequisite.
+
+Ruling: fresh review found three concrete PDF edge cases — collapsed thick
+segments/mixed-width corners at zero margin, a header-only table incorrectly
+using headerBottom, and dotted end caps outside fixed frames. Four new RED
+regressions reproduce them. Apply one common painted-envelope table inset and
+node-specific collapsed-segment LayoutError; use outer bottom for header-only;
+inset dotted caps inside their declared line span in body/fixed/band contexts.
+The resulting selected54 tests and build pass. Fresh reviewer independently
+reran21 layout tests and accepted closure of all three Important findings, with
+no remaining Critical/Important issue in that repair pass.
+
+## Candidate result — 2026-10-26
+
+PASS for the scoped implementation/package/CLIS candidate, with native Word
+visual comparison explicitly pending. No integration or installation acceptance.
+
+- Complete isolated Linux suite:1209/1209 pass,0 failed,0 skipped. Memory/swap
+  each1GiB,init,network none and no mounts; no OOM. Host Windows controls reproduce
+  the14 platform-native failures on the unchanged base, retained as diagnostics.
+- Packed public consumer:5 style kinds,0.75pt color224466 matrix passes both
+  engines and native DOCX XML. Actual PDF line count is51 for single/dashed/
+  dotted,0 for none,102 for double; weights/colors/dash arrays checked.
+- CLIS20 and60: PDFs1/3 pages; native DOCX previews1/3 pages. Every scoped page
+  visually reviewed, all row values/order retained,13-column headers repeat,
+  page numbers correct and whole-report totals appear in the footer every page.
+  Page row distribution is20 and20/24/16 for both candidate PDF and preview.
+- Original default-input PDF controls are byte-identical to the preserved
+  installed0.5.0 PDFs (both20 and60). All original source/PDF/DOCX hashes remain
+  unchanged. Existing hidden/white/default border tests remain passing.
+- Footer double-rule component weights are0.5pt in both PDF and DOCX-preview
+  PDF; two distinct strokes are present. Small native vertical quantization and
+  dash density differ; no arbitrary pixel-equivalence claim.
+- Remaining visual difference: LibreOffice native DOCX preview does not paint
+  the table's outer bottom rule on intermediate continuation pages, whereas PDF
+  closes each fragment. The final table bottom and repeating footer double rule
+  are present. Word's own page-fragment painting is unverified; this is not a
+  PASS for full PDF/Word visual fidelity and was not repaired by locking page
+  positions or adding content-specific page breaks.
+
+Ruling: preserve native DOCX table-flow semantics and disclose the observed
+preview continuation-border difference — candidate APIs share stroke intent;
+native Word review remains the explicit acceptance boundary for pagination and
+native border conflict/fragment painting. No new universal fidelity gate is
+invented and no renderer-only approximation is represented as Word acceptance.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/shared-stroke-table-styles-2026-10-26`.
+Durable proof: `linux-suite-r2.json`, `source-and-isolation.json`,
+`artifact-review.json`, `artifacts/consumer-result.json`, original hash manifests,
+review RED/GREEN logs and every rendered candidate page. Actual candidate archive
+and consumer image hashes are retained there; package version remains0.5.0 for
+this uninstalled experiment and is distinguished by archive/source digest.
+
+Changes are confined to Core's semantic stroke contract/resolution, validation,
+PDF layout/paint, native DOCX border mapping, targeted tests and local template
+guide; this record owns the shared scope/result. Service/plugin versions, live
+drafts, production vendor/archive, all release tags and mainlines are unchanged.
+Worktrees/branches are retained for owner review; helper containers are stopped.
+
+Core terminal candidate commit:
+`03606f7f9d5fbdde214a80db5c957ff7c37e2379` on
+`codex/shared-stroke-table-styles`, worktree
+`C:/Users/nekot/.codex/worktrees/shared-stroke-table-styles/flowdoc-core`.
+Project Control record remains isolated on
+`codex/shared-stroke-table-styles-pc`. No shared branch was pushed or merged.
