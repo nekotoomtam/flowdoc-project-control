@@ -234,3 +234,28 @@ release snapshot/tag/push authorization and actual installation/restore checks.
 There is no new native Word visual acceptance or Service20 admission claim.
 This completes the owner's development merge/version/manual request; it does
 not declare a public release ready or installed.
+
+
+## Documentation completion before release —2026-10-27
+
+Owner requests finishing the manuals before release. Single-room documentation
+maintenance; role Documentation Synthesizer / Project Control Steward. Scope:
+canonical authoring structure/nodes/layout/API/index/verification and plugin
+README, generated reference copies, four Core/Service code-adjacent manuals,
+and this existing record. No new Work/Phase/Checklist IDs, shared map promotion,
+product source/configuration/package/archive/version changes, Docker/test renders,
+release/tag/push/install or installed plugin mutation. Main product checkouts are
+clean; documentation-only changes may use them. Current PC lane remains clean
+and equal to main at afd82a8; generated snapshot is unrelated Editor context.
+
+Acceptance: fill shared stroke/B profile and file-name contract gaps, correct
+current setup/migration pointers while retaining labeled historical proof, show
+Service18/19 vs experimental Core20 vs pinned plugin boundaries, and state
+remaining release/package prerequisites without claiming readiness. Check source
+contracts, Markdown/link/JSON examples and the existing guide/snapshot/workflow
+checks; regenerate references only after canonical commit and verify LF hashes.
+Proof budget is one targeted documentation pass with repairs for concrete issues;
+no new runtime testing or full-suite acceptance. Existing integration-052 proof
+is historical input, not new test output. If Core README changes, the currently
+pinned a132c5d archive remains immutable; a future release package must contain
+the final manuals and have new source/checksum/consumer verification.

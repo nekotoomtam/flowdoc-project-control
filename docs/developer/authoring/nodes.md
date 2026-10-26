@@ -86,7 +86,9 @@ reference.target ต้องตรงกับ anchor ที่มีจริ�
 | props.repeatHeaderRows | boolean | Required; ไม่เพิ่มแถวหัวเอง ต้องมี headerRowCount |
 | props.headerFillColor | hex RGB 6 ตัวไม่มี # | Optional; ไม่สั่งเติมสีหัวเมื่อไม่มีค่า |
 | props.borderColor | hex RGB 6 ตัวไม่มี # | Optional; default black `000000` |
-| props.borderStyle | `single` / `none` | Optional default single; เส้น 0.5pt; none ซ่อนทั้งตารางโดยยังคง fills/padding/โครง |
+| props.borderStyle | `single` / `none`; ชุดพัฒนา0.5.2 เพิ่ม `dashed`, `dotted`, `double`, `dashSmallGap`, `thickThinWideGap` | Optional default single; ขอบเขตแบบใหม่อยู่ด้านล่าง |
+| props.borderWidth | Length, เฉพาะชุดพัฒนา0.5.2 | Optional default0.5pt; ช่วง0.25–12pt ตามชนิดเส้น |
+| props.borders | object, เฉพาะชุดพัฒนา0.5.2 | Override แต่ละด้าน `{style?,width?:Length,color?}` |
 
 ความกว้างตารางคือผลรวม widths ไม่ใช่ 100% ของพื้นที่อัตโนมัติ.
 ไม่มี width/align บน table.props และไม่มี columnAutoFit.
@@ -96,6 +98,49 @@ DOCX ส่ง rowSpan/group-label เป็นเซลล์รวมแนว
 ทุก merged group แบ่งได้เหมือน PDF ต้องตรวจผล Word ตามเนื้อหาจริง.
 หัวคอลัมน์คือ cell/text-block จริง ไม่ใช่ชื่อ metadata ของ columns.
 หัวตารางซ้ำไม่ใช่หัว Section; ต้องตรวจทั้งสองอย่างเมื่อแถวข้ามหน้า.
+
+### รูปแบบเส้นในชุดพัฒนา0.5.2
+
+ใช้เฉพาะ target ที่รับรูปแบบนี้; FlowDocMake0.3.0 ยังตรึง Service/Core0.5.0
+ซึ่งไม่รับคุณสมบัติใหม่เหล่านี้ การแก้คู่มือไม่เพิ่ม capability ให้ชุดติดตั้ง
+PDF/DOCX ใช้ชื่อชนิด/สี/ความกว้างจากโครงเดียวกัน แต่ขีด/รอยต่อหน้าใน Word
+อาจต่างจาก PDF ต้องตรวจผลจริง ไม่ใช้ชื่อชนิดเป็นหลักฐานความเหมือน
+
+`borders` รับเฉพาะ `top`, `right`, `bottom`, `left`, `insideHorizontal`,
+`insideVertical`, `headerBottom` ไม่ใช่ props ของแต่ละ cell สมาชิกที่ละ
+สืบจากระดับ table แล้วจึง default single0.5pt black ถ้าไม่ระบุ object
+`headerBottom` เลย จะใช้ override ของ `insideHorizontal` เมื่อมี
+เส้นภายในเซลล์รวมไม่ถูกวาด; fills/padding และโครงข้อมูลยังเดิม
+
+```json
+{"borderStyle":"dotted","borderWidth":{"value":0.5,"unit":"pt"},
+ "borderColor":"000000","borders":{"insideHorizontal":{"style":"none"},
+ "headerBottom":{"style":"single","width":{"value":0.5,"unit":"pt"}}}}
+```
+
+ชนิด native ที่วาดเส้นต้องใช้ความกว้างเป็นขั้น1/8pt ในช่วง0.25–12pt;
+รับหน่วย mm ที่แปลงได้เทียบเท่า `double` คือสองเส้นหนาเท่าค่าที่กำหนด
+และช่องว่างเท่ากัน จึงกินกรอบรวม3เท่า `dashSmallGap` ใช้ชนิด native
+ของ Word; PDF เป็นรูปแบบประมาณจากตัวอย่าง E ไม่รับประกันทุกน้ำหนัก/จุดตัด
+
+แบบ B ใช้ `thickThinWideGap` เฉพาะตาราง: width คือกรอบรวม ไม่ใช่แต่ละเส้น
+รับค่า EMU ที่แทนได้พอดีในช่วง0.25–12pt จึงใช้0.35pt ได้; `none` ไม่วาดเส้น
+และยอมรับความละเอียด EMU เช่นกัน B แบ่งเป็นหนา0.6w/ช่อง0.2w/บาง0.2w
+ขีดยาว4w/ช่อง12w ที่0.35pt ได้เส้น0.21/0.07pt ช่อง0.07pt ขีด1.4pt/ช่อง4.2pt
+
+```json
+{"borderStyle":"thickThinWideGap","borderWidth":{"value":0.35,"unit":"pt"},
+ "borderColor":"000000","borders":{"headerBottom":{"style":"thickThinWideGap"}}}
+```
+
+DOCX แบบ B เป็น DrawingML ทับตารางข้อความที่แก้ไขได้ จำกัดเซลล์ไม่รวม/ไม่ลงสีพื้น
+มี text-block เดียวซึ่งหลัง bind เป็น literal ASCII; แถวข้อมูลต้องไม่ wrap และอยู่บรรทัดเดียว
+หัวตารางยอมให้กำหนดขึ้นบรรทัดเองได้ไม่เกิน8บรรทัด เส้นที่เห็นทุกด้านต้องเป็น B
+ส่วนที่ซ่อนได้ใช้ none ไม่ผสม native ชนิดอื่น การตัดสินว่าใส่ได้ใช้ค่าฟอนต์จริง
+กรณีไม่เข้าเกณฑ์จะล้มเหลวชัดเจน ไม่แปลงเป็นภาพหรือเปลี่ยนชนิดเส้นเงียบ ๆ
+เส้นปิดตารางระหว่างหน้าของ Word และ phase ขีดแต่ละแถวยังเป็นข้อจำกัดที่รับรู้
+แก้ข้อความ/ฟอนต์ใน Word อาจต้องสร้างไฟล์ใหม่ ดูสัญญาละเอียดใน
+[คู่มือ Core](../../../../flowdoc-core/docs/template-guide.md#docx-development-output-in-050)
 
 ## 5. table-row และ table-cell
 
@@ -146,9 +191,13 @@ Frame กว้างเกินพื้นที่ cell/band เป็น la
 | width | Length >0 | ความกว้างพื้นที่ที่ได้รับ |
 | thickness | Length >0 | 0.5 pt |
 | color | RGB hex ไม่มี # | 000000 |
+| lineStyle | `single` / `none` / `dashed` / `dotted` / `double` / `dashSmallGap` เฉพาะชุดพัฒนา0.5.2 | single; ไม่รับ B `thickThinWideGap` |
 | spaceBefore / spaceAfter | Length >=0 | 0 |
 
 เส้นใช้ความสูง spaceBefore+thickness+spaceAfter; width เกินพื้นที่เป็น error.
+สูตรข้างต้นเป็นของ single; double ต้องเผื่อกรอบเส้นรวม3เท่า ชนิดใหม่ที่ไม่ใช่
+single ใช้ความหนาที่แทนได้ตาม native1/8pt ในช่วง0.25–12pt
+none ซ่อนการวาดแต่คงระยะที่เส้นจองไว้ ไม่ใช้แทนการลบ node
 ไม่มี vertical-line node; เส้นตารางมาจากตารางเอง.
 
 ## 8. page-break, area, table-of-contents, columns

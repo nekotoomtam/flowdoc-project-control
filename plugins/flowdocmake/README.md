@@ -34,6 +34,21 @@ then map observed layouts, design native structures and derive request data.
 Use only stages needed for that endpoint and continue between them without
 inventing approval stops.
 
+## Documentation preparation for Service/Core0.5.2
+
+The source references also describe the newer development API and stroke styles.
+They do not change this package's0.3.0/0.5.0 compatibility profile, tool arguments,
+or installed cache. In particular, do not send DOCX into its PDF-only task parser
+or infer Service Model20 support from Core's experimental direct API. A caller's
+local outputPath is separate from the Service attachment fileName.
+
+Before a later plugin release for0.5.2, prepare a distinctly versioned package
+with the reviewed exact Service/Core/archive profile and test its actual tools.
+Do not weaken preflight or overwrite the released0.3.0 package/cache. Canonical
+reference status is in docs/developer/authoring/verification.md; copied files are
+regenerated only after canonical source commits. No new plugin release or
+installation is performed by this documentation update.
+
 ## Historical package notes
 
 The following notes describe earlier releases, not the current installation pins.
