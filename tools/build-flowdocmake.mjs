@@ -18,7 +18,7 @@ if(args.length){
  const folded=actual.toLowerCase().replaceAll('\\','/'),repoPath=realpathSync(repo).toLowerCase().replaceAll('\\','/');
  if(existsSync(plugin)||folded===repoPath||folded.startsWith(repoPath+'/')||folded.includes('/plugins/cache/')||folded.includes('/plugins/flowdocmake'))throw Error('Candidate output must be a new isolated directory outside source and installed cache');
 }
-const roots=['docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
+const roots=['docs/examples/clis-model19','docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
 const sourceCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim();
 const dirty=execFileSync('git',['status','--porcelain','--',...roots],{cwd:repo,encoding:'utf8'}).trim();
 if(dirty)throw Error('Commit canonical guide sources before snapshotting');

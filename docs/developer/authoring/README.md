@@ -9,14 +9,20 @@ Core เป็นเจ้าของ schema/validation/layout; Service เป�
 งานนี้เป็น single-room ตามคำขอผู้ใช้; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
 ไม่เปลี่ยน runtime, template ของผู้ใช้, ข้อมูลต้นทาง หรือ publish.
 
-Baseline ปัจจุบัน: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
+**งานสร้างโครงและตัวอย่างใหม่ยึด `nodeModelVersion:19` เท่านั้น.**
+Model18 คงไว้สำหรับงานเดิมที่ระบุให้รักษารุ่น18 ไม่ใช้เป็นฐานของงานใหม่.
+ตัวอย่างปัจจุบัน: [CLIS Model19](../../examples/clis-model19/template.json),
+[request20](../../examples/clis-model19/request-20.json),
+[request60](../../examples/clis-model19/request-60.json).
+
+Runtime compatibility: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
 FlowDocMake `0.3.0`, Service `0.5.0` และ `@flowdoc/core@0.5.0`;
 ต้องผ่าน preflight ของ package/runtime จริง. ตัวอย่าง Area18 เดิมยังเป็น model18
 ไม่ใช่ตัวอย่าง Section19. อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md)
 โดยแยกผลตรวจในอดีตออกจากรุ่นปัจจุบัน.
 
 Section19 Stage3 รองรับคู่กับ18ในชุดปัจจุบัน (เริ่มใน candidate `0.4.2-dev.3`):
-อ่านข้อยกเว้นสั้นที่ต้น [โครงสร้าง/ข้อมูล](structure-and-data.md) และ
+อ่านสัญญาหลักใน [โครงสร้าง/ข้อมูล](structure-and-data.md) และ
 [API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:3`, `scopedToc:true`.
 TOC ของ19ต้องระบุ scope;18คงเดิม. การแก้คู่มือไม่เปลี่ยนรุ่นที่ติดตั้ง.
 

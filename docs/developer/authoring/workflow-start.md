@@ -10,6 +10,15 @@ Owner: FlowDoc Project Control. หน้านี้เป็นทางเข
 ชุดเตรียม0.5.0 ผ่านการตรวจส่งมอบตามขอบเขตแล้ว แต่ยังไม่ติดตั้ง/ออก tag; ยึด exact package/runtime
 จาก `get_flowdocmake_context` ก่อนแก้ draft ดู [คู่รุ่นและข้อจำกัด](verification.md).
 
+## รุ่นของโครงสำหรับงานใหม่
+
+งานสร้างโครงหรือตัวอย่างใหม่ใช้ **Model19** (`nodeModelVersion:19`):
+request ใช้ `sections[]` จับคู่ UUID `id` กับ Section ที่บันทึกไว้ทุกตัวครั้งเดียว.
+Model18 ใช้เฉพาะซ่อมหรืออ่านงาน18เดิมที่ระบุขอบเขตชัด; ห้ามหยิบตัวอย่าง18
+มาต่อเป็นงานใหม่เพียงเพราะยัง validate ผ่าน. เปิดบท [โครงสร้าง/ข้อมูล](structure-and-data.md)
+ก่อนประกอบ definition/request. ตัวอย่าง19: [CLIS](../../examples/clis-model19/template.json)
+และ [ข้อมูล20รายการ](../../examples/clis-model19/request-20.json).
+
 ## เริ่มด้วยเป้าหมาย
 
 ยึดคำขอที่ชัดแล้ว ไม่ถามอนุมัติซ้ำ: แกะข้อมูลใช้ช่วง 0–1; โครงพร้อมตัวอย่าง

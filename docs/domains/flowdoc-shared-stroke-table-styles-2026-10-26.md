@@ -877,3 +877,44 @@ future0.5.1 installation/release; this round does not certify that deployment.
 Footer redesign remains deferred by the owner. No map promotion or new Work/
 execution registry was created. Passing candidate proof is reused after the
 unchanged fast-forwards under the workflow policy; no redundant broad rerun.
+
+
+## Model19 authoring correction and CLIS migration, 2026-10-26
+
+Owner request: new authoring guidance must select Model19, then migrate the
+actual CLIS example. Single-room inline maintenance; execution/Phase/Checklist
+IDs are not applicable. Owner is Project Control (guidance and task fixtures),
+active role Documentation Synthesizer with evidence review. No product runtime
+change, Service draft/API mutation, merge, release, installation or publication.
+The generated snapshot is about unrelated Editor work; this bounded request is
+the authority. Keep historical18 inputs and original PDFs unchanged.
+
+New-authoring entrypoints, structure/data tables, request example, draft setup
+and example routing now use19. Model18 is explicitly legacy maintenance only;
+runtime18 compatibility is not removed. The broad older guide has a prominent
+legacy boundary. FlowDocMake SKILL.md adopts the same rule. Packaging includes
+`docs/examples/clis-model19` rather than pointing new authors only to18 fixtures.
+The installed0.3.0 cache/profile is not modified by editing source guidance.
+
+The CLIS example is the accepted **Inward**20/60 fixture, not the new Outward
+report. It uses a saved-file UUID Section, label/nameBase, no key/formats/role,
+and array-by-ID requests. Native B/style/font/geometry and all source data are
+preserved. Its B feature requires Core0.5.1; the installed0.5.0 FlowDocMake route
+is not claimed compatible. Example IDs are local fixture identities, not a claim
+that a Service draft exists. Outward group headers/Port switching remain design
+work; this migration introduces no group API or dynamic Section assembly.
+
+Evidence: existing recovery root `model19-r1/` contains migration-manifest.json,
+consumer.mjs, template.json, request20/60 and artifacts. The packed Core0.5.1
+consumer prepared schema2/model19, composed and rendered both formats under
+1GiB/network-none. Invalid map/duplicate/missing/unknown Section inputs were
+rejected for both requests (8 negative checks).20 remains1page;60 remains3pages.
+All4 PDF pages have identical extracted text, dimensions and rendered pixels
+at1400px compared with retained original PDFs; all4 were visually reviewed.
+DOCX document/header/footer XML matches the original after replacing only the
+Section identity. No new native Word conversion is claimed. Source-file SHA256
+checks confirm retained legacy requests/template were not changed.
+
+Guidance/contract/workflow checks pass; packaging snapshot is refreshed only
+after the canonical-source checkpoint, then its packaging checks are rerun.
+This is impact-scoped proof, not full Service or full-system acceptance.

@@ -19,7 +19,7 @@ test('candidate build fails closed before writing without reviewed archive or on
 });
 test('default release packaging retains the release profile and canonical guide bytes',()=>{
  const fixture=join(root,'release-source');mkdirSync(fixture);
- const paths=['tools/build-flowdocmake.mjs','plugins/flowdocmake','docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
+ const paths=['tools/build-flowdocmake.mjs','plugins/flowdocmake','docs/examples/clis-model19','docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
  for(const p of paths){mkdirSync(dirname(join(fixture,p)),{recursive:true});cpSync(resolve(p),join(fixture,p),{recursive:true});}
  for(const args of [['init','-q'],['add','.'],['-c','user.name=Fixture','-c','user.email=fixture@local.invalid','commit','-qm','fixture']]){const r=spawnSync('git',args,{cwd:fixture,encoding:'utf8'});assert.equal(r.status,0,r.stderr);}
  const run=spawnSync(process.execPath,['tools/build-flowdocmake.mjs'],{cwd:fixture,encoding:'utf8'});assert.equal(run.status,0,run.stderr);

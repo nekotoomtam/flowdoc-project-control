@@ -1,6 +1,7 @@
 # โครงสร้าง Template และตัวแปร
 
-ชุดเตรียม0.5.0 ใช้ Section19 Stage3 หรือ Area18 ตามโมเดลต้นทาง;
+งานสร้างโครงและตัวอย่างใหม่ใช้ **Model19 (Section19 Stage3)**;
+Model18 เก็บไว้เฉพาะซ่อม/อ่านงานเดิมที่ระบุให้คงรุ่น18 ไม่ใช่ตัวเลือกเริ่มงานใหม่.
 ดู [คู่รุ่น/ขอบเขต DOCX](verification.md). การเปลี่ยนคู่มือไม่เปลี่ยนรุ่นติดตั้ง.
 
 Section19 Stage3 ใน FlowDocMake 0.3.0 / Service 0.5.0 / Core 0.5.0
@@ -18,10 +19,13 @@ clone/import/แยกสำเนาสร้างใหม่ก่อนบ�
 `{kind:"document"}`; หนึ่งต่อ Section และหนึ่งต่อเอกสารอยู่ร่วมกันได้.
 scope ซ้ำหลังขยาย Area ไม่ผ่าน; scope ว่างไม่สร้างหน้าว่าง.
 เลขและลิงก์ตาม numbering ของหน้าเป้าหมายจริง ไม่กรอกเลขใน data.
-ส่วนที่เหลือด้านล่างอธิบาย baseline model18;18ไม่ใส่ scope และคงสัญญาเดิม.
+ส่วนต่อไปนี้เป็นสัญญา Model19 สำหรับงานใหม่. Model18 เดิมยังอ่านได้ตาม
+contract ของรุ่นนั้น แต่ไม่ใช้ object-keyed request หรือ Section.key/formats
+มาปนกับ19. ตัวอย่างคู่ที่ใช้ได้จริง: [CLIS template](../../examples/clis-model19/template.json),
+[20รายการ](../../examples/clis-model19/request-20.json), [60รายการ](../../examples/clis-model19/request-60.json).
 
 Authority Boundary: Project Control document-authoring reference ของ Area18 และ
-Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้านบน;
+Section19 Stage3 สำหรับงานใหม่ และขอบเขต compatibility ของ18;
 ข้อกำหนดมาจาก Core/Service ตาม [baseline](README.md) ไม่ใช่ contract ของรุ่นอื่น.
 
 ## 1. Template root
@@ -29,7 +33,7 @@ Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้า
 | Field | ชนิด / Required | ความหมายและผลเมื่อละ |
 | --- | --- | --- |
 | schemaVersion | integer `1` หรือ `2`, Required | 1 ใช้ Sarabun เดิม; 2 ใช้คลังฟอนต์ตาม [TextStyle](layout.md#2-textstyle-และความสูงข้อความ) |
-| nodeModelVersion | integer `18`, Required สำหรับตัวอย่าง model18 ในตารางนี้ | Service ปัจจุบันรับ18และ19; รูปแบบ Section19 อยู่ต้นบท ห้ามผสมโครงสองรุ่น |
+| nodeModelVersion | integer `19`, Required สำหรับงานใหม่ | Runtime ยังอ่าน18เดิม; ห้ามผสมโครงสองรุ่น |
 | templateId | string, Required | ใช้ ID ที่ create คืนมา ห้ามสร้างเองสำหรับ save |
 | docKey | string, Required | key ที่สร้างไว้ ต้องตรงกับ request และ identity |
 | version | positive integer, Required | authoring draft ต้องเป็น `1`; ไม่ใช่ revision |
@@ -42,7 +46,7 @@ Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้า
 | areaFormats | object map, Optional | หากมี Area ต้องมี Format ของ Area นั้นอย่างน้อยหนึ่งแบบ |
 | examples | array, Required | ปกติใช้ `[]`; ถ้ามีเป็น `{name,request}` ชื่อไม่ซ้ำ |
 
-ไม่มี top-level `formats`, `header`, `footer` สำหรับ Area18.
+ไม่มี top-level `formats`, `header`, `footer` สำหรับ Model19.
 Examples ใน definition ต้องมี request.version ตรงกับ definition.version;
 อย่าใส่ uploadId ใน examples เพราะเป็นข้อมูล transport ของ Service.
 `page` และ `TextStyle` ดู [Layout](layout.md).
@@ -51,19 +55,19 @@ Examples ใน definition ต้องมี request.version ตรงกับ
 
 | Field | ชนิด / Required | ความหมายและข้อจำกัด |
 | --- | --- | --- |
-| id | nonblank string, Required | identity ไม่ซ้ำใน sections; ห้าม `~` |
-| key | nonblank string, Required | lookup `request.sections[key]`; ห้ามจุดและต้องไม่ซ้ำ |
-| label | string, Optional | คำอธิบาย ไม่ใช่เนื้อหาที่เรนเดอร์ |
+| id | UUID string, Required | identity ไม่ซ้ำใน sections; request จับด้วย id |
+| label | nonblank string, Required | ชื่อแสดงผล ไม่ใช่เนื้อหาที่เรนเดอร์ |
+| nameBase | nonblank string, Required | ชื่อฐานของ Section instance |
+| key / formats | Forbidden | เป็น property ของ18 ห้ามใส่ใน19 |
 | pageLayoutId | string, Optional | ละแล้วใช้ book.defaultPageLayoutId |
-| role | `body` / `cover`, Optional | ละแล้วเป็น body; cover ได้เฉพาะ Section แรกและ authored |
+| role | Forbidden | Model19 ไม่ใช้ Section.role; ปกเป็นเนื้อหาภายใน Section |
 | source | object, Required | `{kind:"authored",fragment,repeats,cellRepeats?,rowGroups?}` หรือ `{kind:"blank"}` |
-| inputSchema | ObjectSchema, Required | ข้อมูลใน `sections[key].data` |
-| formats | object, Required | Area18 ต้องเป็น `{}`; Format จริงอยู่ areaFormats |
+| inputSchema | ObjectSchema, Required | ข้อมูลในสมาชิก `request.sections[]` ที่มี id ตรงกัน; Format อยู่ areaFormats |
 | header / footer | PageBand, Optional | ถ้าไม่ระบุ ไม่มี band นั้น ไม่สืบทอดจาก Section ก่อน |
 | headerMode / footerMode | all/first/continuation/none, Optional | default all; first/continuation อิงหน้าภายใน Section |
 | numbering | object, Optional | continue/restart/exclude; ดู Layout |
 
-`source.kind:"content"` เป็นทางเก่าที่ Area18 ปฏิเสธ.
+`source.kind:"content"` ไม่อยู่ในสัญญา Model19.
 Section กำหนดกระดาษ/หัวท้าย/การนับหน้า และเนื้อหาอาจไหลหลายหน้า.
 อย่าสร้าง Section ใหม่ทุกครั้งที่ต้องการขึ้นหน้า ใช้ `page-break` ในกราฟ.
 Blank Section ไม่ใส่ fragment/repeats ใน source.
@@ -118,13 +122,15 @@ Format ที่เสียบเข้าไปต้องมี root เป�
 Request:
 
 ```json
-{"docKey":"my-document","data":{},"sections":{"main":{"data":{"details":[
-  {"format":"chapter","data":{"title":"บทหนึ่ง","requirements":[]}},
-  {"format":"new-page","data":{}}
-]}}}}
+{"docKey":"my-document","version":1,"data":{},"sections":[
+  {"id":"10000000-0000-4000-8000-000000000001","data":{"details":[
+    {"format":"chapter","data":{"title":"บทหนึ่ง","requirements":[]}},
+    {"format":"new-page","data":{}}
+  ]}}
+]}
 ```
 
-Area18 รับ array ของ `{format,data}` ตามลำดับเท่านั้น ไม่รับ object map แทน array.
+Area รับ array ของ `{format,data}` ตามลำดับเท่านั้น ไม่รับ object map แทน array.
 Unknown Format หรือข้อมูล entry ไม่ถูกต้องเป็น error หยุดสร้าง ไม่ข้ามเงียบ.
 
 ## 5. ObjectSchema และชนิด field ทุกแบบ
@@ -149,12 +155,12 @@ allowEmpty ละแล้วไม่ได้ห้าม empty string. null, 
 String ต้องเป็น Unicode ที่ถูกต้องและไม่มี control characters ที่ validator ห้าม;
 newline/tab ใช้ได้ตาม validation แต่ไม่ใช่คำสั่งขึ้นหน้า.
 
-Array ซ้อนได้ลึก 2 ชั้นใน Area18 (เช่น companies[].members[]);
+Array ซ้อนได้ลึก 2 ชั้นใน Model19 (เช่น companies[].members[]);
 items ต้องเป็น object schema และไม่ใช่ primitive string[].
 Area ไม่อยู่ใน array items. Header/footer schema รับเฉพาะ string/image/link.
 Default ต้องผ่านชนิดและ validation เดียวกับค่าปกติ.
-Unknown data field เป็น UNKNOWN_VARIABLE warning/action ignored;
-unknown section เป็น UNKNOWN_SECTION error. ห้ามมองข้าม warning เพราะอาจเป็น typo.
+Model19 ปฏิเสธ unknown data field เป็น INVALID_DATA; ไม่ละตัวแปรเงียบ.
+Section ID ไม่รู้จัก/ซ้ำ/ขาดเป็น SECTION_INPUT_UNKNOWN/DUPLICATE/MISSING.
 
 ## 6. Scope และการ binding
 
@@ -181,9 +187,11 @@ item จะใช้ได้ทุกที่. ภายใน rowGroups ใ�
 
 ## 7. Request กับ definition เป็นคนละสัญญา
 
-Core request root รับ docKey, version?, data?, sections?.
-Sections เป็น object keyed ด้วย Section.key; แต่ละ entry รับ data/header/footer.
-Area18 ไม่รับ sections.*.content. ข้อมูล header/footer ส่งที่
-`sections.main.header` โดยตรง ไม่ซ้อน `.header.data`.
+Core Model19 request root รับ docKey, version?, data?, sections (required array).
+แต่ละสมาชิกเป็น `{id,data,header?,footer?}`; ส่งทุก saved ID ครั้งเดียว.
+ลำดับที่พิมพ์มาจาก definition ไม่ใช่ลำดับใน request. ไม่รับ content หรือสร้าง
+Section ใหม่ผ่าน generation request. ข้อมูล header/footer ส่งที่
+`sections[i].header` / `sections[i].footer` โดยตรง ไม่ซ้อน `.header.data`.
+header/footer ส่งได้เมื่อ Section ประกาศ band นั้นไว้เท่านั้น.
 Service preview เพิ่ม uploadId ได้ แต่ validate_template.sampleRequest
 ต้องเอา uploadId ออก. ไม่ส่ง prepared_input/sourceMap/resources แบบภายใน.
