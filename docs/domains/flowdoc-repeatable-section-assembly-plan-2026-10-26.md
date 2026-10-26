@@ -212,10 +212,12 @@ No arbitrary performance claim follows from these functional samples.
 
 ## Current result
 
-Paused at the owner's request after completing the current Core checkpoint.
-Task1 and Task2 are complete for the isolated candidate. Task3 has direct PDF
-and native DOCX structure evidence, but native Word conversion/reflow is NOT
-verified. Task4 Service/discovery and Task5 Outward CLIS are not started. Do not
+Resumed on the owner's instruction after the Core checkpoint. Task1 and Task2
+remain complete for the isolated candidate. Task3 now has native Word conversion
+and actual edit/reflow evidence, but is BLOCKED on saving the edited DOCX: Word
+stops responding during Ctrl+S, and the copy on disk still lacks the edits.
+Task4 Service/discovery has not started. Task5 has a direct-Core bounded Outward
+sample, but its Word conversion and Service delivery remain unverified. Do not
 claim whole-plan acceptance or that the installed API accepts repeated Sections.
 
 ## Execution ledger
@@ -285,3 +287,58 @@ plus edit/reflow proof before Service integration. Keep using the saved pilot
 files; rebuild/re-pin a final package from the checkpoint source before any new
 consumer integration. Service, installed FlowDocMake, original PDFs and old CLIS
 fixtures are unchanged. No merge, push, release, installation or publication.
+
+### Owner-authorized resume: native Word reflow and save blocker
+
+The owner confirmed that earlier disappearing windows were being closed by the
+owner. That observation is not evidence of a generated-document crash. Native
+Word then exported a clean five-page baseline, retained as
+`section-assembly-r1/artifacts/Section-Assembly-ABA-R2-word-clean.pdf`. The earlier
+`Section-Assembly-ABA-R2-word.pdf` contains an accidentally typed Thai character
+in its title; preserve it as excluded evidence, not the comparison baseline.
+
+Rebuilt and packed the unchanged final Core source10eeb89. The final archive
+SHA256 is `e2a31efe7a8598914867e8c4c9f161eeee6a9a85a126d4c4cda24e8f1a14d5af`.
+It is retained in both section-assembly-r1/final-core and section-assembly-r2.
+It does not replace the installed package or the earlier pre-review proof input.
+
+The third Core render batch produced a plain native-border A12/B60/A5 pair and
+a checked-source Outward sample pair under1GiB with network disabled. A preceding
+fixture validation rejected0.35pt for a native single border; the proof fixture
+was corrected to0.5pt before rendering. No product default changed. All three
+planned Core render batches are now used; reassess the persistent failure before
+any further Core render batch rather than retrying automatically.
+
+Plain pilot:5 Core PDF pages,3 native DOCX Sections. Opened a separate edit copy
+in Word, inserted70 paragraphs before the first table, and exported a seven-page
+PDF. Pages1-3 retain the first-use Ningbo header, pages4-6 the Shanghai header,
+and page7 the second-use Ningbo header. All77 original records and70 inserted
+paragraphs occur exactly once; native page fields show1 of7 through7 of7.
+All seven Word PDF pages and all five plain Core PDF pages were visually reviewed.
+This proves observed native reflow/band isolation, not exact PDF/Word pagination.
+
+Native Ctrl+S remains a real blocker. The B-stroke edit case stopped responding;
+after the owner closed its windows without saving, the plain-border edit case
+also stopped responding during save. The current plain DOCX on disk still has
+zero REFLOW paragraphs. Escape did not recover it; Word PID43544 was observed
+Responding=false. No forced termination or unrelated application closure was
+performed. Root cause is UNKNOWN: B strokes are not established as the cause.
+The successful Word PDF preserves the edited result, but no saved-edit DOCX PASS
+is claimed. Stop before Service implementation, as required by Task3's gate.
+
+Outward sample preparation:39 checked records from source pages1,2,3,24, grouped
+as Ningbo9 / Shanghai20 / Xiamen10. One saved containerList definition is used
+three times. The four-page Core PDF repeats the correct Port header, places each
+sample total after its group, and has no footer. The Shanghai row continuation
+crosses the page boundary normally. All four pages were visually reviewed and
+all39 container IDs were checked once. Totals are explicitly sample totals, not
+the original full-group totals. This is not a full30-page fidelity reconstruction.
+Native Word conversion of this sample is pending because of the save blocker.
+
+Retained evidence under the existing recovery root:
+`section-assembly-r2/artifacts/resume-word-verification.json`,
+`Section-Assembly-Plain-R2-edit-word.pdf`, its per-page inspection JSON and QA
+images, `consumer-result.json`, both generated artifact pairs, and checked source
+rows in section-assembly-r2. Product source, Service vendor/pins, installed
+FlowDocMake and all original baselines remain unchanged in this resume. Service
+source inspection was read-only; no API/discovery/task integration PASS is claimed.
