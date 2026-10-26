@@ -237,7 +237,8 @@ Task5 has a direct-Core bounded Outward sample with complete per-use headers and
 body totals, no visible footer. The latest clis-atomic-rows-r3 pair uses TH Sarabun
 New and intact rows; Core PDF/data checks pass and owner Word conversion is next.
 The subsequent owner-requested layout refinement is clis-source-layout-r4-final;
-it retains those semantics and is the latest delivered sample pair.
+it retains those semantics. The latest sample is clis-inward-outward-r5, with
+two saved definitions and a combined demonstration pair.
 Its Service delivery remains unverified. Do not
 claim whole-plan acceptance or that the installed API accepts repeated Sections.
 
@@ -541,3 +542,58 @@ the selected10.5pt Bold body weight is an optical approximation, not identical
 font geometry. This bounded refinement is ready for the owner's conversion;
 do not run more tuning without a new finding/request. Service integration remains
 pending and no merge, push, release, install or publication was performed.
+
+### Owner-authorized CLIS Inward and Outward Section definitions
+
+The owner selected two saved Section definitions in one CLIS template, retaining
+the common13-column body shape, global styles, TH Sarabun New and intact-row
+pagination. Create inward/outward public keys with separate header schemas:
+Inward uses Arrival Date, Port of Discharge and Place of Delivery; Outward uses
+Departure Date, Port of Loading and Port of Discharge. Do not repurpose one date
+or port field under a different business meaning. Copy the existing body layout;
+only the Inward summary label and bottom rule differ as observed in the source.
+No conditional renderer or new Core API is required.
+
+Use all20 records from the supplied Import PDF (including blank Material/Type),
+plus the unchanged39 checked Outward sample records. Preserve both originals and
+R4. Deliver one combined demonstration pair with Inward then three Outward uses,
+showing both definitions and repeated Outward Ports. Also verify preparation and
+composition of Inward-only and Outward-only selections, plus header-schema
+rejection for wrong-direction fields. Keep export subtotal labels as sample totals.
+Budget: one initial paired render plus one responsible repair pair only for a
+concrete failure; isolated offline generation under1GiB. Check every PDF page,
+all59 rows/767 item cells, independent headers, page fields,<=3 measured cell
+lines, intact rows and body totals. Native Word conversion stays with the owner.
+This is a local fixture candidate, not Service/discovery acceptance, installation,
+merge, publication or complete Outward reconstruction. No product source change.
+
+Inward/Outward trial result: `clis-inward-outward-r5/template.json` contains
+exactly two saved definitions, inward and outward, using one global style set.
+The table body shape is copied unchanged; differences are the business-specific
+header schema/labels, Inward total label, and its0.25pt summary bottom rule.
+`request.json` selects inward-bangkok then Outward Ningbo/Shanghai/Xiamen, for
+four independent uses. Prepared/composed Inward-only and Outward-only selections
+pass with1 and3 uses respectively. Wrong-direction header fields are rejected
+and composing does not mutate the source template (`selection-proof.json`).
+
+The single initial paired batch succeeded under the existing offline1GiB setup.
+PDF has5 pages with20 /9 /10 /10 /10 items. All five pages were visually reviewed.
+All59 container IDs occur once, each item's operator text stays on its page,
+and all767 actual item cells match input after whitespace normalization. Native
+DOCX has4 Sections and8 body tables; all767 item cells and32 summary cells match
+input, item rows carry cantSplit, and all8 header parts contain independent
+direction-specific text and PAGE/NUMPAGES fields. Footer parts are empty. All
+measured body cells remain<=3 lines; no new clipping or ellipsis was introduced.
+The20 Inward records and blank Material/Type/etc. were retained from the supplied
+Import PDF, SHA25601859d8f9cf59483efa44334b21bacc90d1fbe196831d027e8263dde9cb8757c.
+Its full20-row subtotal remains20/9/11 with empty/other buckets0. Outward totals
+remain explicitly sample totals for the39 selected records.
+
+Outward regression proof: after shifting page indexes by one, every extracted
+word and its position below45pt matches the previous R4 final four-page PDF.
+Only the expected combined-document page fields change. Inward uses the agreed
+common body spacing, not a separate pixel calibration of its source's row pitch.
+Native Word visual acceptance is pending owner conversion. `artifacts/verification.json`
+records coverage, hashes and header mapping; inputs and checked Inward source
+rows are retained beside it. Product sources, installed packages and Service/API
+are unchanged. No merge, publication or full Outward reconstruction is claimed.
