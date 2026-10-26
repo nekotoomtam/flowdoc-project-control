@@ -606,3 +606,41 @@ file through Word before native dimensions/appearance can be accepted.
 Deliver `word-thick-thin-035-r1/CLIS-Word-035-thick-thin-R1.docx` under the same
 evidence root, with provenance/checks in `manifest.json`. Original files retained;
 Core a1b7e62 remains clean, no merge/push/install/publication or new baseline.
+
+## Selected B DOCX and native Word PDF, 2026-10-26
+
+The owner selected B and requested both PDF and DOCX to see its appearance.
+Scope stated in chat: one-page selected-style pair, not a full CLIS or dynamic
+table integration. Evidence Reviewer artifact work, Core owner for any later
+implementation, single-room IDs not applicable. Preserve the existing worktree,
+product source, old files and no-merge boundary.
+
+Produced a dedicated DOCX retaining only the selected inline B grid: total
+outline width0.35pt (4445 EMU), compound thickThin, gray666666, custom dash stops
+400000/1200000, nominal dash1.4pt/gap4.2pt. No floating page anchor or Core API
+change. Source DOCX and output DOCX hashes were checked before/after conversion.
+
+The document connector had no connected session. Using the computer-use skill,
+opened the new local copy in Word, declined updating fields, and saved as PDF
+with Standard online/printing quality and open-after-export disabled. Existing
+documents were not edited or saved by the agent. The first new window became
+unavailable before export; the second open/export completed. No reason for the
+window disappearance is inferred and no unrelated window was closed.
+
+Actual PDF Creator/Producer identify Microsoft Word for Microsoft 365. One page
+rendered and inspected, no clipping/overlap. ZIP/XML checks confirm one inline
+grid and the selected settings. Native Word paints920 filled vector rectangles,
+with regular horizontal dash1.4pt, gap4.2pt, thick component0.21pt, thin0.07pt,
+inter-component gap0.07pt and total0.35pt. Gray is0.4. Thus the compound appearance
+is now directly observed, rather than inferred from LibreOffice's approximation.
+
+Deliver under `selected-b-035-r1/` in the same evidence root:
+
+- `CLIS-selected-B-035.docx`.
+- `CLIS-selected-B-035.pdf` (native Word export, not direct FlowDoc Core PDF).
+
+`manifest.json` retains provenance, actual vector measurements and checks;
+`word-pdf.png` retains full-page visual review. No product tests were rerun
+because source/config/data are unchanged. Native dynamic table row resizing and
+page continuation remain unimplemented; this pair proves the selected outline
+only. No release/install/merge/push/publication or replacement baseline.
