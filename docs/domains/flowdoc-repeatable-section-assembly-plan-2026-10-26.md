@@ -388,3 +388,35 @@ and existing source rows. Remaining proof is the already-planned isolated Servic
 PDF/DOCX delivery and affected compatibility checks under1GiB, with at most an
 initial and responsible-repair delivery batch. No further native Word automation,
 spacing tuning or unrelated renderer experiment is part of that proof.
+
+### CLIS20 feasibility correction: TH Sarabun New and compact rows
+
+The owner clarified a client requirement: target20 items per page, at most three
+lines per item, and never split an item across pages; if the next item does not
+fit, move it intact to the next page (for example19 then item20). The current
+stage is feasibility before product changes. Use TH Sarabun New, not the Sarabun
+family used in the previous sample. Investigate compact leading and cell padding
+for this CLIS requirement; this is not a reopening of general PDF/Word fidelity
+tuning or Word save diagnosis. Ellipsis beyond three lines remains undecided;
+Core currently exposes no line-clamp/ellipsis contract. Do not silently discard
+data. Current CLIS itemRow allowBreak=true must change in a later approved edit.
+
+Found local Regular/Bold files in Downloads/THSarabunNew and verified their
+internal family names. Regular SHA256 is
+`b248f824f3d7a8576bc396826a4d898070c1420564f6ce6aa716aa8ad24f824a`;
+Bold SHA256 is
+`49596f298a8fe248c5340b4589b3b4adfcf34a3e24084ebeb4f49c6600f75fa7`.
+These are local trial inputs, not registered/installed font releases. The active
+Service catalog currently lists Sarabun, Pridi and IBM Plex Sans Thai, not this
+family. No catalog, package, template or renderer was changed by the inspection.
+
+One isolated read-only shaping probe used the existing final packed Core image,
+network disabled and1GiB. At12pt (measurement size only), the three actual English
+operator lines have ink heights7.716/7.920/7.692pt, whereas the font ascent/descent
+envelope reserves15.612pt. Thai samples with marks have ink heights10.764-12.816pt.
+Core measureText takes max(authored leading, font ascent+descent), so lowering
+lineHeightPt alone cannot reclaim that envelope. This identifies a candidate
+mechanism to investigate before implementation, not proof that20 worst-case rows
+fit or that Word matches. Keep Thai mark clearance in any later compact-line
+experiment; do not extrapolate English-only packing to arbitrary Thai text.
+No new PDF/DOCX or product test was run for this feasibility probe.
