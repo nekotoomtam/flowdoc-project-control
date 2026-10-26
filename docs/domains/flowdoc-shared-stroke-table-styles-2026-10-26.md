@@ -353,3 +353,59 @@ evidence root, with provenance/checks in `manifest.json`. Next prerequisite is
 the owner's actual Word PDF conversion of this single file, saved beside it.
 Measure that output before choosing a preset or adjusting PDF. The earlier
 20/60 R1 continuation-border Word review remains pending independently.
+
+## Word A-F measurement and E vector artifact trial, 2026-10-26
+
+The owner supplied the actual Word probe PDF and authorized choosing the
+closest preset and adjusting PDF experimentally. Evidence Reviewer/artifact
+experiment, Core owner for any future renderer change; single-room execution
+IDs not applicable. Core source, shared API and installed packages remain
+unchanged. No merge, publication or baseline replacement.
+
+Actual PDF Creator/Producer identify Microsoft Word for Microsoft 365. Modal
+straight-edge measurements in points (nominal width / actual width / dash / gap):
+
+| Sample | Native style | Nominal width | Actual width | Dash | Gap |
+| --- | --- | --- | --- | --- | --- |
+| A | dashed | 0.25 | 0.24 | 0.72 | 0.24 |
+| B | dashed | 0.5 | 0.48 | 1.44 | 0.48 |
+| C | dotted | 0.25 | 0.24 | 0.24 | 0.24 |
+| D | dotted | 0.5 | 0.48 | 0.48 | 0.48 |
+| E | dashSmallGap | 0.25 | 0.24 | 0.8 | 0.4 |
+| F | dashSmallGap | 0.5 | 0.48 | 2.0 | 0.4 |
+
+A-D use vector dash arrays; E/F use repeated raster tiles with alpha masks,
+including different corner and truncated tiles. E's regular horizontal tile is
+1.2pt wide with mask bits110; F's is 2.4pt with101111. The dash/gap figures for
+E/F are cyclic modal painted runs, not a native vector dash declaration.
+
+Ruling: select E narrowly by minimizing absolute dash and gap error against
+the source [1,3]pt: E=2.8pt versus runner-up B=2.96pt. Source hairline width is
+not scored as a fixed point thickness. This is a small relative advantage;
+every preset is substantially denser than the original. It is not an overall
+visual-fidelity pass or a universal dashSmallGap scaling rule.
+
+Produced two explicitly labelled research PDF copies by changing only the
+dotted border paint operators of the preserved FlowDoc CLIS PDFs: 0.24pt width,
+butt caps, [0.8,0.4]pt dash array and phase0. They are postprocessed vector
+artifact trials, not unmodified FlowDoc exports or new Core support. Text,
+path coordinates, header seam, footer strokes and all other operators are
+unchanged. Word's raster tile seams/corner phases are approximated, not cloned.
+
+Verification: both PDFs reopened; every word and its position is exactly equal
+to the corresponding original. Page counts1/3 and row counts20,20/24/16 match.
+Only the three intended graphics operators per selected border group differ;
+26 groups changed per page, footer strokes unchanged. All four rendered pages
+were visually reviewed without new clipping/overlap. The original eight input
+PDF/DOCX hashes match. No product tests were rerun because no product changed.
+
+Evidence: `dash-match-e-r1/measurements-and-output.json`, actual Word full-page
+render and four output renders under the same evidence root. Deliverables:
+
+- `dash-match-e-r1/CLIS-Word-E-vector-trial-20.pdf`.
+- `dash-match-e-r1/CLIS-Word-E-vector-trial-60.pdf`.
+
+Remaining boundary: these files demonstrate the selected pattern on the existing
+CLIS layout only. General Core style support and native DOCX full-report use of
+E have not been implemented or accepted. The earlier continuation-border Word
+review remains separate and unresolved by this line-pattern experiment.
