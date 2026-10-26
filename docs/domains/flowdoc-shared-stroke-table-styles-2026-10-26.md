@@ -569,3 +569,40 @@ Evidence: `word-wide-dash-r1/word-measurement-and-flow-review.json`, actual Word
 PDF/hash, full-page render and original source hash under the same root. Probe
 DOCX hash and all25 earlier input hashes match. No product tests were rerun
 because source/config/data remain unchanged; existing Core commit a1b7e62 retained.
+
+## Owner thick-thin 0.35 trial, 2026-10-26
+
+The owner reported their own Word limitations and requested width0.35 with
+compound thick-thin. Interpret0.35 as points for this reversible DOCX probe;
+no edited owner DOCX was supplied to prove their exact settings. Evidence
+Reviewer discovery, Core owner for later integration, execution IDs not applicable.
+Keep current Core, all previous inputs and no-merge boundary unchanged.
+
+DrawingML encodes exactly0.35pt as4445 EMU and compound as `thickThin`; this
+is a shape outline setting, not a newly supported native table border width.
+Do not silently quantize0.35 to an eighth-point table width. Compound indicates
+one thick/one thin component, rather than0.35pt per component:
+<https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.compoundlinevalues?view=openxml-3.0.1>.
+
+One new file compares three inline drawing grids, all gray666666:
+
+- A: thickThin0.35pt, physical dash/gap held at approximately1/3pt by setting
+  dash-stop percentages285714/857143.
+- B: thickThin0.35pt, previous400000/1200000 ratios retained, giving nominal
+  physical dash/gap1.4/4.2pt as width increases.
+- C: single0.35pt control with the fixed approximately1/3pt physical pattern.
+
+The distinction tests the owner's observation that increasing width also grows
+dash lengths. Actual Word compound painting remains unverified; no PDF profile
+was changed. These are still fixed inline research drawings with the previously
+recorded row-growth/page-fragment limitation, not dynamic table integration.
+
+ZIP/XML checks, exact EMU width, compound/dash instructions, three inline frames,
+unchanged non-document members and preserved input hashes passed. One full
+LibreOffice preview page inspected: all labels/grids visible, no overlap/clipping.
+No product test run because no product changed. The owner must convert the new
+file through Word before native dimensions/appearance can be accepted.
+
+Deliver `word-thick-thin-035-r1/CLIS-Word-035-thick-thin-R1.docx` under the same
+evidence root, with provenance/checks in `manifest.json`. Original files retained;
+Core a1b7e62 remains clean, no merge/push/install/publication or new baseline.
