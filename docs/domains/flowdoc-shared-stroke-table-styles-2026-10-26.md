@@ -667,3 +667,52 @@ Deliver `selected-b-035-black-r1/CLIS-selected-B-035-black.docx` and `.pdf` unde
 the same evidence root. `manifest.json` and `word-pdf.png` retain verification.
 PDF is a native Word export, not a FlowDoc Core PDF. Dynamic table/page-flow
 integration remains unimplemented. No merge, release, install or new baseline.
+
+## Selected B full CLIS artifact trial, 2026-10-26
+
+Owner accepted black B and requested its use in the CLIS structure and full
+document outputs. Inline artifact implementation and evidence review in the
+existing isolated lane; execution IDs not applicable. Core remains the owner
+of any later general renderer feature. Scope: preserved CLIS20/60 sources,
+editable native Word tables, black0.35pt thickThin custom dash1.4pt/gap4.2pt,
+PDF/DOCX examples, unchanged pagination/header/footer, no main integration.
+
+Produced full cases under the existing evidence root's `clis-b-row-flow-r1/`:
+
+- `CLIS-B-row-flow-20.docx` and `CLIS-B-row-flow-60.docx`.
+- Same-stem `.pdf` files exported through native Microsoft Word for Microsoft
+  365 UI, Standard printing quality, field updates declined.
+- `CLIS-B-row-flow-20-flowdoc-trial-r3.pdf` and corresponding60, vector-paint
+  adapters over preserved Core PDFs, explicitly not direct Core exports.
+- `build_trial.py`, `verify_trial.py`, `manifest.json`, `verification.json`
+  and eight rendered full-page review images.
+
+The prototype adds one custom DrawingML anchor to each native table row,
+removes replaced dotted borders and retains the solid header seam. Paragraphs,
+row-height/split flags, data, fonts, header/footer parts and page-break rules
+are unchanged; no manual row-per-page cuts were introduced. Non-document ZIP
+members are byte-identical, and normalized document XML differs only in the
+added drawings and border declarations. B paint uses black, total0.35pt,
+thick component0.21pt, thin0.07pt and component gap0.07pt, verified from Word
+vector rectangles. Initial adapter PDF revisions are retained but superseded
+by r3, which corrects compound offsets and the RGB stroke operator.
+
+Checks confirm20 is1page and60 is3pages with20/24/16 rows; every source container
+appears once, table headings/page numbers/footer totals remain on every page.
+PDF trial text and character coordinates exactly match the preserved Core PDFs.
+Relative to older styled Word exports, text positions differ by at most1.08pt
+(20) and0.96pt (60); that comparison includes the prior border-inheritance change
+and is not a same-source causal measurement. All four Word pages and four
+FlowDoc paint-trial pages rendered and visually inspected; no new text clipping
+or overlap observed. Original PDF hashes still match the retained manifest.
+
+Result: artifact checks pass, with explicit unresolved limits. Row drawings
+use measured fixed extents for this pinned one-line-body/two-line-header CLIS
+fixture; wrapped or split growing rows are not supported by this adapter.
+Word repeats the drawn header but still lacks the intermediate table-closing
+rule on60 pages1/2. Vertical dash phase restarts per Word row, whereas the PDF
+paint trial uses a continuous fragment stroke. Therefore this is a full-report
+visual prototype, not a completed general Core style or exact PDF/DOCX parity.
+No product tests run because Core source is unchanged at a1b7e62. General
+integration and remaining continuation-edge behavior stay open; no merge,
+push, publication, install or replacement baseline.
