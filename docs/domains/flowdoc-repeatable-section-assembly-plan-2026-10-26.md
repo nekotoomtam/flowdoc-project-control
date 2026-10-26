@@ -234,7 +234,9 @@ PDF/DOCX fidelity tuning and Word edit/save reliability from this round's remain
 scope; their incomplete evidence and known issues are retained, not marked PASS.
 Task4 Service/discovery is the remaining implementation target and has not started.
 Task5 has a direct-Core bounded Outward sample with complete per-use headers and
-body totals, no visible footer. Its Service delivery remains unverified. Do not
+body totals, no visible footer. The latest clis-atomic-rows-r3 pair uses TH Sarabun
+New and intact rows; Core PDF/data checks pass and owner Word conversion is next.
+Its Service delivery remains unverified. Do not
 claim whole-plan acceptance or that the installed API accepts repeated Sections.
 
 ## Execution ledger
@@ -420,3 +422,57 @@ mechanism to investigate before implementation, not proof that20 worst-case rows
 fit or that Word matches. Keep Thai mark clearance in any later compact-line
 experiment; do not extrapolate English-only packing to arbitrary Thai text.
 No new PDF/DOCX or product test was run for this feasibility probe.
+
+### Owner clarification and authorized atomic-row CLIS trial
+
+The owner corrected the20-item interpretation: the controlling rule is actual
+available space. Move the entire next item to the next page if it does not fit;
+do not split it and do not compress20 three-line items into a page. The20-line
+description is not authority to introduce a hard20-item counter or a fixed text
+line-count paginator. The three-line-per-item requirement remains; treatment of
+overlong text/ellipsis has not been selected. The owner authorized starting the
+trial after this clarification. The prior20-worst-case-item packing calculation
+is superseded as an acceptance target, not erased from history.
+
+Ruling: reuse the existing public allowBreak=false row option and TH Sarabun New
+font resources in a new isolated CLIS fixture; no renderer change is needed for
+atomic-row pagination. Generate the same checked39 source records in PDF/DOCX,
+retaining the full per-use headers and ordinary body totals. Preserve all prior
+files. Start with10pt table text,12pt bands and compact cell padding as a trial
+choice, not an owner-specified font size. Verify every rendered cell's line count,
+row-once/text completeness and no item split; fail visibly instead of truncating
+any cell exceeding three lines. No new ellipsis behavior, catalog registration,
+installation, Service integration, merge or release is part of this fixture trial.
+Budget: one initial artifact pair plus one responsible repair pair only if a
+concrete check fails, each real generation under1GiB with network disabled.
+The owner performs native Word conversion; do not resume automated Word save
+diagnosis or claim Word visual acceptance from structural XML checks.
+
+Atomic-row trial result: retained under the existing recovery root at
+`clis-atomic-rows-r3`. Same39 checked source records, TH Sarabun New10pt table
+text/12pt bands, compact cell padding, allowBreak=false on every row and no
+renderer/product-source modification. PDF has4 pages: Ningbo9, Shanghai12+8,
+Xiamen10. Full headers repeat on the Shanghai continuation; group totals occur
+only after each group's last item. All four PDF pages were visually reviewed.
+Each container occurs once and each of its three operator lines stays on that
+same page. All507 PDF cell values match source data after whitespace normalization.
+All measured body cells have at most3 lines; no clipping or ellipsis was applied.
+This is a sample-data result, not a general3-line truncation implementation.
+
+DOCX contains3 native Sections,42 rows including the three header rows, and
+cantSplit on all42. All507 body cell values match source after whitespace
+normalization. Header parts contain the complete independent Port headers;
+footer parts contain no text/fields/tables. Font table names TH Sarabun New.
+DOCX native Word visual/reflow acceptance remains pending owner conversion.
+
+One responsible environment repair: initial PDF generation succeeded but DOCX
+could not create its source temp directory on read-only /tmp. Added a bounded
+tmpfs at /tmp and generated DOCX only; preserved the first PDF. Both container
+runs kept network disabled and1GiB. The cell comparison checker initially included
+the following total node in the last-row window; corrected the reader boundary
+and passed without changing the artifact. Durable outputs: template/request/font
+inputs, embedding license extracted from the original font, cell-lines.json,
+generation.json (DOCX retry receipt), verification.json (both artifact hashes and
+coverage), and all PDF page images. Core/Service source, catalog and installed
+packages remain unchanged. This fixture trial is ready for owner Word conversion;
+Task4 Service/discovery integration remains pending, not implicitly accepted.
