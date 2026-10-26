@@ -754,3 +754,126 @@ Artifact correction checks pass. Intermediate Word page1/2 closing rules remain
 absent as accepted for this prototype; fixed row extents and per-row dash phase
 limitations remain open. Core unchanged at a1b7e62; no product test needed for
 artifact-only changes, no merge/release/install/push or new baseline.
+
+## B system integration and 0.5.1 plan, 2026-10-26
+
+Owner explicitly chose to integrate B into the real system before merging and
+incrementing the patch version. New bounded inline implementation scope, reusing
+this receipt and existing clean Core/PC lanes; execution IDs not applicable.
+Role: Product Implementation Agent, then Evidence Reviewer and integration.
+Core owns shared strokes and DOCX/PDF rendering; Service owns its pinned vendor
+package and validation consumer. Routine risk, medium work. Current generated
+snapshot is unrelated Editor work; this explicit export request governs scope.
+Use the current host inline model; no separately dispatched room/model.
+
+Design: add a named table style `thickThinWideGap` for B. Its width is the total
+envelope, components0.6w/0.2w and gap0.2w; dash4w/gap12w, flat caps, source RGB.
+Native DOCX borders cannot encode that custom dash. Core itself will emit
+DrawingML row-bound paths over editable text tables, rather than requiring an
+external ZIP or PDF adapter. Row extents derive from authored paragraph lines,
+owned font metrics and emitted margins, never fixture IDs or measured PDF
+coordinates. DOCX supports unmerged ordinary text tables with unwrapped body
+rows and literal authored header lines; measure fit first and reject unsupported
+auto-wrap, merged/split multiline bodies, generated spans or image cells.
+Native row/page flow stays unchanged. Editing content/font in Word may require
+regeneration. Missing intermediate Word closing rules and row dash-phase restart
+remain accepted limitations. PDF paints B directly through its shared writers.
+Standalone line B is outside this table-specific scope and must reject clearly.
+
+Acceptance: actual public Core package produces CLIS20/60 PDF/DOCX with B top,
+header seam, verticals and final-row bottom; Word exports retain1/3pages,
+20/24/16 rows, repeated headers/footer, black0.35pt B and no solid header seam.
+Invalid DOCX profiles fail before output commit. Existing default/styled/merged
+exports remain passing. Service uses the exact new package/provenance. Merge
+only tested clean candidates into development main lines, patch Core/Service
+0.5.0→0.5.1. No footer redesign, public release/tag/push or installation.
+
+Plan and proof budget (repeat only for changed code/failures):
+
+- [x] RED→GREEN shared width/style validation, PDF compound operators and DOCX
+  emitted paths/unsupported profiles. Files: composition/strokeStyle.ts,
+  pdf/primitives.js, docx/borders.ts, docx/tables.ts,
+  docx/reading-measurements.ts, new docx/compound-table-strokes.ts, and affected
+  tests/layout/strokeStyles.test.ts, tests/docx/strokeStyles.test.ts,
+  tests/pdf/writePdfTo.test.ts.
+- [x] Build and affected Linux test suite; packed consumer generates actual
+  CLIS20/60 outputs and default regression controls, no external paint adapter.
+  Native Word conversion/vector checks and full eight-page review.
+- [x] Update Core README/template guide and version/lock; package with checksum,
+  update isolated Service vendor/lock/provenance and affected checks. Inspect
+  FlowDocMake compatibility consumers before deciding any required change.
+- [x] Final whole-diff review, relevant final checks and clean commits; integrate
+  into development branches and update this receipt with actual outcome/gaps.
+
+Document budget: this existing PC record plus affected owner API/usage guides;
+no new shared planning file, registry or map promotion. Existing source PDFs,
+requests, installed packages and accepted prototype artifacts stay preserved.
+
+### Integration outcome
+
+PASS for this bounded development integration; not a public release or installed
+runtime claim. Core412c495981a141913f0183614502169722612203 and
+Service1c39a9d0263c59f835e2c847f4b94e8c88ea82f6 were fast-forwarded into the
+existing development default branches `codex/template-binding` and
+`codex/template-registry`. Both package versions are0.5.1. Service retains the
+old0.5.0 archive and pins `flowdoc-core-0.5.1.tgz`, SHA-256
+`377919dcb18c66e1ac9edf72e79f853f835ab669677735d7dfefa3a1ee682244`, with
+the exact Core source commit in its vendor manifest. No release branch or tag
+was changed, and no push/install/publication occurred.
+
+Ruling: SourceFontMetrics/sections and a separate compound-drawing component
+are necessary implementation dependencies of the approved Core feature: owned
+font line metrics determine row extents; section capacity includes header/footer
+reservations; docx component construction avoids importing an undefined XML
+document wrapper. They add no new document/data model or page-cut policy.
+The B DOCX profile is literal ASCII, unmerged, unshaded cells, one block per
+cell, unwrapped body lines and at most8 authored header lines. Font bounds or
+shared native measurement prove fit; the declared OpenType USE_TYPO_METRICS
+selection controls natural line height. Native Word fonts outside the tested
+profile are not certified. All visible DOCX edges must be B or none.
+
+Fresh read-only review found4 concrete issues: unordered explicitly indexed
+cells selected the wrong anchor inset; oversize rows lacked body-capacity
+admission; explicit null/undefined nested widths were treated as omitted;
+unnormalized unequal native margins could understate ending-Area row extent.
+RED tests demonstrated the first3, followed by GREEN; an ending-Area integration
+case covers rejection of the fourth. Fixes select grid column0, require header
+plus largest body row plus envelope to fit minimum reserved body capacity,
+preserve explicit-width validation, and reject unequal emitted vertical margins.
+The reviewer rechecked all4 fixes with no remaining finding in that scope.
+
+Final Core build and Linux affected suite passed332/332 with zero skips under
+1GiB. Host focused tests passed51 plus4 ending-Area cases. Actual public package
+consumer emitted CLIS20/60 PDF/DOCX directly; no ZIP/PDF postprocessor is needed.
+Word20 was converted from final DOCX; Word60 proof was reused only after exact
+document/header/footer XML equality with the final candidate. Both formats keep
+1/3pages,20/24/16 rows, repeated header/page fields/footer totals, black0.35pt B
+and dashed header seams. All eight pages rendered and inspected. Prior accepted
+sources and baseline PDFs remain retained. Native Word intermediate page1/2
+closing rules and per-row dash phase remain accepted limitations.
+
+Service build/vendor identity passed. The6 impacted suites passed36 distinct
+cases: legacy rendering6, DOCX API18, DOCX processing6, artifact wire3,
+new B task PDF/DOCX2 and stored-version rendering1. This is impact-scoped
+verification, not a new complete Service npm-test/full-system acceptance claim.
+Initial runs exposed missing test output/font fixture settings and an unmigrated
+fresh test DB; repaired only test prerequisites, with failed/skipped reports
+retained. The final per-suite reports all pass with no skipped cases. Dedicated
+test DB/network were isolated from the running0.5.0 system. Default Docker
+address pools were exhausted, so a verified-unused explicit private subnet was
+used instead of deleting other networks. No production data was modified.
+
+Reusable evidence is under the existing root's `system-b-051/`:
+`core-tests-final.json`, `service-tests-r1/r2/r3.json`,
+`service-verification.json`, `artifact-verification.json`, build logs,
+versioned Core archive, consumer script and `artifacts-final/`. Earlier package
+iterations remain retained but are not the integrated archive. Package/lock
+versions, dependency integrity and vendor checksum were reviewed before commit.
+
+FlowDocMake inspection found its installed0.3.0 compatibility profile strictly
+pins Service/Core0.5.0 and the old archive digest. It remains untouched with the
+running0.5.0 installation. A compatible client/profile update is required before
+future0.5.1 installation/release; this round does not certify that deployment.
+Footer redesign remains deferred by the owner. No map promotion or new Work/
+execution registry was created. Passing candidate proof is reused after the
+unchanged fast-forwards under the workflow policy; no redundant broad rerun.
