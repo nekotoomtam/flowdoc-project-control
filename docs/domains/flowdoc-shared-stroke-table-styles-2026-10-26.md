@@ -474,3 +474,48 @@ pages and `preserved-inputs.json`. Four direct Core deliverables under
 Ruling: the scoped shared-style candidate and files are ready for the owner's
 actual Word conversion. This is not acceptance of PDF/Word pagination fidelity;
 preserve the candidate and originals, stop at this requested conversion checkpoint.
+
+## Wide dash and lighter DOCX discovery probe, 2026-10-26
+
+The owner requested finding a DOCX method closer to the original sparse pattern
+and reducing darkness before adjusting PDF. Bounded discovery spike, Core owner
+for any later integration, Evidence Reviewer role, execution IDs not applicable.
+Retain Core commit a1b7e6201ab0e7f5baf402921581841f9bfec050, existing worktrees,
+all old files and the no-merge boundary. No product changes or PDF tuning here.
+
+Primary references establish two drawing-level mechanisms, distinct from
+native table border presets:
+
+- DrawingML dash stops express dash/space as percentages of stroke width:
+  <https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.dashstop?view=openxml-3.0.1>.
+- VML accepts custom dash/space ratios relative to stroke width:
+  <https://learn.microsoft.com/en-us/windows/win32/vml/msdn-online-vml-dashstyle-attribute>.
+
+One research DOCX contains five newly labelled samples A-E:
+
+- A: native dashSmallGap0.25pt control, color666666.
+- B/C: inline DrawingML custom geometry, stroke0.25pt, dash1pt/gap3pt,
+  colors666666 and888888. XML uses dash stop400000/1200000 (400%/1200%).
+- D: the same sparse666666 grid expressed as643 explicit1pt vector segments,
+  separated by3pt gaps, to test independence from Word's dash-pattern handling.
+- E: VML grouped lines with custom ratio4/12,0.25pt and666666.
+
+B-D are normal-flow inline drawings, not floating page anchors. E is a VML group
+in the paragraph flow; its internal coordinates are relative to that group.
+These are drawn research grids, not yet native editable table border replacements.
+Row resizing, cell attachment and multi-page continuation have not been solved
+or claimed. A remains a real editable table for comparison.
+
+Checks: ZIP integrity, intended dash ratios/colors, unique drawing IDs,3 inline
+drawings and zero floating anchors, unchanged non-document package members,
+one-page preview, caption/grid spacing and all25 preserved input hashes passed.
+LibreOffice B/C vectors measure exactly1pt dash/3pt gap/0.25pt with the requested
+gray values; D paints the explicit sparse segments. E's custom ratio is ignored
+there and maps to dense0.25/0.25pt dashes. This does not establish Word behavior.
+No product tests were rerun because product source/config/data are unchanged.
+
+Deliver `word-wide-dash-r1/CLIS-Word-wide-dash-probe-R1.docx` under the existing
+evidence root; `build_probe.py`, `manifest.json` and one-page render retain the
+prototype and checks. Actual Word conversion of this one file is the next
+prerequisite. Measure that result before selecting a drawing method or changing
+PDF. No new shared Work/Evidence record, baseline, Core API or map was created.
