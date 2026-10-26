@@ -1,28 +1,9 @@
 # ตัวอย่างครบชุดและวิธีตรวจ
 
-Authority Boundary: Project Control documentation fixtures สำหรับ Model19
-และตัวอย่าง Model18 เดิมที่แยกเป็น legacy. ไม่มีการsave/publishในtest scripts.
+Authority Boundary: Project Control documentation fixtures สำหรับ Area18.
+ใช้ข้อมูลสมมติ ไม่มีข้อมูล SRS ของผู้ใช้ และไม่มีการsave/publishในtest scripts.
 
-## เริ่มงานใหม่: Model19
-
-- โครง Section19: [definition](../../examples/section-area-contract-20261017/single-section.definition.json)
-  และ [preview body](../../examples/section-area-contract-20261017/single-section.preview-body.json).
-- CLIS Inward ที่ย้ายจากชุดทดลองจริง: [template](../../examples/clis-model19/template.json),
-  [ข้อมูล20รายการ](../../examples/clis-model19/request-20.json),
-  [ข้อมูล60รายการ](../../examples/clis-model19/request-60.json).
-
-CLIS ใช้ schemaVersion2 กับคลังฟอนต์เดิม และเส้น B `thickThinWideGap`
-จึงต้องใช้ Core0.5.1 ที่มีสไตล์นี้ ไม่ใช่คู่ runtime0.5.0 ของ FlowDocMake0.3.0
-ที่ติดตั้งอยู่. UUID Section ในตัวอย่างเป็น identity ของไฟล์ตัวอย่าง ไม่ใช่ ID
-ของ draft ที่บันทึกบน Service. งานใหม่ต้องใช้ identity ที่ Service คืนมา;
-อย่าถือว่าไฟล์ตัวอย่างถูก save หรือใช้ผ่าน HTTP แล้ว.
-
-Request ใช้ `sections:[{id,data,header?,footer?}]` จับคู่ saved ID ทุกตัว
-ครั้งเดียว; ไม่มี Section.key/formats. รายการและ footer ของ CLIS ชุดนี้คง
-พฤติกรรม Inward เดิม ไม่ใช่การออกแบบกลุ่ม Port ของ Outward ใหม่.
-Model18 ด้านล่างเก็บไว้สำหรับอ่านและตรวจงานเดิม ห้ามใช้เริ่มโครงใหม่.
-
-## 1. ตัวอย่าง Model18 เดิม: TOC + รูปหัว + ตาราง + ตัวแปรร่วม
+## 1. ตัวอย่างหลัก: TOC + รูปหัว + ตาราง + ตัวแปรร่วม
 
 - [reference-template.json](../../examples/ai-template-authoring/reference-template.json)
 - [reference-request.json](../../examples/ai-template-authoring/reference-request.json)

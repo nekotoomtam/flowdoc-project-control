@@ -12,17 +12,6 @@ it changes no Core/Service behavior or publication permission. Target versions:
 Service0.5.0 / Core0.5.0, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.
 
-## New authoring uses Model19
-
-Use `nodeModelVersion:19` for every new template and new example. Generation
-requests use `sections:[{id,data,header?,footer?}]`, matched to saved UUID Section
-IDs exactly once; definition order controls output. Do not reuse a Model18
-fixture as the basis for new work merely because the runtime accepts it.
-Model18 is retained only for explicitly scoped maintenance of existing Model18
-inputs. Read structure-and-data before constructing a definition/request pair;
-record the selected model and validate both together. Runtime support for18/19
-is compatibility, not permission to choose18 for new authoring.
-
 ## 0.5.0 authoring additions
 
 Use `table.props.borderStyle:"none"` for intentionally hidden table borders;

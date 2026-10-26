@@ -89,11 +89,8 @@ the representative/deadline implementation is unchanged from 0.1.5.
 
 Candidate directory contains `template.json` and `request.json`. Optional
 `upload-files.json` is an array of `{id,file}` for original local PNG/JPEG assets;
-`file` resolves relative to that directory. New definitions must use nodeModelVersion 19, schemaVersion 1 or 2 according
-to their font contract, and definition.version 1. Requests must use
-`sections:[{id,data,header?,footer?}]` with every saved UUID ID exactly once.
-Model18 is only for explicitly preserving an existing Model18 target; never
-select it from an old example for a new draft. For existing policies add
+`file` resolves relative to that directory. Definition must use schemaVersion 1,
+nodeModelVersion 18, definition.version 1. For existing policies add
 `existingTemplateId`. `docKey` is the fresh identity key when creation is allowed;
 existing saves retain the Service-returned docKey. If you already created the
 empty target before preparing the definition, use `preserve` and its returned ID.

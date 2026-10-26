@@ -1,10 +1,5 @@
 # คู่มือ AI: อ่าน PDF แล้วสร้างโครงเอกสาร FlowDoc
 
-> งานสร้างโครงใหม่ใช้ **Model19**. อ่าน [สัญญาโครงสร้างปัจจุบัน](../developer/authoring/structure-and-data.md)
-> และ [ตัวอย่าง CLIS Model19](../examples/clis-model19/template.json) ก่อนประกอบข้อมูล.
-> ตัวอย่าง Model18 และ Section.key/object request ในบทเดิมด้านล่างเป็น legacy reference
-> สำหรับงาน18เดิมเท่านั้น ไม่ใช้เป็นฐานงานใหม่.
-
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญญาการทำงานและคำอธิบายสำหรับ

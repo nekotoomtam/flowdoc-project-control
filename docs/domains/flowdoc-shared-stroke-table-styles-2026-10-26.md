@@ -918,3 +918,22 @@ checks confirm retained legacy requests/template were not changed.
 Guidance/contract/workflow checks pass; packaging snapshot is refreshed only
 after the canonical-source checkpoint, then its packaging checks are rerun.
 This is impact-scoped proof, not full Service or full-system acceptance.
+
+
+### Owner correction: retain dual-model guidance, 2026-10-26
+
+The owner subsequently withdrew the Model19-only authoring-guidance change:
+keep the manuals as before, but retain CLIS migrated to19. This decision
+supersedes the guidance-selection portion of the preceding checkpoint; the
+Model19-only rule must not be installed or treated as current policy. Canonical
+manual pages and FlowDocMake SKILL.md are restored byte-for-byte in Git content
+to the pre-change5ef3d7b baseline. Existing18 compatibility and guidance remain.
+No historical note above is evidence that the withdrawn rule remains active.
+
+Retained scope: CLIS Inward19 template/request20/request60, their direct packed
+Core0.5.1 proof, and packaging of those new example JSON files. Additive example
+packaging does not change the old manual bodies or the installed plugin cache.
+The CLIS-only contract regression and snapshot integrity tests remain; the
+withdrawn Model19-only guidance assertion is removed. Earlier render proof is
+reused because the CLIS files, runtime and inputs are unchanged. This does not
+implement the new Outward Port grouping or certify a new native Word export.
