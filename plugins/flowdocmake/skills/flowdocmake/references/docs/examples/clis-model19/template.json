@@ -1,0 +1,2539 @@
+{
+  "book": {
+    "contentSlot": "body",
+    "defaultPageLayoutId": "landscape"
+  },
+  "name": "CLIS Inward Model19 B trial",
+  "docKey": "clis-inward-model19-r1-20261026",
+  "styles": {
+    "band": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 400,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 9.1
+      },
+      "lineHeightPt": 16
+    },
+    "body": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 400,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 9.1
+      },
+      "lineHeightPt": 13
+    },
+    "head": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 700,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 7.85
+      },
+      "lineHeightPt": 10
+    },
+    "meta": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 400,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 9.1
+      },
+      "lineHeightPt": 14
+    },
+    "title": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 700,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 13.25
+      },
+      "lineHeightPt": 16
+    },
+    "address": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 400,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 8.3
+      },
+      "lineHeightPt": 12
+    },
+    "company": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 400,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 10.75
+      },
+      "lineHeightPt": 14
+    },
+    "summary": {
+      "font": {
+        "kind": "library",
+        "style": "normal",
+        "weight": 400,
+        "releaseId": "d273d69d-089a-45a3-a6e0-cea54434219f"
+      },
+      "fontSize": {
+        "unit": "pt",
+        "value": 9.1
+      },
+      "lineHeightPt": 13
+    }
+  },
+  "examples": [],
+  "templateId": "fcbaa78b-58a4-53d6-b614-3894924603c9",
+  "pageLayouts": {
+    "landscape": {
+      "page": {
+        "size": "A4",
+        "margin": {
+          "top": {
+            "unit": "pt",
+            "value": 18
+          },
+          "left": {
+            "unit": "pt",
+            "value": 18
+          },
+          "right": {
+            "unit": "pt",
+            "value": 18
+          },
+          "bottom": {
+            "unit": "pt",
+            "value": 18
+          }
+        },
+        "orientation": "landscape"
+      }
+    }
+  },
+  "schemaVersion": 2,
+  "nodeModelVersion": 19,
+  "sections": [
+    {
+      "footer": {
+        "gap": {
+          "unit": "pt",
+          "value": 6
+        },
+        "fragment": {
+          "nodes": {
+            "closing": {
+              "id": "closing",
+              "type": "line",
+              "props": {
+                "thickness": {
+                  "value": 0.5,
+                  "unit": "pt"
+                },
+                "lineStyle": "double"
+              }
+            },
+            "totaltext": {
+              "id": "totaltext",
+              "role": {
+                "role": "paragraph"
+              },
+              "type": "text-block",
+              "props": {
+                "textAlign": "center",
+                "textStyleId": "summary"
+              },
+              "children": [
+                {
+                  "id": "totallabel",
+                  "text": "Total Container = ",
+                  "type": "text"
+                },
+                {
+                  "id": "totalvalue",
+                  "key": "total",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "twentylabel",
+                  "text": "    20' = ",
+                  "type": "text"
+                },
+                {
+                  "id": "twentyvalue",
+                  "key": "twenty",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "fortylabel",
+                  "text": "    40' = ",
+                  "type": "text"
+                },
+                {
+                  "id": "fortyvalue",
+                  "key": "forty",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "fortyfivelabel",
+                  "text": "    45' = ",
+                  "type": "text"
+                },
+                {
+                  "id": "fortyfivevalue",
+                  "key": "fortyfive",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "emptyTwentylabel",
+                  "text": "    20' EMPTY = ",
+                  "type": "text"
+                },
+                {
+                  "id": "emptyTwentyvalue",
+                  "key": "emptyTwenty",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "emptyFortylabel",
+                  "text": "    40' EMPTY = ",
+                  "type": "text"
+                },
+                {
+                  "id": "emptyFortyvalue",
+                  "key": "emptyForty",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "emptyFortyfivelabel",
+                  "text": "    45' EMPTY = ",
+                  "type": "text"
+                },
+                {
+                  "id": "emptyFortyfivevalue",
+                  "key": "emptyFortyfive",
+                  "type": "field-ref",
+                  "scope": "footer"
+                },
+                {
+                  "id": "nullCountlabel",
+                  "text": "    NULL = ",
+                  "type": "text"
+                },
+                {
+                  "id": "nullCountvalue",
+                  "key": "nullCount",
+                  "type": "field-ref",
+                  "scope": "footer"
+                }
+              ]
+            }
+          },
+          "rootIds": [
+            "totaltext",
+            "closing"
+          ]
+        },
+        "baseTextStyleId": "summary",
+        "inputSchema": {
+          "type": "object",
+          "fields": {
+            "total": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "twenty": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "forty": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "fortyfive": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "emptyTwenty": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "emptyForty": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "emptyFortyfive": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            },
+            "nullCount": {
+              "required": true,
+              "allowEmpty": true,
+              "type": "string"
+            }
+          }
+        }
+      },
+      "header": {
+        "gap": {
+          "unit": "pt",
+          "value": 3
+        },
+        "fragment": {
+          "nodes": {
+            "cols": {
+              "id": "cols",
+              "type": "columns",
+              "props": {
+                "gap": {
+                  "unit": "pt",
+                  "value": 12
+                }
+              },
+              "columns": [
+                {
+                  "weight": 8,
+                  "childIds": [
+                    "date"
+                  ]
+                },
+                {
+                  "weight": 1,
+                  "childIds": [
+                    "page"
+                  ]
+                }
+              ]
+            },
+            "date": {
+              "id": "date",
+              "role": {
+                "role": "paragraph"
+              },
+              "type": "text-block",
+              "props": {
+                "textAlign": "right",
+                "textStyleId": "band"
+              },
+              "children": [
+                {
+                  "id": "datevalue",
+                  "key": "printDate",
+                  "type": "field-ref",
+                  "scope": "global"
+                }
+              ]
+            },
+            "page": {
+              "id": "page",
+              "role": {
+                "role": "paragraph"
+              },
+              "type": "text-block",
+              "props": {
+                "textAlign": "right",
+                "textStyleId": "band",
+                "pageFieldLayout": "compact"
+              },
+              "children": [
+                {
+                  "id": "p",
+                  "text": "Page ",
+                  "type": "text"
+                },
+                {
+                  "id": "current",
+                  "type": "system-page-field",
+                  "field": "current",
+                  "width": {
+                    "unit": "pt",
+                    "value": 12
+                  }
+                },
+                {
+                  "id": "of",
+                  "text": " of ",
+                  "type": "text"
+                },
+                {
+                  "id": "total",
+                  "type": "system-page-field",
+                  "field": "total",
+                  "width": {
+                    "unit": "pt",
+                    "value": 12
+                  }
+                }
+              ]
+            }
+          },
+          "rootIds": [
+            "cols"
+          ]
+        },
+        "baseTextStyleId": "band",
+        "inputSchema": {
+          "type": "object",
+          "fields": {}
+        }
+      },
+      "source": {
+        "kind": "authored",
+        "repeats": [],
+        "fragment": {
+          "nodes": {
+            "report": {
+              "id": "report",
+              "type": "area",
+              "props": {
+                "areaId": "report-area"
+              }
+            },
+            "containers": {
+              "id": "containers",
+              "type": "area",
+              "props": {
+                "areaId": "containers-area"
+              }
+            }
+          },
+          "rootIds": [
+            "report",
+            "containers"
+          ]
+        }
+      },
+      "footerMode": "all",
+      "id": "fcc53f8b-1402-53d2-a005-032c49c305d1",
+      "label": "CLIS report",
+      "inputSchema": {
+        "type": "object",
+        "fields": {
+          "report": {
+            "areaId": "report-area",
+            "required": true,
+            "type": "area"
+          },
+          "containers": {
+            "areaId": "containers-area",
+            "required": true,
+            "type": "area"
+          }
+        }
+      },
+      "nameBase": "CLIS"
+    }
+  ],
+  "version": 1,
+  "globalSchema": {
+    "type": "object",
+    "fields": {
+      "printDate": {
+        "required": true,
+        "allowEmpty": true,
+        "type": "string"
+      }
+    }
+  },
+  "areaFormats": {
+    "report": {
+      "repeats": [],
+      "fragment": {
+        "nodes": {
+          "metarow": {
+            "id": "metarow",
+            "type": "table-row",
+            "props": {
+              "allowBreak": false
+            },
+            "cellIds": [
+              "vesselcell",
+              "voyagecell",
+              "arrivalcell",
+              "podcell",
+              "deliverycell"
+            ]
+          },
+          "podcell": {
+            "id": "podcell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 5
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "podtext"
+            ]
+          },
+          "podtext": {
+            "id": "podtext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textStyleId": "meta"
+            },
+            "children": [
+              {
+                "id": "podlabel",
+                "text": "POD : ",
+                "type": "text"
+              },
+              {
+                "id": "podvalue",
+                "key": "pod",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "identity": {
+            "id": "identity",
+            "type": "table",
+            "props": {
+              "borderStyle": "none",
+              "headerRowCount": 0,
+              "repeatHeaderRows": false
+            },
+            "rowIds": [
+              "titlerow",
+              "companyrow",
+              "addressrow"
+            ],
+            "columns": [
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 805.8897637795276
+                }
+              }
+            ]
+          },
+          "metadata": {
+            "id": "metadata",
+            "type": "table",
+            "props": {
+              "borderStyle": "none",
+              "headerRowCount": 0,
+              "repeatHeaderRows": false
+            },
+            "rowIds": [
+              "metarow"
+            ],
+            "columns": [
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 220
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 150
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 150
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 120
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 165.88976377952758
+                }
+              }
+            ]
+          },
+          "titlerow": {
+            "id": "titlerow",
+            "type": "table-row",
+            "props": {
+              "allowBreak": false
+            },
+            "cellIds": [
+              "titlecell"
+            ]
+          },
+          "titlecell": {
+            "id": "titlecell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 0
+                }
+              }
+            },
+            "childIds": [
+              "titletext"
+            ]
+          },
+          "titletext": {
+            "id": "titletext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "title"
+            },
+            "children": [
+              {
+                "id": "titlevalue",
+                "key": "title",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "addressrow": {
+            "id": "addressrow",
+            "type": "table-row",
+            "props": {
+              "allowBreak": false
+            },
+            "cellIds": [
+              "addresscell"
+            ]
+          },
+          "companyrow": {
+            "id": "companyrow",
+            "type": "table-row",
+            "props": {
+              "allowBreak": false
+            },
+            "cellIds": [
+              "companycell"
+            ]
+          },
+          "vesselcell": {
+            "id": "vesselcell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 5
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "vesseltext"
+            ]
+          },
+          "vesseltext": {
+            "id": "vesseltext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textStyleId": "meta"
+            },
+            "children": [
+              {
+                "id": "vessellabel",
+                "text": "Vessel Name : ",
+                "type": "text"
+              },
+              {
+                "id": "vesselvalue",
+                "key": "vessel",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "voyagecell": {
+            "id": "voyagecell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 5
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "voyagetext"
+            ]
+          },
+          "voyagetext": {
+            "id": "voyagetext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textStyleId": "meta"
+            },
+            "children": [
+              {
+                "id": "voyagelabel",
+                "text": "Voyage : ",
+                "type": "text"
+              },
+              {
+                "id": "voyagevalue",
+                "key": "voyage",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "addresscell": {
+            "id": "addresscell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 0
+                }
+              }
+            },
+            "childIds": [
+              "addresstext"
+            ]
+          },
+          "addresstext": {
+            "id": "addresstext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "address"
+            },
+            "children": [
+              {
+                "id": "addressvalue",
+                "key": "address",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "arrivalcell": {
+            "id": "arrivalcell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 5
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "arrivaltext"
+            ]
+          },
+          "arrivaltext": {
+            "id": "arrivaltext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textStyleId": "meta"
+            },
+            "children": [
+              {
+                "id": "arrivallabel",
+                "text": "Arrival Date : ",
+                "type": "text"
+              },
+              {
+                "id": "arrivalvalue",
+                "key": "arrival",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "companycell": {
+            "id": "companycell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 0
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 0
+                }
+              }
+            },
+            "childIds": [
+              "companytext"
+            ]
+          },
+          "companytext": {
+            "id": "companytext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "company"
+            },
+            "children": [
+              {
+                "id": "companyvalue",
+                "key": "company",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          },
+          "deliverycell": {
+            "id": "deliverycell",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 5
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 2
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "deliverytext"
+            ]
+          },
+          "deliverytext": {
+            "id": "deliverytext",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textStyleId": "meta"
+            },
+            "children": [
+              {
+                "id": "deliverylabel",
+                "text": "Delivery : ",
+                "type": "text"
+              },
+              {
+                "id": "deliveryvalue",
+                "key": "delivery",
+                "type": "field-ref",
+                "scope": "local"
+              }
+            ]
+          }
+        },
+        "rootIds": [
+          "identity",
+          "metadata"
+        ]
+      },
+      "inputSchema": {
+        "type": "object",
+        "fields": {
+          "title": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "company": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "address": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "vessel": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "voyage": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "arrival": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "pod": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          },
+          "delivery": {
+            "required": true,
+            "allowEmpty": true,
+            "type": "string"
+          }
+        }
+      },
+      "key": "report",
+      "ownerAreaId": "report-area"
+    },
+    "containers": {
+      "repeats": [
+        {
+          "source": {
+            "key": "items",
+            "scope": "local"
+          },
+          "tableId": "containers",
+          "rowTemplateId": "itemrow"
+        }
+      ],
+      "fragment": {
+        "nodes": {
+          "unhc": {
+            "id": "unhc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "unht"
+            ]
+          },
+          "unht": {
+            "id": "unht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "unheadleaf0",
+                "text": "UN",
+                "type": "text"
+              },
+              {
+                "id": "unbreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "unheadleaf1",
+                "text": "NO",
+                "type": "text"
+              }
+            ]
+          },
+          "unrc": {
+            "id": "unrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "unrt"
+            ]
+          },
+          "unrt": {
+            "id": "unrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "unvalue",
+                "key": "un",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "imohc": {
+            "id": "imohc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "imoht"
+            ]
+          },
+          "imoht": {
+            "id": "imoht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "imoheadleaf0",
+                "text": "IMO",
+                "type": "text"
+              }
+            ]
+          },
+          "imorc": {
+            "id": "imorc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "imort"
+            ]
+          },
+          "imort": {
+            "id": "imort",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "imovalue",
+                "key": "imo",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "header": {
+            "id": "header",
+            "type": "table-row",
+            "props": {
+              "allowBreak": false
+            },
+            "cellIds": [
+              "containerhc",
+              "itemhc",
+              "materialhc",
+              "sizehc",
+              "operatorhc",
+              "weighthc",
+              "statushc",
+              "typehc",
+              "temperaturehc",
+              "imohc",
+              "unhc",
+              "stowagehc",
+              "remarkhc"
+            ]
+          },
+          "itemhc": {
+            "id": "itemhc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "itemht"
+            ]
+          },
+          "itemht": {
+            "id": "itemht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "itemheadleaf0",
+                "text": "ITEM",
+                "type": "text"
+              }
+            ]
+          },
+          "itemrc": {
+            "id": "itemrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "itemrt"
+            ]
+          },
+          "itemrt": {
+            "id": "itemrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "itemvalue",
+                "key": "item",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "sizehc": {
+            "id": "sizehc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "sizeht"
+            ]
+          },
+          "sizeht": {
+            "id": "sizeht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "sizeheadleaf0",
+                "text": "SIZE",
+                "type": "text"
+              },
+              {
+                "id": "sizebreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "sizeheadleaf1",
+                "text": "LxWxH",
+                "type": "text"
+              }
+            ]
+          },
+          "sizerc": {
+            "id": "sizerc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "sizert"
+            ]
+          },
+          "sizert": {
+            "id": "sizert",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "sizevalue",
+                "key": "size",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "typehc": {
+            "id": "typehc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "typeht"
+            ]
+          },
+          "typeht": {
+            "id": "typeht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "typeheadleaf0",
+                "text": "CONTAINER",
+                "type": "text"
+              },
+              {
+                "id": "typebreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "typeheadleaf1",
+                "text": "TYPE",
+                "type": "text"
+              }
+            ]
+          },
+          "typerc": {
+            "id": "typerc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "typert"
+            ]
+          },
+          "typert": {
+            "id": "typert",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "typevalue",
+                "key": "type",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "itemrow": {
+            "id": "itemrow",
+            "type": "table-row",
+            "props": {
+              "allowBreak": true
+            },
+            "cellIds": [
+              "containerrc",
+              "itemrc",
+              "materialrc",
+              "sizerc",
+              "operatorrc",
+              "weightrc",
+              "statusrc",
+              "typerc",
+              "temperaturerc",
+              "imorc",
+              "unrc",
+              "stowagerc",
+              "remarkrc"
+            ]
+          },
+          "remarkhc": {
+            "id": "remarkhc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "remarkht"
+            ]
+          },
+          "remarkht": {
+            "id": "remarkht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "remarkheadleaf0",
+                "text": "REMARK",
+                "type": "text"
+              }
+            ]
+          },
+          "remarkrc": {
+            "id": "remarkrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "remarkrt"
+            ]
+          },
+          "remarkrt": {
+            "id": "remarkrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "left",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "remarkvalue",
+                "key": "remark",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "statushc": {
+            "id": "statushc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "statusht"
+            ]
+          },
+          "statusht": {
+            "id": "statusht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "statusheadleaf0",
+                "text": "STATUS",
+                "type": "text"
+              }
+            ]
+          },
+          "statusrc": {
+            "id": "statusrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "statusrt"
+            ]
+          },
+          "statusrt": {
+            "id": "statusrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "statusvalue",
+                "key": "status",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "weighthc": {
+            "id": "weighthc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "weightht"
+            ]
+          },
+          "weightht": {
+            "id": "weightht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "weightheadleaf0",
+                "text": "WEIGHT",
+                "type": "text"
+              },
+              {
+                "id": "weightbreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "weightheadleaf1",
+                "text": "KGS",
+                "type": "text"
+              }
+            ]
+          },
+          "weightrc": {
+            "id": "weightrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "weightrt"
+            ]
+          },
+          "weightrt": {
+            "id": "weightrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "right",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "weightvalue",
+                "key": "weight",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "stowagehc": {
+            "id": "stowagehc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "stowageht"
+            ]
+          },
+          "stowageht": {
+            "id": "stowageht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "stowageheadleaf0",
+                "text": "STOWAGE",
+                "type": "text"
+              },
+              {
+                "id": "stowagebreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "stowageheadleaf1",
+                "text": "POSITION",
+                "type": "text"
+              }
+            ]
+          },
+          "stowagerc": {
+            "id": "stowagerc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "stowagert"
+            ]
+          },
+          "stowagert": {
+            "id": "stowagert",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "stowagevalue",
+                "key": "stowage",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "containers": {
+            "id": "containers",
+            "type": "table",
+            "props": {
+              "borderStyle": "thickThinWideGap",
+              "headerRowCount": 1,
+              "repeatHeaderRows": true,
+              "borderWidth": {
+                "value": 0.35,
+                "unit": "pt"
+              },
+              "borderColor": "000000",
+              "borders": {
+                "left": {
+                  "style": "none"
+                },
+                "right": {
+                  "style": "none"
+                },
+                "insideHorizontal": {
+                  "style": "none"
+                },
+                "headerBottom": {
+                  "style": "thickThinWideGap"
+                }
+              }
+            },
+            "rowIds": [
+              "header",
+              "itemrow"
+            ],
+            "columns": [
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 83
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 29
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 60
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 44
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 175
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 77
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 36
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 71
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 38
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 26
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 28
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 52
+                }
+              },
+              {
+                "width": {
+                  "unit": "pt",
+                  "value": 86.88976377952758
+                }
+              }
+            ]
+          },
+          "materialhc": {
+            "id": "materialhc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "materialht"
+            ]
+          },
+          "materialht": {
+            "id": "materialht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "materialheadleaf0",
+                "text": "CONTAINER",
+                "type": "text"
+              },
+              {
+                "id": "materialbreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "materialheadleaf1",
+                "text": "MATERIAL",
+                "type": "text"
+              }
+            ]
+          },
+          "materialrc": {
+            "id": "materialrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "materialrt"
+            ]
+          },
+          "materialrt": {
+            "id": "materialrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "materialvalue",
+                "key": "material",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "operatorhc": {
+            "id": "operatorhc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "operatorht"
+            ]
+          },
+          "operatorht": {
+            "id": "operatorht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "operatorheadleaf0",
+                "text": "CONTAINER OPERATOR",
+                "type": "text"
+              }
+            ]
+          },
+          "operatorrc": {
+            "id": "operatorrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "operatorrt"
+            ]
+          },
+          "operatorrt": {
+            "id": "operatorrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "left",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "operatorvalue",
+                "key": "operator",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "containerhc": {
+            "id": "containerhc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "containerht"
+            ]
+          },
+          "containerht": {
+            "id": "containerht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "containerheadleaf0",
+                "text": "CONTAINER",
+                "type": "text"
+              },
+              {
+                "id": "containerbreak1",
+                "type": "line-break"
+              },
+              {
+                "id": "containerheadleaf1",
+                "text": "NUMBER",
+                "type": "text"
+              }
+            ]
+          },
+          "containerrc": {
+            "id": "containerrc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "containerrt"
+            ]
+          },
+          "containerrt": {
+            "id": "containerrt",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "left",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "containervalue",
+                "key": "container",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          },
+          "temperaturehc": {
+            "id": "temperaturehc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3
+                }
+              }
+            },
+            "childIds": [
+              "temperatureht"
+            ]
+          },
+          "temperatureht": {
+            "id": "temperatureht",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "head"
+            },
+            "children": [
+              {
+                "id": "temperatureheadleaf0",
+                "text": "TEMP.",
+                "type": "text"
+              }
+            ]
+          },
+          "temperaturerc": {
+            "id": "temperaturerc",
+            "type": "table-cell",
+            "props": {
+              "padding": {
+                "top": {
+                  "unit": "pt",
+                  "value": 3.7
+                },
+                "left": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "right": {
+                  "unit": "pt",
+                  "value": 1
+                },
+                "bottom": {
+                  "unit": "pt",
+                  "value": 3.7
+                }
+              }
+            },
+            "childIds": [
+              "temperaturert"
+            ]
+          },
+          "temperaturert": {
+            "id": "temperaturert",
+            "role": {
+              "role": "paragraph"
+            },
+            "type": "text-block",
+            "props": {
+              "textAlign": "center",
+              "textStyleId": "body"
+            },
+            "children": [
+              {
+                "id": "temperaturevalue",
+                "key": "temperature",
+                "type": "field-ref",
+                "scope": "item"
+              }
+            ]
+          }
+        },
+        "rootIds": [
+          "containers"
+        ]
+      },
+      "inputSchema": {
+        "type": "object",
+        "fields": {
+          "items": {
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "fields": {
+                "container": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "item": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "material": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "size": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "operator": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "weight": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "status": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "type": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "temperature": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "imo": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "un": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "stowage": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                },
+                "remark": {
+                  "required": true,
+                  "allowEmpty": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "key": "containers",
+      "ownerAreaId": "containers-area"
+    }
+  }
+}

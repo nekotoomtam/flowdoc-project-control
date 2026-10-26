@@ -937,3 +937,12 @@ The CLIS-only contract regression and snapshot integrity tests remain; the
 withdrawn Model19-only guidance assertion is removed. Earlier render proof is
 reused because the CLIS files, runtime and inputs are unchanged. This does not
 implement the new Outward Port grouping or certify a new native Word export.
+
+
+Final correction verification: canonical manuals/SKILL match5ef3d7b exactly;
+regenerated package copies match their canonical bytes.17 selected guidance,
+Section contract, workflow and packaging checks pass with zero skipped. Packaging
+checks use the explicit reviewed0.5.0 archive, keeping the installed compatibility
+pin unchanged; CLIS B rendering evidence separately uses packed Core0.5.1.
+CLIS model19 files and prior render evidence are unchanged. No merge/push,
+installation, release or Service draft mutation occurred.

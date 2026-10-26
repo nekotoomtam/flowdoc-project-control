@@ -1,8 +1,11 @@
 {
   "packageVersion": "0.3.0",
   "guideRelease": "0.5.0",
-  "sourceCommit": "1eb51fff977f917073bc5d1fefd69e669ee8c2cb",
+  "sourceCommit": "58a03a591b0d2ea6d9a3159027e80ab3caac8cc0",
   "files": {
+    "skills/flowdocmake/references/docs/examples/clis-model19/request-20.json": "c1c76715bfc4fc5f79736ddbe0767c588e8dd9c3f38140658989700a4ba35832",
+    "skills/flowdocmake/references/docs/examples/clis-model19/request-60.json": "35855d22e5b257ed76ac40152beea2bf915f2d311fb169a4e74595fb57e1c7f3",
+    "skills/flowdocmake/references/docs/examples/clis-model19/template.json": "0497f4d44d94d548c25b65119549ab7abb9ed6f6379c841cf7f28ba042dfa137",
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/legacy-conversion.json": "b7b643910595e1fcec926c55a8db333e3ecddbee99b2d369e4bcf56f5583dac7",
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/operations.json": "5a9412d28d1a1f79cdc6f9b1a113f16743a67600871e58a368279ada5648a39b",
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/single-section.definition.json": "6ab38d2f9d49920e0633a5089c49a0d15de606165d72764f2ded34b489f87696",
