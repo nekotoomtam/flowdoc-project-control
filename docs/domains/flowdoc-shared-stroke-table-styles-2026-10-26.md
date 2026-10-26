@@ -644,3 +644,26 @@ Deliver under `selected-b-035-r1/` in the same evidence root:
 because source/config/data are unchanged. Native dynamic table row resizing and
 page continuation remain unimplemented; this pair proves the selected outline
 only. No release/install/merge/push/publication or replacement baseline.
+
+## Selected B black-only retry, 2026-10-26
+
+The owner found the gray PDF too faint and authorized a black retry with the
+same pattern. One-page artifact scope, Evidence Reviewer, Core owner for later
+integration, single-room IDs not applicable. Preserve the gray pair and Core.
+
+New DOCX changes only DrawingML stroke color666666 to000000 and its descriptive
+caption. Exact normalized document XML and unchanged ZIP members verify no other
+change. Width0.35pt, thickThin, dash1.4pt/gap4.2pt and inline geometry are retained.
+Using Word UI, declined field updates and saved as PDF at Standard online/printing
+quality. Creator/Producer confirm Microsoft Word for Microsoft 365.
+
+Both versions have one page and920 filled vector border rectangles. All black
+rectangle coordinates match the gray PDF within0.001pt, and every stroke fill is
+black. DOCX/source PDF/source DOCX hashes remain unchanged after export. Full-page
+render inspected without new overlap/clipping; no visibility guarantee at every
+zoom or printer resolution is claimed. No product tests because no product edits.
+
+Deliver `selected-b-035-black-r1/CLIS-selected-B-035-black.docx` and `.pdf` under
+the same evidence root. `manifest.json` and `word-pdf.png` retain verification.
+PDF is a native Word export, not a FlowDoc Core PDF. Dynamic table/page-flow
+integration remains unimplemented. No merge, release, install or new baseline.
