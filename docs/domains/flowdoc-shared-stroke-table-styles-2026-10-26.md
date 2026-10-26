@@ -225,3 +225,47 @@ difference side by side. Actual Word PDF SHA-256 values:
 
 - 20 items: `fa1b34419cc1763b4986c298e72592314e83a75bc5befb530fd4eb40f235ca22`.
 - 60 items: `54ddbb3ad56390e1257ed7b01caf5bc2222155dca7cc035ba62a9dfb9fa29b62`.
+
+## Continuation bottom-border diagnosis, 2026-10-26
+
+Owner-requested discovery only, Core owner, Evidence Reviewer role; execution
+IDs not applicable. Preserve the current candidate and all PDF/DOCX inputs;
+no product change or integration is authorized by this diagnosis receipt.
+
+The original 60-item DOCX contains one 61-row container table, with no vertical
+merges. Its table-level bottom is correctly dotted, black, 0.5pt, and insideH
+is none. However, `src/docx/tables.ts:153-156` also writes explicit top/bottom
+cell borders for ordinary body rows: every cell in items 20 and 44 (the last
+rows of actual Word pages 1 and 2) has bottom=none; all 13 cells of item 60
+have bottom=dotted. In total, 767 body-cell bottom declarations are none and
+13 are dotted. The 20-item control ends with 13 dotted cell bottoms. The
+original DOCX hashes still match the delivered inputs.
+
+PDF's `src/layout/cellTableFlow.ts:69` instead selects the semantic bottom
+stroke at each painted fragment boundary, independently of whether the logical
+table ends there. This explains the renderer policy mismatch. Microsoft's
+Open XML TableCellBorders contract states that a cell border wins against a
+table border; TableBorders describes the fallback when no cell border exists:
+
+- <https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.tablecellborders?view=openxml-3.0.1>
+- <https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.tableborders?view=openxml-3.0.1>
+
+Ruling: explicit ordinary-cell no-border overrides are the strong causal
+hypothesis supported by source, generated XML, contract and observed output.
+A controlled Word comparison has not yet isolated that variable, so this is
+not a confirmed fix or proof that the native engine cannot paint the border.
+
+Recommended bounded experiment: omit redundant horizontal cell overrides for
+ordinary unmerged body cells where the table-level rule already expresses the
+same intent, retaining table insideH=none and bottom=dotted. Keep explicit
+header separation, semantic exceptions and merged-cell suppression. Changing
+none to nil is not an established fix. Do not hard-code items 20/44 or insert
+page breaks. Preserve widths, padding, line heights, headers and footer parts.
+Acceptance requires actual Word closing rules on pages 1/2, the existing final
+rule, no unwanted interior horizontal rules, page counts 1/3 with 20/24/16
+rows, and unchanged header/footer content and positions. Native pagination
+must be rechecked because changing border inheritance can affect Word layout.
+
+Evidence: `word-review-20261026/border-cause-analysis.json` under the existing
+root records the unchanged input hashes and complete scoped XML counts.
+No candidate DOCX was edited and no Word/renderer/test execution was added.
