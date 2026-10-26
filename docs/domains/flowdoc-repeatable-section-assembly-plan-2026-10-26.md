@@ -1,6 +1,6 @@
 # Repeatable Section Assembly Implementation Plan
 
-> Execution after owner approval: use superpowers:executing-plans for bounded inline implementation. This document authorizes planning only; no product changes have started.
+> Execution after owner approval: use superpowers:executing-plans for bounded inline implementation. The owner approved sequential inline execution on2026-10-26; no merge, release, installation or publication is authorized.
 
 ## Authority Boundary
 
@@ -121,13 +121,13 @@ Numbering continues by default; existing explicit restart rules apply per use.
 
 ### Task1: freeze the versioned definition/use contract
 
-- [ ] Inspect the owning Core/Service guides and all affected strict model switches,
+- [x] Inspect the owning Core/Service guides and all affected strict model switches,
   authoring serialization, registry, prepared and streamed normalization readers.
-- [ ] Freeze public sectionKey, instanceKey, request ordering, duplicate/error rules,
+- [x] Freeze public sectionKey, instanceKey, request ordering, duplicate/error rules,
   band/data scopes, reference addressing and version matrix in this one document.
-- [ ] Locate any real consumer of Section IDs before changing its display contract;
+- [x] Locate any real consumer of Section IDs before changing its display contract;
   no existing Editor/frontend is assumed to be a runtime-document composer.
-- [ ] Acceptance:18/19 inputs retain current meaning; a paired new definition and
+- [x] Acceptance:18/19 inputs retain current meaning; a paired new definition and
   A/B/A request are unambiguous. A required unapproved architecture/scope expansion
   is reported before product mutation.
 
@@ -138,14 +138,14 @@ src/data/types.ts, prepareInstances.ts and a focused new assembly reader;
 src/composition/composeSections.ts, resolvedDocument.ts and affected reference/
 contents/provenance validators. Audit direct and streamed normalization paths.
 
-- [ ] First add rejection/acceptance cases: repeat key with distinct instances,
+- [x] First add rejection/acceptance cases: repeat key with distinct instances,
   duplicate instance, unknown key, label-only lookup, missing/wrong-scope data,
   reordered uses, unused definition, empty request and immutable source definition.
-- [ ] Expand by request order with fresh instance namespaces; reuse definitions
+- [x] Expand by request order with fresh instance namespaces; reuse definitions
   without mutating them. Charge every expansion to existing node/resource budgets.
-- [ ] Verify local anchors, explicit cross-use links, scoped/document TOC, images
+- [x] Verify local anchors, explicit cross-use links, scoped/document TOC, images
   in two uses, mixed page layouts and ending Area on only its owning use's last page.
-- [ ] Acceptance: A/B/A produces independent content in both memory and streamed
+- [x] Acceptance: A/B/A produces independent content in both memory and streamed
   paths, with no duplicate nodes or data leakage;18/19 regressions still pass.
 
 ### Task3: prove PDF and native Word before wider transport rollout
@@ -153,7 +153,7 @@ contents/provenance validators. Audit direct and streamed normalization paths.
 Files: affected src/pdf, layout, src/docx/sections.ts, profile/fields/bands and
 their focused tests. Modify only where new resolved semantics require it.
 
-- [ ] Export one-page A, multi-page B and a different-length second A in one file.
+- [x] Export one-page A, multi-page B and a different-length second A in one file.
   Add distinct per-use text, repeated header, page number, local bookmark and total.
 - [ ] Inspect every PDF/Word-converted page: use starts, header inheritance,
   table-header repetition, last-use totals, links, numbering, ending Area, blank
@@ -212,6 +212,76 @@ No arbitrary performance claim follows from these functional samples.
 
 ## Current result
 
-Planning only. No runtime, schema, DB, definition, request, plugin cache or UI has
-been changed for repeatable Section assembly. The CLIS19 migration remains the
-preserved baseline, not evidence that repeated calls are already supported.
+Paused at the owner's request after completing the current Core checkpoint.
+Task1 and Task2 are complete for the isolated candidate. Task3 has direct PDF
+and native DOCX structure evidence, but native Word conversion/reflow is NOT
+verified. Task4 Service/discovery and Task5 Outward CLIS are not started. Do not
+claim whole-plan acceptance or that the installed API accepts repeated Sections.
+
+## Execution ledger
+
+Task1 completed by source inspection. Ruling: use opt-in Model20, retaining
+Model18/19 meaning unchanged. Definition Sections add unique sectionKey alongside
+internal UUID id; label remains display-only. Public keys and instanceKey use
+ASCII identifiers `[A-Za-z][A-Za-z0-9_-]{0,63}` to avoid ambiguous namespace and
+pointer delimiters. Maximum2000 definitions/uses is an admission bound, with
+existing overall expansion/task budgets still enforced. Prepared schema3 pins
+model20; task normalization uses flowdoc-task-input/2, separately from unchanged
+HTTP task-v1 response framing. Normalized20 repeats sectionKey/instanceKey;
+composition maps these to definition UUIDs and independent runtime Section IDs.
+
+Ruling: local references stay instance-local. New20 explicit cross-use references
+use targetInstanceKey;19 targetSectionId stays unchanged and is not reinterpreted
+as a repeated definition target. Missing target use fails rather than selecting
+one implicitly. New20 Section ordering is only request order; saved definition
+order remains a creator-side display order. No automatic18/19 migration.
+
+Observed consumers in this delivery lane are Service authoring schema/discovery,
+Core PDF/DOCX and task normalization, plus FlowDocMake's exact capability readers.
+No caller assembly UI is implemented in these Core/Service repositories. The
+pilot supplies stable display identities and a contract example; it does not
+claim to have changed the separate Editor. Existing isolated Core and Service
+lanes were clean before product implementation.
+
+
+### Core checkpoint and owner pause
+
+Core candidate commit:10eeb89 on the existing isolated codex/shared-stroke-table-styles
+lane. Package identity0.5.1-dev.section-assembly.1 is development-only. Build
+passes; the final impact-scoped host suite passes768/768 with zero skipped.
+The final report is `section-assembly-r1/core-checkpoint-tests-final.json` in the
+existing recovery root. This is not a complete Service/full-system test claim.
+
+A fresh read-only review found a retained19-only guard in validateFormatInstances.
+Reproduced with failing20 repeated-use auto/fixed Area Format sizing cases,
+fixed the admission, then passed both direct and streamed composition and the
+final affected suite. New20 scoped/document TOC tests also pass. No other
+concrete defect was reported within this checkpoint's reviewed scope.
+
+Direct packed-Core pilot A12/B60/A5 produced5 PDF pages, with row distribution
+12/20/23/17/5; all77 synthetic pilot records occur exactly once. Headers identify
+first/middle/last uses independently, including B's continuation pages. All5 PDF
+pages were visually reviewed. DOCX contains3 native Sections and editable tables,
+with distinct per-use headers and no body text boxes. This pilot derives from
+the retained Inward fixture; it is not the checked Outward source reconstruction.
+Its totals retain the Inward footer model, not Outward's end-of-group totals.
+
+The initial77-row B-stroke DOCX exceeded the unchanged default XML cap; the next
+bounded proof used the already-supported explicit100000-node option under1GiB.
+No product default was raised. Two render batches used of the planned three.
+Proof archive and artifacts were generated before the review's Format-sizing
+fix; those pilot inputs contain no explicit Area Format sizing. The retained
+archive is pre-review proof input, not a final/released package of10eeb89.
+Final source/build/test evidence is distinct from that archive's evidence.
+
+Native Word prerequisite failed twice: windows disappeared from list_apps before
+the pilot file could be selected. A new Word launch reproduced the unavailable
+window; this does not establish that the generated document caused a crash.
+No Word PDF/reflow PASS is claimed, no user document was saved/overwritten, and
+no further Word retry or render batch was started after the owner's pause.
+
+Return point: restore a usable native Word session and complete Task3 conversion
+plus edit/reflow proof before Service integration. Keep using the saved pilot
+files; rebuild/re-pin a final package from the checkpoint source before any new
+consumer integration. Service, installed FlowDocMake, original PDFs and old CLIS
+fixtures are unchanged. No merge, push, release, installation or publication.
