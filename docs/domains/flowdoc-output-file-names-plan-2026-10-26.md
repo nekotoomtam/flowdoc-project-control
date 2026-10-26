@@ -436,3 +436,26 @@ this captured preflight is a verification-time result, not an installed endpoint
 Next step is owner authorization for release snapshots/component tags/push and
 separate installation, under the existing release rules. No additional features
 or proof are needed to close this preparation scope.
+
+### Authorized Git release scope —2026-10-27
+
+Owner now explicitly authorizes Core/Service0.5.2 and FlowDocMake0.3.1 release
+snapshots, annotated tags and GitHub push; installation remains forbidden.
+Single-room release stewardship; execution/Phase/Checklist IDs N/A. This is a
+new bounded release action using the completed preparation as immutable input,
+not a reopening of a registered execution. Reuse exact unchanged passing proof.
+No product edits, version change, repack, package/image registry publication or
+GitHub Release-page creation. Preserve all known limitations and optional skips.
+
+Acceptance: clean accepted source, exact archive/profile/bundle checksums;
+verified actual GitHub default branches and current remote tips; recoverable
+Git bundles; full-tree snapshot equality, one preceding release parent and
+annotated tags for every reachable release commit; atomic per-repository push
+of development/snapshot/tag and remote peeled-target readback. Old tags must not
+move. Service currently checks out release in the primary checkout: advance it
+by clean fast-forward to the new snapshot, never directly move a checked-out
+ref or merge development history. Retain staging worktree/config and old PDFs.
+Proof/document budget: reuse existing tests plus one bounded Git/package audit,
+dry-run and readback per repository; update this existing record only. Any
+concurrent remote change or source/checksum mismatch stops promotion for that
+repository without force. No new implementation or separate agent is needed.
