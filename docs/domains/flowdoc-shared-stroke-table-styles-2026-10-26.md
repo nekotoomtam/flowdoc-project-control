@@ -716,3 +716,41 @@ visual prototype, not a completed general Core style or exact PDF/DOCX parity.
 No product tests run because Core source is unchanged at a1b7e62. General
 integration and remaining continuation-edge behavior stay open; no merge,
 push, publication, install or replacement baseline.
+
+## Selected B dashed header correction, 2026-10-26
+
+Owner reported the retained solid header seam and absent continuation closing
+rules, then accepted the absent bottom rule if limited by Word. Bounded inline
+artifact correction, same lane and no-merge boundary; execution IDs not
+applicable. This acceptance concerns observed Word output of this prototype,
+not proof that Word universally cannot draw continuation borders.
+
+Source inspection confirmed the prior adapter intentionally retained26 native
+solid declarations across header-bottom and first-body-top cell edges. Removed
+those declarations from the CLIS table and added the same B custom horizontal
+path beneath the header. Native repeating headers carry the new path. The PDF
+paint adapter changes exactly one solid full-width header seam per page to B.
+Footer double rules remain unchanged. No extra page breaks, fixed page-position
+drawings, row-per-page rules or intermediate closing-line hacks were added.
+
+New files are under `clis-b-row-flow-r2/` in the existing evidence root:
+`CLIS-B-dashed-header-20.docx`, corresponding60, same-stem native Word PDFs,
+and `CLIS-B-dashed-header-20-flowdoc-trial.pdf`, corresponding60. PDF trial
+files remain post-export vector adapters, not direct Core outputs. Prior
+artifacts retained; source DOCX and Core PDF hashes match retained provenance.
+
+`build_header.py`, `verify_header.py`, `manifest.json` and `verification.json`
+retain the exact changes and checks. All native non-document ZIP members and
+normalized semantic/layout XML outside changed borders/drawings are unchanged.
+Native Word Standard PDF exports confirm both header dash components on every
+page, no long solid header rule, and closing dashes on the last logical row.
+20 remains1page;60 remains3pages with20/24/16 rows. Text values and repeated
+headings/page numbers/footer totals pass; character positions shift by at
+most0.48pt from the observed preceding Word PDFs after removing native seams.
+PDF trial character geometry remains identical to the retained Core baseline.
+All eight pages rendered and inspected with no new text overlap/clipping.
+
+Artifact correction checks pass. Intermediate Word page1/2 closing rules remain
+absent as accepted for this prototype; fixed row extents and per-row dash phase
+limitations remain open. Core unchanged at a1b7e62; no product test needed for
+artifact-only changes, no merge/release/install/push or new baseline.
