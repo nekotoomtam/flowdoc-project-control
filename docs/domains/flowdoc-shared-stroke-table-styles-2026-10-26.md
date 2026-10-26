@@ -519,3 +519,53 @@ evidence root; `build_probe.py`, `manifest.json` and one-page render retain the
 prototype and checks. Actual Word conversion of this one file is the next
 prerequisite. Measure that result before selecting a drawing method or changing
 PDF. No new shared Work/Evidence record, baseline, Core API or map was created.
+
+## Actual Word wide-dash measurement and table-flow feasibility, 2026-10-26
+
+The owner supplied the converted wide-dash probe and requested choosing B-E
+against the original, plus checking dynamic multi-page table feasibility first.
+Read-only Evidence Reviewer discovery, Core owner for future implementation,
+single-room IDs not applicable. No new document, product change or merge.
+
+The supplied one-page PDF identifies Microsoft Word for Microsoft 365. All
+relevant page content was rendered and visually inspected. Actual measurements:
+
+| Sample | Dash pt | Gap pt | Stroke pt | Gray | PDF line paths |
+| --- | --- | --- | --- | --- | --- |
+| B DrawingML | 1 | 3 | 0.25 | 0.4 (666666) | 7 |
+| C DrawingML | 1 | 3 | 0.25 | 0.533 (888888, rounded) | 7 |
+| D explicit segments | 1 | 3 | 0.25 | 0.4 | 643 |
+| E VML | 0.25 | 0.75 | 0.25 | 0.4 | 7 |
+
+Original Crystal PDF reinspection confirms all16 patterned strokes use [1,3]pt,
+black and device hairline width0. B/C/D match the physical dash/gap lengths;
+E remains4x too dense in period. Gray0.4/0.533 is intentionally lighter than
+source black; exact perceived darkness cannot be equated to device hairline
+without a fixed display/print resolution. Color/weight equivalence is not claimed.
+
+Ruling: choose B as the primary drawing method, with C as the lighter color
+alternative. D has no measured pattern advantage and uses643 rather than7 paths.
+This replaces the earlier preset-E preference only for the custom sparse-dash
+investigation; previous candidate commits and their limitations remain preserved.
+
+Flow feasibility is NOT READY for dynamic tables. XML confirms B-D are804x40pt
+inline frames, none inside native table cells; only control A is a native table.
+Core currently emits native rows/cells and leaves row growth and pagination to
+Word. These fixed frames do not resize or split their strokes at Word's cell or
+page boundaries. Word treats inline objects as characters in the paragraph:
+<https://learn.microsoft.com/en-us/office/vba/api/word.inlineshape>.
+Moving a fixed grid with text is not dynamic table-border integration. This
+conclusion is from package/source review; no actual multi-page Word experiment
+was performed and no universal impossibility is asserted.
+
+Recommended next bounded proof: retain native text cells and test row/cell-bound
+B lines with short rows, wrapped expanding rows, rows splitting across pages,
+repeated headers and footer clearance. Require actual Word border/text alignment
+through all those cases. A fixed whole-page grid, blanket keep-whole-row rule or
+manual page breaks cannot stand in for normal table flow acceptance. PDF tuning
+and Core integration remain deferred until that feasibility is established.
+
+Evidence: `word-wide-dash-r1/word-measurement-and-flow-review.json`, actual Word
+PDF/hash, full-page render and original source hash under the same root. Probe
+DOCX hash and all25 earlier input hashes match. No product tests were rerun
+because source/config/data remain unchanged; existing Core commit a1b7e62 retained.
