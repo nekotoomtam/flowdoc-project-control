@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.3.0** targets **Service0.5.0 / Core0.5.0 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
+Prepared package **0.3.1** targets **Service0.5.2 / Core0.5.2 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
@@ -20,8 +20,8 @@ unknown capabilities fail preflight. Fixed caps the current page remainder,
 reserving that effective height; only zero space skips the whole frame.
 Diagnostic envelopes remain version1. See the existing layout chapter as needed.
 
-Delivery: Core source `b5218a81a5bd81d8c1885bdb893044bc8fad0793`, artifact SHA-256
-`2bec67cf379d5913cd8d6881b7eeb973b7b4159b95231e07cd04db4faf1c43b1`. Service0.5.0 and this plugin pin that exact
+Delivery: Core source `0401b87fa1d6e4202d81974f28184871d69d7200`, artifact SHA-256
+`647235de33308ecf99aa201c63ff1e663e15c17c3b9259bde0ecf5f6dc819318`. Service0.5.2 and this plugin pin that exact
 artifact. Earlier candidate archives/packages remain immutable. Context returns
 `groupLabelSpans` v1.
 Definitions using groupLabel require its exact model/schema/suffix contract;
@@ -34,20 +34,18 @@ then map observed layouts, design native structures and derive request data.
 Use only stages needed for that endpoint and continue between them without
 inventing approval stops.
 
-## Documentation preparation for Service/Core0.5.2
+## Candidate and installation boundary
 
-The source references also describe the newer development API and stroke styles.
-They do not change this package's0.3.0/0.5.0 compatibility profile, tool arguments,
-or installed cache. In particular, do not send DOCX into its PDF-only task parser
-or infer Service Model20 support from Core's experimental direct API. A caller's
-local outputPath is separate from the Service attachment fileName.
+Source0.3.1 and its distinct staged bundle use the exact0.5.2 profile above.
+Installed0.3.0/profile0.5.0 and its retained release archive are unchanged.
+Do not weaken preflight to connect the new package to an old runtime. Core20
+remains experimental direct-Core only; Service and these tools admit18/19.
+DOCX still uses the separate Service route: these task tools parse PDF only.
+Client outputPath remains separate from server attachment fileName metadata.
 
-Before a later plugin release for0.5.2, prepare a distinctly versioned package
-with the reviewed exact Service/Core/archive profile and test its actual tools.
-Do not weaken preflight or overwrite the released0.3.0 package/cache. Canonical
-reference status is in docs/developer/authoring/verification.md; copied files are
-regenerated only after canonical source commits. No new plugin release or
-installation is performed by this documentation update.
+Release readiness is recorded in Project Control after matched checks; package
+version alone is not release or installation. Reference copies are generated
+from committed canonical guides and retain their source/hash identity.
 
 ## Historical package notes
 
@@ -65,7 +63,7 @@ continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
-Requires Node, a matching Service 0.5.0 checkout with built `dist` and dependencies,
+Requires Node, a matching Service 0.5.2 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
 `pdftoppm`, and Python with pypdf/Pillow. This package is for that local
 deployment, not a remote or public plugin distribution.

@@ -1,5 +1,11 @@
 # Authoring API และ MCP tools
 
+ชุดเตรียม FlowDocMake0.3.1 ใช้ API/tools เดิมกับ Service/Core0.5.2 และตรึง
+Core checksum ตาม compatibility profile; ข้อความ0.3.0/0.5.0 ด้านล่างระบุ
+baseline ที่ติดตั้งเดิม ไม่ใช่คู่รุ่นของ bundle0.3.1 ใหม่ เครื่องมือสร้างงานยังเป็น
+PDF-only; การขอ DOCX ใช้ Service โดยส่ง `Output-Format: DOCX` ตามสัญญาเดิม
+Service ยังรับ Model18/19 ไม่รับ Model20 อ่าน [ผลตรวจและข้อจำกัด](verification.md#052-prerelease-verification--2026-10-27)
+
 Section19 Stage3 ในชุด FlowDocMake 0.3.0 เพิ่ม `create_draft_section` → `POST /authoring/drafts/:id/sections`
 รับ expectedRevision/pageLayoutId/idempotencyKey และ `import_draft_sections` →
 `POST /authoring/drafts/:id/sections/import` รับ sourceTemplateId/sourceRevision/

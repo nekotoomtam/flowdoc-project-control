@@ -3,7 +3,8 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญญาการทำงานและคำอธิบายสำหรับ
-ผู้สร้างโครง ใช้กับ FlowDocMake `0.3.0`, Service `0.5.0` / Core `0.5.0` candidate
+ผู้สร้างโครง ชุดเตรียมใช้ FlowDocMake `0.3.1`, Service `0.5.2` / Core `0.5.2`;
+ชุดติดตั้งเดิมยังเป็น FlowDocMake `0.3.0`, Service/Core `0.5.0` ไม่เปลี่ยนตามคู่มือ
 รองรับ `nodeModelVersion:18/19`, `schemaVersion:1/2` ตาม package preflight ที่ตรวจจริง.
 ตัวอย่าง Area18 เดิมยังคงรูปแบบ model18; Section19 ใช้สัญญาใน Developer Documentation.
 ไม่ใช่การอนุญาตให้ publish หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้กับชุด local ที่ตรงรุ่น

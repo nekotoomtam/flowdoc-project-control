@@ -1,7 +1,7 @@
 {
   "name": "flowdocmake",
-  "version": "0.3.0",
-  "description": "Draft authoring and document tasks pinned to Service 0.5.0 and Core 0.5.0; no publication.",
+  "version": "0.3.1",
+  "description": "Draft authoring and PDF tasks pinned to Service 0.5.2 and Core 0.5.2; no publication.",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }
