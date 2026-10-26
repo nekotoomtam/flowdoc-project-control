@@ -3,6 +3,11 @@
 Authority Boundary: Project Control reference สำหรับ Area18 และ Section19 ตาม [baseline](README.md).
 ค่าต่อไปนี้แยกค่าเริ่มต้นของ runtime ออกจากคำแนะนำในการออกแบบ.
 
+เส้น/ตารางในชุดพัฒนา0.5.2 อ่าน [ชนิดเส้นและ override](nodes.md#รูปแบบเส้นในชุดพัฒนา052)
+ก่อนกำหนด borderWidth โดยเฉพาะ double ที่กินกรอบ3เท่า และ B ที่ใช้ width
+เป็นกรอบรวม อย่าเพิ่ม cell padding หรือเปลี่ยน line height เพื่อชดเชยความหนา
+โดยไม่ได้วัดพื้นที่จริง ชุดติดตั้ง0.5.0 ยังใช้ contract เดิมตาม baseline
+
 ## 1. หน่วย กระดาษ และพื้นที่
 
 Length คือ `{value:number,unit:"pt"|"mm"}`; ห้าม number ลอย/`"10mm"`/`"100%"`.

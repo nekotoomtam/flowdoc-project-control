@@ -7,6 +7,31 @@ Owner: Project Control; documentation synthesis ตามคำขอผู้�
 recordแผนเดิม. ไม่เปลี่ยนCore/Service/runtime/ข้อมูลผู้ใช้; ไม่มีpublish.
 Execution IDsไม่เกี่ยวข้องกับงานinlineนี้. ไม่ปรับDOCUMENT_MAPหรืออ้างglobal readiness.
 
+## 0.5.2 documentation checkpoint — 2026-10-27
+
+คู่รุ่นพัฒนาที่รวมแล้วคือ Core0.5.2 / Service0.5.2 การเพิ่มเลข/ทำคู่มือไม่ใช่
+การออก release หรือติดตั้งใหม่ FlowDocMake0.3.0 ยังคง profile0.5.0 เดิม
+ตารางนี้แยกความสามารถที่มีหลักฐานออกจากขั้นตอนที่ยังไม่ทำ:
+
+| หัวข้อ | หลักฐาน/ขอบเขต |
+| --- | --- |
+| Core | integration-052:1086 affected tests ผ่าน; direct-Core20 ยังเป็นการทดลอง |
+| Service | integration-052:120 affected tests ผ่าน รวมชื่อไฟล์/queue/migration026/PDF/DOCX; รับ18/19 เท่านั้น |
+| คู่มือ/แพ็กอ้างอิงรอบ integration |15 checks ผ่าน; รอบทำคู่มือนี้ต้องตรวจ references ใหม่หลังแก้ canonical |
+| B table profile | ขอบเขต literal ASCII/ไม่รวมเซลล์/ไม่ลงสี/แถวข้อมูลหนึ่งบรรทัด; เส้นปิดระหว่างหน้า Word และ phase ยังมีข้อจำกัด |
+| ชื่อไฟล์ | defaultFileName ใน definition; fileName เฉพาะ multipart payload ของ documents; Output-Format เลือกนามสกุล |
+| Model20 ผ่าน Service/MCP | ยังไม่รับ; ไม่ใช้ผล direct-Core แทนการเชื่อม Service |
+| Native Word เปรียบเทียบรอบ0.5.2 | ไม่มีผลใหม่จากการทำคู่มือ; ผลเก่าใช้ได้เฉพาะขอบเขตเดิม |
+| Full Service/I6 ของ candidate0.5.2 | ยังไม่ใช้ affected120 cases ปิด complete-suite gate; ผล0.5.0 ด้านล่างเป็นประวัติ |
+| Plugin/release/install/restore0.5.2 | ยังต้องเตรียม compatibility รุ่นใหม่ ตรวจ package หลังคู่มือ และทำขั้นตอนที่ได้รับอนุญาตแยก |
+
+บันทึกหลัก: [output-name integration](../../domains/flowdoc-output-file-names-plan-2026-10-26.md)
+และ [Section assembly](../../domains/flowdoc-repeatable-section-assembly-plan-2026-10-26.md)
+หลักฐานอยู่ `FlowDoc-recovery/shared-stroke-table-styles-2026-10-26/integration-052`
+ผลเดิมไม่ได้รันใหม่ในงานเอกสารนี้ เก็บ archive/hash เดิมไว้; ก่อน release
+ต้องแพ็กจาก source หลังคู่มือแล้วตรวจ checksum/pin/consumer ใหม่ อย่าเปลี่ยน
+checksum ใน manifest เฉย ๆ โดยไม่สร้าง/ตรวจแพ็กเกจที่ตรงกัน
+
 ## 0.5.0 release preparation — 2026-10-25
 
 ชุดที่ตรวจคือ Service0.5.0 / Core0.5.0 และ FlowDocMake0.3.0 ที่ตรึง

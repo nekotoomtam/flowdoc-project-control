@@ -4,12 +4,12 @@
 
 เจ้าของเอกสาร: FlowDoc Project Control; บทบาท Documentation Synthesizer.
 ขอบเขต: เอกสารอ้างอิงสำหรับผู้เขียน Template และผู้เรียก authoring API ของ
-FlowDocMake 0.3.0 กับ Service 0.5.0 / Core 0.5.0 (candidate) ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
+FlowDocMake0.3.0 กับ baseline Service0.5.0/Core0.5.0 ที่บันทึกไว้ ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ storage/transport.
 งานนี้เป็น single-room ตามคำขอผู้ใช้; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
 ไม่เปลี่ยน runtime, template ของผู้ใช้, ข้อมูลต้นทาง หรือ publish.
 
-Baseline ปัจจุบัน: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
+Baseline ชุดติดตั้งที่บันทึกไว้: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
 FlowDocMake `0.3.0`, Service `0.5.0` และ `@flowdoc/core@0.5.0`;
 ต้องผ่าน preflight ของ package/runtime จริง. ตัวอย่าง Area18 เดิมยังเป็น model18
 ไม่ใช่ตัวอย่าง Section19. อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md)
@@ -28,6 +28,12 @@ Core มี Model20 แบบทดลองสำหรับการเรี
 Service0.5.2 ยังรับ18/19 จึงไม่ใช้ request20 กับ Service/MCP ปัจจุบัน
 ชุดติดตั้งและ FlowDocMake0.3.0/profile0.5.0 ยังคงเดิม ต้องเตรียมและตรวจ
 compatibility ของ plugin แยกก่อนออกรุ่น/ติดตั้งใหม่ การรวมกิ่งพัฒนาไม่ใช่ release
+
+สไตล์เส้นร่วม/ขอบตารางแต่ละด้านและแบบ B ของ0.5.1 ยังคงอยู่ใน0.5.2 อ่าน
+[Node reference](nodes.md#รูปแบบเส้นในชุดพัฒนา052) สำหรับค่าที่รับและข้อจำกัด DOCX
+และ [สถานะก่อน release](verification.md#052-documentation-checkpoint--2026-10-27)
+ก่อนสรุปว่าคู่รุ่นใหม่พร้อมเผยแพร่ อย่าขยายความสามารถของ baseline0.5.0 ตาม
+คู่มือชุดพัฒนาโดยไม่ตรวจ target
 
 ชุด0.5.0 รวม DOCX/fidelity, เซลล์รวม, `borderStyle:none`, Area สุดท้ายชิดท้าย
 และการปรับขอบเซลล์โดยไม่เปลี่ยน line height. รุ่นติดตั้งเดิมไม่เปลี่ยนตามคู่มือนี้.

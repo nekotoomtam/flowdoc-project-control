@@ -259,3 +259,38 @@ no new runtime testing or full-suite acceptance. Existing integration-052 proof
 is historical input, not new test output. If Core README changes, the currently
 pinned a132c5d archive remains immutable; a future release package must contain
 the final manuals and have new source/checksum/consumer verification.
+
+
+### Documentation completion result —PASS
+
+Core manual commit `0401b87fa1d6e4202d81974f28184871d69d7200`; Service manual
+commit `fbbec43bccfe897809ee4e2cdd3a84ccca6f0896`. Product branches remain the
+existing development defaults. PC canonical guide commit
+`e6df1eb65307804e7fd59174db22c30be22a6d4d` supplies all33 generated references;
+source snapshot/package version and compatibility profile remain0.3.0/0.5.0.
+
+Completed gaps: shared stroke kinds, table edge inheritance and B's supported
+DOCX profile/known Word differences; optional output naming in the root schema;
+real Section19 payload preparation separating Doc-Key/version from multipart
+root keys; multipart receipt/client-path semantics; current image selection and
+migrations001–026; consistent backup/recovery/post-install directions; explicit
+18/19 Service vs experimental direct-Core20 and plugin boundaries. Historical
+0.5.0 tests/pins remain labeled rather than silently rewritten as0.5.2 results.
+
+Proof under the existing recovery root `docs-052/`: doc-audit.json checks9 new
+local links/anchors and2 new JSON examples; powershell-parse.json checks2 new
+PowerShell blocks without executing them. Existing guidance/snapshot/CLIS/
+workflow/packaging checks pass15/15, zero skipped. Fresh read-only source review
+passed without important findings. Final diffs change only allowed Markdown and
+generated reference snapshot; vendor archive/source/hash/lock/version, runtime,
+release refs and tags are unchanged. No product suite, Docker, API or PDF run
+was performed. Prior1086/120 integration results are retained input only.
+
+Core README now advances beyond the pinned a132c5d archive, explicitly stated
+in the manuals. Release preparation still needs a newly packed final documented
+Core source, exact Service pin/consumer checks, next plugin compatibility and
+applicable complete-suite/release gates. This is a completed documentation
+request, not a release-ready or installed declaration. All current changes are
+committed locally; source guidance is integrated into PC main by unchanged
+fast-forward, with no push/tag/release/install. The PC lane remains this chat's
+active workspace; no unrelated historical worktree was cleaned.
