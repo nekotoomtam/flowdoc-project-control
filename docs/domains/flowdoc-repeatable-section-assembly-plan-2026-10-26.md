@@ -236,6 +236,8 @@ Task4 Service/discovery is the remaining implementation target and has not start
 Task5 has a direct-Core bounded Outward sample with complete per-use headers and
 body totals, no visible footer. The latest clis-atomic-rows-r3 pair uses TH Sarabun
 New and intact rows; Core PDF/data checks pass and owner Word conversion is next.
+The subsequent owner-requested layout refinement is clis-source-layout-r4-final;
+it retains those semantics and is the latest delivered sample pair.
 Its Service delivery remains unverified. Do not
 claim whole-plan acceptance or that the installed API accepts repeated Sections.
 
@@ -476,3 +478,66 @@ generation.json (DOCX retry receipt), verification.json (both artifact hashes an
 coverage), and all PDF page images. Core/Service source, catalog and installed
 packages remain unchanged. This fixture trial is ready for owner Word conversion;
 Task4 Service/discovery integration remains pending, not implicitly accepted.
+
+### Owner-authorized source-layout tuning of the CLIS sample
+
+The owner requested a closer visual match to the supplied Outward PDF after R3.
+Scope: new fixture/artifact copies only, retaining TH Sarabun New, complete native
+per-use headers, actual-space/intact-row flow and body totals. No engine patch,
+ellipsis, installed catalog change, Word automation, merge or publication.
+Rebuild the header as existing band Columns: centered title, date/page fields,
+three aligned metadata rows with bold labels and independent Port data. Tune the
+13 table columns, cell alignment,1pt black horizontal rules and row pitch against
+source pages1/2/3/24. Source font is Tahoma; preserve the owner's TH Sarabun New
+choice and report the remaining typeface/width difference rather than claiming
+identical typography. Keep39 checked source rows and explicitly identify sample
+subtotals; do not borrow the full218/65 Port totals for the subset.
+Budget: two PDF trials at most and one DOCX from the selected unchanged fixture;
+real generation remains isolated, offline and1GiB. Reuse the R3 fonts/license and
+packed Core. Check all generated pages,507 data cells, row integrity,<=3 measured
+body-cell lines, full headers/page fields and totals once per Port. Compare table
+start, column anchors and row pitch with the retained original; Word visual
+acceptance remains the owner's conversion step. Service integration is separate.
+
+Ruling during tuning: selected the second PDF variant with TH Sarabun New Bold
+table text10.5pt for a closer visual weight and corrected header-cell alignment;
+both trial PDFs remain preserved. DOCX admission then identified a missing
+pageFieldLayout=compact on the authored page-number block. Correct this fixture
+property, keeping real Word fields. This is a prerequisite repair, not another
+styling experiment. Permit one additional paired confirmation PDF/DOCX batch so
+the delivered artifacts share the exact corrected fixture; retain the two trial
+PDFs and do not claim the pre-repair PDF used the final DOCX's configuration.
+
+Source-layout tuning result: selected the corrected B fixture in
+`clis-source-layout-r4-final`, retaining R3, initial R4 and R4B separately.
+Final PDF/DOCX were both generated from that same corrected fixture, offline
+under1GiB, using unchanged packed Core10eeb89. No product/source/package/catalog
+modification. Header has the centered title, top-right date and native page
+fields, and three metadata rows matching the source's left/middle/right grouping.
+The body is an800pt13-column table with centered headings, source-oriented cell
+alignment,1pt black horizontal rules and no repeating footer. Sample subtotal
+buckets are a separate ordinary body table; label explicitly says Sample Total
+Container and counts only the selected rows, not full source-group totals.
+
+Measured source / R3 / final: table top112.30 /69.00 /112.20pt;
+table width799.85 /750.00 /800.00pt; first container x46.40 /43.80 /46.50pt;
+first container text top148.5337 /99.0050 /147.3005pt; row pitch40.50 /39.80 /
+40.9815pt. These are anchor measurements, not a global similarity score.
+All four final pages were visually reviewed; both earlier four-page trials were
+also reviewed. Final distribution9 /10 /10 /10, matching source pages1/2/3/24
+for these selected rows. Shanghai now breaks10+10 rather than R3's12+8.
+All39 containers occur once; each item's three operator lines stay on the same
+page. All507 actual PDF cell values match source input after whitespace
+normalization. All measured body cells remain<=3 lines with no ellipsis/clipping.
+
+DOCX:3 native Sections,6 native body tables (items plus summary per use), complete
+independent header parts with PAGE/NUMPAGES fields and empty footer parts. All507
+item cell values and24 summary cell values checked against input; item rows have
+cantSplit. `artifacts/verification.json` retains hashes, geometry, source/data
+coverage and the pending owner Word-conversion limitation. `generation.json`
+contains both final receipts. No native Word visual PASS or complete30-page /
+292-record reconstruction is claimed. TH Sarabun New differs from source Tahoma;
+the selected10.5pt Bold body weight is an optical approximation, not identical
+font geometry. This bounded refinement is ready for the owner's conversion;
+do not run more tuning without a new finding/request. Service integration remains
+pending and no merge, push, release, install or publication was performed.
