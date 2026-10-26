@@ -459,3 +459,42 @@ Proof/document budget: reuse existing tests plus one bounded Git/package audit,
 dry-run and readback per repository; update this existing record only. Any
 concurrent remote change or source/checksum mismatch stops promotion for that
 repository without force. No new implementation or separate agent is needed.
+
+### Git release completed —2026-10-27
+
+PASS: owner-authorized atomic pushes and GitHub readback completed for all
+three repositories. Development history remains on the verified default branches.
+
+| Component | Source commit | Release snapshot | Annotated tag |
+| --- | --- | --- | --- |
+| Core0.5.2 |0401b87fa1d6e4202d81974f28184871d69d7200 |55315ca6a9e478422ae135496ade39988f7bbe7f |v0.5.2 |
+| Service0.5.2 |06d1940b764a10b5d5d3b4f28213438a2d33e703 |25e912fdeb396151bbf8a3b206554ce3f1d619b0 |v0.5.2 |
+| FlowDocMake0.3.1 |c23e4071ec2af2255bce4c278c48b98dc379b6d5 |04a227f1e56b0a862335762bb2e07d48e9e2498a |flowdocmake-v0.3.1 |
+
+Each release tree equals its accepted source tree exactly and has only its
+previous release snapshot as parent. Complete release ancestry has13Core,
+14Service and5FlowDocMake commits, all with annotated tags verified on GitHub.
+All pre-existing tag objects/peeled targets remain unchanged. Both source and
+release branches plus the new tag were pushed atomically per repository after
+dry-run. Remote objects and peeled targets match the recorded local snapshots.
+
+Core archive647235de and FlowDocMake zip3b922aec remain byte-identical to the
+accepted artifacts. Plugin package/source comparison additionally records only
+Git newline normalization; no repacking or semantic changes. Backups, preparation
+manifest, tag text, dry-run/push logs and remote verification are retained under
+`C:/Users/nekot/Documents/FlowDoc-recovery/release-prep-052-2026-10-27/git-release/`.
+The two early preparation checks stopped before release mutation because they
+initially read the older Service checkout and treated Git newline conversion as
+a byte difference; corrected checks use the frozen source and retained archive.
+
+Checks reused without candidate changes: Service616passed/0failed/5optional
+not run including mandatoryI6 18/18; plugin46passed/0failed/4optional not run;
+packed Core consumer and prior runtime-identity proof. Limitations appear in
+every release annotation and remain in the manuals/preparation record above.
+No native Word claim, registry/package/image publication, GitHub Release page,
+installation, user DB/draft change or template publication. Running installed
+Service/Core remains0.5.0; installed plugin remains0.3.0. Staging worktree is
+retained because the staged client config references it. Next action, only when
+authorized separately, is backup/install/post-install verification of the new
+exact package tuple. The following PC main-only metadata commit records these
+results without moving the already published component snapshot/tag.
