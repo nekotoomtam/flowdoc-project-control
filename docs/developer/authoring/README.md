@@ -26,8 +26,10 @@ TOC ของ19ต้องระบุ scope;18คงเดิม. การแ
 ชื่อแทนที่จาก API `fileName` ตาม [API](api.md#ชื่อไฟล์ใน-servicecore-development052)
 Core มี Model20 แบบทดลองสำหรับการเรียก Section ซ้ำผ่าน Core โดยตรง;
 Service0.5.2 ยังรับ18/19 จึงไม่ใช้ request20 กับ Service/MCP ปัจจุบัน
-ชุดติดตั้งและ FlowDocMake0.3.0/profile0.5.0 ยังคงเดิม ต้องเตรียมและตรวจ
-compatibility ของ plugin แยกก่อนออกรุ่น/ติดตั้งใหม่ การรวมกิ่งพัฒนาไม่ใช่ release
+ชุดเตรียม FlowDocMake0.3.1 ตรึง Service/Core0.5.2 พร้อม checksum ของ Core
+ใน compatibility profile โดยตรง ต้องใช้คู่รุ่นที่ preflight ยืนยันเท่านั้น
+ชุดติดตั้ง FlowDocMake0.3.0/profile0.5.0 ยังคงเดิม การรวมกิ่งพัฒนาไม่ใช่ release
+รายละเอียดผลตรวจชุดเตรียมอยู่ใน [verification](verification.md#052-prerelease-verification--2026-10-27)
 
 สไตล์เส้นร่วม/ขอบตารางแต่ละด้านและแบบ B ของ0.5.1 ยังคงอยู่ใน0.5.2 อ่าน
 [Node reference](nodes.md#รูปแบบเส้นในชุดพัฒนา052) สำหรับค่าที่รับและข้อจำกัด DOCX
