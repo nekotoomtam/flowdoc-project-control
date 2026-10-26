@@ -269,3 +269,54 @@ must be rechecked because changing border inheritance can affect Word layout.
 Evidence: `word-review-20261026/border-cause-analysis.json` under the existing
 root records the unchanged input hashes and complete scoped XML counts.
 No candidate DOCX was edited and no Word/renderer/test execution was added.
+
+## Border inheritance experiment R1, 2026-10-26
+
+The owner subsequently authorized implementing the proposed experiment in the
+same worktree and delivering new 20/60-item DOCX files for their Word conversion.
+Single-room implementation and verification, Core owner, routine risk; execution
+IDs not applicable. Scope is the DOCX table mapper, targeted tests, this receipt
+and task-local output. No merge, installation, publication or baseline changes.
+
+Core commit `0970a6348ad9ed4115fe2a06830f75f655a09417` omits redundant horizontal
+cell overrides only for tables without any row/column merge, with insideH=none
+and a visible table bottom. The table outline remains native. Header separation,
+final cell bottom, merged-table perimeters and all geometry stay explicit and
+unchanged. No page-specific row IDs, manual table splits or page breaks added.
+
+Checks and evidence:
+
+- New inheritance test failed on the original explicit bottom=none, then the
+  targeted border tests passed 20/20 after the change. Build/type-check passed.
+- The complete DOCX suite in the pinned Linux image passed 227/227, zero skips,
+  under 1GiB memory+swap, 2 CPUs, init, network none, no mounts. The Windows run
+  had 189 passes, 14 failures and 24 skips because native metric proof was
+  unavailable; that run is not claimed as PASS. Linux covers those same cases.
+- Independent review found no concrete defect, including header-count zero/one,
+  header-only and merged-table boundaries. Word acceptance remains pending.
+- Packed candidate generated both files from unchanged CLIS inputs/fonts.
+  Every row/value is retained. Header/footer parts are byte-identical; document
+  XML is identical after removing the intended redundant NONE edges. Other
+  varying package members are timestamps and embedded-font obfuscation keys.
+  Styled and default-control PDFs for both counts remain byte-identical to the
+  previous candidate PDFs. All eight preserved input PDF/DOCX hashes match.
+- `render_docx.py` inspected all four LibreOffice preview pages: counts 1/3,
+  row distribution 20 and 20/24/16, repeated headers/page fields/totals retained,
+  no new interior horizontal rules or clipping/overlap. The preview now paints
+  the page-1 closing rule, but still lacks it on page 2. This partial result is
+  disclosed; neither a universal fix nor native Word pagination is accepted.
+
+Ruling: deliver the bounded R1 experiment for actual Word conversion rather
+than tune to LibreOffice or broaden table flow. Actual Word must still confirm
+the closing rules on both pages 1/2 and unchanged pagination/header/footer.
+Preserve the earlier Word outputs as controls; no further product changes until
+that observation is available.
+
+Evidence root addition: `border-inheritance-r1/verification.json`,
+`docx-tests.json`, the packed archive, consumer receipt and all preview pages.
+New deliverables are under `border-inheritance-r1/artifacts/`:
+
+- `CLIS-border-inheritance-R1-20.docx`, SHA-256
+  `4bd1d0f9e46eda3bd35b03c39158920726ac7ff8b8b878ab64caa48af3f4f9ee`.
+- `CLIS-border-inheritance-R1-60.docx`, SHA-256
+  `fb2dd9e4dbd68e0261584a03c4d796996b2d92fdfef0e3277b83207ecc456018`.
