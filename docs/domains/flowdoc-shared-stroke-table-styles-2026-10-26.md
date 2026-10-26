@@ -409,3 +409,68 @@ Remaining boundary: these files demonstrate the selected pattern on the existing
 CLIS layout only. General Core style support and native DOCX full-report use of
 E have not been implemented or accepted. The earlier continuation-border Word
 review remains separate and unresolved by this line-pattern experiment.
+
+## Shared E profile implementation, 2026-10-26
+
+The owner authorized adding E to Core's shared PDF/DOCX styles and generating
+CLIS20/60 for actual Word conversion, preserving all originals and forbidding
+integration. Single-room implementation/verification; Core owner, routine risk,
+execution IDs not applicable. Scope: shared stroke enum, native DOCX mapping,
+PDF paint, targeted/affected tests, local template guide and this receipt.
+No model-version, Service, installation, publication or pagination-policy change.
+
+Design ruling: `dashSmallGap` maps to the native Word border. PDF scales the
+measured E vector profile linearly (0.24pt paint,0.8pt dash,0.4pt gap at nominal
+0.25pt), while layout reserves the nominal envelope. Existing styles/defaults
+stay unchanged. Exact agreement at unmeasured weights or raster tile seams is
+not claimed; the known native0.5pt sample has different ratios. This limitation
+is explicit rather than introducing a content-specific or piecewise fit.
+
+Acceptance: authored/resolved validation, standalone/table DOCX mapping and PDF
+stream equivalence; affected DOCX/PDF and stroke layout checks; packed Linux
+consumer output; unchanged default PDF controls and original hashes; CLIS pages
+1/3 with20/24/16 rows, repeated headers and unchanged header seam/footer. Actual
+Word pagination and continuation border painting remain pending owner conversion.
+Proof budget: one RED/GREEN cycle, one affected Linux run, one packed consumer
+run and full scoped visual/structural review; repair only demonstrated failures.
+Document budget: existing guide and this record; no new shared Work/Evidence
+records or maps. Current inline host/model retained; no model override.
+
+Scoped implementation/output receipt:
+
+- Core commit `a1b7e6201ab0e7f5baf402921581841f9bfec050` on the existing isolated
+  branch; no merge/push/install/version change. Native mapper, validation/type
+  propagation and PDF buffered/streamed writers support the new named style.
+- RED: six new/expanded cases failed on missing style support,35 passed.
+  GREEN:43 targeted tests passed; build/type-check passed. The pinned Linux
+  affected run passed321/321 with zero skips, covering all DOCX/PDF tests plus
+  stroke layout. Runtime budget1GiB memory+swap,2 CPUs, init, network none and
+  no mounts. Independent review found no runtime defect; stale guide wording
+  referring to five styles was corrected. No full-suite acceptance is claimed.
+- Packed public consumer generated both PDF and DOCX directly from Core,
+  without artifact patching. CLIS sets dashSmallGap0.25pt while explicitly
+  preserving the solid header seam at0.5pt; footer definition is unchanged.
+  Every data row/value is retained. DOCX document XML is identical to R1 after
+  removing border declarations; header/footer parts are byte-identical.
+- Core PDFs remain1/3 pages with rows20 and20/24/16. Every extracted word and
+  coordinate equals the earlier candidate; all26 styled border groups per page
+  paint at0.24pt with [0.8,0.4]pt dashes. Default-input PDFs remain byte-identical.
+  All25 previously preserved PDF/DOCX hashes match.
+- All4 Core PDF and4 LibreOffice preview pages visually inspected. Preview
+  pages remain1/3 with repeated headers/page numbers/totals and no lost rows or
+  new clipping/overlap. However, LibreOffice paints this native preset as1pt
+  dashed strokes despite authored0.25pt and distributes the60 items20/23/17.
+  This preview difference is not tuned away or represented as Word behavior.
+  Actual Word pagination, fragment closing rules and raster corners are pending.
+
+Evidence under `shared-e-core-r1/`: `verification.json`, `affected-tests.json`,
+source hashes, packed archive, consumer receipt/selected template, all rendered
+pages and `preserved-inputs.json`. Four direct Core deliverables under
+`shared-e-core-r1/artifacts/`:
+
+- `CLIS-Core-E-R1-20.docx` and `CLIS-Core-E-R1-20.pdf`.
+- `CLIS-Core-E-R1-60.docx` and `CLIS-Core-E-R1-60.pdf`.
+
+Ruling: the scoped shared-style candidate and files are ready for the owner's
+actual Word conversion. This is not acceptance of PDF/Word pagination fidelity;
+preserve the candidate and originals, stop at this requested conversion checkpoint.
