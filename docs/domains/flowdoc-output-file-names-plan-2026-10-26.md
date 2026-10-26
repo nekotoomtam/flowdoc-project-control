@@ -128,3 +128,47 @@ Installed Service/Core0.5.0 and FlowDocMake0.3.0, PDF baselines, CLIS trials,
 Model20 Service admission and prior accepted limitations remain unchanged.
 This is impact-scoped acceptance, not a full-suite/I6 PASS, release, installation
 or permission to merge. Next owner decision may cover integration separately.
+
+
+## Owner-authorized development integration /0.5.2 preparation
+
+The owner now authorizes local development integration, one patch increment
+from0.5.1 to0.5.2 and updating manuals before any release. This supersedes only
+the preceding no-merge restriction; no push/tag/release/install/publication is
+authorized. Reuse these existing clean isolated Core/Service/PC lanes. Roles:
+Product Implementation Agent, Documentation Synthesizer, then integration and
+Evidence Reviewer inline. Routine risk, medium size; execution/Phase/Checklist
+IDs N/A. The generated snapshot remains about unrelated Editor work; this
+explicit export request and existing feature records govern this bounded scope.
+
+Target development branches verified against GitHub HEAD: Core
+codex/template-binding, Service codex/template-registry, Project Control main.
+Core has two additional commits including previously tested experimental20;
+Service has the accepted output-name implementation. Integrate their complete
+accepted candidates without implying that Core20 is Service-ready. Preserve
+release chains, tags, baselines, installed0.5.0 and FlowDocMake0.3.0. No new
+Service20 integration, renderer tuning, frontend work or plugin runtime changes.
+
+Acceptance/checklist:
+
+- [ ] Core0.5.2 package/lock/manuals, build and Linux checks covering template,
+  data, composition, layout, DOCX and PDF consumers; create a new immutable
+  archive after committing source, retaining previous packages and provenance.
+- [ ] Service0.5.2 package/lock/vendor/manuals with exact Core0.5.2 pin;
+  build/vendor checks and isolated real DB/API tests of output naming,
+  historical migrations, legacy18/19, B style and authoring consumers at1GiB.
+  Reuse unchanged layout/Word proof only within its original scope.
+- [ ] Canonical authoring API/metadata guidance, explicit Service18/19 vs
+  experimental Core20 and installed plugin boundaries; refresh source guidance
+  snapshot only after canonical commit. Leave installed plugin and its strict
+  compatibility profile unchanged; its next release remains separate work.
+- [ ] Review final diff/coverage, commit and fast-forward clean development
+  branches; reuse proof only for identical accepted trees. Preserve ignored
+  output before retiring only merged, clean current-round temporary lanes.
+
+Proof budget: affected checks once on the final pair plus bounded repairs for
+actual failures; no automatic complete Service/I6 acceptance claim. Document
+budget: this existing record, four owner manuals and the relevant canonical API
+page plus generated guide copies; no new Work/Phase/report or map promotion.
+Existing evidence under output-file-names is reused; new package/version proof
+will be placed in a separate integration-052 subdirectory.

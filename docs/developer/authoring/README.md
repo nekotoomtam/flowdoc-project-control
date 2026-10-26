@@ -22,6 +22,13 @@ TOC ของ19ต้องระบุ scope;18คงเดิม. การแ
 
 ## คู่รุ่น candidate กับชุดที่ติดตั้งอยู่
 
+ชุดพัฒนาใหม่: Service/Core0.5.2 เพิ่มชื่อไฟล์เริ่มต้น `defaultFileName` และ
+ชื่อแทนที่จาก API `fileName` ตาม [API](api.md#ชื่อไฟล์ใน-servicecore-development052)
+Core มี Model20 แบบทดลองสำหรับการเรียก Section ซ้ำผ่าน Core โดยตรง;
+Service0.5.2 ยังรับ18/19 จึงไม่ใช้ request20 กับ Service/MCP ปัจจุบัน
+ชุดติดตั้งและ FlowDocMake0.3.0/profile0.5.0 ยังคงเดิม ต้องเตรียมและตรวจ
+compatibility ของ plugin แยกก่อนออกรุ่น/ติดตั้งใหม่ การรวมกิ่งพัฒนาไม่ใช่ release
+
 ชุด0.5.0 รวม DOCX/fidelity, เซลล์รวม, `borderStyle:none`, Area สุดท้ายชิดท้าย
 และการปรับขอบเซลล์โดยไม่เปลี่ยน line height. รุ่นติดตั้งเดิมไม่เปลี่ยนตามคู่มือนี้.
 ตรวจ archive/hash/source และ live contract ก่อนใช้. PDF/DOCX ใช้ source เดียวกัน;

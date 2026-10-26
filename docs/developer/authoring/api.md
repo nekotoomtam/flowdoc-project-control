@@ -32,8 +32,39 @@ buffered:true. เก็บ receipt/hash กับไฟล์จริงแล
 32MiB เป็น output cap ไม่ใช่เพดาน RAM ทั้งงาน. ถ้าความสามารถไม่รองรับต้องรายงาน
 DOCX failure ไม่แทนด้วย PDF. ตรวจ fields/TOC และ native Word PDF แยกตาม
 [verification boundary](verification.md#core048-development-and-docx-boundary).
-Service candidate ตรึง Core0.5.0; อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
+Service development0.5.2 ตรึง Core0.5.2; ชุดติดตั้ง0.5.0 ไม่เปลี่ยนตามคู่มือ
+อ่าน [คู่มือ Service](../../../../flowdoc-service/docs/usage.md)
 และ vendor manifest ของ candidate ที่เรียกจริงก่อนใช้เส้นทางนี้.
+
+## ชื่อไฟล์ใน Service/Core development0.5.2
+
+ตั้ง `defaultFileName` ระดับ root ของ definition ข้าง `docKey` ได้ เช่น
+`"defaultFileName":"CLIS"` การบันทึก/อ่าน/clone และ immutable version รักษาค่านี้
+และค่านี้มีผลต่อ fingerprint แต่ไม่เปลี่ยนเนื้อหาหรือการจัดหน้า
+สำหรับ `POST /documents` ส่งชื่อแทนที่ด้วย `fileName` ใน JSON ของ multipart
+part `payload` ข้าง `data`/`sections` โดย `Doc-Key` ยังเป็น HTTP header เดิม
+
+```json
+{"fileName":"รายงาน CLIS 2602S","data":{},"sections":[]}
+```
+
+ตัวอย่างแสดงตำแหน่งชื่อ ต้องเติมข้อมูล Section ตามโครงจริง ชื่อไม่มีนามสกุล
+ใช้ `Output-Format` เลือก PDF/DOCX ตามเดิม ลำดับคือชื่อที่ส่งมา → ค่าเริ่มต้น
+ของโครง → `document` ช่องว่างล้วนถือว่าไม่กำหนด ชื่อถูก trim/NFC จำกัด200
+Unicode code points และ240 UTF-8 bytes; ชื่อ request ก่อน trim จำกัด240 bytes
+ไม่รับ non-string, controls/format characters, path, อักขระ/ชื่ออุปกรณ์ต้องห้าม
+Windows, จุดท้ายชื่อ หรือ suffix `.pdf`/`.docx` ไม่แก้ชื่อผิดให้เงียบ ๆ
+
+ค่าเริ่มต้นถูกตรึงเมื่อสร้าง task และชื่อจริงถูกตรึงเมื่อ seal ก่อนเข้าคิว
+การแก้โครงภายหลังไม่เปลี่ยนชื่องานเก่า task/output/artifact metadata คืน
+`fileName` ที่ไม่มีนามสกุล; attachment header มีนามสกุล ชื่อไทยใช้ UTF-8
+`filename*` พร้อม ASCII fallback `document` ไม่เปลี่ยน UUID ของ storage
+ต้องใช้ migration026 กับ candidate นี้
+
+ส่วนนี้เป็น direct Service API; อย่าเติม arguments ให้ MCP tool ที่ไม่ได้
+ประกาศรับ ชุดติดตั้ง FlowDocMake0.3.0 และ compatibility profile0.5.0 ยังเดิม
+Core20 เป็นการทดลองผ่าน Core โดยตรง; Service0.5.2 ยังรับ Model18/19
+ชื่อไฟล์ไม่ได้เพิ่มความสามารถเรียก Section ซ้ำใน Service
 
 ## 1. วงจรชีวิต
 
