@@ -151,24 +151,86 @@ Service20 integration, renderer tuning, frontend work or plugin runtime changes.
 
 Acceptance/checklist:
 
-- [ ] Core0.5.2 package/lock/manuals, build and Linux checks covering template,
+- [x] Core0.5.2 package/lock/manuals, build and Linux checks covering template,
   data, composition, layout, DOCX and PDF consumers; create a new immutable
   archive after committing source, retaining previous packages and provenance.
-- [ ] Service0.5.2 package/lock/vendor/manuals with exact Core0.5.2 pin;
+- [x] Service0.5.2 package/lock/vendor/manuals with exact Core0.5.2 pin;
   build/vendor checks and isolated real DB/API tests of output naming,
   historical migrations, legacy18/19, B style and authoring consumers at1GiB.
   Reuse unchanged layout/Word proof only within its original scope.
-- [ ] Canonical authoring API/metadata guidance, explicit Service18/19 vs
+- [x] Canonical authoring API/metadata guidance, explicit Service18/19 vs
   experimental Core20 and installed plugin boundaries; refresh source guidance
   snapshot only after canonical commit. Leave installed plugin and its strict
   compatibility profile unchanged; its next release remains separate work.
-- [ ] Review final diff/coverage, commit and fast-forward clean development
+- [x] Review final diff/coverage, commit and fast-forward clean development
   branches; reuse proof only for identical accepted trees. Preserve ignored
   output before retiring only merged, clean current-round temporary lanes.
 
 Proof budget: affected checks once on the final pair plus bounded repairs for
 actual failures; no automatic complete Service/I6 acceptance claim. Document
 budget: this existing record, four owner manuals and the relevant canonical API
-page plus generated guide copies; no new Work/Phase/report or map promotion.
+page and authoring entrypoint plus generated guide copies; no new Work/Phase/report or map promotion.
 Existing evidence under output-file-names is reused; new package/version proof
 will be placed in a separate integration-052 subdirectory.
+
+
+### Integration outcome —2026-10-27
+
+PASS for local development integration and manual preparation. Core
+`a132c5de7a4f167305e48de0dbf0cdf36b288e8d` is integrated into the existing default
+`codex/template-binding`; Service `d3d1db6426ac1207754a2990094d21f854e5369d`
+is integrated into `codex/template-registry`. Both package/lock versions are
+0.5.2. Fast-forwards were conflict-free; clean primary trees match the accepted
+candidate trees exactly. Product release branches/tags are unchanged. Nothing
+was pushed, released, installed or published.
+
+Service vendors `flowdoc-core-0.5.2.tgz`, SHA256
+`ee085d2291394750b34750e262f74eb80bd57786cef7dd43fd55f58d29c0c0ca`,
+with exact Core source a132c5d and matching SHA512 lock integrity. Previous
+0.5.0/0.5.1/development archives remain intact. Four owner manuals and canonical
+authoring API/entrypoint now distinguish0.5.2 development, installed0.5.0,
+Service18/19 and opt-in direct-Core20; migration026, backup/recovery and real
+post-install checks are explicit. The source guidance snapshot was regenerated
+from canonical guide commit37db50f; all33 packaged reference files match their
+canonical LF bytes. Installed FlowDocMake0.3.0 and its strict0.5.0 compatibility
+profile were not changed or bypassed.
+
+Evidence root is the existing recovery folder's `integration-052/`.
+`verification.json`, `pre-integration.json`, Core/Service JSON reports, build
+logs and guidance-checks.log retain identities/results. Core Linux impact tests
+passed1086/1086; final Service tests passed120/120 across16 affected files,
+including actual PDF/DOCX naming, queue pinning, SQL guards, historical schema
+upgrades, B rendering, source/stored-version PDF equality and legacy18/19
+consumers. Guidance/workflow/CLIS/packaging checks passed15/15. Zero skipped.
+Fresh read-only pre-merge review passed with no important findings. All real
+test containers were capped at1GiB and used a dedicated disposable PostgreSQL
+network/database; that DB/network was removed after checks.
+
+Initial Service stored-version test failed because the newly created disposable
+public schema had not been migrated; bootstrap was corrected using the existing
+CLI migration API, without changing product behavior. The original119/120 report
+is retained beside final120/120. Initial plugin packaging checks lacked the
+explicit reviewed0.5.0 archive; supplying the retained matching archive produced
+15/15, without changing compatibility expectations. Final Core repack corrected
+a stale package-version sentence; the first0.5.2 archive is preserved under
+pre-guide-correction and tar comparison proves README was the only changed
+member. Runtime/test source remained identical, so Core test proof is reused
+within that identity; final Service tests used the final exact package/hash.
+
+Normal cleanup removed only the clean, fully merged current Core/Service
+shared-stroke-table-styles worktrees/branches. Ignored contents were inventoried:
+Core dist/node_modules and PC node_modules are reproducible build/dependency
+outputs, not unique evidence. All needed archives, reports and artifacts are
+retained outside the worktrees. Current package locators are
+`C:/Users/nekot/Documents/GitHub/flowdoc-service/vendor/flowdoc-core-0.5.2.tgz`
+and the recovery integration-052 archive. The manifest's sourceArtifact records
+the original packing location; it is historical provenance, not the current
+lookup path. The PC worktree is retained as this chat's active workspace; other
+historical/unmerged lanes were not swept.
+
+Remaining release prerequisites are deliberately separate: complete Service/I6
+acceptance where required, next FlowDocMake compatibility/package preparation,
+release snapshot/tag/push authorization and actual installation/restore checks.
+There is no new native Word visual acceptance or Service20 admission claim.
+This completes the owner's development merge/version/manual request; it does
+not declare a public release ready or installed.
