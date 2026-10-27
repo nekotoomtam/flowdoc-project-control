@@ -498,3 +498,72 @@ retained because the staged client config references it. Next action, only when
 authorized separately, is backup/install/post-install verification of the new
 exact package tuple. The following PC main-only metadata commit records these
 results without moving the already published component snapshot/tag.
+
+### Authorized installation scope —2026-10-27
+
+Owner authorizes installing the released Service/Core0.5.2 and FlowDocMake0.3.1,
+after backing up the previous installation, with actual connection and short
+PDF/DOCX checks. Single-room operator/evidence role; execution IDs N/A. Existing
+release tags/packages and limitations are immutable input. No product change,
+template publication or user-template repair. Retain backups/config/secrets
+privately under external install-052-2026-10-27; update this record only.
+
+Acceptance: cold DB/staging/output plus old image/config/host-adapter backups,
+hash verification and separate restore test before migration; explicit0.5.2
+image/migration026 and replay; existing data retained; exact plugin/profile/
+guide verification, local config update, fresh SDK preflight and real short
+PDF/DOCX from the installed image with content/hash/page review. Keep1GiB+init,
+loopback and credentials. Use a disposable named DB for task smoke; authoring
+trial remains draft-only. App chat-tool discovery is a separate observable gate;
+do not claim an old in-chat tool process refreshed automatically. One bounded
+backup/restore/build/install/smoke pass plus repairs for actual prerequisites.
+
+### Installation completed —2026-10-27
+
+PASS for installed runtime/package and fresh-client connection; current-chat
+tool discovery remains separately unverified until an app reload/fresh chat.
+Service/Core0.5.2 runs from released snapshot25e912f with image
+84b3837d4a4f8850516af2c177c6c672ae4a0e05b0307220108929a727ede804,
+exact Core647235de archive,1GiB memory/swap and init. Migration
+026_task_file_names.sql applied once and replay applied nothing. Original
+output/staging/database volumes and authentication/loopback settings retained.
+
+Backup/restore evidence lives privately under
+`C:/Users/nekot/Documents/FlowDoc-recovery/install-052-2026-10-27/`.
+Cold copies cover all3 volumes, old images, host dist/dependencies, deployment
+configuration and local client settings. The old configured0.3.0 cache was
+already absent; the retained released0.3.0 package was backed up, along with
+the existing0.3.1 cache. Separate logical DB restore matched49tables/1241rows;
+file restore matched96staging files (including32hardlinks) and6output PDFs.
+The first file checker omitted tar hardlinks; its failures are retained and
+the corrected checker verifies every restored file without changing backups.
+No migration started until this restore passed. Post-migration projection of
+all48 pre-existing data tables matched exactly, apart from expected migration
+history/new columns. After smoke,135 existing template/font rows across14
+tables still match, excluding only the new named acceptance draft.
+
+The existing enabled FlowDocMake0.3.1 cache matches the accepted bundle after
+Git newline normalization (8files differ only in newlines, snapshot JSON values
+identical; all33 guide hashes verified). Only pluginRoot changed in the local
+client config, from the absent0.3.0 path to0.3.1; other paths/credentials remain.
+Host dependencies/dist rebuilt from the released locked Service source.
+Actual installed manifest launcher and fresh SDK report ready:true,0.3.1,
+Service/Core0.5.2, exact pin and25 tools, again after Service restart. The new
+draft remains revision1 after restart. No claim that this chat's already-loaded
+tool catalog refreshed: FlowDocMake tools are absent here; reload app/open a
+fresh chat and perform get_flowdocmake_context before further authoring.
+
+Installed authoring PDF passed without warnings. A disposable named smoke DB
+and narrowly scoped credential used the exact installed image for short PDF
+and DOCX, without publishing a user template. Both complete task receipts,
+bytes/hashes and source text passed. All3 one-page outputs were rendered and
+visually inspected; DOCX ZIP/Thai source text/4embedded Sarabun faces passed.
+LibreOffice preview Thai PDF extraction has positioned-glyph mapping differences;
+that extraction is not exact-source proof, and native Word is not asserted.
+Full-page review found no clipping/missing visible content. Existing DOCX/layout
+limitations remain unchanged. Smoke/restore helpers are stopped; installed
+API/database remain running. No product source, release tag, original PDF or
+user template was rewritten. Artifacts: final-check.json, restore-check.json,
+upgrade.json, restart-check.json, installed-preflight.log, smoke-pair.json and
+smoke-output/ under the installation root. Next step is app reload/chat discovery,
+not another installation or product change.
