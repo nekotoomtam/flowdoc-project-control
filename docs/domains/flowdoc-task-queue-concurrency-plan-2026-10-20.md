@@ -1695,3 +1695,64 @@ IDs/images/start/restart countsตรงเดิมและคงที่ร�
 lab replayเพื่อพิสูจน์สาเหตุpreviewเก่า หรือWord visual acceptance; ทั้งสองยังไม่
 เริ่มในรอบstatusนี้. แผนกู้จริงยังต้องผ่านcompatibility/backup/maintenance/repair
 ตามอำนาจที่แยกไว้ก่อน ไม่เพิ่ม027หรือเปลี่ยนruntimeเพียงเพื่อปิดchecklist.
+
+## Controlled lineHeight comparison — isolated Oracle lab, 2026-10-30
+
+The owner authorized a separate Oracle lab to determine whether10.5 versus16pt
+lineHeight alone changes the preview result, with no production data access or
+changes, service interruption, release or installation. This single-room
+verification uses synthetic content and retained geometry only; roles: Evidence
+Reviewer and Project Control Steward, execution IDs N/A. Proof budget: one
+native digit probe, four alternating full Core renders and two Service wrapper
+renders, then PDF inspection and local evidence review. No product source edits
+or complete-suite reruns are needed for this causal comparison.
+
+**Confirmed in the synthetic fixture:** templates differ at exactly
+`/styles/band/lineHeightPt`; input and every font hash are unchanged. Core runs
+10.5→16→10.5→16 produce failure→success→failure→success. Both failures preserve
+`Page number ink does not fit the reserved slot` at the header page-number node.
+The unchanged Service render wrapper also fails at10.5 with
+`nodes.section-main~band-header~page` / genericLAYOUT_FAILED, matching the stored
+historical signature, and succeeds at16. All three successful PDFs are
+byte-identical, one page, and contain the expected synthetic body andPage1of1.
+
+The real native shaper for bundled Sarabun normal
+`b8150084e25734e6f31696c57ff009f5564efa09d295848b717d9e2328c0311d`
+reports ascent1068/descent-232 at1000units/em for digit1. At9.1pt, Core's actual
+decode convention yields ascent9.7188/descent2.1112, total11.83pt. Its width
+extent is5.005pt, below the12pt slot. The required line box exceeds10.5pt and
+fits within16pt for this fixture. **11.83pt is the Core font line box, not visible
+digit ink height**; the raw glyph ink is6.37pt tall. This is not a universal
+minimum leading for arbitrary fonts, sizes or content. Core's existing guard
+is operating as implemented; the observation does not establish a product bug.
+
+The model18 fixture uses synthetic text/date, A4landscape margins18pt,
+header8:1columns/gap12pt and compact12pt current/total slots. Body style is
+unchanged20pt; only the header band style lineHeight changes. It is not the
+customer's original template/input, and historical font/runtime identity was
+not recovered. Therefore the historical job's exact cause remains probable;
+what is now proven is the compatible causal mechanism in a controlled fixture.
+
+Lab `flowdoc-lineheight-9fc1586a9e83` uses the previously observed release image
+`sha256:227b2fd239283254eced9f51114161afad71a49d9f00db708e5c9c0b0a35571f`,
+Service/Core0.5.2 and Corearchive647235de… . Its1GiB/1CPU container has networknone,
+no DB configuration, no ports and only its own lab-directory bind mount. Core
+public exports and native resources are real; no mocks/internal Core imports
+or source changes. The script completed once; container exited and remains
+stopped. Production container metadata matched before/after; only Docker
+metadata was read, not production DB/documents. Normal host/audit/resource
+effects on a shared Oracle VM are not claimed to be zero.
+
+Successful PDF was parsed and rendered with Poppler; full-page inspection shows
+the complete header/page number and body without observed clipping. The same
+bytes cover all three PDFs. A separate read-only review accepted the controlled
+comparison and required the line-box versus ink-height distinction above.
+
+Report, synthetic templates/input, executable scripts, font/native measurements,
+Core/Service raw results, PDFs/PNG and SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-lineheight-20261030/verification-report.html`.
+Remote lab evidence is retained at
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-lineheight-9fc1586a9e83`.
+No real-data replay/repair, service stop/restart, template update, release/tag,
+push, installation or new host package was performed. Stop at this proven scope;
+exact historical replay and any template/engine fix require a new explicit scope.

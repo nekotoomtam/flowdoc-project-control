@@ -276,6 +276,13 @@ outputs36expired ตาม snapshotก่อนหน้า; ไม่ได้�
 ของrevision2 แต่ยังเป็น probable cause ไม่ใช่ controlled reproduction หรือ
 ข้อบกพร่องของผลิตภัณฑ์ที่พิสูจน์แล้ว. ดูผลตรวจในบันทึกและรายงาน:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-failed-job-20261030/verification-report.html`.
+ต่อมาเจ้าของอนุญาตcontrolled comparisonด้วยfixtureจำลองในlabแยก: เปลี่ยนเฉพาะ
+header lineHeight10.5/16ptแล้วได้failure/successในCoreสลับ4รอบ
+และServiceจริงยืนยันอีก1คู่.
+Bundled Sarabunที่9.1ptมีCore ascent/descent line box11.83pt (หมึกเลข1จริง6.37pt)
+และwidth5.005pt<slot12pt จึงยืนยันกลไกheight guardในfixtureนี้ได้. ยังไม่ใช่
+การreplayข้อมูลจริงหรือยืนยันfont/runtimeของjobในอดีต ดูหลักฐานที่
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-lineheight-20261030/verification-report.html`.
 รายการสำรวจว่างไม่ใช่ allowlistที่อนุมัติให้ซ่อม และไม่ครอบคลุม DB/schemaอื่น.
 คำแนะนำเดิมให้คง quarantine เป็นข้อควบคุมก่อนตรวจ ไม่ใช่หลักฐานว่ามี taskค้าง
 ในระบบจริง; รอบนี้เป็นการตรวจ live inventory ที่ยังไม่พบเป้าหมายในtargetนี้.
