@@ -3193,3 +3193,109 @@ Identity note: raw API packets retain the earlier human-readable
 "2c089b5+Core65f17ee-package-pin" label. For the final bridge fix, authoritative
 identity is frozen source archive f4c29edf, runtime ce49f3c4/verification a17bf735
 and Servicef36f821; the raw label does not imply the earlier Core-only image.
+
+## FlowDocMake candidate matched to DOCX-run Core — 2026-10-31
+
+New owner request: review/prepare an isolated plugin candidate pinning Core04442fd1
+and test through real FlowDocMake in a fresh Oracle lab; no production data,
+service stop, release or installation. Owner Project Control plugins/flowdocmake
+and reviewed candidate builder/profile; roles Product Implementation Agent then
+Evidence Reviewer. Single-room inline, execution/Phase/Checklist IDs N/A, bounded
+size/routine risk. Snapshot e9bacb3 rebuilt; existing frontend context does not
+override this explicit request. Prior closed proofs are immutable inputs only.
+
+Use branch codex/flowdocmake-core-pin-candidate, managed worktree
+`C:/Users/nekot/.codex/worktrees/flowdocmake-core-pin-candidate/flowdoc-project-control`,
+base0920968. Keep the prepared0.3.1 source profile647235de and installed caches
+unchanged. Add a distinct reviewed profile flowdocmake-docx-run-candidate /
+0.3.1-candidate.2 for Service0.5.2/Core0.5.2/archive04442fd16ec884e5cf87664dcf3562e4d4f25ae4d32b996d033a88642fe1668d;
+extend only the builder's exact allowlist and related regression. No Core/Service
+runtime change or DOCX tool feature. Candidate tools remain PDF-only.
+
+Acceptance/proof budget: functional RED then bounded local candidate build/
+wrong archive/altered profile/output containment checks; impact-scoped plugin
+checks, clean source commit and final immutable candidate inventory. Reuse
+Servicef36f821 verificationa17bf735/runtimece49f3c4 and Core65f17ee/archive04442fd1
+within their stated scope. Fresh labeled private Oracle Docker/PostgreSQL lab,
+explicit loopback MCP config, actual candidate stdio server and real Service HTTP
+generation/inspection including model18/19 and a1800-record PDF task. Negative
+pin must reject before creating work, no weakened compatibility or patched lab
+profile standing in for the delivered candidate. Record bytes/hash/PDF validity,
+task/usage/reservation identity, no automatic retry, stopped owned containers
+and production metadata stable. If an actual affected boundary fails, diagnose
+before bounded repair; retain failed attempts.
+
+Private lab tests do not install/register candidate into desktop/native tools or
+prove installed get_flowdocmake_context discovery/Docker identity preflight.
+Do not fake such identity to get READY. Native full-context preflight, Word
+layout, DOCX-through-plugin feature, release and real-data recovery stay outside
+this task. Model: current host inline; no product WORK dispatch; a read-only
+review helper may review the final bounded delta as the skill requires.
+Document budget: this existing record, ignored ledger and one external report.
+Stop after candidate/task-path acceptance; no automatic main integration,
+push/tag/release/publish/install or existing-plugin replacement.
+
+Result: PASS_BOUNDED_PLUGIN_CANDIDATE_MCP_TASK_PATH. Source branch commit
+666193f249e7c5f1fd929a1858ba8739f9fc9291 changes exactly three files: reviewed
+profile, builder allowlist entry and regression. Functional RED2 failed on the
+unknown profile; final local impact21pass/0fail/0skip. Candidate source and
+prepared0.3.1 profile are distinct. No source behavior or compatibility guard
+was weakened. Independent read-only source/package review found no Important
+or Critical issue and verified55 inventory entries and33 guide hashes; review
+is not runtime proof. The candidate branch remains unmerged and clean.
+
+Final candidate was built with real Windows Git from clean666193f and the real
+reviewed Core archive. Emitted inventory/source snapshot identifies666193f,
+candidate0.3.1-candidate.2 and Core04442fd1. Untouched candidate tar SHA256
+e7ad5eb450ddc46cb2475f53081fade19d033b8471f428ade7e84fb2c85f2a26.
+Oracle Linux transport maps only the original Windows absolute MCP entry path
+to /evidence/candidate/scripts/server.mjs; every candidate file stays unchanged.
+This is bounded stdio task-path proof, not portable installed wiring acceptance.
+
+Actual Oracle VM/Docker/PostgreSQL lab flowdoc-pluginpin-62d5153a31b0 uses
+verificationa17bf735, a private internal network/no published ports and owned
+storage/DB only. Two selected entry/protocol guards pass; native full-context
+preflight is deliberately not claimed. Actual immutable candidate, without a
+disposable profile patch, passes25 Service task API/queue/client tests,0fail/
+0skip, in a separate1GiB/2CPU helper matching those tests' default1GiB/two-worker
+resource policy. The actual larger MCP generation uses4GiB/2CPU/one processing
+slot and the real Service readTaskQueueConfig profile resolver, not synthetic
+memory readings. Source tree is mounted read-only.
+
+Actual candidate MCP stdio -> loopback Service HTTP -> PostgreSQL/renderer:
+model19/1800 records produces4181707-byte148-page PDF, SHA256
+b2606f74773c8b31fe379bd675fb0aa89a065983bb5ff30842e2aff3ddb8112e;
+model18/one record produces16243-byte1-page PDF, SHA256
+7820c96bc13067f8295a34cea6a20c11f9ba04d1fb9784abd5b057e8e7fa0575.
+Independent Poppler parse/text checks match receipt pages/bytes/SHA and exact
+Record0..1799 order. Actual progress notifications18/4 and MCP task inspection
+succeed. Both wire receipts retain response-complete/serverReceipt=not-confirmed;
+separate DB/lookup evidence confirms succeeded delivery, one job/terminal event
+per task and final2tasks/2jobs/2usage/unreconciled0. No automatic repeat observed
+in this bounded window. Prepared old pin647235de rejects before task allocation:
+TASK_CAPABILITY_UNSUPPORTED, taskId=null, count0->0 and no PDF.
+
+Failed prerequisites remain visible: first labeled lab eba06bb1e4e7 lacked Git
+in existing images; final build instead used real local Git without installing
+tools or faking identity. Initial whole preflight file2pass/1fail lacked its
+specifically named Docker endpoint/reader; it is not reported as full PASS.
+Initial Service scoped run20pass/5fail used a4GiB helper for direct tests that
+instantiate DEFAULT_QUEUE_PROFILE1GiB and omitted /legacy-plugin. Corrected only
+the harness with a separate1GiB helper and the unchanged retained old-client
+fixture; final25pass. Large proof harness explicitly uses the real4GiB profile.
+Raw initial results and original harness are retained; candidate files and
+Core/Service source were unchanged through these corrections.
+
+All current owned lab containers stopped. Production container identity/start/
+restart metadata stayed unchanged across every boundary; no production SQL,
+storage, stop, release or installation. No stopped lab/volume/network deleted.
+Private lab get_flowdocmake_context actually returns ready=false/runtime=null;
+native Docker identity/discovery READY, installed integration, rendering visual
+layout, DOCX-through-plugin, soak and real-data recovery remain unverified or
+outside scope. Native readiness/wiring must be separately verified before any
+future real plugin use; no fake READY, draft/publish or cache replacement here.
+
+Candidate, raw current/failed evidence, PDFs, coverage and SHA manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-plugin-pin-20261031/verification-report.html`.
+No map, registry or product-wide audit closure; inline IDs N/A. Stop at this
+bounded result. No automatic integration, additional experiment or rollout.
