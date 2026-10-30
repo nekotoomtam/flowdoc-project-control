@@ -1554,3 +1554,61 @@ compatibility comparison and SHA256 manifest:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-production-readonly-20261030/verification-report.html`.
 No backup/export of customer documents, SQL/storage repair, release/tag, push,
 installation or Oracle service restart/stop was performed.
+
+## Historical failed preview investigation — read-only, 2026-10-30
+
+The owner authorized investigating the one failed job on Oracle, still
+read-only without data changes, stopping services, release or installation.
+Roles: Evidence Reviewer and Project Control Steward; bounded single-room
+discovery, execution IDs N/A. Queries selected error/layout metadata and
+server-side equality booleans, not document text or full input/definitions.
+
+**Confirmed:** job `01a175d8-d591-746c-b8fb-950182a1a6a0` is a model18 PDF
+authoring preview of template `626ab2e8-77c4-47b0-a7d8-e852b872c267`, revision1.
+It was created on2026-10-26 at08:35:06Bangkok and finished at08:35:07 with
+`LAYOUT_FAILED`, path `nodes.section-main~band-header~page`, section `main`.
+It has no task_id, no published template-version ID and no output row. It is
+terminal history, not a queued legacy task or an interrupted reservation.
+
+The failing header page-number block uses compact layout and body style:
+font9.1pt, lineHeight10.5pt, two12pt number slots in the same8:1 columns.
+Revision2 uses band style at the same font size and lineHeight16pt and has two
+recorded successful jobs with one output row each, at08:36 and08:40Bangkok.
+The original request equals the first successful job's input (compared in DB,
+boolean only). Page styles are equal except lineHeight; header structure is
+equal after excluding style references; pageLayouts/book also match. The whole
+definition still differs elsewhere, so this is not a controlled single-change
+reproduction. Later output metadata does not establish PDF content/page count.
+
+**Probable cause:** insufficient line-height reserve for the header's page
+numbers in revision1. Current matching Core source checks both number ink width
+and ascent+descent against the reserved slot/lineHeight in
+`src/layout/fillContentsNumbers.ts:9`; compact page fields call that check and
+must fit one line. The revision change and later successes support this
+explanation, but do not prove the exact historical failing predicate or a
+product defect. No original request was replayed.
+
+**Unverified:** native measurements and exact runtime/font identity at the
+historical execution, original detailed LayoutError and required minimum
+lineHeight. Stored error is the generic Service layout message. The current
+container started on27Oct, after this26Oct job; its bounded15-second log window
+returns no entries. Older containers/log stores were not searched exhaustively.
+Current source behavior is supporting evidence, not proof of the historical
+emitter version. A separate local read-only review accepted these classifications.
+
+Queries used the same READ ONLY transaction/timeout/ROLLBACK boundaries.
+A related-job lookup initially compared a text preview ID with a UUID cast;
+the read-only query failed and was corrected. No job or schema was changed.
+API/DB IDs/images/start times/restart counts matched before/after; the final
+live snapshot still showed pending tasks0/jobs0. Read activity may have normal
+audit/access-time/statistics effects; no zero-side-effect claim is made.
+
+No recovery, historical deletion, resend, template fix or runtime change is
+justified by this completed preview record alone. The later successful revision
+already exists; further causal proof would require separately scoped controlled
+replay in a lab, not rerunning customer work on production.
+
+Report, filtered diagnostics/geometry, revision comparisons, exact read-query
+sources, final boundary and SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-failed-job-20261030/verification-report.html`.
+No application data, services, release/tag, remote or installation changed.

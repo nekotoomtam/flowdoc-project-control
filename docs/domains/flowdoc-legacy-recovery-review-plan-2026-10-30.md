@@ -270,6 +270,12 @@ DB transaction ไม่ครอบคลุม filesystem cleanup หรือ
 ตรวจผ่าน app connection ณ12:12:47เวลาไทยพบ tasksทั้งหมด0, pending tasks0 และ
 queued/running jobs0. มี historical generation jobs36succeeded/1failed และ
 outputs36expired ตาม snapshotก่อนหน้า; ไม่ได้ตรวจสาเหตุของ historical failure.
+ภายหลังเจ้าของอนุญาตให้ตรวจ failureนั้นแยก: พบเป็น preview revision1 วันที่26ต.ค.
+จบด้วยLAYOUT_FAILEDในบล็อกเลขหน้าส่วนหัว ไม่มีtask/outputผูกอยู่ และมีrevision2
+สำเร็จสองรายการแล้ว. หลักฐานชี้ว่าlineHeight10.5ptต่ำเกินเมื่อเทียบกับband16pt
+ของrevision2 แต่ยังเป็น probable cause ไม่ใช่ controlled reproduction หรือ
+ข้อบกพร่องของผลิตภัณฑ์ที่พิสูจน์แล้ว. ดูผลตรวจในบันทึกและรายงาน:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-failed-job-20261030/verification-report.html`.
 รายการสำรวจว่างไม่ใช่ allowlistที่อนุมัติให้ซ่อม และไม่ครอบคลุม DB/schemaอื่น.
 คำแนะนำเดิมให้คง quarantine เป็นข้อควบคุมก่อนตรวจ ไม่ใช่หลักฐานว่ามี taskค้าง
 ในระบบจริง; รอบนี้เป็นการตรวจ live inventory ที่ยังไม่พบเป้าหมายในtargetนี้.
