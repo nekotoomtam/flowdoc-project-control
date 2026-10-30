@@ -1756,3 +1756,94 @@ Remote lab evidence is retained at
 No real-data replay/repair, service stop/restart, template update, release/tag,
 push, installation or new host package was performed. Stop at this proven scope;
 exact historical replay and any template/engine fix require a new explicit scope.
+
+## จุดกลับมาทำต่อหลังพิสูจน์ lineHeight — 2026-10-30
+
+เจ้าของขอเก็บสถานะ หลักฐาน และรายการที่ยังติดไว้ก่อน รอบนี้เป็นการบันทึกใน
+Project Control เดิมเท่านั้น โดย Project Control Steward; execution/Work/Phase/
+Checklist IDs N/A. ไม่เปิด execution เก่า ไม่เริ่ม lab/monitor/background work
+และไม่เชื่อมต่อ Oracle. ขอบเขตเอกสารหนึ่งไฟล์; ตรวจ local refs, evidence hashes,
+diff และข้อมูล Project Control โดยไม่รันทดสอบผลิตภัณฑ์ซ้ำหรือเปลี่ยน source.
+บันทึกนี้เป็นทางกลับมาทำต่อ ไม่ใช่การรับรอง production readiness หรือคำอนุมัติซ่อม.
+
+### สถานะที่เก็บไว้
+
+- ตรวจ local Git refs รอบนี้: Service development `codex/template-registry`
+  `843bd0204b424f32cf7fed8a8ebaab6964a33388`; release `25e912f`.
+  Core development `codex/template-binding` `1817efa`; release `55315ca`.
+  ไม่ fetch/push และไม่อ้างว่าเป็นสถานะ remote ล่าสุด.
+- F1–F6 รวมใน development แล้ว หลักฐาน Oracle lab ชุดเต็มเดิม: Service
+  729 passed / 0 failed / 3 skipped และ Core 1268 passed / 0 failed / 0 skipped.
+  สามช่องว่าง Service ทดสอบเสริมภายหลังผ่านทั้งหมดใน focused module 4/0/0;
+  ไม่ใช่การรันชุดเต็มใหม่ 732 ผ่าน. F4 ผ่าน 12 controlled schedules โดย
+  deadlock counter ไม่เพิ่ม ไม่รับรองทุก concurrency schedule.
+- ซ้อม legacy recovery และ linked job/output ของ PDF/DOCX อย่างละ 4 fixtures
+  รวม recovery ซ้ำ, recreate, reservations/TTL และ matched DB/file rollback.
+  ผลจำกัดตาม fixtures; TTL ใช้ logical clock ไม่ใช่ wall-clock soak.
+  ยังไม่รับรองหน้าตา/pagination/field refresh ใน Word.
+- Controlled lineHeight proof เสร็จแล้ว: เปลี่ยนเฉพาะ header lineHeight
+  10.5/16 pt ได้ failure/success ใน Core สลับ 4 รอบและ Service อีก 1 คู่.
+  Core font line box 11.83 pt เกิน 10.5 แต่พอดี 16; ไม่ใช่ visible ink height.
+  ยืนยันกลไกใน synthetic fixture ไม่ใช่ exact replay ของ preview เก่า;
+  historical font/runtime และรายละเอียด error เดิมยังไม่ครบ.
+- Live SQL snapshot ล่าสุดที่มีหลักฐานคือ **30 ต.ค. 2026 เวลา 13:50:07 ไทย**
+  จาก app DB `flowdoc/public`: tasks/pending tasks/queued-running jobs/
+  reservations เป็น 0; ประวัติ jobs 36 succeeded / 1 failed.
+  Service/Core 0.5.2, PostgreSQL 18.6, migrations ถึง 026 ไม่มี ownership027.
+  รอบ checkpoint นี้ไม่ได้ตรวจ live ซ้ำ จึงไม่รับรองว่าจะยังไม่มีงานใหม่.
+- Failed job เก่าเป็น preview ที่จบแล้ว ไม่มี task/output ผูกอยู่ และมี revision2
+  สำเร็จภายหลัง ไม่ใช่หลักฐานให้กู้คิว ลบประวัติ หรือส่งงานนี้ซ้ำ.
+  Lab containers หยุดตาม receipts ของแต่ละรอบ ไม่ได้ตรวจ host ซ้ำตอนเก็บบันทึก.
+
+### หลักฐานและจุดอ่าน
+
+อ่าน [แผนกู้ข้อมูลจริง 28 ข้อ](flowdoc-legacy-recovery-review-plan-2026-10-30.md)
+คู่กับส่วนหลักฐานด้านบน. A1 ผ่าน; A2/A3 มีหลักฐานบางส่วนแต่ยังไม่ผ่าน readiness
+สำหรับ repair. ช่องอื่นยังไม่ผ่าน ไม่ทำเครื่องหมายเพิ่มเพราะ synthetic tests ผ่าน.
+
+รายงานแต่ละชุดมี `verification-report.html` และ `evidence-manifest.json` ภายใต้
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/`:
+
+| โฟลเดอร์ | หลักฐาน |
+| --- | --- |
+| `flowdoc-oracle-20261030` | F1–F6, complete suites และ development integration |
+| `flowdoc-oracle-height-guard-20261030` | สามเทสต์เสริมที่เคยข้าม |
+| `flowdoc-oracle-legacy-recovery-20261030` | Legacy recovery พื้นฐานและ rollback |
+| `flowdoc-oracle-legacy-linked-20261030` | PDF linked job/output 4 เคส |
+| `flowdoc-oracle-legacy-docx-20261030` | DOCX linked job/output 4 เคส |
+| `flowdoc-oracle-production-readonly-20261030` | Runtime/schema/storage และ live inventory เดิม |
+| `flowdoc-oracle-failed-job-20261030` | Historical preview investigation แบบอ่านอย่างเดียว |
+| `flowdoc-oracle-lineheight-20261030` | Controlled causal proof, PDF/PNG และ native measurements |
+
+ตรวจ hashes ของทั้ง 8 ชุดในเครื่องรอบ checkpoint นี้แล้ว: **295 ไฟล์ตรง manifest**.
+Live refresh เวลา13:50 มี `snapshot.json`, `query.py`, `manifest.json` ที่
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/audit-f5-f6-20261027/artifacts/oracle-audit-20261030/resume-readonly-20261030-a67225`.
+ตรวจสองไฟล์ตาม manifest นั้นด้วย. การตรวจ hashes ยืนยัน retained bytes เท่านั้น
+ไม่ใช่การรันซ้ำหรือการยืนยัน live state ใหม่. เก็บ worktrees/scripts/evidence เดิม;
+ไม่ลบหรือ cleanup ทรัพยากรในรอบนี้.
+
+### รายการที่ยังติดก่อนกู้จริง และลำดับกลับมาทำต่อ
+
+1. **เป้าหมายกู้:** ยังไม่พบงานค้างใน target ที่สำรวจ อย่าเริ่มซ่อมหรือเพิ่ม027
+   เพื่อปิด checklist. เมื่อกลับมาให้ตรวจ canonical/local state ก่อน และถ้าต้อง
+   สำรวจ live ให้ยืนยันขอบเขตอำนาจที่ใช้ในรอบนั้น ไม่ใช้ snapshot นี้แทนข้อมูลสด.
+2. **Compatibility:** runtime/schema จริงยังไม่ตรงวิธี lab ที่ใช้027/ownership
+   guard. ห้ามนำ script lab ไปรันตรง ๆ; การเปลี่ยน runtime/schema ต้องมีแผนและ
+   อำนาจ release/installation แยก ไม่เป็นส่วนแฝงของ recovery.
+3. **ขอบเขตข้อมูลและผลส่ง:** ยังไม่มี repair allowlist พร้อม row/file hashes,
+   expected outcomes และ delivery assessment ของเป้าหมายจริง. ห้ามถือว่า output
+   อยู่หรือ job succeeded แปลว่าผู้รับได้รับ และไม่ rerender/resend อัตโนมัติ.
+4. **Writers และ runtime impact:** ยังไม่พิสูจน์ทุก writer/session/host ว่าหยุด
+   และกลับมาเขียนไม่ได้; startup/sweep/cleanup ไม่จำกัดแค่ direct-repair allowlist.
+   ต้องทราบ expected mutations และควบคุมขอบเขตก่อน handoff ให้ runtime.
+5. **Backup/restore จริง:** ยังไม่มี DB+storage checkpoint เดียวกันที่ครบ schema,
+   sequences/roles/grants, metadata/hidden control files พร้อม off-host copy และ
+   restore/recovery proof บนสำเนาจริงที่ได้รับอนุญาต. Synthetic rollback แทนไม่ได้.
+6. **ผู้รับผิดชอบและอนุมัติ:** ยังไม่กำหนด maintenance window, downtime,
+   operator/reviewer, production tools/dry-run, abort/rollback และ reopen criteria
+   พร้อมคำอนุมัติ backup/maintenance/repair/reopen ตามขั้น. ยังไม่เริ่มปฏิบัติการ.
+
+หยุดที่ checkpoint นี้: ไม่แก้ข้อมูลจริง ไม่หยุด/restart บริการ ไม่ release/tag/
+push หรือติดตั้ง และไม่มีงานใหม่ที่ตั้งให้เดินต่ออัตโนมัติ. เมื่อกลับมาให้อ่านส่วนนี้
+กับแผน 28 ข้อก่อนเลือกขอบเขตถัดไป; ข้อจำกัดในอดีตยังคงประวัติ ไม่ถูกลบหรือ
+ยกระดับเป็น PASS จากการเก็บสถานะครั้งนี้.
