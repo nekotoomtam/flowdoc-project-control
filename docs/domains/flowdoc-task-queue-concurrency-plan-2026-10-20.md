@@ -1451,3 +1451,39 @@ rehearsal evidence. Arbitrary corruption, native Word fidelity, complete real
 writer inventory, consistent real-data/off-host backups and actual repair are
 outside these proofs. Real data remains quarantined and untouched; release,
 installation and real-data recovery still require separate authorization.
+
+## Real-data recovery review plan prepared — 2026-10-30
+
+The owner next authorized preparing the real-data checklist/plan for review
+only, without accessing or changing real data, release or installation. The
+review document is
+[รายการตรวจและแผนกู้งานเก่า FlowDoc สำหรับทบทวน](flowdoc-legacy-recovery-review-plan-2026-10-30.md).
+Owner: Project Control for the shared plan; Service remains implementation
+owner. Roles: Planning Partner and Project Control Steward. Single-room document
+work; execution/Work/Phase/Checklist IDs N/A. Product code is unchanged.
+
+The plan separates future read-only inventory authorization, maintenance/backup
+authorization and actual repair approval. Actual runtime/schema/storage,
+affected tasks, writers, delivery evidence and backup locations remain
+unverified/TBD. It specifically blocks assuming the lab candidate/migration027
+is installed, silently installing it, or copying the lab's label/application-name
+writer exceptions into production. It covers matched DB/storage backups,
+off-host retention, actual-scope restore proof, per-task allowlists, exclusive
+maintenance and lock order, normal cleanup/expiry effects, acceptance checks
+and rollback before versus after intake reopens.
+
+Local source review also confirmed that normal task sweep has no repair
+allowlist and startup runs other cleanup/recovery paths. The plan therefore
+separates direct-repair rows from the full runtime mutation/dispatch impact set,
+requires its inventory, rehearsal and explicit approval or proven isolation,
+and blocks runtime handoff before that boundary is established. A separate
+read-only review raised this scope gap; a bounded re-review confirmed that the
+plan correction resolves it. No product behavior was changed.
+
+This is review-ready planning, not production readiness or permission to begin
+inventory/maintenance/repair. This round uses only local repository and retained
+synthetic evidence. No Oracle connection, production inspection, SQL/filesystem
+repair, service lifecycle change, release/tag, push or installation is performed.
+Verification is scoped to source/evidence consistency, document links, review
+coverage, generated projections, data validation and whitespace; no runtime or
+product suite is needed for this documentation-only change.
