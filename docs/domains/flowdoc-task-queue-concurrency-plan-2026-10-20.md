@@ -2999,3 +2999,197 @@ External report, both retained observations, all XML/rels, exact analyzer and
 hashed installed sources:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-expansion-20261031/verification-report.html`.
 Stop here for owner review of this plan. No proposed repair has been executed.
+
+## DOCX native run budget repair and Oracle parity execution — 2026-10-31
+
+Owner now authorizes implementing the preceding Core plan and1800-record DOCX
+before-full/full/restored proof in an isolated Oracle lab, with original caps,
+no real data/service stop/release/install. Single-room implementation then
+read-only verification; IDs N/A. Product Implementation Agent owns Core text
+emission and bounded Service package pin; Evidence Reviewer owns proof. Existing
+canonical record is the work authority; snapshot e9bacb3 rebuilt from validated
+sources remains unrelated frontend context and does not override this request.
+Size bounded cross-repository, risk routine; correctness risks are native text
+boundaries, spacing and narrow773-node estimated margin. Runtime model is the
+current host model for inline product execution; one read-only review helper
+uses gpt-6-astra/high under the review skill, with no product WORK dispatch.
+Registered availability/return fields N/A. Owner-approved diagnosis is immutable
+input; no closed registry/context is resumed.
+
+Core base1817efa reconciled against release55315ca for the four relevant DOCX
+files. Fresh branch codex/docx-run-budget at
+`C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/docx-run-budget-20261031`.
+Native worktree creation could not target Core outside this chat's registered
+roots, so Git created the isolated sibling checkout. Allowed Core mutation:
+text.ts and directly related tests, ignored build/proof artifacts; source
+intent/guard/resource limits and release checkout forbidden. Existing native
+runtime/resources may be reused unchanged from immutable a45fe800 Core Linux
+test image; no rebuilding tools during rendering. Service gets a fresh isolated
+candidate branch and package/checksum/lock updates only after Core gates.
+
+Proof budget: failing regression, minimal repair, affected Core DOCX tests plus
+required build/full Linux Core suite and packed Linux consumer. Then actual
+Service build/affected suite and one fresh4GiB/2CPU/one-processing-slot Oracle
+three-way run with the exact previous1800-record fixture. Retain failed attempts;
+correct only a demonstrated blocker within scope. Review XML/text/format and
+public verification disclaimers; native Word visual/kerning fidelity remains
+unverified unless explicitly exercised, never implied by XML/package success.
+No budget override, data reduction, source-layout mode switch, or repair of
+unrelated1GiB generic rendering failure. A failed actual count or semantic gate
+returns to implementation/replanning; no false artifact PASS.
+
+Evidence target: one external report with source/package/image hashes, logs,
+raw responses, complete DOCX ZIP/XML inspections, DB/task/usage/lookup/reservation
+and process/health identity checks, ownership/cleanup and production metadata
+comparison. Existing storage FAIL and diagnosis remain intact. Document budget:
+this existing record plus ignored execution ledger and one external report;
+no new Work/Phase/map or product shared plans. Stop after acceptance coverage;
+commit passing development changes only, no automatic Git-main integration,
+push/tag/release/installation or real-data recovery.
+
+Implementation checkpoint: Core65f17ee changes only text.ts and the new exact
+1800-record regression. Linux Core239DOCX/1271full pass with0skips; scoped
+installed DOCX/streaming PDF consumers pass, not full check:package. Service's
+fresh candidate overlays only vendor archive/manifest, lock integrity and
+code-adjacent README pin/plugin-boundary wording. Its unchanged runtime source
+consumes Core SHA04442fd16ec884e5cf87664dcf3562e4d4f25ae4d32b996d033a88642fe1668d.
+Archive runtime diff versus the prior pin is only dist/docx/text.js; README
+diff is inherited from reconciled Core base. Independent read-only review found
+no Critical/Important defect; it does not substitute for pending API proof.
+
+Verification prerequisite correction: initial Service full run741pass/1fail/3skip
+correctly rejects the retained FlowDocMake fixture because its explicit supported
+Core SHA647235de differs from new Service-advertised04442fd1. This is confirmed
+pin incompatibility, not a DOCX render failure or an assumed flaky readiness
+test. Preserve that negative result. Create only a disposable LAB fixture copy
+with the new explicit SHA, retain the strict compatibility check, and bind it
+in the fixture snapshot hash manifest (the original profile was not listed).
+All other snapshot entries verify unchanged. No plugin repository, prepared
+archive or installed profile is edited. Rerun affected consumers and the complete
+Service suite; never relabel the failed initial full run as passing. Reuse only
+unchanged build/Core evidence. Before future real plugin use/promotion, review
+and separately authorize the matching plugin pin; existing fixture compatibility
+must not be inferred from the calibrated positive proof.
+
+Correctness blocker and bounded plan revision before further implementation:
+first actual1800-request lab flowdoc-docxfixapi-da64dce44cf3 fails INVALID_DATA
+in composing despite the new Core writer succeeding. Separate public-Core
+diagnostic flowdoc-docxfixreceipt-c7f892476b5e creates215075-byte DOCX; complete
+message shaped exactly as current child has839303characters, dominated by1812
+adaptations/838665characters, beyond the unchanged131072-character parent guard
+in tasks/render.ts:195. This is not interception of that failed task's IPC;
+the actual API failure plus original implementation and same-fixture public
+receipt establish the incompatible bridge path. Parent already deliberately
+projects this receipt to byteLength/sha256/pageCount/mediaType and DOCX
+disclosures after the size guard; full adaptations never reach downstream task
+records or clients through this bridge. Existing fields project to623characters.
+
+Smallest correction within the authorized end-to-end Core/Service lab goal:
+allow Service tasks/artifact.ts, tasks/render-child.ts and a dedicated regression
+to move that SAME existing receipt projection before IPC. No public/Core receipt
+contract change, omitted public diagnostics, new owner, transport version, cap
+increase or unrelated behavior repair. Preserve separate warnings/summary,
+hash/length/seal checks, disclosures and parent's unchanged guard/validation.
+This revises the earlier package-pin-only implementation-path assumption, not
+permission for broad Service refactoring. Add functional RED, then minimal
+adapter fix; freeze/rebuild Service candidate and repeat affected/full Service
+checks plus fresh API three-way. Never reuse passing tests from the earlier
+Service image as final proof of this source correction. Retain all earlier
+FAILs and current Core/packed-package passing evidence unchanged. Full Core
+need not repeat because this bridge correction changes no Core file/package.
+
+Final result: PASS_BOUNDED_DOCX_1800_ORACLE_STORAGE_PARITY. Core65f17ee on
+codex/docx-run-budget and Servicef36f821 on codex/docx-core-consumer committed
+after impact verification; both isolated worktrees clean. Core changes text.ts
+and nativeRunBudget.test.ts. Service changes artifact.ts, render-child.ts,
+task-artifact-receipt.test.mjs plus the four package-pin/README files. Parent
+render.ts/its131072-character guard, Core XML50000/drawings10000/output32MiB
+caps, normalization, schema, delivery/public receipt and warning/summary/seal
+contracts remain unchanged. No primary-branch integration or release/install.
+
+Proof and lineage:
+
+- Core RED reproduces DOCX_OUTPUT_BUDGET_EXCEEDED; Windows focused30pass,
+  Linux DOCX239pass and full Core1271pass,0failed/0skipped. Build/native-session
+  and scoped installed Linux DOCX/streaming PDF consumers pass. No full
+  check:package multi-consumer claim; unchanged native/runtime/resources reused.
+- Old Core-only Service full suite first741pass/1fail/3skip (strict old-plugin
+  pin rejection), then742pass/0fail/3skip with the calibrated disposable plugin
+  fixture. Original rejection is retained. That image fails the first actual
+ 1800API task with INVALID_DATA; it does not verify the final bridge fix.
+- Bridge regression on old image2failed (839303>131072 and PDF extra diagnostics),
+  then2passed on final rebuilt image. Final whole Service suite744pass/0failed/
+ 3skipped, recorded on flowdoc-docxfixservice-bab71a466307. Skips are unconfigured
+  HEIGHT_DELIVERY_CONFIG operator cases, not marked PASS. Disposable plugin
+  profile pins the actual04442fd1 archive and all snapshot files verify;
+  plugin repository/prepared archive/installed profile were not changed.
+- New Service verification image
+  `sha256:a17bf735c314d11c4b97ca103015037d77a9d6eb159550fe31abbc6b5c093d31`,
+  runtime image
+  `sha256:ce49f3c462e42cc80ac82f94e77e2f91395fa52e754de4274304df7f039df87a`,
+  source archive SHA
+  `f4c29edf049552fb68b0ce7023a1f8619a10b27f89c3c992543f5f30dd837e53`.
+  All seven local overlay hashes still match the tested source. Core archive
+  stays04442fd16ec884e5cf87664dcf3562e4d4f25ae4d32b996d033a88642fe1668d.
+- Independent read-only review covered Core/pin and then the new bridge delta,
+  with no Critical/Important defect. Review is not substituted for runtime proof.
+
+Actual successful lab: flowdoc-docxfixapi-77143a7346c8, private internal network,
+4GiB/2CPU/one processing slot, fresh PostgreSQL lab DB/migrations027, own768MiB
+tmpfs. Same1800-record402431-byte multipart SHAe90673bb/payload SHA853ea591 as
+the original failure, no cap override or record reduction. API proof began
+after focused green while the full Service suite ran separately; acceptance
+waited for final full744pass, and the frozen image/source did not change.
+
+Before full: task succeeded/delivery succeeded,215083-byte DOCX. During full:
+actual ENOSPC/free0 on /lab only, already-admitted task failed STORAGE_IO,
+delivery not_started and wire has no artifact; task/usage/lookup agree. After
+removing only the lab filler: succeeded/delivery succeeded,215079-byte DOCX.
+Health200/503/200 matches those resource checkpoints, same API container/PID/
+StartedAt, restart0. Health503 is not the status of the already-open multipart
+request, which carries the error event. This does not claim a new-admission
+request was issued while storage was full.
+
+Both delivered DOCX files independently pass ZIP CRC, all25XML/rels parses,
+19internal relationship resolutions, content type/officeDocument relationship,
+4embedded font parts and Sarabun/400twip-atLeast properties. Exact text,
+whitespace and order Record0..1799 match;1800paragraphs/1800runs, full-package
+XML49227<=50000, drawing0, margin773nodes. SHA/length/MIME/filename and
+pageCount=null/wordVerified=false/fieldRefresh=required/buffered=true match wire
+receipts. Package bytes differ (docProps/core.xml, fontTable and font parts);
+byte equality or native Word visual/kerning/pagination equality is not claimed.
+
+Final DB has3tasks/3jobs/3usage, each one terminal event, no extra execution in
+the observed window, queue slots free and unreconciled reservations0. Reserved
+storage equals actual retained files: success task files0bytes; failed input
+402299bytes is retained by policy, not an unused reservation leak. No automatic
+resend was observed. This is not a soak/long-duration or all-stop persistence
+proof. All current owned containers stopped and production container identity/
+start/restart metadata unchanged across lab boundaries; no production SQL/storage/
+service action. No stopped lab/data/network was deleted to make checks pass.
+
+Lab prerequisites retained separately: unsupported legacy Docker COPY --chmod
+attempt; generated consumer-fixture ownership correction without rerunning
+unchanged passing Core tests; first plugin-calibration helper missed an unlisted
+profile hash and was corrected before tests; stale-plugin rejection; real
+Core-only API failure; and default Docker address-pool exhaustion at35networks.
+For the last, inventory selected10.240.0.0/24 after checking all Docker subnets
+and host routes. Only the fresh lab uses that subnet; existing networks/services
+remain intact. Failed network creation has its own prerequisite boundary record.
+
+Remaining/deferred:773-node margin is narrow and does not prove all1800-record
+templates; native Word visual/kerning/pagination; original1GiB generic
+RENDER_FAILED cause; physical disk/inode/DB exhaustion, soak and actual-data
+recovery. Before real plugin use or future promotion, reconcile/authorize its
+matching strict Core pin; calibrated lab fixtures prove no installed-plugin
+compatibility. No further fix/test/integration is automatic from this PASS.
+
+Report with raw wires, actual DOCX files, source/package/image hashes, full
+results, both regressions, review, fixture calibration and failed attempts:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-run-fix-20261031/verification-report.html`.
+Single-room execution/Phase/Checklist IDs N/A; no map/registry promotion.
+
+Identity note: raw API packets retain the earlier human-readable
+"2c089b5+Core65f17ee-package-pin" label. For the final bridge fix, authoritative
+identity is frozen source archive f4c29edf, runtime ce49f3c4/verification a17bf735
+and Servicef36f821; the raw label does not imply the earlier Core-only image.
