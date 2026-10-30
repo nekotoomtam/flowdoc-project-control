@@ -1487,3 +1487,70 @@ repair, service lifecycle change, release/tag, push or installation is performed
 Verification is scoped to source/evidence consistency, document links, review
 coverage, generated projections, data validation and whitespace; no runtime or
 product suite is needed for this documentation-only change.
+
+## Authorized live Oracle read-only inventory — 2026-10-30
+
+The owner then explicitly authorized read-only inspection of live Oracle
+runtime/schema, storage and pending work. Data changes, stopping services,
+release and installation remain forbidden. Roles: Evidence Reviewer and
+Project Control Steward; bounded single-room discovery, execution IDs N/A.
+This changes the authorization for this inventory only; previous document-only
+rounds remain historical and did not access production.
+
+The identified app `flowdoc_oracle052-api-1` connects to the inspected dedicated
+DB container and database `flowdoc` / schema `public`. Queries used SELECT in
+REPEATABLE READ READ ONLY transactions with statement timeout5s and lock
+timeout750ms, followed by ROLLBACK. A separate query using the app's actual
+DATABASE_URL inside its container confirmed the database/schema and readonly
+mode without exposing the URL or credentials. No Service migration command,
+application startup, document request, worker restart or lifecycle change ran.
+
+Observed live results:
+
+- Service/Core0.5.2; PostgreSQL18.6. API image
+  `sha256:227b2fd239283254eced9f51114161afad71a49d9f00db708e5c9c0b0a35571f`
+  differs from the lab image. The actual Core archive hash matches647235de…
+  and its recorded pin; native rendering was not invoked.
+- Applied migrations1–26 through `026_task_file_names.sql` match runtime files
+  and local release25e912f checksums. Migration027, its origin columns/guard
+  and `dist/tasks/ownership.js` are absent. Other existing guards are present;
+  none were disabled or changed. Lab repair is not compatible as-is.
+- At12:12:47Bangkok on the app connection: tasks0, pending tasks0 and
+  queued/running generation jobs0. Earlier metadata snapshot reports37
+  historical jobs (36succeeded/1failed) and36expired output rows. The failed
+  historical job is terminal, not an identified stuck task; its cause was not
+  investigated. Task reservations/held slots/bytes and upload sessions were0.
+- Tasks/uploads/fonts map to the persistent staging volume; outputs map to
+  the persistent output volume. Task/output roots had0 immediate entries;
+  font/upload roots contain directories. Render temp is in the container layer.
+  No customer document contents were read. Runtime JSON, migration/code hashes
+  and Core archive bytes were read; the raw `fileContentsRead:false` flag refers
+  to document data, not runtime metadata files.
+- GET /health returned200; no admission/render request was sent. Only the API
+  was found among running Docker containers sharing its app volumes. This is
+  not complete writer inventory, quiescence, backup integrity or volume-capacity
+  acceptance. Shared backing-filesystem free space must not be summed per root.
+
+Recorded container identity/image/start/restart counts/mount sets match before
+and after when mount order is normalized; the initial order-sensitive comparison
+failed only on mount ordering. This does not claim zero access-time/audit/stats
+effects, zero transient host load or continuous absence of work. Services stayed
+running and query/filesystem snapshots were live and separate. Other databases,
+schemas, backups and external writers were not exhaustively inspected.
+
+No recovery target was found in the configured app DB/schema snapshots. Do not
+repair data or install027 merely to advance the old checklist. The recovery
+review plan now records A1 authorization/inventory and partial A2/A3 evidence,
+while compatibility, maintenance/backup/repair approvals remain unresolved.
+Earlier instructions to retain quarantine were conservative recovery boundaries,
+not a verified live count of affected rows. This inventory supplies the first
+live evidence in this follow-up that the inspected target has no pending work;
+it does not rewrite earlier synthetic results or claim other targets are empty.
+A separate local read-only evidence review found no blocker for these bounded
+inventory claims.
+
+Local report, raw filtered inventory, query source, app-connection verification,
+compatibility comparison and SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-production-readonly-20261030/verification-report.html`.
+No backup/export of customer documents, SQL/storage repair, release/tag, push,
+installation or Oracle service restart/stop was performed.

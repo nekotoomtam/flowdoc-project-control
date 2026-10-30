@@ -8,13 +8,15 @@ Core เป็นเจ้าของการสร้าง PDF/DOCX. เอ�
 และไม่ใช่คำอนุญาตให้เชื่อมต่อ สำรอง แก้ข้อมูล เปิด/ปิดบริการ หรือ deploy.
 
 สถานะ: **พร้อมทบทวนแผน / ยังไม่พร้อมดำเนินการกับข้อมูลจริง**.
-วันที่จัดทำ: 2026-10-30. อำนาจปัจจุบันคือคำขอเจ้าของให้จัดทำเอกสารจาก
+วันที่จัดทำ: 2026-10-30. อำนาจเมื่อจัดทำฉบับแรกคือคำขอเจ้าของให้จัดทำเอกสารจาก
 โค้ดและหลักฐาน lab ที่มีอยู่ โดยไม่เข้าถึงหรือแก้ข้อมูลจริง ไม่ release หรือติดตั้ง.
+ภายหลังเจ้าของอนุญาตการสำรวจจริงแบบอ่านอย่างเดียวแยกแล้ว ตาม A1 และผลสำรวจ
+ด้านล่าง ไม่ได้อนุญาต maintenance/backup/repair หรือ release/installation.
 บทบาท: Planning Partner และ Project Control Steward; งานเอกสารในห้องเดียว,
 execution/Work/Phase/Checklist IDs ไม่ใช้กับงานนี้. รหัสรายการด้านล่างเป็น
 หัวข้อทบทวนในเอกสาร ไม่ใช่ registered Checklist records.
 
-ขอบเขตการส่งมอบรอบนี้: แผนฉบับนี้หนึ่งฉบับและลิงก์ในบันทึกเดิม ตรวจความตรงกับ
+ขอบเขตการส่งมอบเมื่อจัดทำฉบับแรก: แผนหนึ่งฉบับและลิงก์ในบันทึกเดิม ตรวจความตรงกับ
 implementation, หลักฐานที่อ้าง และการตรวจข้อมูลของ Project Control.
 ไม่มีการรันทดสอบระบบจริงหรือเปิด lab เพิ่มเพื่อจัดทำเอกสารนี้.
 
@@ -54,16 +56,17 @@ TTL ซ้อมด้วย logical clock+4ชั่วโมง ไม่ใ�
 
 ## ข้อมูลที่ต้องกรอกหลังได้รับอนุญาตแยก
 
-ทุกช่องเริ่มเป็น **ยังไม่ตรวจ**. ห้ามใช้ชื่อ container, path, credential หรือจำนวนงาน
+แบบฟอร์มนี้เริ่มจาก **ยังไม่ตรวจ** และอัปเดตเฉพาะหลักฐานที่ได้จาก A1.
+ห้ามใช้ชื่อ container, path, credential หรือจำนวนงาน
 จาก lab เป็นค่าเริ่มต้นของระบบจริง. ไม่บันทึก secret หรือเนื้อหาเอกสารลูกค้าลง
 Project Control; ใช้ locator และหลักฐานที่ปกปิดข้อมูลอ่อนไหวแทน.
 
 | รายการ | ค่าปัจจุบัน / ผู้รับผิดชอบ |
 | --- | --- |
-| ระบบ/tenant/database/schema และพื้นที่ไฟล์เป้าหมาย | ยังไม่ตรวจ / ผู้ดูแลระบบ: TBD |
-| Runtime image/digest, Service/Core pin และ config ที่ใช้งาน | ยังไม่ตรวจ / ผู้ดูแล Service: TBD |
-| Migration names/checksums, triggers และ schema ที่มีจริง | ยังไม่ตรวจ / ผู้ดูแล DB: TBD |
-| งานและ job/output ที่ได้รับอนุญาตให้ตรวจ/แก้ | ยังไม่ตรวจ / เจ้าของข้อมูล: TBD |
+| ระบบ/tenant/database/schema และพื้นที่ไฟล์เป้าหมาย | สำรวจแอป flowdoc_oracle052 / DBflowdoc/public และ rootsหลัก; ไม่ครอบคลุมทุกtenant / ผู้ดูแลระบบ: TBD |
+| Runtime image/digest, Service/Core pin และ config ที่ใช้งาน | Service/Core0.5.2, image227b2fd…, Corearchiveตรงpin; ไม่ใช่lab image / ผู้ดูแล Service: TBD |
+| Migration names/checksums, triggers และ schema ที่มีจริง | 001–026ตรงruntime/release; ไม่มี027หรือruntime origin guard / ผู้ดูแล DB: TBD |
+| งานและ job/output ที่ได้รับอนุญาตให้ตรวจ/แก้ | สำรวจmetadataแล้วไม่พบงานค้างในsnapshot; ยังไม่อนุญาตให้แก้ / เจ้าของข้อมูล: TBD |
 | Writers ทุกแหล่งและวิธีปิด intake/ป้องกันการกลับมาทำงาน | ยังไม่ตรวจ / ผู้ควบคุม maintenance: TBD |
 | หลักฐานผลส่งและผู้ตัดสินใจเมื่อผลส่งไม่ทราบ | ยังไม่ตรวจ / เจ้าของงาน: TBD |
 | Maintenance window, ระยะยอมรับ downtime และจุดตัดสินใจย้อนกลับ | ยังไม่กำหนด / เจ้าของบริการ: TBD |
@@ -77,8 +80,12 @@ TBD ไม่ถือเป็นการอนุมัติหรือห�
 
 ### A — อนุมัติขอบเขตตรวจแบบอ่านอย่างเดียว
 
-- [ ] A1 เจ้าของอนุญาตการเข้าถึงระบบ/ข้อมูลจริงแบบอ่านอย่างเดียว ระบุขอบเขต
+- [x] A1 เจ้าของอนุญาตการเข้าถึงระบบ/ข้อมูลจริงแบบอ่านอย่างเดียว ระบุขอบเขต
   เวลา ผู้ปฏิบัติ และวิธีเก็บหลักฐานที่ไม่เปิดเผยข้อมูลลูกค้า.
+  เจ้าของอนุญาตในแชตนี้เมื่อ2026-10-30 ให้ Codexสำรวจ Oracle เฉพาะ runtime/
+  schema, storage และงานค้าง โดยไม่แก้ข้อมูลหรือหยุดบริการ. ตรวจช่วง12:08–12:12
+  เวลาไทย เก็บ metadataที่จำเป็น ไม่ดึงเนื้อหาเอกสาร/secret. ไม่ครอบคลุม backup,
+  maintenance, repair, release หรือ installation.
 - [ ] A2 ตรวจ identity ของ runtime, Core pin, config, schema/migration checksums
   และ triggers จากระบบเป้าหมายจริง แล้วเทียบกับ candidate และวิธีที่ซ้อม.
 - [ ] A3 ระบุ storage roots/mounts และความสัมพันธ์ DB–ไฟล์จาก implementation
@@ -259,11 +266,32 @@ DB transaction ไม่ครอบคลุม filesystem cleanup หรือ
 
 ## หลักฐานที่ผู้ทบทวนต้องเห็นก่อนอนุมัติขั้นจริง
 
+ผลสำรวจแบบอ่านอย่างเดียว2026-10-30: แอปที่ตรวจชี้ DB `flowdoc` / schema `public`.
+ตรวจผ่าน app connection ณ12:12:47เวลาไทยพบ tasksทั้งหมด0, pending tasks0 และ
+queued/running jobs0. มี historical generation jobs36succeeded/1failed และ
+outputs36expired ตาม snapshotก่อนหน้า; ไม่ได้ตรวจสาเหตุของ historical failure.
+รายการสำรวจว่างไม่ใช่ allowlistที่อนุมัติให้ซ่อม และไม่ครอบคลุม DB/schemaอื่น.
+คำแนะนำเดิมให้คง quarantine เป็นข้อควบคุมก่อนตรวจ ไม่ใช่หลักฐานว่ามี taskค้าง
+ในระบบจริง; รอบนี้เป็นการตรวจ live inventory ที่ยังไม่พบเป้าหมายในtargetนี้.
+
+Runtimeจริง Service/Core0.5.2; PostgreSQL18.6; migrations26รายการถึง026 โดย
+checksumตรง runtime/local releaseทั้งหมด. ยังไม่มี027, runtime origin columns
+และ ownership guard/moduleที่ใช้ในlab; guardsอื่นที่มีอยู่ไม่ได้ถูกปิดหรือแก้.
+จึงยังไม่ผ่านเงื่อนไขใช้วิธีกู้labโดยตรง ไม่ติดตั้งหรือเปลี่ยนschemaเพื่อปิดรายการนี้.
+Storageหลัก mapถึง staging/outputs namedvolumes; render-tempอยู่ในcontainer layer.
+นี่เป็น root/mount/metadata inventory ไม่ใช่ complete backup/file-integrity proof.
+
+รายงานและหลักฐาน:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-production-readonly-20261030/verification-report.html`.
+A2สำรวจแล้วพบcompatibilityไม่ตรงlab; A3ได้mappingหลักแต่ยังไม่ครบขอบเขตbackup.
+ทั้งสองยังไม่ติ๊กผ่านเป็น readiness สำหรับ repair. ข้อมูลจริงไม่ได้ถูกหยุดให้
+quiescent; snapshotsแยกกันและมีบริการทำงานอยู่ จึงไม่ใช่ consistent backup.
+
 | ชุดหลักฐาน | สถานะปัจจุบัน |
 | --- | --- |
 | แผนและหลักฐาน synthetic PDF/DOCX | มีแล้ว ตามบันทึกที่อ้างด้านบน |
-| Target/runtime/schema/storage จริงและผล compatibility | ยังไม่ตรวจ — ต้องอนุญาต A ก่อน |
-| Task/job/output/file allowlist และ delivery assessment จริง | ยังไม่ตรวจ |
+| Target/runtime/schema/storage จริงและผล compatibility | สำรวจtargetนี้แล้ว พบ026/ไม่มี027; storageได้mappingหลัก ยังไม่พร้อมใช้วิธีกู้lab |
+| Task/job/output/file allowlist และ delivery assessment จริง | ไม่พบงานค้างในsnapshotของtargetนี้; ยังไม่มีallowlistซ่อม/การประเมินการส่งจริง |
 | Writer shutdown/session inventory และ maintenance approval | ยังไม่ตรวจ/ยังไม่อนุมัติ |
 | Matched backup manifest, off-host copy และ restore proof ตามข้อมูลจริง | ยังไม่ตรวจ |
 | คำสั่ง/เครื่องมือ production ที่ตรวจทาน พร้อม dry-run/affected-row proof | ยังไม่มีในแผนนี้ |
@@ -276,7 +304,8 @@ DB transaction ไม่ครอบคลุม filesystem cleanup หรือ
 ## จุดอ้างอิง implementation ที่ตรวจในเครื่องเท่านั้น
 
 Owner implementation: Service candidate843bd02 ใน checkout audit ที่ใช้ซ้อม;
-ไม่ได้เปิดไฟล์หรือ query บน production เพื่อเขียนเอกสารนี้.
+รายการอ้างอิง implementation นี้ตรวจในเครื่องเมื่อจัดทำแผน.
+ผล production metadata/SQLที่ได้รับอนุญาตในภายหลังแยกอยู่ในผลสำรวจด้านบน.
 
 - `src/tasks/intake.ts`: `canRecover`, `stopped`, `sweep`, `cleanup`, `isReady` —
   NULL origin ไม่ถูก adopt; foreign processยังพิสูจน์ไม่ได้จะพักงาน;
