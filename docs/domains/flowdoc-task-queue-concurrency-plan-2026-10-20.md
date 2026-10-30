@@ -2287,3 +2287,111 @@ plan still needs its actual targets, writer/impact scope, matched real/off-host
 backups, authorized restore proof and maintenance/repair/reopen decisions.
 Latest production SQL snapshot is still30Oct13:50Thai, not refreshed here.
 Stop after recording this result; no further experiments or rollout run automatically.
+
+## Resource exhaustion — authorized isolated verification 2026-10-30
+
+New explicit owner request: constrain RAM and fill only a bounded lab writing
+filesystem on Oracle; restore resources and prove fresh admission/output. This
+is single-room verification, not a source repair or reopening of INT-01.
+Owner: Service runtime; roles Evidence Reviewer then Project Control Steward;
+Work/Phase/Checklist execution IDs N/A. Work size bounded, risk routine with
+explicit shared-host containment. Candidate0978fbe and previously verified image
+IDs are immutable inputs. Current snapshot was rebuilt from canonical data;
+its frontend-wide goal is not substituted for this explicit Service request.
+
+Allowed: fresh labeled internal Docker project, synthetic database/template/
+requests, lab-only memory changes/recreation, bounded tmpfs volume fill/removal,
+proof helpers and one evidence report, append result here. Forbidden: candidate
+source/config/data repair, production DB/storage access, actual-service actions,
+release/tag/push/install. Reuse the existing isolated audit checkout only for
+ignored proof helpers; no product changes or new shared plan file.
+
+Proof budget: one real cgroup OOM during native work, one actual ENOSPC during
+native processing, intake while full, baseline and post-restore/recreate canaries,
+terminal/delivery/reservation reconciliation and recreate idempotence. Fill a
+768MiB tmpfs filesystem, not the host disk; retain the default256MiB capacity
+floor and existing policy. API at most1GiB, DB512MiB, helpers1GiB each,1CPU each;
+check host memory/disk prerequisites before creating resources. Keep the tmpfs
+mounted through a keeper during API recreation. Save actual OOM counters/state,
+ENOSPC/free-space evidence, client wire, DB rows, identities and boundaries.
+An OOM may require restarting only the lab API: distinguish resource restoration
+alone from an operator recreation. No automatic production inference.
+
+Acceptance: fault really occurred; affected work terminates truthfully without
+duplicate jobs/delivery; queue credit returns and held/used bytes equal retained
+files; after resource restoration a fresh request produces a complete valid PDF;
+recreation does not repeat terminal work; all owned containers stop and production
+identity/start/restart metadata stays unchanged. Failed attempts stay retained;
+only a demonstrated prerequisite/harness failure justifies a bounded rerun.
+Product failures are findings, not permission to repair or weaken assertions.
+Document budget: this existing record plus one external evidence report/manifest;
+no synthetic registry/map promotion. Stop after results and coverage review.
+
+### Resource exhaustion result — bounded recovery PASS with concerns
+
+Completed project `flowdoc-resource-dac1c151626e`, on immutable Service0978fbe.
+Actual runtime image
+`sha256:3e14e3e6ca49d63aca23235a3a2f2a9b9704706816514e617b91597646523e63`;
+verification image
+`sha256:fe9c56a12c1668fa6f0c92daa9191cf8295761471d7b45801d18c66c6546d58d`.
+No source, package, migration, version or deployment changes.
+
+| Criterion | Actual evidence and limits |
+| --- | --- |
+| Real memory exhaustion | API reduced1GiB→64MiB after real native child checkpoint; OOMKilled=true, exit137. This is fault injection below the normal profile, not a supported64MiB operating recommendation |
+| Recovery after RAM returned | Restore1GiB **and operator recreate only lab API**. Task failed/WORKER_INTERRUPTED, generation interrupted, delivery not_started. Fresh canary succeeds; memory restoration alone does not resurrect a dead process |
+| Real full writing filesystem | Docker local tmpfs768MiB at/lab, total805,306,368bytes; filler804,081,664bytes, ENOSPC errno28/free0. No host disk fill; synthetic DB volume separate |
+| Processing during full filesystem | One task fails/FONT_CHECK_UNAVAILABLE; no output, delivery not_started. Existing input retained; no automatic resend or job repeat. Low-level failed app syscall not captured |
+| New admission while full | HTTP503/STORAGE_CAPACITY, taskId null, zero new task records. Capacity guard prevents admission correctly |
+| Recovery after space returned | Remove only/lab/.lab-space-fill. Fresh canary succeeds without operator API restart |
+| Reservations | Both fault tasks queue_slot_held=false; held=used=actual402,299input bytes each; child/writer PID null; unused credits returned, retained-file reservation intentionally nonzero |
+| Recreate/idempotence | After recreate: tasks5/jobs5/usage5, unreconciled0, duplicate task-job0, terminal IDs/usage unchanged. Then final successful canary has its own sixth task/job/usage receipt; no claim of a fresh SQL count6 after that final canary |
+| Output | Four canaries total: baseline, after RAM, after space, after final recreate. Complete multipart/PDF hashes equal previously parsed/text/visually checked one-page artifactac7251a1; only identical-byte proof reused, no fresh visual review claimed |
+| Boundaries/cleanup | Both attempts' owned containers stopped. Internal networks/no ports/own mounts, production identity/start/restart metadata before=after. No production SQL/storage access, actual-service action, push/tag/release/install |
+
+**RES-01 — Design Concern / Medium:** full filesystem still returns GET/health200
+ready=true while new POST/documents503/STORAGE_CAPACITY. Observation is confirmed;
+a bug against a capacity-aware health contract is not established. Runtime/font
+preflight readiness in Service `src/http/server.ts:27,47` checks separately from
+storage admission in `src/tasks/repository.ts:20–21`. Reproduce using the saved
+disk-full checkpoint and compare both responses. Impact: health-only monitoring
+can miss inability to admit writes. Proposed follow-up: owner defines readiness/
+global capacity versus quota semantics, then implement/test an appropriate signal.
+
+**RES-02 — Probable Risk / Medium:** the task processing while space is full
+reports FONT_CHECK_UNAVAILABLE. Same pinned template/font canaries succeed before/
+after restoration, but those are1record versus1800records in the fault task;
+there is no equal-size no-fault control, so this is not complete causal proof. Render
+child `src/tasks/render-child.ts:225` sends workspace to
+`src/fonts/snapshot.ts:22`, which maps bundled-resource failure to generic font
+error; `src/tasks/render.ts:58` also places child TMPDIR in that workspace.
+Impact: misleading diagnosis under storage pressure. Exact low-level failing
+write is unverified, so do not claim a captured application ENOSPC syscall.
+Proposed follow-up: inspect resource-loader cause at this boundary in an authorized
+diagnostic/fix scope, preserve safe IO classification with public compatibility.
+Neither concern is repaired or silently promoted to a confirmed architectural bug.
+
+First attempt `flowdoc-resource-11a44420c16a` retained: real OOM/exit137 observed,
+but helper lookup raced recreated API readiness and fetch failed. Only proof
+harness added await health before lookup; fresh project reran all criteria.
+Local collector used the available Python tarfile API with strict flat-file
+validation after an unsupported extractall filter keyword; no dependency installed.
+
+Tmpfs is volatile: keeper preserved its mount and storage identity through API
+recreation, but stopping all containers can discard those synthetic files. This
+does not prove persistent-volume/off-host backup recovery. Durable evidence rows,
+wire/PDF bytes, helpers and both attempts' outcomes are copied outside that tmpfs.
+Not tested: physical disk/inodes, DB filesystem full, DOCX fault matrix, gradual
+memory pressure/soak, actual supervisor restart policy or production recovery.
+Full Service/Core suites not rerun for an unchanged candidate; no broad suite or
+production readiness claim from this API-only batch. Original28-item recovery
+prerequisites remain unchanged; no fresh production SQL snapshot was taken.
+
+Report,102-file SHA256 manifest, raw client/DB state, OOM/ENOSPC receipts,
+unchanged candidate/source hashes and explicit first-attempt failure:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-resource-exhaustion-20261030/verification-report.html`.
+Ignored proof helpers/collected evidence: Service audit worktree
+`artifacts/oracle-audit-20261030/resource-*` and the two project directories.
+Remote roots remain under `/home/ubuntu/flowdoc-audit-187957aecc2d/`.
+Next recommended decision: scope health-capacity and IO diagnostic work explicitly;
+no automatic repair, extra experiment, real-data recovery or rollout follows.
