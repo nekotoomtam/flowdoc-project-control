@@ -1847,3 +1847,110 @@ Live refresh เวลา13:50 มี `snapshot.json`, `query.py`, `manifest.jso
 push หรือติดตั้ง และไม่มีงานใหม่ที่ตั้งให้เดินต่ออัตโนมัติ. เมื่อกลับมาให้อ่านส่วนนี้
 กับแผน 28 ข้อก่อนเลือกขอบเขตถัดไป; ข้อจำกัดในอดีตยังคงประวัติ ไม่ถูกลบหรือ
 ยกระดับเป็น PASS จากการเก็บสถานะครั้งนี้.
+
+## Migration026→027 isolated Oracle rehearsal — authorized scope 2026-10-30
+
+Owner authorized verification with synthetic legacy-shaped data only, including
+upgrade failure and rollback. Owner: Service migration/runner; role: Evidence
+Reviewer and Project Control Steward, single-room execution IDs N/A, routine
+verification. This section is the bounded work authority; no old round reopened.
+Use a fresh labelled Docker project, internal network, no published ports or
+production mounts/DB connection; only inspect production Docker identity metadata
+before/after. Product source, released migrations, real data, release/tag/push,
+host installation and live-service stop/restart are forbidden.
+
+Acceptance/proof budget: one synthetic026 seed with task/job/output relationships
+and retained files; real unmodified migration runner/checksums; successful027
+preserves existing rows and NULL origins, guard behavior and repeat migration;
+checksum rejection, actual lock contention and an explicitly injected late
+transaction failure leave no partial027/ledger mutation, then retry succeeds;
+quiescent026 DB+storage backup restored into a separate disposable target after
+successful upgrade, comparing rows, schema objects, sequence state and all files
+including hidden metadata. Restore is backup recovery, not a down migration.
+Compare actual lab image migration bytes with candidate. Record raw outcomes,
+failures and gaps; stop owned containers on exit. Do not infer release readiness
+or that synthetic restore satisfies production backup requirements.
+
+Document budget: append result here and link one local evidence report; no new
+Work/registry/map or product documentation. Checks: bounded lab script assertions,
+evidence hashes, documentation diff and Project Control data validation. A failure
+may justify bounded prerequisite/script corrections with each attempt retained;
+rerun only for the demonstrated failure. Product defects are
+reported before any source repair outside this verification scope.
+
+### Result — bounded synthetic upgrade/restore PASS, 2026-10-30
+
+Completed on Oracle VM PostgreSQL18/Docker using fresh project
+`flowdoc-migration-9634dead32d9`. The actual old release image227b2fd seeded
+001–026 through its unmodified runner. All first26 SQL byte hashes match the
+development candidate; the existing verification image's actual27 migrations
+also match candidate `843bd0204b424f32cf7fed8a8ebaab6964a33388` byte-for-byte.
+No product code, migration SQL, package pin, installed deployment or release
+changed. This is synthetic verification, not production installation acceptance.
+
+The baseline contains49 public tables,5 tasks (awaiting_input, queued,
+processing, sending with output present/missing),4 linked jobs,2 output rows
+and10 files including hidden synthetic metadata. The file labelled legacy
+metadata is a fixture marker, not a fabricated runtime ownership identity.
+Real template registration, task intake/normalization and retained synthetic
+PDF bytes were used; no production documents or DB connection were used.
+
+| Criterion | Observed result |
+| --- | --- |
+| Normal026→027 | Only027 applied; old row contents preserved apart from added NULL origin columns; files and sequence metadata unchanged |
+| Repeat migration | applied=[] and complete snapshot unchanged |
+| Checksum mismatch | MIGRATION_MISMATCH before upgrade; no schema/data/file drift |
+| Actual table lock contention | Held ACCESS EXCLUSIVE lock;350ms lock_timeout failed migration; PostgreSQL lab log confirms lock timeout; no partial027/ledger |
+| Late transaction failure | Lab-only schema_migrations INSERT trigger raises after027 columns/function/trigger exist; NOTICE confirms this point; all027 DDL and ledger rolled back, then normal retry succeeds |
+| Origin guards | Legacy NULL→pair update55000; half-pair INSERT23514; paired INSERT accepted; paired-origin change55000; ordinary no-op update accepted; probe transaction rolled back |
+| Restore after committed upgrade | Quiescent pre-upgrade DB dump + storage tar restored into fresh DB/volume; all public-table rows, checked schema objects and files match026 baseline; old release runner accepts history without applying anything |
+| Sequence | pg_sequences metadata matches; supplemental read explicitly confirms last_value17/is_called=true in both upgraded source and restored target |
+| Isolation | Internal network, no ports, own labelled volumes/containers; no app/API/worker service started; production Docker identities/start/restart metadata stable |
+
+Schema comparison covers columns, canonical constraint definitions, indexes,
+triggers, function definitions, relation ownership/ACL, extensions and sequences.
+File comparison covers hashes/size/mode/uid/gid/mtime, including the hidden marker.
+No claim covers internal OIDs, physical DB layout, every global role/grant,
+off-host storage, or all production metadata. PostgreSQL canonical constraint
+deparse `pg_get_constraintdef(oid,true)` is used: raw CHECK deparse can regroup
+AND parentheses during dump/restore. The two raw differences were inspected;
+canonical definitions match without hand-stripping parentheses or ignoring guards.
+
+Three unsuccessful full attempts remain retained:961049b4540e failed because
+the reused synthetic helper lacked SID;2c08a11815d8 reached guard probes but the
+test harness used pool.query across an error/transaction;5ae8fba992d8 reached
+restore but compared raw CHECK parentheses. Corrections touched only this
+round's fixture/harness, using a fixed synthetic UUID, a checked-out client and
+PostgreSQL canonical deparse respectively. Each complete retry used a fresh lab.
+The final9634dead32d9 run passed all actions. A supplemental read initially tried
+row_to_json(sequence), which PostgreSQL rejects because sequences lack composite
+types; corrected scalar-field reads passed, with the rejected query retained in
+lab logs. These are test/prerequisite failures, not new product defects or PASS
+claims for the unsuccessful runs.
+
+All four attempts' owned containers are stopped; volumes/images/evidence remain.
+The supplemental sequence/log check also ended with ownedRunning=[] and stable
+production metadata. Shared-host resource/audit effects are not claimed zero.
+No production SQL/storage access or repair, production stop/restart, release/tag,
+push, host package installation or installed runtime switch occurred.
+
+Report, source/SQL/image pins, backup files, raw failure/restore snapshots,
+PostgreSQL lab log and71-file SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-migration-026-027-20261030/verification-report.html`.
+Ignored local scripts/raw receipts remain under the Service audit worktree's
+`artifacts/oracle-audit-20261030/migration-*`; remote final evidence remains at
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-migration-9634dead32d9`.
+
+**Next return point:** migration success/failure/backup restore is now proven for
+these synthetic026 fixtures; no new product fix was needed. Do not confuse
+transactional failure rollback with post-commit restore: there is no down
+migration, and restoring old backup does not preserve hypothetical new writes.
+027 deliberately leaves legacy origins NULL; it does not adopt or recover them.
+This round did not start the upgraded application or test readiness/admission,
+crash/connection-loss/disk-full schedules, large-table lock time/capacity, or a
+production upgrade. Prior full suites were not rerun. The28-item real-recovery
+plan keeps its existing status; no real targets/allowlist, writer quiescence,
+matched real-data/off-host backups, authorized real-copy rehearsal or maintenance/
+repair/reopen approvals have been supplied by this synthetic result. Latest
+production SQL snapshot is still30Oct13:50Thai, not refreshed here.
+Stop at the proven scope; no automatic follow-up, release or installation.
