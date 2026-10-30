@@ -2180,3 +2180,110 @@ load, DOCX fault matrix and TTL soak remain unverified. The real-recovery28-item
 plan keeps its own outstanding prerequisites; latest production SQL snapshot
 remains30Oct13:50Thai. Stop this completed verification batch; no source repair
 or further automatic experiment is running.
+
+## INT-01 repair — authorized implementation scope 2026-10-30
+
+Owner authorizes Service connection-error lifecycle repair and repeated actual
+Oracle lab session-cut verification. Single-room implementation then verification;
+roles Product Implementation Agent/Evidence Reviewer/Project Control Steward,
+execution IDs N/A. Reuse clean existing isolated Service worktree, new branch
+`codex/int-01-db-client-lifecycle` from843bd02. Scope: createPool error-event
+ownership and real-PostgreSQL child-process regressions. Keep transaction retry,
+task/delivery contracts, migrations, Core/package pins and unrelated diagnostics
+unchanged. No production DB/storage/service actions, release/tag/push or install.
+
+Plan/proof budget: first show old code fails real checked-out/idle connection-loss
+regressions in child processes; preserve processor leadership-loss fail-closed
+behavior. Implement the smallest lifecycle guard after observing RED; query
+promises must still reject and broken clients be discarded by pg, without retrying
+operations. Build immutable candidate images from a hashed exact source overlay,
+run focused GREEN regressions and one complete Service suite because createPool
+is shared by all runtime DB consumers. Reuse established native/fixture inputs;
+report skips explicitly. Repeat the three actual API fault cases on the candidate,
+especially post-HTTP terminal-session termination: API must remain live with same
+container identity, delivery stays succeeded/transport_finished on known completed
+HTTP, fallback terminal state/usage once, no rerender/resend, quota equals retained
+files, fresh canaries and final recreate/idempotence. Stop owned lab containers.
+Keep source-equivalent prior Core proof; no new Core suite for an unchanged pin.
+
+Only a demonstrated failure/prerequisite permits bounded reruns. One appended
+result and one evidence report; no synthetic Work/map/new shared-plan files.
+Commit product fix only after build, affected tests and real API proof pass;
+do not reinterpret the prior INT-01 failure as passing. Record remaining gaps
+and the separate real-recovery28-item constraints.
+
+### INT-01 resolution — verified in local development, 2026-10-30
+
+**PASS within the repair scope.** Service commit
+`0978fbed915b43647f9c02dccf1aa9ef4a455c90` fixes INT-01 and is fast-forwarded
+locally into actual development `codex/template-registry` from843bd02. The
+original fault report remains FAIL as recorded; this is new resolution evidence,
+not a rewrite of that failure or a production installation claim. Service
+release25e912f, Core/package pins, migrations, API contracts and versions remain
+unchanged; no fetch/push/tag/release or installation occurred.
+
+Changes: `src/db/connection.ts` keeps an error listener for each Client's full
+lifetime from Pool connect, including checkout/rollback/disposal, and consumes
+the idle Pool error after pg removes the broken client. pg query promises still
+reject, existing domain error listeners still run, and no operation/transaction
+retry is added. `transaction` and task/delivery logic are unchanged. Two new
+test files exercise real PostgreSQL loss in child processes, with an isolated
+schema and exact application-name/PID validation before terminating their own
+sessions. No global uncaughtException handler masks unrelated failures.
+
+| Proof | Result |
+| --- | --- |
+| RED on old image/source | Checked-out transaction and idle connection child probes fail with unhandled errors:2failed/1passed; leadership-loss behavior already passed |
+| GREEN on exact candidate image | Same3 real-PG probes pass; transaction rejected, callback called once, next query succeeds; leadership loss still makes processor readiness false |
+| Build | Local TypeScript build and Docker source builds pass; compiled connection module matches local output after newline normalization |
+| Complete Service suite | 732passed/0failed/3skipped; supplied/native/plugin fixture archive verified and reused; default public schema migrated before execution |
+| API DBcut regression | Unchanged fault proof from prior failing run; actual session terminated at the blocked post-HTTP success UPDATE; API process/container/StartedAt unchanged, restartCount0 |
+| Truthful delivery | Client PDF/closing boundary complete and hashes match; task failed/FINALIZATION_FAILED, durable delivery succeeded/transport_finished, job/output/usage/terminal each once |
+| Reservations | Queue slot false; held=used equals291retained input bytes for DBcut, not forced0; all unused reservation credit reconciled |
+| Adjacent fault regressions | Actual app kill during native work and actual partial-client TCP RST pass on new image; three fresh canaries succeed; final recreate has6tasks/6jobs/6usage without repeats |
+| Source review | Independent read-only reviewer found no actionable issues; reviewer did not run tests/access Oracle and does not substitute for runtime proof |
+| Integration | Three tested overlay file hashes exactly match commit blobs; clean unchanged fast-forward to development, no conflicts/extra edits, so proof is reused without another full run |
+
+Regression/build project: `flowdoc-int01-8b54698213de`.
+Actual API project: `flowdoc-int01-api-45faf2a5a8ca`.
+Runtime image:
+`sha256:3e14e3e6ca49d63aca23235a3a2f2a9b9704706816514e617b91597646523e63`.
+Verification image:
+`sha256:fe9c56a12c1668fa6f0c92daa9191cf8295761471d7b45801d18c66c6546d58d`.
+Exact base843bd02 +3file overlay source archive SHA256:
+`e22d27c9ddd10c122fb8e3b68adc09a41af06f5cc596e8c4c4e488334a0e0152`.
+Tests were identical RED→GREEN apart from canonical line endings. The API proof
+itself is byte-identical to the prior INT-01-finding proof; its controller only
+selects the new pinned images and adds same-process/container assertions.
+
+Three skips are the HEIGHT_DELIVERY_CONFIG operator/container-binding checks,
+not PASS in this complete-suite run. Their earlier separate accepted proof keeps
+its original scope; no new operator intake/activation is claimed. Core/runtime
+archive, migrations and release metadata did not change, so no new Core suite
+or installation documentation/version update was necessary for this source fix.
+README/usage release-install instructions were reviewed, not promoted as a027
+production rollout plan. Native Word visuals, whole-DB outage, lost COMMIT reply,
+production restart policy, high-load/soak and TTL recovery remain outside this
+repair. Clientcut ECANCELED→PDF_FAILED diagnostic fallback is unchanged.
+
+All owned RED/GREEN/suite/API containers are stopped; evidence/volumes and the
+existing worktree are retained. Networks are internal, no ports or production
+mounts; production Docker identity/start/restart metadata matches before/after
+all phases. No production DB/storage access, service stop/restart or runtime
+switch occurred; normal shared-host resource/audit effects are not claimed zero.
+
+New report, RED/GREEN/full-suite results, unchanged actual API fault proof,
+same-process receipt, image/source hashes, reviewed source/test snapshots,
+integration receipt and93-file SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-int01-fix-20261030/verification-report.html`.
+Local raw files remain under the Service audit worktree's
+`artifacts/oracle-audit-20261030/int01-*`; remote roots are the two projects above
+under `/home/ubuntu/flowdoc-audit-187957aecc2d`.
+
+**Next return point:** INT-01 is fixed and verified in local development0978fbe;
+installed Oracle runtime is not changed by that Git integration. No more repair
+work is required for the accepted INT-01 scope. The28-item real-data recovery
+plan still needs its actual targets, writer/impact scope, matched real/off-host
+backups, authorized restore proof and maintenance/repair/reopen decisions.
+Latest production SQL snapshot is still30Oct13:50Thai, not refreshed here.
+Stop after recording this result; no further experiments or rollout run automatically.
