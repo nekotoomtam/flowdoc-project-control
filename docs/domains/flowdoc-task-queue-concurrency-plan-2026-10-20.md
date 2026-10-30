@@ -1954,3 +1954,107 @@ matched real-data/off-host backups, authorized real-copy rehearsal or maintenanc
 repair/reopen approvals have been supplied by this synthetic result. Latest
 production SQL snapshot is still30Oct13:50Thai, not refreshed here.
 Stop at the proven scope; no automatic follow-up, release or installation.
+
+## Post026→027 app startup and admission — authorized scope 2026-10-30
+
+Owner authorized isolated Oracle verification of the new application after027,
+including legacy NULL-origin tasks, then local development integration if passing.
+Owner: Service startup/task HTTP/processor; roles Evidence Reviewer/Project Control
+Steward, single-room IDs N/A. Routine verification, not a production rollout.
+Use fresh labelled Docker DB/storage and internal network only, no published
+ports, production data/mounts/DB connections, release/tag/push or installation.
+Local development already contains843bd02; do not fabricate a second merge.
+Any newly necessary product fix must return to implementation and relevant checks
+before integration; preserve unrelated changes and never alter applied migrations.
+
+Acceptance/proof budget: seed real026 via old image; upgrade via actual candidate
+CLI; start actual new server (no mocks). Test a ready profile including a terminal
+NULL-origin historical task with fresh PDF and DOCX over HTTP, durable delivery,
+job/output linkage, usage/events, identity pairs, reservations and health. Recreate
+ready app once and send another canary. Separately start the migrated profile with
+five legacy inflight tasks/linked outputs and unproven foreign process markers:
+health/admission must both503, rejected requests must create no task/reservation,
+legacy origins/state/jobs/files must not be adopted/rerendered/resend; recreate
+once and repeat. Record expected startup cleanup separately from unsafe mutation.
+Stop owned containers, compare production Docker metadata, retain raw receipts
+and one report; append result here. No new full suite unless source changes or
+new affected-area uncertainty requires it. Preserve/correct harness failures and
+rerun only for a demonstrated prerequisite/failure. Document checks: evidence
+coverage/hashes, diff, generation and check:data; keep real-recovery28 items pending.
+
+### Result — app startup/admission PASS within synthetic profiles, 2026-10-30
+
+Completed in fresh project `flowdoc-startup-5e160086261b` on Oracle VM using
+PostgreSQL18, two private DB/storage profiles, no published ports and actual
+Service server/CLI. The old release227b2fd seeded026. Actual candidate CLI applied
+only027 to each DB; both final27-name/checksum ledgers match local843bd02 SQL.
+Existing runtime image00980f7d (source3e21a5c) ran the actual server; direct Git
+comparison to843bd02 differs only in `tests/pdf-files.test.mjs`, no runtime source.
+Helper/runtime image IDs and executed script hashes are retained in the packet.
+
+| Profile / criterion | Result |
+| --- | --- |
+| Ready026 with terminal legacy task | After027 actual app health200; historical failed task remains NULL-origin with same terminal reason/time and no generated job |
+| Fresh PDF/DOCX over HTTP | Two200 multipart responses with closed boundary, real artifacts and matching receipt/DB SHA256/byte counts |
+| Durable completion | Each new task/job succeeded, usage.delivery=succeeded, terminal event and usage once, one linked output; DOCX page_count remains NULL |
+| Reservations | All3 successful canaries release queue slots and storage held/used bytes to0 |
+| Ready app recreation | New container/runtime owner, same image/storage identity; health200 and third fresh PDF succeed; no old canary duplication |
+| Inflight legacy026 with NULL origin | Five synthetic tasks have unproven foreign writer/child references; after027 actual app health503 and PDF/DOCX admission503 |
+| Legacy app recreation | Second new container again health503 and admission503; four rejected requests total create no task/reservation/job |
+| Legacy preservation | Seven task-domain tables equal upgraded baseline before/after both checkpoints; all10 original file hashes/sizes unchanged; no adoption/rerender/resend observed |
+| Lookup | Actual POST /documents JSON taskId contract returns200 for completed canaries and while legacy admission is503 |
+
+NULL origin alone is not a universal readiness failure: the terminal historical
+row does not block ready-profile admission. The blocked profile additionally has
+unproven foreign process markers. Neither profile fills historical origin values.
+The legacy equality check covers tasks, generation_jobs, document_outputs,
+task_resource_reservations, task_files, task_events and task_usage, not every
+application table. Expected startup adds only `.runtime-id`, `.runtime.lock`,
+`.storage-id`, `.writers.lock` under the task root in that fixture; do not claim
+the whole filesystem is unchanged. Ready terminal-history cleanup may proceed
+normally; critical terminal facts/origins remain preserved.
+
+HTTP bytes were extracted by the actual multipart Content-Length/framing, tied
+to artifact-event and DB hashes. Both PDFs are byte-identical, parse as one page
+with expected synthetic text and pass full-page Poppler visual inspection with
+no observed clipping/overlap. DOCX ZIP/XML/text are valid; native Word appearance,
+pagination and field refresh remain outside acceptance. HTTP completion here
+does not prove historical delivery to a real recipient.
+
+Initial attempts are retained and not counted PASS. Projectf2d18e74f21c exited
+before HTTP because the lab token was27characters, below the real parser's32
+minimum; the actual parser reproduced the configuration rejection. Project
+051b78b557ac delivered/persisted a PDF but the harness lookup used a nonexistent
+GET route and got404. Only harness credentials/lookup were corrected to the
+actual POST JSON contract, then a fresh final profile pair passed. No product
+source, released migration, version or package pin was changed to obtain PASS.
+All owned containers from all3 attempts are stopped; evidence/volumes remain.
+Production Docker identity/start/restart metadata is stable; no production SQL,
+storage access, stop/restart or runtime switch occurred. Normal shared-host
+resource/audit effects are not claimed zero.
+
+**Git integration decision after PASS:** local development
+`codex/template-registry` already equals843bd0204b424f32cf7fed8a8ebaab6964a33388,
+contains the tested candidate, and is clean. No new product changes or second
+merge are necessary. Direct ancestry/source-diff checks are saved as
+`development-integration.json`; Service release25e912f remains unchanged.
+Retain the passing result in Project Control main; no remote fetch/push,
+release/tag, deployment or installation is performed.
+Do not describe this as a new Service commit or a newly merged product fix.
+
+Report, CLI/server/container receipts, actual HTTP wire/PDF/DOCX, snapshots,
+initial failures, Git integration receipt and92-file SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-postupgrade-startup-20261030/verification-report.html`.
+Raw scripts/receipts remain under Service audit worktree
+`artifacts/oracle-audit-20261030/startup-*` and remote
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-startup-5e160086261b`.
+
+**Next return point:** post-upgrade actual startup/readiness/admission is now
+proven for these two synthetic profiles. No new runtime fix was needed. This
+does not authorize legacy repair or certify high-load/soak, mid-request crash,
+expiry recovery or production upgrade. Prior full suites are not new runs.
+Real recovery28-item readiness remains unchanged: target allowlist, writer
+quiescence, matched/off-host real backups and authorized real-copy restore,
+maintenance/repair/reopen approvals are still separate prerequisites. Latest
+production SQL snapshot remains30Oct13:50Thai; no refresh was performed here.
+Stop at the accepted scope; no automatic follow-up, release or installation.
