@@ -1146,3 +1146,150 @@ The three test gaps above are now closed. Real legacy tasks without runtime
 identity remain quarantined; actual data repair still requires separately
 authorized backups, writer quiescence and restore/recovery rehearsal. Release,
 installation and new visual/Word acceptance remain outside this verification.
+
+## Legacy identity-free recovery rehearsal — 2026-10-30 plan
+
+Authority: the owner's new explicit request to plan and rehearse only on an
+isolated Oracle lab. Owner: Service; roles: Planning Partner, Evidence Reviewer
+and Project Control Steward. Single-room verification, execution/Work/Phase/
+Checklist IDs N/A. Size: bounded; risk: routine within disposable synthetic
+data, with real-data repair explicitly forbidden. The existing immutable
+Service candidate `843bd02` remains unchanged. The current host model is used
+for this inline verification; no separate WORK or model dispatch is created.
+
+The implementation keeps historical runtime/storage identities NULL and guards
+their immutability (migration027). A foreign-host writer/child reference cannot
+be disproved by the new container. The proposed operator procedure therefore
+requires a consistent DB plus storage backup and proven writer quiescence;
+it must not invent runtime provenance, replay output, infer delivery success,
+disable runtime identity guards, or release quota independently of file cleanup.
+
+Rehearsal sequence and acceptance/proof budget:
+
+1. Create only synthetic legacy tasks on a new labelled private Docker lab:
+   interrupted input/processing/sending and retained files, with NULL identity
+   and foreign process references. Show quarantine and matching health/admission.
+2. Stop every lab writer, inventory containers/mounts and DB sessions, then
+   export the dedicated database and complete task storage. Hash both backups.
+   Restore to another dedicated DB/storage pair and compare rows and file hashes.
+3. Before any repair, reject an active-writer condition, a stale inventory and
+   incomplete backup/storage provenance. Exercise transaction rollback.
+4. On the restored copy only, under maintenance ownership, advisory quota/task
+   locks and an exact row allowlist, clear obsolete process references while
+   retaining NULL origin identity. Let the existing recovery/cleanup path
+   terminalize tasks, preserve uncertain delivery, return unused reservations,
+   and retain received input until its original expiry. Repeat without duplicate
+   terminal/usage rows or automatic generation/sending.
+5. Recreate the restored API container; prove health/admission agreement, a new
+   genuine PDF request, unchanged old job/output counts, and eventual TTL cleanup.
+   Verify rollback by another restore from the untouched original backups.
+6. Stop all owned lab containers, retain backups and evidence, and compare
+   production container identity/restarts/mounts before and after, without
+   querying production data. This is not row-level production integrity proof.
+
+Allowed outputs: ignored lab scripts/evidence, one durable verification report
+and this existing Project Control record. No product implementation, migration,
+release/tag, push, install, production SQL/files/configuration or runtime switch.
+The existing source and prior suites are reused within scope; no new full-suite
+claim. Stop at these criteria; a prerequisite failure is not PASS. Backup and
+writer-quiescence guarantees for a real deployment remain unverified and need
+separate owner authorization even if this disposable rehearsal passes.
+
+### Rehearsal result — PASS within the synthetic fixture
+
+The new lab `flowdoc-legacy-b859ffbbd5fd` used its own private internal network,
+three dedicated database volumes and three task-storage volumes, without
+published ports. The previous Oracle lab and production data were not reused
+as task data. Runtime image
+`sha256:00980f7ded74ba413419329f36c6b328de7178493eba766d5f6a60654861d623`
+is the prior unchanged image built from `3e21a5c`; comparison with `843bd02`
+differs only in `tests/pdf-files.test.mjs`, not runtime source. No product
+candidate, migration, Core pin or installed runtime was changed in this round.
+
+Four tasks were created with real intake/normalization and then given explicit
+synthetic awaiting-input/validating/processing/sending state and foreign-process
+markers. Their runtime/storage origin fields remained NULL. They are not an
+observation of historical senders, a real interrupted transport or user data.
+
+- Quiescent lab DB export plus full storage TAR were hashed, restored into
+  another DB/storage pair, and restored again from the original backups after
+  recovery to prove rollback. Public-table row JSON and enumerated non-dot
+  task-data file-content hashes matched. This comparison does not prove schema,
+  sequence, filesystem metadata or hidden-control-file equivalence.
+- Before repair, real API health and admission both returned503 and admitted
+  no new task. A separate genuine storage owner caused `TASK_STORAGE_BUSY` even
+  when the input observation was deliberately made permissive for this negative
+  test. Eight further safeguard/rollback cases passed: active-writer observation,
+  missing-backup evidence, stale observation, wrong backup hash, storage drift,
+  immutable runtime identity, stale task allowlist, and injected transaction
+  failure. The raw recorder's aggregate `negativeCases:5` is stale; the retained
+  detailed eight receipts and derived verification summary establish the count.
+- Restored-copy maintenance changed only process references plus state version
+  and update timestamp. Other table rows and enumerated files stayed unchanged.
+  It held the actual storage owner fence, advisory leader/quota locks and task
+  row locks, retained NULL origin identities, and left terminalization, quota
+  release and file cleanup to the unchanged Service path.
+- Recovery produced four `failed/WORKER_INTERRUPTED` tasks, each with exactly
+  one terminal event and usage row. The sending marker retained
+  `delivery:unknown` / `unknown_after_interruption`. All queue slots returned;
+  three received originals remained at291 bytes each, exactly matching held
+  and used storage. The original expiry timestamps were unchanged.
+- Reapplying the stale repair allowlist failed without further change; after an
+  API container recreation, task rows, usage, file hashes and old job/output
+  counts remained identical. A new real HTTP request returned200 with a valid
+  one-page PDF, and health returned200. The legacy fixture had no pre-existing
+  generation-job or document-output rows; populated legacy job/output recovery
+  branches are not established by the unchanged zero counts in this rehearsal.
+- A lab-only SQL clock advanced4hours to exercise TTL cleanup. No expiry or
+  identity trigger was disabled or rewritten. All five tasks, including the
+  new successful request, ended with held/used bytes0 and cleanup done. This is
+  not a real three-hour wall-clock soak.
+
+The final proof passed after retained harness prerequisite failures: a missing
+fixture section constant, readiness checking during DB initialization, an
+overly strict assertion rejecting the lab's read-only credential bind, a stopped
+DB on resume, and a bytes/string mismatch in the negative-error recorder. These
+were lab-script corrections, not product fixes or passing initial runs.
+A separate read-only evidence review found no blocker for the bounded result.
+
+All owned containers from both rehearsal attempts are stopped; backups, volumes,
+images and evidence are retained. Production container identities, images,
+start times, restart counts and mount sets matched before/after. This does not
+prove production row integrity or zero transient load on the shared Oracle VM.
+No production SQL/storage access or repair, release/tag, push, installation,
+package installation on the host, or production runtime switch was performed.
+
+Report, derived summary, original raw receipts, synthetic backups, executable
+rehearsal scripts and SHA256 manifest are retained at:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-recovery-20261030/verification-report.html`.
+Raw Oracle evidence remains under
+`/home/ubuntu/flowdoc-audit-187957aecc2d/legacy-rehearsal-b859ffbbd5fd`.
+This round ran the bounded rehearsal, not a fresh full Service/Core suite.
+
+### Future real-data recovery plan — separately authorized work only
+
+1. Inventory actual affected task IDs, storage mappings, linked jobs/outputs and
+   delivery evidence. Retain quarantine when origin or delivery cannot be
+   established. The current lab's synthetic state markers and absent linked
+   job/output rows do not replace populated real-scope rehearsal.
+2. Agree a maintenance window, close intake and prove all writers across hosts,
+   containers, subprocesses and DB sessions are stopped. The lab's label-based
+   inventory and same-application session exception are not a general production
+   writer inventory; do not reuse those assumptions as production guarantees.
+3. Take consistent DB and every referenced storage backup as one checkpoint,
+   retain an immutable off-host copy, and prove restore against the authorized
+   real-scope copy, including required job/output, schema/sequence and metadata
+   checks. Never pair a restored DB with storage from another checkpoint.
+4. Review an exact row/file allowlist with expected state/lease/version hashes
+   and delivery uncertainty. Following separate authorization, use exclusive
+   maintenance ownership and quota/task lock order; never backfill origin
+   identity, infer send success or automatically replay/resend tasks.
+5. Let normal recovery reconcile terminal state and reservations, verify one
+   terminal/usage record per task, retained-file accounting and health/admission,
+   then reopen intake only after the authorized scope passes. On mismatch stop
+   and use the rehearsed matched DB/storage restore route.
+
+The requested disposable rehearsal is complete. Real legacy tasks remain
+quarantined and unmodified; their inventory, backups, writer shutdown, populated
+restore rehearsal and repair are not authorized by this result. Release and
+installation remain separate future authorizations.
