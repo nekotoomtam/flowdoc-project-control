@@ -999,3 +999,90 @@ Commits: `1361221`, `5e598d3`, `501c944`, `50d2278`.
 และไม่ติดตั้งหรือรีสตาร์ตแอป. กลับมาทำเมื่อเจ้าของสั่งอัปเดตปลั๊กอินในรอบใหม่;
 Core/Service คงรุ่นเดิม. ผลตรวจการติดตั้ง0.2.8ที่ปิดแล้วด้านบนยังคงสถานะเดิม
 ไม่เปิดงานติดตั้งเก่ากลับมาเป็น pending.
+
+## Architecture audit follow-up — Oracle lab, 2026-10-30
+
+Owner request: finish the remaining Core/Service audit follow-up and test on the
+existing Oracle VM. This is a new bounded single-room follow-up; execution,
+Work, Phase and Checklist IDs are N/A. Roles: Product Implementation Agent for
+two test corrections, Evidence Reviewer for the isolated verification, and
+Project Control Steward for this status record. This section records candidate
+verification and local development integration; it does not reopen the earlier
+installation rounds or promote a system map, release, installed readiness or
+universal architectural correctness.
+
+The F1–F6 Service fixes were integrated locally by fast-forward from `83f85f5`
+to `843bd0204b424f32cf7fed8a8ebaab6964a33388` on the actual development branch
+`codex/template-registry`. The latest additional change only makes the existing
+publication-protection test deterministic: the PDF fixture gets an explicitly
+old mtime before checking both active protection and deletion after release.
+Fractional filesystem mtime had made immediate age-zero cleanup timing-dependent
+on Oracle. Runtime retention behavior was not changed by that test correction.
+
+Core development branch `codex/template-binding` was fast-forwarded locally from
+`0401b87` to `1817efa4964af9e18cf75d4d31b4221893167800`. Its only change adds the
+already exported and Service-consumed `normalizeOutputName` to the exact public
+API test expectation. The archived Core release base `55315ca` and development
+base `0401b87` have the same tree
+`97752cfbf5f338c4528e7b8e98bd6da9f103262b`; the tested correction is identical
+after integration. No Core runtime implementation, package pin or archive was
+changed. Both default branches were checked against live remote HEAD; no push
+was performed. Service `release` remains `25e912f`; Core `release` remains
+`55315ca`.
+
+Verification used the separate Oracle Docker project
+`flowdoc-audit-187957aecc2d`, its own PostgreSQL18 database, internal network and
+volumes, with no published ports or production data mounts. Suite/API containers
+were limited to 1GiB and two CPUs each; the separate DB used 512MiB. The observed
+VM has 7933MiB RAM: these are container checks, not whole-VM4GiB capacity proof.
+
+| Criterion | Observed result |
+| --- | --- |
+| Complete Service suite | 729 passed, 0 failed, 3 skipped; F3 regression9/9 and paired PDF/DOCX API18/18 passed |
+| Complete Core suite on Linux | 1268 passed, 0 failed, 0 skipped; original prior one-shot Linux ELF helper supplied with recorded provenance/hash |
+| F1 runtime ownership/recovery | Three processing-container recreations plus an idle recreate; terminal event/usage once, unused reservations returned, retained input bytes charged, and a new PDF succeeded after every recovery |
+| F1 health and legacy fixture | Synthetic unguarded foreign task caused both health/admission503 without admitting work; isolated expiry-clock advancement led to cleanup/reservations0 and health200 |
+| F2 governed preflight | Its actual PostgreSQL/native admission and shared-credit regressions passed in the complete Service suite |
+| F3 delivery/finalization | Real HTTP completed PDF with rejected DB finalization preserved delivery success; container loss before durable completion became unknown, without rerender; reservations reconciled |
+| F4 lock order | Twelve controlled PostgreSQL schedules passed; deadlock counter0 before/after. This does not certify every possible deadlock schedule |
+| Supplied font-height gate | Original TH custom and six Google-family fixtures passed, closing one previously skipped test |
+| F5/F6 retirement | Ownership and filesystem retirement regressions passed in the complete Service suite |
+
+Initial unsuccessful runs are retained. A new lab default schema first lacked
+migrations required by the standalone version-render test; an actual catalog
+probe confirmed the missing table, lab-only migration/focused verification
+passed, and the complete suite was rerun. A subsequent run exposed the mtime
+fixture above. The final full command passed after that test correction.
+`PGOPTIONS` selects an independently migrated default schema while explicit
+per-test pool options retain isolated schemas. Core's initial Linux run lacked
+its documented legacy-helper prerequisite; a retained Core0.3.0 ELF fixture was
+provided, its one-shot behavior checked, and the complete suite rerun. No mock
+replaced a native result or database transaction.
+
+Production container IDs, images, start times, restart counts and mount sets
+were the same before/after; mount ordering was normalized. These observations
+support unchanged runtime identity/restarts, not row-by-row production data
+comparison or a guarantee of zero transient resource impact on a shared host.
+All owned lab containers are stopped; lab volumes/images and evidence remain.
+No production SQL/storage repair, release/tag, push, installation, or Oracle
+runtime switch was performed. Migration027 was applied only inside the lab.
+
+Remaining boundaries:
+
+- Three Service font-height checks requiring the reviewed operator/configured
+  container-binding fixture remain skipped; they are not PASS.
+- Real legacy tasks without runtime identity remain quarantined. Actual repair
+  still requires separately authorized consistent DB/storage backups, proven
+  writer quiescence and a successful disposable restore/recovery rehearsal.
+- Release preparation and installation remain separate future authorizations.
+  Passing this follow-up does not close every design concern from the original
+  architecture audit or constitute new native Word/fidelity acceptance.
+
+Durable local report and raw evidence selection:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-20261030/verification-report.html`.
+The adjacent `verification-summary.json`, `integration.json`, and
+`evidence-manifest.json` bind source/fixture/image hashes, exact results, initial
+failures, production observations and remaining gaps. Raw lab evidence is also
+retained under `/home/ubuntu/flowdoc-audit-187957aecc2d` on Oracle. These artifacts
+and repository tests support the bounded claims; this status prose is not a
+replacement for those proofs.
