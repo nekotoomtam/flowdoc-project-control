@@ -1377,3 +1377,77 @@ PDF cases. DOCX, arbitrary corruption and real-deployment writer inventory,
 consistent off-host backups, full-scope restore and actual repair are not
 established or authorized here. The separately authorized real-data plan above
 remains applicable; real legacy data stays quarantined and unchanged.
+
+## Legacy DOCX linked-job/output rehearsal — 2026-10-30 follow-up
+
+Owner request: repeat the four PDF linked-job/output cases for DOCX in a fresh
+isolated Oracle lab, with no real data, release or installation. Owner: Service;
+roles: Evidence Reviewer and Project Control Steward. Bounded single-room
+verification, routine lab risk, execution/Work/Phase/Checklist IDs N/A. The
+unchanged843bd02 candidate/runtime image and the established maintenance/backup
+procedure are reused. Outputs are ignored lab scripts/evidence, one durable
+report and this existing record; no product or migration changes are authorized.
+
+**PASS for all four synthetic DOCX cases.** Fresh project
+`flowdoc-legacy-docx-ed4d9017ffe6` uses separate PostgreSQL18 databases, task-storage
+volumes and an internal network, without published ports. Four DOCX tasks have
+real intake/normalized inputs and linked job/output rows accepted by the actual
+schema/pin triggers. Historical process/send states remain explicit synthetic
+markers and runtime/storage origins remain NULL. No historical sender or real
+recipient is claimed. The output fixture is the prior passing Oracle suite's
+`http-queue.docx`, SHA256
+`1e4f8ea1459330997e064d873bacd53eae28b09f6a27d6be8b2af739c408cfe9`,
+matching that report's retained manifest.
+
+- Queued/running jobs became failed/WORKER_INTERRUPTED; succeeded jobs with
+  present or missing output stayed succeeded. Four tasks terminalized once,
+  with one terminal event/usage each and no origin backfill.
+- Both output rows became expired/deleted while retaining their job link,
+  path, byte size, SHA256, DOCX format/MIME and NULL page count. Sending-marker
+  usage kept generation succeeded but delivery unknown; PDF bytes/hash and
+  page count remained NULL, rather than inventing PDF metrics or send success.
+- Maintenance/repeat snapshots and first/repeat task plus linked-job/output
+  receipts matched. The original four job IDs/two output IDs remained after API
+  recreation, without duplicate terminal/usage or extra job/output at those
+  checkpoints. This does not certify continuous absence of every transient
+  duplicate execution. Repeat maintenance proves no additional change; its
+  specific rejection diagnostic was not separately saved.
+- Health/admission changed from503 before repair to200 after recovery. A new
+  real DOCX request returned200. Its saved multipart attachment passed ZIP CRC,
+  unique/safe-entry, required OOXML part/content-type and XML parse checks; the
+  document contained the expected `Record 0` input. This does not establish
+  native Word rendering/fidelity, pagination or field-refresh acceptance.
+- Queue slots returned; held=used matched four291-byte originals (1164bytes)
+  until the unchanged expiry. A lab-only SQL clock+4hours brought held/used to0
+  and cleanup done for all five tasks including the new successful request.
+  No expiry/identity trigger was disabled or rewritten; this is not a real
+  three-hour soak.
+- Source/restore/rollback public-table row JSON and enumerated non-dot task-data
+  contents matched, with backup hashes verified. Maintenance changed only task
+  process references plus state version/update timestamp. Lifecycle timestamp
+  comparisons use driver millisecond precision; no schema/sequence/metadata or
+  hidden-control-file equivalence is asserted.
+
+The full rehearsal command completed PASS in this run; no failed prerequisite
+was observed in the execution transcript. A separate read-only review found no
+blocker in the scripts/receipts within this scope; the local DOCX ZIP/XML/content
+assertions additionally validate the actual saved attachment. Prior eight
+negative safeguards remain reused, not rerun. No full product suite was rerun.
+
+All owned lab containers stopped and synthetic backups/evidence remain.
+Production container identity/image/start/restarts/mounts matched before/after.
+No production SQL/files, release/tag, push, host installation, installed settings
+or production runtime changed. This boundary is not production row-level
+integrity proof or a guarantee of no transient shared-host load.
+
+Report, executable scripts, original receipts, DOCX fixture/new attachment,
+synthetic backups and SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-docx-20261030/verification-report.html`.
+Raw lab evidence:
+`/home/ubuntu/flowdoc-audit-187957aecc2d/legacy-rehearsal-docx-ed4d9017ffe6`.
+
+The requested four linked-job/output scenarios now have separate PDF and DOCX
+rehearsal evidence. Arbitrary corruption, native Word fidelity, complete real
+writer inventory, consistent real-data/off-host backups and actual repair are
+outside these proofs. Real data remains quarantined and untouched; release,
+installation and real-data recovery still require separate authorization.
