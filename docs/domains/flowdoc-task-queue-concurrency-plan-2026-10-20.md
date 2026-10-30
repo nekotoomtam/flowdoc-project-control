@@ -2854,3 +2854,148 @@ Ignored helpers/evidence remain in reused Service audit checkout under
 roots are under `/home/ubuntu/flowdoc-audit-187957aecc2d/`. No successful DOCX
 claimed, original1g failure retained. Stop after this FAIL report; no automatic
 code repair, additional experiment, real-data recovery or rollout.
+
+## DOCX expansion diagnosis and proposed repair plan — 2026-10-31
+
+Owner explicitly requests locating which XML/drawing counters and generated
+structure exceed budget, then a repair plan before implementation. Single-room
+discovery/planning, not code repair. Owner Core packed DOCX writer; Service is
+consumer. Roles Cross-Repo Boundary Reviewer/Evidence Reviewer/Planning Partner;
+execution IDs N/A, bounded size/routine risk. Canonical snapshot rebuilt and
+Core/Service guides read. Use pinned Core0.5.2 artifact consumed by unchanged
+Service2c089b5, not an assumed current Core checkout. Core primary checkout is
+release55315ca; local development refs at1817efa are reconciliation inputs for
+future implementation, not permission to edit release or repin Service now.
+
+Proof budget: one fresh isolated Oracle container/networknone, existing verified
+image,4GiB/2CPU, same1800record fixture and unchanged32MiB/XML/drawing budgets.
+Observe original writer locals using an in-process Node inspector breakpoint
+at existing container/style compaction and final guard; no source rewriting,
+monkey-patching or variable/limit mutation. Copy generated intermediate XML as
+diagnostic evidence before the original guard rejects output; no DOCX acceptance
+or artifact delivery claim. Bind helper/module hashes and read-only container
+root, stop owned container, compare production metadata. A missing debugger
+prerequisite permits only a bounded corrected observation, retaining failed runs.
+
+Count before/after existing compaction, per-part cumulative XML/drawing totals,
+dominant element/property patterns and source paragraph/line/word-box expansion.
+Validate extracted XML counters independently. Plan owned source boundaries,
+preserved invariants, risk/unknowns, regression/acceptance gates and integration
+order from evidence. Correctly distinguish an established cause from candidate
+optimizations; no prototype repair, raised cap, reduced records, production
+SQL/storage/service actions, release/tag/push/install or full suite rerun.
+One external evidence report and plan in this existing canonical record; no
+product docs/superpowers or synthetic registry/map updates. Stop after diagnosis
+and plan; original DOCX output parity stays FAIL until a separately authorized
+implementation passes the unchanged limits and actual API three-way proof.
+
+Result: PASS bounded diagnosis/planning only; DOCX delivery remains FAIL. Fresh
+Oracle-hosted Docker lab `flowdoc-docxtrace-a1423f327b45` captured the original
+rejection. One coverage gap justified a second read-only observation:
+`flowdoc-docxtrace-4fdc12c5ca15` retained an inspector reference to the existing
+ZIP, resumed the unchanged guard, and read all XML/rels parts only AFTER its
+original rejection. This neither bypassed the guard nor produced a DOCX.
+No DB connection was needed for this writer diagnosis; Oracle here is the
+isolated cloud-hosted lab, not a claim about the Oracle Database engine.
+
+Confirmed implementation path (pinned installed Core, not documentation):
+`text-intent.ts:33-44` groups graphemes by Thai/Latin/Common script;
+`text.ts:65-93` emits separate ScriptRuns per segment, with full native run
+properties each time. `writer.ts:125` packs before the expanded XML scan;
+`writer.ts:135-157` only attempts source-word container/style compaction when
+sourceSerialized=true. Here sourceSerialized=false, guides/wordBoxes=0,
+source nodes=text blocks=1800, so neither compactor applies. The original
+guard at `writer.ts:168` rejects `word/document.xml`; no drawing limit was hit.
+The relevant four source files are unchanged between release55315ca and local
+development1817efa, but future implementation still needs base reconciliation.
+
+Measured, independently checked using both the writer regex and XML parser:
+
+- guard cumulative XML820825/50000, drawing counter0/10000; prior rels12 plus
+  document.xml820813. Document XML22170647bytes, SHA256
+  `b5f28d4cca02114ac0338c5cdc3c7bb441613b4227d88f17239134f35e50c6cd`;
+- entire pre-rejection ZIP has821427XML nodes; other parts total614 and
+  drawing counter remains0. This post-rejection inventory is not a successful
+  final writer traversal or artifact acceptance;
+- 1800paragraphs each40text runs =72000runs/text elements. Every run has the
+  same explicit rPr signature, only rPr+t children, and11element nodes.
+ 73800rPr groups include1800paragraph-mark groups plus72000run groups; each
+  has8property children (font, b/bCs, i/iCs, snapToGrid, sz/szCs);
+- all Record0..1799 texts, spaces, order and suffixes match the input exactly.
+  No text was dropped/reduced. Writer source hash before=after
+  `578d2fb9c01821bae1c383ffb4908f4228994762d0d2eee4b7f4dca50f350eee`.
+
+This confirms native text-run expansion as the cause of this bounded failure,
+not source-word drawings, database state, font-check failure or a guard defect.
+No broader1800-record capacity contract is inferred. Styles-only deduplication
+cannot solve72000r tags exceeding50000 even before counting their text children.
+
+Proposed repair, in priority order; ALL implementation below remains pending:
+
+1. Core RED regression on the same1800-record fixture and original budgets,
+   plus assertions for exact ordered text, properties and all package parts.
+   Use an isolated development worktree based on reconciled1817efa or its
+   confirmed successor; never edit release. First reproduce current failure.
+2. Core `src/docx/text.ts`: coalesce adjacent ordinary Latin/Common text
+   descriptors with identical complete effective properties, BEFORE creating
+   ScriptRun objects. Flush at breaks, inline span/navigation/field/bookmark
+   boundaries and any changed style, language, script flag, spacing or baseline.
+   Preserve Thai segmentation and authored/source layout, pair spacing,
+   explicit spacing0 versus undefined, CS emphasis, fonts, whitespace and
+   cancellation. Do not merge by font alone, remove rPr blindly, collapse text,
+   alter script normalization, post-rewrite arbitrary OOXML, or change budgets.
+   Native Word shaping equivalence requires separate evidence; matching rPr
+   alone is not proof. Preserve visualVerified/wordVerified=false until proved.
+3. Arithmetic only, not a prototype: if each40-run paragraph safely becomes
+   one11-node run, save70200*11=772200nodes; document48613, package49227,
+   leaving773nodes (1.546%) under50000. No XML was rewritten to obtain this.
+   This is a narrow margin, not general capacity: more styles, structure or
+   fields may still legitimately fail. If actual counts do not fit, stop and
+   revise the plan from evidence; no automatic style rewrite or cap increase.
+4. Core validation: focused writer regression and affected metricPairs,
+   baselineRules, pageFieldPosition, sectionAssembly, sourceLayout,
+   sourceWordBoundaries/containers/styles, pagination and cancellation/resource
+   paths; then the applicable required Core checks and isolated Linux packed
+   consumer. Include Latin/Common punctuation/numbers/whitespace and kerning,
+   Thai/Latin transitions, authored breaks, hyperlink/reference/page-field
+   barriers, zero/nonzero spacing and baseline positions. Verify original
+   XML/drawing/source-node/byte guards still reject true excess and sink aborts
+   without committing partial output. Native Word layout/kerning proof stays a
+   separate explicit acceptance gap until executed, not inferred from XML.
+5. Only after Core gates, prepare a LOCAL packed development artifact and
+   checksum-pinned Service consumer change for review; no publish/tag/release/
+   install. Inspect release gates before future Git promotion, and never merge
+   or repin merely because this diagnosis passed. Service transport, storage
+   classification, admission and original budgets remain unchanged.
+6. Fresh Oracle Service lab at the same recorded4g-2cpu profile: same1800DOCX
+   input before full, processing-root full, and restored. Require valid complete
+   DOCX packages before/after; exact records/order/relationships/font embedding,
+   all-part XML<=50000, drawings<=10000 and original byte guard. Full must report
+   STORAGE_IO consistently in wire/task/usage/lookup with no delivered artifact;
+   tasks/jobs/usage once each, reservations0, no automatic resend, same healthy
+   API process/restart0 and post-restoration admission. This is required before
+   closing previous DOCX parity FAIL. Run affected Service checks on the actual
+   repinned candidate; prior742pass/3skip is not evidence for a new package.
+
+Memory follow-up is separate and deferred: packing currently happens before
+XML rejection, so pre-allocation run coalescing is preferable to a late XML
+rewrite. Previous cgroup peak1310031872bytes is not the worker heap and does
+not prove the original1GiB RENDER_FAILED cause. The generic1GiB failure,
+physical disk/inode exhaustion, broad capacity/soak and real-data recovery
+remain unverified; no RAM increase is proposed as a substitute for this fix.
+
+Evidence scope: same immutable verification image3833930, Service2c089b5,
+Core0.5.2 archive647235de. Two separate4GiB/2CPU network-none/read-only-root
+containers, no published ports, both stopped; production container identity/
+start/restart metadata unchanged across each observation. No production SQL,
+storage or service action, source/config changes, limit mutation or DOCX output.
+Ignored inspection helpers were corrected locally to collect .rels as well as
+.xml, and the independent analysis asserted11tags/run; this did not change the
+candidate or require another remote execution. Full suites are not rerun for
+unchanged product; only independent evidence/parser checks and PC doc checks
+apply to this diagnosis. Registered execution IDs remain N/A; no map promotion.
+
+External report, both retained observations, all XML/rels, exact analyzer and
+hashed installed sources:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-expansion-20261031/verification-report.html`.
+Stop here for owner review of this plan. No proposed repair has been executed.
