@@ -2623,3 +2623,115 @@ Ignored helpers/evidence remain in Service audit checkout under
 `/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-res02-a7a5eda9a93b`.
 Stop after this classification. RES-02 is not fixed; no further experiment or
 production recovery/rollout starts automatically.
+
+## RES-02 repair — authorized implementation 2026-10-31
+
+Explicit owner authorizes correcting temporary-writing failure classification
+and repeating exact1800-record before/full/restored comparison in an isolated
+Oracle lab. Single-room implementation then verification; owner Service, roles
+Product Implementation Agent/Evidence Reviewer/Project Control Steward; execution
+IDs N/A. Bounded size/routine risk. Canonical snapshot rebuilt; clean existing
+audit worktree at8f74188 reused on codex/res02-storage-diagnostics. Current
+explicit Service request governs; no unrelated frontend work/context activated.
+
+Scope: Service snapshotResources identifies Core's primary RESOURCE_UNAVAILABLE/
+tempRoot and throws safe STORAGE_IO with a storage-specific generic message.
+Keep genuine font/manifest/runtime behavior, public mapping, quota/health,
+transactions/retry, Core/package pins/migrations/config unchanged. Do not claim
+every unwritable tempRoot is ENOSPC/STORAGE_CAPACITY. Existing error code means
+no new public protocol/schema or filesystem paths exposed.
+
+Proof budget: six boundary regressions, RED on original image before repair,
+GREEN on immutable candidate; local TypeScript and Docker builds. One full
+Service suite because snapshotResources is shared by PDF/DOCX/readiness/native
+font consumers, supplied/native fixtures reused and skips reported; no Core
+suite for unchanged package. Fresh labeled Oracle API project repeats exact
+402,431byte/1800record request three times as previous proof: baseline success,
+middle admitted then fill768MiB lab tmpfs at native checkpoint, after removing
+filler success. Require terminal/usage/public wire/lookup STORAGE_IO for full
+task; durable delivery not_started, no output, no resend, reconciled retained
+input reservations. PDFs before/after identical,148pages/all1800records, same
+API process and final3task/3job/3usage counts. Original loader diagnostics must
+still show Core RESOURCE_UNAVAILABLE/tempRoot while Service now reports STORAGE_IO.
+Maintain supplemental-control versus actual-process evidence boundaries.
+
+Allow only snapshot source/new focused test, ignored lab harness/evidence and
+this existing canonical record. No actual data/storage/service access or stop,
+push/tag/release/install, version bump, Core fix or new Work/map/registry. Source
+review before local development integration; commit after selected checks pass.
+One external evidence report/manifest, retain failed prerequisites; bounded
+reruns only for demonstrated failures. Stop owned containers and compare
+production metadata. Stop when acceptance/impact coverage pass; no extra
+experiment, production recovery or rollout follows automatically.
+
+### RES-02 resolution — task storage diagnosis repaired, 2026-10-31
+
+**PASS within the task-render repair scope.** Commit
+`2c089b536f8782258898693db63dc62141ca7659` contains only
+`src/fonts/snapshot.ts` and `tests/font-storage-diagnostics.test.mjs`; clean local
+development codex/template-registry fast-forwarded from8f74188 without conflict
+or additional edits. Tested overlays match commit blobs after newline normalization;
+unchanged FF reuses passing proof. No fetch/push/tag/release/install, version/pin/
+Core/migration/config change or actual-runtime switch.
+
+Snapshot loader now inspects Core's primary issue. Only RESOURCE_UNAVAILABLE at
+logical path tempRoot becomes safe OperationError/STORAGE_IO with message
+"Temporary storage is not writable". Other bundled-resource/font/runtime failures
+and actual font hash mismatch keep their prior behavior. No raw path, original
+Core message or connection detail exposed. This class includes unwritable roots
+generally, not a claim that all such causes are specifically ENOSPC/capacity.
+Public mapper already supports STORAGE_IO and is unchanged.
+
+| Evidence | Result |
+| --- | --- |
+| RED original image | New unit boundary tests use controlled Core results:1failed/5passed; storage expectedSTORAGE_IO but originalFONT_CHECK_UNAVAILABLE |
+| GREEN candidate |6passed/0failed: safe storage message/public projection/redaction, manifest/font/runtime unchanged, unrelated issue not inferred as storage, genuine hash mismatch retained |
+| Build/full Service | Local TypeScript/Docker builds pass;742passed/0failed/3skipped, exit0, existing native/font/plugin fixture pins reused |
+| Exact1800record API control | Before/full/restored requests retain original402,431byte multipart SHAe90673bb and inputDigest/template/font pins; baseline and restored succeed |
+| Real full processing | Middle request admitted before768MiB lab tmpfs fill at child checkpoint; ENOSPC/free0. Task terminal, usage.reason, public multipart error and owned lookup allSTORAGE_IO; noFONT_CHECK_UNAVAILABLE/PDF_FAILED substitution |
+| Delivery/integrity | Full task has no output, durable delivery not_started; lookup delivery failed/evidence not_started. Final3tasks/3jobs/3usage, one terminal each, unreconciled0; held=used=402,299retained input bytes for full task, successful tasks0 |
+| Recovery/output | Same API ID/PID/StartedAt across3tasks, restartCount0. Before/restored PDFs both4,181,707bytes/148pages, SHA256b2606f74 identical to each other and pre-fix control; bundled pypdf parses and finds all0–1799records; no all-page visual claim |
+| Loader controls | Raw separate write stillENOSPC; Core stillRESOURCE_UNAVAILABLE/tempRoot; Service nowSTORAGE_IO with safe storage message. Before/after loaders succeed, manifest constant |
+| Source review | Independent static reviewer found no actionable issues; reviewer did not run tests/DB/Docker/SSH and is not runtime acceptance |
+| Boundaries | All owned RED/GREEN/suite/API containers stopped; internal networks/no ports/own mounts. Production Docker identity/start/restart metadata before=after |
+
+Three full-suite skips remain HEIGHT_DELIVERY_CONFIG operator/container-binding
+checks, not PASS. No new Core suite because package/pin unchanged. README/usage
+version/pin/setup instructions reviewed; no new flags, schema or error-code
+contract requires a setup/release documentation change. Source review/actual
+proof do not certify every legacy/authoring readiness catch or projection: those
+existing paths are outside this bounded task-render fix. The six unit cases mock
+Core results; real fault evidence is the separate actual API/loader comparison.
+
+Regression/build project `flowdoc-res02fix-6ad6b4528a7b`.
+Actual API project `flowdoc-res02fix-api-8ee3c992c6d4`.
+Runtime image:
+`sha256:3af621e99d38cfa68d7c2aca6febd392337e1fe6b078545e2736e23a731a4134`.
+Verification image:
+`sha256:3833930be9d1d7f9f8118ba38f5613c5c6c46c91c7c6009ce4a1fb0a2e238f3d`.
+Exact base8f74188+2file source archive SHA256:
+`1b22dadaaf3758c115c06e97e4514b468e58ea61e94a1d760e31e04425c68741`.
+Executed snapshot module copied from label/image-validated stopped lab container
+matches candidate compiled module; unchanged Core modules remain bound separately.
+Fault proof changes only assertions/expected code, not input/fault point; diff
+retained. No failed candidate run or hidden retry. Original RES-02 failure/proof
+reports remain historical and are not rewritten as passing.
+
+Supplemental loaders still use another exec/dedicated diagnostic directory with
+same legacy font IDs/checksums, synthetic diagnostic fingerprints and python
+directly versus actual fenced task wrapper. Core write-check precedes runtime
+probe; exact task-child syscall is not intercepted. Top-up after task cleanup
+and before loader controls remains explicit. Physical disk/inode/DB filesystem,
+DOCX fault matrix, soak and actual-data recovery remain unproved. Tmpfs volatile;
+keeper holds mount through lab only, not a persistence/backup proof. No production
+SQL/storage or actual-service actions. Recovery28-item prerequisites not discharged.
+
+Report,94-file SHA256 manifest, RED/GREEN/full-suite results, actual public wire/
+lookup/usage/reservations, PDF/loader/source bindings, review and local FF receipt:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-res02-fix-20261031/verification-report.html`.
+Ignored raw helpers/evidence remain in the reused Service audit checkout under
+`artifacts/oracle-audit-20261030/res02fix-*` and both project directories; remote
+roots stay under `/home/ubuntu/flowdoc-audit-187957aecc2d/`. Existing checkout
+retains prior evidence/inputs and was not created by this repair. Execution IDs
+N/A. Stop after accepted scope; no automatic extra experiment, data recovery,
+release or installation follows.
