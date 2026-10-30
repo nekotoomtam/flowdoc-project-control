@@ -2506,3 +2506,120 @@ keeper held the mount through lab API recreation only. No production SQL/storage
 access or service action; latest actual-data snapshot/recovery28-item prerequisites
 are not refreshed or discharged by this fix. Stop; no further experiment or
 rollout runs automatically.
+
+## RES-02 equal-load proof — authorized discovery 2026-10-30
+
+New explicit owner request: compare identical1800-record work before, during and
+after full lab writing space, no product repair. Owner Service with pinned Core;
+roles Evidence Reviewer/Cross-Repo Boundary Reviewer then Project Control Steward.
+Single-room discovery, bounded size/routine risk; execution IDs N/A. Canonical
+snapshot rebuilt; explicit Service request is authority for this scope.
+Candidate8f74188 and its previously built immutable image pair are reusable inputs.
+
+Plan/proof budget: fresh labeled Oracle Docker project/private network/synthetic
+database,768MiB tmpfs writing filesystem and existing1GiB API/512MiB DB limits.
+Three exact same payload/multipart bytes and template/font pins: baseline complete,
+middle request admitted while space exists then filled at real native-child
+checkpoint, final request after removing only lab filler. Validate input hashes,
+HTTP/PDF evidence, task/usage/delivery and reservations, same API identity and
+final counts. New requests while already full would be rejected before rendering;
+do not confuse such admission rejection with RES-02 processing failure.
+
+Gather resource-loader evidence without editing candidate: separate diagnostic
+calls in the same runtime image/UID and bounded writing filesystem, raw write
+check, public Core loadBundledResources result, then Service snapshotResources
+mapping. Use dedicated diagnostic folder, never modify a running task's files.
+Record exact differences between these supplemental calls and the actual task;
+do not call a supplemental write error an in-process app syscall trace. Available
+strace/perf are absent or unsupported for this kernel; do not install them or
+enable host-wide tracing. Pair source evidence with equal-load execution and
+explicitly preserve any remaining gap rather than modifying source to observe it.
+
+Allowed only ignored lab helpers/evidence and this existing canonical record.
+No Service/Core tracked source/config changes, migrations, production DB/storage
+access, actual-service actions, release/tag/push/install or new integration.
+Proof budget one complete three-way comparison plus three small loader controls;
+failed prerequisites remain retained and justify only bounded corrections/reruns.
+One external report/manifest and this record; no synthetic Work/maps/registries.
+Check candidate unchanged, stop owned containers and compare production metadata.
+Stop after supported classification/results; a confirmed defect is not permission
+to repair it. Physical disk/inodes, DB volume full, DOCX and soak stay out of scope.
+
+### RES-02 result — equal-load diagnosis confirmed, 2026-10-31
+
+**PASS for bounded diagnosis; RES-02 is Confirmed Defect / Medium for error
+classification. No product code changed.** Fresh Oracle project
+`flowdoc-res02-a7a5eda9a93b` uses unchanged8f74188 and runtime image
+`sha256:2341dde366765402ed361f7bacb08d975380042203779c90d3ec48cd3aa1274e`,
+verification image
+`sha256:bc9ed2e2148dd997dc6dcd4e2d46fa189ea8041733066a07a9aeb7148c79d72e`.
+All requests use exactly1800records/same402,431multipart bytes, SHA256
+`e90673bb47bd951a0c47b58ee0ad3a65d0a1128d66b3c719ffba92285c6976fa`.
+Payload SHA853ea591 and persisted input digestc324d47b match all3, as do template
+fingerprint42a59991 and font resource manifest5f0847e6.
+
+| Comparison | Observed result |
+| --- | --- |
+| Before full | Task succeeded, delivery succeeded; complete148-page PDF |
+| During full | Request admitted while space exists, then768MiB lab tmpfs filled at real child-PID processing checkpoint; task failed/FONT_CHECK_UNAVAILABLE, usage delivery not_started, no PDF output |
+| After removing filler | Exact same request succeeds on same API process, complete148-page PDF |
+| PDF control | Both files4,181,707bytes, SHA256b2606f74 identical; bundled pypdf parses both, extracts all Record0–1799; no all-page visual fidelity claim |
+| Original loader functions | Before/after: raw write/Core loadBundledResources/Service snapshotResources all succeed. Full: raw write ENOSPC(syscall write), Core RESOURCE_UNAVAILABLE/path tempRoot, Service FONT_CHECK_UNAVAILABLE |
+| State/credit |3tasks/3jobs/3usage, one terminal event per task, unreconciled0; failed task retains only402,299input bytes with held=used, queue slot false; successful tasks retain/reserve0 |
+| Lifecycle | API ID/PID/StartedAt unchanged throughout all3, restartCount0; no automatic rerender/resend observed |
+
+**Confirmed finding:** Service `src/fonts/snapshot.ts:22` maps every failed
+bundled-resource result to FONT_CHECK_UNAVAILABLE, losing Core's temporary-root
+classification. Task path `src/tasks/render-child.ts:225` calls this function
+with the task workspace. Executed image modules were copied read-only from its
+stopped, label/image-validated container: runtime-snapshot.js:22–24 and
+runtime-render-child.js:220 match candidate compiled modules. Pinned Core package
+`dist/runtime/loadResources.js:53–57` performs mkdtemp/write-check after resource
+manifest/asset-hash validation and returns RESOURCE_UNAVAILABLE/tempRoot on failure.
+Service `src/tasks/public.ts:28` then falls back to PDF_FAILED for the font code.
+The actual wire/owned lookup show PDF_FAILED; lookup delivery=failed with
+evidence=not_started, while durable usage records not_started. Do not describe
+HTTP200 multipart error as a delivered PDF or mix raw terminal/public projections.
+
+Impact: operator diagnosis can target fonts rather than the unwritable temporary
+storage; generic client error obscures the resource class. Severity Medium is for
+diagnostic loss under a clear condition, not data corruption. Equal-load baseline/
+recovery close the prior1-record-versus1800-record comparison gap. Original reports
+remain historical probable-risk observations; this is new confirmed evidence.
+
+Evidence limits: supplemental loader controls use separate exec processes as the
+same UID10001/image/filesystem, dedicated/lab/res02-diagnostics, same4legacy font
+IDs/checksums but synthetic diagnostic fingerprints, and python directly rather
+than the task's fenced wrapper. Core tempRoot write-check precedes Python/runtime
+probe. The controls do not intercept task-child return values/syscalls or modify
+its workspace. Cleanup can free normalized/work files after failure, so filler
+was topped up to free0 again before loader controls; both fill receipts retained.
+Exact app failing syscall remains untraced. No strace available; installed perf
+wrapper lacks matching kernel tools. No package installation or host-wide tracing.
+These limits do not undo directly observed Core-to-Service misclassification.
+
+**Proposed repair, not authorized/executed here:** preserve safe temporary-storage
+classification at Core/Service boundary, e.g. existing STORAGE_IO for an identified
+RESOURCE_UNAVAILABLE/tempRoot, keep genuine font/runtime errors distinct and add
+both storage and font regressions. Do not emit filesystem paths to clients or map
+all tempRoot failures specifically to ENOSPC/STORAGE_CAPACITY: Core's current
+catch also groups other unwritable-root causes. Separate repair scope required.
+
+All owned containers stopped, private network/no ports/own mounts. Production
+Docker identity/start/restart metadata before=after; no actual DB/storage/service
+actions. Service checkout remains clean at8f74188; no tracked source/config edits,
+branch integration, migrations/Core changes, push/tag/release/install. Full suites
+not rerun because candidate unchanged; actual3-way API/loader/PDF proof only.
+Tmpfs is volatile and keeper preserves its mount only during lab; external evidence
+is retained, not a persistence/off-host backup proof. No physical disk/inode/DB
+filesystem, DOCX, soak or actual-data recovery claim. Single complete comparison,
+no failed product run or rerun hidden. Work/Phase/Checklist IDs remain N/A.
+
+Report,61-file SHA256 manifest, full fixed multipart, both PDFs/wires and parsed
+record checks, loader results, executed source/line evidence and cleanup:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-res02-proof-20261031/verification-report.html`.
+Ignored helpers/evidence remain in Service audit checkout under
+`artifacts/oracle-audit-20261030/res02-*` and project name; remote root remains
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-res02-a7a5eda9a93b`.
+Stop after this classification. RES-02 is not fixed; no further experiment or
+production recovery/rollout starts automatically.
