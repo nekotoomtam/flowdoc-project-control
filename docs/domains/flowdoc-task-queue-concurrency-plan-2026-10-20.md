@@ -2058,3 +2058,125 @@ quiescence, matched/off-host real backups and authorized real-copy restore,
 maintenance/repair/reopen approvals are still separate prerequisites. Latest
 production SQL snapshot remains30Oct13:50Thai; no refresh was performed here.
 Stop at the accepted scope; no automatic follow-up, release or installation.
+
+## Interrupted-work fault batch — authorized scope 2026-10-30
+
+Owner authorized synthetic isolated Oracle tests: abrupt app-container removal
+during active native processing; actual PostgreSQL app-session termination during
+terminal write after completed HTTP delivery; client TCP reset after receiving
+only part of the artifact. Roles Evidence Reviewer/Project Control Steward,
+Service ownership, single-room IDs N/A, routine bounded verification. Use fresh
+labelled DB/network/volumes, no published ports, no production DB/data/mounts or
+service actions. Product source/migration/package changes, release/tag/push and
+host installation are forbidden. Inspect production Docker metadata only.
+
+Proof budget: one instance of each fault, actual client/DB checkpoints at the
+fault boundary, terminal state + one usage/event/job, delivery evidence consistent
+with observation, no automatic rerender/resend, queue release and storage charges
+equal retained actual files (not forced zero), healthy fresh canary after each;
+one final recreate/idempotence check. Lab-only advisory-lock trigger synchronizes
+the terminal transaction; pg_terminate_backend cuts its actual checked-out
+connection, not the entire DB service. Client fixture uses bounded synthetic
+text and a small real TCP receive window to reach a partial-artifact checkpoint.
+Preserve and correct demonstrated harness/prerequisite failures only. Limits:
+app/helper1GiB/1CPU, DB512MiB/1CPU, native deadlines bounded; no host-wide faults.
+Stop owned containers on exit, collect raw receipts/hashes, append one result
+and link one report. No new Work/map/full suite without changed product scope.
+
+### Result — FAIL: confirmed DB-disconnect availability defect; recovery verified
+
+All three requested fault scenarios completed in isolated Oracle lab
+`flowdoc-interrupt-267a224fa06b`. **Batch FAIL** is retained because one actual
+application PostgreSQL connection loss terminates the API process. Other fault
+and recovery criteria passed; successful recovery does not turn that defect
+into PASS. No product source, migration SQL, package pin, release or installation
+changed. Service candidate remains843bd02; runtime image00980f7d/source3e21a5c
+has no runtime-source difference from843bd02 (only the prior test-fixture change).
+
+| Fault/check | Observed result |
+| --- | --- |
+| App container killed | Real native-processing row/child captured, app paused and removed, same-image app recreated; failed/WORKER_INTERRUPTED, job failed, delivery not_started, no output/rerender |
+| DB finalization connection cut | Client received complete valid PDF/closing boundary; actual success UPDATE blocked on lab-only advisory-lock trigger, its PostgreSQL session terminated; API exited1 with unhandled Client error |
+| DB-cut durable state before recovery | Task sending, no usage; PostgreSQL log confirms FATAL administrator termination while UPDATE succeeded waited inside lab_hold_success |
+| Recovery after DB-cut crash | New same-image container closes task WORKER_INTERRUPTED; job remains succeeded and no resend; durable delivery unknown/unknown_after_interruption despite separately retained complete client PDF |
+| Client partial-artifact reset | Real TCP client received64of3,957,976PDF bytes while task sending and no usage; TCP RST; task failed, generation succeeded, delivery interrupted |
+| Fresh work | Three canaries, one after each fault/recovery, returned complete PDF and durable succeeded delivery |
+| Idempotence | Final additional recreate: health200, total6tasks/6jobs/6usage, each fault has one terminal event/usage/job; job IDs/history unchanged |
+| Resources | All fault queue slots returned; held=used=retained actual input bytes, not forced0; unused credit reconciled; canary storage held/used0 |
+
+#### INT-01 — Confirmed Defect / High
+
+- **Problem/owner:** Service checked-out PostgreSQL Client error lifecycle can
+  terminate the whole API while finalizing one delivered task.
+- **Implementation locations:** `src/db/connection.ts:7–10` acquires a client,
+  awaits transaction/rollback and releases it; `src/tasks/processing.ts:200` is
+  the terminal UPDATE after actual HTTP finish. Runtime stack shows the unhandled
+  asynchronous error emitted on pg Client. Promise-level transaction catch is
+  not an EventEmitter error handler; exact repair still needs implementation review.
+- **Path/condition:** complete HTTP PDF → post-response transaction → success
+  UPDATE waits on lab-only advisory lock → pg_terminate_backend of that actual
+  checked-out app session → Connection terminated unexpectedly / Unhandled error
+  on Client → Node exit1. Whole DB service was not cut and OOMKilled=false.
+- **Impact:** API availability and terminal persistence are lost until restart;
+  observed task remains sending/no usage. Other concurrent API work could be
+  interrupted, but concurrent blast radius and production restart policy were
+  not tested. No severe corruption/loss was observed; do not label Critical.
+- **Evidence/reproduction:** retained proof.mjs action dbcut synchronizes the
+  real UPDATE, identifies its blocking PID and terminates that one private-DB
+  session. PostgreSQL log, API unhandled-error stack/exit1, complete PDF/hash,
+  pre-recovery durable snapshot and subsequent recovery receipts support the claim.
+- **Proposed remediation:** handle checked-out Client and idle Pool error events
+  with correct connection disposal and controlled readiness/recovery; preserve
+  durable-state reconciliation and transport-finish evidence, with no automatic
+  rerender/resend on uncertain finalization. Do not implement by retrying the
+  whole request or blindly treating a lost connection as a rolled-back commit.
+  Source repair is outside this verification-only batch and remains undone.
+
+Earlier F3 SQL-rejection23514 proof and this connection-loss event exercise
+different failure paths. This finding adds current evidence without rewriting
+the bounded earlier acceptance. An in-scope continuation inspected recovery
+and finished the client case after the real defect,
+without changing the candidate or marking the failing case PASS.
+
+Retained input bytes after cleanup: appkill402,299; DBcut291; clientcut335,489.
+For each, actual files are input-only and equal held/used reservations; all queue
+slots are false. Inputs are retained under existing expiry policy, not an unused
+reservation leak. Four fully received PDFs (DBcut response +3canaries) parse with
+expected text and identical SHA256; existing full-page visual evidence is reused
+only because those bytes match. The64-byte fragment is intentionally incomplete.
+The client-cut raw terminal reason is ECANCELED and public fallback PDF_FAILED,
+while generation succeeded/delivery interrupted; this diagnostic mapping is an
+observed contract-review concern, not promoted as a second confirmed defect here.
+
+Retained unsuccessful prerequisites/harness attempts: a90b63f7fbaf rejected the
+URL pathname because the test guard omitted its leading slash;033e421c756f
+recovered the app-kill task but looked up HTTP before readiness and got
+ECONNREFUSED. Only the harness guard/readiness wait changed before fresh retry.
+267a224fa06b then exposed the real API crash. Continuation preflight first used
+an LF-text hash instead of executed CRLF bytes and stopped before DB work;
+checking actual byte hash corrected that harness prerequisite. Raw logs and
+scripts remain. These failures are not all attributed to the product, and the
+actual DB-cut defect is not hidden among prerequisite failures.
+
+All three attempts' owned containers are stopped; lab evidence/volumes remain.
+Internal network, no ports, own labels/volumes/mounts; production Docker identity/
+start/restart metadata matches before/after original and continuation checks.
+No production DB/storage access, actual-service stop/restart, release/tag/push,
+installation or runtime switch occurred. No zero shared-host impact claim.
+
+Report, INT-01 detail/source snapshots, native/HTTP evidence, DB/API logs,
+recovery/idempotence receipts, initial attempts and98-file SHA256 manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-interruption-20261030/verification-report.html`.
+Ignored local scripts/receipts remain under the Service audit worktree's
+`artifacts/oracle-audit-20261030/interruption-*`; remote evidence remains at
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-interrupt-267a224fa06b`.
+
+**Next recommended work:** repair INT-01 in Service connection/transaction
+lifecycle with a focused implementation scope, then rerun actual session-loss
+regression and affected consumer/leadership checks before integration. Do not
+call this fault batch passing or promote product/map/release readiness. Lost
+COMMIT acknowledgement, whole-DB outage, production restart policy, concurrent
+load, DOCX fault matrix and TTL soak remain unverified. The real-recovery28-item
+plan keeps its own outstanding prerequisites; latest production SQL snapshot
+remains30Oct13:50Thai. Stop this completed verification batch; no source repair
+or further automatic experiment is running.
