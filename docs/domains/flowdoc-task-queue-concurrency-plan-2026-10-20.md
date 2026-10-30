@@ -1293,3 +1293,87 @@ The requested disposable rehearsal is complete. Real legacy tasks remain
 quarantined and unmodified; their inventory, backups, writer shutdown, populated
 restore rehearsal and repair are not authorized by this result. Release and
 installation remain separate future authorizations.
+
+## Legacy linked-job/output rehearsal — 2026-10-30 follow-up
+
+The owner explicitly authorized extending the Oracle synthetic rehearsal to
+legacy tasks with linked jobs/outputs, keeping real data, release and installation
+out of scope. Owner: Service; roles: Evidence Reviewer and Project Control
+Steward. This is bounded single-room verification, routine risk within a fresh
+disposable lab; execution/Work/Phase/Checklist IDs N/A. Product candidate843bd02
+and the prior runtime image/source equivalence remain unchanged. Allowed scope
+is ignored lab scripts/fixtures, a durable evidence report and this existing
+record. No implementation, migration, new registered execution or product-map
+promotion is involved.
+
+The acceptance target was four PDF cases with actual PostgreSQL task/job/output
+relationships: queued job, running job, succeeded job with output present, and
+succeeded job with output already missing. The same backup, exclusive maintenance,
+normal recovery, container recreation, TTL and rollback procedure was reused.
+Prior eight negative-safeguard proofs remain reusable within their lab-specific
+scope; this follow-up did not rerun them or either complete product suite.
+
+**PASS for the four synthetic linked cases.** New lab
+`flowdoc-legacy-jobs-86366371bab0` used its own PostgreSQL18 databases, task-storage
+volumes and internal network, without published ports. Real intake/normalization
+produced four originals/normalized inputs. Four linked generation jobs and two
+output metadata rows were inserted under the actual schema/immutable-pin
+triggers, with explicit synthetic process/state/send markers and NULL runtime
+origin. The present output reused the preceding rehearsal's valid one-page PDF;
+the missing-output case retained metadata but deliberately omitted the file.
+This is not proof of historical transmission or recipient behavior.
+
+| Scenario | Job after recovery | Generation / delivery usage | Output after cleanup |
+| --- | --- | --- | --- |
+| Queued | failed / WORKER_INTERRUPTED | not_started / not_started | none |
+| Running | failed / WORKER_INTERRUPTED | interrupted / not_started | none |
+| Succeeded, file present, sending marker | succeeded | succeeded / unknown | expired/deleted |
+| Succeeded, file absent, sending marker | succeeded | succeeded / unknown | expired/deleted |
+
+All four tasks terminalized once as failed/WORKER_INTERRUPTED with one terminal
+event and usage row each. Runtime/storage origin stayed NULL. Job input/prepared
+data, task/template/Core pins and output identity/path/hash/size/format/page count
+were retained. Existing succeeded generation did not become delivery success.
+Original expiry timestamps were unchanged. Queue slots returned and held=used
+matched four291-byte originals (1164bytes). After a lab-only SQL clock+4hours,
+all five tasks including the new successful request had storage charges0 and
+cleanup done, without rewriting expiry or disabling identity triggers.
+
+Before repair health/admission were503 with no new task. First/repeat task and
+linked-job/output receipts were byte-identical after actual API container
+recreation: the four original job IDs and two original output IDs remained, with
+no duplicate terminal/usage or additional job/output at those checkpoints. A new
+HTTP request then returned200 and a parsed one-page PDF. The receipts do not
+establish continuous absence of every possible transient duplicate execution.
+
+Hashed DB/storage backups were restored and later restored again for rollback;
+public-table row JSON and enumerated non-dot task-data contents matched the
+source. Maintenance/repeat snapshots matched and changed only task process
+references plus version/update timestamp. Lifecycle driver timestamp comparisons
+use millisecond precision; no schema/sequence/metadata/hidden-control-file
+equivalence is claimed. A separate read-only review found no blocker within
+this bounded scope.
+
+Initial recorder failures are retained: PostgreSQL int8 string versus JSON
+number comparison, and a missing variable in the resume receipt after the
+rollback snapshot had succeeded. The comparator was corrected without product
+changes; final backup-hash/rollback assertions were checked independently and
+passed. No claim is made that the initial command passed end-to-end.
+
+All owned containers stopped; synthetic backups, volumes and evidence remain.
+Observed production container identity/image/start/restarts/mounts matched
+before/after, without production SQL/storage access. This does not prove
+production row integrity or zero transient load on the shared Oracle host.
+No product code, release/tag, remote, host package installation, installed
+configuration or production runtime changed.
+
+Report, scripts, original receipts, synthetic backups and file-hash manifest:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-linked-20261030/verification-report.html`.
+Raw lab evidence:
+`/home/ubuntu/flowdoc-audit-187957aecc2d/legacy-rehearsal-jobs-86366371bab0`.
+
+The earlier missing linked-job/output fixture is now exercised for these four
+PDF cases. DOCX, arbitrary corruption and real-deployment writer inventory,
+consistent off-host backups, full-scope restore and actual repair are not
+established or authorized here. The separately authorized real-data plan above
+remains applicable; real legacy data stays quarantined and unchanged.
