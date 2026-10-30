@@ -1,0 +1,9 @@
+{
+  "id": "flowdocmake-docx-run-candidate",
+  "version": "0.3.1-candidate.2",
+  "supported": {
+    "service": "0.5.2",
+    "core": "0.5.2",
+    "coreArtifactSha256": "04442fd16ec884e5cf87664dcf3562e4d4f25ae4d32b996d033a88642fe1668d"
+  }
+}
