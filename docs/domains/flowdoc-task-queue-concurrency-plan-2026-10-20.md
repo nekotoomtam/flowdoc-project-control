@@ -1612,3 +1612,56 @@ Report, filtered diagnostics/geometry, revision comparisons, exact read-query
 sources, final boundary and SHA256 manifest:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-failed-job-20261030/verification-report.html`.
 No application data, services, release/tag, remote or installation changed.
+
+## จุดกลับมาทำต่อ — เจ้าของขอสรุปเก็บไว้ 2026-10-30
+
+เจ้าของแจ้งว่าอาจไม่อยู่ระยะหนึ่ง และยืนยันให้สรุป/เตรียมจุดกลับมาทำต่อเท่านั้น
+ขอบเขตรอบนี้จึงไม่รวมการเดินงาน labเพิ่มระหว่างไม่อยู่. รอบนี้เป็นการเก็บสถานะใน Project Control
+โดย Steward; execution IDs N/A ไม่เปิด Work/registryเก่ากลับมา ไม่เริ่ม background
+monitor หรือทดสอบใหม่ และไม่เชื่อมต่อ Oracleเพิ่มเพื่อเตรียม checkpointนี้.
+
+### สถานะที่กลับมาแล้วควรอ่านก่อน
+
+- Service F1–F6 อยู่ใน development `codex/template-registry` ที่843bd02;
+  Core development `codex/template-binding` อยู่1817efa. ตรวจ Git refsในเครื่อง
+  รอบcheckpointนี้แล้ว; Service release25e912f และ Core release55315caคงเดิม.
+  Development integration ไม่ใช่ release หรือการติดตั้งบน Oracle.
+- ซ้อมกู้งานไม่มี origin ในlabแล้ว รวม linked job/outputทั้งPDFและDOCXอย่างละ
+  4เคส พร้อมrepeat recovery, recreate, reservations/TTL และbackup rollback.
+  ผลจำกัดตามfixtures ไม่รวมทุกข้อมูลเสียหายหรือWord visual fidelity.
+- Live Oracleล่าสุดที่สำรวจแบบอ่านอย่างเดียวเมื่อ30ต.ค.: Service/Core0.5.2,
+  schemaถึง026 ไม่ใช่image/ownership027ที่ซ้อม. App DBflowdoc/publicพบtasks0
+  และpending jobs0; snapshotท้ายการตรวจfailureยังได้pending tasks/jobs0.
+  นี่เป็นข้อมูลตามเวลาสำรวจ ไม่รับรองว่าจะยังเหมือนเดิมเมื่อกลับมา.
+- Failed jobหนึ่งรายการเป็นpreviewPDFrevision1เก่าของ26ต.ค.ที่LAYOUT_FAILED
+  ตรงเลขหน้าheader มีrevision2สำเร็จสองjobแล้ว. LineHeight10.5→16ptเป็น
+  probable causeที่มีหลักฐานสนับสนุน ยังไม่ใช่root causeที่reproduceยืนยัน.
+  ไม่พบเหตุให้กู้คิว ลบประวัติ หรือส่งงานนี้ซ้ำจากหลักฐานปัจจุบัน.
+
+### จุดอ่านและหลักฐานที่เก็บไว้
+
+1. อ่านส่วนท้ายของบันทึกนี้: live read-only inventory และfailed preview investigation.
+2. อ่าน [แผนกู้ข้อมูลจริง](flowdoc-legacy-recovery-review-plan-2026-10-30.md):
+   28รายการ โดยA1ได้รับอนุญาตและสำรวจแล้ว ส่วนA2/A3มีหลักฐานบางส่วน;
+   maintenance/backup/repair/reopenยังไม่ได้อนุมัติหรือทำจริง.
+3. เปิดรายงานตามlocatorsในแต่ละส่วนด้านบน: PDF linked, DOCX linked,
+   production read-only inventory และfailed-job investigation. ตรวจSHA256
+   manifestsทั้ง4ชุดอีกครั้งในเครื่องรอบcheckpointนี้แล้ว ลิงก์และraw evidenceยังอยู่.
+4. เก็บaudit worktrees/ignored scriptsและlab evidenceเดิมไว้สำหรับreproduction;
+   ไม่ลบหรือcleanupทรัพยากรเดิมในรอบcheckpointนี้. Lab containersหยุดตาม
+   หลักฐานปิดรอบก่อน ไม่ได้ตรวจhostซ้ำในรอบนี้.
+
+### เมื่อต้องการกลับมาทำต่อ
+
+- เริ่มจากProject ControlและตรวจGit/ข้อมูลล่าสุดก่อน อย่าใช้snapshot30ต.ค.
+  เป็นข้อเท็จจริงปัจจุบันหรือเปิดexecutionเก่ากลับมา.
+- ให้เจ้าของเลือกขอบเขตใหม่: หากมีงานค้างใหม่ให้สำรวจแบบอ่านอย่างเดียวภายใน
+  อำนาจที่มีอยู่ก่อน; หากต้องพิสูจน์failureเก่าจริงให้กำหนดcontrolled replayในlab
+  แยก; Word visual acceptanceเป็นงานอีกขอบเขตหนึ่ง ไม่ได้ทำไว้แล้ว.
+- ไม่ต้องเพิ่ม027หรือซ่อมข้อมูลเพียงเพื่อปิดchecklistที่ไม่มีงานเป้าหมาย.
+  หากต้องเปลี่ยนruntime/schema ให้แยกแผนและอำนาจrelease/installationจากrecovery.
+- คงข้อห้ามเดิม: ไม่แก้ข้อมูลจริง ไม่หยุดบริการ ไม่release/tag/pushหรือติดตั้ง
+  จนกว่าจะได้รับอนุญาตตรงขอบเขตนั้น; การอนุญาตอ่านอย่างเดียวไม่ใช่การอนุมัติซ่อม.
+
+Checkpointนี้ส่งมอบสถานะและเส้นทางกลับมาทำต่อครบ ไม่มีงานปฏิบัติการใหม่ที่
+กำลังดำเนินการให้เจ้าของต้องเฝ้าต่อ และไม่ได้ตั้งงานอัตโนมัติระหว่างเจ้าของไม่อยู่.
