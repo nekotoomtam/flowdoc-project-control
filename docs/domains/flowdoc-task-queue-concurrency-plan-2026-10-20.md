@@ -1665,3 +1665,33 @@ monitor หรือทดสอบใหม่ และไม่เชื่�
 
 Checkpointนี้ส่งมอบสถานะและเส้นทางกลับมาทำต่อครบ ไม่มีงานปฏิบัติการใหม่ที่
 กำลังดำเนินการให้เจ้าของต้องเฝ้าต่อ และไม่ได้ตั้งงานอัตโนมัติระหว่างเจ้าของไม่อยู่.
+
+## กลับมาตรวจสถานะก่อนทำต่อ — 2026-10-30 เวลา13:50ไทย
+
+เจ้าของกลับมาและขอตรวจสถานะล่าสุดก่อน โดยคงการห้ามแก้ข้อมูลจริง หยุดบริการ
+releaseหรือติดตั้ง. รอบนี้เป็น bounded read-only status refresh โดย Evidence
+Reviewer/Project Control Steward; execution IDs N/A ไม่เปิดexecutionเก่ากลับมา.
+
+ตรวจlocal refsแล้ว Service development843bd02/release25e912f และ Core
+development1817efa/release55315caตรงcheckpointเดิม; checkoutsที่ตรวจสะอาด.
+ไม่ได้fetch/pushหรืออ้างว่าได้ตรวจremote Git refs. Oracle queryณ
+`2026-10-30T06:50:07.003561Z` (13:50:07เวลาไทย) ใช้READ ONLY transaction
+พร้อมtimeoutsและROLLBACKตามวิธีที่อนุญาตเดิม พบ DBflowdoc/public:
+tasks0, pending tasks0, queued/running jobs0, reservations/held bytes/used bytes0.
+Job historyยังเป็น36succeeded/1failed; ไม่ได้ตรวจfailureเดิมซ้ำในรอบนี้.
+
+Service/Coreยัง0.5.2, PostgreSQL18.6; migrations26รายการ/checksumsตรงกับ
+snapshotเดิมถึง026 ไม่มีruntime origin columns/027. GET /health200เป็นเพียง
+readiness observation ไม่ได้ทดสอบadmissionด้วยการสร้างงาน. API/DB container
+IDs/images/start/restart countsตรงเดิมและคงที่ระหว่างตรวจ ทั้งคู่ยังrunning.
+ไม่แก้ข้อมูล ไม่หยุด/restartบริการ ไม่release/tag/pushหรือติดตั้ง.
+
+หลักฐานใหม่และquerysourceพร้อมSHA256 manifestเก็บที่
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/audit-f5-f6-20261027/artifacts/oracle-audit-20261030/resume-readonly-20261030-a67225`.
+ไม่เขียนทับรายงานเดิมหรือเปิดlabรอบใหม่. Snapshotนี้ยังจำกัดเฉพาะapp DB/schema
+และเวลาที่ตรวจ ไม่ใช่writer quiescence/backup proofหรือการรับรองว่าจะไม่มีงานใหม่.
+
+ยังไม่พบงานเป้าหมายให้กู้ในtargetนี้. งานที่อาจเลือกขอบเขตใหม่ต่อคือ controlled
+lab replayเพื่อพิสูจน์สาเหตุpreviewเก่า หรือWord visual acceptance; ทั้งสองยังไม่
+เริ่มในรอบstatusนี้. แผนกู้จริงยังต้องผ่านcompatibility/backup/maintenance/repair
+ตามอำนาจที่แยกไว้ก่อน ไม่เพิ่ม027หรือเปลี่ยนruntimeเพียงเพื่อปิดchecklist.
