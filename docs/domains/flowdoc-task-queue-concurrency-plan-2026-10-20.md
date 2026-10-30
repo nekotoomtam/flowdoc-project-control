@@ -1086,3 +1086,63 @@ failures, production observations and remaining gaps. Raw lab evidence is also
 retained under `/home/ubuntu/flowdoc-audit-187957aecc2d` on Oracle. These artifacts
 and repository tests support the bounded claims; this status prose is not a
 replacement for those proofs.
+
+## Three font-height binding guards completed — 2026-10-30 follow-up
+
+The owner subsequently requested the three remaining skipped checks on the same
+isolated Oracle lab, with no real-data changes, release or installation. This
+bounded verification-only follow-up uses the unchanged Service candidate
+`843bd0204b424f32cf7fed8a8ebaab6964a33388` and FlowDocMake0.3.1. Roles: Evidence
+Reviewer and Project Control Steward; execution/Work/Phase/Checklist IDs N/A.
+The earlier 729/0/3 Service and 1268/0/0 Core complete-suite observations remain
+historical results. This round ran only the relevant guard module: **4 passed,
+0 failed, 0 skipped**, covering all three previously skipped cases plus the
+always-enabled setup-instruction assertion. It is not a new combined732-test
+suite claim. Product source and package pins did not change.
+
+| Previously skipped criterion | Evidence |
+| --- | --- |
+| Reject `prepare` on an unrelated loopback port before admin mutations | Actual MCP receipt reports `ready:false` / `RUNTIME_VERSION_UNKNOWN_OR_INCOMPATIBLE`; process exits1; administrator requests0 |
+| Reject `activate` on an unrelated loopback port before admin mutations | Same real preflight rejection occurs before the visual-approval step; administrator requests0 |
+| Accept the actual inspected container binding without repeating intake | Real Docker inspection/exec and actual localhost binding return `READY`; repeated `prepare` leaves six font catalog/audit table counts and hashes unchanged |
+
+The fixture was prepared through the unchanged real seven-family import/review
+helper against the lab API, rather than inventing a completed intake state.
+`review-visual.json` remains `NOT_REVIEWED`; no visual approval or activation was
+claimed or performed. Additional saved raw MCP receipts establish that both
+negative cases failed at runtime/port preflight, rather than passing merely
+because visual approval was absent. The source negative tests deliberately
+serve the same contract on an unrelated local test server; positive binding,
+Docker metadata, native readers and PostgreSQL are real.
+
+`flowdoc-height-stage4-runtime` was created only after verifying that this
+required test name was unused, and carries the lab project label. It publishes
+only a dynamically assigned `127.0.0.1` port. An additional lab-only bridge was
+needed because the previous internal-only network did not publish that port;
+the database stays on the internal network. Private client files and reader
+tools were confined to the lab directory/disposable image; the reader container
+mounts only the lab directory read-only. No Docker socket or production data is
+mounted, no system package is installed on Oracle host, and no installed plugin
+configuration is changed. Restricted command wrappers delegate actual Docker
+inspection/version execution only to the owned lab API; they do not manufacture
+inspection results. Both tested scripts match the candidate content, with the
+recorded executed CRLF bytes distinguished from canonical Git LF hashes.
+
+All owned lab containers are stopped and evidence/volumes retained. Production
+container identities, images, start times, restart counts and mount sets remain
+unchanged. This is an observed runtime-identity boundary, not a row-by-row
+production integrity comparison or a guarantee of zero transient shared-host
+resource impact. No product code, release/tag, remote, installation or Oracle
+runtime switch changed in this follow-up.
+
+Report, raw focused results, raw negative receipts, positive binding identity,
+fixture provenance, table hashes and final boundary check are retained at:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-height-guard-20261030/verification-report.html`.
+The adjacent `verification-summary.json` and `evidence-manifest.json` bind the
+claims and file hashes. Raw operator preparation and earlier prerequisite
+failures remain under the Oracle lab's `height-guard` directory.
+
+The three test gaps above are now closed. Real legacy tasks without runtime
+identity remain quarantined; actual data repair still requires separately
+authorized backups, writer quiescence and restore/recovery rehearsal. Release,
+installation and new visual/Word acceptance remain outside this verification.
