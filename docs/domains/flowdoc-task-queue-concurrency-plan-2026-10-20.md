@@ -2395,3 +2395,114 @@ Ignored proof helpers/collected evidence: Service audit worktree
 Remote roots remain under `/home/ubuntu/flowdoc-audit-187957aecc2d/`.
 Next recommended decision: scope health-capacity and IO diagnostic work explicitly;
 no automatic repair, extra experiment, real-data recovery or rollout follows.
+
+## RES-01 repair — authorized storage-aware health 2026-10-30
+
+Explicit owner authorizes health correction and repeated Oracle lab full/restore
+verification. Single-room implementation then verification; owner Service,
+roles Product Implementation Agent/Evidence Reviewer/Project Control Steward;
+execution IDs N/A. Bounded size/routine risk. Current canonical snapshot rebuilt;
+use the explicit Service request, not unrelated frontend goal. Existing isolated
+Service checkout is clean at0978fbe; new branch codex/health-storage-readiness.
+
+Design: GET/health consults the same initial-byte/global-storage calculation as
+task admission, including outstanding and legacy reservations and existing free
+floor. Probe is read-only, takes no quota/row lock and reserves no bytes; actual
+admission remains serialized and authoritative. An observation is not a guarantee
+against resource changes after the response. Space/error =>503 generic unavailable;
+restoration =>200 without process restart. Keep runtime/leadership/font checks,
+legacy no-task health, owned lookup, principal quotas and admission errors intact.
+No RES-02 error mapping, migrations/Core/package/config/retry changes.
+
+Proof: four real-PG regressions show old code3fail/1pass before fix (floor-boundary,
+outstanding reservations, injected space-read error, owner quota separation); exact same tests
+must GREEN. Local TypeScript/Docker builds, one complete Service suite because
+shared HTTP/intake consumers are affected, native fixtures reused with skips
+reported; no new Core suite for unchanged pin. New immutable-image Oracle API
+project: baseline PDF, real bounded768MiB tmpfs ENOSPC, health503/admission503 with
+no task allocation, owned lookup still200, remove only filler, health200 and new
+complete PDF on same process, repeat full/restore once, recreate/idempotence and
+quota reconciliation. Compare production metadata before/after, stop owned
+containers, retain attempts. No production SQL/storage/service actions, push/tag/
+release/install. No real recovery or automatic rollout from passing lab proof.
+
+Budget: one RED, one GREEN/full suite, two actual filesystem full/restore cycles;
+only demonstrated failure/prerequisite permits bounded reruns. Existing record
+and one external report/manifest; no synthetic execution/map/shared-plan records.
+Commit after relevant checks pass; source review before local development
+integration. Stop when criteria/impact coverage pass, preserve unrelated evidence.
+
+### RES-01 resolution — storage health repair verified locally
+
+**PASS within this repair scope.** Commit
+`8f741885e0fa4256ab9cbc2f7fdb2ed7a2bde53a` changes3source files and1test and is
+fast-forwarded locally from0978fbe into development `codex/template-registry`.
+Prior resource-exhaustion observations remain historical facts; this is new
+implementation and proof, not a rewrite of that report. Source/release/version/
+Core pins and runtime installation boundaries remain distinct. No push/tag/
+release/install or actual-runtime switch occurred.
+
+`src/tasks/repository.ts` exposes a read-only storageReady snapshot using the
+existing admission capacity function with policy.initialBytes. Intake exposes
+it, and `src/http/server.ts` adds it only to GET/health. No storage reservation,
+DB/file write, quota lock or duplicated arithmetic. Existing runtime/font/
+leadership checks, principal quotas, actual admission locking/errors and owned
+lookup remain intact. Space-read/query failure returns false and the checked-out
+client is released in finally. Readiness is a point-in-time global-storage
+observation; actual admission must still check after it, and this does not claim
+that every principal/queue/legacy filesystem can accept every request.
+
+| Proof | Result |
+| --- | --- |
+| RED real PostgreSQL | Exact new4tests on0978fbe:3failed/1passed, expected503 but observed200 |
+| GREEN exact candidate |4passed/0failed: free-floor equality and1byte short, outstanding reservation deduction, same-app recovery, no accounting mutation, space-read error redaction, runtime fail-closed and owner-quota separation |
+| Builds | Local TypeScript and immutable Docker verification/runtime builds pass |
+| Complete Service suite |736passed/0failed/3skipped, exit0; unchanged native/font/plugin fixtures reused |
+| Actual full filesystem | Fresh Oracle project, bounded/lab tmpfs768MiB filled to ENOSPC(errno28)/free0 twice; host disk not filled |
+| Full-space API | Each cycle3health probes503; POST/documents503 STORAGE_CAPACITY with taskId null/no new tasks or reservations; owned existing-task lookup200 |
+| Restore without restart | Remove only lab filler; each cycle health200 then complete multipart/PDF, API ID/PID/StartedAt identical, restartCount0 |
+| Recreate and quota | Four successful canaries total: baseline, restore1/2, final recreate. Final actual SQL counts4tasks/4jobs/4usage, unreconciled0; prior job/usage/terminal IDs unchanged; retained files/reservations0 |
+| Source review/integration | Independent read-only source reviewer found no actionable findings; reviewer ran no tests/Oracle. Tested4overlay hashes match commit blobs after newline normalization. Clean unchanged local FF; passing proof reused without repeat suite |
+| Cleanup/boundary | All owned RED/GREEN/suite/API containers stopped; internal networks/no ports/own mounts; production Docker identity/start/restart metadata stable before/after each phase |
+
+Three skips are the operator/container-binding HEIGHT_DELIVERY_CONFIG cases,
+not PASS in this suite. No new Core suite because vendor/Core pin is unchanged.
+Source review does not newly prove pool-cap/legacy-accounting branches or DB-loss
+recovery; shared admission arithmetic remains unchanged and older evidence retains
+its original limits. All4received PDFs hash to the previously parsed/text/visually
+checked one-page ac7251a1 artifact, so identical-byte artifact proof is reused;
+no new visual review or dependency installation is claimed. README/usage reviewed;
+no new setup flags/version/pin or release-install instructions required.
+
+Regression/build project `flowdoc-health-7eef79c93d15`.
+Actual API project `flowdoc-health-api-4b95de986c85`.
+Runtime image:
+`sha256:2341dde366765402ed361f7bacb08d975380042203779c90d3ec48cd3aa1274e`.
+Verification image:
+`sha256:bc9ed2e2148dd997dc6dcd4e2d46fa189ea8041733066a07a9aeb7148c79d72e`.
+Exact0978fbe+4file source archive SHA256:
+`6c3b0ada086097ce80aee2360628b6dc4aa9ce21a56d5d44c401d93f642ff678`.
+
+Harness limits retained transparently: local SSH launcher timed out at25s after
+the detached build/suite started; remote progress was confirmed and the same run
+completed, with no duplicate launch. Reused runner's green-summary.json contains
+a stale hardcoded passed3; actual Vitest green-results.json and executed assertion
+require4/0. Raw artifact retained, derived summary cites primary results. These
+are harness/reporting issues, not product failures or hidden failed test reruns.
+
+Report,94-file SHA256 manifest, primary RED/GREEN/full-suite results, API client/
+DB/free-space/identity evidence, tested source binding and local integration:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-health-storage-fix-20261030/verification-report.html`.
+Ignored raw helpers and collected evidence remain at the reused Service audit
+checkout under `artifacts/oracle-audit-20261030/health-*` and both project names;
+remote roots remain under `/home/ubuntu/flowdoc-audit-187957aecc2d/`. Reused audit
+checkout retains earlier evidence/inputs; it was not created by this repair.
+
+RES-02/FONT_CHECK_UNAVAILABLE mapping remains unmodified/probable; equal-load
+control and exact low-level IO cause still need separate authorization/proof.
+Physical disk/inodes/DB filesystem full, DOCX faults, soak, production recovery
+and all-stop persistent storage remain outside this scope. Tmpfs data is volatile;
+keeper held the mount through lab API recreation only. No production SQL/storage
+access or service action; latest actual-data snapshot/recovery28-item prerequisites
+are not refreshed or discharged by this fix. Stop; no further experiment or
+rollout runs automatically.
