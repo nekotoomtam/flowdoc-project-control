@@ -2735,3 +2735,122 @@ roots stay under `/home/ubuntu/flowdoc-audit-187957aecc2d/`. Existing checkout
 retains prior evidence/inputs and was not created by this repair. Execution IDs
 N/A. Stop after accepted scope; no automatic extra experiment, data recovery,
 release or installation follows.
+
+## DOCX full-space parity — authorized verification 2026-10-31
+
+Explicit owner requests the same1800-record before/full/restored resource-fault
+comparison for DOCX on isolated Oracle. Single-room verification; owner Service
+with pinned Core package; role Evidence Reviewer then Project Control Steward;
+execution IDs N/A, bounded size/routine risk. Rebuilt canonical snapshot and
+current explicit Service request govern, not unrelated frontend activity.
+Reuse unchanged2c089b5 and verified RES-02 runtime/verification image pair.
+
+Plan/proof budget: one fresh labeled project/private network/synthetic DB with
+same1GiB API/512MiB DB limits and768MiB bounded tmpfs write filesystem. Same
+402,431byte multipart/payload/template/fonts as PDF; only Output-Format:docx and
+DOCX artifact expectations change. Within DOCX all3requests/pins/input digests
+must agree; do not require PDF/DOCX format-dependent input digests to match.
+Baseline/restored produce valid native DOCX, full processing must fail STORAGE_IO
+in raw terminal/usage/public wire/owned lookup and never report successful send.
+Admit middle request before fill at real native-child checkpoint; do not confuse
+already-full new-admission rejection with a processing fault. Assert actual job/
+task/output format, DOCX MIME/name/receipt disclosures, no PDF artifact fallback.
+
+Check complete multipart plus artifact hash, ZIP CRC/XML/relationship integrity
+and all1800records in both DOCX files. Compare semantic document content; store
+actual byte hashes without assuming ZIP metadata deterministic. DOCX pageCount
+null/wordVerifiedfalse/fieldRefreshrequired remain truthful; no native Word visual
+or pagination acceptance. Same process, final3tasks/3jobs/3usage, no duplicate
+terminal/delivery, held=used=actual retained files and queue slots returned.
+Reuse original loader diagnostics with their separate-process limitations.
+
+No tracked Service/Core source/config changes, migration, new image build/full
+suite, production SQL/storage/service access, release/tag/push/install or branch
+integration. Allowed only ignored proof helpers/evidence and this canonical
+record. One external report/manifest, retain failed attempts, bounded retries
+only for demonstrated prerequisites/failures. Stop owned lab containers, compare
+production metadata before/after, preserve evidence outside volatile tmpfs.
+Stop after results and coverage review; findings do not authorize code repair.
+
+### DOCX result — three-way experiment completed, output parity FAIL
+
+**FAIL_DOCX_1800_OUTPUT_PARITY.** Do not mark this batch PASS merely because
+STORAGE_IO and state cleanup work. Candidate/image remains2c089b5; no product
+source/config edits, Core budget increase, record reduction, image build or
+branch integration. All existing PDF repair evidence keeps its original scope.
+
+Initial project `flowdoc-docxspace-2d80974e5c9e`,1GiB/1CPU, failed before fill:
+task/job RENDER_FAILED, output_formatdocx, no artifact/delivery. Original harness
+asserted one artifact and stopped before persisting the wire; failed assertion,
+DB rows and stopped-container log/metadata retained. Read-only inspection starts
+only its synthetic DB then stops it again, never restarts that API. OOMKilledfalse
+and no Docker OOM event in its start/stop interval; exact cause remains Unverified.
+Do not infer absence of every memory/V8/signal problem from Docker metadata.
+
+The observed failure justified one fresh bounded diagnostic continuation:
+`flowdoc-docxspace-057d7189fd11`, existing opt-in4g-2cpu profile, API4GiB/2CPU,
+TASK_QUEUE_MAX_PROCESSING1, DB512MiB and768MiB bounded tmpfs as before. Host
+available-memory prerequisite raised to5GiB; no production profile changed. This
+is a different diagnostic environment and does not erase the1g failure. Harness
+now saves raw wire before artifact checks and records unsuccessful baseline/
+restored cases while preserving overall FAIL; not a relaxation into PASS.
+
+| Same1800-record DOCX request on4g | Actual result |
+| --- | --- |
+| Before full | Task failed/DOCX_OUTPUT_BUDGET_EXCEEDED; public LIMIT_EXCEEDED, no DOCX |
+| Full during processing | Admitted before fill, then native-child checkpoint/ENOSPC/free0; raw terminal/usage/public wire/lookup STORAGE_IO, no output/delivery; health503 |
+| After filler removed | Same payload again fails/DOCX_OUTPUT_BUDGET_EXCEEDED, public LIMIT_EXCEEDED; no DOCX |
+| Identity/integrity |3tasks/3jobs/3usage, one terminal each, unreconciled0; each held=used=actual402,299retained input bytes at lab checkpoint, queue slotsfalse |
+| Lifecycle | API ID/PID/StartedAt unchanged across3tasks, restartCount0; no automatic resend or extra job observed |
+| Input/format | Exact402,431byte multipart SHAe90673bb and payloadSHA853ea591, same template/fonts; Output-Formatdocx frozen in all task/job/usage records |
+| Supplementary loaders | Before/after resource loaders succeed; at full raw writeENOSPC/Core RESOURCE_UNAVAILABLE-tempRoot/Service STORAGE_IO, preserving previous probe limitations |
+
+No ZIP/XML/relationship/1800record artifact check ran: no DOCX files exist. The
+validator was prepared but is not evidence of a successful check. No DOCX byte
+hash, page count, native Word visual/pagination or successful export after space
+restoration is established. A complete multipart error is not delivery success.
+
+**DOCX-SPACE-01 — Design Concern / Medium, confirmed runtime constraint:** current
+workload cannot produce baseline/restored DOCX under existing limits. Supplemental
+public Core composition/native writer on the same1800-record fixture, pinned
+package and existing32MiB maxBytes returns DOCX_OUTPUT_BUDGET_EXCEEDED at
+word/document.xml: "Expanded XML node/drawing budget exceeded", bytesWritten0.
+This is a separate Core call, not an intercepted detailed task-child result;
+actual API preserves only the budget code. Guard may operate as designed, so
+do not call the guard itself a confirmed defect.
+
+Executed image `Core dist/docx/writer.js:84–86` sets effective default XML budget
+50,000, with optional upper bound300,000; `:154–162` checks expanded XML/drawing
+counts, default drawing/reference limit10,000. Exact counters and which side of
+the combined guard exceeded first were not captured. `Core dist/docx/engine.js`
+passes existing options; Service `src/tasks/render-child.ts:244–247` keeps only
+issue code and `src/tasks/public.ts:28` maps it to LIMIT_EXCEEDED. Copy/hash-bound
+modules came from the stopped, label/image-validated lab API, with candidate
+source equality checked. Read-only direct Core probe uses networknone/4GiB/2CPU
+and stops, with separate production-metadata boundary receipt.
+
+4g cgroup peak1,310,031,872bytes, oom/oom_kill0, includes API/worker/kernel/cache,
+not a measured child heap/RSS. It does not prove the1g failure cause, and the
+profile/CPU/coordinator changes prevent attributing differences solely to RAM.
+Next proposed work: scoped DOCX expansion/budget and earlier admission/rejection
+analysis that preserves semantics/resource limits, plus a bounded1g generic
+failure diagnosis. Do not blindly raise XML/byte budgets or production memory.
+
+All owned containers from both attempts and the Core diagnostic are stopped.
+Private networks/no published ports/own mounts; production identity/start/restart
+metadata stable across both attempts and extra read-only lab DB/Core diagnostics.
+No actual DB/storage/service action, fetch/push/tag/release/install or source fix.
+Full suites not rerun because unchanged image/candidate; earlier742passed/3skipped
+does not waive this failed DOCX acceptance. Tmpfs is volatile and keeper held it
+during API experiment only; observed file/reservation equality is the in-lab
+checkpoint, not all-stop persistence/backup proof. Physical disk/inodes/DB full,
+soak and actual-data recovery remain unproved. Execution IDs N/A.
+
+Report,98-file SHA256 manifest, both attempts, all3raw wires, DB/delivery/quota
+state, exact body/format proof, loader/Core budget diagnostics and source/cleanup:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-storage-20261031/verification-report.html`.
+Ignored helpers/evidence remain in reused Service audit checkout under
+`artifacts/oracle-audit-20261030/docxspace-*` and both project directories. Remote
+roots are under `/home/ubuntu/flowdoc-audit-187957aecc2d/`. No successful DOCX
+claimed, original1g failure retained. Stop after this FAIL report; no automatic
+code repair, additional experiment, real-data recovery or rollout.
