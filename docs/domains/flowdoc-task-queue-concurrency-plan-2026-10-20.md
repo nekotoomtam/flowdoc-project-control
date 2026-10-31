@@ -3993,3 +3993,67 @@ C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2c
 Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-full-budget-20261031/.
 Result PASS_BOUNDED_DIAGNOSIS; full UAT/SRS DOCX remains FAIL. Stop at the proposed
 plan; no repair, full-suite rerun, map/registry promotion or new Git lane follows.
+
+### 2026-10-31 — G0 Oracle XML feasibility model: selected strategy insufficient
+
+Authority Boundary: Project Control discovery/status synthesis for the owner's
+explicit follow-up in this chat; execution IDs not applicable. Core remains the
+representation owner, Service its unchanged consumer. Evidence Reviewer /
+Planning Partner; Project Control Steward for this existing-record update.
+No product implementation, ceiling change, real-data access, service stop,
+push/release/install, new lane or map/registry promotion is authorized here.
+
+Selected discovery strategy: share compatible paragraph properties and explicit
+paragraph-mark/text defaults through derived paragraph styles; separately share
+identical per-cell margins at table level. The arithmetic model charges each
+style/name/basedOn/property subtree and generated paragraph reference, avoids
+overlapping property-family savings, and preserves direct cs/spacing/position,
+existing character-style/field/drawing barriers, widths/borders/merges and all
+non-targeted content. It does not rewrite XML or construct a DOCX. Boolean toggle
+encoding and effective-style cascade remain assumptions, not verified behavior.
+
+Fresh owned Oracle container `flowdoc-docxfeas-882961065dd9` used immutable
+captured rejected XML from the preceding full-workload diagnosis, verified by
+SHA-256. Runtime image remained
+sha256:106a0c80a5f15d73f47768285726c22e3edd406af7963fa16536692241f3a3c8.
+Network none, read-only root/input mount, 512MiB/1CPU and no capabilities;
+only its dedicated output bind was writable. No new application/database or
+HTTP request was required. Oracle here means the isolated OCI VM, not an Oracle
+database engine. Production access was container identity/start/restart/mount
+metadata only; no production SQL/storage read. Metadata matched before/after;
+owned container exited0, no OOM, and remains stopped.
+
+| Full workload | Baseline whole-package XML | Paragraph-style model | Plus table-margin model | Margin against50000 |
+| --- | ---: | ---: | ---: | ---: |
+| UAT |110767|47928|47828|2172|
+| SRS |182250|91056|82596|-32596|
+
+UAT accounting: paragraph-property/reference net2255, mark4122, ordinary-run56892
+nodes saved,430new style nodes across36definitions; identical margins save100.
+SRS:7873/15975/67766 saved,420new style nodes across33definitions; margins save8460.
+The ledger uses the prior whole-package inventory and changed-part deltas; it is
+not a newly completed final ZIP guard scan. Independent local arithmetic and
+regex-versus-ElementTree counts match the Oracle result and original XML hashes.
+Core3e74f98b / Servicea572025b remained clean at the same exact commits.
+
+Result: **FAIL_SELECTED_STRATEGY_CANNOT_FIT_BOTH_INPUTS**. UAT's positive model
+margin is conditional, not DOCX PASS or proof of formatting preservation. SRS
+still exceeds50000 by32596 even in this model. This disproves sufficiency of
+this selected factoring strategy; it does NOT prove global impossibility under
+the existing ceiling. G0's required credible both-input strategy is still open;
+R1/R2 remain unstarted and MIX-01 remains open. No transformed document exists,
+so native Word comparison was not run; Word availability alone is not evidence.
+
+Next owner decision: continue bounded discovery of a materially different
+representation, with full effective-property/context accounting and a credible
+additional reduction exceeding32596SRS nodes before promising implementation.
+Document/paragraph defaults and table representation are research candidates,
+not approved fixes. Any later experiment must preserve complete text, fields,
+links, images, geometry, script/spacing barriers and native Word behavior; no
+implicit truncation, splitting, formatting loss or ceiling increase follows
+from this negative result. Do not proceed to a Core patch from this model.
+
+Durable report, immutable inputs, read-only model/driver, Oracle receipt,
+independent checks and SHA-256 manifest:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-feasibility-20261031/verification-report.html.
+Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-feasibility-20261031/.
