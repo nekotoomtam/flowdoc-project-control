@@ -4217,3 +4217,92 @@ part hashes, original rejected snapshots, failed-attempt receipts, Word metadata
 navigation/pixel/text ledgers and SHA-256 manifest:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-width-20261031/verification-report.html.
 Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-width-20261031/.
+
+### 2026-10-31 — combined width/styles copies: bounded cap + native Word PASS
+
+Authority Boundary: Project Control experiment/evidence synthesis under the
+owner's explicit authorization to combine reductions on frozen full UAT/SRS
+copies in the isolated Oracle Cloud lab and compare in installed Word. Single
+room; execution IDs not applicable. Evidence Reviewer / Cross-Repo Boundary
+Reviewer, then Project Control Steward for this existing canonical note. Core
+owns any future serializer repair. No Core/Service patch, ceiling change,
+production-data access, real-service stop, push/release/install or integration
+is authorized. No map/registry promotion or new Work records.
+
+The selected experimental copies pass the EXACT extracted final scanner block
+from pinned compiled Core writer578d2fb9c01821bae1c383ffb4908f4228994762d0d2eee4b7f4dca50f350eee
+in OCI image106a0c80a5f1: all-part XML50000 / docPr references10000 / ZIP32MiB
+unchanged, options empty. This is an external scanner proof on diagnostic
+copies, NOT a successful generator/Service request or admission bypass.
+
+| Full fixture | Original all-part XML | Width-only | Selected combined | Headroom | Native Word pages each | Different page pairs |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| UAT |110767|110241|39191|10809|73|0|
+| SRS |182250|180318|49965|35|101|0|
+
+Recipe: retain tested tcW/grid deduplication; share identical cell margins and
+borders at table level; derive bounded paragraph/run defaults with explicit
+compensation and leave unknown properties unchanged. UAT stops at phase1.
+SRS additionally shares table properties, promotes a scoped paragraph default
+while freezing all previously implicit paragraphs to the old Normal, and uses
+conditional alignment ONLY in tables without any horizontal gridSpan>1.
+SRS removes454 inactive run-level snap nodes plus395 empty rPr wrappers (no
+operative character grid),236 fixed preferred table widths equal to grid sums,
+17 optional names of new internal styles, and128 FALSE toggle nodes in STYLE
+definitions only. Direct FALSE formatting and every explicit forced-CS marker
+remain. Global docDefaults stay unchanged; no content/run merging or splitting.
+The exact recipe/ledgers and all-part overhead, including styles, are retained.
+
+Native Word16.0 build16.0.20527:174/174 pairs match exact RGB150DPI pixels,
+extracted page text, media/crop boxes and rotation with no ignored regions or
+tolerance. All returned Word story/content metadata matches, including linked
+header/footer/textbox stories, sections/tables/fields/bookmarks/hyperlinks and
+shapes. All18UAT/198SRS PDF link rectangles/actions/resolved destinations match.
+Representative contact sheets and the previously failing meeting page17 were
+visually inspected. Package CRC/XML/internal relationships resolve; non-format
+content and protected structure, CS/sections/grids/spans/merges match exactly.
+Media/fonts/relationships/unrelated ZIP parts are byte-identical. Existing
+style definitions change only at the declared Normal default marker, inactive
+run snap and style-only FALSE-toggle no-ops; no original style is deleted.
+
+Evidence reuse: UAT's selected DOCX is byte-identical to the v7 native-tested
+candidate, and its complete native proof is reused. SRS candidate is freshly
+opened/exported in Word; unchanged baseline PDFs/rasters/text ledgers are reused
+on the same Word build with no persistent Office-option change. Every final
+SRS candidate page is newly rasterized/text-extracted. Source DOCX disk hashes
+remain unchanged; only owned Word instances were closed, without saving.
+
+Retained rejected approaches: v1 Unicode-CS elision reaches32620/47985 but UAT
+changes73→74 pages and SRS differs; Unicode-only ablation also changes UAT to74,
+whereas phase1 alone matches73/101 exactly. Final does NOT elide forced CS.
+v7 reaches49985 for SRS but alignment differs on pages17–26; direct left→start
+in v8 still fails preliminary pages17/18. Final v9 excludes merged tables from
+conditional-column formatting and passes all101 pages. The exact contribution
+of each v9 change to v7 failure is not separately isolated; no generalized Word
+bug or product defect is claimed from those prototype failures.
+
+Harness failures retained separately: first container failed permissions before
+prototype execution; retry exited0 but raw mount-array order comparison failed,
+then canonical sorted production identity/start/restart/mount metadata recovered
+and input hashes verified. Local system-Python tar filter keyword failed after
+v7 Oracle success; bundled runtime extracted the same hash-verified archive.
+None of those failed checks are relabeled PASS.
+
+All owned copy containers stopped; network none/read-only root and inputs,
+512MiB/1CPU. Production identity/start/restart/mount metadata unchanged; no
+production SQL/storage access. Core3e74f98b / Servicea572025b refs/trees stay
+clean and unchanged. No FlowDoc application or database container started this round.
+
+Result **PASS_BOUNDED_COMBINED_COPY_FEASIBILITY_AND_NATIVE_WORD_EQUIVALENCE**
+for these frozen contents and this Word installation. SRS has only35 XML nodes
+(0.07%) remaining: this is NOT sufficient general capacity headroom. Future
+editing/resizing/default-style behavior, other Word versions, original source-
+PDF fidelity and actual Service pipeline acceptance remain unverified. MIX-01
+and G0's product capacity strategy remain open; R1/R2 implementation unstarted.
+Next proposed work is to review a Core repair contract/headroom strategy before
+any implementation, then verify actual Service output in a fresh authorized lab.
+
+Report, every-page viewer, selected DOCX/native PDFs, counts/invariants/navigation,
+failed attempts, Oracle receipts, exact helper scripts and SHA-256 manifest:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-combined-20261031/verification-report.html.
+Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-combined-20261031/.
