@@ -4135,3 +4135,85 @@ Report, exact inputs/styles, read-only analyzers, Oracle container receipts,
 independent comparisons, primary specification links and hashes:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-defaults-20261031/verification-report.html.
 Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-defaults-20261031/.
+
+### 2026-10-31 — preferred-width copies: bounded native Word equivalence PASS
+
+Authority Boundary: Project Control discovery/experiment synthesis under the
+owner's explicit authorization to edit UAT/SRS copies in an isolated OCI lab and
+compare them in Word. Execution IDs not applicable; Evidence Reviewer /
+Cross-Repo Boundary Reviewer, then Project Control Steward for this note.
+Core owns any future product repair; no Core/Service/default/limit mutation,
+production-data access, real-service stop, push/release/install or integration
+is authorized by this experiment. No map/registry promotion.
+
+Unchanged Service/default Core guards still reject full DOCX. Read-only inspector
+observation captured initial Packer bytes plus fulfilled replacement-part data
+at the actual rejected guard, without generating a ZIP or changing variables in
+the worker. A separate network-none/read-only-input OCI container reconstructed
+the rejected diagnostic package and modified ONLY matching direct tcW in
+word/document.xml: fixed layout, dxa preferred width equal to the grid sum under
+gridSpan. No tcPr wrappers, text runs, CS/spacing, widths outside the predicate,
+borders/margins/styles/defaults/spans/merges or other parts were changed.
+The baseline/candidate DOCX files are diagnostic copies, NOT successful Service
+artifacts or an override/bypass of the production admission contract.
+
+| Full fixture | Tables/cells | tcW removed | All-part XML before | All-part XML after | Native Word pages each | Different page pairs |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| UAT |95/526|526|110767|110241|73|0|
+| SRS |200/1932|1932|182250|180318|101|0|
+
+Proof: changed document AST equals the original with exactly those tcW nodes
+removed; every other ZIP part is byte-identical (including resources, fonts,
+relationships, headers/footers and custom XML). CRC/XML/relationships resolve;
+all-part XML regex counts agree with independent parsing. Oracle runtime image
+remains106a0c80a5f1; copy container network none,512MiB/1CPU, read-only root/inputs.
+
+Native comparison used installed Windows Microsoft Word16.0 build16.0.20527,
+opening each copy read-only, repaginating and exporting with its native PDF API.
+All four DOCX disk hashes stayed unchanged. Word story/content metadata matches
+before/after, including all returned textboxes/header/footer story ranges,
+sections/tables/fields/bookmarks/hyperlinks and shapes. Poppler rendered all348
+PDF pages to RGB150DPI and compared174pairs: exact pixels, extracted text,
+media/crop boxes and rotation match on EVERY page, with zero tolerance and no
+excluded regions. PDF link annotations18UAT /198SRS also match in rectangles,
+action types and resolved destinations. Representative before/after contact
+sheets were visually inspected; full-page raster pairs are retained for review.
+
+Capture labs: `flowdoc-docxwidth-6041b1cd2a89` was a retained failed diagnostic
+snapshot attempt (async inspector continuation lost paused state); unchanged
+Core guards still rejected its two tasks. Fresh `flowdoc-docxwidth-9f19c36c844d`
+captured both rejected packages with synchronous read-only inspector calls and
+zero observer errors. Its `-widthcopy` container performed the copy experiment.
+All four actual API tasks failed with DOCX_OUTPUT_BUDGET_EXCEEDED; no Service
+output records, queue slots returned, source-storage holds equal retained bytes
+under the original TTL. Failed capture is not counted as a successful snapshot.
+
+Word harness ownership/argument-marshaling and optional export calls initially
+failed or stalled, including a one-page diagnostic; staged observation showed
+opening/repagination completed and export stalled. A C# dynamic native export
+call passed the one-page smoke and then all four full files. This repairs only
+the external test harness, not Office configuration or product code; exact
+parameter-binding causality was not separately isolated. Failed attempts and
+owned-process timeouts are retained, not counted PASS or blamed on document
+content. Timed-out processes were terminated only after PID/start-time/executable
+ownership checks; all final Word instances closed without saving source copies.
+
+Final boundary: both lab attempts and the copy container stopped; Oracle
+production identity/start/restart/mount metadata still equals the pre-lab
+snapshot. No production SQL/storage access. Actual stopped API source-file hashes
+match pre-observation hashes and local Core3e74f98b / Servicea572025b refs/trees
+stay clean. No real-service stop, install, release, push or product pin change.
+
+Result **PASS_BOUNDED_WIDTH_ONLY_WORD_EQUIVALENCE** for these two frozen full
+inputs/current contents on this Word installation. This does not establish
+future edit/resize behavior, other Word versions, or fidelity of the diagnostic
+baseline to original source PDFs. Both packages STILL exceed50000 XML nodes;
+MIX-01 and G0's complete both-input capacity strategy remain open. R1/R2 stay
+unstarted. Width deduplication is now a tested ingredient for a future combined
+strategy, not permission to patch Core or promise full capacity.
+
+Report with every-page before/after viewer, exact DOCX copies, native Word PDFs,
+part hashes, original rejected snapshots, failed-attempt receipts, Word metadata,
+navigation/pixel/text ledgers and SHA-256 manifest:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-width-20261031/verification-report.html.
+Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-width-20261031/.
