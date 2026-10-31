@@ -4057,3 +4057,81 @@ Durable report, immutable inputs, read-only model/driver, Oracle receipt,
 independent checks and SHA-256 manifest:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-feasibility-20261031/verification-report.html.
 Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-feasibility-20261031/.
+
+### 2026-10-31 — G0 defaults/inheritance follow-up: bounded negative evidence
+
+Authority Boundary: Project Control discovery/status synthesis under the owner's
+explicit read-only follow-up. Execution IDs not applicable. Core owns any future
+representation repair; Service stays unchanged. Evidence Reviewer / Planning
+Partner, then Project Control Steward for this existing note. No product/default
+mutation, ceiling change, real-data SQL/storage access, service stop,
+push/release/install, new lane or map/registry promotion.
+
+Fresh OCI lab `flowdoc-docxdefaults-9f63d38b59b9` and its `-tables` container used
+the unchanged pinned runtime image106a0c80a5f1 and exact rejected full-workload
+document.xml plus captured final styles.xml from the prior diagnostic receipt.
+Both containers: network none,512MiB/1CPU, read-only root/inputs, no capabilities;
+both exited0/no OOM and remain stopped. Primary-analysis production metadata
+before/after matched; no application/database/HTTP rerun or production SQL/storage
+access. Input SHA-256 checks pass. Local and Oracle JSON values are identical;
+an initial raw-byte assertion differed only because generated Windows JSON used
+CRLF and Linux used LF. Normalized bytes also match; retained comparison receipt
+does not disguise a failed lab run. Core3e74f98b / Servicea572025b stay clean.
+
+Confirmed input facts: docDefaults empty; default Normal has no pPr/rPr.
+Referenced paragraph/character basedOn chains in the main document resolve
+without missing/type/cycle issues in the bounded resolver. No explicit tblStyle,
+numPr or tblPrEx references occur in this document.xml; implicit TableNormal has
+no paragraph/run properties. Paragraph marks are resolved separately from text;
+style bold/italic toggles are not treated as direct false assignments.
+
+Partial symbolic analysis finds existing-inheritance redundancy that would
+leave80363UAT /140058SRS nodes, still over50000. This is not a compactor or native
+Word proof. Setting modal global font defaults exposes540UAT /825SRS run/mark
+targets whose old font is unknown to the resolver; modal size defaults expose
+94/56. These are unresolved exposures, NOT confirmed formatting changes. Do not
+substitute a guessed application/theme font/size to call the defaults safe.
+Other stories, theme/SDT/numbering/table-context completeness remain unverified.
+
+Independent subtree-pruning and union-of-node accounting give the following
+optimistic lower bounds, holding all other package parts at the prior inventory:
+
+| Unrealistically free body formatting | UAT | SRS |
+| --- | ---: | ---: |
+| All pPr/rPr subtrees free |34996|69845|
+| Plus all cell margins free |32366|60185|
+| Plus all cell borders free |29736|50525|
+| Plus table borders/shading free |28959|48887|
+| Same broad scenario but direct CS/spacing/position retained |34407|54511|
+| All other body paragraph/row/table formatting free, keeping run topology, direct CS and cell widths/spans/merges |33484|50912|
+
+These are NOT candidate counts or formatting-preserving transformations: even
+necessary body properties/section formatting can disappear free in the bounds,
+and no new default/style/reference/compensation cost is charged. Thus the69845
+bound proves typography/paragraph-default changes alone cannot fit SRS with
+other parts/topology fixed. The50525 bound is still above50000 even after free
+cell margins/borders. The50912 bound rules out just redistributing the remaining
+body formatting while retaining the stated direct-CS/width/topology/other-part
+boundary. It does NOT prove global impossibility when other parts, representation,
+or proven-redundant width/topology can change.
+
+Oracle table inventory:95UAT /200SRS fixed tables,526/1932cells. Every preferred
+cell width equals its grid-column sum under gridSpan. Borders are uniform within
+92/200tables; margins70/186. Width equality is a specific research lead, not proof
+that removing tcW leaves native Word layout unchanged. OOXML preferred widths
+participate in layout; style tcPr has a narrower schema than direct tcPr, so do
+not assume width/span/merge properties can be moved like margin/shading.
+
+Result **PASS_BOUNDED_DEFAULTS_DISCOVERY_NO_FULL_DOCX_PASS**. G0's credible
+both-input strategy, MIX-01 closure and full native Word fidelity remain open;
+R1/R2 unstarted. No XML/defaults were rewritten and no DOCX produced, so there is
+no transformed file to claim complete formatting or final ZIP-guard PASS.
+Next research, if continued: isolate preferred-width/grid representation and
+complete effective-property compensation in copies, with native Word comparison
+and full all-part accounting before choosing a repair. No automatic splitting,
+content/format loss, CS relocation, ceiling increase or product patch follows.
+
+Report, exact inputs/styles, read-only analyzers, Oracle container receipts,
+independent comparisons, primary specification links and hashes:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-defaults-20261031/verification-report.html.
+Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-defaults-20261031/.
