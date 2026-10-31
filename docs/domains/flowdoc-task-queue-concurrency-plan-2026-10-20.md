@@ -4398,7 +4398,7 @@ Primary interpretation references, not fixture runtime proof:
 
 #### Ordered tasks and gates
 
-- [ ] **D1 — prove additional headroom on copies before Core code.** Freeze
+- [x] **D1 — prove additional headroom on copies before Core code.** Freeze
   input/image/Word/font identities. Validate exact schema and predicates;
   test each drawing rule separately, together, then at most one eligible footer
   case and the combined candidate in an isolated lab. Check counts/invariants
@@ -4470,3 +4470,90 @@ Still unverified: drawing omission equivalence, footer edit/ownership semantics,
 actual headroom including overhead, production XML mechanism/prerequisites,
 growth envelope and default Service success. Copy PASS does not close MIX-01
 or start R1/R2. Stop at this reviewable plan; next proposed action is D1 proof.
+
+### 2026-10-31 — D1 drawing/footer copies meet headroom and native Word gates
+
+Authority Boundary: owner-authorized D1 experiment on isolated OCI lab copies;
+Evidence Reviewer / Cross-Repo Boundary Reviewer, then Project Control Steward.
+Single room, execution IDs not applicable. This accepts only the bounded D1
+copy proof, not Core implementation, Service success or map truth. No Core/
+Service/dependency/pin/limit change, real-data access, real-service stop,
+push/release/install. D2 and R1/R2 remain unstarted.
+
+Fresh lab flowdoc-docxd1-57eab05e5176 used pinned image106a0c80a5f1 with network
+none, read-only root/inputs,512MiB/1CPU. No application or DB container started.
+Ten experimental copies were built from the two exact previous accepted copies.
+The unchanged extracted compiled Core final scanner578d2fb9c018 checked every
+XML/relationships part with options empty:50000XML /10000docPr /32MiB unchanged.
+
+| Fixture | D1 baseline | Extent only | Adjustment only | Drawing pair | Footer only | Combined | Final reserve |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| UAT |39191|39001|39001|38811|39116|38736|11264|
+| SRS |49965|49582|49582|49199|49467|48701|1299|
+
+SRS **48701<=49000** meets the proposed fixture gate. Its1264-node reduction is
+383zero inline effectExtent +383empty rect avLst +484duplicate footer-part
+nodes +7empty relationships roots +7content-type entries. Earlier48715 was a
+conservative projection without the last14nodes. Drawing alone leaves801nodes
+reserve and does not meet the fixture target. All ten copies pass the public
+guard; this is external scanner proof, not generator/Service output acceptance.
+
+Schema-particle compatibility was inspected in official Open XML SDKv3.0.1
+metadata. Only zero inline extents with no recognized effects and empty rect
+adjustment lists were changed. No full XSD validator claim. Independent package
+checks confirm CRC/XML/count agreement/internal relationship resolution and
+unchanged content/protected structure: CS, fonts/styles/media, runs/fields/SDTs,
+sections/page policies, grids/spans/merges. Effective header/footer content and
+both first/default reference IDs/types are preserved. No cross-section aliasing.
+
+Footer ownership trace: original full fixture template hashes match the prior
+API packet; composeSections.ts:20 defaults footerMode to all, and sections.ts:
+71–95 builds first/default from one band in that section. Cover uses explicit
+empty placeholders. Reuse is within each section only, with byte-identical
+part/relationships. The experiment keeps DISTINCT existing relationship IDs,
+redirects the first Target to that section's default part, and removes only
+orphan parts/empty rels/content types. Future Core code must preserve this tested
+relationship structure; object/ID collapse is not covered by this proof.
+
+Native Word16.0 build16.0.20527: all five variants for both fixtures retain73UAT
+and101SRS pages.1044rendered RGB150DPI pages give870exact comparison pairs,
+with zero tolerance/excluded regions. Pixels, extracted text, boxes/rotation,
+all returned Word story/content metadata and resolved link annotations match
+for EVERY variant.18UAT/198SRS links match per comparison. Fresh174-page controls
+also match pixels/text of the previous accepted copies. Contact sheets were
+visually inspected. All input DOCX hashes remain unchanged.
+
+Footer editing:28memory marker insert/undo operations cover both directions
+first/default in all non-cover sections of both fixtures, baseline versus
+footer-only. Markers never propagate to another kind/section and all are removed
+by Undo. Separate SRS baseline/combined save-as/reopen controls edit section2's
+first-page footer; the persisted marker remains only there. Only disposable
+diagnostic files were saved, not input copies. This does not prove every future
+editing operation/Word version or XML headroom after a manual Word save.
+
+Retained failures: batch export returned without six PDFs; its SRS control had
+correct pixels/text but only2/198links. These were NOT accepted. Fresh owned
+Word per missing file, real PDF existence/signature checks, and a fresh control
+with198links produced the final passing set. One SRS drawing retry raised a COM
+unexpected-export error before an unchanged-input retry succeeded. Root cause
+of batch/native export instability remains unverified; use isolated exports and
+complete content/navigation gates for future proof. First footer Undo harness
+strict metadata assertion failed; marker-based retry passed28operations (full
+Undo metadata also equal19/28). Child PowerShell module-path and concurrent JSON
+sharing failures were harness issues retained separately. No candidate changed
+to repair these harnesses; failed/incomplete controls remain inspectable.
+
+Final boundary: owned lab stopped; production identity/start/restart/mounts
+unchanged, no production SQL/storage access. All owned Word instances closed;
+original inputs unchanged. Core3e74f98b / Servicea572025b refs/trees clean.
+
+Result **PASS_BOUNDED_D1_COPY_HEADROOM_AND_WORD_EQUIVALENCE** for these frozen
+full contents/current Word installation. This closes D1 only. D2 XML mechanism/
+atomic patch contract, actual Core implementation/packed consumer, growth
+envelope and actual default Service output remain unverified. MIX-01/G0 product
+capacity strategy stays open. Next proposed work: D2; no automatic code change.
+
+Report, all-page/all-variant viewer, clean copies/native PDFs, counts/invariants,
+schema particles, footer editing/roundtrip controls, rejected attempts and hashes:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-d1-20261031/verification-report.html.
+Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-d1-20261031/.
