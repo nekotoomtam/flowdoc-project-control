@@ -1,11 +1,15 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **RETURNED TO DESIGN — R1a RESOURCE GATE FAILED**,
+Partner / Cross-Repo Boundary Reviewer. Status **REVISED PROPOSAL — MEMORY REVIEW; R1a STILL BLOCKED**,
 not implementation authorization or runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
 The queue/concurrency record retains status/history and D1 evidence authority.
+The memory/lazy-serialization revision at the end supersedes the original
+resource assumptions and formalizes the unchanged-bytes rule. The raw no-op
+roundtrip is a retained R1a diagnostic, not a required production path.
+This is proposed design only, not a successful retry or code change.
 
 **Goal:** turn the proven full-document copy recipe into a private Core stage,
 preserving the default 50,000 XML / 10,000 drawing / 32 MiB limits and obtaining
@@ -182,8 +186,9 @@ must not alias/mutate original bytes. Context contains private provenance,
 existing effective budget and AbortSignal, with no caller-configurable new knobs.
 The planner builds a part overlay and validates hashes, namespace/text/protected
 structure, effective known formatting and the complete relationship/type graph.
-No JSZip or sink mutation during planning; at most one working DOM per large
-story plus compact style metadata, not duplicate DOMs for the whole package.
+No JSZip or sink mutation during planning. The original one-story-DOM assumption
+is not an admission guarantee; the revision below requires measured headroom,
+dirty-part serialization and a safe decision before expensive allocation.
 
 After validation, apply the complete plan to the PRIVATE staging ZIP, then run
 the existing final guard and final ZIP-byte check, then sink.write/commit with
@@ -195,7 +200,7 @@ leave bytes alone; if still too large the existing guard produces
 DOCX_OUTPUT_BUDGET_EXCEEDED. No retry that silently relaxes a predicate/cap.
 Sanitize diagnostics to part/rule/reason/hash, not complete document text.
 
-## Resource envelope and cancellation
+## Original resource envelope and cancellation — not a safety guarantee
 
 Proposed PRIVATE eligibility envelope: <=256XML/rels parts,16MiB total decoded
 XML,8MiB largest part,250000elements; iterative post-parse traversal depth<=128
@@ -227,7 +232,8 @@ is a blocker requiring design review, not a silent worker/process addition.
   README/template-guide adjustments only for the implemented local contract,
   with their repository Authority Boundary. No Service/plugin/pin changes.
 
-- [ ] **R1a adapter/dependency gate:** tests/docx/packageXml.test.ts first, then
+- [ ] **R1a adapter/dependency gate (blocked by the memory review below):**
+  Once that prerequisite is resolved, tests/docx/packageXml.test.ts first, then
   NodeNext build/import and Node24/Linux packed consumer. Test UTF-8/BOM/prolog,
   alternate/default prefixes, namespace collisions/mc bindings, entities/Thai/
   non-BMP/Unicode line separators, numeric CR safe skip, comments/PI/CDATA,
@@ -348,3 +354,160 @@ Stop decision and next design review:
 Retained scripts, independent oracle, initial/corrected outputs, exact lockfile,
 container state/limits and logs:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1a-20261031/.
+
+## D2 memory and lazy-serialization revision — proposed 2026-10-31
+
+Authority: owner-authorized review only, Planning Partner / Cross-Repo Boundary
+Reviewer and Project Control Steward. Single-room IDs not applicable; routine
+risk, medium design scope. Product ownership remains Core; Service is a later
+consumer. No new runtime proof, install, lab execution or product edits in this
+review. Proof budget: existing R1a trace/source inspection and documentation
+checks. Document budget: this contract and a status pointer in the queue record.
+Use the current host model; no dispatch/model switch or new Work/registry/map.
+
+### Decision and alternatives
+
+Recommend a **decision-first, dirty-part-only pipeline** as the next hypothesis
+to prove. Unchanged bytes must bypass serialization; a proven over-budget result
+must reject without serializing it. A rewritten part serializes only after the
+complete rule plan and package count allow it. This preserves atomic validation
+and the old final guard. It does NOT yet approve a large-part whole-DOM parser.
+
+Two mechanisms remain alternatives for the blocking large-part case: an audited
+bounded serializer/transform over a reduced DOM, or bounded subtree/streaming
+processing with complete namespace/style coverage. The latter changes the
+mechanism more substantially and needs a separate reviewed design before any
+replacement parser/serializer is selected. Keep the proposed exact dependency
+selection provisional; no automatic new library, worker or Python fallback.
+
+### What the previous failure establishes
+
+The fresh SRS-only trace reached about 245 MiB heap after parsing against about
+259 MiB allowed heap, leaving about 14 MiB at that instant. RSS was about
+308 MiB inside a 512 MiB container. These are different budgets. Unused container
+RAM does not automatically increase V8's heap limit. Skipping serialization
+addresses its allocation peak, not the already expensive raw parse or space
+needed by Core's real generation objects. A raw no-op roundtrip is therefore a
+retained diagnostic failure, not the required production path or proof that a
+compacted DOM cannot work. R1a stays blocked pending that distinction's proof.
+
+Do not infer a safe input ceiling by scaling this one measurement. The former
+8 MiB/250,000-node envelope admits the failure and is only a coarse input screen.
+No new numerical safe DOM threshold or RSS reserve is declared from static
+inspection; both require measurements with Core's existing working set.
+
+### Required branches before publishing any replacement
+
+| Condition | Required action | New normalizer serialization |
+| --- | --- | --- |
+| Under the effective budget after current compaction, or non-source layout | Bypass the new stage; retain existing writer behavior | None |
+| No proven owned edits / all eligible families are disabled | Return original part bytes and unchanged/ineligible result | None |
+| Unsupported XML, unknown ownership or inadequate working-memory proof | Decline optimization; retain original bytes; existing guard decides | None |
+| Complete plan proves post-transform total still above budget | Discard the speculative plan; original over-budget package follows existing budget failure | None |
+| Post-transform count is unknown or straddles the cap | Do not guess that it fits; return ineligible for this first slice | None |
+| Proven candidate fits the effective package budget and its memory envelope is validated | Transform/serialize only dirty parts, validate overlay, then old final guard | Dirty parts only |
+
+This concerns only the NEW optimizer. It does not skip existing Packer,
+source-layout serialization, font corrections, or required final ZIP generation.
+An unchanged optimizer result also does not imply the writer has no prior changes.
+The writer still regenerates ZIP bytes whenever its existing conditions require
+it. Existing normal native/under-budget behavior must stay unchanged.
+
+Establishing "no edits" must use provenance and a validated semantic edit ledger,
+not serialize-then-compare, speculative XML cleanup or a global DOM hash that
+already incurred the allocation. A family may not turn defaults on before
+discovering that a dependent story is unsupported. A later change in one part
+must invalidate all affected style/graph/equivalence summaries before approval.
+If determining eligibility itself requires an unproved large DOM, refuse that
+path until a bounded read/transform method is proved; lazy serialization alone
+does not authorize parsing it.
+
+### Count and transaction contract
+
+Add private preflight decision metadata, not a public option/receipt. CountProof
+is exact(value), interval(lower,upper) or unknown; bounds must be nonnegative
+integer counts and validated against the immutable snapshot/edit ledger. An
+unbounded upper end cannot establish a fit. DirtyParts and disabled-family
+reasons come from the complete plan. An exact value above the effective cap,
+or a sound lower bound above it, proves rejection. Only exact <= cap or a sound
+upper bound <= cap can proceed to the memory gate. Unknown/overlapping intervals
+are ineligible in this first slice; safe rejection is not fixture acceptance.
+
+Counts must cover ALL XML/rels parts, inserted style/property nodes, removed
+footer parts and relationship/content-type edits, with overlapping edits counted
+once. Use the existing writer counter's definition, not just DOM element count.
+An optimistic estimate or partial ledger cannot authorize serialization. The
+actual unchanged final guard remains authoritative after serialization, including
+drawings, relationships and final ZIP bytes; no public error/cap change.
+
+Only actual validated structural mutations mark a part dirty. No-op setters,
+an aborted family and edits reverted to the original XML structure do not
+justify rewriting it. This does not mean original effective formatting must
+change: valid compaction changes structure while preserving that formatting.
+Preserve original bytes/hash for clean and unsupported parts.
+For dirty parts, compare protected content/effective formatting against the
+INTENDED edit ledger, not whole-document identity that would reject valid edits.
+Reparse serialized replacements and verify the complete overlaid package graph.
+Only then apply to private ZIP and execute the old final guard/sink contract.
+No partial style-family application or publication if any replacement fails.
+
+### Working-set contract to prove, not an implemented memory monitor
+
+Measure separate peaks for existing Core preparation, census/preflight, parse,
+transform, serialization, replacement reparse, overlay validation and final ZIP.
+Account for the original packed buffer/JSZip data, decoded strings, DOM, genuine
+intent/font/native-helper state, summaries/edit metadata, pending replacement
+bytes and compression buffers. UTF-8 bytes on disk are not a JS heap bound.
+Container memory includes helpers and buffers outside the Node heap.
+
+Keep summaries plain and bounded; they must not retain DOM nodes, ownerDocument,
+detached-node arrays, old traversals or full-story text copies. Do not hold an
+original and replacement DOM simultaneously for equivalence: keep a compact
+validated summary, release strong references, and validate the replacement in
+its own scope. Sequential scopes do not promise immediate garbage collection;
+measure the actual peak without forced-GC rescue. Replacement buffers retained
+for atomic application and style summaries still count across parts.
+
+Neither polling process.memoryUsage nor catching an allocation error prevents
+fatal synchronous OOM. Do not use either as the safety proof. The allocation
+shape and measured admission envelope must be bounded BEFORE risky work. If
+raw parse/transform is not feasible with existing Core state, a serialization
+bypass cannot close the gate: return to mechanism design.
+
+Acceptance environment stays 512 MiB / 1 CPU, swap capped to the same memory
+amount, default Node heap/options and the pinned Linux/amd64 image. Record heap
+limit/options and container limits so an accidental heap/RAM increase cannot
+turn the test green. No new concurrency/readiness promise follows from a single
+generation; Service behavior and concurrent resource contention remain R2 scope.
+
+### Bounded next proof proposal — not executed in this review
+
+1. **Decision/bypass:** instrument parser/serializer/allocation boundaries on
+   immutable lab copies. Prove early unchanged/ineligible cases return byte-
+   identical original parts with zero new serialization, and zero DOM parsing
+   where the preflight can decide. Also test a no-op discovered after a safe
+   parse: it must not serialize, but its parse cost remains in the resource result.
+2. **Over-budget and counts:** prove exact/interval/unknown branch decisions,
+   all-part overhead, shared-footer and inserted-style counts, overlapping edits
+   and compensation rollback. A still-over-budget plan must not serialize or
+   publish; the existing error remains DOCX_OUTPUT_BUDGET_EXCEEDED. Unknown
+   memory/formatting/count eligibility must decline before expensive work.
+3. **Changed bounded part:** use frozen D1 reduced copies and small owned edits
+   to isolate transform/serialization/reparse memory and independent XML1.0
+   equivalence. This is not proof that raw full Core input can be transformed.
+   Keep strict namespace/Unicode/CR-safe-skip negative cases from R1a.
+4. **Actual raw-to-reduced feasibility:** only after reviewing a bounded method,
+   replay frozen UAT/SRS source JSON to reproduce the raw generation state;
+   baseline DOCX files are comparison artifacts, not public Core API inputs.
+   Prove raw generation -> complete planned reduction -> dirty serialization under
+   512 MiB including Core's real retained state, with cancellation/failure and
+   final ZIP peaks. Both unchanged and negative paths must survive too. A smaller
+   output file, a standalone parser success or a conservative rejection is not
+   acceptance of full SRS <=49,000 with preserved content/formatting.
+
+Stop on OOM, unbounded retention, invalid count/equivalence or an unsafe bypass;
+do not increase limits or proceed to package adoption/R1b. No numbered step above
+is PASS or execution authorization. After memory feasibility, the remaining
+R1a adapter/NodeNext/packed-consumer prerequisites and R1b/R1c fidelity tests still
+apply. D1 evidence and the R1a failure remain immutable. Current status is a
+reviewable revision with the large raw parse/transform method unresolved.

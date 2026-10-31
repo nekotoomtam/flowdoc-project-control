@@ -4639,3 +4639,30 @@ remains bounded copy evidence; MIX-01/full new-Core normalization remain open.
 
 Evidence scripts/logs/lock/oracles:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1a-20261031/.
+
+### 2026-10-31 — D2 memory/dirty-serialization review prepared; R1a remains blocked
+
+Authority Boundary: owner-requested planning only; Project Control owns the
+revision, Core owns prospective behavior. Single-room execution IDs not
+applicable. [D2 contract](flowdoc-docx-compaction-d2-contract-2026-10-31.md)
+contains the proposed decision-first/dirty-part-only revision and future proof
+sequence. The existing failure evidence is unchanged; no lab/container/parser
+retry, dependency install, Core/Service edit or new runtime PASS in this review.
+
+Required distinctions: bypass the NEW stage for unchanged/ineligible parts;
+reject a proven still-over-budget plan before serialization; serialize only
+validated dirty candidates whose all-part count and working-memory gates pass.
+No serialize-then-compare shortcut or optimistic count. Existing Packer/source
+serialization, final guard and required ZIP regeneration remain intact.
+
+Skipping serialization does not fix the raw SRS parse's approximately 245 MiB
+heap against the observed 259 MiB limit, nor cover Core's additional working
+set. Large raw parse/transform feasibility is unresolved; the previous coarse
+input envelope is not memory safety. No new safe threshold, serializer/library
+replacement, worker, heap flag or production mechanism is selected as proven.
+
+Next proposed proof separates bypass/no-op, over-budget/unknown counts, changed
+reduced-copy memory and finally actual raw-to-reduced Core working memory.
+512 MiB / 1 CPU and XML50,000/drawings10,000/ZIP32MiB remain fixed. Reviewable
+design only; R1a/R1b/R1c/R2/full-fixture acceptance stay open. No real-data or
+real-service access/stop, push/release/install. No new Work, Evidence map or room.
