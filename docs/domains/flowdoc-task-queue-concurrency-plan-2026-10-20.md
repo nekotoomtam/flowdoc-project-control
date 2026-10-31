@@ -4557,3 +4557,49 @@ Report, all-page/all-variant viewer, clean copies/native PDFs, counts/invariants
 schema particles, footer editing/roundtrip controls, rejected attempts and hashes:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-d1-20261031/verification-report.html.
 Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-d1-20261031/.
+
+### 2026-10-31 — D2 XML mechanism and Core port contract ready for review
+
+Authority Boundary: owner-authorized planning/discovery only, Planning Partner /
+Cross-Repo Boundary Reviewer then Project Control Steward. Single room; execution
+IDs not applicable. **D2 draft ready for review; not frozen/accepted execution.**
+No Core/Service/dependency/fixture mutation, parser installation/runtime test,
+Oracle connection, Word launch, real-data access, real-service stop or
+push/release/install. D1 evidence remains immutable; R1/R2 unstarted.
+
+The focused canonical design authority for the mechanism/interfaces/implementation
+gates is now [D2 design and implementation contract](flowdoc-docx-compaction-d2-contract-2026-10-31.md).
+This record retains status/history. Earlier R1 sketches are preliminary where
+this narrower proposed design supplies detail; no evidence or map is promoted.
+
+Proposal: exact @xmldom/xmldom0.9.12 runtime pin after authorization, based on
+official tagged manifest/types/source/license/advisory inspection, not an
+installed smoke test. Namespace-aware strict parsing and whole-plan validation;
+no new Python subprocess or broad regex mutation engine. The adapter explicitly
+addresses Unicode line endings, prolog handling, numeric-CR safe skip and
+namespace/roundtrip checks rather than assuming library defaults are lossless.
+
+Port the FULL previous width/styles/defaults recipe before D1 drawing/footer
+rules: raw Core packages are110767/182250nodes, not39191/49965. New stage remains
+private, after current source compaction and before the unchanged final guard/
+sink. Footer ownership maps emitted section ordinals (not source-array indexes)
+and retains the distinct relationship IDs verified by D1. Unsupported global
+inheritance contexts disable the dependent family, never partial compensation.
+
+Read-only raw-package census: UAT/SRS3.68/5.43MB XML,26/74XML parts, max depth
+17/16 and max attributes9; parsed CR/Unicode line separators absent. Proposed
+private optimizer envelope16MiB aggregate/8MiB part/250000elements/depth128/
+64attributes/256XML parts is only a design gate, not a public limit or measured
+RSS/time result. Public50000XML/10000drawings/32MiB stays unchanged; fixture
+SRS<=49000 and full fidelity/growth/default-Service gates still require R1/R2.
+
+Remaining implementation prerequisites are explicit: actual NodeNext/Node24
+parser/serializer roundtrip, dependency integrity/license inclusion, resource/
+cancellation behavior, full Core build/packed consumer and actual full-fixture
+output. No PASS is claimed for those. Future proof must use isolated native
+Word exports with complete file/navigation gates following D1's harness failures.
+
+Static evidence/census ledger:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-d2-20261031/design-evidence.json.
+This turn's checks cover documentation, source facts and unchanged input hashes;
+no new product runtime proof. Stop at the reviewable D2 proposal.
