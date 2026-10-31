@@ -1,0 +1,9 @@
+{
+  "id": "flowdocmake-integration-candidate",
+  "version": "0.3.1-candidate.3",
+  "supported": {
+    "service": "0.5.2",
+    "core": "0.5.2",
+    "coreArtifactSha256": "ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532"
+  }
+}

@@ -3632,3 +3632,23 @@ The gate source remains unchanged; its scratch runner may add only labels and
 memory/CPU limits to real Docker commands. Preserve original/runner hashes and
 their diff, invoke all original consumer assertions, and record this operational
 adaptation instead of claiming an unmodified command/environment.
+
+Core phase: complete original packed-consumer orchestration passes all26 result
+groups (plus its contents-resource assertion), actual consumer network=none /
+mounts=[], producing Core3e74f98 archive
+ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532.
+Original gate source hash stayed unchanged; scratch operational adapter adds
+only owner labels and4GiB/2CPU to real Docker run/create/build calls. Initial
+permission failure creating artifacts ran no consumer assertion; preserved and
+corrected by executing the trusted gate as root only inside the owned helper.
+Owned phase containers stopped; production identity metadata unchanged.
+
+Service candidate content is staged as Git tree9e43af791691e5ba08739406d7c41b97783c59d9
+on parentf36f821, with archiveSHA d3fcbe7c625c7ee43b686ef79cacadd8daca7b1d02c9d81d1cb1ed7850183512.
+Its commit waits for build/affected Oracle checks per Service AGENTS. The frozen
+tree is the build authority; after checks, commit exactly that tree and verify
+the mapping. No working-source mutation during verification. Explicit plugin
+integration profile0.3.1-candidate.3 pinsed876f4d; new functional regression
+RED2unknown-profile failures -> GREEN2. Local affected plugin23pass/0fail/0skip,
+including unchanged prepared/default and previous candidate.2 identities and
+actual previous-archive rejection. Current downstream lab acceptance pending.

@@ -37,7 +37,8 @@ inventing approval stops.
 ## Candidate and installation boundary
 
 Source0.3.1 and its distinct staged bundle use the exact0.5.2 profile above.
-Installed0.3.0/profile0.5.0 and its retained release archive are unchanged.
+Earlier installed0.3.0/profile0.5.0 notes and retained release archives are
+historical; this source README is not an inventory of today's installed state.
 Do not weaken preflight to connect the new package to an old runtime. Core20
 remains experimental direct-Core only; Service and these tools admit18/19.
 DOCX still uses the separate Service route: these task tools parse PDF only.
@@ -46,6 +47,23 @@ Client outputPath remains separate from server attachment fileName metadata.
 Release readiness is recorded in Project Control after matched checks; package
 version alone is not release or installation. Reference copies are generated
 from committed canonical guides and retain their source/hash identity.
+
+### Reviewed development integration candidate
+
+The integration profile is separate from prepared/default0.3.1 and the retained
+DOCX-run candidate.2. Select `tests/fixtures/flowdocmake-integration-profile.json`
+explicitly with `--candidate-profile`, a new absolute `--out` staging directory,
+and `--core-archive` pointing to the exact reviewed tarball. The profile,
+Service vendor/lock and actual archive SHA must agree; version0.5.2 alone is
+not an identity check. The builder rejects other profiles/bytes and outputs
+inside source or installed caches. Never repin the old package to make it pass.
+
+Build only from a clean committed integration lane. Emitted inventory identifies
+that commit, copied guide hashes and candidate version; `.mcp.json` identifies
+the absolute staging path. Native readiness needs actual Docker identity and
+matching loopback port plus Python pypdf/Pillow and Poppler. A moved output path
+or new artifact needs its own wiring/provenance check. This is not installation,
+desktop tool discovery, native Word verification or a DOCX-through-plugin tool.
 
 ## Historical package notes
 

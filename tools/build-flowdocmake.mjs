@@ -10,7 +10,7 @@ let profile=null,plugin=sourcePlugin;
 if(args.length){
  if(!options['--candidate-profile']||!options['--out']||!options['--core-archive'])throw Error('Candidate profile, output and reviewed Core archive required');
  profile=JSON.parse(readFileSync(resolve(options['--candidate-profile']),'utf8'));
- const reviewed=['flowdocmake-docx-i5-profile.json','flowdocmake-050-profile.json','flowdocmake-052-profile.json','flowdocmake-docx-run-profile.json'].map(name=>JSON.parse(readFileSync(join(repo,'tests/fixtures',name),'utf8')));
+ const reviewed=['flowdocmake-docx-i5-profile.json','flowdocmake-050-profile.json','flowdocmake-052-profile.json','flowdocmake-docx-run-profile.json','flowdocmake-integration-profile.json'].map(name=>JSON.parse(readFileSync(join(repo,'tests/fixtures',name),'utf8')));
  if(!reviewed.some(p=>JSON.stringify(profile)===JSON.stringify(p)))throw Error('Unknown candidate profile');
  if(createHash('sha256').update(readFileSync(resolve(options['--core-archive']))).digest('hex')!==profile.supported.coreArtifactSha256)throw Error('Reviewed Core archive hash mismatch');
  plugin=resolve(options['--out']);
