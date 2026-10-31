@@ -4612,7 +4612,7 @@ not applicable. No Core/Service production-source or dependency changes, real
 data/DB access, real-service stop, push/release/install. No R1b/R2 or integration.
 
 The standalone exact parser probe failed the D2 resource prerequisite. In a
-fresh Linux/amd64 Node 24.15.0 container at 512 MiB / 1 CPU with network none,
+fresh Linux/amd64 pinned-Node container at 512 MiB / 1 CPU with network none,
 the raw SRS document.xml (5,183,340 bytes) parsed and matched the independent
 semantic digest, then failed during serialization with Node heap OOM. Exit 139,
 OOMKilled=false; heap limit 271,581,184 bytes. The earlier whole-sequence run
@@ -4666,3 +4666,35 @@ reduced-copy memory and finally actual raw-to-reduced Core working memory.
 512 MiB / 1 CPU and XML50,000/drawings10,000/ZIP32MiB remain fixed. Reviewable
 design only; R1a/R1b/R1c/R2/full-fixture acceptance stay open. No real-data or
 real-service access/stop, push/release/install. No new Work, Evidence map or room.
+
+### 2026-10-31 — Oracle bypass prototype bounded PASS; no Core integration
+
+Authority Boundary: explicit owner-authorized isolated copy-only discovery;
+Project Control owns status and Core owns prospective implementation. Single
+room; IDs not applicable. [D2 contract](flowdoc-docx-compaction-d2-contract-2026-10-31.md)
+contains the exact acceptance limits and runtime metadata correction.
+
+On existing Oracle/OCI lab, actual Node24.21.0/Linux/amd64/default heap, fresh
+network-none containers at 512 MiB / 1 CPU passed10/10 tests and an unchanged
+10/10 repeat. Whole-container cgroup peaks138.72/138.37MiB; no OOM or skips.
+Unchanged UAT39,191 returns identical ZIP/part hashes with zero DOM/serialization.
+Raw SRS182,250 with383 independently attested D1 rect-leaf deletions projects
+181,867, so the prototype discards its plan without DOM/serialize/publication;
+the exact extracted old guard rejects with DOCX_OUTPUT_BUDGET_EXCEEDED.
+
+Additional tests cover raw no-op rejection, stale/forged/overlapping/unknown
+proofs, a tiny live parser/serializer control and output integrity. Only the
+unchanged UAT copy is published inside the lab. Real runtime identity is stable;
+no owned containers remain running. Original inputs and Core/Service unchanged;
+no SQL/real-storage/API access, real-service stop, push/release/install.
+
+This is a test-only decision prototype with an externally prepared frozen IR,
+not a complete planner, generateDocxTo or new package proof. R1a remains blocked
+on actual large parse/plan/transform memory; interval/footer/style interactions,
+cancellation and subsequent package/native fidelity gates are unverified. Prior
+Linux Node minor was not captured; the old24.15.0 claim is corrected to unknown,
+not used as an exact runtime comparison. The old failure evidence is preserved.
+
+Scripts/results: C:/Users/nekot/Documents/FlowDoc-recovery/docx-bypass-20261031/.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-bypass-20261031/verification-report.html.
+Stop at these two bounded branches; no automatic adapter/normalizer port.

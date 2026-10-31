@@ -1,7 +1,7 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **REVISED PROPOSAL — MEMORY REVIEW; R1a STILL BLOCKED**,
+Partner / Cross-Repo Boundary Reviewer. Status **BOUNDED ORACLE BYPASS PROOF PASSED; R1a STILL BLOCKED**,
 not implementation authorization or runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
@@ -291,8 +291,10 @@ Evidence/reproduction:
 
 - Exact standalone @xmldom/xmldom 0.9.12 in a private lab npm project; registry
   integrity/lock and MIT file retained. Pure dependency feasibility, not the
-  production adapter. Node 24.15.0, Linux/amd64, pinned Node image from the Core
-  Dockerfile. No DB, external network during execution, real-service access or
+  production adapter. Linux/amd64, pinned Node image from the Core Dockerfile;
+  the previously stated Linux Node minor was not captured in that failure trace
+  (see the runtime-metadata correction below). No DB, external network during
+  execution, real-service access or
   output-budget change. Existing explicit XML1.0 normalization/prolog handling
   and requireWellFormed serializer options were used.
 - Windows broad probe: 100 raw UAT/SRS XML/rels parts passed independent Python
@@ -511,3 +513,75 @@ is PASS or execution authorization. After memory feasibility, the remaining
 R1a adapter/NodeNext/packed-consumer prerequisites and R1b/R1c fidelity tests still
 apply. D1 evidence and the R1a failure remain immutable. Current status is a
 reviewable revision with the large raw parse/transform method unresolved.
+
+## Oracle/OCI bypass proof — 2026-10-31: bounded PASS, not R1a closure
+
+Owner authorized copy-only proof of unchanged and still-over-budget paths, with
+Oracle lab preferred if available. Discovery spike only; original Core/Service
+candidates are read-only. Single-room IDs not applicable. Node image was already
+present on the existing OCI x86_64 host. A fresh labeled lab directory and three
+separate containers were used: intentional RED, GREEN and unchanged GREEN repeat.
+No DB, production API/storage, deployment or real-service lifecycle action.
+
+Acceptance environment: Linux/amd64, actual Node **24.21.0**, default heap limit
+271,581,184 bytes, no NODE_OPTIONS, 512 MiB memory AND total memory/swap, 1 CPU,
+network none, input mount read-only. GREEN and repeat each pass **10/10**, zero
+skips and no OOM. Measured whole-container cgroup memory peaks are **138.72 MiB**
+and **138.37 MiB**, including the test runner. These are prototype measurements,
+not a Core generation memory envelope. No heap/RAM/output-limit increase.
+
+| Actual frozen-copy case | Observed branch and guard | DOM parse / XML serialize / sink publication |
+| --- | --- | --- |
+| UAT reduced baseline, 39,191 nodes | Unchanged output is byte-identical; ZIP CRC and all XML/rels hashes independently match | 0 / 0 / 1 lab copy |
+| Raw SRS, 182,250 nodes, no edits | Unchanged bytes still encounter original budget rejection | 0 / 0 / 0 |
+| Raw SRS plus 383 attested empty rect-adjustment deletions | Projected total 181,867, still above 50,000; plan discarded before applying/serializing; original guard gives DOCX_OUTPUT_BUDGET_EXCEEDED | 0 / 0 / 0 |
+| Raw UAT, 110,767 nodes, no edits | Original budget rejection, not fixture-specific SRS handling | 0 / 0 / 0 |
+
+The 10-case suite additionally checks a forged count, overlapping edits, stale
+snapshot, unknown-count fallback, live instrumentation using a tiny real XML
+parse/serialize control, and original-input/output-directory integrity. Only the
+unchanged UAT file exists in each output directory; no rejected-work artifact.
+Traps fail the selected branches if either instrumented DOM entrypoint is called.
+The tiny control observes two parses and one serialize, proving counters are live;
+it is not full changed-document resource/fidelity acceptance.
+
+The final XML/drawing/relationship guard block is extracted byte-preservingly
+from current Core src/docx/writer.ts, hash-pinned, and executed externally with
+default options. This is not the complete writer/generateDocxTo or a new Core
+package. No public exports, dependencies, options, limits or product source
+changed. All original copy hashes match; real runtime identities before/after
+match and the lab has zero owned running containers after completion.
+
+Limits of acceptance, retained explicitly:
+
+- The experiment uses an independently attested, snapshot-bound IR prepared
+  OUTSIDE the constrained runtime. Python validates namespace/rect/empty-leaf
+  predicates on the frozen copies; the runtime rechecks hashes, literal spans,
+  nonoverlap and exact all-part count deltas. Only this D1 leaf family is active;
+  width/styles/defaults/footer families are disabled. This does not prove full
+  production ownership/planning inside 512 MiB, or that full SRS cannot fit.
+- Interval proofs, inserted-style/shared-footer count interactions, no-op
+  discovery after a real large parse, cancellation, raw-to-reduced transformation,
+  reparse/final-ZIP Core peaks and packed-consumer/fidelity gates are still
+  unverified. The previous large-DOM OOM remains a blocker; these zero-parser
+  paths do not resolve its working-memory requirement.
+- Runtime metadata correction: this OCI execution directly reports Node 24.21.0.
+  The old Windows probe explicitly reported 24.15.0, whereas the old Linux fatal
+  trace did not record its actual minor. The earlier Linux 24.15.0 narrative was
+  an unsupported inference and is corrected to unverified. Keep the old traces
+  immutable; do not claim version identity or an OOM fix from this bypass proof.
+- Failed setup attempts are retained: wrong baseline copy locator corrected
+  before test execution; guard hash mismatch due to Windows newline conversion
+  corrected by preserving source bytes. Neither is a product defect. The
+  intentional RED used an unimplemented placeholder and failed as expected.
+
+Proof budget is consumed: RED -> GREEN -> unchanged repeat plus independent
+hash/CRC/resource/boundary verification. Stop here. Next proposed work remains
+bounded real plan/transform memory proof before adopting an adapter or package;
+R1a/R1b/R1c/R2 and full SRS <=49,000 acceptance remain open.
+
+Local immutable-input experiment/scripts/logs/oracles:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-bypass-20261031/.
+Verification: verification.json; raw OCI receipt/logs and round-specific files
+under oracle/. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-bypass-20261031/verification-report.html.
