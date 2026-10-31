@@ -3866,3 +3866,130 @@ Private local staging remains outside Git worktrees under
 C:/Users/nekot/Documents/FlowDoc-recovery/api-mixed-lab-20261031/.
 Recommended next scope: inspect full UAT/SRS DOCX expansion budgets without
 raising caps; no automatic fix or extra load test follows this result.
+
+### Full UAT/SRS DOCX budget diagnosis and proposed repair — 2026-10-31
+
+Owner explicitly requests identifying the failed budget and preparing a repair
+plan before implementation. Discovery/verification only; single-room IDs N/A,
+routine risk. Core owns native OOXML representation and guards; Service owns
+the unchanged task consumer. Roles Evidence Reviewer / Cross-Repo Boundary
+Reviewer / Planning Partner, with Project Control Steward for this record.
+No Core/Service source edit, prototype transform, ceiling increase, real-data
+access, real-service stop, push/release/install or automatic follow-up.
+
+Fresh Oracle project flowdoc-docxbudget-ac0e696a272a uses the same immutable
+runtime106a0c80…, Core artifacted876f4d…,4GiB/2CPU, isolated PostgreSQL18/storage
+and unchanged complete UAT/SRS input hashes. Two real Windows HTTP requests
+reproduce the expected failures. An external Node preload enables only an
+in-process inspector in the actual Service render-child: no TCP debugger,
+source/prototype rewriting, candidate-variable assignment or option override.
+Read-only breakpoints observe existing compaction, the original final guard,
+raw Core failure and Service's pre-projection result. Diagnostic XML is written
+in <=1MiB chunks outside task storage, respecting the inherited per-file bound;
+these rejected intermediates are not accepted DOCX outputs or sizing evidence.
+
+Confirmed first rejection: expanded XML node count in word/document.xml.
+
+| Frozen full input | XML cumulative at guard /50000 | Drawing count /10000 | Initial packed bytes /33554432 | Source graph nodes /50000 |
+| --- | ---: | ---: | ---: | ---: |
+| UAT |108284|188|2981797|1597|
+| SRS |176546|371|857516|5658|
+
+UAT document.xml independently parses to108137nodes, plus147 preceding-part
+nodes at the guard; SRS176497+49. XML chunks pass recorded hashes, writer-regex
+counts equal XML-parser counts, and raw Core issues retain exact code/path/
+message before API maps them to LIMIT_EXCEEDED. Drawings and initial bytes are
+below their unchanged guards; final ZIP serialization was not reached and is
+not certified. This closes the unknown first budget, not MIX-01 delivery.
+
+Existing source-word compaction is active, but only58 UAT /39 SRS guides apply.
+Independent counts of changed XML parts with the writer's all-part pre-count
+give whole-package totals112084→110767 UAT and182587→182250 SRS. These are exact
+inventory calculations, not a claim that the original final scan traversed the
+whole rejected package. Existing compaction saves only1317/337nodes.
+
+Repeated full native character properties dominate: UAT7743rPr groups contain
+70728element nodes; SRS10836 contain98609. The documents also contain95/200tables
+and526/1932native cells. Character/paragraph/table property statistics overlap;
+do not sum their raw totals as independent savings. Current text.ts nativeRunStyle
+and ScriptRun preserve explicit CS/zero-tracking/baseline properties; tables.ts
+emits explicit cell widths/borders/margins. Source-layout compaction is restricted
+to its generated VML guide tags. The earlier1800-record Latin run fix is present;
+this is a different full formatted-document workload, not proof it regressed.
+
+An arithmetic-only optimistic model that factors repeated properties of ordinary
+text/break runs, including new style/reference overhead, still leaves61777UAT /
+124623SRS whole-package nodes. No XML was rewritten and no proposed compactor was
+executed. Style precedence, direct CS/zero-spacing behavior and native Word
+equivalence remain unverified. A character-style-only patch cannot be promised
+to solve both inputs; feasibility under50000 is a blocking design question.
+
+Proposed staged repair plan — implementation is NOT authorized by this record:
+
+**Goal:** retain the agreed complete single-document behavior under the unchanged
+50000XML /10000drawing /50000source-node /32MiB output bounds, or return an explicit
+capacity/output-contract decision. **Architecture:** Core owns any representation
+repair, Service consumes a newly verified exact package; source-word guide
+compaction keeps its current boundary. **Stack:** TypeScript, native docx/JSZip,
+independent XML/package checks and native Word review. **Spec:** the explicit owner
+request, unchanged full inputs, current implementation and this diagnosis.
+
+- [ ] **G0 — bounded Core feasibility discovery before a repair commitment.** Read
+  writer.ts, text.ts, tables.ts, source-layout-xml.ts and existing nativeRunBudget,
+  sourceShapeStyles and tableBorderStyle tests. Classify safe repeated character,
+  paragraph-mark, paragraph and table properties; account for non-overlapping
+  savings plus style overhead and required direct run barriers. Return one
+  concrete strategy with credible <=50000 bounds and positive margin for BOTH
+  full documents. If not feasible with required semantics, stop for an owner
+  decision; do not silently split, truncate or raise limits.
+- [ ] **R1 — future Core implementation only after G0/strategy approval.** Proposed
+  files: one private src/docx/native-style-budget.ts helper, writer.ts, and text.ts /
+  tables.ts only if the approved strategy needs generator-level changes; proposed
+  tests/docx/nativeStyleBudget.test.ts plus affected existing tests. Final helper
+  interface/allowed scope must follow G0, not an invented pre-approved algorithm.
+  Add failing topology/effective-property regressions; implement the smallest
+  approved factoring with deterministic IDs and conservative refusal of ambiguous
+  structures. Verify complete UAT/SRS under unchanged ALL-part guards, exact
+  content/field/link/image invariants,1800-record regression and affected text/
+  table/source-layout tests, Core/packed-consumer coverage. A still-over-budget
+  or typography-changing patch is FAIL, not permission for another ceiling.
+- [ ] **R2 — future consumer/package proof after Core passes.** Build a real new
+  artifact with source/tree/SHA, review documentation and pin it only in isolated
+  Service/plugin candidate scope as affected. Run Windows→Oracle full UAT/SRS
+  PDF/DOCX sequential and mixed8 proof; reduced samples cannot close MIX-01.
+  Require receipts/DB/delivery/usage/resources consistency and appropriate native
+  Word checks before acceptance; unavailable Word evidence remains NOT_VERIFIED.
+  Only then consider separately authorized local Core→Service→Project Control
+  integration. Push/release/install and real-data recovery remain separate.
+
+Review focus mapped to R1/R2 tests: (1) Thai/Latin/Common barriers, direct w:cs,
+explicit zero spacing and baseline; (2) paragraph-mark versus text formatting,
+false bold/italic, font size/language and style precedence; (3) merged cells,
+repeated/kept rows, borders/padding/columns/section geometry; (4) fields/TOC,
+bookmarks/links, images/alpha and source-guide/custom XML; (5) cancellation,
+malformed/ambiguous structures, deterministic style-ID collision handling and
+bounded failure without partial/fallback artifact or reservation leaks.
+
+Alternative if single-document feasibility fails: explicit logical-section DOCX
+splitting with separately approved file-count/TOC/page/link semantics. It is an
+output-contract change, not an automatic workaround. This plan promises no
+unproven full-document capacity or native Word acceptance.
+
+All observer errors0. Two tasks remain failed/no artifacts, matching original
+delivery=not_started and safe reservation accounting. Owned containers stopped,
+forwarding exited and production identity/start/restart/mount metadata unchanged;
+no production SQL/storage access. Three actual candidate source files were
+hashed from the stopped API container after both observations and match worker
+pre-observation bytes. Worker exit hooks are not claimed: normal Service failure
+cleanup kills the group first, so post-source verification reads its shared
+container files. Local Core/Service/control refs were unchanged before this
+status-only note. A first preparation attempt failed the inherited harness mount
+allowlist before any request; the intended exact /evidence bind was checked in
+the corrected fresh lab. The failed attempt is retained, not counted PASS.
+
+Report, plan, raw captured locals/XML chunks, independent ledger and source /
+boundary receipts:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-full-budget-20261031/verification-report.html.
+Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-full-budget-20261031/.
+Result PASS_BOUNDED_DIAGNOSIS; full UAT/SRS DOCX remains FAIL. Stop at the proposed
+plan; no repair, full-suite rerun, map/registry promotion or new Git lane follows.
