@@ -4603,3 +4603,39 @@ Static evidence/census ledger:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-d2-20261031/design-evidence.json.
 This turn's checks cover documentation, source facts and unchanged input hashes;
 no new product runtime proof. Stop at the reviewable D2 proposal.
+
+### 2026-10-31 — R1a parser feasibility FAIL; returned to D2
+
+Authority Boundary: explicit owner-authorized isolated R1a discovery; Core owns
+the prospective adapter, Project Control owns status/design. Single room; IDs
+not applicable. No Core/Service production-source or dependency changes, real
+data/DB access, real-service stop, push/release/install. No R1b/R2 or integration.
+
+The standalone exact parser probe failed the D2 resource prerequisite. In a
+fresh Linux/amd64 Node 24.15.0 container at 512 MiB / 1 CPU with network none,
+the raw SRS document.xml (5,183,340 bytes) parsed and matched the independent
+semantic digest, then failed during serialization with Node heap OOM. Exit 139,
+OOMKilled=false; heap limit 271,581,184 bytes. The earlier whole-sequence run
+also failed. This does not prove a kernel OOM or a physical 512 MiB impossibility;
+it blocks adopting the proposed default-Node whole-part path as tested.
+This was a raw/no-op roundtrip, not the compaction engine or generateDocxTo;
+post-compaction memory behavior and a current-Core crash are not demonstrated.
+Review must cover skipping unchanged/over-budget serialization as well as the
+working memory of an actually reduced DOM.
+
+Windows raw-part comparisons passed for all 100 UAT/SRS XML/rels parts. The
+initial xmlns-empty mismatch was traced to minidom's None representation and
+the corrected oracle case passes; it is not a confirmed parser namespace bug.
+Native Core baseline on Linux built and passed 239/239 DOCX tests at 2 GiB /
+2 CPU; initial Windows failures are retained as a missing Linux-helper platform
+prerequisite. No new-parser Core package/adapter PASS is claimed.
+
+[D2 contract](flowdoc-docx-compaction-d2-contract-2026-10-31.md) now records the
+blocking trace, unchanged limits and design-review options. Adapter, strict
+negative/bounds/cancellation and new packed-consumer gates remain unverified;
+the user-required stop applies before porting rules. No runtime tuning or new
+algorithm was attempted to bypass the failure. D2 is returned to design; D1
+remains bounded copy evidence; MIX-01/full new-Core normalization remain open.
+
+Evidence scripts/logs/lock/oracles:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1a-20261031/.

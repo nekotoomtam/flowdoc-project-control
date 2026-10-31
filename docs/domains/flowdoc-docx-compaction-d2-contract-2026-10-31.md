@@ -1,7 +1,7 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **PROPOSED — READY FOR REVIEW**,
+Partner / Cross-Repo Boundary Reviewer. Status **RETURNED TO DESIGN — R1a RESOURCE GATE FAILED**,
 not implementation authorization or runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
@@ -20,7 +20,7 @@ especially the D1 result at its end, and the linked immutable D1 report.
 For future implementation use the executing-plans workflow in the authorized
 room; no separate-agent dispatch or execution starts from this draft.
 
-## Verified basis and current authorization
+## D2 snapshot before the authorized R1a attempt
 
 - Core base3e74f98b8a14cefea4dd147644318ea3108999b1 and Service base
   a572025b80fe932add664ca0b529633a3a091545 are clean and unchanged.
@@ -258,9 +258,9 @@ is a blocker requiring design review, not a silent worker/process addition.
 
 ## Review status and limits
 
-D2 is ready for review as a proposed mechanism/contract. No parser installation,
-smoke test, TypeScript build, runtime resource proof or Core port occurred.
-Those are R1 gates, not hidden PASS results. D1's Word batch-export/control
+D2 was ready for review as a proposed mechanism/contract. The subsequent R1a
+attempt below blocks adoption; the original design snapshot above is retained.
+D1's Word batch-export/control
 failures stay in its evidence; future proof uses isolated Word exports with real
 file, pixel/text and complete navigation gates, not API return alone.
 
@@ -270,3 +270,81 @@ limits without review. D1 remains bounded evidence; MIX-01/R1/R2 are open.
 Current document budget: this focused design, one status link in the existing
 record and a read-only source/census ledger. No new Work/room/registry/map.
 Read-only ledger: C:/Users/nekot/Documents/FlowDoc-recovery/docx-d2-20261031/design-evidence.json.
+
+## R1a result — 2026-10-31: return to design before an adapter/Core port
+
+Owner authorized isolated parser/package proof, preserving limits, and explicitly
+required returning to design if it failed. The first phase was discovery because
+resource feasibility can change the mechanism. **FAIL: the configured whole-part
+DOM plus serializer path does not meet the current 512 MiB / 1 CPU default-Node
+lab gate for the actual raw SRS part.** No adapter, dependency, lockfile, rule
+engine or writer changes were made in Core; R1a is not complete and R1b/R2 did
+not start. No package candidate was promoted or installed.
+
+Evidence/reproduction:
+
+- Exact standalone @xmldom/xmldom 0.9.12 in a private lab npm project; registry
+  integrity/lock and MIT file retained. Pure dependency feasibility, not the
+  production adapter. Node 24.15.0, Linux/amd64, pinned Node image from the Core
+  Dockerfile. No DB, external network during execution, real-service access or
+  output-budget change. Existing explicit XML1.0 normalization/prolog handling
+  and requireWellFormed serializer options were used.
+- Windows broad probe: 100 raw UAT/SRS XML/rels parts passed independent Python
+  XML1.0 semantic digest comparisons before AND after serialization. Five
+  synthetic cases passed; numeric-CR text was deliberately not serialized.
+  One initial namespace oracle mismatch was a Python minidom representation:
+  the xmlns="" attribute value is None there, empty string in xmldom. Preserve
+  the initial artifacts; normalize only that oracle representation to the XML
+  empty-string value, then the namespace case passes. This is NOT a demonstrated
+  xmldom namespace defect. Windows peak RSS was 864,840 KiB without a container
+  memory limit; it is not a minimum required-memory claim.
+- The initial 512 MiB / 1 CPU Linux sequence aborted with JavaScript heap OOM.
+  A fresh container with ONLY srs:word/document.xml reproduced the failure:
+  input 5,183,340 bytes, parse and independent digest comparison completed,
+  then serialization never completed. Trace: heap limit 271,581,184 bytes;
+  after parse RSS 322,703,360 and heap used 257,192,688 bytes. Fatal log says
+  Reached heap limit / JavaScript heap out of memory; container exit 139 and
+  OOMKilled=false. This is a Node/V8 heap exhaustion under the stated limits,
+  not evidence that the kernel killed the container or that 512 MiB physical
+  RAM can never suffice with another design. No heap flag/resource increase
+  was used to turn the failure green.
+- This was an unchanged/raw-part roundtrip feasibility probe, NOT the planned
+  compaction engine or generateDocxTo. It does not prove that serializing a
+  successfully reduced <=49,000-node package would OOM, or that the current
+  unchanged Core crashes. A reduced DOM may have a different peak. The design
+  must now state and prove how unchanged, still-over-budget and rewritten paths
+  avoid this demonstrated raw-serialization failure before adoption.
+- Baseline-only Core build/native/resources and DOCX tests on Linux pass
+  239/239 at 2 GiB / 2 CPU. Windows baseline had 14 failures/24 skips before any
+  dependency changes because the Linux-only metric helper was not prepared;
+  the Linux run resolves that platform prerequisite without product fixes.
+  These are unchanged-Core results, not new-parser packed-consumer proof.
+
+Stop decision and next design review:
+
+1. The proposed byte/node eligibility envelope admits the failing SRS input;
+   it does not bound actual DOM/serializer heap. Do not adopt it as a safety
+   guarantee or wire this path into a request process: synchronous OOM cannot
+   be recovered by the planned JS catch/abort contract.
+2. Review a way to bound BOTH parsing and serialization working memory before
+   implementing R1a's adapter. Candidates for review are an audited bounded
+   serializer and/or smaller-subtree/streaming processing with complete
+   namespace and inheritance coverage. No replacement is selected or coded
+   here. An existing input guard fallback remains safe rejection, but does not
+   prove the full SRS <=49,000 goal. Merely reducing this private envelope is
+   insufficient to close that goal.
+   Also review serializing only a successfully reduced DOM: unchanged parts
+   retain their original bytes; a still-over-budget plan can reject before
+   allocating a raw serialization. This must include parse/transform working
+   memory and real-Core headroom, not infer safety from the smaller final ZIP.
+3. Do not silently raise Node heap/container resources, public XML/drawing/ZIP
+   limits, add a worker/subprocess or replace the mechanism with broad regex.
+   Any revised mechanism needs a reviewed D2 change and this same-case resource
+   proof before adapter implementation/package adoption resumes.
+4. Remaining R1a strict-rejection/envelope/cancellation, NodeNext adapter and
+   new-parser packed-consumer gates are **unverified/deferred by this blocker**.
+   No full UAT/SRS new-Core normalization or native Word claim follows.
+
+Retained scripts, independent oracle, initial/corrected outputs, exact lockfile,
+container state/limits and logs:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1a-20261031/.
