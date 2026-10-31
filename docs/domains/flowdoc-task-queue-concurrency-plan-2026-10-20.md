@@ -3397,3 +3397,202 @@ Current report, nine raw contexts, Docker identity, native PDF, DB audit,
 immutable candidate receipt, native transport and failure boundaries:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-native-readiness-20261031/verification-report.html`.
 Inline execution/Phase/Checklist IDs N/A; no map/registry/audit-closure promotion.
+
+## Reviewed development integration plan — 2026-10-31
+
+Status: PLAN_READY / INTEGRATION_NOT_EXECUTED. Owner request is readiness review
+and a plan, not permission to merge, push, release, install, access production
+data or stop any service. Roles Planning Partner/Cross-Repo Boundary Reviewer;
+owners Core package, Service runtime/vendor/docs and Project Control plugin/
+shared plan respectively. Single-room inline, execution/Phase/Checklist IDs N/A;
+medium work size/routine risk. Current host inline planning model, no separate
+WORK or return route. Use executing-plans for later authorized inline execution;
+do not revive prior closed proof scopes or dispatch rooms merely for ceremony.
+
+Goal: integrate the accepted fixes into each local development mainline with a
+reviewed, internally consistent Core/Service/plugin tuple and retained evidence.
+Architecture: Core source -> immutable Core tarball H -> Service vendor/lock/
+image -> explicit reviewed plugin candidate profile H -> native client. Git
+integration is separate from publication, release snapshots and installation.
+Tech: Git worktrees, Node24/TypeScript, Linux/amd64 packed consumers, Docker/
+PostgreSQL18 on isolated Oracle VM, native Windows MCP client. Spec/inputs are
+the explicit current request, owner AGENTS, workflow-economy policy, release-rule
+development/release boundary and the two completed candidate/native sections
+above. No new product architecture or behavior is proposed.
+
+### Verified current bases and intended destinations
+
+Live GitHub symbolic HEAD/refs checked read-only with ls-remote; no fetch/pull/
+push. Local trees are clean. Observations below precede this plan's doc commit;
+refresh exact heads/ownership before execution rather than using stale tips.
+
+| Owner | Local development destination | Tested candidate | Observed relationship |
+| --- | --- | --- | --- |
+| Core | codex/template-binding @1817efa4964af9e18cf75d4d31b4221893167800 | codex/docx-run-budget @65f17ee78da804836cca42f7582a961cf2a1b9a8 | target ancestor; one commit/two files ahead |
+| Service | codex/template-registry @2c089b536f8782258898693db63dc62141ca7659 | codex/docx-core-consumer @f36f82110c87d8ed50904bb6fdc5689e403f5490 | target ancestor; one commit/seven files ahead |
+| Project Control/plugin | main @01e9769c671568e7d4fe6b27b4d3553091389e97 before this plan | codex/flowdocmake-core-pin-candidate @666193f249e7c5f1fd929a1858ba8739f9fc9291 | common base0920968; main two doc commits, candidate one three-file commit |
+
+Core primary checkout is release @55315ca6 (tagv0.5.2), NOT the development
+destination. Keep it untouched; create a separate development/integration
+worktree rather than switching or merging into that checkout. Service release
+@25e912f and all annotated tags likewise remain untouched. Core/Service have no
+local main branch to use as a guessed destination.
+
+Actual remote development refs: Core0401b87f, Service83f85f56 and Project
+Control6cb9065a. They are ancestors of local destinations, with1/10/25 existing
+unpublished local commits respectively before this plan. No remote-ahead
+divergence was found at review time. A future push would include that prior
+history; review its full outgoing manifest and obtain applicable remote scope
+separately. This local integration plan does not authorize publishing it.
+
+### Readiness and concrete prerequisites
+
+Runtime inputs agree: real Service vendor bytes, manifest.sourceCommit65f17ee,
+lock and plugin candidate.2 pin Core04442fd16ec884e5cf87664dcf3562e4d4f25ae4d32b996d033a88642fe1668d.
+Source/inventory and native proof remain unchanged. Reusable bounded evidence:
+Core full1271pass/0skip (DOCX239 is a subset), scoped installed DOCX+streamingPDF
+consumers; Service744pass/3 HEIGHT_DELIVERY_CONFIG operator skips on the
+calibrated disposable plugin fixture; actual delivered candidate local21,
+selected guards2 and actual Service consumers25; DOCX1800 before/full/restored;
+native Windows declared wiring nine context scenarios and one actual PDF task.
+Do not claim the744 full-suite run used the delivered candidate; its relevant
+actual-candidate boundary is the separate25-case run. Full check:package multi-
+consumer gate remains NOT_RUN, operator skips are not PASS, and Word/visual/
+installed-desktop discovery/real-data recovery remain outside existing proof.
+
+Integration prerequisites found by repo-owned documentation review:
+
+- Core README.md85 still says latest release0.5.0 despite actual v0.5.2. Review
+  docs/template-guide.md together; correct present development/release identity
+  without rewriting historical acceptance or touching release refs/tags.
+- Service docs/usage.md19-20 presents prepared FlowDocMake0.3.1 as the match and
+  an old installed tuple as current; line58 directs migration only through026.
+  Distinguish the new development candidate/027 from retained release026 and
+  historical deployment instructions. Do not infer today's installed state
+  from old prose or query production just to repair these claims. Review README
+  with usage; applied/released migrations must not be edited or renumbered.
+- Prepared/default plugin0.3.1 still pins647235de; only explicit candidate.2
+  pins04442fd1. Preserve that released/default identity and installed caches.
+  Merging candidate support does not make a default-source build compatible
+  with the new Service. The integrated dev build must select its reviewed
+  candidate profile explicitly, with source/package/guide identities shown.
+- Core package.json.files includes README.md. The recommended README correction
+  changes packed bytes, so freeze a NEW archive H/provenance; do not relabel
+  archive04442fd1 or reuse its SHA/native PASS as if the new tuple was tested.
+  Current tested artifacts/source commits stay immutable reference inputs.
+- A merged plugin build records its clean integration commit and absolute output
+  path. Its new inventory is a new artifact even when runtime code is unchanged;
+  test that actual artifact/wiring rather than editing old snapshot metadata.
+
+Recommendation: ready to prepare isolated integration lanes after authorization,
+not ready for an unqualified fast-forward-and-close. Documentation/package/pin
+alignment and fresh artifact proof are remaining work. No product files or
+candidate were repaired in this planning request.
+
+### Ordered execution after authorization
+
+1. Freeze fresh refs, clean/ownership status, candidate manifests and immutable
+   archive/image identities; capture release/tag refs for an unchanged boundary.
+   Check whether any destination checkout is consumed as a mutable live runtime/
+   plugin serviceRoot or bind mount; native tools import local Service dist and
+   dependencies, so do not infer live isolation from clean Git status alone.
+   If coupled, preserve its live files/config and resolve a separate development
+   checkout before promotion; no live build/reconfiguration is authorized here.
+   Preserve current outgoing-commit lists and ignored evidence. Stop on unknown
+   ownership, dirty source, changed base or unexpected remote divergence.
+
+2. Prepare three named codex/integrate-* lanes in separate worktrees from the
+   then-current local destinations. Core lane consumes65f17ee by --ff-only;
+   Service lane consumesf36f821 by --ff-only; Project Control lane merges666193f
+   into its current main base. Current main/candidate file paths are disjoint
+   (shared record vs builder/profile/tests); this is path review, not a claimed
+   completed merge simulation. Inspect the actual merge/diff in the scratch
+   lanes. No development destination advances at this preparation step.
+
+3. Align only repo-owned candidate docs on those lanes: Core README/template-
+   guide, Service README/usage, and plugin README candidate/default boundary as
+   necessary. Review current source/migration027/real ref evidence; retain old
+   release instructions as historical. Product logic, XML/drawing/IPC caps,
+   existing migration bytes, version tags and prepared/installed profiles stay
+   unchanged. Finish/commit docs before freezing new package inputs.
+
+4. Produce one Linux/amd64 Core integration package from the frozen clean Core
+   lane, with source commit and actual SHA H (TBD until built). Use the existing
+   toolchain/owned lab, no host/runtime installation. Because the artifact is
+   new, run the packed-consumer gate against the artifact actually selected;
+   capture its resulting archive/hash rather than assuming a prior byte match.
+   Use the packed gate's own output as H; do not pack one archive and test
+   another. Set explicit legacy ELF/font fixtures and retain failures. Reuse1271/239
+   code tests only if code, compiler/config/dependencies/resources match; source
+   or environment changes require affected checks. The previously NOT_RUN full
+   multi-consumer gate is not silently converted to PASS by an old scoped check.
+
+5. In the Service lane, pin that exact H in vendor archive/manifest/source
+   provenance and lock integrity; do not retain04442fd1 labels for new bytes.
+   Build immutable verification/runtime lab images from its frozen commit.
+   In the Project Control lane add a distinct reviewed integration profile
+   (proposed flowdocmake-integration-candidate /0.3.1-candidate.3), exact builder
+   allowlist entry and regression for H. Preserve existing candidate.2/profile/
+   archive and prepared0.3.1. Never weaken exact tuple/root/loopback/hash guards.
+   Commit the lane, then emit a NEW candidate outside source/cache, recording
+   that clean commit, its guide hashes and actual absolute .mcp path.
+
+6. Verify the frozen NEW tuple in ONE fresh labeled Oracle Docker/PostgreSQL18
+   lab: real-archive build/negative-pin/output-containment plugin tests, affected
+   Service task API/queue/client consumers with the actual emitted candidate,
+   native Windows declared-wiring READY + tools + one PDF task/lookup, and a
+   healthy DOCX1800 package/text/budget/receipt/accounting check. Require exact
+   H/source/image agreement, no extra execution, released queue/storage grants,
+   owned cleanup and unchanged production metadata. No real-data SQL/storage.
+   Use prior failure matrices only where actual code/resources/config match;
+   packaging/IPC/contract failures reopen the responsible lane, freeze a new
+   tuple and rerun affected downstream checks, not arbitrary entire systems.
+   Source changes expanding impact require revised acceptance before promotion.
+
+7. Review criteria-to-evidence coverage and final manifests, then promote local
+   destinations in dependency order Core -> Service -> Project Control using
+   --ff-only from each exact accepted integration-lane head. Core needs a clean
+   separate checkout of codex/template-binding if not checked out; never use its
+   primary release checkout. Recheck expected old heads immediately before each
+   advance; no force update, reset --hard, rebase or cherry-pick to hide drift.
+   Keep a pending integration record until all three heads agree. An unchanged
+   fast-forward reuses passing proof after identity checks; conflicts/additional
+   changes go back to the lane and affected checks. Cross-repo ref updates are
+   not atomic; if a later advance fails, stop/report the exact partial state and
+   preserve history instead of silently resetting already advanced branches.
+
+8. Record accepted heads/package H/profile/inventory/images/checks/gaps in this
+   existing record; regenerate/check Project Control and commit status only.
+   No map/audit-closure promotion. Preserve necessary ignored evidence/artifacts
+   by verified copy before normal cleanup of clean fully merged current-scope
+   temporary lanes. Keep primary/dev/release branches and dirty/unmerged/owned
+   work; do not sweep unrelated old worktrees, branches, Docker labs or volumes.
+   Stop. No push/tag/release/installation/real-data recovery follows implicitly.
+
+### Acceptance, scope budget and remaining gaps
+
+Future acceptance is one clean accepted integration tuple on the three explicit
+local development refs, docs matching that tuple, actual package/candidate
+provenance and required affected proof. Allowed future paths are the already
+reviewed Core two-file fix plus necessary README/template-guide, Service seven-
+file fix plus usage/docs/new vendor pin, and Project Control candidate builder/
+fixture/test/plugin README plus this record. Any logic or migration repair
+outside these paths needs a revised scope; planning itself edits this record
+only. Proof budget is one final tuple and one fresh lab, bounded retries for
+observed failures; no repeated old fault matrix/full system tests by default.
+Document budget is this canonical section and necessary repo-owned corrections,
+with an ignored Git/evidence inspection receipt; no new Work registry or report
+merely to close this plan.
+
+Blocking before declaring integration complete: documentation alignment,
+computed H and all dependent pins, successful fresh package/candidate checks,
+confirmed live-root isolation and actual accepted destination heads. These are
+planned, not performed today. Explicit legacy-ELF/font fixture availability for
+the complete packed-consumer gate also needs preflight; it is not presumed from
+the old scoped consumer PASS.
+Installed desktop discovery, Linux/relocated absolute wiring, native Word
+visual/kerning/pagination, three operator cases and production recovery remain
+explicitly unverified/deferred; local Git integration alone cannot close them
+or confer release readiness. Other-template capacity is not inferred
+from the single1800 fixture. No further proof or code work is authorized by
+this PLAN_READY result alone.
