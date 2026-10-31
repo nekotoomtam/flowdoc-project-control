@@ -1,15 +1,16 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **BOUNDED ORACLE BYPASS PROOF PASSED; R1a STILL BLOCKED**,
-not implementation authorization or runtime acceptance. Single-room execution
+Partner / Cross-Repo Boundary Reviewer. Status **ONLINE COPY PLAN/REDUCTION PASSED IN 512 MiB; CORE/WORD ACCEPTANCE OPEN**,
+not Core implementation authorization or Core runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
 The queue/concurrency record retains status/history and D1 evidence authority.
 The memory/lazy-serialization revision at the end supersedes the original
 resource assumptions and formalizes the unchanged-bytes rule. The raw no-op
 roundtrip is a retained R1a diagnostic, not a required production path.
-This is proposed design only, not a successful retry or code change.
+The production design remains proposed; later bounded copy experiments below
+do not authorize a Core port or substitute for Core/Word acceptance.
 
 **Goal:** turn the proven full-document copy recipe into a private Core stage,
 preserving the default 50,000 XML / 10,000 drawing / 32 MiB limits and obtaining
@@ -585,3 +586,90 @@ C:/Users/nekot/Documents/FlowDoc-recovery/docx-bypass-20261031/.
 Verification: verification.json; raw OCI receipt/logs and round-specific files
 under oracle/. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-bypass-20261031/verification-report.html.
+
+## 2026-11-01 — Online Node copy planning and reduction: bounded PASS
+
+Authority Boundary: owner-authorized discovery spike on immutable UAT/SRS copies
+in Oracle/OCI. Evidence Reviewer / lab experiment owner, then Project Control
+Steward for this status. Single-room IDs not applicable; routine risk, medium
+scope. Core remains the implementation owner and is unchanged; no product
+package, dependency or Service changes, real-data/API/SQL/storage access,
+real-service stop, push/release/install. No new Work/registry/map.
+
+Unlike the bypass experiment, this run uploads NO prepared edit plan. The Node
+prototype derives style inheritance, width/cell defaults, paragraph/run
+compensation, table/default/conditional alignment, inactive grid properties,
+drawing candidates, section-scoped footer pairs and complete graph/count plans
+from raw XML while inside the constrained container. The source-band metadata
+is original template provenance, not a list of edits/count deltas. Frozen hashes
+and source/native section reconciliation gate reuse; both distinct first/default
+relationship IDs/types and explicit references remain present.
+
+The implementation is experimental JavaScript outside all product repositories,
+using the same @xmldom/xmldom0.9.12. Python is NOT a planner/transform fallback;
+it only independently checks the produced files afterwards, outside the measured
+runtime. Original inputs were the raw packages with110767/182250nodes, not D1
+pre-reduced copies. No automatic parser/serializer replacement or worker added.
+
+| Fixture | Original total XML/rels nodes | Final total | Reserve below50,000 | Final cgroup peak |
+| --- | --- | --- | --- | --- |
+| UAT |110,767|36,631|13,369|281.32MiB |
+| SRS |182,250|48,817|1,183|340.77MiB |
+
+SRS meets the<=49,000 fixture target (183nodes below that target). Actual final
+guard results:190/383drawings, default10,000 cap; ZIP bytes2,967,654/792,939,
+default32MiB cap. Predicted complete counts equal the exact extracted unchanged
+Core final scanner's counts. All memory limits remain512MiB total memory/swap,
+1CPU, Node24.21.0/default heap271,581,184bytes and no NODE_OPTIONS; network none,
+read-only input mount. No OOM/skip/resource tuning. Property tests pass4/4.
+
+Memory method and evidence limits:
+
+1. Build compact style/paragraph summaries and an actual base plan in-process.
+   Private working DOMs may change, but the ZIP/input snapshot and sink do not.
+2. Replay against raw parts to complete the full default/table/drawing/footer
+   plan; keep plain facts/digests, not a retained whole-package DOM. Count added
+   styles, changed relationships/content types and removed parts before output.
+3. Only after the entire plan meets the original budget/fixture goal, replay
+   deterministically, serialize retained changed parts and reparse EVERY
+   replacement (including styles.xml). Apply the complete validated overlay to
+   the private ZIP, run the unchanged guard, generate and byte-check the ZIP,
+   then publish the lab candidate. No forced-GC rescue or raised heap.
+
+The preliminary base gate reached39,473/58,587nodes without serialization. It
+was not accepted as full reduction. Completing row false no-ops/empty-container
+cleanup and the remaining recipe produced the totals above. Retained first
+full-run results were followed by a new full run after review added the missing
+styles replacement reparse. Only that final revision is the accepted experiment.
+All stages and source archives are retained; no source/data history is erased.
+
+Independent XML1.0 verification on the final artifacts passes all38 original
+story parts (7UAT/31SRS), mapping removed footers to their retained same-section
+counterparts:4,463paragraph cascades,21,205runs/marks and2,524cells. It checks
+protected content/structure/CS/sections/grid/spans/merges, run/paragraph style
+inheritance including toggles, conditional table alignment, cell width/margins/
+borders, original styles except permitted no-ops/default flag, unchanged
+docDefaults and non-story resources, CRC and internal relationships. Original
+hashes match; production runtime identity before/after matches and zero owned
+lab containers remain running. The validator initially rejected ZIP directory
+entries added by JSZip; the correction excludes directory metadata only, never
+an OPC document part. That setup rejection is retained, not a product defect.
+
+This closes ONLY the online copy-planner/reduction feasibility gap for these
+two frozen fixtures under512MiB. It does not establish a universal safe input
+envelope, actual Core/generateDocxTo working-set headroom (intent/layout/fonts/
+native helpers were NOT loaded), cancellation/concurrency/growth behavior,
+TypeScript adapter/packed consumer/Service compatibility, or native Word
+pagination/edit/navigation fidelity for these new candidates. R1a is not closed;
+R1b/R1c/R2 and production acceptance remain open. The old raw no-op serialization
+OOM is retained; success here depends on reducing before serialization, not on
+proving raw whole-part roundtrip safe. Next proof must combine real Core state
+and native Word validation before adopting the method.
+
+Proof budget consumed: base gate, complete recipe run, corrected final run for
+the missing validation prerequisite, independent artifact/format-model checks.
+Stop without further runtime changes. Scripts/packets/telemetry/candidates:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-liveplan-20261031/.
+Accepted result: verification.json; oracle-full/ is final; oracle-prefix/ and
+oracle-full-attempt1/ are retained preliminary results. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-liveplan-20261101/verification-report.html.

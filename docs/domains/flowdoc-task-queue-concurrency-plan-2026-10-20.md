@@ -4698,3 +4698,30 @@ not used as an exact runtime comparison. The old failure evidence is preserved.
 Scripts/results: C:/Users/nekot/Documents/FlowDoc-recovery/docx-bypass-20261031/.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-bypass-20261031/verification-report.html.
 Stop at these two bounded branches; no automatic adapter/normalizer port.
+
+### 2026-11-01 — Oracle online copy planner/reduction bounded PASS in512MiB
+
+Authority Boundary: owner-authorized copy-only discovery; Project Control owns
+status, Core owns prospective implementation. Single-room IDs not applicable.
+[D2 contract](flowdoc-docx-compaction-d2-contract-2026-10-31.md) records the
+complete evidence and remaining acceptance gaps. No external prepared IR was
+used: Node computed and validated the actual plans from raw XML inside Oracle
+containers at512MiB/1CPU/default heap, with no network or resource increase.
+
+Final UAT110,767→36,631nodes, cgroup peak281.32MiB. SRS182,250→48,817nodes,
+peak340.77MiB,1,183nodes below the unchanged50,000cap and within the<=49,000
+fixture target. The original drawing/ZIP caps also hold. Full-plan counts match
+the extracted unchanged Core guard; each replacement is reparsed before final
+ZIP generation/publication. Property tests4/4; independent XML content/format
+model, CRC, resource/relationship and source-integrity checks pass both copies.
+
+This resolves the standalone copy-planning gap only. Actual Core retained state,
+new adapter/package/Service and native Word full-document behavior are not
+verified. R1a/R1b/R1c/R2 remain open; no port/integration was authorized. Preserve
+the preliminary base/first-full runs and old raw-roundtrip OOM as bounded history.
+Core/Service unchanged, original hashes and production runtime identity stable,
+zero owned lab containers running. No real data/API/SQL/storage, service stop,
+push/release/install. Stop after the requested proof.
+
+Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-liveplan-20261031/verification.json.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-liveplan-20261101/verification-report.html.
