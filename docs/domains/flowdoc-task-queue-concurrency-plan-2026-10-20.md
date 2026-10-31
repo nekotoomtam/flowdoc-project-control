@@ -3596,3 +3596,39 @@ explicitly unverified/deferred; local Git integration alone cannot close them
 or confer release readiness. Other-template capacity is not inferred
 from the single1800 fixture. No further proof or code work is authorized by
 this PLAN_READY result alone.
+
+## Authorized development integration execution — 2026-10-31
+
+Owner now explicitly authorizes the reviewed plan: isolated lanes, documentation,
+new packed Core/pins, isolated Oracle proof, then local Core -> Service -> Project
+Control integration. No production data/service action, push, release or install.
+Roles Product Implementation Agent, then Evidence Reviewer; inline IDs N/A.
+The prior PLAN_READY restriction does not replace this new human authorization.
+
+Lanes start at frozen Core1817efa -> accepted65f17ee, Service2c089b5 -> f36f821,
+and Project Control d721ec7 + candidate666193f. Destination refs remain unchanged
+until acceptance. Current snapshot/sourceDigest e9bacb3 and owner guides reviewed.
+Core documentation freeze3e74f98 changes README/template-guide only. Whole-branch
+fresh-context review will cover the final three lanes before promotion.
+
+Ruling: native worktree tool rejects Core/Service roots outside this chat's
+workspace list, so those two use normal named Git worktrees after that failure;
+Project Control uses its successful managed worktree. No permission rejection
+was bypassed and no existing checkout files were moved.
+
+Ruling: installed plugin configuration actually imports the primary Service
+checkout as serviceRoot. Preserve its selected tracked/dist/dependency files
+and configuration hashes. At accepted promotion detach that checkout at its
+unchanged2c089b5, without file changes, and advance codex/template-registry in
+a separate development checkout. Core primary release checkout stays untouched.
+
+Ruling: Oracle's Docker29.1.3 engine lacks the buildx CLI plugin needed for the
+complete existing packed-consumer gate's named contexts/COPY--chmod/output.
+Stage official pinned Buildxv0.30.1 under the disposable lab's Docker config,
+verify release-asset digestc37114fcd034025ec68e224657c8a5a850df472ded3ddcbca75ad3a7ebb9710d,
+and execute it only for lab builds. No host/global tool installation or runtime
+tool download during rendering. Source https://github.com/docker/buildx/releases/tag/v0.30.1.
+The gate source remains unchanged; its scratch runner may add only labels and
+memory/CPU limits to real Docker commands. Preserve original/runner hashes and
+their diff, invoke all original consumer assertions, and record this operational
+adaptation instead of claiming an unmodified command/environment.
