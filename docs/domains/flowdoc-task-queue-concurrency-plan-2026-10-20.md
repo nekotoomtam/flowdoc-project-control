@@ -4306,3 +4306,167 @@ Report, every-page viewer, selected DOCX/native PDFs, counts/invariants/navigati
 failed attempts, Oracle receipts, exact helper scripts and SHA-256 manifest:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-combined-20261031/verification-report.html.
 Private staging: C:/Users/nekot/Documents/FlowDoc-recovery/docx-combined-20261031/.
+
+### 2026-10-31 — proposed Core compaction plan and SRS XML headroom
+
+Authority Boundary: Project Control planning synthesis requested by the owner;
+**PROPOSED / NOT AUTHORIZED FOR IMPLEMENTATION**. Planning Partner /
+Cross-Repo Boundary Reviewer, then Project Control Steward for this note.
+Single room; execution Work/Phase/Checklist IDs not applicable. This is the
+narrow planning authority for the next compaction work; preceding experiment
+evidence remains immutable input. No closed execution round or map is reopened.
+Core owns future code at3e74f98b8a14cefea4dd147644318ea3108999b1;
+Servicea572025b is a downstream verification consumer, not a repair owner here.
+
+**Goal:** integrate proven lossless compaction and obtain useful SRS headroom
+under the unchanged50000 all-part XML limit.
+**Architecture proposed:** one package-scoped deterministic normalization stage
+after source-layout serialization/existing compaction, before the unchanged
+final guard and sink publication. Keep under-budget native output unchanged.
+Validate a complete patch before applying it; no global style/part registry,
+public option, receipt schema, Service switch or plugin pin change.
+**Stack:** existing TypeScript, docx9.13.0, JSZip3.10.2, Node>=24.15.0 <25;
+isolated OCI/Docker and installed native Word for future proof.
+**Evidence/spec:** preceding combined-copy section/report; Core writer.ts:135–179,
+source-layout-xml.ts:122–147, sections.ts:71–95 and nativeRunBudget.test.ts.
+The generated global snapshot is older context, not current runtime/Git truth.
+
+#### Constraints and proposed acceptance
+
+- Remain planning-only now: no Core/Service/dependency/configuration/fixture or
+  DOCX mutation, Oracle connection, Word launch or product runtime test. No real
+  data access, real-service stop, push/release/install.
+- Keep XML50000, drawing10000, ZIP32MiB guards. Never qualify full fixtures with
+  maxXmlNodes overrides. Preserve text/whitespace, run/span/field/SDT boundaries,
+  forced CS, fonts, images, section/page rules, references, grids/spans/merges.
+  Keep receipt wordVerified:false; fixture Word evidence remains external.
+- **Proposed SRS regression target: <=49000 nodes, >=1000 reserve.** This is an
+  internal acceptance target for the frozen full fixture, not a new product
+  admission ceiling or a promise of1000 authored nodes. UAT<=39191.
+- Test a growth fixture: retain original content and add an existing largest
+  requirement row, one image and TOC update. Measure actual net overhead,
+  including styles/relationships; complete output must remain<=50000. Current
+  largest main-document row has467XML nodes, not a guaranteed export delta.
+- Original full fixtures must match all174 native Word page pairs, text/story
+  metadata, geometry and216link annotations. Growth output is checked against
+  intended additions, not the old page count.
+- No CS elision/relocation, run merging, conditional-column styling on any
+  horizontally merged table, cross-section sharing, truncation or splitting.
+  Unknown or unsupported contexts stay untouched and face the final guard.
+
+#### Read-only inventory: confirmed counts, unverified removals
+
+Inspected the exact accepted copies locally; hashes remain fixed. No package
+rewrite, Oracle connection or Word test occurred in this planning turn.
+
+| SRS candidate | Confirmed count | Proof still needed |
+| --- | ---: | --- |
+| Zero inline wp:effectExtent, no recognized drawing effects |383|omission legality/defaults, layout/geometry and Word fidelity|
+| Empty a:avLst under rect preset geometry |383|schema/preset-default equivalence; exclude adjusted/custom shapes|
+| Exact first/default footer pairs within each section |7pairs /484part nodes|same authored band/mode all, fields/page rules and native editing independence|
+
+Conditional arithmetic, NOT produced or runtime-tested outputs:
+
+- Drawing rules only:49965-383-383=49199, reserve801; above35 but below the
+  proposed1000 minimum.
+- Drawing rules plus all eligible within-section footer duplicate parts:
+  49965-383-383-484=48715, reserve1285. These footer parts contain no drawings,
+  so this subtotal has no overlap. No credit for relationship/content-type
+  cleanup until actually measured.
+- Twelve nonempty footers are identical, but sharing them across sections is
+  EXCLUDED. Count only six80-node pairs plus one4-node empty pair within their
+  original sections. XML equality alone does not establish ownership.
+- ZIP compression, shorter IDs/strings or media-byte deduplication do not by
+  themselves demonstrate fewer XML elements.
+
+Ledger with hashes, per-part counts and eligibility gaps:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-plan-20261031/xml-headroom-profile.json.
+Primary interpretation references, not fixture runtime proof:
+[effectExtent](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.wordprocessing.effectextent?view=openxml-3.0.1),
+[preset geometry](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.presetgeometry?view=openxml-3.0.1),
+[footer reference/types/inheritance](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.footerreference?view=openxml-3.0.1).
+
+#### Alternatives and recommendation
+
+1. Port proven recipe only:49965 passes the guard but reserve35 is inadequate
+   for the proposed fixture gate; not recommended as completion.
+2. **Recommended:** prove drawing defaults first, then same-band first/default
+   footer reuse within one section if semantics allow. Current arithmetic
+   suggests reserve1285, not a guaranteed runtime result.
+3. Broader CS/default inheritance or cross-section sharing might save more but
+   has native Word/coupling risks. Defer; do not use to rescue a failed target.
+
+#### Ordered tasks and gates
+
+- [ ] **D1 — prove additional headroom on copies before Core code.** Freeze
+  input/image/Word/font identities. Validate exact schema and predicates;
+  test each drawing rule separately, together, then at most one eligible footer
+  case and the combined candidate in an isolated lab. Check counts/invariants
+  before Word. Trace frozen intent/section receipts against sections.ts:71–95:
+  paired outputs must come from the SAME authored band and mode all. Preserve
+  both footerReference types and section policies; do not omit a reference and
+  activate previous-section inheritance. Check fields, first/default/even
+  behavior, numbering restarts and Word editing/link semantics. If independent
+  native editing is required, reject sharing despite identical pixels.
+  Gate: actual SRS<=49000 and full native fidelity. If only drawing rules pass,
+  return the shortfall; do not silently lower the target or weaken the cap.
+
+- [ ] **D2 — freeze the production normalization contract.** Blocking discovery
+  prerequisite, not an assumed implementation detail. Prototype uses Python
+  minidom; Core has no general XML parser dependency in its manifest/lockfile,
+  and local Core node_modules is absent. Review a namespace-aware mechanism
+  preserving entities/order with bounded parsing; check dependency/license/
+  runtime/packed-consumer effects if needed. No unreviewed Python subprocess or
+  broad regex rewrite. Define owned-part allowlist, default/toggle compensation,
+  unknown-value behavior, collision checks and atomic patch validation. Proposed
+  private interface: original part bytes plus ownership context to replacements,
+  removals, per-rule ledger and measured before/after totals. Freeze D1/D2
+  decisions before an implementation round; no new public API.
+
+- [ ] **R1a — port verified recipe with regression tests first.** Proposed new
+  src/docx/package-compaction.ts and tests/docx/packageCompaction.test.ts;
+  writer.ts integration, source-layout-xml.ts only at its existing boundary.
+  Test defaults/font compensation, style toggles, tabs/line rules, margins/
+  borders/gridSpan/vMerge, frozen implicit Normal, unknown values and IDs.
+  Retain nativeRunBudget.test.ts authored-boundary/Thai-CS checks and negative
+  fixtures for Unicode-CS elision and merged-table conditional styling. Count
+  added styles/defaults too. Validate atomic changes before sink.write;
+  under-budget and non-source native paths remain unchanged.
+
+- [ ] **R1b — add only D1-approved headroom rules.** Keep them in the private
+  compactor; sections.ts/bands.ts changes require the D1 ownership decision and
+  band tests. Retain nonzero extents/effects, adjusted/custom shapes, independent
+  bands and first/default/even policies. Test idempotence, repeated/parallel
+  exports without shared state, ID collisions, malformed XML, cancellation and
+  over-budget failure with zero publication/atomic abort. Preserve default
+  DOCX_OUTPUT_BUDGET_EXCEEDED and the final guard.
+
+- [ ] **R1c — Core and packed consumer.** Planned after authorization:
+  npm test -- tests/docx; npm run build; npm run check:package in the declared
+  toolchain. Cover all affected DOCX tests, including writer/sourceShapeStyles/
+  sourceShapeContainers/nativeRunBudget/fixedBands/pageFieldPosition. Missing
+  prerequisites are BLOCKER, not skipped PASS. Use public generateDocxTo with
+  default options on full UAT/SRS, growth and truly over-budget negative inputs.
+  Record hashes/contents; never bundle source/customer fixtures in the artifact.
+
+- [ ] **R2 — actual Service consumer in fresh OCI lab.** After separate execution
+  authorization, use exact packed Core hash and frozen Service base, synthetic
+  fixtures, isolated DB/storage and lab labels. Test full/mixed PDF+DOCX API
+  requests, actual task/delivery/output rows and fetched files, health and
+  reservations on success/reject/cancel. Native Word proof must use the actual
+  Service-delivered full files, not only edited copies. No automatic Service or
+  plugin patch/pin follows a failed contract. No integration/release/install.
+
+#### Proof budget, unknowns and stop
+
+Current turn: one read-only profile and this existing canonical record update;
+generate/check:data/diff review only, no product tests claimed. Future D1 uses
+the finite cases above, retains failures and reuses unchanged controls; broaden
+only for an observed affected area. No room/registry/map/new Work ID is created
+merely to plan. Choose an implementation lane, fresh base/scope and model at an
+authorized implementation start.
+
+Still unverified: drawing omission equivalence, footer edit/ownership semantics,
+actual headroom including overhead, production XML mechanism/prerequisites,
+growth envelope and default Service success. Copy PASS does not close MIX-01
+or start R1/R2. Stop at this reviewable plan; next proposed action is D1 proof.
