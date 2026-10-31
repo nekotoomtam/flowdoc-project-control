@@ -3299,3 +3299,101 @@ Candidate, raw current/failed evidence, PDFs, coverage and SHA manifest:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-plugin-pin-20261031/verification-report.html`.
 No map, registry or product-wide audit closure; inline IDs N/A. Stop at this
 bounded result. No automatic integration, additional experiment or rollout.
+
+## FlowDocMake native readiness/wiring verification — 2026-10-31
+
+New explicit request authorizes investigation of ready=false and remaining
+native readiness/wiring in a fresh Oracle lab, with no production data/service
+action, release or installation. Owner repo-project-control/plugins/flowdocmake;
+active role Evidence Reviewer (discovery then verification), single-room inline,
+execution/Phase/Checklist IDs N/A. Source candidate666193f and archivee7ad5eb4
+remain immutable inputs. Previous bounded task-path PASS is not reopened or
+silently promoted. Current sourceDigest e9bacb3/canonical mainb6ffd7b checked;
+unrelated frontend context is not this request's execution authority.
+
+Bounded/routine verification scope: trace actual preflight stages; test exact
+candidate .mcp wiring under native Windows Node against a fresh Oracle runtime
+with real loopback mapping, real Docker inspect/exec and existing PDF readers.
+Use temporary SSH loopback forwarding for actual lab API and Docker transport;
+no fake Docker/version responses, host tool install, global Docker config or
+desktop plugin registration. Host Oracle has no Node/PDF reader and user cannot
+directly open Docker socket; a labeled expiring lab-only transparent socket
+relay may connect the real daemon, restricted to loopback and this proof's
+trusted commands/owned container IDs. Close all forwards/relay on exit.
+
+Acceptance/proof budget: identify original missing boundary; obtain actual
+READY with exact live image/archive/port, list real tools and one existing-key
+synthetic task/lookup through unchanged declared wiring. Negative checks for
+unreachable Docker, absent container, wrong HTTP port despite same contract,
+missing reader, authorization, altered guide clone and actual runtime archive
+tampering/restoration only inside the owned disposable container. Preserve raw
+failures, candidate55-file hashes and native config provenance. Reuse prior
+1800/model18/task-suite proof without rerunning unchanged product suites.
+Stop once criteria and impact coverage pass; if a product defect appears,
+record it before any product repair. Native installed discovery remains outside
+scope because installation/registration is not authorized.
+
+Document budget: this existing canonical record, ignored lab ledger and one
+external report. Current host inline model; no separate WORK dispatch. No
+candidate/Core/Service source edits, main integration, release, global settings,
+real-data reads/recovery or production service stop.
+
+Result: PASS_BOUNDED_NATIVE_READINESS_AND_DECLARED_WIRING, no product repair.
+Root cause confirmed as missing native preflight prerequisites in the previous
+private helper: actual a17bf735 image has no docker or pdftoppm executable and
+Python lacks pypdf; its config deliberately selected a nonexistent Docker socket,
+placeholder container and no published host port. server.mjs34-41 cannot obtain
+Docker runtime identity and returns runtime=null; compatibility.mjs20 rejects
+before the additional missing-reader check at21. This is not evidence of a
+wrong04442fd1 pin. No false READY or relaxed guard was required.
+
+Successful fresh Oracle VM lab flowdoc-native-7bf84b6c24c8 uses runtimece49f3c4,
+verificationa17bf735, own DB/storage and a dedicated bridge with API published
+only127.0.0.1:62899. Native Windows Node launches exact original candidate .mcp
+command/absolute args (no Linux entry remapping) with temporary explicit config.
+Real Docker CLI uses a temporary SSH-forwarded byte-transparent loopback relay
+to the actual Oracle Docker socket; inspect/exec responses are not synthesized.
+The existing bundled Windows Python/PIL/pypdf and Poppler satisfy real reader
+checks.5352 regular Service/package files were staged unchanged from the actual
+image, archiveb22359e0, with only platform .bin symlinks omitted; no package
+manager, software installation, global setting or desktop registration changed.
+
+Nine actual context scenarios pass: native READY; Docker unreachable; reader
+unavailable; absent lab container; different loopback port serving the same live
+contract; unauthorized token; altered guide in a disposable clone; actual remote
+archive tampering only inside the owned API container; and restored READY.
+Both positive contexts match exact Core04442fd1/imagece49f3c4 and actual Docker
+host-port identity. Native listTools succeeds without a publish tool. Existing
+docKey native-19 generates one14781-byte/1-page PDF, SHA256
+f4b96eee2d5eebd0705aec403f416d09ac47263d141866cde73f741e1d93901e,
+with4progress notifications and succeeded MCP task lookup. Independent Poppler
+parse/hash/page/text checks pass. DB has1task/1job/1usage/1terminal event, delivery
+succeeded, no held queue slot or storage reservation. Wire receipt retains
+serverReceipt=not-confirmed; separate DB evidence confirms persistence.
+
+Actual archive bytes restored04442fd1 and same API StartedAt/image/restart0
+through fault injection. Candidate55-file inventory identical before/after;
+source666193f and previous report unchanged, source branch still unmerged.
+Prior1800/model18/local21/selected2/Service25 evidence is reused within its scope;
+no unchanged full product suite rerun. Native host readiness is compatibility/
+reader/guide proof plus the observed task, not a perpetual admission guarantee.
+
+First native lab bc73564e6fc2 failed its immediate mapped-port assertion with
+empty NetworkSettings.Ports and was stopped, not counted as PASS. Its raw
+controller/boundary remains. Final fresh lab uses a loopback-publishing bridge
+and waits for actual mapping before checks; no old network/volume was removed.
+This harness correction changes no candidate/Core/Service source. It does not
+isolate network mode from timing as the sole cause of the first assertion.
+
+All newly owned containers stopped; relay exited and local SSH forwarding
+process closed. Production identity/start/restart metadata unchanged across
+both lab boundaries, with no production SQL/storage or service action. No real
+data access, release/install or main candidate integration. Installed desktop
+tool discovery/registration, relocation of absolute-path wiring, Linux-native
+wiring, visual-layout certification, DOCX-through-plugin and production recovery
+remain outside this proof. Stop; no automatic installation or further test lane.
+
+Current report, nine raw contexts, Docker identity, native PDF, DB audit,
+immutable candidate receipt, native transport and failure boundaries:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-native-readiness-20261031/verification-report.html`.
+Inline execution/Phase/Checklist IDs N/A; no map/registry/audit-closure promotion.
