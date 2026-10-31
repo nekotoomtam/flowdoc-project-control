@@ -3793,3 +3793,76 @@ C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2c
 Older evidence locators inside removed lanes now resolve through these archives;
 retain their historical provenance rather than treating an archive move as new
 runtime acceptance. Existing standalone verification reports remain in place.
+
+### Windows-to-Oracle mixed UAT/SRS API verification — 2026-10-31
+
+Explicit owner request: send real mixed API requests from this Windows machine
+to Oracle using existing UAT/SRS document structures and inspect the results.
+Verification-only single-room work; execution IDs N/A. Service owns the unchanged
+candidate; Evidence Reviewer / Project Control Steward owns this bounded result.
+No product repair, ceiling increase, production access, release or installation
+is included. Existing complete suites are reusable inputs, not rerun here.
+
+Frozen Stage4 full UAT model19 and SRS model18 definitions/payloads retain their
+original hashes. Original asset paths no longer exist; all189/13 placements
+were recovered from retained offline inputs and matched against recorded image
+hashes. UAT font tuples remain unchanged using real inspected historical300/400
+TTFs and license bytes in an isolated synthetic active catalog. This prepares
+the document fixture; it does not test font import/review/activation approval.
+
+Fresh project flowdoc-httpmix-94b6067e881e uses the accepted immutable runtime
+image106a0c80… and Core archiveed876f4d…,4GiB/2CPU application limit, separate
+PostgreSQL18 and named storage, DB private network and API127.0.0.1 binding.
+Windows Node HTTP/1.1 full-duplex requests cross real SSH forwarding to that
+Oracle loopback API; this is not public HTTPS/TLS endpoint verification.
+Thirteen generation requests comprise four sequential baselines, eight mixed
+concurrent requests and a final full SRS PDF recovery canary. Invalid format400
+and cross-owner task lookup404 are separate negative checks with no extra tasks.
+No submitted generation is automatically retried.
+
+Result: PARTIAL_PDF_AND_REDUCED_DOCX_PASS_FULL_DOCX_CAPACITY_FAIL. All seven full
+PDFs succeed,602pages total. Strict PDF parsing and every-page Poppler rendering
+pass; all mixed/canary pages match sequential same-candidate baselines in text,
+pixels, actual drawn-image sequence and link geometry/targets. Six first/middle/
+last pages were visually inspected; this is regression parity, not renewed full
+source-document fidelity acceptance. Peak observed workers3, outstanding8;
+kernel cgroup memory peak1499.6953125MiB. All114 sampled health calls are200;
+same API process, zero restarts/OOM kills, and the final canary succeeds.
+
+MIX-01 is a confirmed capacity limitation, not a newly established product bug:
+all six full UAT/SRS DOCX requests fail with public LIMIT_EXCEEDED and durable
+DOCX_OUTPUT_BUDGET_EXCEEDED. No artifact/fallback is sent; delivery=not_started.
+Exact XML/drawing/archive-byte sub-budget is not instrumented. After this failure,
+two additional reduced-input DOCX diagnostics ran in fresh separate project
+flowdoc-httpmix-small-20db75f249. Templates stay unchanged; only copied payload
+arrays and corresponding image uploads are reduced per sample-changes.json.
+Both succeed: UAT9342 XML nodes/10 drawings and SRS10413/14, with valid ZIP CRC,
+all XML/internal relationships and receipt hashes. These samples do not make
+the full documents pass; native Word visual/pagination remains unverified.
+
+All15 tasks have exactly one job, usage and terminal event in the observed
+window. Every received original payload/image part checksum matches frozen
+inputs. Successful task files/grants return to0. Six failed full DOCX tasks
+retain612 original input files/18333969bytes to their original three-hour
+expiry. A separate network-none, read-only owned-volume audit verifies every
+remaining task file path/size/hash against DB; held=used=18333969, queue slots0,
+unused reservations0. No fixture ageing or deletion of retained originals.
+
+Preparation attempts remain failed prerequisites, not successful API tests:
+automatic Docker subnet pools were exhausted, then an internal-only network
+did not materialize the configured host loopback binding. Owned-lab explicit
+IPAM/bridge configuration was prepared before requests in the successful fresh
+project; existing networks/firewall were not changed. All current owned lab
+containers are stopped and forwarding processes exited. Production container
+identity/start/restart/mount metadata remained unchanged; no production SQL or
+storage access, service stop, source repair, pin change, push/tag/release/install.
+Shared-host resource impact was not measured. Core/Service source and refs plus
+selected installed Service/plugin hashes match the pre-test baseline.
+
+Report, downloadable PDF/reduced DOCX outputs, raw HTTP/DB/resource receipts,
+physical-file comparison, preparation failures and SHA manifest:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-mixed-api-20261031/verification-report.html.
+Private local staging remains outside Git worktrees under
+C:/Users/nekot/Documents/FlowDoc-recovery/api-mixed-lab-20261031/.
+Recommended next scope: inspect full UAT/SRS DOCX expansion budgets without
+raising caps; no automatic fix or extra load test follows this result.
