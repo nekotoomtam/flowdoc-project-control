@@ -3652,3 +3652,104 @@ integration profile0.3.1-candidate.3 pinsed876f4d; new functional regression
 RED2unknown-profile failures -> GREEN2. Local affected plugin23pass/0fail/0skip,
 including unchanged prepared/default and previous candidate.2 identities and
 actual previous-archive rejection. Current downstream lab acceptance pending.
+
+### Accepted local integration result — 2026-10-31
+
+PASS_LOCAL_DEVELOPMENT_INTEGRATION. After fresh-context whole-three-lane review
+reported no Critical/Important finding and immediate clean/expected-head checks,
+local destinations advanced in the authorized dependency order, all --ff-only:
+
+| Destination | Accepted source head | Development checkout |
+| --- | --- | --- |
+| Core codex/template-binding |3e74f98b8a14cefea4dd147644318ea3108999b1 | C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/development |
+| Service codex/template-registry |a572025b80fe932add664ca0b529633a3a091545 | C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/development |
+| Project Control main/plugin |08de3cd06b7ee75e3a5b9577d2eb009c050e64ed | C:/Users/nekot/Documents/GitHub/flowdoc-project-control |
+
+This following status-only main commit does not rebuild/relabel the immutable
+candidate generated from08de3cd. Code/guide/artifact identity is retained.
+Core primary remains release55315ca6; Service primary remains at unchanged
+2c089b5 with detached HEAD because installed FlowDocMake imports it. No tracked
+live files, selected dist/dependency files, installed cache or local plugin
+config changed; saved hashes agree before/after. Promotion changed the separate
+development branch/checkouts only. All release refs/tags and remote tips remain
+unchanged. No push, release, install, production SQL/storage or service stop.
+
+Accepted tuple: Core0.5.2/source3e74f98/archive
+ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532;
+Service sourcea572025/tree9e43af791691e5ba08739406d7c41b97783c59d9,
+verification image07c71903922ef511587627683cb2a5041faa62273ee18da2cb52b434b5900388,
+runtime image106a0c80a5f15d73f47768285726c22e3edd406af7963fa16536692241f3a3c8;
+plugin flowdocmake-integration-candidate/0.3.1-candidate.3 from08de3cd,
+archiveb72361c5b6d2a0811d69fdb965f7da261df8625bdd49331a3a87c3c22f231b96.
+Service was committed after actual build/lab checks; its exact commit tree
+matches the previously frozen/tested tree, not an inferred source label.
+
+Package comparison proves250 regular files each, only package/README.md differs
+between prior04442fd1 and newed876f4d; all249 runtime/code/resource files match
+byte-for-byte. Complete original packed-consumer orchestration with documented
+label/resource-only scratch adapter passes26 result groups plus contents-
+resource checks; actual installed consumer networknone/mounts[]. Fresh build
+unit report126files/1271tests passed. No old NOT_RUN gate was rewritten; this
+is new proof for new bytes. Local plugin23pass and Service27 actual-candidate
+task API/queue/client/receipt cases pass0fail/0skip. Earlier744pass/3operator
+skips remain historical, not promoted into current full-suite evidence.
+
+Actual fresh Oracle Docker/PostgreSQL18 lab flowdoc-integrate-041827759a1a:
+healthy DOCX1800 uses the exact prior402431-byte request (payload853ea591 /
+multipart e90673bb), delivers215080bytes SHA
+318cccf9987646f732616ee27d93df6b16153a9c057a9c6fe52db6dc06c8a089.
+Independent ZIP CRC,25XML/rels parses, internal relationships,1800paragraphs/
+runs, exact text/whitespace/Record0..1799 order and4embeddedfonts pass.
+XML49227<=50000, margin773, drawing0; caps unchanged. Exact closing MIME
+boundary and document.docx attachment verified. Word visual remains unverified.
+
+Actual emitted candidate's unchanged Windows .mcp entry obtains READY with
+new H/image/real Docker loopback identity and existing readers. Native PDF
+one record/one page/13862bytes SHA
+936f15e909f29193b5faf791babe410cda751bd1897f8775b71173427d77d4ab,
+4progress notifications and succeeded lookup. Independent parser/hash/text
+and rendered one-page visual smoke pass; not whole-consumer visual certification.
+Native local Service files match the actual verification container regular-file
+inventory after tests, including possible .vite cache; not a claim that those
+cache files are part of the immutable image. No package-manager install on host.
+
+Final lab2tasks/2jobs/2usage/2terminal, delivery succeeded for both; queue and
+unused storage grants0. Native wire retains serverReceipt=not-confirmed while
+separate DB evidence confirms persistence. No repeat observed in the bounded
+window. Actual API image/StartedAt stable/restart0; owned phase containers all
+stopped, relay exited and SSH forwarding closed. Production container identity/
+start/restart metadata stayed unchanged across all phase boundaries.
+
+Operational failures retained: initial gate EACCES before any consumer test;
+successful owned-helper root execution; native worktree tool root restriction
+and normal-Git fallback; and prepromotion stop before any ref update because
+new designated proof staging was not ignored. All97 untracked outputs were
+verified to belong only to this round, then a narrow repo-local info/exclude
+entry added for artifacts/integration-20261031 (not tracked/global/runtime
+configuration). Nothing was reset/deleted/hidden from an unknown source delta.
+
+Fresh review and unchanged-fast-forward identity checks allow proof reuse;
+no redundant post-FF full suite. Final Project Control prose/projection checks
+are separate. Closeout cleanup is limited to clean fully merged integration
+lanes after retaining evidence; development/release/primary checkouts remain.
+Prior candidate worktrees remain retained proof locators outside this round's
+cleanup; no unrelated old Docker lab/network/volume or branch sweep.
+
+Remaining limits: installed desktop discovery/registration, Linux/relocated
+absolute wiring, native Word visual/kerning/pagination, three operator cases,
+other-template capacity, soak and real-data recovery. Integration is not audit
+closure, production readiness or deployment approval. No further experiment or
+rollout follows automatically. Inline IDs N/A; maps/registries unchanged.
+
+Durable report/candidate/new Core package/native PDF/DOCX1800, raw consumer
+results, original/adapter hashes, review, promotion and cleanup receipts:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-development-integration-20261031/verification-report.html`.
+
+Cleanup actual: clean fully merged Core/Service integration worktrees and their
+two local temporary branches removed normally; separate development checkouts
+remain. Managed Project Control integration checkout/branch is retained clean
+and fully merged because native archive_worktree reports this chat's primary
+checkout cannot be removed. No manual bypass; its dependency junction restored
+for continued use. Old proof-candidate worktrees and all old Docker labs remain.
+Generated proof staging stays in the narrowly excluded main-repo output folder
+and verified external bundle; nothing needed was stored only in removed lanes.
