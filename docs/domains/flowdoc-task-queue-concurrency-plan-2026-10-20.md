@@ -3753,3 +3753,43 @@ checkout cannot be removed. No manual bypass; its dependency junction restored
 for continued use. Old proof-candidate worktrees and all old Docker labs remain.
 Generated proof staging stays in the narrowly excluded main-repo output folder
 and verified external bundle; nothing needed was stored only in removed lanes.
+
+### Owner-requested local repository cleanup — 2026-10-31
+
+Single-room maintenance; execution IDs N/A. Owner explicitly limits cleanup to
+Core, Service and Project Control, keeping their actual development/main and
+release branches. The owner separately authorizes recoverable backup and discard
+of the four unmerged Service queue experiments: codex/queue-6g-2cpu,
+codex/queue-6g-timeouts, codex/queue-adaptive-20-3 and
+codex/queue-adaptive-4g-20-3. This decision does not accept their product behavior.
+
+Before cleanup, all local branch/tag histories were saved in three verified Git
+bundles. Ignored evidence was saved in four ZIP archives; all 8,877 file hashes
+were checked against the archives and source. The three bundles total 51,248,295
+bytes; evidence archives total 431,381,674 bytes. Dependency junctions were
+removed nonrecursively where needed and their external targets preserved.
+
+Result: 22 local branches deleted and 10 worktrees removed from Git registration;
+nine checkout directories removed normally. Protected development/release/tag/
+remote refs, remaining checkout heads/status, and selected installed Service/
+plugin file hashes matched the pre-cleanup baseline. Other FlowDoc repositories
+were not changed. No source behavior, real data, service lifecycle, Docker lab,
+push, release or installation was changed; product tests were not repeated.
+
+Two physical leftovers remain. This chat's clean, merged primary worktree at
+C:/Users/nekot/.codex/worktrees/integrate-flowdocmake-20261031/flowdoc-project-control
+and its branch remain because native archive reports the primary checkout
+cannot be removed. The old flowdocmake-core-pin-candidate worktree was archived
+successfully and its branch deleted, but its directory contains 8,064 residual
+files, each checked against the original commit or verified evidence archive.
+Recursive residual removal was rejected by automatic approval review with
+"blocked by policy"; the directory is retained without alternate deletion.
+Completing cleanup requires moving this chat off its primary worktree and
+resolving the separate residual-directory deletion restriction.
+
+Recovery locations, original refs, source-to-archive manifests, residual-file
+classification and verification receipts are retained outside the removed lanes:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-cleanup-20261031/.
+Older evidence locators inside removed lanes now resolve through these archives;
+retain their historical provenance rather than treating an archive move as new
+runtime acceptance. Existing standalone verification reports remain in place.
