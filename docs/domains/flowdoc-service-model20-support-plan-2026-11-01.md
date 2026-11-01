@@ -8,9 +8,9 @@ for real data. It does not change the existing stage/checkpoint contract.
 
 Current scoped status 2026-11-01: M20-1 passed in candidate9f20506, M20-2 in
 85a4d0e, and bounded M20-3 authoring/API in257bdd5. These remain only in the
-separate Service candidate. M20-4 topology inspection is BLOCKED before actual
-workers: no separate512MiB hard limit in the existing launch path. Six governor
-admission tests remain unrun; M20-5 is not started. Full model20 support
+separate Service candidate. M20-4 bounded kernel delegation spike passed on the
+Oracle host, but actual Service pre-exec/IPC/fence/isolation wiring remains BLOCKED.
+Six governor admission tests remain unrun; M20-5 is not started. Full model20 support
 is NOT accepted.
 
 ## Request, baseline and scope
@@ -558,3 +558,93 @@ oracle/{receipt.json,production-before.json,production-after.json,
 out-512/probe.json,out-1024/probe.json}}.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m4-topology-20261101/verification-report.html.
 No Work/Evidence registry or system/DOCUMENT_MAP/generated projection changes.
+
+
+## M20-4 delegated worker envelope spike and launcher review — 2026-11-01
+
+Owner authorizes review and lab delegation proof only; no Core/Service source
+change. Service owner, Evidence Reviewer/Planning Partner then PC Steward; inline
+IDs N/A. Candidate257bdd5 stays clean. Kernel delegation feasibility is now
+confirmed on this OCI host; actual Service launcher acceptance remains open and
+the first M20-4 checklist stays unchecked. Original governor cases0run/6not-passed.
+
+### Confirmed lab proof
+
+One newly owned Docker cgroup, fullID/label/PID verified, retains1GiB memory and
+memory+swap total1GiB,2CPU and the unchanged default governor module. A host-root
+supervisor moves only this new container's idle coordinator into a leaf and
+creates worker-a/worker-b sibling envelopes, each memory.max536870912,
+memory.swap.max0,memory.oom.group1. It delegates directory/membership/subtree
+controls toUID65534 while keeping root limit files and common-ancestor procs
+root-owned. It changes no existing service's cgroup or host controller settings.
+Container remains user65534,read-only,network:none,cap-dropALL,no cap-add or
+privileged mode, no host-root cgroup bind and no Docker socket. No install/pull.
+
+Two synthetic unprivileged host-namespace Python helpers can create their local
+worker groups, place workload before exec and retain descendants in512MiB. Twelve
+boundary attempts receiveEACCES: raising envelope/parent limits, moving to
+coordinator/parent, creating outside delegation and cross-worker migration.
+Cancellation via cgroup.kill empties and reaps the child group before reuse;
+replacement workload still has512MiB. This is real kernel behavior, not a mocked
+resource reader or a post-heavy-work PID watcher.
+
+Intentional synthetic memory pressure exceeds only worker-a's enforced envelope:
+peak512MiB,oom_group_kill1,oom_kill4. Whole simulated bundle is killed; parent-local
+memory.events.local oom=0/oom_kill=0,coordinator andworker-b remain alive, and the
+unchanged governor still reports ready/healthy. Docker's propagated OOMKilled flag
+is true; DO NOT call this a no-OOM container run. Coordinator later exits0. All
+helpers reap, worker envelopes are removed only after populated0, all owned
+containers stop, and protected runtime identity metadata remains exact. Two512MiB
+ceilings share the original1GiB aggregate budget; no guaranteed extra capacity or
+changed credit policy is implied.
+
+### Launcher review outcome — design still PROPOSED
+
+Bounded delegation works AFTER trusted initial placement. It does not give an
+unprivileged Service permission to move a new child from coordinator across the
+common ancestor. Keep that denial; do not grant Service write access to the
+aggregate root or resource-limit files. Service-owned means logical lifecycle
+ownership, with a separately reviewed trusted bootstrap/placement boundary.
+
+Proposed Service-facing launch contract: allowlisted worker kind/executable,
+job/lease/deadline identity; report PID+process-start identity,cgroup identity,
+verified512MiB/swap0 binding before payload exec and the original streams/IPC.
+Fail closed before accepting workload if binding fails; retain credits until
+empty group AND reaped ownership are confirmed. Preserve all task reservations,
+output and delivery ownership and existing admission/credit/cap policies. Core
+remains untouched. No product API/type/code implementing this contract exists yet.
+
+Two mechanisms remain to compare before source approval: bounded placement broker
+preserving direct-child PID/FD semantics, versus preplaced per-envelope supervisor
+which reduces persistent privilege but changes parentage/transport. Neither is a
+proven drop-in. Next recommended COPY-ONLY proof: pre-exec handshake plus legacy
+stdin/stdout and task advanced IPC FD3/fence FD4, successful/failed bind, timeout,
+cancel/reap and coordinator/helper crash. Authenticate/validate the narrow broker
+surface; avoid arbitrary commands/paths/PIDs or host-root delegation. Only then
+review the source change packet and prove actual Service wiring before the six
+governor cases and model20 native workloads.
+
+### Explicit evidence limits
+
+These are host-namespace synthetic helpers in the new Docker memory hierarchy,
+not real Service/container workers or Core/API/native/DB workloads. Host-root
+supervisor performs initial placement; container privilege escalation, namespace/
+mount delivery, broker authentication, actual IPC/fence transfer and restart
+recovery are not proven. Bootstrap waits for placement before payload exec, but
+initial fork is notCLONE_INTO_CGROUP; no claim of first-instruction placement.
+Governor physically observes aggregate charge but no real worker grants are used:
+credits remain128MiB baseline. Do not count this as governor-admission or full
+M20-4 acceptance. Other host/kernel/rootless portability remains unverified.
+
+Delegation criteria reference the primary kernel contract:
+https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html#delegation .
+Runtime claims above derive from the owned lab evidence, not the documentation.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m4-delegation-20261101/
+{verification.json,verify.py,packet.json,delegate.py,coordinator.mjs,remote.py,
+run.py,oracle/{receipt.json,container-postflight.json,production-before.json,
+production-after.json,out/heartbeat.json}}.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m4-delegation-20261101/verification-report.html.
+Protected Core/Service checkouts,C1 hashes and candidate257bdd5 stay unchanged;
+no real data access/service stop/push/release/install. No Work/Evidence registry,
+system/DOCUMENT_MAP or generated projection change; existing status document only.
