@@ -1738,3 +1738,29 @@ verification.json,original receipts/logs,suite JSON,parity outputs,consumer resu
 UAT independent checks and unchanged candidate/source/result archives. Earlier
 bootstrap evidence retained in sibling docx-c1-linux-20261101 and -r2 folders.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-linux-20261101/verification-report.html.
+
+## 2026-11-01 — Generic stage/resource design proposed; no further DOCX run
+
+Owner requested a template-independent execution design connected to existing
+Service allocation and clarified 512 MiB is PER WORKER/BUNDLE, not the entire
+Service. The new canonical proposed design is
+[document stages and resource allocation](flowdoc-document-stage-resource-design-2026-11-01.md).
+It owns the broader Core/Service handoff/scheduling contract; D2 continues to
+own DOCX compaction evidence/history. This is a proposed-design link, not a map
+or product-truth promotion.
+
+Recommendation: sequential isolated heavy stages within one worker grant,
+Core-owned verified generated-artifact/receipt-facts handoff and bounded DOCX
+global planning/replay; PDF uses its own adapter, no template-ID exceptions.
+One worker slot throughout stages, then existing sender transition. Preserve
+separate queue/storage/read/memory ownership, fences and confirmed child stop.
+The existing 320 MiB worker credit is not 512 MiB enforcement; a versioned extension
+to the SAME coordinator must account for the bundle without raising profile
+ceilings or silently upgrading old jobs. Actual hard-memory launch enforcement,
+private proof/finalization handoff and exact bounded XML units remain proof gates.
+
+No Core/Service/candidate edit, Oracle run, resource/cap change, real-data access,
+real-service stop or push/release/install in this round. Existing C1/UAT PASS
+and SRS heap OOM remain the latest runtime results; no automatic retry/C2/W2.
+Only the proposed design, this link and the queue status are updated. Inline
+IDs N/A; Planning Partner/Cross-Repo Boundary Reviewer, then PC Steward.

@@ -4993,3 +4993,26 @@ R1a-R2/Word/repeatability/adoption remain open. Return to design review of the
 remaining Core roots versus bounded DOM/XML before any new implementation.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-c1-linux-20261101-r3/verification.json.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-linux-20261101/verification-report.html.
+
+### 2026-11-01 — Generic document stage/resource design, PROPOSED ONLY
+
+Owner confirmed 512 MiB per worker/bundle, not whole Service. Proposed canonical
+[stage/resource design](flowdoc-document-stage-resource-design-2026-11-01.md)
+covers all supported templates with DOCX/PDF adapters: Core prepares/emits,
+Service seals/reaps, fresh bounded format processing, final validation, then
+existing persistence/sender path. One worker grant/attempt, no per-stage queues
+or slot nesting; no template-name/UAT/SRS implementation exceptions.
+
+Existing coordinator owns profile/slot/adaptive/pressure decisions. A versioned
+worker-envelope accounting extension must address current 320 MiB credits versus
+512 MiB bundle; no increase to existing instance profiles/caps. Hard launch
+enforcement, complete trusted checkpoint/receipt facts, bounded XML context/
+indexes, IO versioning and legacy adapter compatibility are open proof gates.
+No JSON-faked intent, no automatic cross-restart resume or resend, no early
+credit/storage release when children/cleanup are unconfirmed. D2 retains the
+DOCX experiment history and links to the broader proposal.
+
+Design only: no Core/Service/candidate/config edit or Oracle workload; no real
+data/service stop/push/release/install. C1 Linux gates/UAT PASS and SRS heap OOM
+remain current. Proposed verification is ordered and separately authorized;
+no runtime claim from this design. No Work/Phase/Checklist/map promotion.
