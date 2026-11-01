@@ -12,7 +12,9 @@ separate Service candidate. M20-4 delegation and copy-only pre-exec/IPC/fence
 spikes passed on Oracle; actual Service launcher/broker integration remains
 unimplemented and unverified. Six governor admission tests remain unrun; M20-5
 is not started. Full model20 support
-is NOT accepted.
+is NOT accepted. The follow-up launcher/broker integration plan was reviewed on
+2026-11-02; its security gate and all product implementation remain open (see
+[focused Service launcher/broker plan](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)).
 
 ## Request, baseline and scope
 
@@ -743,3 +745,21 @@ Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e
 Only existing canonical status document changes; no Work/Evidence registry or
 system/DOCUMENT_MAP/generated projection promotion. Next review a scoped Service
 integration/privilege packet; do not claim M20-4 or full Service readiness yet.
+
+## Launcher/broker integration planning — 2026-11-02
+
+[Focused proposed implementation plan](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)
+maps direct renderers, image preparation, font inspection, font-admin specimen
+rendering and composition/health to the existing credit/permit owners. It keeps
+512 MiB per worker, the existing aggregate/coordinator/allocation budget, pinned
+Core and document limits. Startup resource probes and the owner helper remain
+explicit coordinator control-plane exceptions, not capped-document-worker claims.
+
+Next proposed action is P0 copy-only authentication/pidfd/root-scope and broker
+death/restart/accounting proof, before Service implementation. The six admission
+cases need real launcher injection in fixture setup; an old direct-spawn test
+PASS would not prove this topology. All assertions remain acceptance criteria.
+
+This review reads Service257bdd5 and retained receipts; it performs no new lab
+workload or Core/Service edit. No real data/service operation, push, release or
+installation. M20-4 and M20-5 status is unchanged; no product or map promotion.
