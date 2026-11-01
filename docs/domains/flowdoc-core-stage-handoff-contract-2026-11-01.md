@@ -451,7 +451,7 @@ it does not add cases to the prior 10/170 runtime results.
 | Family / source | Required closure and next evidence |
 | --- | --- |
 | Structural data grammar; R2 schema.mjs shape/array helpers | Dense ordinary arrays with only indices/length; explicit object prototype/property-descriptor rules, no symbols/accessors/extra array properties, own-key/presence/order preservation. Test both decoder rejection and direct validator entry; codec rejection does not prove schema entry rejection |
-| Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | R2 requires isWellFormed, while resource IDs are checked as nonempty strings and copied into identity. Therefore all-Core string-domain parity is UNVERIFIED: establish reachable UTF-16 values with a real capture, or design a lossless versioned encoding. Do not silently replace lone surrogates or tighten existing Core admission. Existing UTF-8/FEFF tests do not settle this case |
+| Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | R2 requires isWellFormed, while resource IDs are checked as nonempty strings and copied into identity. At review time reachability was unverified; the dated Unicode/cursor proof below confirms three incompatible real receipts. All-Core string-domain closure stays BLOCKED until lossless versioned encoding is proved. Do not replace lone surrogates or tighten Core admission; UTF-8/FEFF tests alone are insufficient |
 | FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Cover text/image/node with required kind/nodeId/sourceNodeId and every optional attribution/cursor field, own-undefined versus absent included. Text does NOT universally require lineIndex: pending-label text has none. Cursor kind, diagnostic reason and Issue.reason are distinct domains; do not apply the four FormatStop reasons to all diagnostics |
 | Format instances; composition/validateFormatInstances.ts:11-30 | Validate fixed/auto sizing, nonnegative safe indices, fixed rootStartIndex, root identity/order/ownership and omission boundaries. Consumer must use minimal Core-emitted lineage or sealed package evidence, not reload the original ResolvedDocument graph. Decide the minimal needed lineage before exporter implementation |
 | Resources / PDF usage; docx/resources.ts:38-91, fonts.ts:151, pdf/createPdfEngine.ts:104 | Distinguish font, PNG (decoded RGBA hash) and JPEG identities; font weight/style/license/release/native family and PDF selection/license order. Check duplicate identity policy per actual producer namespace, positive dimensions/product limits and binding to authorized original/derived resources. Add genuine image/library/schemaVersion2 controls; the small PDF case does not cover them |
@@ -781,3 +781,106 @@ Corrected schema/replay:schema.mjs,reference-old-schema.mjs,consumer.mjs,
 oracle/out-schema/suite.json in the R2 folder. No original source/fixture graph
 is supplied to those consumers; independent source fingerprints are preserved.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-core-schema-closure-20261101/verification-report.html.
+
+## 2026-11-01 — Unicode reachability and cursor schema proof: PARTIAL
+
+Owner authorizes copy-only Unicode/cursor proof in isolated Oracle lab, 512 MiB
+per worker and unchanged caps. Evidence Reviewer then PC Steward; inline IDs
+N/A, medium/routine. Existing C1 package remains byte-identical (250 files,
+SHA256 3be3f511e6a58798504a7b486b031a48ffd708f2707a3422c22ffc77cae67aac).
+Proof budget: nine small controls, live capture, producer-exit consumer checks,
+candidate cursor mutations, one fresh review and one harness correction.
+Document budget: this addendum/design link and local raw proof/report only.
+No Core/Service/C1/codec edit, real data/API/DB/storage access, service stop,
+UAT/SRS/Word or push/release/install. Real-runtime metadata identity only is
+checked before/after; no map or staged API acceptance is promoted.
+
+**Outcome: PARTIAL_UNICODE_INCOMPATIBILITY_CONFIRMED_CURSOR_STRUCTURAL_PASS.**
+The bounded experiment succeeded in finding the gap; the codec is NOT fixed.
+
+### Confirmed Unicode incompatibility in the lab candidate
+
+Genuine preflight/intent/writeDocx, without a source/loader rewrite, succeeds
+with regular-font resource IDs containing each of: lone high surrogate U+D800,
+lone low surrogate U+DC00, and reversed low/high pair U+DC00 U+D800. Actual live
+receipt resource ID equals the requested string, including its exact UTF-16
+code units. Fonts/licenses and original caps stay unchanged. Artifact hash/
+length agree with Core receipt, but no Word fidelity claim follows.
+
+The existing codec's encoder rejects all three with UNICODE and its completed
+writer schema rejects resources.0.id:string. This is a CONFIRMED DEFECT in the
+LAB candidate's all-Core data-domain compatibility, not evidence of production
+Core Unicode corruption. Prior 57/57 codec controls remain true within their
+tested domain; they did not include these reachable Core receipt values.
+
+ASCII and a mixed Thai/FEFF/combining-mark/emoji ID are accepted and replay with
+the exact independent live-tree fingerprint. The FEFF in this ID follows the
+lab prefix; this is not a new leading-BOM control. For the three rejected
+receipts, only diagnostic JSON-escaped leaf/code-unit/SHA512 evidence survives;
+partial codec files are NOT accepted/replayed. That diagnostic oracle is not
+a replacement lossless fact transport or a full-receipt roundtrip.
+
+### Bounded cursor result
+
+Three actual PDF generations yield text (height-limit, lineIndex=5), image
+(image-does-not-fit) and node (explicit-page-break, nodeType=page-break)
+FormatOmission cursors. Full Result facts match the producer's independent
+live oracle after producer/native-helper exit; final PDF bytes/hash also match.
+
+Four separately labelled INTERNAL_HELPER controls exercise real formatCursor
+with supplied extra metadata: text without lineIndex, own-undefined lineIndex,
+zero offsets/group/item index, table/group/repeat fields, image and node shapes.
+These do NOT prove pending-label/table/group runtime reachability or identity
+ownership; supplied attribution is not authoritative layout evidence.
+
+A lab-only source-authored 13-field structural validator covers required
+kind/nodeId/sourceNodeId and ten optional fields, including optional undefined.
+It checks declared kind/type, safe nonnegative cursor indices, own keys/plain
+objects/descriptors, unknown symbols/properties and getters without invoking
+them. This is structural candidate coverage, not full diagnostic semantics.
+Across seven captured cursors it rejects 70 mutations; 63 of those are admitted
+by the unchanged old pending validator, which only checks object shape broadly.
+The other seven are getter controls. These are direct schema-entry mutations,
+not 70 independently exercised malformed wire frames.
+
+### Original failure, correction and resource evidence
+
+R1 stopped on INVALID_TEMPLATE in the image control: the lab used resolved
+resourceId instead of template source binding and orphaned its text node.
+No Core defect was inferred. Original Unicode five cases and PDF-text capture
+are retained. A fresh reviewer also found a possible false PASS when a cursor
+codec failed and the consumer skipped cursor checks. R2 requires codec ACCEPT,
+expected cursor kind and exactly four helper cursors. A LOCAL Node pure-consumer
+RED/GREEN calibration confirms old admission versus corrected rejection for
+missing cursor payload; it is not an additional Oracle case.
+
+R2 reuses all six original captures/oracles and renders only image/node plus
+the helper control. The original container is already stopped before R2 starts;
+fresh consumers verify original files, without retagging facts or rerendering
+Unicode DOCX. This is evidence replay, not operational restart recovery.
+
+Both runs enforce 512 MiB memory and memory+swap, CPU1, network none, readonly
+input/Core and 64-MiB tmpfs, no increased heap or forced GC. R2 peak is
+**47.94921875 MiB**, oom/oom_kill stay zero. R1 peak and final cgroup event counts
+were not retained after its harness failure; its hard limit, successful earlier
+children and OOMKilled=false are evidenced. Do NOT label R2's peak as original
+Unicode-generation peak or full staged-memory acceptance. All owned containers
+stop; real-runtime identities and protected product source hashes stay unchanged.
+
+### Next work / remaining gates
+
+1. Design and prove a separately versioned LAB codec that preserves the reachable
+   UTF-16 string domain without replacement, normalization or stricter Core
+   admission. Keep the small ASCII/UTF-8 control envelope distinct. No such wire
+   format change is implemented or accepted here.
+2. Cursor structural proof is bounded PASS; complete diagnostic/reason domains,
+   actual table/group/pending-label attribution and source ownership remain OPEN.
+   Other section/resource/adaptation schema families remain OPEN as in section 9.
+3. Exact preguard API/provenance, error precedence, whole-stage 512-MiB envelope,
+   UAT/SRS/Word, Service integration and production actions remain OPEN/BLOCKED.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/core-unicode-cursor-20261101-r2/verification.json,
+oracle/out-schema/suite.json and per-case producer-notice.json/facts.bin/consumer.json.
+Original failed run:C:/Users/nekot/Documents/FlowDoc-recovery/core-unicode-cursor-20261101-r1.
+Source/runtime scripts and old/new lab schemas retained in both folders.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-unicode-cursor-20261101/verification-report.html.

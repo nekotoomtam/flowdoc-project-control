@@ -488,3 +488,18 @@ domain, provenance and error precedence need evidence before implementation.
 Next order: lab schema/domain proof, concrete capability review, separately
 authorized Core candidate, then small/UAT/SRS 512-MiB proof. This is a design
 review with no new runtime tests, product changes or production actions.
+
+### Unicode/cursor proof follow-up — partial result
+
+[Dated contract evidence](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--unicode-reachability-and-cursor-schema-proof-partial)
+confirms genuine Core receipts can contain three surrogate-string forms rejected
+by the unchanged lab codec/schema. ASCII/mixed Unicode controls replay exactly;
+no replacement codec is implemented. Actual PDF text/image/node cursors plus
+four labelled helper controls pass a bounded structural validator with 70
+negative checks, not full diagnostic/ownership acceptance. R1 invalid lab image
+fixture and consumer guard gap are retained/corrected in R2; six captures reused
+without Unicode rerender. R2 peak 47.94921875 MiB under 512 MiB, no OOM; original
+Unicode-generation peak unretained, so no whole-stage memory closure. Next is
+lossless versioned lab string encoding, then remaining semantic/API evidence.
+Core/Service/C1, caps and real data/services remain unchanged; no push/release/
+install or map promotion.
