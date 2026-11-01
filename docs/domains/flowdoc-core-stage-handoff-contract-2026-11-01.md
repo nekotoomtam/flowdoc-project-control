@@ -1623,3 +1623,14 @@ Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-template-representabi
 {source-closure.json,packet.json,packet-clarifications.json,verification.json,
 oracle/receipt.json,oracle/out-schema/suite.json,oracle/out-schema/cases/<name>/*}.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-template-representability-20261101/verification-report.html.
+
+## 2026-11-01 — Service model20 support: planning only
+
+[Proposed Service support design and phased plan](flowdoc-service-model20-support-plan-2026-11-01.md)
+reviews the additional storage/contract/authoring and DB ownership/prepared-pin
+boundaries. It proposes relational definition/instance separation, a new additive
+migration based on the latest021/025 functions, bounded full-definition support,
+real lifecycle/native output proofs and a rollback boundary after20 writes.
+No Core/Service edits, new Oracle workload or support acceptance;512MiB per
+worker and existing caps remain. This does not reopen the prior same-group
+template witness or claim that admitting model20 adds conditional member topology.
