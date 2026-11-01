@@ -457,7 +457,7 @@ it does not add cases to the prior 10/170 runtime results.
 | --- | --- |
 | Structural data grammar; R2 schema.mjs shape/array helpers | Dense ordinary arrays with only indices/length; explicit object prototype/property-descriptor rules, no symbols/accessors/extra array properties, own-key/presence/order preservation. Test both decoder rejection and direct validator entry; codec rejection does not prove schema entry rejection |
 | Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | V1 isWellFormed restriction conflicts with three reachable real Core receipts. Separate LAB V2 below preserves raw UTF-16 in 66 codec controls and 5 fresh Core transfers; reproduced gap closed in V2 only. Full branch/schema acceptance remains OPEN. No replacement/normalization or stricter Core admission |
-| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Text/image/node structural controls passed earlier. New dated table/group proof passes eight real PDF cases against a pre-layout TEST oracle; pending-label no-lineIndex target remains NOT_OBSERVED, not a passing runtime branch. Preserve source-declared optional fields. Cursor kind/diagnostic reason/Issue.reason and full semantic coverage remain distinct/open |
+| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Text/image/node and eight table/group fixtures retain bounded PASS. Later matched public Core controls now prove a label cursor with absent lineIndex/itemIndex on a validator-admitted direct ResolvedDocument. Original composed fixture stays NOT_OBSERVED; Service/template equivalence, general semantics and other schema families remain OPEN |
 | Format instances; composition/validateFormatInstances.ts:11-30 | Validate fixed/auto sizing, nonnegative safe indices, fixed rootStartIndex, root identity/order/ownership and omission boundaries. Consumer must use minimal Core-emitted lineage or sealed package evidence, not reload the original ResolvedDocument graph. Decide the minimal needed lineage before exporter implementation |
 | Resources / PDF usage; docx/resources.ts:38-91, fonts.ts:151, pdf/createPdfEngine.ts:104 | Distinguish font, PNG (decoded RGBA hash) and JPEG identities; font weight/style/license/release/native family and PDF selection/license order. Check duplicate identity policy per actual producer namespace, positive dimensions/product limits and binding to authorized original/derived resources. Add genuine image/library/schemaVersion2 controls; the small PDF case does not cover them |
 | Sections, bands, cells and quantities; docx/sections.ts:149-163, bands.ts:51,75,108 | Complete literal policy/shape/reason families from emitter branches and source formulas; units/ranges per field, not blanket nonnegative constraints (deltas/offsets may be signed). Preserve six-key reserved/native margins versus four-key source/estimated margins, page-type estimates and false verification flags. Add inheritance/omission/header/footer/merged-cell controls and source-based consistency checks |
@@ -1203,3 +1203,93 @@ conditional candidate and admission-first proof are ready for review. Runtime
 label-cursor reachability, full diagnostic semantics and all previously open
 preguard/512-MiB/adoption gates remain UNVERIFIED/OPEN. Original eight PASS,
 one target NOT_OBSERVED and all failed records stay unchanged.
+
+## 2026-11-01 — Empty first member / public Core label cursor: bounded PASS
+
+Owner authorizes the reviewed empty-cell/later-text proof on copies through
+unchanged Core admission, Oracle lab 512 MiB per worker and unchanged caps.
+Lab verification then Evidence Reviewer / PC Steward; single-room IDs N/A,
+medium/routine. Base PC b94b9ac, protected Core 3e74f98/Service a572025 and unchanged
+two-file C1 candidate. Scope: external lab harness/results and this contract/
+design link only. Proof budget: two matched small controls at one selected
+60-pt frame, genuine admission/public engine, producer-exit V2 parity and three
+absence-to-zero negative controls; one fresh review, no repair or height sweep
+needed. No Core/Service/C1/codec/schema code edits, private state reconstruction,
+runtime/validator override, real data/API/DB/storage access, service stop or
+push/release/install. No new Work/map or full-stage acceptance.
+
+**PASS_BOUNDED_PUBLIC_RESOLVED_DOCUMENT_PENDING_LABEL:** the previously
+unverified direct-input candidate is admitted and produces the real target.
+This does not change the older composed fixture's NOT_OBSERVED/failed golden
+record or establish Service template-route reachability.
+
+### Matched input, admission and exact mutation containment
+
+Both cases start with identical validated template/request and composition:
+label G, two members FIRST/NEXT, fixed frame 60 pt, keepStart=true and label
+rowSpan/memberCount 2. The composed-control is unmodified. The target uses a
+structuredClone of that composed ResolvedDocument, empties ONLY the first
+NON-label cell's childIds and removes that text block and its source entries.
+The second member and valid label stay intact. No textual empty-string shortcut.
+
+The retained on-disk resolved inputs independently differ at exactly four
+allowed paths: first-cell childIds, one text-block node, its sourceMap entry
+and its bound text-leaf sourceMap entry. Template and request files are byte-
+identical between cases. Admission logs preserve the frame, group/label span,
+first/second child IDs and exact removed-node/source ledger.
+
+The existing compiled validateResolvedDocument returns issues=[] for BOTH.
+This internal validator import is a labelled verification gate, not a newly
+supported public export. Both then call the unchanged public-export PDF engine
+function via its pinned dist entry; it independently validates before snapshot
+and succeeds. No package-name export-resolution or Service wiring proof is
+claimed. Producer also checks engine execution did not mutate its input tree.
+
+### Observed cursor and transport result
+
+- Composed control: memberText,itemIndex 1,lineIndex 0, no label cursor.
+- Empty first cell: memberLabelText with correct node/source/table/first-member
+  row/label-cell/group identity, groupIndex 0. Exactly one label cursor; lineIndex,
+  itemIndex and sourceOffset are ABSENT own properties, not undefined or zero.
+- Both outputs pass the unchanged lab structural cursor validator and independent
+  pre-layout TEST catalog relationship checks. A fresh consumer after producer/
+  descendant exit verifies complete live Result/catalog fingerprints, declared
+  file pins and final PDF hash/length through unchanged V2. It loads no Core,
+  original template/font/native resource; the small TEST source catalog is not
+  product provenance or an implemented checkpoint fact API.
+- Three lab role-oracle controls reject inserting lineIndex 0,itemIndex 0 or
+  sourceOffset 0 into the observed label cursor. This is not a claim that Core
+  has a public output-schema validator or was changed to reject such objects.
+
+The source review's conditional empty-cell path is now CONFIRMED at runtime
+through direct ResolvedDocument input. It is not dead code for all admitted
+public Core inputs. Preserve optional cursor fields and group-level versus
+member-level identity; do not synthesize a member ordinal/baseline line number.
+
+### Resource/ownership boundary and remaining work
+
+Single owned lab container enforces 512 MiB memory and memory+swap, CPU1,
+network none, readonly input/Core and 64-MiB tmpfs. Entire two-case bundle peak
+**63.1171875 MiB**, oom/oom_kill remain 0, no heap tuning/forced GC. Four child
+processes exit normally with namespace clear before stage changes. Container
+stops; real-runtime metadata identities stay unchanged. Pinned Core package
+all 250 files and protected source/HEAD/C1 state stay unchanged.
+
+A single fresh bounded review found no Important harness defect; stop after
+acceptance, with no added sweeps/stress/Word/UAT/SRS work. Earlier eight case
+passes and the original one NOT_OBSERVED remain their own historical outcomes;
+do not relabel them 9/9 using this different matched input.
+
+The no-lineIndex label-shape reachability question is closed for this direct
+Core input. Whether an ordinary Service template can produce the asymmetric
+member structure is still UNVERIFIED. General wrapping/sourceOffset/repeat
+semantics, other diagnostic/resource/section/adaptation schemas, Core-emitted
+provenance, preguard API/error order, whole-stage 512-MiB/storage/index bounds,
+Word and Service adoption remain OPEN. No product repair is established or
+authorized by this proof.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/core-pending-label-20261101-r1/verification.json,
+oracle/out-schema/suite.json and cases/<name>/{admission.json,resolved-input.json,
+producer-notice.json,facts.bin,test-oracle.bin,consumer.json,artifact.pdf}.
+Harness and unchanged copied codec/schemas retained with packet transport hashes.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-pending-label-20261101/verification-report.html.

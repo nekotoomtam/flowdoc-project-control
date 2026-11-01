@@ -545,3 +545,16 @@ Proposed next proof separates the known template route from an admission-first
 direct ResolvedDocument with an empty first member cell and a later real item.
 No guard bypass, height sweep or new runtime result; 512 MiB/caps unchanged.
 Preserve optional lineIndex/itemIndex and the original 8 PASS/one NOT_OBSERVED.
+
+### Empty first member: public Core route proved
+
+[Matched-control proof](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--empty-first-member--public-core-label-cursor-bounded-pass)
+confirms the reviewed direct ResolvedDocument candidate: unchanged Core
+admission returns no issues, public PDF engine succeeds and emits memberLabelText
+with absent own lineIndex/itemIndex/sourceOffset. Same 60-pt composed control
+instead reports memberText,itemIndex 1,lineIndex 0. Input diff is exactly four
+allowed removal/empty-child paths; V2 live-tree parity holds after producer exit.
+Peak 63.1171875 MiB under 512 MiB, no OOM. No product/codec/schema/cap or real-data/
+service/push/release/install changes. This closes direct Core shape reachability;
+Service/template equivalence and other schema/preguard/provenance/memory/adoption
+gates remain open. Original 8 PASS/one NOT_OBSERVED is not relabelled.
