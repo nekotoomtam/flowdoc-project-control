@@ -4796,3 +4796,22 @@ review; R1a-R2/SRS/Word open, no further experiment authorized by this result.
 
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/verification.json.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-uat-nozip-20261101/verification-report.html.
+
+### 2026-11-01 — Lifetime last-use review and W1 proof plan prepared, unexecuted
+
+Owner requested review/plan only. D2's new "Last-use review and scoped Oracle
+lifetime proof plan" identifies wrapper setup data that can finish before
+generation, image buffers that must remain readable, Core native packing/font
+temporary-copy candidates, and genuine intent/resource/receipt/ZIP state that
+cannot be removed. Static last-use does not prove GC or reclaimed MiB. Source
+and no-ZIP evidence archive hashes match; Core3e74f98/Servicea572025 clean.
+
+Proposed W1 changes ONLY outside-repo wrapper setup scope and a separately
+scoped buffer-provider factory, keeping prepared image residency/Core/reducer/
+options/caps unchanged. One isolated setup-equivalence control then one fresh
+UAT512MiB/default heap/1CPU; OOM/failure stops. No runtime/harness/product code
+change or Oracle/Word test was performed this review. W2 disk-backed images and
+C1/C2 Core packing/font scope are separate deferred options; Core edits require
+fresh explicit authorization. No auto-fallback, resource increase, real-data/
+service lifecycle/push/release/install action. R1a-R2/SRS/Word remain open.
+Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/lifetime-review/review.json.

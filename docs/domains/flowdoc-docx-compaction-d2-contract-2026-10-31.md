@@ -908,3 +908,125 @@ Evidence/scripts/packet/diff/logs/receipts:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/verification.json.
 Remote project:flowdoc-nozip-826212ad4c63. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-uat-nozip-20261101/verification-report.html.
+
+## 2026-11-01 — Last-use review and scoped Oracle lifetime proof plan
+
+Authority Boundary: owner requested review and planning ONLY. Inline Evidence
+Reviewer / Planning Partner, then Project Control Steward; IDs N/A, routine
+risk. No product or harness-runtime edits, Oracle/SSH/container/Word run,
+real-data access/service stop, push/release/install in this review. Existing
+failure archives are immutable. Core3e74f98/Servicea572025 remain clean; source
+hashes and both no-ZIP source/result archives rechecked. No new Work/map/registry.
+
+**Goal:** identify logical release boundaries before XML reduction and define
+one bounded wrapper-only proof without weakening genuine Core/resource checks.
+**Architecture:** complete setup inside a bounded helper; keep only the
+document, real engine, prepared-image resources and scalar receipt counters in
+the generation caller. Keep the diagnostic ZIP disabled. Core native packing
+lifetime changes remain a separate, currently forbidden product lane.
+**Stack/spec:** pinned Core0.5.2 artifact SHAed876f4, runtime image106a0c8,
+Node24.21.0 and the existing reducer/parser; preceding D2 memory review and
+no-ZIP failure are the evidence/spec. Reuse this document rather than creating
+a generic product-repo plan. Execute inline only after separate authorization;
+no agent/room dispatch is required by this plan.
+
+Logical last-use is NOT proof that GC has reclaimed bytes. No retained-size
+profile exists, so all savings in MiB and runtime success remain UNVERIFIED.
+
+| Data / evidence | Last consumer on current path | Release decision |
+| --- | --- | --- |
+| Wrapper payload/template and normalization adapters, worker.mjs:11-17 | normalizeTaskInput then composeTaskDocument complete | W1 candidate: end setup scope; preserve the composed document and any required value aliases. normalized is already reset, so no claimed new saving there. |
+| Wrapper byPointer/definitions/assetIds/imagesManifest, node/variant arrays, worker.mjs:12-30,33 | Image lookup/preparation finishes; later code only needs placement/variant COUNTS | W1 candidate: preserve counts as scalars before dropping setup references; do not silently alter assetKey resolution or raster preparation. |
+| Wrapper refs Buffer Map, worker.mjs:21-32 | provider.open may be used during generation | KEEP for W1. Public engine has no early image-preparation-complete callback. Do not clear buffers on first read or at source serialization. W2 file-backed provider is a separate variable. |
+| Core built.sections/built.footnotes, writer.ts:115-125 | Packer.toBuffer finishes | C1 logical packing-scope candidate, REQUIRES Core authorization. Keep endingAreas for finishEndingAreas and receipts/anchors/numbering/omitted-section data through final receipt. Native object aliases may remain; no proven reclaimed size. |
+| Core embedding-only fonts buffers, writer.ts:61-77,125-133 | Packing AND correctFontSignatures finish | C2 Core-only temporary-copy candidate. Do not zero/rewrite buffers, embedded ZIP parts or genuine owned font/license resources; aliases may still need bytes. |
+| Core engine pinned/prepared locals, engine.ts:134-170 | preflight consumes their values and copies owned resources | Potential narrower Core helper scope; locals may already be collectible. Not a confirmed leak and not reachable through the wrapper's public API. |
+| Core preflight capsule/intent, profile.ts:18-19,435-445 | Live intent maps to preflight, which maps to capsule resources/document; deriveExportIntent can read the preflight again | KEEP genuine identity/resource ownership. Do not delete WeakMap entries or capsule document merely because one derivation finished. Contract/lifetime redesign requires a Core-owned lane. |
+| Live ZIP/intent/metric and source proofs, writer.ts:135-234 | Final count/relationship guard, adaptation traversal and receipt still use them | KEEP: intent.document is traversed at213, proofs at186, receipt at234. Setting only packed bytes to null cannot release ZIP entry slices that alias the same backing store. |
+| Reducer raw DOM/style/replay state; final output chunks | DOM needed by later cell/paragraph planning; chunks only after sink output | Do not change in W1. Output accumulation was not reached in the observed OOM. |
+
+The default image preparation checks declared stream bytes plus font bytes
+against16MiB, then independently bounds encoded resources(images.ts:92-100,
+138-141). That is a resource contract, not a retained-heap measurement or a
+promise of16MiB savings. Core keeps its own verified image copies regardless
+of whether the wrapper uses Buffers or files. Payload/template JSON byte size
+also does not establish object-graph size or explain the approximately99MiB
+planning-start heap. C1 is a concrete last-use candidate, not a proven largest
+owner. Exact allocations causing OOM remain unknown.
+
+### Proposed W1 — End wrapper setup lifetime; keep image residency unchanged
+
+Future isolated root (NOT created/implemented this review):
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-lifetime-l1-20261101/.
+Base is the sealed docx-core-nozip-20261101 payload. Allowed runtime changes are
+worker.mjs plus new fixture.mjs and buffer-provider.mjs ONLY. Core/Service,
+source-wrapper.mjs, reducer/planner/advanced/register, dependencies, input bytes,
+image encoding, public options, output buffering and limit settings are frozen.
+
+Interfaces and last-use constraints:
+
+- fixture.mjs: prepareFixture(name, root) -> Promise<{document, engine, images,
+  refs, counters}>. Extract the existing normalization/composition/font/image
+  setup faithfully. counters contains scalar imagePlacements/imageVariants.
+  Return no raw payload/template, lookup/adaptor closure, nodes or variants.
+- buffer-provider.mjs: createBufferProvider(refs, images) -> existing
+  PreparedImageProvider. Its open(ref,signal?) lives in this separate module
+  and closes over ONLY provider-owned refs/metadata, not the setup function's
+  lexical environment. Keep all current prepared Buffers readable until public
+  generation settles. Preserve64KiB chunks, metadata, byte identity and errors.
+- worker.mjs awaits prepareFixture, invokes the separate provider factory and
+  real public generateDocxTo with the original output/options/integrity checks.
+  Preserve counters for post-run receipt logging. Merely wrapping a block while
+  returning a closure that captures setup is not the proposed release proof.
+
+Review focus: closure capture, shared document aliases, section-scoped assetKey
+resolution, image-provider repeatability and receipt/abort behavior. Checks:
+
+- [ ] Before a full run, inspect the exact manifest/diff. Compare original
+  setup versus extracted setup in an ISOLATED setup-only control, outside the
+  later measured generation process: same composed-document digest, font/resource
+  identities, provider metadata and content hashes,189placements/136variants.
+  Exercise repeated reads of each retained prepared ref after setup returns;
+  it must remain readable and identical. Do not keep the comparison's old setup
+  object alive inside the acceptance process. A mismatch stops the proof.
+- [ ] Run exactly ONE fresh full UAT case on the same Oracle/OCI lab image,
+  512MiB memory AND total memory/swap,1CPU,default259MiB V8 heap, no NODE_OPTIONS,
+  readonly inputs/rootfs and64MiB temp mount. Keep50000XML/10000drawings/32MiB,
+  all existing source/resource limits and no diagnostic ZIP. Record scalar
+  setup-return/generation-start/reducer checkpoints; no forced GC, heap snapshot,
+  extra capture, image spooling, sink change or private Core-variable mutation.
+- [ ] Verify body/table/guide counts remain1591/95/58 (597text blocks),
+  raw census110767, real engine/resources/options unchanged. Success needs full
+  plan/replay checks, unchanged Core guard, actual final XML/rels/CRC/relationship
+  and byte limits, receipt hash/bytes and output content/resource evidence.
+  Counts alone cannot establish fidelity; unavailable same-run baseline/Word
+  evidence remains OPEN. Do not substitute prior copy results.
+- [ ] On OOM OR failed prerequisite, STOP. No retry/tuning/SRS/Word/W2/C1/C2.
+  Preserve trace/exit/peak, discard no uncertain evidence, confirm no lab worker
+  still runs and real runtime metadata/source/input hashes remain unchanged.
+  Even a UAT PASS closes only this fixture's wrapper-lifetime proof, not R1a-R2.
+
+### Deferred alternatives and decision after W1
+
+W2 would keep prepared images in lab-owned disk files with sealed hash/length
+refs and the same open/chunk contract, following Service render-child.ts:77-83,
+236-239. It cannot delete files until generation settles. It is a SEPARATE
+experiment: disk page cache still counts toward cgroup memory; using tmpfs
+would not make these bytes leave RAM. Do not drop host caches or change shared
+storage/service settings. No estimated memory saving is accepted without proof.
+
+C1/C2 would scope native build/pack and embedding-only font work inside Core,
+returning packed bytes plus all necessary plain receipt/ending-area metadata
+while releasing unneeded constructor references. This requires fresh explicit
+Core implementation permission and its own equivalence/receipt/cancellation/
+failure-cleanup checks. The external wrapper cannot safely free private built
+state. No debugger assignment, loader rewrite or prototype deletion may be
+used to bypass the current no-Core-change boundary.
+
+W1 is recommended first because it isolates a finished wrapper responsibility
+and preserves Core behavior. W2/C1/C2 are reviewable options, NOT automatic
+fallbacks after another OOM. Proof budget: one separate setup-equivalence control
+and one full UAT, stop on failure; no sweeps or full-system suite. This review
+implements/runs NONE of them. R1a-R2/SRS/Word remain open. Evidence/input hash
+manifest and last-use classification:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/lifetime-review/review.json.
