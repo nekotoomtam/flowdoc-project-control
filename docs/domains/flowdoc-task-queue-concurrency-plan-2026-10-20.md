@@ -4890,3 +4890,30 @@ M2/W2/C1/C2/Word. No Core/Service change, no runtime test or Oracle connection
 in this review; no real-data/service lifecycle/push/release/install action.
 M1 remains PROPOSED pending owner authorization. Existing D2+queue only; IDs N/A.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-xml-dom-review-20261101/review.json.
+
+### 2026-11-01 — M1 parity15/15 PASS; SRS post-normalization heap OOM, STOP
+
+Owner authorized M1. Only lab planner.mjs/reduce-live.mjs instrumentation;
+347other runtime files unchanged. Local expected RED then local/Oracle tiny
+parser parity15/15 PASS (DOM/error name+message/order), separate container from
+measured SRS. Full SRS ONE run, exit134/Node heap OOM, Docker OOMKilled=false,
+peak406.61MiB;512MiB memory AND total memory/swap,1CPU,Node24.21/default259MiB
+heap/no NODE_OPTIONS, originaltemp/readonly/network/caps unchanged; no timeout.
+
+Main XML read completed5111424chars, heap156.35->165.87MiB; preprocessing and
+line-normalization returned5111369chars at165.91MiB. No DOM-returned/parsed event.
+OOM now localized after normalization before DOM-return checkpoint; read did
+not fail. Exact allocation/owner, and possible post-return checkpoint allocation,
+remain unverified. Lower cgroup peak than prior504MiB is NOT proven savings or
+OOM repair. Same182250nodes/74parts,5622body/200tables/39guides,377placements/
+13variants. No complete plan/candidate/returned receipt; Word/output checks NOT
+RUN. Runtime post-integrity log was not reached on native abort; startup hash/
+readonly evidence is separate. Local Core/Service source/HEAD unchanged/clean,
+input/runtime/result hashes verify,3real runtime identities stable,0owned running.
+
+Stop on OOM: no retry/tuning/M2/W2/C1/C2/Word/product change/real-data access/
+real-service stop/push/release/install. M1 localization objective PASS, SRS
+runtime FAIL retained; R1a-R2/adoption OPEN. D2 executed M1 section owns details.
+Recommend review of retained Core versus bounded DOM design before new proof.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-m1-20261101/verification.json.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-srs-m1-20261101/verification-report.html.

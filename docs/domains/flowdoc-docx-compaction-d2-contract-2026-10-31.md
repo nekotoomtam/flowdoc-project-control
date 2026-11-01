@@ -1322,3 +1322,92 @@ Durable read-only inventory/source hashes/reference paths and classifications:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-xml-dom-review-20261101/review.json.
 Reproduction of local inventory only: review.py alongside it; no SSH/Docker/
 product imports. Original fatal trace and setup gate remain in W1 SRS evidence.
+
+## 2026-11-01 — M1 executed: parser parity PASS; post-normalization heap OOM
+
+Authority Boundary: owner explicitly authorized M1 control then ONE SRS, same
+512MiB/caps, stop on OOM. Inline lab implementation outside product repos /
+Evidence Reviewer, then PC Steward; IDs N/A. This executes the proposal above,
+not Core remediation or product adoption. Previous outcomes remain historical.
+
+Exact sealed runtime delta against W1 SRS: planner.mjs and reduce-live.mjs ONLY;
+the other347runtime files are byte-identical. Additional control files are
+controls/parser-control.mjs and controls/planner-baseline.mjs (the latter is
+the original planner byte-for-byte). Observe existing read/preprocess/parser
+boundaries without extra raw capture, encoding/hash/count, per-node callbacks,
+cache, serializer change, forced GC or heap snapshot. The normalization order,
+locator:false, error handler and original reduction algorithms stay unchanged.
+Observation can change timing/GC; it is not claimed to be heap-neutral.
+
+Before implementation, the local tiny test intentionally failed for missing
+parse instrumentation (expected RED). After instrumentation, local Node24.15.0
+and then the separate Oracle Node24.21.0 control passed15/15:7valid/8invalid,
+identical full DOM fingerprints including PI/comments/CDATA and identical error
+name/message, with ordered scalar observation events. Cases cover Thai/Unicode,
+namespace/attributes, entities, CR/CRLF, BOM/declaration, Word properties,
+malformed/DTD/entity declarations and non-string errors. Oracle control exit0,
+cgroup peak16.96MiB. This is observation-semantic parity on tiny cases, NOT
+full SRS fidelity or memory neutrality. Original SRS setup26refs/52repeat reads
+is reused with all relevant input/helper/provider/resource hashes unchanged.
+Control and measured SRS use separate fresh containers/processes.
+
+ONE full SRS: exit134, fatal Reached heap limit / JavaScript heap out of memory;
+Docker OOMKilled=false, no timeout, cgroup peak406.61MiB. Actual Node24.21.0,
+no NODE_OPTIONS, default259MiB V8 heap;512MiB memory AND total memory/swap,
+1CPU,networknone,readonly rootfs/inputs,64MiB temp verified in Docker receipt.
+Same50000XML/10000drawings/32MiB limits and SRS<=49000target. Watchdogs30s/120s
+did not trigger; no container needed a kill. The controller stopped on failure,
+and no workload was retried, tuned or continued into M2/W2/C1/C2/Word.
+
+Same fixture:5622body nodes,2202text blocks,200tables,39source guides,
+377image placements/13variants; census182250XML/rels nodes in74parts.
+New durable boundaries for word/document.xml:
+
+| Boundary | JS heap MiB | Character count |
+| --- | --- | --- |
+| main-read-start | 156.35 | Not loaded yet |
+| main-read-ready | 165.87 | 5111424 |
+| parse-enter | 165.89 | 5111424 |
+| prepared-input-ready | 165.90 | 5111369 |
+| line-normalize-enter | 165.91 | 5111369 |
+| line-normalize-return | 165.91 | 5111369 |
+| DOM-returned / existing parsed | Not observed | Not observed |
+
+Main read finished in6.15ms with checkpoint heap delta+9.52MiB, not a measured
+live allocation/copy count. Declaration/BOM preparation and CR normalization
+completed. Thus the main XML load/preprocessing DID NOT FAIL in this run. Fatal
+OOM is localized AFTER line-normalization returned and BEFORE the DOM-returned
+checkpoint was recorded, within the active parser/return-observer interval.
+This narrows the former read-versus-parser ambiguity. It does NOT identify an
+exact allocation, last constructed node, retained owner or per-owner MiB; absent
+checkpoint output cannot rigorously exclude allocation in the checkpoint itself
+immediately after parse returns. Full DOM construction overlapping retained
+Core state remains a supported probable explanation, not proven ownership.
+Last GC reports253.3MiB before abort. Peak406.61 versus previous504.00MiB is NOT
+97MiB proven savings or a memory fix: observation/GC/timing and cgroup accounting
+can differ, and BOTH runs fail the same default heap. No universal512MiB
+impossibility, permanent leak or production Service crash claim follows.
+
+Only hook.json+cgroup-peak.txt exist in the SRS output directory; no complete
+plan/replay, candidate, returned receipt or publication. Output CRC/fidelity/
+native Word checks are NOT RUN because prerequisites failed. Native abort also
+prevented post-run core-integrity.json: do not label that unexecuted check PASS.
+The worker's startup pinned Core dist check passed before generation, readonly
+rootfs was verified, and local Core3e74f98/Servicea572025 HEAD/source remain clean
+and unchanged. All349runtime/input/source/result archive hashes verify within
+the declared delta. Three matched real runtime identity records before/after
+are stable;0owned running containers. No realDB/API/storage access, real-service
+stop, push/release/install. No product/package/plugin/map truth promoted.
+
+M1's tiny parity gate and boundary-localization objective PASS; actual SRS
+runtime remains FAIL and R1a-R2/product acceptance stay OPEN. Stop here. Next
+recommended work is a design review comparing retained Core build-state last
+use with a bounded XML/DOM strategy, not another identical read proof or a
+serializer-only change. No further experiment/product repair is authorized by
+this result; Core C1/C2 retain their separate explicit-permission boundary.
+
+Durable exact packet/diff/control/archives/logs/receipts/validator:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-m1-20261101/.
+Result:verification.json; oracle/out-parser-control/parser-equivalence.json;
+oracle/srs-existing-reduced.log. Remote project:flowdoc-m1-6923fb3eecea. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-srs-m1-20261101/verification-report.html.
