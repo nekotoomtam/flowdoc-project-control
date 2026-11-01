@@ -4,7 +4,8 @@
 > for separately authorized inline implementation. Do not dispatch another room
 > or agent merely because this plan has several steps.
 
-**Status:** PROPOSED; planning complete, implementation and its prerequisites open.
+**Status:** PROPOSED for product implementation. P0 copy mechanism passed on
+2026-11-02 (22/22 final cases); P1–P5 and actual Service integration are not started.
 **Review completed:** 2026-11-02; source/evidence baselines are the revisions below.
 **Goal:** Connect Service-owned worker launches to verified per-worker memory
 envelopes without changing document contracts, allocation policy, or Core.
@@ -468,3 +469,86 @@ unchanged budget, original six governor cases and actual reservation outcomes.
 These are explicit prerequisites/tests, not defects proven by this review.
 The next authorized action should be **P0 copy-only**, then review its terminal
 result before Service P1. No product branch integration is authorized by this plan.
+
+## P0 execution result — 2026-11-02, copies only
+
+User authorized P0 in this same room, retaining 512 MiB per worker and the existing
+coordinator budget; Core/Service edits, real data/service operations and
+push/release/install remained forbidden. Active role: Cross-Repo Boundary
+Reviewer / discovery, then PC Steward for this status update. Execution IDs N/A.
+The preceding next-action paragraph is retained as planning history; P0 now has
+the following bounded copy result. It does not authorize P1 implementation.
+
+**PASS_P0_COPY_ONLY — accepted attempt a4, 22/22 cases.** Verifier:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-broker-p0-20261102/verify.py`.
+Artifacts are outside product repositories. The verifier checks frozen fixture
+hashes, case assertions, exact resource/container state, production identity
+metadata, unchanged Service/Core development/candidate and retained C1 hashes.
+Canonical PC base for execution was `a28a341`; Service stayed at `257bdd5`.
+
+| Criterion | Observed proof / scope |
+| --- | --- |
+| Actual PID reuse | Namespace PID **11** reused, start time **48163963 → 48164493**. Original peer pidfd remained exited; old claim denied, stale cancel did not kill replacement; fresh binding and payload succeeded |
+| Race-safe placement | Bootstrap self-writes zero through a descriptor opened as delegated UID/GID **65532**, then closes original/duplicate before exec. Peer pidfd remains identity/liveness proof, not a numeric migration shortcut |
+| Scope/permission containment | Foreign-root lab helper migration denied **EACCES**. App UID10001/CapEff0 could not open seven controller/common-ancestor/procs paths for write; parent `/proc` descriptor theft denied; payload inherited no migration/socket descriptor |
+| Connection authentication | Wrong same-UID coordinator, forged/forbidden fields, wrong nonce, expired/replayed leases, oversize/partial/deep malformed frames rejected. A child inheriting the registered socket/capability was rejected using **per-message SCM_CREDENTIALS**, not only connect-time SO_PEERCRED |
+| Cancellation | Before bind, during live migration-descriptor handoff, and before GO: no payload. Cancel is irreversible; late PLACED cannot restore bound state; stop proof requires peer exit and empty scope |
+| Broker fault/restart | SIGKILL before GO and with an escaped-process-group writer; restricted reaper observed all tracked PIDs reaped and scopes empty before new epoch. Four distinct epochs in final run; fresh work succeeded and stale epoch was rejected |
+| Coordinator death | Broker drained workers after coordinator SIGKILL; host observed empty scopes/tracked PIDs gone **without issuing worker kills to make that case pass** |
+| Resource accounting | Worker kernel cap **536870912**, swap **0**; aggregate **1073741824 / 2 CPU**, including broker/opener/reaper/coordinator. Fixture aggregate peak **37.1171875 MiB**, no OOM events; this is not native document capacity evidence |
+| Privilege roles | App UID/GID10001, CapEff0. Host-injected broker copy had CHOWN/KILL/SETGID/SETUID only (mask225); reaper CapEff0; both no-new-privileges and charged inside aggregate. Injector is a privileged test controller, not a product broker role |
+| Cleanup / protected systems | Final accepted container exited0, all owned attempts stopped. Three protected Docker identity records unchanged; no production API/SQL/storage read or mutation. Service/Core/C1 source boundaries passed |
+
+The PID counter adjustment occurred only after verifying the injector's private
+PID namespace matched the owned container and differed from host. It was not a
+forced host-global PID reuse experiment. The root operator prepared only a new
+labelled lab scope; no service-manager unit, software or account was installed.
+The VM is the Oracle/OCI lab; these process-control tests do not connect to Oracle
+Database or constitute a database test.
+
+### Retained failures and resulting contract requirements
+
+All attempts remain available; earlier failures are not relabelled PASS:
+
+- **a1 FAIL**, 15 completed cases: the inherited Python socket wrapper did not
+  restore timeout on a nonblocking descriptor. Corrected only test transport;
+  per-message rejection assertions retained.
+- **a2 RED**, 17 completed cases: `CANCELLED_BIND_REACHED_BOUND` confirmed a
+  **prototype** race. After target FD handoff but before self-migration, CANCEL
+  saw an empty target scope; the later PLACED reply could restore bound state.
+  This is not a newly confirmed Service defect: the broker is not in Service.
+- Fix only the copy: latch stopping before kernel actions, pidfd-kill the known
+  bootstrap even while it is still in coordinator, require `state == binding`
+  for PLACED, and require peer exit plus scope empty before final cleanup. Same
+  cancel-during-bind case passes in a3 and a4; no assertion weakened.
+- **a3 GREEN**, 22/22. **a4 GREEN**, same22/22 plus explicit app-controller write
+  denial/capability observations and reaper peak metadata, closing a permission
+  coverage gap. No further lab workload was needed after this acceptance.
+
+These findings refine P1's implementation requirements: stable peer identity,
+kernel-confined opener credentials, per-message writer identity, irreversible
+cancel, descriptor closure and combined exit/scope/reap proof are mandatory.
+Do not copy a numeric-PID migration or connect-time-only authentication adapter.
+
+### Evidence locators and remaining boundary
+
+Base: `C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-broker-p0-20261102/`.
+Use `verification.json`, `postflight.json`, `accepted-attempt.json`, `packet.json`, `progress.json`,
+and `attempts/a4/{packet.json,*.py,oracle/receipt.json,oracle/out/*}`.
+`attempts/a1`, `a2`, `a3` retain exact source/receipts for transport failure,
+cancellation RED and preceding GREEN. Read the accepted packet's hashes before
+reuse; the fixture is a discovery artifact, not an installable Service package.
+Report: `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-broker-p0-20261102/verification-report.html`.
+
+No actual Service worker, Core/native document, API/DB task, reservation/delivery
+or original six governor test was executed. Prior direct-child/advanced IPC/fence
+evidence remains only its unchanged prior copy proof; real wiring remains P1–P5.
+Fixed resource probes/owner helper retain their source-defined control-plane
+classification; they were not executed through this new broker fixture.
+Production supervision/packaging, portability, explicit bootstrap loader-env
+allowlisting/adversarial preload tests, bounded terminal-cache/pidfd retention
+and reconnect/backpressure hardening still require P1 review/tests. The copy
+launch used isolated/no-site Python with trusted fixture environment; it did not
+prove rejection of malicious loader configuration or every product worker kind.
+P0 passes only the bounded kernel/authentication/lifecycle copy proof above;
+it is not production readiness, M20-4 closure or permission to begin P1.

@@ -13,8 +13,11 @@ spikes passed on Oracle; actual Service launcher/broker integration remains
 unimplemented and unverified. Six governor admission tests remain unrun; M20-5
 is not started. Full model20 support
 is NOT accepted. The follow-up launcher/broker integration plan was reviewed on
-2026-11-02; its security gate and all product implementation remain open (see
+2026-11-02; product implementation remains open (see
 [focused Service launcher/broker plan](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)).
+P0 copy kernel/authentication/lifecycle proof subsequently passed22/22 on
+2026-11-02; actual Service P1–P5 remain unstarted. The copy result does not close
+M20-4 or the six governor acceptance cases.
 
 ## Request, baseline and scope
 
@@ -763,3 +766,19 @@ PASS would not prove this topology. All assertions remain acceptance criteria.
 This review reads Service257bdd5 and retained receipts; it performs no new lab
 workload or Core/Service edit. No real data/service operation, push, release or
 installation. M20-4 and M20-5 status is unchanged; no product or map promotion.
+
+## P0 copy proof — 2026-11-02
+
+Bounded Oracle/OCI copy suite passed22/22 (accepted a4): actual private-namespace
+PID11 reuse with different start identity, stale lease/cancel rejection, constrained
+self-migration FD, per-message writer authentication, controller/FD-theft denial,
+cancel before/during bind, broker death/restart with escaped writer and coordinator
+death cleanup. Worker512MiB/swap0 and aggregate1GiB/2CPU unchanged; no OOM; all lab
+attempts stopped and protected production identity metadata unchanged.
+
+Retained a2 proves a cancellation race in the **prototype only**, fixed only on
+copies before a3/a4 GREEN. The [focused plan's P0 result](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)
+records the race, required contract refinements, evidence and remaining boundaries.
+No Core/Service, real data/service, install/release/push operation; no actual
+Service/native/API/DB job or six governor test was run. Next scope is P1 review
+and separately authorized candidate implementation, not automatic execution.
