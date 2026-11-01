@@ -1764,3 +1764,22 @@ real-service stop or push/release/install in this round. Existing C1/UAT PASS
 and SRS heap OOM remain the latest runtime results; no automatic retry/C2/W2.
 Only the proposed design, this link and the queue status are updated. Inline
 IDs N/A; Planning Partner/Cross-Repo Boundary Reviewer, then PC Steward.
+
+## 2026-11-01 — Stage handoff/RAM lab controls; no new DOCX generation
+
+The owner authorized copy-only protocol and 512 MiB per-worker RAM proof.
+[Canonical stage-design addendum](flowdoc-document-stage-resource-design-2026-11-01.md#2026-11-01--copy-only-handoff-and-aggregate-ram-controls)
+records 28/28 external prototype cases, unchanged prior UAT ZIP/receipt bytes,
+independent 36,631-node/190-drawing/24-XML-rels integrity, inherited512 MiB
+aggregate memory+no-swap enforcement (kernel oom_kill 0→1, peak 512 MiB), and
+small synthetic-PDF handoff after controlled cleanup. No UAT/SRS regeneration,
+XML compaction, Core stage API, full finalization facts or Word proof.
+
+Scope limits retained: biased lab OOM victim selection; raw victim-PID field
+unreliable after sibling cleanup and excluded; parent rejects invalid inputs
+before consumer; sealed/no-writer assumption; known process groups only.
+Current Service320 MiB credit/enforcement design remains open. Failed runner
+assertion and host-read permissions are preserved; passing protocol reused,
+RAM ran once. No Core/Service/C1/cap/real-data/service/push/release/install change.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/stage-handoff-ram-20261101-r3/verification.json.
+C1/Linux/UAT pass and SRS heap OOM remain the latest generation results.

@@ -3,8 +3,10 @@
 Authority Boundary: Project Control canonical PROPOSED cross-repository design,
 owned by Planning Partner / Cross-Repo Boundary Reviewer. Core owns document
 semantics; Service owns scheduling, runtime/storage/DB/transport integration.
-Status: DESIGN FOR REVIEW; NOT IMPLEMENTED OR RUNTIME VERIFIED. No system-map
-promotion. Inline execution IDs N/A. This design does not grant product edits,
+Status: PROPOSED PRODUCT DESIGN; PRODUCT PROTOCOL NOT IMPLEMENTED OR VERIFIED.
+Lab-only handoff/RAM evidence is recorded in the dated addendum below; it does
+not verify the Core/Service design. No system-map promotion. Inline IDs N/A.
+This design does not grant product edits,
 Oracle runs, real-data access, real-service stop, push, release or installation.
 
 ## Intent and decisions
@@ -325,8 +327,8 @@ generic source ownership instead of fixture bands; exact bounded XML units and
 global indexes; hard memory-limit adapter; versioned envelope accounting/IO;
 package/API compatibility including legacy adapter. All are identified design
 work/proof gaps, not proven defects or hidden completed features. Native Word,
-durable stage resume and rollout are deferred scopes. This turn runs no tests
-or Oracle workload and changes only Project Control prose.
+durable stage resume and rollout are deferred scopes. The initial design round
+ran no tests or Oracle workload and changed only Project Control prose.
 
 ## Source and evidence locators
 
@@ -341,3 +343,85 @@ or Oracle workload and changes only Project Control prose.
   Latest evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-c1-linux-20261101-r3/verification.json.
 - No new system map, Work/Phase/Checklist registry, migration, product source or
   runtime configuration is created by this proposal.
+
+## 2026-11-01 — Copy-only handoff and aggregate RAM controls
+
+Owner next authorized isolated Oracle-lab proof, still no Core/Service edits,
+real data/service stop or push/release/install. Evidence Reviewer / Cross-Repo
+Boundary Reviewer, then PC Steward; inline IDs N/A. Medium work, bounded risk
+because one deliberate aggregate memory-kill control runs only in a unique
+512 MiB, no-network lab container. No product implementation authority follows.
+
+Proof budget: one corrected prototype matrix, reuse passing unchanged results,
+one first aggregate-RAM control and a small sequential recovery probe. Stop on
+unexpected failure/OOM; no UAT/SRS generation or pressure retry. Document budget:
+this addendum, narrow D2/queue links and local raw evidence/report. No new map
+or Work registry. Inputs/runtime and protected product sources are hash-checked.
+
+### Proven within this lab scope
+
+| Criterion | Result / evidence |
+| --- | --- |
+| Sequential producer/consumer, unchanged bytes | Existing final lab UAT DOCX 2,968,247 bytes and receipt 780,656 bytes survive by exact SHA256; synthetic PDF 414 bytes is a separate transport case. Receipt is a streamed sidecar, not a large IPC object |
+| Fail-closed handoff | 28/28 prototype cases: valid DOCX/PDF, producer-exit ordering, corruption/truncation/missing receipt, symlink/hardlink, untrusted digest, schema/Core/adapter/binding/sequence/predecessor/format/path/unknown-field/bound errors, cancel/duplicate/late completion, partial producer, IPC bound and timeout. Invalid cases stop in parent before consumer start |
+| Independent transported-file integrity | ZIP CRC and XML/rels parse: 36,631 nodes, 190 drawings, 24 XML/rels parts; unchanged cap. This is the prior final UAT output, not regenerated source/intermediate XML |
+| Aggregate inherited RAM limit | Node supervisor and two allocator descendants share memory.max=536870912 and swap.max=0. Each descendant targets 240 MiB external Buffers under the default 259 MiB V8 heap. Kernel counters BEFORE sibling cleanup: oom_kill 0→1, oom 0→1, max 0→21; observed peak 512 MiB |
+| Narrow post-pressure recovery | Lab supervisor survives, stops/reaps known child groups, then a fresh producer/consumer transfers the small synthetic PDF in the SAME bundle. No additional oom_kill; container exits 0. Docker OOMKilled=true is retained, not hidden |
+| Containment | Same pinned Node 24.21.0/runtime image; each worker 512 MiB memory and memory+swap, 1 CPU, 64 MiB tmpfs, network none, readonly root/input, no new image build/pull/install. Protected Core/Service HEADs/status/source hashes and the existing dirty two-file C1 candidate unchanged. Three real-runtime metadata identities stable; owned lab containers all stopped |
+
+### Limits and one evidence defect — not product acceptance
+
+- No Core stage API is invoked: producer/consumer are external lab programs.
+  Existing final ZIP/receipt transport does not prove native/source emission or
+  complete private glyph/source/finalization facts after producer exit.
+- Descriptor 4096-byte and sidecar 1-MiB bounds are demonstrator limits only, not
+  newly approved product caps or proof of universal finalization-fact size.
+- The independent Python ZIP/XML audit runs on the lab host, outside the
+  measured worker bundle. It is an evidence checker, not proof that the future
+  Core final-validation stage fits the worker's memory envelope.
+- Each allocator sets oom_score_adj=800 so the supervisor is less likely to be
+  the kernel victim. Supervisor survival is under this LAB victim-selection
+  policy; it does not prove unchanged Service survival or production launch
+  enforcement. No Service grant/reservation/DB/storage/transport recovery is run.
+- Confirmed evidence-only defect, low impact: ram.mjs:11-21 assigns `killed` on
+  every SIGKILL close, so sibling cleanup may overwrite raw expectedOomPid. Do
+  NOT use that field to identify the kernel victim. Pre-cleanup kernel counters
+  and inherited limit samples still support the aggregate-limit claim. Preserve
+  raw evidence; freeze the observed victim before cleanup before any future
+  reuse of that logger. No pressure rerun merely to repair the report field.
+- protocol.mjs:13 reads metadata after stat under a sealed/no-concurrent-writer
+  assumption; hostile concurrent growth is not covered. Invalid cases rejected
+  by the parent do not independently verify consumer-negative API behavior.
+  Known process-group disappearance does not prove containment of arbitrary
+  descendants escaping through a new session. These are open production gates.
+- Actual 320 MiB Service credits and 512 MiB enforcement/versioning remain open.
+  No generic XML reduction, UAT/SRS generation, native Word or all-template
+  success claim is made. Existing C1 UAT pass / SRS heap OOM remain unchanged.
+
+### Preserved setup history and reuse
+
+1. stage-handoff-ram-20261101 stopped when the test incorrectly compared a full
+   missing-file error.message against ENOENT; the absent receipt was rejected.
+   RAM did not start. Raw failed result retained. Fetch also needed scoped
+   privileged READ because sealed lab files are UID65534/mode0600.
+2. -r2 changes only the assertion to error.code??error.message; protocol 28/28
+   passes. Host ZIP validator then cannot read those mode0600 files; RAM still
+   did not start. Passing prototype inputs/source/image are kept immutable.
+3. -r3 verifies those hashes and REUSES the passing protocol, reads only named
+   prior-lab files with a scoped privileged validator, then runs RAM for the
+   FIRST time. No protocol rerun after PASS, no pressure retry/tuning. The
+   independent read-only review accepts only these narrow lab conclusions and
+   records the attribution defect/coverage limits above.
+
+Durable raw/result locators:
+
+- C:/Users/nekot/Documents/FlowDoc-recovery/stage-handoff-ram-20261101-r3/verification.json
+- Same folder:packet.json, verify-report.py, oracle/receipt.json,
+  oracle/out-ram/ram.json, oracle/independent-bytes-and-package.json.
+- Passing protocol:C:/Users/nekot/Documents/FlowDoc-recovery/stage-handoff-ram-20261101-r2/oracle/out-protocol/protocol.json.
+- Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-stage-handoff-ram-20261101/verification-report.html.
+
+Next recommended work: close the complete/bounded Core finalization-facts
+contract, read/trust/ownership details and production envelope/accounting design
+before authorizing product changes. Do not launch UAT/SRS from this protocol
+proof alone. Stop this bounded proof round here.

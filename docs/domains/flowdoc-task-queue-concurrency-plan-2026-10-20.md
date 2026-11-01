@@ -5016,3 +5016,21 @@ Design only: no Core/Service/candidate/config edit or Oracle workload; no real
 data/service stop/push/release/install. C1 Linux gates/UAT PASS and SRS heap OOM
 remain current. Proposed verification is ordered and separately authorized;
 no runtime claim from this design. No Work/Phase/Checklist/map promotion.
+
+### 2026-11-01 — Lab-only stage protocol and aggregate RAM proof
+
+[Stage-design addendum](flowdoc-document-stage-resource-design-2026-11-01.md#2026-11-01--copy-only-handoff-and-aggregate-ram-controls)
+records 28/28 prototype handoffs, prior final UAT artifact/receipt exact bytes,
+and one 512 MiB aggregate hard-memory control: inherited no-swap cgroup limit,
+kernel oom_kill 0→1 before cleanup,512 MiB peak, lab supervisor survives under
+oom_score_adj800 allocator bias, then small synthetic-PDF handoff succeeds.
+No Service credit/grant/DB/storage implementation or availability proof.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/stage-handoff-ram-20261101-r3/verification.json.
+Known raw victim-PID attribution defect excluded; parent-negative coverage,
+sealed-file assumption and process-group-only containment explicitly bounded.
+Passing protocol reused after host-reader permission correction; no repeated
+pressure test. Current 320 MiB worker credit versus512 MiB accounting and
+production launch adapter remain open, along with complete Core finalization
+facts. No product/candidate/cap/real-data/service/push/release/install change;
+owned lab containers stopped and three real-runtime metadata identities stable.
