@@ -457,7 +457,7 @@ it does not add cases to the prior 10/170 runtime results.
 | --- | --- |
 | Structural data grammar; R2 schema.mjs shape/array helpers | Dense ordinary arrays with only indices/length; explicit object prototype/property-descriptor rules, no symbols/accessors/extra array properties, own-key/presence/order preservation. Test both decoder rejection and direct validator entry; codec rejection does not prove schema entry rejection |
 | Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | V1 isWellFormed restriction conflicts with three reachable real Core receipts. Separate LAB V2 below preserves raw UTF-16 in 66 codec controls and 5 fresh Core transfers; reproduced gap closed in V2 only. Full branch/schema acceptance remains OPEN. No replacement/normalization or stricter Core admission |
-| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Text/image/node and eight table/group fixtures retain bounded PASS. Later matched public Core controls now prove a label cursor with absent lineIndex/itemIndex on a validator-admitted direct ResolvedDocument. Original composed fixture stays NOT_OBSERVED; Service/template equivalence, general semantics and other schema families remain OPEN |
+| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Text/image/node and eight table/group fixtures retain bounded PASS. Matched public Core controls prove a label cursor with absent lineIndex/itemIndex on a validator-admitted direct ResolvedDocument. Four later Service worker/template controls pass their bounded assertions but the asymmetric target remains NOT_OBSERVED. Original composed fixture is unchanged; Service equivalence, general semantics and other schema families remain OPEN |
 | Format instances; composition/validateFormatInstances.ts:11-30 | Validate fixed/auto sizing, nonnegative safe indices, fixed rootStartIndex, root identity/order/ownership and omission boundaries. Consumer must use minimal Core-emitted lineage or sealed package evidence, not reload the original ResolvedDocument graph. Decide the minimal needed lineage before exporter implementation |
 | Resources / PDF usage; docx/resources.ts:38-91, fonts.ts:151, pdf/createPdfEngine.ts:104 | Distinguish font, PNG (decoded RGBA hash) and JPEG identities; font weight/style/license/release/native family and PDF selection/license order. Check duplicate identity policy per actual producer namespace, positive dimensions/product limits and binding to authorized original/derived resources. Add genuine image/library/schemaVersion2 controls; the small PDF case does not cover them |
 | Sections, bands, cells and quantities; docx/sections.ts:149-163, bands.ts:51,75,108 | Complete literal policy/shape/reason families from emitter branches and source formulas; units/ranges per field, not blanket nonnegative constraints (deltas/offsets may be signed). Preserve six-key reserved/native margins versus four-key source/estimated margins, page-type estimates and false verification flags. Add inheritance/omission/header/footer/merged-cell controls and source-based consistency checks |
@@ -1293,3 +1293,96 @@ oracle/out-schema/suite.json and cases/<name>/{admission.json,resolved-input.jso
 producer-notice.json,facts.bin,test-oracle.bin,consumer.json,artifact.pdf}.
 Harness and unchanged copied codec/schemas retained with packet transport hashes.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-pending-label-20261101/verification-report.html.
+
+## 2026-11-01 — Service template-route controls: target NOT OBSERVED
+
+Owner requests the preceding empty-first-member/later-text case through the
+unchanged Service template route in isolated Oracle/OCI lab, 512 MiB per worker,
+existing caps; no product/C1 changes, real data/service stop or push/release/install.
+Inline Evidence Reviewer then PC Steward; execution IDs N/A. Reuse this contract
+and generic design only. Discovery budget: three valid 60-pt-frame controls and
+one rejected template alternative, one fresh bounded review, at most one lab
+harness repair; stop unexpected failure/OOM without automatic retry.
+
+### Exact route and provenance
+
+Service a572025 tree 9e43af791691e5ba08739406d7c41b97783c59d9 matches all 397
+files of the retained integration source archive. All 195 compiled/runtime
+manifest files match the actual reused image07c71903922ef511587627683cb2a5041faa62273ee18da2cb52b434b5900388.
+No build, pull or installation. Service's actual vendor Core0.5.2 package is
+ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532, not the prior
+C1-copy package3be3f511. All 86 packaged PDF/layout/composition/binding files
+compared byte-identically; other package areas are not asserted identical.
+
+Lab uses the real ESM package-name export, unchanged Service openTaskJson and
+renderTaskPayload, and Core normalizeTaskInput to create the normalized envelope.
+The original Python task_launcher.py then execs unchanged Service render-child:
+JSON reader/envelope pins (src/tasks/render-child.ts:118-135), template validation
+and composeTaskDocument (137-141), real bundled font snapshot, engine and public
+generatePdfTo (225-245), projected receipt/warnings/summary over advanced IPC
+(257-258). No post-compose removals, private validator bypass or module rewrite.
+Service default policy and output caps are retained; cgroup enforces512 MiB for
+the whole worker plus lab parent/helper bundle, not just a heap flag.
+
+The normalization and file/IPC parent are explicitly LAB ADAPTERS. They do not
+invoke normalizeStoredTask/renderTask, HTTP, DB, task registration, queue,
+reservations, ownership fencing or allocator. Independent composition replay
+uses the same normalized file and composer; it does not capture the document
+inside the worker. V2 observes only the actual post-advanced-IPC Service message,
+not the pre-JSON raw Core Result or a newly implemented facts/checkpoint API.
+
+### Four bounded observations
+
+All four synthetic templates use nodeModelVersion19.
+
+| Input/control | Observed result |
+| --- | --- |
+| Same label groupG, members FIRST/NEXT, keepStart true, frame60pt | Worker completes; pending memberText,itemIndex1,lineIndex0; no label cursor |
+| First name empty string, next NEXT; identical template | First cell still owns a TextBlock with children=[]; second has NEXT. Worker completes with same member cursor; not the direct-Core no-child shape |
+| Template memberCell.childIds=[] and orphan text template removed | Both member cells have no children, including the next member. NEXT remains unused data; pending becomes afterText,lineIndex0. No asymmetric shape or label cursor |
+| Add cell-repeat declaration in member cell, with array schema scaffold | Direct validator rejects with three INVALID_TEMPLATE issues: rowGroups[0], memberLabelText.bindings and emptyLabelText.bindings. Real worker independently fails INVALID_DATA, exit1, without opening output |
+
+The negative control feeds a valid baseline normalized envelope plus an invalid
+raw template solely to test the worker's validation boundary. It does not claim
+template registration/normalization admitted that template, or isolate a single
+validation rule from the three issues. The three successful PDFs are deliberately
+PARTIAL with omission diagnostics in the small60pt frame, not complete delivery.
+Final PDF hashes/lengths and the complete Service IPC message value/presence
+fingerprint survive worker/producer exit and a fresh no-Core consumer.
+
+Source explanation: binding/expansionSteps.ts:35-36 clones one member row template
+for every item; bindInlines.ts:21-25 drops empty text leaves, not the TextBlock;
+layout/measureText.ts:25 measures a blank line; measureCellContent.ts:15-17 has
+no measured items only when there are no child nodes. template/rowGroups.ts:22
+rejects cell-repeat-owned cells and Area children inside these groups. These
+support the bounded ordinary-row-group structural limitation, not universal
+unreachability across all Service templates, versions or extension paths.
+
+### Failure, resources and disposition
+
+R1 stops before the worker: lab createRequire.resolve selected the unsupported
+CommonJS export condition (ERR_PACKAGE_PATH_NOT_EXPORTED). Preserve its logs.
+One diagnosed lab-only repair uses normal ESM import from an additional readonly
+proof mount under /app, with actual package exports; no product/package changes.
+Fresh R2 passes all four control assertions, target NOT_OBSERVED; no further retry.
+
+R2 peak99.359375MiB; 512MiB memory and memory+swap, CPU1, networknone, root/input
+readonly, tmpfs64MiB, pids96. oom/oom_kill stay0. Four real workers exit0/0/0/1
+as expected; eight producer/consumer helpers exit0 and namespace clears. Both
+owned lab containers are stopped. Real-runtime identity metadata is stable;
+no production SQL/API/log/storage access. All250 Core package files, protected
+Core/Service HEAD/clean state and C1's original two dirty file hashes stay intact.
+
+Disposition: **PASS bounded Service worker controls; target NOT OBSERVED.**
+Do not promote the preceding direct-Core result to Service template equivalence,
+or relabel the earlier8PASS/oneNOT_OBSERVED. No product defect requiring repair
+is established. Preserve optional cursor fields; other schemas, provenance,
+whole-stage512MiB/storage/index bounds and Service/Word adoption remain OPEN.
+One fresh-context read-only review of the completed harness, retained evidence,
+report and two-document diff found no Important defect or unsupported claim.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-template-label-20261101-r2/
+{packet.json,verification.json,oracle/receipt.json,oracle/out-schema/suite.json,
+oracle/out-schema/service-integrity.json,cases/<name>/* under oracle/out-schema}.
+R1 failure remains in sibling service-template-label-20261101-r1/oracle/schema.log.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-template-label-20261101/verification-report.html.

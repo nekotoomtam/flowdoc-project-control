@@ -558,3 +558,16 @@ Peak 63.1171875 MiB under 512 MiB, no OOM. No product/codec/schema/cap or real-d
 service/push/release/install changes. This closes direct Core shape reachability;
 Service/template equivalence and other schema/preguard/provenance/memory/adoption
 gates remain open. Original 8 PASS/one NOT_OBSERVED is not relabelled.
+
+### Service template-route controls: asymmetric target still open
+
+[Unchanged Service worker proof](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--service-template-route-controls-target-not-observed)
+passes four bounded controls using its real vendor pin, ESM export, JSON reader,
+Python launcher, composer and render-child. Empty text retains a TextBlock;
+an empty member-cell template empties all members; a cell-repeat proposal is
+rejected. The first-empty/later-nonempty target remains NOT_OBSERVED on these
+templates. Independent composition replay and lab normalization/file/IPC parent
+are not HTTP/DB/queue/allocator or raw-Core-result proof. Peak99.359375MiB under
+512MiB, no OOM; one lab-only ESM resolver repair is recorded with R1 failure kept.
+No Core/Service/C1/cap or real-data/service/push/release/install change. Preserve
+the direct-Core proof separately and keep general schema/adoption gates OPEN.
