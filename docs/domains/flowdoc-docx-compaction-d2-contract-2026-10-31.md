@@ -1,7 +1,7 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **C1 CANDIDATE STOPPED AT DOCX PREREQUISITES; WORD/PACKAGE ACCEPTANCE OPEN**,
+Partner / Cross-Repo Boundary Reviewer. Status **C1 LINUX GATES AND UAT PASS; SRS HEAP OOM; WORD/PRODUCT ACCEPTANCE OPEN**,
 not an adopted Core compaction implementation or package-wide runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
@@ -1643,3 +1643,98 @@ Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-c1-20261101/.
 Files:docx-tests.json,verification.json,candidate-manifest.json,candidate.patch,
 candidate-status.txt,core-c1-candidate.tgz and preserved source copies. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-20261101/verification-report.html.
+
+## 2026-11-01 — C1 Linux verification: gates/UAT PASS, SRS heap OOM; STOP
+
+Authority Boundary: owner renewed Linux Oracle/OCI lab verification using the
+existing runtime, required C1 checks before UAT then SRS,512MiB/caps unchanged,
+stop on OOM. Inline Evidence Reviewer / lab owner then PC Steward; IDs N/A,
+medium/routine. Candidate source, tests and package are UNCHANGED from the prior
+C1 round: two source/test hashes match, package SHA3be3f511e6a58798504a7b486b031a48ffd708f2707a3422c22ffc77cae67aac,
+only dist/docx/writer.js differs from pinned0.5.2. No producer repair, C2/W2,
+new dependency, installation, Service/pin/limit change or product adoption.
+
+Existing image106a0c8 supplies Node24.21.0/native binaries/Python/runtime deps.
+Existing Linux devtools from height-guard/service/node_modules are read-only:
+Vitest4.1.9,TypeScript6.0.3,Rolldown+Linux binding1.2.13,docx9.13.0,
+jszip3.10.2,pngjs7.0.0. Rolldown differs from Windows1.2.12; this is disclosed,
+not claimed identical host tooling. Suite source/native fixtures are prepared
+in disposable lab output copies; candidate and dependency mounts stay readonly.
+One worker/no file parallelism bounds the runner. Every phase uses512MiB memory
+AND total memory/swap,1CPU,64MiB noexec temp,networknone,readonly rootfs,default
+V8 heap/no NODE_OPTIONS. Full-generation logs confirm259MiB heap; caps stay
+50000XML/10000drawings/32MiB and SRS<=49000target.
+
+Two runner-setup failures were preserved BEFORE any C1 tests executed:
+flowdoc-c1linux-e81e9723a343 mounted dependencies as /devdeps, so Node lacked a
+node_modules ancestor; flowdoc-c1linux-b7f856e80b91 then reached CLI but Vite
+config-temp targeted readonly /lab/node_modules. Infrastructure-only correction
+under the renewed Linux request: mount the SAME dependencies at
+/tools/node_modules, copy IDENTICAL test config into writable lab outputs and
+add an isolated runner-ready smoke. No candidate/dependency/runtime/resource
+change or C1 generation retry. Fresh project flowdoc-c1linux-3edccf3ce14d then
+passed bootstrap and executed the actual gates. Preserve earlier STOPPED
+receipts; do not relabel bootstrap failures as product test or OOM results.
+
+| Actual gate in final project | Result | Cgroup peak MiB |
+| --- | --- | --- |
+| Required Linux DOCX suite | 247/247PASS,0FAIL,0SKIP | 437.68 |
+| Old/new package and full receipt parity | 3/3fixtures byte-identical | 235.06 |
+| Existing packed DOCX/PDF consumer | 6/6cases PASS | 81.69 |
+| ONE full UAT | exit0,receipt/integrity PASS | 420.70 |
+| Independent UAT output check | PASS | 131.14 |
+| ONE full SRS | exit134,Node heap OOM | 402.69 |
+
+The Linux247 result includes the35writer tests plus required native paths;
+Windows209PASS/14FAIL/24SKIP history is retained, not erased or counted again.
+The Linux native-prerequisite gap is resolved for this unchanged candidate.
+Parity uses separate fresh old/new processes, fixed Date and seeded Math.random
+ONLY in the tiny control. For basic/ending/table, all ZIP bytes/parts and FULL
+private receipt JSON match exactly with no XML/part normalization or excluded
+mismatches. This control does not establish full-document Word fidelity.
+The unmodified tests/consumer/checkDocx.mjs runs from the extracted candidate
+via readonly lab mounts, without its installer/image-builder wrapper: binding,
+table,library-model19,jpeg,rgb,rgb-alpha pass, including fonts/images, pinned PDF
+references, cancellation, caps and cleanup. This is not system installation.
+
+UAT:36631XML/rels nodes,190drawings,2968247bytes; receipt hash/bytes,zero abort,
+Core startup/post-run dist integrity pass. Independent ZIP CRC/XML/relationships
+and existing cross-run cascade model pass all7original story parts, including
+protected structure/effective paragraph/run/mark/cell properties and identical
+media. Reference is the older same-input raw Core diagnostic, NOT a same-run
+baseline or native Word/render/font-fidelity proof. No new exclusions were
+introduced. The separate checker ran within its own512MiB container before SRS.
+
+SRS: same5622body/2202text blocks/200tables/39guides,377placements/13variants,
+182250XML/rels nodes/74parts. Main XML read5111424chars and preparation/line
+normalization returned5111369chars; last durable event remains
+base:line-normalize-return,heap110.48MiB, before DOM-returned/parsed. Fatal
+Reached heap limit / JavaScript heap out of memory;Docker OOMKilled=false,
+last GC252.0MiB. No completed plan/candidate/returned receipt or publication;
+SRS output/Word/post-run integrity checks NOT RUN. Startup hash/readonly-rootfs
+evidence is separate from the post-run log that native abort prevented.
+This interval still does not identify the exact allocation/owner and cannot
+rigorously exclude allocation in the return-checkpoint observer itself.
+
+The pre-parser110.48MiB checkpoint is lower than M1's165.91MiB in these runs,
+but is NOT55MiB proven reclaimed native-owner memory, repeatability or permanent
+repair. C1 behavior and UAT pass; C1 ALONE DOES NOT COMPLETE this SRS at the
+unchanged default heap/512MiB. Do not interpret lower cgroup peak as a fix or
+claim all512MiB designs impossible. Remaining intent/provenance/source-proof
+roots and full-DOM working set require design review, not automatic C2/W2,
+heap/cap tuning, retry or further runtime tests.
+
+STOP immediately after actual SRS OOM. Final/earlier lab projects have0owned
+running containers and stable before/after matched real runtime metadata; final
+project matches3identities. No realDB/API/storage/data access, real-service stop,
+push/release/install. Candidate remains uncommitted/unmerged, source hashes and
+protected Core development3e74f98/Servicea572025 remain unchanged and clean.
+All transport/runtime/source/result archive hashes verify; result symlinks are
+kept as metadata only, not materialized locally. No product/map/package truth
+promoted. R1a-R2/SRS memory/Word/repeats/concurrency/Service adoption stay open.
+
+Final evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-c1-linux-20261101-r3/.
+verification.json,original receipts/logs,suite JSON,parity outputs,consumer result,
+UAT independent checks and unchanged candidate/source/result archives. Earlier
+bootstrap evidence retained in sibling docx-c1-linux-20261101 and -r2 folders.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-linux-20261101/verification-report.html.

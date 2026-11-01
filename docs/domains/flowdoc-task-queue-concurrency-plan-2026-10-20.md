@@ -4964,3 +4964,32 @@ Next: review Linux-native test prerequisite using existing lab resources before
 parity/consumer and then UAT/SRS; do not skip failed/pending tests. D2 owns detail.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-c1-20261101/verification.json.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-20261101/verification-report.html.
+
+### 2026-11-01 — C1 Linux gates/UAT PASS; SRS heap OOM, STOP
+
+Renewed owner authorization: unchanged C1 on existing Oracle Linux runtime.
+Two pre-test runner bootstrap failures retained; only tool mount/config-temp
+locations corrected, no candidate/dependency/runtime/cap change. Final project
+flowdoc-c1linux-3edccf3ce14d: required DOCX247/247PASS,0FAIL/0SKIP; exact old/new
+bytes/parts/full receipts3fixtures PASS; unmodified packed consumer6cases PASS.
+No installer/download/image build. Windows14FAIL/24SKIP retained as history.
+
+ONE UAT exit0:36631nodes/190drawings/2968247bytes,receipt+Core integrity PASS;
+separate512MiB output validator passes CRC/XML/relationships,7story cascade/
+protected-structure/cell checks and media equality against older raw reference.
+This is scoped cross-run XML proof, not native Word/font/render fidelity.
+ONE SRS exit134/fatal heap OOM;Docker OOMKilled=false,peak402.69MiB. Read and
+normalization complete,last checkpointline-normalize-return110.48MiB,no
+DOM-returned/parsed/plan/candidate/receipt. Exact allocation/owner unverified;
+lower checkpoint thanM1 is not proven reclaimed bytes or a permanent fix.
+
+All phases512MiB memory AND total memory/swap,1CPU,originaltemp/readonly/network
+and caps;Node24.21/default259MiB heap,no NODE_OPTIONS. Stop after SRS OOM:
+no retry/tuning/C2/W2/Word/further proof. Candidate unchanged/uncommitted/unmerged;
+protected Core/Service source/HEAD clean,archive/input hashes verify,3real runtime
+identities stable,0owned running. No real-data/service stop/push/release/install.
+C1 behavioral gates and UAT close only their bounded scope; SRS memory and
+R1a-R2/Word/repeatability/adoption remain open. Return to design review of the
+remaining Core roots versus bounded DOM/XML before any new implementation.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-c1-linux-20261101-r3/verification.json.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-linux-20261101/verification-report.html.
