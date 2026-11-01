@@ -6,6 +6,10 @@ model20 definition/request/composition semantics. This document is not product
 acceptance, implementation authorization, a release plan or a migration runbook
 for real data. It does not change the existing stage/checkpoint contract.
 
+Current scoped status 2026-11-01: M20-1 implementation/build/focused tests and
+fresh review pass in Service candidate9f20506, committed separately. M20-2 through
+M20-5 are not started and full model20 support is NOT accepted.
+
 ## Request, baseline and scope
 
 Owner requests review and planning ONLY. Planning Partner / Cross-Repo Boundary
@@ -83,7 +87,7 @@ keep their old key/fingerprint. Core must validate updated examples/references.
 Do not reuse model19 section_instance_history for request instanceKeys. Preserve
 server-owned origin/font provenance checks for20 as well as19.
 
-## Phased implementation and proof plan — not started
+## Phased implementation and proof plan
 
 Future work is primarily one isolated Service candidate; Core and its pin stay
 unchanged unless a concrete missing Core API is separately demonstrated. Medium
@@ -93,22 +97,22 @@ record actual host tooling/model availability. No dispatch/model switch now.
 
 ### M20-1 — Preserve definitions and expose the right request contract
 
-- [ ] Add failing focused tests in tests/model20-assembly.test.mjs and
+- [x] Add failing focused tests in tests/model20-assembly.test.mjs and
   tests/model20-contract.test.mjs for20 decomposition, record validation,
   assembly and reconcileDefinition; unchanged18/19 fixtures stay exact.
-- [ ] Implement the mapping above in src/templates/assembly.ts and review
+- [x] Implement the mapping above in src/templates/assembly.ts and review
   src/authoring/adapter.ts. Preserve fingerprints, formats, row groups, sizing,
   images, links, headers/footers, numbering, schema1/2 and font references.
-- [ ] Extend src/templates/contract.ts. Return nodeModelVersion20, definition
+- [x] Extend src/templates/contract.ts. Return nodeModelVersion20, definition
   IDs/sectionKeys and request-defined instance semantics; leave18/19 response
   shapes intact. Include one A,B,A example with distinct instanceKeys.
-- [ ] Distinguish public raw requests from internal encodings: /documents uses
+- [x] Distinguish public raw requests from internal encodings: /documents uses
   sections array with sectionKey,instanceKey,data and supported header/footer/
   assets; preview and /jobs use the existing Core prepared-generation input
   shape, which is not the raw section-assets task shape. Prepared schema3,
   normalized Core flowdoc-task-input/2 and Service normalization_version2 are
   different contracts; do not rename Service task/job envelopes for model20.
-- [ ] Check roundtrip and source identity assertions, not type equality or
+- [x] Check roundtrip and source identity assertions, not type equality or
   merely absence of exceptions. Do not enable capabilities at this partial stage.
 
 ### M20-2 — Database ownership and pinned input integrity
@@ -245,3 +249,72 @@ Planning self-review covers scope, ownership/type distinctions, latest-trigger
 precedence, route-specific inputs, old-model compatibility, worker-limit isolation
 and rollback after new data. No product tests or lab runs were performed in this
 planning round; only the changed documentation is validated.
+
+## 2026-11-01 — M20-1 candidate implementation result
+
+Owner authorizes M20-1 only, separate Service candidate, no Core/real-data/service
+stop/push/release/install; unchanged512MiB per worker/bundle and all caps. Inline
+Product Implementation Agent then Evidence Reviewer/PC Steward; execution IDs
+N/A. Canonical PC base073e64d and Service basea572025. Native worktree tool rejected
+the Service sourceRoot because this chat's workspace is Project Control; explicit
+git worktree fallback creates the authorized isolated candidate, not a new chat.
+
+Candidate:C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/service-model20-m1-20261101,
+branch codex/service-model20-m1-20261101. Tested manifest exactly FIVE files:
+src/templates/{assembly.ts,contract.ts}, tests/{model20-assembly.test.mjs,
+model20-contract.test.mjs,helpers/model20.mjs}. No adapter edit was needed: tests
+confirm reconcileDefinition already retains IDs by definition source ownership.
+Candidate commit9f2050629d496b86ebefb2b461006416990e20b0 contains the tested content;
+worktree is clean. No main/development/release integration was performed.
+
+Implemented mapping: model20 definition sectionKey lives only in SectionRow.key;
+its public definition ID lives in sourceDefinitionId. Reassembly restores
+sectionKey, rejects duplicate sectionKey payload metadata and retains all checked
+content/fingerprints. Existing18/19 mappings and their contract JSON stay exact.
+The pure model20 contract now has definition id/sectionKey and additive metadata:
+assembly={input:'array-by-section-key',instanceKey:'required-unique-per-request',
+order:'request',reuseDefinitions:true}. Examples come from the validated template;
+the function does not invent sample data. A-B-A is the tested template example.
+No Core validation/renderer logic is copied, and no public capability list changes.
+
+TDD evidence: first setup run stops before tests because Vite bundles config into
+readonly node_modules. Lab runner uses native config loading and writable lab
+cache. Second run finds one invalid schema2 fixture retaining legacy font fields;
+that is not accepted as a feature RED. Correct fixture uses the genuine Core
+schema2 font shape. All logs retained; no assertion weakened or cap changed.
+Accepted RED:7 model20 failures from unsupported Service behavior,4 old-model
+checks PASS, production source still unchanged. Exact new test/helper bytes then
+run GREEN after the source patch: full Linux Service TypeScript build PASS and
+48/48 tests PASS across13 files (11 new assertions plus37 existing pure assembly/
+ownership/Section/area/page-band/numbering/group/cell-repeat/link regressions).
+
+New checks cover schema1/2 rich roundtrip, group labels/sizing/image/link/font/
+header/footer/numbering preservation, empty areaFormats, versioned examples,
+reorder/key-rename identity retention, duplicate metadata/ownership rejection,
+and real Core prepareGeneration/composeDocument for2 definitions→3 request
+instances with distinct source/section IDs and FIRST/MIDDLE/LAST/header/footer.
+Model18/19 contract JSON hashes match the unchanged pinned baseline function,
+not newly generated expectations. No real DB, HTTP, native rendering/font
+readiness or full Service-suite acceptance is claimed by these pure tests.
+
+Oracle/OCI lab image07c7190 and existing dependencies reused with no install,
+image build/pull or Core pin change (ed876f4d...). Full build/test bundle hard
+limit512MiB memory and memory+swap; CPU1,pids96,networknone,readonly root/input.
+GREEN peak373.296875MiB including compiler/tests; not native-render worker RAM.
+Accepted RED peak153.27734375MiB. Zero OOM/timeout, successful process cleanup,
+all owned containers stopped and real-runtime identity metadata stable. No real
+SQL/API/log/storage access. All250 Core package files, protected Core/Service
+HEAD/clean state and C1's original two dirty file hashes remain unchanged.
+
+Acceptance is CANDIDATE-ONLY M20-1. M20-2 DB ownership/prepared-pin triggers still
+block persisted20; M20-3 authoring/preview/capability, M20-4 real worker isolation/
+native outputs and M20-5 rollback/full-suite gates remain OPEN. No merge to a
+product main/development/release, push, tag, release or installation authorized.
+One fresh-context read-only code/evidence review of all five files, unchanged
+adapter, plan, harness and results found no Important/Critical actionable defect.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m1-20261101/
+{verification.json,red*/packet.json,red*/oracle/*,green/packet.json,
+green/oracle/receipt.json,green/oracle/out-schema/{suite.json,test-results.json,
+build.log,tests.log}}. Test outputs/compiled files stay outside the candidate.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m1-20261101/verification-report.html.
