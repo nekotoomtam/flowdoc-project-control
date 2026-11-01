@@ -1411,3 +1411,158 @@ C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-m1-20261101/.
 Result:verification.json; oracle/out-parser-control/parser-equivalence.json;
 oracle/srs-existing-reduced.log. Remote project:flowdoc-m1-6923fb3eecea. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-srs-m1-20261101/verification-report.html.
+
+## 2026-11-01 — Core/DOM ownership review; C1 repair design PROPOSED ONLY
+
+Authority Boundary: owner requested review and a repair plan, not product edits
+or another experiment. Planning Partner / Cross-Repo Boundary Reviewer, then PC
+Steward; inline IDs N/A, medium review, routine risk. Current PC base7c83b84,
+explicit request, D2 and M1 govern; older generated snapshot is not current lab
+truth. Core3e74f98/Servicea572025 and349M1runtime hashes still match and are clean.
+This turn performs no Oracle connection/container/test and no Core/Service edit,
+real-data access, real-service stop, push/release/install. C1 below is a concrete
+proposal requiring later explicit Core-candidate implementation authorization.
+
+### Ownership and last use from implementation
+
+Locations refer to Core src/docx/ at the pinned base. Confirmed means structural
+references/reads in source; resident bytes, GC timing and savings are UNVERIFIED.
+
+| Live group | Owner / implementation | Last use and proposed treatment |
+| --- | --- | --- |
+| Native sections/header/footer children and footnotes | writer.ts:115-125; sections.ts:162-165 returns them in the SAME built object as receipt facts | Native object use ends at Packer; ending-area repair later needs plain facts. Not needed as native objects by final receipt; first C1 scope candidate |
+| Embedding font Buffers and TOC constructor styles | writer.ts:118-134; embeddedFonts :75-76 makes Buffer copies | Packer then font-signature correction. May leave scope only AFTER correction; no font/glyph-resource deletion |
+| Small receipt/ending-area/anchor facts | writer.ts:181-234, sections.ts:149,163-165 | Still used for regeneration decision and receipt. Retain explicit plain projection, not whole built/native children |
+| Original packed bytes and loaded JSZip | writer.ts:125-135,181-184 | Keep original bytes for unchanged-package path and ZIP slices for guards/output. Nulling one bytes binding is not backing-buffer release |
+| Intent document/styles/textBlocks/tables and verified resources | writer.ts:135,186-234; profile.ts:435-450 | Needed for source XML, resource/glyph access and receipt. Retain unchanged in C1 |
+| Preflight capsule and duplicate mapped document/geometry | profile.ts:10-19,435-445 | Live intent reaches preflight, which reaches capsule; separate provenance/immutability concern, NOT silently removed in C1 |
+| Source guides/glyph lines and measurement/spacing proofs | source-layout.ts:18-35; metric-baseline.ts:30-60; reading-measurements.ts:9-13 | Used by source XML, legacy compaction and later receipts. Retain unless a separately proven handoff changes all consumers |
+| Wrapper prepared image Buffers/provider and engine snapshot | engine.ts:96-115,134-184; M1 fixture/provider unchanged | Engine reuse and image-repeat-read/identity contracts still own them. No early clearing/spooling |
+| Census temporaries and allNodes alias array | M1 reduce-live.mjs:9; writer.ts:99-103 | Transient or ended use, not a proven leak; no census/array algorithm rewrite bundled into first C1 |
+
+Important verified chain: profile.ts stores intentOrigins as
+WeakMap<ExportIntent,Preflight>, and capsules as WeakMap<Preflight,Capsule>.
+While intent is live, its map value retains the preflight; that live key's value
+retains capsule.document/resources/styles/texts/tables. deriveExportIntent
+separately structuredClones document/styles/texts/tables. WeakMap does not mean
+these values disappear while the relevant keys remain live. This is confirmed
+reachability/duplication, NOT proof of a permanent leak or the OOM's dominant
+owner. engine.ts:134,167-184 also creates pinned/prepared/preflight data before
+awaiting writer; local variables are not all proven resident merely by being
+lexically declared. V8 liveness can differ. No heap-retainer profile exists.
+
+Do NOT delete/consume a capsule after one derive, share mutable source objects
+to avoid snapshots, or drop genuine-intent checks: public preflight reuse,
+mutation isolation, font identity/glyph access, concurrent derivations and
+error behavior must survive. A resource-only intent provenance redesign is a
+separate later contract/security scope, not an alias for the earlier C2 font
+scope. M1 only localizes post-normalization/parser-return interval; it cannot
+assign the remaining heap to native AST, capsule copies or source-guide caches.
+
+### Alternatives and recommendation
+
+1. **C1 first: finish native-package preparation in its own scope.** Keep the
+   same constructors, pack/font/ending-area order, XML pipeline, receipt and
+   sink contract. Remove native-only graphs from the writer's returned-state
+   boundary. Lowest semantic change among plausible repairs, but savings and
+   SRS fit are unproven; intent/capsule/ZIP/source-proof roots remain.
+2. **Bounded XML/DOM strategy later.** Plan globally, transform bounded story/
+   table/paragraph units with namespace/style context and exact source-order
+   replay rather than one full main DOM. Could address parser working set, but
+   widths/grid/span/merge, style inheritance/default selection, source boxes,
+   bookmarks/fields, drawing IDs, footer ownership and relationships cross
+   local boundaries. Needs a new XML-handling equivalence design; do not assume
+   SAX events or arbitrary string chunks preserve formatting/graph correctness.
+
+Recommend C1 as the first bounded candidate; this is the agent's proposal, not
+an owner-selected implementation or a promise it alone solves512MiB. Raising
+heap/container/caps is outside both options. No more identical M1/read-only
+baseline sweep is needed to justify the proposed scope. Provenance redesign,
+image spooling, serializer tuning and parser replacement remain separate.
+
+### Proposed C1 implementation boundary, after authorization
+
+Owner repository: Core. Allowed prospective product paths: src/docx/writer.ts
+for a MODULE-PRIVATE async preparation helper and explicit return type;
+tests/docx/writer.test.ts plus affected existing fontSignature/endingArea/source
+tests only as needed. Service, engine.ts, profile.ts, source/measurement cache
+ownership, public exports/types, dependency versions, caps and plugin pins are
+forbidden in initial C1. Package/build outputs remain isolated lab candidates.
+No private Core rewrite via a loader or copied dist may bypass today's no-edit
+instruction. The current external reduction overlay remains an experiment,
+not silently ported into Core by this lifetime change.
+
+Proposed helper contract (not implemented): prepareNativePackage(intent,options)
+returns {zip,originalBytes,fontSignatureChanged,receiptFacts}. Its body owns
+buildSections, native image-reference check, embeddedFonts/TOC styles,
+Document/Packer, packed-byte check, JSZip load, finishEndingAreas and font-table
+correction, in their ORIGINAL order with existing cancellation checks. Catch/
+sink cleanup remains owned by writeDocx; helper does not publish or abort itself.
+receiptFacts is an explicit projection of endingAreas, omittedSections,
+section receipts, anchors and leadingExcluded. Exclude sections/footnotes/native
+children/font Buffers/Document/constructor objects and callbacks. Review nested
+aliases, not just top-level keys; do not spread built or serialize/clone its
+entire graph. Keep originalBytes for the unchanged-byte fast path; do not
+force ZIP regeneration to claim buffer release.
+
+writeDocx validates its original input/options and genuine intent, awaits this
+helper, then invokes the ORIGINAL source/XML compaction/guard/final-byte/receipt/
+write/commit path using only the explicit native-preparation result. The helper
+must be outside writeDocx's lexical scope, not a nested closure retaining its
+parent build. Initial byte/glyph/image budget check order and no-op byte
+behavior must remain the same. An extra helper await may affect cancellation
+scheduling, so that behavior requires tests; it is not assumed equivalent.
+Unreachable native objects become eligible for GC, not guaranteed collected by
+the next checkpoint; do not assert memory savings from lexical scoping alone.
+
+### Ordered proof and stopping plan, NOT RUN
+
+- [ ] Freeze a fresh isolated Core candidate and exact writer/test diff; seal
+  compiled/packed candidate identities and M1 overlay/resource/input hashes.
+  Core implementation authorization is required first. No install/deploy/push.
+- [ ] RED/GREEN regression proof and bounded independent old/new controls:
+  native package part bytes/relationships/media/font signatures and plain
+  receipt facts match; unchanged package bytes remain unchanged, ending-area
+  repairs remain intact. Inspect nested handoff aliases for native constructors/
+  Buffers/closures. If packaging metadata has actual nondeterminism, enumerate
+  and justify it before comparison; do not blanket-normalize mismatches away.
+- [ ] Cover pre-aborted and during-pack/after-helper cancellation, native pack/
+  ending-area/font correction failure, unchanged default budget rejection,
+  write/commit failure and abort failure. Preserve no publication before guards,
+  existing receipt/issue identity and cleanup ownership, including sink-failure
+  behavior. Do not claim native heap OOM becomes catchable by this refactor.
+- [ ] Build and verify the affected Core writer/consumer paths: existing
+  npm run build, npm run test -- tests/docx and the existing isolated packed
+  DOCX consumer. Use already available dependencies; missing prerequisites stop
+  the proof rather than triggering installation. Then ONE full
+  UAT on Oracle lab with the pinned M1 overlay, before ONE SRS. Use existing
+  setup/control evidence only where dependencies are still identical. Each
+  measured case is a fresh process/container with no baseline DOM/ZIP retained.
+  512MiB memory AND total memory/swap,1CPU,Node24.21/default259MiB heap,
+  no NODE_OPTIONS/forced GC,original64MiB temp/readonly/network restrictions;
+  same50000XML/10000drawings/32MiB and SRS<=49000target. Keep useful M1 scalar
+  checkpoints, no new raw/diagnostic ZIP or snapshots in measured generation.
+- [ ] Any parity/check failure, OOM or timeout means STOP; no resource/heap/cap
+  tuning, retry or automatic provenance/DOM/C2/W2 fallback. Proposed deadlines:
+  30s for each tiny control and120s per full fixture, matched lab ID only for
+  watchdog stop. If UAT fails, do not start SRS. Preserve evidence and return
+  to design review rather than broadening scope.
+- [ ] A completed fixture requires real plan/replay/reparse, unchanged final
+  guard, full XML/rels/CRC/relationship/media/content checks and matching sink
+  receipt/hash/bytes. Counts alone do not prove format; independently validate
+  inherited properties/drawing/footer invariants. Native Word render/edit/
+  navigation remains a separate required acceptance step for actual fidelity;
+  unavailable Word evidence stays OPEN. Candidate success is not product/
+  Service adoption, release, install or proof of repeatability/concurrency.
+
+Proof Budget proposed: bounded helper-equivalence/error checks, one measured
+UAT then one SRS maximum; no sweeps. Document Budget: D2+queue and local review
+manifest only. Blocking unknowns for acceptance: actual C1 savings/SRS completion,
+nested return aliases and unchanged failure/cancellation behavior. Deferred:
+provenance redesign, bounded XML design and broader/repeated runtime acceptance.
+Current review is complete; C1 and every proof checkbox above remain NOT RUN.
+
+Read-only source hashes, structural assertions and M1 evidence references:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-dom-ownership-review-20261101/review.json.
+No implementation, Oracle test or memory-saving result is contained in that
+inventory. The M1 fatal log remains the latest actual SRS execution evidence.

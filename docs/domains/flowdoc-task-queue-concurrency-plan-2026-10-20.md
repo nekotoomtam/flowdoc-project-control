@@ -4917,3 +4917,26 @@ runtime FAIL retained; R1a-R2/adoption OPEN. D2 executed M1 section owns details
 Recommend review of retained Core versus bounded DOM design before new proof.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-m1-20261101/verification.json.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-srs-m1-20261101/verification-report.html.
+
+### 2026-11-01 — Core/DOM ownership reviewed; C1 repair proposed, not executed
+
+Confirmed structural roots: built combines native sections/footnotes with later
+receipt facts; embedding font copies end use after font-table correction.
+Live intent -> preflight -> capsule maps retain original document/resources/
+mapped geometry alongside cloned intent data. Source-guide/glyph/measurement
+proofs remain needed for XML/receipts. WeakMap is not proof these values are
+collectible while keys live; no per-owner bytes or permanent leak is proven.
+
+D2 owns proposed C1: module-private native-package preparation through existing
+pack/ending/font correction order; return ZIP/original bytes/change flag/plain
+receipt facts only, preserve intent/provenance/guards/sink ownership. Recommend
+C1 before a new bounded XML/DOM design; C1 savings/SRS fit still UNVERIFIED.
+Provenance/resource redesign and earlier C2 ownership changes remain separate.
+Future proof: helper/byte/receipt/failure/cancellation parity, then one UAT before
+one SRS at original512MiB/default259MiB heap/caps, stop on any failure/OOM.
+
+Review only, no Core/Service edit or Oracle run/connection; source/HEAD and349
+M1runtime hashes verified unchanged. No real-data/service stop/push/release/
+install. C1 needs later explicit Core-candidate authorization; no loader/private
+mutation bypass. M1 runtime FAIL and R1a-R2/Word/product-adoption gaps retained.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-dom-ownership-review-20261101/review.json.
