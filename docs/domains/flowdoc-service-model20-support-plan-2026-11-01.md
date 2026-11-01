@@ -8,8 +8,9 @@ for real data. It does not change the existing stage/checkpoint contract.
 
 Current scoped status 2026-11-01: M20-1 passed in candidate9f20506, M20-2 in
 85a4d0e, and bounded M20-3 authoring/API in257bdd5. These remain only in the
-separate Service candidate. M20-4/M20-5 are not started; six shared-governor
-admission tests remain unverified on the correct topology. Full model20 support
+separate Service candidate. M20-4 topology inspection is BLOCKED before actual
+workers: no separate512MiB hard limit in the existing launch path. Six governor
+admission tests remain unrun; M20-5 is not started. Full model20 support
 is NOT accepted.
 
 ## Request, baseline and scope
@@ -484,3 +485,76 @@ Next is the M20-4 topology prerequisite before actual model20 jobs/documents,
 normalization and native worker delivery; M20-5 compatibility/rollback/full suite
 remains open. No Work/Evidence registry, system/DOCUMENT_MAP or generated
 projection change; this existing canonical status document is the only prose edit.
+
+
+## M20-4 topology prerequisite — BLOCKED after bounded lab inspection, 2026-11-01
+
+Owner explicitly asks to prove topology and collect the six governor cases first.
+Authority is lab discovery/verification, not approval for unreviewed product or
+resource-control changes. Service owner; Evidence Reviewer/Planning Partner then
+PC Steward. Inline IDs N/A. Source candidate257bdd521dc2298dbb714308363b1b0d432809da
+stays clean; no product edits or new migration. First M20-4 checklist stays open.
+
+The M20-4 gate says: "If isolation cannot be established without unreviewed
+product/resource-control changes, BLOCK this stage and return a lab-topology
+proposal; do not run an unbounded API worker or invent a passing512MiB claim."
+This condition is reached. Six governor cases are0run/6not-passed in this round;
+no actual model20/native/API worker workload is started.
+
+Implementation evidence in the current Service candidate: src/jobs/render.ts:25
+spawns process.execPath directly for legacy/font preflight; src/tasks/render.ts:61
+spawns runtime/python/task_launcher.py, which sets only RLIMIT_FSIZE then execs
+Node (task_launcher.py:7-8). Neither entrypoint creates/enters a worker-specific
+memory cgroup. Process groups/ownership support stop/reap, not a separate RAM cap.
+queue-resources.ts:17 reads /sys/fs/cgroup/memory.*; its max must equal the default
+profile1024MiB (queue-profile.ts:7; queue-resources.ts:82). No supported launch
+isolation hook was found in these paths.
+
+New bounded Oracle/OCI observations, sequential cached-image containers, no DB,
+network:none, read-only root, user65534,2CPU, no added privileges/cgroup writes:
+
+| Container budget | Default governor | Metadata child memory.max | Same cgroup | Peak |
+| --- | --- | --- | --- | --- |
+|512MiB total memory+swap|disabled|512MiB|yes|22.421875MiB|
+|1024MiB total memory+swap|enabled|1024MiB|yes|22.2578125MiB|
+
+The child only reads metadata; it does not import Core, open an API or render.
+This proves the inspected spawn pattern inherits the container cgroup, not actual
+Service worker isolation or full launch wiring. Cached image coordinator sources
+match the candidate; all src/tasks files are unchanged from its image baseline.
+Both probes exit0, descendants reaped, oom=0/oom_kill=0; all owned containers are
+stopped. Runtime identity metadata stays exact. Protected Core/Service and C1
+hashes stay unchanged. No real data/API/SQL/storage/log access, service stop,
+image pull/install/push/release. No6-test PASS or full M20-4 claim.
+
+### Proposed next decision — not implemented or approved
+
+Recommended minimum: review a Service-owned per-worker cgroup launcher. Retain
+the coordinator1g-2cpu/default credits and all current policies. Enter an owned
+worker cgroup with memory.max512MiB/memory.swap.max0 BEFORE workload exec; all
+Node/Python descendants inherit that bound until the group is empty. Preserve
+IPC/fence FDs, process identity, abort/timeout/reap and output/reservation ownership.
+Fail closed if isolation is unavailable; release credits only after confirmed
+empty worker group. Both legacy/font preflight and task render need coverage.
+Core stays untouched. Any schema/protocol expansion needs separate review.
+
+First feasibility spike must establish narrowly delegated lab cgroup ownership,
+not writable host-root cgroups, privileged containers or exposing a Docker socket
+to Service. Kernel/permission/delegation support and production portability are
+currently unverified. Do not implement the launcher on the strength of this
+metadata-only proof. A container-per-worker broker is an alternative but changes
+transport/mount/lifecycle contracts more; review separately if delegation fails.
+
+Rejected shortcuts: a shared1GiB container as proof of512MiB per worker, lowering
+the coordinator profile, mocking memory samples, a V8 heap-only limit, moving a
+PID after heavy workload begins, or a lab-only parent adapter replacing Service
+launch wiring. None satisfies this gate. After the launch design is reviewed,
+prove actual worker limits before/cancel/after exit and preserve coordinator
+charging, then execute the original six governor cases and continue M20-4.
+
+Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m4-topology-20261101/
+{verification.json,packet.json,probe.mjs,child.mjs,remote.py,run.py,
+oracle/{receipt.json,production-before.json,production-after.json,
+out-512/probe.json,out-1024/probe.json}}.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m4-topology-20261101/verification-report.html.
+No Work/Evidence registry or system/DOCUMENT_MAP/generated projection changes.
