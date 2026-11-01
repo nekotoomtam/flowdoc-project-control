@@ -476,3 +476,15 @@ API exposes full Core emission facts/provenance. Exact-cut proof is BLOCKED by
 the no-Core-change boundary; full semantic schemas and whole staged memory/
 Service/SRS/Word acceptance remain open. No loader hooks, product/candidate/
 cap changes, real data/service stop or push/release/install. No map promotion.
+
+### Checkpoint and schema review follow-up
+
+[Contract section 9](flowdoc-core-stage-handoff-contract-2026-11-01.md#9-checkpointfacts-and-incomplete-schema-review--2026-11-01)
+separates immutable emission facts, final counters/hash and host authority;
+enumerates nine schema/domain closure families, and keeps completed receipts
+distinct from the proposed checkpoint schema. Recommends a separate versioned
+Core capability, preserving existing public APIs. Cursor optionality, string
+domain, provenance and error precedence need evidence before implementation.
+Next order: lab schema/domain proof, concrete capability review, separately
+authorized Core candidate, then small/UAT/SRS 512-MiB proof. This is a design
+review with no new runtime tests, product changes or production actions.

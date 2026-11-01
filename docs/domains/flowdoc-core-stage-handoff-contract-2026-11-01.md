@@ -373,9 +373,144 @@ otherwise emitted PDF; no checkpoint success before that result is known.
 | Full 512-MiB bundle | Include producer, processing, FINAL Core validation, supervisors/cache/indexes/overlap; actual envelope/credit/launch and source/codec bounds. Prior lab Docker control is NOT this proof |
 | Adoption | Service storage/fencing/diagnostic continuity, trusted transport/consumer negatives, launch containment and package-root API/pin compatibility. No product change authorized |
 
-Next recommendation: review this contract, then authorize an isolated codec/
-schema and source-closure proof BEFORE any Core implementation or UAT/SRS run.
-No fresh runtime result or SRS memory closure is claimed by this document.
+Next recommendation: use section 9's checkpoint/schema review and its ordered
+prerequisites. The dated proofs retain their bounded outcomes; neither this
+contract nor its review establishes SRS memory closure.
+
+## 9. Checkpoint/facts and incomplete-schema review — 2026-11-01
+
+Authority: PROPOSED contract refinement following the owner's explicit review
+request, not authorization to implement a Core API. Planning Partner /
+Cross-Repo Boundary Reviewer, then PC Steward; single-room execution IDs N/A.
+Medium discovery, routine read-only risk. Base: PC 4ce98f2; Core 3e74f98,
+Service a572025 and the unchanged two-file C1 candidate. Scope: existing
+contract and one design link only. Acceptance: distinguish stage data, enumerate
+schema decisions with implementation locators, define evidence and ordered
+next work. Proof budget: one source review, reuse immutable prior lab evidence,
+document checks; no new Oracle connection/generation/benchmark or product/lab
+code changes. Preserve 512 MiB per worker/bundle, existing caps and all owner
+production/push/release/install restrictions. No map or runtime promotion.
+
+### 9.1 Recommended capability and checkpoint state
+
+Three approaches were considered. These are review recommendations, not an
+owner selection or implementation acceptance:
+
+| Approach | Assessment |
+| --- | --- |
+| Reuse completed receipts/callbacks | Useful preservation control, already demonstrated for 10 cases. Cannot move optimization before final guards; cannot recover an over-budget generation that never reaches the callback |
+| Serialize genuine intent/private maps or rebuild them in consumer | Reject for this design: native/resource graph, genuine identity checks and duplicate peak memory defeat the intended cut; raw JSON cannot restore authority |
+| Separate versioned Core emission/final-validation capability | Recommended: keep current public APIs/atomic sink behavior unchanged; new staged surface emits sealed package, immutable recipe and provenance, with no claim of final success |
+
+Logical lifecycle is emitted -> optionally processed -> validated. Failure,
+cancellation or worker death ends that attempt without publication or automatic
+resend. These are INTERNAL stage states, not new task/job statuses. Existing
+Service release/fencing/delivery rules remain authoritative. No checkpoint
+is accepted until files are closed and independently bound, producer and
+descendants have exited, and the host still owns its original grant/deadline.
+
+The exact cut stays AFTER applied source serialization/ending/font corrections
+and all native work, BEFORE general optimization/final guards. API names,
+signatures and schema identifiers are still proposed; no exported symbol is
+invented as present. PDF retains section 7's complete-emission identity cut.
+
+### 9.2 Split immutable facts, final observations and host authority
+
+| Owner / record family | Content and consuming rule |
+| --- | --- |
+| Core immutable emission facts | Original sourceDigest/profile; exact ordered resources, autoFormats, sections, bookmarks and numbering; ordered adaptation recipe segments, engine size/text-layout prefix, complete warnings. Freeze after all source-guide applications, before intent disposal |
+| Core provenance | Actual package inventory, all XML/rels and target ownership, source tags/maps and section/band inheritance, drawings/protected content and permitted aliases. Counts or completed receipts alone are insufficient; see section 4 |
+| Core final observations | Recompute FINAL package sha256/bytes and XML/wp:docPr counters after processing. Fill expanded-xml-budget ONLY at its existing recipe position and only when maxXmlNodes value was defined; preserve the original limit/default/source-node-limit fields |
+| Host/Service execution context | Trusted original descriptor digest, attempt/runtime/resource/input/policy/options bindings, read/write grants, live cancellation/deadline and publication fence. No DB lease, credentials, native executable path or serialized AbortSignal in facts |
+
+Intermediate byte/hash/count fields are explicitly intermediate. Never copy
+them into the final DocxReceipt. Keep the frozen original facts/header linked
+when a later descriptor advances; do not relabel emission history. Consumers
+derive only bounded indexes from sealed bytes. Unknown ownership preserves
+unchanged content or fails a required transform; it never authorizes an edit.
+
+Facts need distinct format/schema identity from the lab's
+completed-output-only payload. A version/header mismatch rejects before work.
+Do not pretend the R2 completed schema is the checkpoint schema. Public writer,
+engine, streaming PDF and buffered PDF outputs also remain separate surfaces;
+the current lab PDF validator covers PdfStreamArtifact, not PdfArtifact.bytes
+(src/pdf/createPdfEngine.ts:30-41).
+
+The options manifest retains both own-property presence and value. Absent,
+own-undefined and defined values stay distinguishable even where current Core
+branches behave alike. For example writer.ts:100-101,221 and engine.ts:180-188
+test definedness before forwarding/inserting the XML-budget adaptation. Do not
+insert it merely because an undefined property existed. Explicit native/source
+layout versus no layout option preserves current engine projection/order.
+
+### 9.3 Schema closure decisions and evidence still required
+
+All rows below remain OPEN for acceptance. Source review specifies obligations;
+it does not add cases to the prior 10/170 runtime results.
+
+| Family / source | Required closure and next evidence |
+| --- | --- |
+| Structural data grammar; R2 schema.mjs shape/array helpers | Dense ordinary arrays with only indices/length; explicit object prototype/property-descriptor rules, no symbols/accessors/extra array properties, own-key/presence/order preservation. Test both decoder rejection and direct validator entry; codec rejection does not prove schema entry rejection |
+| Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | R2 requires isWellFormed, while resource IDs are checked as nonempty strings and copied into identity. Therefore all-Core string-domain parity is UNVERIFIED: establish reachable UTF-16 values with a real capture, or design a lossless versioned encoding. Do not silently replace lone surrogates or tighten existing Core admission. Existing UTF-8/FEFF tests do not settle this case |
+| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Cover text/image/node with required kind/nodeId/sourceNodeId and every optional attribution/cursor field, own-undefined versus absent included. Text does NOT universally require lineIndex: pending-label text has none. Cursor kind, diagnostic reason and Issue.reason are distinct domains; do not apply the four FormatStop reasons to all diagnostics |
+| Format instances; composition/validateFormatInstances.ts:11-30 | Validate fixed/auto sizing, nonnegative safe indices, fixed rootStartIndex, root identity/order/ownership and omission boundaries. Consumer must use minimal Core-emitted lineage or sealed package evidence, not reload the original ResolvedDocument graph. Decide the minimal needed lineage before exporter implementation |
+| Resources / PDF usage; docx/resources.ts:38-91, fonts.ts:151, pdf/createPdfEngine.ts:104 | Distinguish font, PNG (decoded RGBA hash) and JPEG identities; font weight/style/license/release/native family and PDF selection/license order. Check duplicate identity policy per actual producer namespace, positive dimensions/product limits and binding to authorized original/derived resources. Add genuine image/library/schemaVersion2 controls; the small PDF case does not cover them |
+| Sections, bands, cells and quantities; docx/sections.ts:149-163, bands.ts:51,75,108 | Complete literal policy/shape/reason families from emitter branches and source formulas; units/ranges per field, not blanket nonnegative constraints (deltas/offsets may be signed). Preserve six-key reserved/native margins versus four-key source/estimated margins, page-type estimates and false verification flags. Add inheritance/omission/header/footer/merged-cell controls and source-based consistency checks |
+| Adaptations; writer.ts:186-233, engine.ts:148-154,188, metric-baseline.ts:41-55 | Closed build-pinned variant definitions, every property/optional field/policy and order, including nested band quantization. Keep finite literal/range constraints such as Thai maxWordsPerGroup=4 or pair quantum=.025 where source guarantees them. Cover currently unexercised variants; keep inherited-name RED regression. No deduplication or sorting |
+| Result/error/cleanup; result.ts, writer.ts:76-81, engine.ts:189 onward | Success/failure discriminants and output absence on failure, ordered warnings/issues and cleanup suffix, failure cardinality based on actual return paths. Don't require a stage Result field merely because a completed receipt has it, and don't turn OOM/kill into a layout Issue. Multiple simultaneous failure controls must establish first-error compatibility |
+| Checkpoint completeness/provenance; sections 2,4,5 | Complete headers/chunk catalogs/end counts; empty-versus-missing families explicit, ordered recipe slots, section/source/part coverage. Verify missing/extra/swapped/duplicate facts, inherited/shared band uses, stale seal and wrong attempt before optimization; valid hash/shape alone is insufficient |
+
+An external source field that cannot be checked without original document state
+must be classified explicitly: (a) exporter-validated, sealed immutable fact,
+(b) independently checkable package-derived fact, or (c) missing prerequisite.
+Schema validation is not a substitute for producer correctness/provenance.
+No full source/glyph/guide graph is added just to make a cross-check possible.
+
+### 9.4 Compatibility and memory decisions not yet proved
+
+The proposed cut requires moving intent-dependent derivations ahead of guards.
+Those functions have not been proved total. Current final guards can fail first;
+eager derivation can change the primary error. Recommendation: unchanged legacy
+entrypoints plus a separately negotiated staged API; retain original precedence
+where feasible using ordered, Core-owned derivation outcomes, never raw Error
+objects. This is a DESIGN OPTION, not an approved deferred-error mechanism.
+Before implementation, establish totality/ordering or explicitly review any
+versioned behavioral difference. Infrastructure/OOM failure is never deferred
+as an ordinary successful emission or hidden behind a recipe slot.
+
+All producer objects, native descendants, stream queues, ZIP handles, decoder
+fragments and disk-index caches belong to the measured 512-MiB stage bundle.
+Parent cannot retain the old receipt/ZIP or materialize large arrays to hide
+memory. Large logical strings/records may cross bounded frames; choose real
+buffer/index/depth/backpressure limits from accepted-domain evidence, not a
+new content cap. Checkpoint/candidate/index coexistence needs a charged storage
+reservation before launch. Old cap ordering remains: source/native admission
+before emission, final XML/drawing/bytes after processing. No added intermediate
+50,000-node rejection that prevents the intended reduction.
+
+### 9.5 Ordered next work and stop conditions
+
+1. **Lab-only schema/domain closure design and proof:** resolve the table's
+   enum/presence/string/numeric decisions, then genuine small branch captures
+   plus adversarial codec AND schema controls outside product repositories.
+   Keep old R2 results immutable; any wire change has its own negotiated version.
+2. **Review the concrete Core capability proposal:** exact exporter/finalizer
+   signatures, minimal lineage, failure precedence, caps, IO/storage budget and
+   legacy API behavior. Missing schema/domain, provenance or bounded-reader
+   decision blocks implementation acceptance. This review does not authorize
+   candidate product changes or claim the first item has passed.
+3. **Only after separate implementation authorization:** isolated Core candidate,
+   genuine emission -> producer/descendant exit -> fresh consumer without Core
+   source graph; missing-fact/binding/partial-write/cancel/error-order tests.
+   Every post-cut read must resolve to frozen facts/options or final bytes.
+4. **Then memory/workload proof:** unchanged Oracle runtime, 512 MiB per bundle,
+   small parity/failure cases before UAT then SRS. Stop on OOM; no retry with
+   larger RAM/caps, no hidden extra worker or success based only on exit code.
+   Service integration, real recovery, Word fidelity and release remain separate.
+
+Review outcome: contract refinement ready for owner review; full schemas,
+exact-cut runtime closure and staged 512-MiB acceptance remain OPEN/BLOCKED.
+No new Oracle runtime result, Core/Service edit or evidence/map promotion.
 
 ## Source locators
 
