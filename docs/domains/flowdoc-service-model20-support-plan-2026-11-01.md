@@ -6,10 +6,11 @@ model20 definition/request/composition semantics. This document is not product
 acceptance, implementation authorization, a release plan or a migration runbook
 for real data. It does not change the existing stage/checkpoint contract.
 
-Current scoped status 2026-11-01: M20-1 passed in candidate9f20506; M20-2 DB
-ownership/pins/migration and selected regressions passed in candidate85a4d0e.
-Both commits remain only in the separate Service candidate. M20-3 through M20-5
-are not started and full model20 support is NOT accepted.
+Current scoped status 2026-11-01: M20-1 passed in candidate9f20506, M20-2 in
+85a4d0e, and bounded M20-3 authoring/API in257bdd5. These remain only in the
+separate Service candidate. M20-4/M20-5 are not started; six shared-governor
+admission tests remain unverified on the correct topology. Full model20 support
+is NOT accepted.
 
 ## Request, baseline and scope
 
@@ -143,14 +144,14 @@ additional constraint change can be needed.
 
 ### M20-3 — Bounded authoring support and accurate capability discovery
 
-- [ ] Add tests/model20-authoring-api.test.mjs for new model20 save/get/validate,
+- [x] Add tests/model20-authoring-api.test.mjs for new model20 save/get/validate,
   origin/reference ownership, font readiness and preview on an exact revision.
   Modify src/authoring/service.ts without weakening principal, revision, receipt,
   template identity or same-model guards.
-- [ ] Guard unsupported20 clone/create/import paths explicitly; preserve model19
+- [x] Guard unsupported20 clone/create/import paths explicitly; preserve model19
   implementations in sectionOperations.ts/sectionInstances.ts. A generic clone
   fallback is not acceptance of definition-aware cloning.
-- [ ] Update src/http/authoring.ts capability discovery only for verified20
+- [x] Update src/http/authoring.ts capability discovery only for verified20
   features. Keep sectionInstances model19/array-by-id distinct from model20
   request assembly; qualify groupLabelSpans/formatSizing per tested model.
   Review src/tools/authoring.ts descriptions without claiming plugin/Editor
@@ -397,3 +398,89 @@ Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-
 
 No Work records, Evidence registry, system/DOCUMENT_MAP or generated projection
 changed; this existing canonical plan/status is the sole prose update.
+
+
+## M20-3 bounded authoring/API evidence — 2026-11-01
+
+Explicit subsequent owner request authorizes Service candidate implementation
+and synthetic Oracle/OCI lab checks. Owner Service; Product Implementation Agent,
+Evidence Reviewer, then PC Steward. Single-room execution IDs N/A. Same512MiB per
+worker/bundle, unchanged caps; no Core/real-data/real-service-stop/push/release/
+install or product integration authority. Scope is the three M20-3 checklist
+items, not M20-4 worker topology/native delivery or M20-5 full-suite acceptance.
+
+Same candidate/branch as M20-1/2. Base85a4d0e314f96371e5d30e37c1969b06a370cdf1;
+terminal257bdd521dc2298dbb714308363b1b0d432809da, clean. Four changed files only:
+src/authoring/service.ts, src/http/authoring.ts, src/tools/authoring.ts and new
+tests/model20-authoring-api.test.mjs. All28 migrations, packages/vendor and
+protected Core/Service checkouts/C1 hashes remain unchanged.
+
+Save/validate now admit20 alongside18/19 while preserving same-model revision,
+identity, principal and receipt guards. Server-owned origin checks apply19/20.
+Model20 clone explicitly returns VERSION_MISMATCH before creating an identity or
+font-reference/receipt rows; existing model19 create/import implementations are
+unchanged and reject20 on either side. Authoring discovery adds a bounded
+sectionDefinitions contract: model20 array-by-section-key/request assembly,
+unique instanceKey, reusable definitions, whole-definition authoring only and
+createSection/importSections/cloneTemplate:false. Model19 sectionInstances and
+groupLabelSpans/formatSizing capabilities remain19-only. Tool descriptions point
+to /authoring/contract; no plugin/Editor adoption is claimed.
+
+Accepted RED:1 passed/11 expected feature failures against unmodified M20-2
+source. In the18/19 cases, save/get/validate succeed but conversion-to20 is still
+classified INVALID_DATA by the old allow-list rather than VERSION_MISMATCH; the
+whole cases are correctly RED, not PASS. Other failures expose20 save/validate,
+origin-path protection, generic clone fallback and missing discovery/tool hints.
+Exact new test bytes then run GREEN after the three-source-file patch.
+
+Accepted GREEN2: full Linux TypeScript build PASS,73/73 selected tests across16
+files PASS with0pending; includes12 new authoring/API cases plus61 existing
+regressions. New checks exercise Fastify HTTP handlers via injection and MCP
+contract discovery; TCP/network transport is not proven. Real PostgreSQL graph,
+reference sets, receipts, schema3 preview pins and native font-probe children are
+used without fake renderer substitutes. Model20 processor/output delivery is not
+run. Existing model18 native preview regression also passes; that is not evidence
+of model20 native generation.
+
+Coverage:18/19/20 exact save/get/structural validate, new-draft-only model changes,
+foreign principal hiding, identity rejection, exact retry, conflicting key and
+concurrent revisions; valid client-origin forgery rejected and trusted retained
+origin preserved; unsupported clone/create/import rejected atomically; schema2
+unselected-font drafts can save but not preview; actual sample font readiness,
+pinned schema3 definition/revision/fingerprint/font snapshot, retry after later
+save and stale-preview rejection. Real staged font bytes/licenses plus synthetic
+active/retired states prove retained tuple ownership and that copied JSON/foreign
+validation cannot confer rights; this is not font release-approval proof.
+
+Verification limitation/ruling: initial GREEN has73 passed assertions,0failed
+assertions but one beforeAll failure in font-preflight-admission.test.mjs, leaving
+6cases skipped. That run is NOT PASS and its logs are retained. Independent probe
+confirms the unchanged default coordinator profile1g-2cpu requires1024MiB while
+this worker/bundle cgroup is512MiB and resources.enabled() is false. Those six
+cases remain unverified until M20-4 provides the proper coordinator/per-worker
+topology. No product/profile/test assertion was weakened to hide this; GREEN2
+selects the16 relevant files and does not count the six as passed. This does not
+prove the precise failing assertion location in the initial beforeAll hook; the
+JSON report gives only its assertion message. The resource prerequisite is
+independently confirmed. This is not full Service-suite acceptance.
+
+Environment: same cached immutable Service/Core pin as M20-2; package250files
+match. New PostgreSQL18.6/storage/internal /28 network, no published ports or
+existing network changes. Worker/bundle memory512MiB and memory+swap total512MiB,
+GREEN2 peak365.265625MiB, cgroup oom=0/oom_kill=0; DB has a separate512MiB cap.
+No processes left; owned DB/proof containers stopped; existing runtime identity
+metadata stays exact. Fresh read-only final review found no actionable Critical,
+Important or Minor findings; reviewer did not execute tests independently.
+
+Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m3-20261101/
+verification.json, verify.py, scope-rulings.json, review.json,
+green2/oracle/{receipt.json,database-preflight.json,database-final.json,
+core-integrity.json,out-schema/{suite.json,test-results.json,
+governor-prerequisite.json,build.log,tests.log}}. Initial GREEN and accepted RED
+are retained under green/oracle and red/oracle respectively.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m3-20261101/verification-report.html.
+
+Next is the M20-4 topology prerequisite before actual model20 jobs/documents,
+normalization and native worker delivery; M20-5 compatibility/rollback/full suite
+remains open. No Work/Evidence registry, system/DOCUMENT_MAP or generated
+projection change; this existing canonical status document is the only prose edit.
