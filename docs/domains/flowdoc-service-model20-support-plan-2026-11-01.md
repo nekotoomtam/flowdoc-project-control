@@ -6,9 +6,10 @@ model20 definition/request/composition semantics. This document is not product
 acceptance, implementation authorization, a release plan or a migration runbook
 for real data. It does not change the existing stage/checkpoint contract.
 
-Current scoped status 2026-11-01: M20-1 implementation/build/focused tests and
-fresh review pass in Service candidate9f20506, committed separately. M20-2 through
-M20-5 are not started and full model20 support is NOT accepted.
+Current scoped status 2026-11-01: M20-1 passed in candidate9f20506; M20-2 DB
+ownership/pins/migration and selected regressions passed in candidate85a4d0e.
+Both commits remain only in the separate Service candidate. M20-3 through M20-5
+are not started and full model20 support is NOT accepted.
 
 ## Request, baseline and scope
 
@@ -117,21 +118,21 @@ record actual host tooling/model availability. No dispatch/model switch now.
 
 ### M20-2 — Database ownership and pinned input integrity
 
-- [ ] Add tests/model20-storage-db.test.mjs and tests/model20-migration.test.mjs
+- [x] Add tests/model20-storage-db.test.mjs and tests/model20-migration.test.mjs
   against synthetic model18/19 data in an isolated source-schema027 PostgreSQL.
-- [ ] Add a NEW migration, proposed028_model20_section_definitions.sql if the
+- [x] Add a NEW migration, proposed028_model20_section_definitions.sql if the
   slot is still free. Never edit applied021/025/027. Extend ownership functions
   to recognize20 with the existing section ownership rules and retain deferrable
   FK/unique constraints for current AND published records.
-- [ ] Extend protect_preview_input from021 and the LATEST protect_job_input
+- [x] Extend protect_preview_input from021 and the LATEST protect_job_input
   from025 with exact Core20 pin/prepared-schema3 checks. Preserve19/schema2 and
   all existing18 behavior. Copying the old021 job function would lose task pins
   and PDF/DOCX output-format immutability; regression tests must detect that.
-- [ ] Exercise freshRecord/writeCurrent/writeSnapshot, registerTemplate,
+- [x] Exercise freshRecord/writeCurrent/writeSnapshot, registerTemplate,
   publishCurrent/loadTemplate and font-retention snapshots in real transactions.
   Assert record ownership, stable IDs and immutable published fingerprints after
   draft edit/reorder/key rename, including header/footer/area-format ownership.
-- [ ] Prove registration/publication retries and concurrent saves keep existing
+- [x] Prove registration/publication retries and concurrent saves keep existing
   idempotency/expectedRevision rules; mid-transaction failure leaves no partial
   current graph, snapshot, receipt or reference set.
 
@@ -318,3 +319,81 @@ Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m1-20261101/
 green/oracle/receipt.json,green/oracle/out-schema/{suite.json,test-results.json,
 build.log,tests.log}}. Test outputs/compiled files stay outside the candidate.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m1-20261101/verification-report.html.
+
+
+## M20-2 scoped implementation and DB evidence — 2026-11-01
+
+Subsequent explicit owner request authorizes M20-2 implementation in the existing
+Service candidate and isolated PostgreSQL lab on Oracle/OCI. Role: Product
+Implementation Agent, Evidence Reviewer, then PC Steward. Single-room execution
+IDs remain N/A. This records DB-path acceptance only; it does not authorize or
+complete M20-3+ or promote full Service model20 capability.
+
+Candidate: C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/service-model20-m1-20261101,
+branch codex/service-model20-m1-20261101. Base9f2050629d496b86ebefb2b461006416990e20b0,
+terminal85a4d0e314f96371e5d30e37c1969b06a370cdf1, clean after scoped commit.
+Only new migrations/028_model20_section_definitions.sql, two DB test files,
+tests/helpers/model20-db.mjs and eight exact migration-tail expectation updates
+changed. Historical001-027 hashes, all src/package/vendor files, protected
+Core/Service checkouts and the existing dirty C1 pair remain unchanged.
+
+Migration028 reuses current/version ownership guards from021, preview guard
+from021 and the LATEST job guard from025. Only modern-model membership20 and
+exact model20/prepared-schema3 branches are added. Function-body comparison
+confirms old18/19, Task-v1/v2, PDF/DOCX and immutable input/output-format branches
+remain exact. No data rewrite, new occurrence table or constraint weakening.
+
+Accepted RED on unmodified M20-1 source/schema027:5 passed (model18/19 registry
+plus Task-v1 PDF and Task-v2 PDF/DOCX),4 intended model20 failures (registry,
+current/publication, prepared pin, atomic write setup). Earlier lab controller/
+network setup and incomplete Task fixtures were not accepted as feature RED;
+logs retained. Existing Docker automatic network pools were exhausted; a new
+internal /28 subnet was chosen after checking network-IPAM and host-route
+metadata for overlap. No existing network/container was removed or changed.
+
+GREEN: full Linux Service TypeScript build PASS;75/75 tests across15 selected
+files PASS, plus1/1 selected font-height migration018 regression PASS. The other6
+font-height cases were not selected and are not PASS claims. This is76 selected
+tests, not a full Service-suite claim. Fresh read-only final review found zero
+Critical/Important/Minor findings; it did not independently execute tests.
+
+Coverage: real current/snapshot/registry/publication/font-reference transactions;
+model20 exact roundtrip and stable definition/source IDs after reorder/key rename;
+immutable old published fingerprint; current section/header/footer and published
+ownership rejection; no20 request occurrences in the19 instance ledger; concurrent
+registration idempotency and expectedRevision saves; publication retry receipts;
+late font-reference failure rollback for current, publication and registration,
+then successful retry. Genuine Core prepared schema3 drives exact preview and
+published-job SQL pin fixtures, including schema/model/warnings tamper rejection.
+Task-v1/v2 PDF/DOCX guards and legacy PDF-only behavior remain checked.
+
+Upgrade proof uses fresh schema027 with synthetic18/19 current graphs, snapshots,
+font-reference sets, instance history, publication receipts and pending jobs.
+Applying028 once then replaying preserves their rows/pins and supports new old-model
+jobs. An injected failure appended only to a temporary028 copy rolls back all four
+function definitions, the checksum ledger and current graph; the real unchanged028
+then applies successfully. Applied migration files are never edited.
+
+Environment: cached immutable Service image07c71903922e..., unchanged Core0.5.2
+vendor pin ed876f4d... (250 package files match), new PostgreSQL18.6 container,
+new owned storage, internal network and no published ports. Worker/bundle memory=512MiB
+and memory+swap total=512MiB (no extra swap); GREEN peak358.13671875MiB, cgroup oom=0/oom_kill=0,
+no process left. DB has a separate512MiB cap and is stopped after each proof.
+All owned proof containers stopped; protected runtime identity metadata stayed
+exact. No real API/SQL/data/storage/log access, service stop, install, image pull,
+push, release or main/development integration. Existing caps stay unchanged.
+
+Remaining: M20-3 authoring/capability/font-readiness/API behavior, M20-4 admission/
+normalization and M20-5 worker/native/full-flow proof. Model20 preview/job fixtures
+here prove SQL input invariants, not native rendering, actual task dispatch or
+end-to-end authoring support. Legacy font provenance is not native font readiness.
+
+Artifacts: C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m2-20261101/
+verification.json, review.json, verify.py, green/oracle/{receipt.json,
+database-preflight.json,database-final.json,core-integrity.json,
+out-schema/{suite.json,test-results.json,focused-0.json,build.log,tests.log}},
+red6/oracle/out-schema/suite.json. Initial failed setup/fixture logs are retained.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m2-20261101/verification-report.html.
+
+No Work records, Evidence registry, system/DOCUMENT_MAP or generated projection
+changed; this existing canonical plan/status is the sole prose update.
