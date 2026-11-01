@@ -1163,3 +1163,162 @@ Files:verification.json,control.diff,packet.json,source/result archives,
 oracle/receipt.json,oracle/out-setup-control/equivalence.json,Oracle phase logs.
 Remote project:flowdoc-w1srs-943ce3933f44. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-srs-20261101/verification-report.html.
+
+## 2026-11-01 — SRS XML-load/DOM memory review; M1 proof PROPOSED ONLY
+
+Authority Boundary: explicit owner request is review and plan BEFORE further
+proof. Planning Partner / Evidence Reviewer, PC-only canonical maintenance;
+inline IDs N/A, medium-sized review, routine risk, current host inline without
+separate WORK/agent. No Oracle connection/container was started in this review.
+Do not resume the stopped W1 run or treat this proposal as execution permission.
+Current clean PC base a599a43 + D2/actual lab artifacts govern this scope;
+generated currentSnapshot is dated2026-10-04, not current SRS execution truth.
+Previous W1 UAT PASS and SRS runtime FAIL remain immutable, not superseded.
+
+### Reconstructed live path and memory ownership
+
+Pinned Core0.5.2, unchanged source3e74f98, runtime/inputs/dependency hashes from
+W1 still match. Locations below refer to the sealed W1 SRS folder unless a
+Core source path is explicitly named:
+
+1. Core src/docx/writer.ts:115-135 builds native sections, embeds fonts, packs
+   bytes, loads JSZip, then AWAITS source serialization. buildSections returns
+   sections WITH receipt/ending-area/anchor metadata in one object
+   (src/docx/sections.ts:162-165); writer still needs built metadata and intent
+   for receipt construction after the hook (:186-234). These are parent-owned
+   graph roots. This establishes structural reachability, not their heap size
+   or how much V8 has actually retained at the failed allocation.
+2. Core src/docx/source-layout-xml.ts:114 replaces main XML and styles with
+   STRINGS; source-wrapper.mjs:11-15 may replace compacted strings again. Thus
+   zip.file(...).async('string') here must NOT automatically be called archive
+   inflation. JSZip zipObject.js:39-75,114-120 chooses compressed-data versus
+   ordinary DataWorker and ACCUMULATES its stream; StreamHelper.js:46-64,79-104
+   concatenates chunks, then drops the chunk array. Full materialization is
+   confirmed, simultaneous full-copy count and actual allocation are not.
+3. reduce-live.mjs:8-12 first inventories XML/rels through nodebuffer + toString
+   + regex match arrays, retains only nodes/hash metadata, loads styles/context,
+   then reads main XML as one string. The completed census is not proof that
+   its transient buffers/match arrays have already been collected. It also does
+   NOT deliberately cache every raw part in original. stylesRaw/context remain
+   needed for global planning/replay; no evidence that context owns the main DOM.
+4. planner.mjs:21-23 checks DTD/entity, strips BOM/declaration, normalizes CR and
+   calls xmldom0.9.12 parseFromString. locator:false is ALREADY set. dom-parser.js:
+   223-262 normalizes input then invokes SAX; its DOMHandler builds elements,
+   attributes and text (:374-414). dom.js:2616-2640 allocates element/attribute
+   objects and NodeLists/NamedNodeMap. This is a FULL-part DOM, not streaming
+   reduction. XML string(s), parser state and the growing DOM may overlap.
+5. planner.mjs:48-49 emits parsed only AFTER parse returns; then counts/digests,
+   width/cell/style planning and later replay/serialization occur. The fatal
+   trace has NO parsed event. Current logging cannot separate read/concatenate,
+   preprocessing and DOM build. Later transformed DOM, advanced planning,
+   replacements/serializer and sink buffering are NOT reached in this failure.
+
+No wrapper mutation may clear intent/document/image refs or private built state:
+the public generation/receipt and repeat-read contracts still own them. Moving
+another helper into a scope is not automatically GC/reclamation evidence.
+JSZip NodeBufferReader.js:13-17 uses Buffer.slice and zipEntry.js:96 retains
+compressed slices; clearing a top-level bytes binding alone may not release the
+loaded archive's backing Buffer. Do not clone ZIP or serialize early as a repair.
+
+### Confirmed measurements versus hypotheses
+
+| Evidence | UAT W1 | SRS W1 | Interpretation |
+| --- | --- | --- | --- |
+| Heap at base-planning-start | 107.68MiB | 162.31MiB | Checkpoints, not retained-owner profiles |
+| Heap after first main parse | 240.19MiB | No completed checkpoint | UAT delta132.51MiB includes materialization/GC, not pure DOM cost |
+| V8 heap limit | 259MiB | 259MiB | Separate from512MiB cgroup cap |
+| Cgroup peak | 437.54MiB | 504.00MiB | Different completed phases; not measured savings |
+| Raw reference main elements | 108137 | 176497 | Older cross-run reference, not current failed-run byte identity |
+| Raw reference main attributes, incl.xmlns | 121764 | 204062 | Attr objects add to DOM cost; excludes text/other nodes |
+| Raw reference main UTF-8 bytes | 3526613 | 5183340 | Uncompressed source size, not JS heap usage |
+| Raw reference UTF-16 payload bytes | 6926018 | 10222848 | Text payload calculation, not actual V8 representation/allocation |
+
+Reference inventory is local read-only Python Expat counting, not an Oracle
+runtime test/fidelity oracle; both references have0CR/0LF. SRS reference package
+has74XML/rels parts,total182250elements. No same-run raw capture exists for the
+failed W1 SRS, so do not assert exact current XML bytes/hash from this reference.
+SRS heap was200.08MiB at after-diagnostic-boundary and162.31MiB at planning:
+GC/timing already changes the checkpoints. Final GC still reports253.7MiB
+before fatal OOM. Neither a permanent leak nor exact reclaimable bytes is proven.
+Subtracting heapUsed from heap limit does not prove allocatable headroom.
+
+Probable risk: Core's retained native-build state plus the growing full main
+DOM exceeds this default-heap working set. Unverified alternatives: transient
+read/concatenation, preprocessing/representation changes, or census garbage
+contribute to the peak. These are competing explanations, not confirmed owners.
+Turning locator off, disabling diagnostic ZIP, skipping final serialize or
+buffering fewer sink chunks cannot remove a stage already absent/not reached.
+
+### Proposed M1: one boundary diagnostic before any repair
+
+One sensible immediate proof is observability of the existing live path. A
+standalone parse would discard Core roots and repeat weaker evidence already
+available; a new streaming/partial-DOM reducer changes XML handling/format
+proofs and is premature. Core C1/C2 still require explicit product permission.
+M1 is recommended, not owner-selected execution or a demonstrated memory fix.
+
+Allowed FUTURE changes: instrumentation only in lab copies of reduce-live.mjs
+and planner.mjs, plus packet/control evidence. Keep Core, Service, all other
+runtime/resources/inputs/provider/sink/options and serializer algorithms pinned.
+No new dependency, parser switch, full-string cache, IPC/child parse, resource
+spooling, private Core mutation, forced GC or heap snapshot. Reuse current SRS
+setup-equivalence only while all relevant input/setup/resource hashes match.
+
+- [ ] Before execution, seal exact base/manifest/diff and parent evidence.
+  Preflight tiny valid Unicode/namespace/entity/CR/BOM inputs plus DTD/malformed
+  rejects using original versus observed parser in a separate cheap control;
+  require identical DOM fingerprints and error name/message (not stack line
+  numbers), with unchanged normalization order.
+  This checks instrumentation semantics only, not SRS memory/fidelity. Do not
+  hold a baseline DOM/control input in the measured generation process.
+- [ ] Log scalar memory/timing/part-name/character-count only: reducer-enter,
+  census-complete, styles-ready, main-read-start, main-read-ready, parse-enter,
+  prepared-input-ready, line-normalize-enter/return and DOM-returned (existing
+  parsed checkpoint). Observe existing preprocessing in order; do not perform
+  an extra replace/encode/hash/count to measure the same string. No retained
+  string/DOM/node arrays in log closures; no per-node events or growing ledger.
+  Instrumentation itself can change GC/timing; never claim it is heap-neutral.
+- [ ] ONLY after that control passes, ONE fresh full SRS container on Oracle/
+  OCI: pinned image106a0c8, Node24.21.0, no NODE_OPTIONS/default259MiB heap,
+  512MiB memory AND total memory/swap,1CPU,networknone,readonly roots/inputs,
+  original64MiB temp. Original50000XML/10000drawings/32MiB and SRS<=49000target.
+  Keep current controller scalar cgroup sampling; no heap/GC tracing flags,
+  snapshots, extra raw/diagnostic ZIP or concurrent baseline workload.
+- [ ] OOM, timeout, hash/contract mismatch or control failure means STOP for
+  that round. Preserve trace/exit/cgroup peak, confirm no owned running worker;
+  no retry/repair/tuning/automatic M2/W2/C1/C2/Word. No real DB/API/storage use,
+  real-service lifecycle action, push/release/install.
+  Proposed watchdog deadlines:30s for the tiny control,120s for full SRS,
+  measured from container start. On timeout stop ONLY its newly sealed lab
+  container after matching project label/name/ID; retain evidence, never signal
+  a shared/real runtime. This is a future lab action, not performed this turn.
+
+Decision from last durable events:
+
+| Last boundary | What the proof can localize | What it cannot claim |
+| --- | --- | --- |
+| read-start without read-ready | JSZip materialization interval | DOM is the cause or exact number of copies |
+| read-ready without prepared-input-ready | Parser entry/preprocessing interval, using intermediate markers | Proven duplicate-string resident bytes |
+| prepared-input-ready, normalization returns, no DOM-returned | Inside parser/SAX/DOM construction after preprocessing | Exact retained Core versus DOM allocation ownership |
+| DOM-returned then later failure | First parse completed; retain later existing phase trace | Root cause fixed, universal fit or prior failure disproved |
+
+Completion is useful localization OR honest unchanged/ambiguous evidence, not
+a forced PASS. If run unexpectedly completes, preserve and verify actual plan/
+reparse/guard/CRC/relationships/receipt/output against this workload; do not
+promote a timing-dependent pass into OOM repair or run Word automatically. A
+parse-only synthetic/isolated result never substitutes for live Core acceptance.
+No numeric saving is promised. If combined working set remains supported, next
+review may compare Core C1/C2 last-use release versus a separately designed
+bounded XML strategy; either requires its own authorization/equivalence design.
+
+Proof Budget for proposed execution: one small parser-observation control then
+one full SRS maximum, no sweep/repeat/fallback. Document Budget: existing D2+
+queue plus local review evidence only; no new Work/map/registry/product docs.
+This turn performs NONE of those controls/container runs and changes NO product
+code. Blocking unknown for next repair: exact failed interval/retained-owner
+allocation. Deferred: native Word, repeats/concurrency and product adoption.
+
+Durable read-only inventory/source hashes/reference paths and classifications:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-xml-dom-review-20261101/review.json.
+Reproduction of local inventory only: review.py alongside it; no SSH/Docker/
+product imports. Original fatal trace and setup gate remain in W1 SRS evidence.

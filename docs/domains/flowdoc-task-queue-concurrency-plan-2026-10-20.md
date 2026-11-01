@@ -4870,3 +4870,23 @@ R1a-R2/Word/package/Service adoption remain open. D2 executed SRS section owns
 details; return to design review before further experiments.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-w1-srs-20261101/verification.json.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-srs-20261101/verification-report.html.
+
+### 2026-11-01 — SRS XML-load/DOM review complete; M1 not executed
+
+Read-only local review confirms full-part DOM precedes reductions; parser
+locator is already false. JSZip async accumulates the main part, which source
+serialization already replaced with a string; do not assume archive inflation.
+Parent Core built sections/receipt/intent roots still overlap this stage.
+Combined working set is supported structurally but exact failed allocation/
+owner is unverified; missing read-complete/parse-entry boundaries block a fix.
+Older raw SRS reference main has176497elements+204062attributes; this is NOT
+current W1 raw identity or measured DOM resident bytes. Prior UAT PASS/SRS FAIL
+retained; neither permanent leak nor impossible512MiB design proven.
+
+D2's new review owns proposed M1: scalar read/preprocessing/DOM boundaries,
+one separate tiny parser-observation parity control then ONE live SRS in the
+same512MiB/default259MiB heap/caps; STOP on OOM/failure, no retry/automatic
+M2/W2/C1/C2/Word. No Core/Service change, no runtime test or Oracle connection
+in this review; no real-data/service lifecycle/push/release/install action.
+M1 remains PROPOSED pending owner authorization. Existing D2+queue only; IDs N/A.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-srs-xml-dom-review-20261101/review.json.
