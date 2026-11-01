@@ -1,7 +1,7 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **W1 UAT RUNTIME PASSED IN 512 MiB; SRS/WORD/PACKAGE ACCEPTANCE OPEN**,
+Partner / Cross-Repo Boundary Reviewer. Status **W1 UAT BOUNDED PASS; SRS HEAP OOM IN 512 MiB; WORD/PACKAGE ACCEPTANCE OPEN**,
 not an adopted Core compaction implementation or package-wide runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
@@ -1110,3 +1110,56 @@ C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-lifetime-l1-20261101/.
 Result:verification.json; output-check.json; local test-provider.log; immutable
 source/result archives. Remote project:flowdoc-w1-4eab0d1cc5ba. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-20261101/verification-report.html.
+
+## 2026-11-01 — W1 SRS: equivalence PASS, one runtime HEAP OOM; STOP
+
+Owner explicitly authorized SRS next, equivalence first then one fresh Oracle/
+OCI Docker lab container at512MiB/default heap; stop on OOM. Inline Evidence
+Reviewer/lab owner, then Project Control Steward; execution IDs N/A. Existing
+D2+queue own this status; no new Work/registry/map or product implementation.
+
+All349runtime files are byte-identical to the W1 UAT archive. The ONLY changed
+file is controls/probe.mjs: select SRS via existing FIXTURE and use its expected
+377placements/13variants. No worker/helper/provider/reducer/parser/Core/Service/
+resource/input/sink/image-residency/option change. Setup-only control uses fresh
+sequential baseline/candidate children with control-only actualfont-input
+observation. Document/font-input/image metadata and bytes match;26prepared refs,
+52repeat reads pass; exit0, peak145.39MiB. Full generation is a separate fresh
+container/process started only after that gate passed. Control observations do
+not enter the measured process.
+
+ONE full SRS: exit134, fatal JavaScript heap out of memory, cgroup peak504.00MiB;
+Docker OOMKilled=false. This is a Node/V8 heap abort, not a kernel OOM kill.
+Node24.21.0, no NODE_OPTIONS, default heap259MiB; memory AND total memory/swap
+512MiB,1CPU, networknone, readonly inputs/rootfs, original64MiB temp mount.
+Original50000XML/rels,10000drawing,32MiB output limits and SRS<=49000target
+unchanged. No tuning, forced GC, retry, resource increase or fallback run.
+
+Core composed5622body nodes,2202text blocks,200tables,39source guides. Last
+completed checkpoint is base-planning-start at182250XML/rels nodes and
+heapUsed162.31MiB; then OOM before the first document.xml parse-complete event.
+The next path materializes raw XML and builds its DOM. This localizes the failed
+interval, NOT the exact allocation or retained owner; no heap ownership/reclaimed
+byte claim is supported. RSS, cgroup peak and JS heap are different measures.
+
+Only hook.json+cgroup-peak.txt exist in the output directory; no complete plan,
+reduced serialization, DOCX candidate, returned receipt or sink publication.
+CRC/fidelity/native Word/output-budget acceptance are NOT RUN: prerequisites
+failed. Do not use the earlier standalone SRS48817-node copy as runtime proof.
+UAT remains its earlier ONE bounded PASS, not universal512MiB/repeatability
+proof. This SRS runtime FAIL does not establish that every512MiB design is
+impossible, or that production Service has failed. R1a-R2, Word, Core adapter/
+packed-product/Service adoption and broader runtime acceptance remain open.
+
+Local input/archive/runtime/control hashes and result archive verify. Core
+3e74f98/Servicea572025 HEAD/source unchanged and clean. Real runtime metadata
+before/after stable;0owned running containers. No realDB/API/storage access,
+real-service stop, push/release/install. STOP at OOM as authorized; return to
+design/lifetime review before any newly authorized experiment; no W2/C1/C2 or
+Word follow-up. Documentation checks validate this record, not the failed SRS.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-w1-srs-20261101/.
+Files:verification.json,control.diff,packet.json,source/result archives,
+oracle/receipt.json,oracle/out-setup-control/equivalence.json,Oracle phase logs.
+Remote project:flowdoc-w1srs-943ce3933f44. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-srs-20261101/verification-report.html.

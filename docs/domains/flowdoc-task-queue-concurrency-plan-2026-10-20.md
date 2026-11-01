@@ -4843,3 +4843,30 @@ SRS/W1, same-run baseline/Word, product adapter/package/Service and concurrency/
 cancellation/growth remain open. Stop; no W2/C1/C2/SRS/Word automatic follow-up.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-lifetime-l1-20261101/verification.json.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-20261101/verification-report.html.
+
+### 2026-11-01 — W1 SRS equivalence PASS; full SRS heap OOM, stopped
+
+Owner authorized SRS next, control first then ONE full run.349runtime files
+unchanged from W1 UAT; only control selector/counters changed for SRS. Separate
+setup control exit0, peak145.39MiB: document/font-input/images match,377placements/
+13variants,26prepared refs,52repeat reads pass. No control objects enter the
+fresh full-generation container/process.
+
+Full SRS exit134, fatal Node heap OOM; Docker OOMKilled=false, cgroup peak504.00MiB.
+Same512MiB memory AND total memory/swap,1CPU, Node24.21/default259MiB heap,64MiB
+temp/network/readonly restrictions and50000XML/10000drawing/32MiB caps remain.
+Last checkpoint: base-planning-start,182250XML/rels,heapUsed162.31MiB; no first
+document.xml parse-complete event. Failed interval is raw-string/DOM path, NOT
+an identified exact allocation/retained owner. No complete plan/serialization/
+candidate/returned receipt or sink publication; Word/output fidelity NOT RUN.
+
+Stop per OOM rule: no retry, resource/heap/cap tuning, forced GC, W2/C1/C2 or
+Core/Service change. Core3e74f98/Servicea572025 clean and unchanged; input/source/
+result hashes verify, real runtime metadata stable,0owned running containers.
+No real-data/API/storage access, real-service stop or push/release/install.
+Earlier bounded UAT PASS retained; SRS runtime is now confirmed FAIL for this
+W1 fixture/envelope, not universal512MiB impossibility/production failure.
+R1a-R2/Word/package/Service adoption remain open. D2 executed SRS section owns
+details; return to design review before further experiments.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-w1-srs-20261101/verification.json.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-srs-20261101/verification-report.html.
