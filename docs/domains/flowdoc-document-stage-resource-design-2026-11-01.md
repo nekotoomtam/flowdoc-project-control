@@ -425,3 +425,21 @@ Next recommended work: close the complete/bounded Core finalization-facts
 contract, read/trust/ownership details and production envelope/accounting design
 before authorizing product changes. Do not launch UAT/SRS from this protocol
 proof alone. Stop this bounded proof round here.
+
+## 2026-11-01 — Core data-contract review after the lab controls
+
+Owner authorized read-only completion of the Core handoff specification, with
+the same 512 MiB per-worker and unchanged caps/no-product/no-real-system boundary.
+[Core inter-stage handoff contract](flowdoc-core-stage-handoff-contract-2026-11-01.md)
+now defines the proposed descriptor, complete writer/engine/Service receipt
+projections, ordered adaptations, option-presence and source/input identity
+distinctions, private-store closure, Core-emitted provenance, bounded typed fact
+streams and a PDF emission-first adapter. It specializes this generic design;
+it does not replace prior lab evidence or claim a Core API exists.
+
+Prior UAT result has 664 adaptations and one source-word-layout record 102035
+compact UTF-8 bytes: fixed 64-KiB logical records or assumed 1-MiB receipts would
+be unsupported new restrictions. Codec exactness, complete real producer/
+consumer closure, ownership mapping, error-order compatibility, bounded resource
+proof and adoption remain OPEN. This round runs no Oracle/generation/OOM test
+and changes no Core/Service/C1/policy/cap/real-data/service/push/release/install.
