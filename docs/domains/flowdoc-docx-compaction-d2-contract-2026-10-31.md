@@ -847,3 +847,64 @@ open. Source/archive/input hashes and current Core/Service clean HEADs rechecked
 Offline census/review output and reproducible analysis:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/memory-review/review.json
 and analyze.py in that directory. The prior failure packet/report stays immutable.
+
+## 2026-11-01 — UAT with wrapper diagnostic ZIP disabled: FAIL, stopped at OOM
+
+Authority Boundary: owner authorized ONLY the proposed UAT no-diagnostic-ZIP
+experiment at512MiB, keeping all other state/caps and stopping at OOM. Inline
+Evidence Reviewer / lab owner, then Project Control Steward; IDs N/A, routine
+risk. Isolated Oracle/OCI VM Docker; no Oracle Database/Service API test, product
+edit, real-data/DB/API/storage access, real-service stop, push/release/install.
+
+The old sealed347-file runtime payload is copied to a fresh lab directory.
+Hash comparison finds ONLY source-wrapper.mjs changed: diagnostic() is no longer
+called, scalar before/after boundary logs are added, and comments/metadata state
+that capture is disabled. The unused diagnostic function stays identical. No
+replacement ZIP/raw-part capture, fixture lifetime cleanup or image spooling.
+worker/reducer/planner/advanced/loader/dependencies/inputs remain byte-identical.
+The same pinned runtime image106a0c8 and Core artifact SHAed876f4 are used; Core
+dist hashes are checked by the unchanged worker before generation. Current
+Core3e74f98/Servicea572025 remain clean and all Core source/input hashes match.
+
+Exactly ONE UAT reduced container ran. Actual Node24.21.0/default V8 heap259MiB,
+no NODE_OPTIONS,512MiB memory AND total memory/swap,1CPU, network none, readonly
+rootfs/inputs and the original64MiB temp mount. The XML/drawing/ZIP caps remain
+50000/10000/32MiB. Logs show both diagnostic-boundary flags=false, hook metadata
+extraDiagnosticZip=false, and output contains ONLY hook.json and cgroup-peak.txt:
+no raw.docx, complete plan, reduced candidate, receipt or sink publication.
+
+| UAT checkpoint / result | Prior diagnostic ZIP enabled | This no-ZIP run |
+| --- | --- | --- |
+| Base planning starts, heapUsed MiB |98.10|99.17 |
+| Raw document DOM parsed, heapUsed MiB |241.53|238.91 |
+| Width planning ends, heapUsed MiB |242.64|238.92 |
+| Cgroup peak MiB |431.48|428.33 |
+| Result |Fatal Node heap OOM, exit134|Fatal Node heap OOM, exit134 |
+
+The new census is110767XML/rels nodes, matching the prior UAT insertion stage.
+Last completed checkpoint is document.xml width planning; no cell-defaults-
+complete event. V8 reports ineffective mark-compacts / JavaScript heap out of
+memory. Docker OOMKilled=false: native Node abort, not a kernel OOM kill. The
+controller stops after this sole case; zero owned lab containers remain running.
+Real runtime identity metadata before/after is unchanged. No retry, GC/heap/RAM/
+swap/cap tuning, SRS/Word execution or additional repair followed the OOM.
+
+Confirmed conclusion: removing this extra ZIP step ALONE did not make the
+tested UAT/Core/reducer harness fit. It is not sufficient within the unchanged
+limits. Do not treat the3.15MiB cgroup peak difference as the exact ZIP cost:
+these are single runs with different allocation/GC timing and added scalar
+checkpoints. This does not prove zero ZIP overhead, identify all retained-memory
+owners, prove every512MiB Core design impossible or establish a production
+Service crash. R1a/R1b/R1c/R2, SRS and Word remain open; no old copy substituted.
+Return to memory-lifetime review before another authorized experiment or port.
+
+Independent verification checks source/result archives, the one-file delta,
+all fixture hashes, container limits/state, fatal trace, skipped-capture logs,
+absent output, unchanged Core/Service source/HEAD and runtime metadata. The one
+Python command-string quoting error while preparing transport was local-only,
+before remote execution; the script-based preparation corrected it. There was
+no failed runtime setup or runtime retry in this round. Proof budget consumed.
+Evidence/scripts/packet/diff/logs/receipts:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/verification.json.
+Remote project:flowdoc-nozip-826212ad4c63. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-uat-nozip-20261101/verification-report.html.

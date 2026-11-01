@@ -4775,3 +4775,24 @@ state; image spooling/setup lifetime changes and same-run Word baseline capture
 are separate later variables. No implementation/retry authorized this review.
 512MiB/default heap/caps unchanged; no pass for no-ZIP Core/SRS/Word; R1a-R2 open.
 Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/memory-review/review.json.
+
+### 2026-11-01 — UAT diagnostic-ZIP-off proof FAIL; stopped after one OOM
+
+Owner authorized only UAT512MiB with that one functional variable. Of347sealed
+runtime files, ONLY source-wrapper.mjs changes (skip diagnostic(), scalar logs,
+metadata/comments). Core/reducer/worker/fixtures/resources unchanged; no lifetime refactoring;
+no substitute capture. Exactly1container, same image/Node24.21/default259MiB heap,
+512MiB memory AND total memory/swap,1CPU, original caps/temp/network restrictions.
+
+No-ZIP still fails with fatal Node heap OOM, exit134, cgroup peak428.33MiB.
+Heap at planning/parsed/width checkpoints99.17/238.91/238.92MiB versus prior
+98.10/241.53/242.64. No complete plan/candidate/receipt/sink, diagnostic raw ZIP,
+retry/resource tuning, SRS or Word. Zero owned running containers; real runtime
+metadata and Core/Service source/HEAD/input hashes stable. No product/real-data/
+service lifecycle/push/release/install action. Removing ZIP alone is insufficient
+for this harness; peak differences do not quantify causal ZIP cost or identify
+remaining owners. D2's new UAT no-ZIP section owns details. Return to lifetime
+review; R1a-R2/SRS/Word open, no further experiment authorized by this result.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/verification.json.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-uat-nozip-20261101/verification-report.html.
