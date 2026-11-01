@@ -571,3 +571,10 @@ are not HTTP/DB/queue/allocator or raw-Core-result proof. Peak99.359375MiB under
 512MiB, no OOM; one lab-only ESM resolver repair is recorded with R1 failure kept.
 No Core/Service/C1/cap or real-data/service/push/release/install change. Preserve
 the direct-Core proof separately and keep general schema/adoption gates OPEN.
+
+[Next representability plan](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--template-representability-review-and-next-proof-plan)
+reviews shared member topology, positive blank-line measurement and scoped
+image-omission paths before more workload. Budget:4 admission/composition
+controls and only2 native runs if a natural admitted candidate exists; otherwise
+record the bounded structural limitation. This is planning only, with unchanged
+512MiB per worker/caps and no new Oracle workload or product change.

@@ -1386,3 +1386,141 @@ Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-template-label-202611
 oracle/out-schema/service-integrity.json,cases/<name>/* under oracle/out-schema}.
 R1 failure remains in sibling service-template-label-20261101-r1/oracle/schema.log.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-template-label-20261101/verification-report.html.
+
+## 2026-11-01 — Template representability review and next proof plan
+
+Authority: owner requests REVIEW AND PLAN ONLY. No new Oracle connection,
+container, runtime experiment or Core/Service/C1 edit in this round. Planning
+Partner / Cross-Repo Boundary Reviewer then PC Steward; medium, routine,
+discovery authority; inline execution IDs N/A. Existing contract owns this plan,
+with one link in the generic design; no new Work, map or product-repo plan.
+PC base a6f7576, Core3e74f98 and Servicea572025 checked locally. Generated Current
+Truth Snapshot is dated2026-10-04 and concerns other registered work; this bounded
+owner request and current contract govern, not that snapshot's unrelated tasks.
+Future PLAN target remains policy default Astra/medium; no model switch or
+dispatch is performed here. Future WORK must resolve its own host availability.
+
+### Goal, alternatives and reviewed constraints
+
+Goal: decide whether an unchanged, accepted Service template can naturally
+produce a SAME-group first member with no non-label measured content while a
+later member has real text, and thereby reproduce the pending-label cursor.
+An empty string, no painted glyphs, missing output from clipping, an empty group,
+or members belonging to different groups/area entries are not that witness.
+An earlier member already drawn on a previous page is also a different case;
+absence of its remaining lines does not establish initial measurement-emptiness.
+
+Recommend **representability first, native worker only if a candidate survives**.
+A full HTTP/registry/DB/queue rerun would cover a different integration gap but
+does not itself add per-item template expressiveness; defer it. A new conditional
+child/row-variant capability would be product design and requires a separate
+proposal and authorization; it is outside this unchanged-product proof.
+
+Current implementation evidence (paths relative to their owner roots):
+
+| Constraint | Evidence and consequence |
+| --- | --- |
+| Registration/load do not supply per-member row alternatives | Service templates/registry.ts:11,30-37 validates definition and loaded fingerprint; templates/storage.ts:65 reassembles and revalidates snapshot. Review storage assembly as part of the next closure; do not assume DB snapshots add a transformation |
+| One member row source is cloned for every item | Core binding/expansionSteps.ts:35-36,47-59; types.ts:21-23. Excluding the injected group-label cell, row/cell child topology comes from the same template; text-leaf contents may vary |
+| Text-empty is not measurement-empty | bindInlines.ts:21-25 can remove all text leaves; measureText.ts:25,39-40 still emits a blank measured line. nativeTableProbe.ts:10-14 either preserves/quantizes positive height or fails; it does not delete a line |
+| Group structure disallows the obvious per-item child expansion routes | template/rowGroups.ts:22 rejects cell-repeat-owned cells and Area children; validateGraph.ts:36-50 establishes their ownership before group validation |
+| Label keepStart cannot be disabled to force the branch | template/groupLabels.ts:7 and composition/validateRowGroupMetadata.ts:34 require it. Non-label row spans cannot stand in for the label span (metadata:62-63) |
+| Image omission needs separate reasoning | Service render-child.ts:161-166,216-224 tracks omissions without deleting template nodes. Core cellTableFlow.ts:47-49 can remove oversized image measurements in an auto format, but documentFlow.ts:135 explicitly refuses that omission for a fixed format. Neither fact proves text measurements disappear |
+| Version scope is explicit | validateTemplate.ts:9 admits models18/19/20; sectionOwnership.ts:87 enables group-label spans only for19/20. Prior runtime controls covered19 only; model20 runtime equivalence is not yet proven |
+
+Source argument to check: if a later member's text requires a TextBlock in the
+shared row template, that TextBlock is also present for the first member and
+even empty text contributes a measured line. This is a scoped contradiction
+candidate, NOT a universal impossibility theorem or a newly executed test.
+
+### TP1 — Close the relevant source paths before adding workload
+
+- [x] Recheck current pins, prior four-case evidence and the constraints above.
+- [ ] In the next authorized proof, finish registration/snapshot assembly,
+  normalization, section/model19/20 expansion, text measurement and image-omission
+  path closure against the actual Service vendor package. List each possible
+  topology/measurement change and its admitted scope; do not infer behavior
+  merely from interface/type equality. Model18 is an exclusion check for this
+  label feature, not a substitute positive fixture.
+- [ ] State the invariant using source identities of NON-LABEL cells and their
+  children, not equality of generated instance IDs. Distinguish topology from
+  measured items and actual rendered text. If an admitted exception is found,
+  name its code path and the exact input predicate before proposing runtime.
+
+### TP2 — Bounded admission/composition controls in an external lab copy
+
+Future files only, under a fresh
+C:/Users/nekot/Documents/FlowDoc-recovery/service-template-representability-<run>/:
+fixture-cases.mjs (synthetic inputs), admission.mjs (real package exports/Service
+JSON reader and Core task normalization/composition), topology-oracle.mjs
+(TEST-only identity/topology assertions), packet.json and raw results. Reuse the
+unchanged codec and diagnosed ESM lab runner; do not copy changes into a product.
+
+Maximum FOUR new small controls; reuse the prior model19 empty-text/empty-template
+results for already-proven facts instead of rerunning them:
+
+| Control | Assertion required before calling it evidence |
+| --- | --- |
+| Cell-repeat outside a group | Independently valid fixture composes through the real task contract; this is the positive control for the proposed expansion mechanism |
+| Cell-repeat-owned cell inside the label group | Start from a separately validated group fixture plus a valid repeat scaffold. Capture ALL validation issues and the ownership rule; do not demand one issue or hide collateral label-binding failures |
+| Empty first GROUP, then nonempty GROUP | If admitted, preserve distinct groupIndex/source identity and reject it as a same-group witness; it must not become a cursor success by merging identities |
+| Model20 counterpart of first-empty-string/next-NEXT | Validate real model20 section assembly and task contract, then compare non-label child source topology; never relabel model19 bytes as20. Input conversion failure is a prerequisite failure, not reachability evidence |
+
+The keepStart=false rule already has an explicit source assertion in Core
+tests/composition/groupLabels.test.ts:94; reuse that specification with the
+validator source, not as a fresh test PASS. Do not add an arbitrary unknown-key
+rejection test as purported proof against all conditional extensions. TP1 must
+identify the actual supported grammar instead.
+
+For every admitted composition, record real group/section/area/format/table/row/
+cell source identities, each member's non-label child types/source IDs and text
+leaves. Preserve NEXT exactly. An independent replay remains a replay, not an
+in-worker object capture. Do not remove a node, add synthetic source metadata,
+patch runtime helpers or invoke an artificial text runtime after composition.
+
+### TP3 — Conditional matched native Service worker pair
+
+Run ONLY if TP1/TP2 identify an admitted natural candidate for the stated witness.
+Use unchanged Service render-child, Python launcher, real bundled fonts and the
+Service's actual package-name ESM export/vendor pin. Maximum TWO small runs:
+matched normal control and candidate, same60pt frame, no height sweep. Reuse the
+lab-only normalization/file/advanced-IPC adapters with their explicit limits;
+this does not newly claim HTTP/DB/queue/reservation/fencing coverage.
+
+Positive acceptance needs all of: real template/task admission; same group and
+source identities; first-member measurement-empty path established by the actual
+implementation (not merely empty leaves); later real text retained; worker
+returns the label cursor with valid group-level identity and truly absent own
+lineIndex/itemIndex/sourceOffset; actual PDF receipt hash/length and complete
+post-IPC message preserved after worker/producer exit in a fresh consumer.
+No cursor seen means NOT_OBSERVED, even when the worker succeeds.
+
+If no candidate survives TP1/TP2, OMIT TP3. Close only the reviewed ordinary
+memberRepeat/text-group surface as a bounded structural limitation, preserve
+Service target NOT_OBSERVED and the earlier direct-Core positive proof, and
+report any remaining escape paths explicitly. Do not fabricate the shape or
+expand product scope merely to obtain a positive runtime result.
+
+### Resource, stopping and reporting contract
+
+Future lab: hard512MiB memory and memory+swap per worker/bundle, CPU1, pids96,
+networknone and readonly product/input; writable paths only in the new owned lab.
+Reuse the existing image/package without build/pull/install after fresh identity,
+source/package and capacity checks. An unavailable prerequisite is BLOCKER; do
+not substitute a different pin, size, native backend or product configuration.
+No real SQL/API/log/storage access; no stopping real services. DB integration
+and full Service resource allocation are deferred and not needed for this claim.
+
+Maximum4 admission/composition controls + conditional2 native runs; zero formal
+audit, one self-review and at most one diagnosed lab-only harness repair with
+failure evidence retained. Stop OOM, timeout, unexpected admission/native failure,
+unresolved source mutation or missing prerequisite; no automatic retries, forced
+GC, raised caps or broader stress. Ordinary expected rejection is a control,
+not a reason to repair Core/Service. End when coverage and acceptance pass.
+
+Report separately: constraint evidence, valid/rejected fixtures, genuine target
+witness or NOT_OBSERVED, IPC-versus-Core-result scope, memory/OOM/process cleanup,
+package/source integrity and verification gaps. Keep all earlier outcomes intact.
+No new runtime result is claimed by this plan. Review focus is covered by TP1/2/3:
+empty leaves versus empty cells; cross-group identity; image-only measurement
+omission; model20 assembly; and invalid fixtures mistaken for negative proof.
