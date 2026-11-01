@@ -460,3 +460,19 @@ closure, universal key/index/depth memory bounds and actual Service adoption
 remain open. No rendering/XML/SRS/Word/pressure test or real data/service/
 push/release/install action in this round. Evidence is linked by the contract;
 no system map or previous generation acceptance is promoted.
+
+## 2026-11-01 — Actual Core capture after producer exit: PARTIAL
+
+[Core schema/closure addendum](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--live-core-schemas-and-producer-exit-proof-partial)
+records 10 small live Core completed-output captures, exact live-tree facts after
+producer/native-helper exit and 170 corrected-schema rejection checks. Peak
+68.703125 MiB for capture and 30.84375 MiB for consumer-only replay, each within
+512 MiB and no OOM. The inherited-name bug in the lab validator is corrected;
+original captures/results retained and reused without Core/generation rerun.
+
+This does not close the intended PRE-guard cut. Current writer guards run before
+receipt/callbacks, engine exports a smaller completed artifact and no checkpoint
+API exposes full Core emission facts/provenance. Exact-cut proof is BLOCKED by
+the no-Core-change boundary; full semantic schemas and whole staged memory/
+Service/SRS/Word acceptance remain open. No loader hooks, product/candidate/
+cap changes, real data/service stop or push/release/install. No map promotion.
