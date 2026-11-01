@@ -1,7 +1,7 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **ONLINE COPY PLAN/REDUCTION PASSED IN 512 MiB; CORE/WORD ACCEPTANCE OPEN**,
+Partner / Cross-Repo Boundary Reviewer. Status **LIVE CORE SPIKE FAILED WITH NODE HEAP OOM; COPY PROOF RETAINED; WORD PENDING**,
 not Core implementation authorization or Core runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
@@ -673,3 +673,81 @@ C:/Users/nekot/Documents/FlowDoc-recovery/docx-liveplan-20261031/.
 Accepted result: verification.json; oracle-full/ is final; oracle-prefix/ and
 oracle-full-attempt1/ are retained preliminary results. Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-liveplan-20261101/verification-report.html.
+
+## 2026-11-01 — Real Core retained-state spike: FAIL, stopped at first OOM
+
+Authority Boundary: owner-authorized single-room discovery/verification of the
+copy reducer with real Core in the isolated Oracle/OCI VM Docker lab at512MiB,
+then native Word comparison only if a new valid candidate exists. Evidence
+Reviewer / lab owner; Project Control Steward for status. IDs N/A, medium scope,
+routine risk. No Core/Service source/package edits, dependency installation,
+real-data/DB/API/storage access, real-service stop, push/release/install. This is
+not Oracle Database engine testing or a Service API test.
+
+Unchanged pinned Core0.5.2 SHA256:
+ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532,
+matching the current Service vendor artifact. Every packed dist file is checked
+against it before execution. Core3e74f98 and Servicea572025 remain clean and all
+Core source hashes match the initial snapshot. Existing runtime image106a0c8 is
+reused, not rebuilt/installed. Actual Node24.21.0, V8 heap271581184bytes(259MiB),
+no NODE_OPTIONS,512MiB memory AND total memory/swap,1CPU, network none, readonly
+inputs/rootfs, scoped lab output/temp. No resource/limit increase.
+
+An external dependency-resolution wrapper redirects ONLY writer.js's
+source-layout-xml import. It reexports the unchanged implementation, calls
+original serializeSourceLayout and existing container/style compactors, then
+the experimental reducer on that SAME live ZIP before returning to the
+unchanged writer/final guard. No Core files/public options are patched. The real
+public path is normalizeTaskInput -> composeTaskDocument -> createDocxEngine ->
+generateDocxTo, including native layout/metric helpers, font/image resources and
+retained writer intent/built state. This is test-only wiring, not an adopted
+TypeScript adapter or packed consumer of a new Core version.
+
+| Case | Observed result | Exit | Cgroup peak |
+| --- | --- | --- | --- |
+| UAT default rejection control |110767raw XML/rels nodes; original50000guard rejects;0sink chunks,1abort |0|364.99MiB |
+| SRS default rejection control |182250raw nodes; original guard rejects;0sink chunks,1abort |0|361.82MiB |
+| UAT live reduction |Node fatal heap exhaustion after document.xml parse/width planning |134|431.48MiB |
+| SRS live reduction |NOT RUN: stop at first actual OOM |N/A|N/A |
+| Native Word comparison |NOT RUN: no completed live-Core reduced candidate |N/A|N/A |
+
+The UAT reducer starts with heapUsed102863560bytes(98.10MiB); the last event
+after parse/width planning records heapUsed254428320bytes(242.64MiB),
+RSS493617152bytes, followed by fatal Node heap out of memory. Docker reports
+OOMKilled=false: this is a V8/native Node abort, not a Docker kernel kill; that
+flag does not negate the fatal trace. No complete plan, reduced serialization,
+final candidate/receipt or Core sink publication. Raw diagnostic ZIP counts/CRC
+are independently checked. Successful baseline processes verify all Core dist
+files unchanged after their expected rejection controls. Input hashes match,
+real runtime metadata identity is stable and zero owned lab containers run.
+
+Measurement limitation: the wrapper creates an EXTRA raw diagnostic ZIP before
+reduction while the Core stack remains live, for an exact same-run Word
+baseline. The harness also retains fixture payload/template/prepared-image
+buffers instead of the full Service reader/spool lifecycle. Failure is CONFIRMED
+for this instrumented process. It does not prove every512MiB Core design fails,
+isolate all retained-memory ownership or establish a production Service crash.
+The prior standalone copy PASS remains valid only within its original scope.
+
+Setup rejections are retained: wrong historical artifact locator (local
+prerequisite), sharp entrypoint, Windows path separators, UUID image-adapter
+contract, section-scoped SRS assetKey resolution and bundled-font inventory.
+Only harness prerequisites were corrected. Final default controls pass before
+live reduction. After actual OOM there is NO retry, resource/cap tuning,
+forced-GC rescue or older candidate substitution. Prepared Word scripts were
+not executed. R1a remains failed/open; R1b/R1c/R2, TypeScript/package/Service,
+cancellation/concurrency and new-candidate Word fidelity remain unverified.
+
+Return to D2 memory/lifetime review: avoid overlapping raw XML DOM with retained
+Core section/packer/source-layout state; separate diagnostic ZIP capture and
+harness-owned buffers before a new authorized proof. Preserve necessary
+source/layout/font/image state and verify lifecycle correctness. Word needs a
+valid same-run reduced candidate first. No product implementation authorization
+is implied. Proof budget consumed: corrected prerequisites, both default
+controls, first live-reduction OOM, raw-package/integrity/boundary validation.
+
+Evidence/scripts/immutable packets/setup attempts/logs/receipts:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/.
+Final remote project:flowdoc-corelive-8f5368b0def0; result:verification.json.
+Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-core-live-20261101/verification-report.html.

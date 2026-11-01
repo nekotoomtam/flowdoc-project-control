@@ -4725,3 +4725,37 @@ push/release/install. Stop after the requested proof.
 
 Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-liveplan-20261031/verification.json.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-liveplan-20261101/verification-report.html.
+
+### 2026-11-01 — Live Core XML reducer spike FAIL; Word prerequisite absent
+
+Authority Boundary: owner-authorized isolated Oracle/OCI VM Docker proof with
+real Core retained state at512MiB/1CPU, unchanged caps, then Word on a new valid
+copy. Evidence Reviewer; IDs N/A. The new "Real Core retained-state spike"
+section of the [D2 contract](flowdoc-docx-compaction-d2-contract-2026-10-31.md)
+owns detailed evidence and limitations. No Work/registry/map added.
+
+External test-only dependency wiring runs original source serialization and
+existing compactors, then the reducer on the live ZIP while public Core engine/
+writer/native-layout state remains live. Core files, final guard and options
+remain unchanged; artifact SHAed876f4, Core3e74f98/Servicea572025 match. No new
+Core package adopted or Service API/Oracle Database test claimed.
+
+Default rejection controls PASS: UAT110767/SRS182250nodes exceed the unchanged
+50000guard,0sink chunks,1abort; peaks364.99/361.82MiB. UAT live reduction FAILS:
+fatal Node heap exhaustion after document.xml parse/width planning, exit134,
+cgroup peak431.48MiB, V8 heap259MiB. Docker OOMKilled=false does not negate that
+trace. No complete plan/candidate/receipt. SRS reduction and native Word are
+NOT RUN after the first actual OOM; no older candidate substituted or resources
+increased. Production metadata stable, inputs/repos unchanged,0owned running
+containers. Corrected setup issues remain classified as harness prerequisites.
+
+The wrapper additionally captured a diagnostic raw ZIP and retained fixture/
+template/prepared-image buffers. This is confirmed failure of this instrumented
+live process, not proof that every512MiB Core design fails or production Service
+crashed. Prior copy-only PASS is retained. R1a remains failed/open; R1b/R1c/R2
+and Word pending. Next: D2 memory/lifetime review before a new proof/port. Keep
+50000XML/10000drawings/32MiB, SRS target<=49000. No Core/Service source/package
+edits, installs, real-data access/service stop, push/release/install.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/verification.json.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-core-live-20261101/verification-report.html.
