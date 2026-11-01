@@ -1091,3 +1091,115 @@ oracle/out-schema/suite.json,label-diagnostic/diagnostic.json and original R1/R2
 progress/per-case facts.bin,test-oracle.bin,producer-notice.json,consumer.json/logs.
 Original failures retained under core-cursor-lineage-20261101-r1 and-r2.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-cursor-lineage-20261101/verification-report.html.
+
+## 2026-11-01 — Pending-label cursor reachability review
+
+Authority: owner's read-only review request after the partial cursor proof.
+Planning Partner / Cross-Repo Boundary Reviewer then PC Steward; inline IDs N/A,
+medium/routine. Base PC 629548d, Core 3e74f98/Service a572025 and unchanged C1.
+Scope: inspect current owner implementation and retained proof, update this
+contract/design link only. Proof budget: one source/control-flow review and
+document/source-identity checks, no new generation, Oracle connection, helpers,
+benchmark or product/lab-code repair. No new report/map/Work; no Core/Service,
+real data/service, push/release/install action. 512 MiB per worker and existing
+caps remain the requirement for any separately authorized subsequent proof;
+this review makes no new runtime or RAM claim.
+
+### Confirmed implementation path and explanation of the failed case
+
+1. Public createPdfEngine accepts a ResolvedDocument. generatePdfTo reaches
+   validateResolvedDocument BEFORE its first await/snapshot (pdf/createPdfEngine.ts:
+   50-66). Row-group validation runs at composition/validateResolvedDocument.ts:
+   68-69; a labelled group with keepStart=false fails
+   composition/validateRowGroupMetadata.ts:32-39. Disabling keepStart would
+   bypass the relevant admission contract, not prove the public runtime route.
+2. The template route also rejects explicit keepStart=false for group labels
+   (template/groupLabels.ts:7), requires a nonempty group-name field (:17), and
+   expansion defaults labelled groups to keepStart=true
+   (binding/expansionSteps.ts:45). Name emptiness and cursor lineIndex are
+   separate concerns; nonempty group names do not guarantee a label cursor.
+3. documentFlow.ts:132-135 sets bounded only inside a fixed Format and supplies
+   the page sink. cellTableFlow has one production caller under src, this
+   documentFlow route. Stop emission at cellTableFlow.ts:94/97 prepends the
+   label cursor only if pendingLabel was assigned; that call supplies table/
+   row/cell fields but no lineIndex. Ordinary pending text gets lineIndex and
+   optional sourceOffset at90-92. FormatStop becomes FORMAT_CONTENT_OMITTED
+   at documentFlow.ts:362.
+4. In cellTableFlow.ts:130-138, keepStart includes the FULL label height and the
+   first member's first measured item (or full protected row). An insufficient
+   bounded cut rewinds to the group start. The later label check at149-154
+   skips labels at/after that cut. This explains why the earlier fixture with
+   a measurable first member reported memberText,lineIndex 0 instead of the
+   expected memberLabelText without lineIndex. The earlier golden expectation
+   was not established for that fixture; it is not a confirmed Core bug.
+
+### Conditional reachability criterion, not universal dead-code proof
+
+At a bounded first window, let b be the label/first-member start, L its total
+label height including padding, F the keepStart firstHeight, M the earliest
+undrawn NON-label item end relative to b (including bottom padding), G the
+label span end and C the current cut. Ignore only the already-defined eps
+tolerance when reading these inequalities; real checks retain it.
+
+- keepStart allows the cut past this group only if C >= b+F; F >= L.
+- pendingLabel needs min(C,G) < b+max(L,M), with the label intersecting the cut.
+- In the tested case, the first member itself has a measured item, so M <= F.
+  Valid geometry also reserves the label/item height in its span. The later
+  inequality cannot hold after keepStart admits the cut, or the rewound cut
+  excludes the label. That is a conditional explanation of this case.
+- A candidate route requires M > F: for example an empty first member cell
+  with no measured children, followed by a later member with measurable content,
+  while a cut lies between b+F and b+M. This has NOT been validated/executed.
+  Unbounded pagination can assign pendingLabel too, but stop() is invoked only
+  by bounded paths (:191,217); assignment alone does not prove an emitted
+  public diagnostic. No universal unreachability/removal decision follows.
+
+Important distinction: measureText.ts:23-25 emits a positive-height blank line
+for empty text, and its paragraph loop calls that path even for an empty raw
+string. Replacing member name with '' does NOT create the no-measured-item case.
+measureCellContent.ts:15-17 instead returns no items when childIds is empty.
+Graph refs accept empty arrays (template/validateGraph.ts:23,124). The resolved
+row-group validator checks source identities, spans and keepStart, but does not
+itself require identical child structure in every member row (:46-68).
+
+Those static checks make an asymmetric direct ResolvedDocument a PROPOSED
+candidate, not proof that all admission checks accept it. A composed-template
+case and a directly supplied ResolvedDocument are distinct public entry paths;
+success of the latter would not establish Service template-route reachability.
+Cell repeats are not a shortcut: row-group admission excludes cell-repeat owners
+inside the group (template/rowGroups.ts:22); do not disable that guard.
+
+### Proposed next bounded proof and schema decision
+
+One focused two-control proof is sufficient to investigate this candidate:
+
+- Retain the known composed-template/member-with-line control and its original
+  no-label-cursor outcome. Do not change the old golden assertion into a PASS.
+- On a synthetic COPY of a composed ResolvedDocument, retain the valid label,
+  two member rows, keepStart=true, group/source/Format identities and span2;
+  remove the first NON-label member's text subtree/source entries and set only
+  that cell's childIds empty. The second member keeps real content. No private
+  intent or helper cursor is fabricated. Admission MUST occur through the
+  unchanged public engine; reject/stop if invalid, without weakening Core.
+- A small fixed frame should exercise the interval above if genuine measured
+  geometry provides it. Illustrative relative values F=28,M=36,C-b=32 are
+  design arithmetic ONLY, not measured native metrics or an accepted fixture.
+  Bound any follow-up to 512 MiB, unchanged caps and one selected input; do not
+  sweep heights/rewrite runtime or add broad stress to force a branch.
+- If admitted and observed, verify label node/table/group identity, absent
+  lineIndex and absent member itemIndex, exact V2 tree transport after producer
+  exit and the final file binding. If not observed, retain NOT_OBSERVED and
+  reconsider the path/contract; do not manufacture coverage using internal
+  formatCursor or a sink that changes bounded behavior.
+
+Schema decision remains: keep lineIndex optional; never default a label cursor
+to lineIndex 0 or itemIndex 0. The source validator explicitly distinguishes
+group-level label attribution from member ordinals (:48-55). Codec acceptance,
+structural types and TEST-oracle ownership do not imply a real Core checkpoint
+provenance capability. No product/schema change is authorized by this review.
+
+Review outcome: source explanation for the old case is complete; a concrete
+conditional candidate and admission-first proof are ready for review. Runtime
+label-cursor reachability, full diagnostic semantics and all previously open
+preguard/512-MiB/adoption gates remain UNVERIFIED/OPEN. Original eight PASS,
+one target NOT_OBSERVED and all failed records stay unchanged.

@@ -533,3 +533,15 @@ the golden test. 512 MiB enforced throughout, last R3 peak 64.82421875 MiB with
 zero OOM events; prior partial/missing peaks documented. Next is pending-label
 reachability/disclosure review. No product/codec/cap, real-data/service,
 push/release/install or map changes.
+
+### Pending-label reachability review
+
+[Source/control-flow review](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--pending-label-cursor-reachability-review)
+explains the prior result: keepStart accounts for label plus first measurable
+member and rewinds a bounded cut before the label-cursor branch. This is a
+conditional explanation, not universal dead-code proof. Empty text still emits
+a blank line; a cell with no measured children is a different candidate.
+Proposed next proof separates the known template route from an admission-first
+direct ResolvedDocument with an empty first member cell and a later real item.
+No guard bypass, height sweep or new runtime result; 512 MiB/caps unchanged.
+Preserve optional lineIndex/itemIndex and the original 8 PASS/one NOT_OBSERVED.
