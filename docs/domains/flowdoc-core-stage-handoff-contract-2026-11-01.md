@@ -288,8 +288,13 @@ getters, functions, cycles, handles, Buffers/Maps and nonfinite numbers. Do not
 restore authority/capabilities from events. Exact codec and schema conformance
 remain proof gates, not an implemented serializer.
 
-UTF-8 framing must be fatal on malformed input, handle multibyte boundaries,
-reject duplicate keys/unknown variants and preserve escaped content. Source
+Control-header UTF-8 framing must be fatal on malformed input, handle multibyte
+boundaries, reject duplicate keys/unknown variants and preserve escaped content.
+The separate LAB V2 facts codec below uses raw UTF-16LE for keys/string values,
+including lone surrogates: declared lengths are even byte counts, odd frame/IO
+boundaries retain at most one carry byte, and no Unicode replacement or
+normalization occurs. This does not change the control header encoding, source
+caps or introduce a product stage API. Source
 digests keep their existing JSON.stringify semantics; do not recompute them
 with a new canonicalizer and substitute a different digest. New stream hashes
 identify the exact new encoding bytes only.
@@ -366,7 +371,7 @@ otherwise emitted PDF; no checkpoint success before that result is known.
 | Gate | Required proof / current status |
 | --- | --- |
 | Static field/store closure | Defined above against pinned code, low-level writer / engine / Service projections separated. Read-only inventory retained; not runtime acceptance |
-| Codec exactness | Copy-only R2 matrix 57/57 PASS, including undefined/absence/-0, order, large data, UTF-8/FEFF and malformed frames. Live completed-output capture evidenced below; full nested semantic schemas and preguard facts remain OPEN |
+| Codec exactness | V1 57/57 controls retain their scope; later reachable surrogate gap reproduced. Separate LAB V2 now passes 66 codec controls plus 5 live Core completed-result transfers, closing that reproduced Unicode transport gap only. Full semantic schemas/preguard facts/universal bounds remain OPEN |
 | Real producer closure | Live completed-output facts survive producer exit in 10 small controls; proposed BEFORE-guard cut remains BLOCKED_NO_API. No intent/private-map transfer or loader rewrite; see dated schema/closure proof |
 | Provenance and semantic scope | Core-emitted source/band/drawing lineage, omitted/inherited sections, shared parts, field/map/relationship preservation; unsupported ambiguity fails. NOT IMPLEMENTED |
 | Guards/error compatibility | No-op exact bytes and complete writer/engine Result parity, option-presence, failure/cancel/cleanup ordering, current caps, existing packed consumers/regressions. NOT RUN |
@@ -451,7 +456,7 @@ it does not add cases to the prior 10/170 runtime results.
 | Family / source | Required closure and next evidence |
 | --- | --- |
 | Structural data grammar; R2 schema.mjs shape/array helpers | Dense ordinary arrays with only indices/length; explicit object prototype/property-descriptor rules, no symbols/accessors/extra array properties, own-key/presence/order preservation. Test both decoder rejection and direct validator entry; codec rejection does not prove schema entry rejection |
-| Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | R2 requires isWellFormed, while resource IDs are checked as nonempty strings and copied into identity. At review time reachability was unverified; the dated Unicode/cursor proof below confirms three incompatible real receipts. All-Core string-domain closure stays BLOCKED until lossless versioned encoding is proved. Do not replace lone surrogates or tighten Core admission; UTF-8/FEFF tests alone are insufficient |
+| Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | V1 isWellFormed restriction conflicts with three reachable real Core receipts. Separate LAB V2 below preserves raw UTF-16 in 66 codec controls and 5 fresh Core transfers; reproduced gap closed in V2 only. Full branch/schema acceptance remains OPEN. No replacement/normalization or stricter Core admission |
 | FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Cover text/image/node with required kind/nodeId/sourceNodeId and every optional attribution/cursor field, own-undefined versus absent included. Text does NOT universally require lineIndex: pending-label text has none. Cursor kind, diagnostic reason and Issue.reason are distinct domains; do not apply the four FormatStop reasons to all diagnostics |
 | Format instances; composition/validateFormatInstances.ts:11-30 | Validate fixed/auto sizing, nonnegative safe indices, fixed rootStartIndex, root identity/order/ownership and omission boundaries. Consumer must use minimal Core-emitted lineage or sealed package evidence, not reload the original ResolvedDocument graph. Decide the minimal needed lineage before exporter implementation |
 | Resources / PDF usage; docx/resources.ts:38-91, fonts.ts:151, pdf/createPdfEngine.ts:104 | Distinguish font, PNG (decoded RGBA hash) and JPEG identities; font weight/style/license/release/native family and PDF selection/license order. Check duplicate identity policy per actual producer namespace, positive dimensions/product limits and binding to authorized original/derived resources. Add genuine image/library/schemaVersion2 controls; the small PDF case does not cover them |
@@ -884,3 +889,100 @@ oracle/out-schema/suite.json and per-case producer-notice.json/facts.bin/consume
 Original failed run:C:/Users/nekot/Documents/FlowDoc-recovery/core-unicode-cursor-20261101-r1.
 Source/runtime scripts and old/new lab schemas retained in both folders.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-unicode-cursor-20261101/verification-report.html.
+
+## 2026-11-01 — Separate LAB V2 Unicode codec: bounded PASS
+
+Owner authorizes fixing/proving a separate lab codec, 512 MiB per worker/bundle
+and unchanged caps. Lab implementation then Evidence Reviewer / PC Steward;
+single-room IDs N/A, medium/routine. Canonical base e16d211, protected Core
+3e74f98/Service a572025 and unchanged two-file C1 candidate. Scope: new external
+lab files, this contract and generic-design link. Proof budget: existing codec
+matrix extended for raw UTF-16/version failures, five fresh genuine Core
+captures, one fresh review and at most one scoped harness repair. No product
+edits, UAT/SRS rendering, Word/pressure tests, real data/API/DB/storage access,
+real-service stop or push/release/install. Document budget: two existing docs
+plus local raw evidence/report; no new Work/map or product integration.
+
+**PASS_BOUNDED_LAB_V2_UNICODE_CODEC: 71/71 checks = 66 codec matrix + 5 live Core.**
+This closes the reproduced V1 surrogate-transfer defect in the separate lab
+candidate only; completed-result transport is not preguard emission acceptance.
+
+### Wire/schema decision implemented only in the lab
+
+- New magic FDCODEC2 and header codec flowdoc/core-facts-events/2. Encoder,
+  expected header and actual header all require V2. No implicit V1 fallback.
+  V1 references stay byte-identical; product packages do not select V2.
+- All fact KEY/STRING events encode the original JavaScript UTF-16 code units
+  as little-endian pairs. No isWellFormed requirement on fact strings, no BOM
+  stripping, NFC/NFD normalization or surrogate replacement. Encoder uses
+  8192-code-unit chunks; decoder carries at most one odd byte across frames and
+  decodes complete pairs with Buffer UTF-16LE, not replacement-prone TextDecoder.
+- Control header stays duplicate-aware strict UTF-8, maximum 4092 payload bytes
+  plus 4-byte length. Data frames stay maximum 65536 bytes including 5-byte prefix;
+  no source/output/resource/RAM cap is increased. Fact declared string byte
+  length must be even and equal actual data. Raw lone surrogates are valid V2
+  facts, while odd/truncated byte sequences remain malformed.
+- A separate completed-writer schema copy changes only its string-domain check
+  to JavaScript string type. It retains the existing field/variant rules and
+  all previously recorded semantic coverage gaps. No Core schema/API is edited.
+- V2 textBytes counts UTF-16 wire octets. Wire lengths/hashes legitimately differ
+  from V1; neither replaces existing Core sourceDigest/input binding. Private
+  fact storage reservations and universal index/depth bounds remain unproved.
+
+### Evidence and bounded acceptance
+
+The 66-row codec matrix includes every one of the 65,536 UTF-16 unit values,
+unpaired high/low/reversed sequences, surrogate keys, FEFF/NUL/combining marks,
+distinct composed/decomposed strings, encoder and odd IO/frame boundaries.
+Independent literal LE byte vectors and recursive Object.is/key/order/type/
+prototype/frozen oracles check exact data. It retains undefined versus absent,
+-0, sparse/ordered arrays, frozen data, 8-million-unit text, 10,000 records,
+historical UAT-result fixture and non-materializing scan controls. Historical
+receipt fixtures are data controls, not new UAT document-generation acceptance.
+
+44 negative controls cover invalid source types/getters/cycles, malformed
+lengths/counts/digest/duplicates/events, file/execution binding, before/inflight
+cancellation and control UTF-8/JSON errors. Six specifically reject V1 reader
+versus V2 wire, V2 reader versus V1 wire, wrong expected/encoder version, and
+forged V1/unknown-version headers under V2 magic. Wrong-version encoding never
+seals output. Old JSON-loss and original leading-FEFF regression RED controls
+remain part of the matrix. Unit coverage is not every possible string/workload.
+
+Five fresh genuine preflight/intent/writeDocx cases use ASCII, mixed Thai/FEFF/
+combining/emoji and the three previously failing surrogate resource IDs. Capture
+is BEFORE JSON; complete live Result trees pass the independent original
+fingerprint after producer/descendant exit in fresh consumers with no Core/
+template/font/native imports. Required package/execution/version/file bindings,
+candidate schema, exact IDs/code units and final artifact hash/length all match.
+The same live three surrogate Results still fail unchanged V1 codec/schema,
+then transfer completely through V2. No diagnostic-only surrogate workaround
+or Core/private-map/loader rewrite supplies the successful V2 data.
+
+### Failure retained and resource boundary
+
+R1 stopped at BINDING: its matrix packet omitted three required digest fields,
+so child JSON dropped own-undefined properties while the direct vector oracle
+retained them. This was correct rejection, not a codec defect. No Core generation
+had started. R2 restores the pinned lab fixture digests and checks completeness
+before matrix execution; codec/schema bytes remain identical to R1. Original
+failed packet/log/results retained. A fresh bounded review found no Important
+codec defect; no extra audit or unplanned generation followed passing proof.
+
+R2 entire measured bundle peaks at **95.84765625 MiB** under 512 MiB memory and
+memory+swap, CPU1, readonly inputs/Core, network none and 64-MiB tmpfs. Default
+Node 24.21.0/259-MiB V8 heap, no tuning/forced GC; oom/oom_kill remain 0. Both
+owned containers stop. Real-runtime metadata identities, protected source
+hashes/HEADs and C1 changes remain unchanged; all 250 extracted Core package
+files are byte-identical to the existing pinned tar.
+
+Remaining work: complete diagnostic/cursor/table/group and other semantic
+schemas, emission provenance and exact preguard API/error-order decisions,
+bounded storage/index/depth and full producer/optimizer/finalizer 512-MiB proof,
+then authorized candidate UAT/SRS/Word/Service integration. None is promoted
+by this codec result. No release/installation or production action authorized.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/core-codec-v2-20261101-r2/verification.json,
+oracle/out-schema/matrix.json,suite.json and core/<case>/facts.bin/producer-notice.json/consumer.json.
+Codec/schema sources:codec.mjs,schema-v2.mjs; original V1 references retained.
+Original failed run:C:/Users/nekot/Documents/FlowDoc-recovery/core-codec-v2-20261101-r1.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-codec-v2-20261101/verification-report.html.

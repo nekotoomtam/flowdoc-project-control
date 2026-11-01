@@ -503,3 +503,17 @@ Unicode-generation peak unretained, so no whole-stage memory closure. Next is
 lossless versioned lab string encoding, then remaining semantic/API evidence.
 Core/Service/C1, caps and real data/services remain unchanged; no push/release/
 install or map promotion.
+
+### Separate lab Unicode codec V2 — bounded PASS
+
+[V2 evidence in the Core contract](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--separate-lab-v2-unicode-codec-bounded-pass)
+closes the reproduced surrogate-transfer gap in a separate lab codec/schema
+copy: 66 codec controls plus 5 fresh live Core completed-result transfers, 71/71.
+Raw UTF-16LE preserves exact fact keys/values; strict UTF-8 control, existing
+frame/cap limits and V1/product files stay unchanged. Six version-negative
+controls prevent implicit fallback. Peak 95.84765625 MiB for the whole bounded
+suite under 512 MiB, no OOM. R1 missing matrix bindings caused correct rejection;
+R2 corrected only packet/preflight, retaining identical codec/schema and original
+failure. Full semantic schema, preguard capability/provenance, universal memory/
+storage bounds, staged UAT/SRS/Word and Service adoption remain open. No product,
+real-data/service, push/release/install or map changes.
