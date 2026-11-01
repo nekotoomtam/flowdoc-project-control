@@ -8,9 +8,10 @@ for real data. It does not change the existing stage/checkpoint contract.
 
 Current scoped status 2026-11-01: M20-1 passed in candidate9f20506, M20-2 in
 85a4d0e, and bounded M20-3 authoring/API in257bdd5. These remain only in the
-separate Service candidate. M20-4 bounded kernel delegation spike passed on the
-Oracle host, but actual Service pre-exec/IPC/fence/isolation wiring remains BLOCKED.
-Six governor admission tests remain unrun; M20-5 is not started. Full model20 support
+separate Service candidate. M20-4 delegation and copy-only pre-exec/IPC/fence
+spikes passed on Oracle; actual Service launcher/broker integration remains
+unimplemented and unverified. Six governor admission tests remain unrun; M20-5
+is not started. Full model20 support
 is NOT accepted.
 
 ## Request, baseline and scope
@@ -648,3 +649,97 @@ Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e
 Protected Core/Service checkouts,C1 hashes and candidate257bdd5 stay unchanged;
 no real data access/service stop/push/release/install. No Work/Evidence registry,
 system/DOCUMENT_MAP or generated projection change; existing status document only.
+
+
+## M20-4 copy-only pre-exec/IPC/fence proof — 2026-11-01
+
+Explicit owner request authorizes copied lab proof only, not Core/Service edits.
+Service owner; Evidence Reviewer/Planning Partner then PC Steward; inline IDs N/A.
+Candidate257bdd5 stays clean. Bounded copies run on the isolated Oracle/OCI host;
+no actual Core/native document/API/DB jobs. M20-4 actual-Service launch gate stays
+open and original governor tests remain0run/6not-passed.
+
+### Confirmed10-case copied-protocol proof
+
+Final10/10 cases pass: legacy-success, task-advanced, bind-denied, forged-ack,
+gate-timeout, pre-cancel, rpc-error, task-cancel, helper-crash, coordinator-crash.
+Coordinator aggregate remains1GiB memory+swap total,2CPU. Each owned worker
+cgroup has memory.max512MiB, memory.swap.max0. Host fixture validates the new
+Docker fullID/label,owned parent,namespace PID, nonce and process-start identity;
+parent independently checks actual membership/starttime/kernel limits beforeGO.
+Bootstrap checks its own binding before exec. Five negative cases have no payload
+marker and no IPC init. Timeout/cancel durations are bounded lab-fixture values,
+not proof of production deadline policy. Initial fork precedes placement under
+the coordinator budget; no CLONE_INTO_CGROUP/first-instruction placement claim.
+
+Legacy JSON stdin/binary stdout transport retains exact bytes; synthetic %PDF-LAB
+bytes are not a rendered/valid PDF. Task advanced IPC FD3 roundtrips Buffer64KiB,
+BigInt, Map, Uint16Array and ack/error across Python bootstrap, unchanged copied
+per-file-limit launcher and Node exec. Direct-child PID/PGID remains stable; FD4
+remains the inherited fence-file identity before/after exec. Legacy copy carries
+extra lab owner/fence plumbing; this is not product ABI integration acceptance.
+
+Use unchanged createTaskOwnership/queue-resources modules from the cached image;
+relevant src/tasks/runtime sources are identical to candidate. Runtime Python
+copies stay unchanged and match image implementation after newline normalization.
+Synthetic Python writer runs through unchanged task_python.py, which takes a
+shared fence lock and checks runtime identity. No Core logic is copied or run.
+
+Nine ordinary cases wait direct-child close, cgroup populated0 AND a full process-
+group scan including zombies before untrack/refund. Real unchanged governor module
+credits move448→128 and workers1→0 in these COPIED coordinator cycles. Task cancel
+needs2 scan rounds before its group disappears. These are not the six native
+Service governor tests, and no DB reservation/delivery recovery is implied.
+
+For coordinator crash, the namespace-holder stays alive while the copied Service-
+like coordinator is SIGKILLed. Existing ownership helper detects EOF and drains the
+tracked group; writer fence stays locked while live. Root observer waits worker,
+writer AND owner PID reaped before requesting restart. Actual ownership helper opens
+new runtime identity; unchanged Python writer wrapper rejects old runtime exit75
+without executing its stub. New governor starts baseline128; old grant was in the
+killed coordinator heap, not an explicitly refunded persistent DB reservation.
+
+Finalmaximum worker-cgroup charged peak16.27734375MiB for tinytransport stubs;
+not RSS/capacity or actual document readiness. All cases memory events oom0/kill0,
+container exit0, no OOM; all owned worker groups empty/removed,containers stopped,
+protectedruntime identitymetadata exact. No extra privilege/containercapabilities,
+host-rootcgroupbind orDocker socket. No real data/service stop/pull/install/push/
+release. ProtectedCore/Service/C1 hashes unchanged.
+
+### Review result and remaining source decision
+
+Copied proof supports the bounded pre-exec placement approach which preserves the
+existing direct-child/FD contract. It does not authorize production use of the
+file-drivenrootplacement fixture. Before source changes,review the narrow broker
+identity/authentication/peercredentials,allowlisted executable/paths/PIDs,root-FD
+ownership, privilege packaging and broker crash/restart behavior. Helper crash tested
+here meansbootstrap child before GO, not privileged broker daemon death. Keep
+resource limits/common-ancestorwrites unavailable to Service andworkers.
+
+Proposed integration scope for later review: Service-owned asynchronous launcher
+returns a verifiedbound directChild plus existing stdio/advancedIPC/fence FDs;
+legacy/font andtask callsites send input onlyafterbinding. Retain originalfile
+bounds,lease/deadlines,childownership,credit/output/reservation semantics andall
+caps. A missing/forged/late bind fails closed. Actual Service launch wiring andthe
+six governor cases must pass after separately authorized candidate implementation.
+No new source API,type,module ormigration has been implemented in this round.
+
+### Retained failures and coverage refinement
+
+Initial copied legacy attempt stopped beforeGO. Diagnostic attempt confirmed EBADF
+because the fixture inspected FD3 even though legacy had no IPC. Fix only copy to
+inspect FD3 for task; no source assertion/guard weakened. First10-casegreen retained,
+then close acoveragegap by adding process-group/zombie scans before credit refund
+and waiting all tracked PIDs before crash restart. Final 10-case rerun passes. Earlier
+failedruns are not accepted as PASS. Privilegedbroker authenticity, actual native
+Core output,Service/API/database behavior and deployment portability remain open.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-m4-handoff-20261101/
+{verification.json,verify.py,packet.json,parent.mjs,bootstrap.py,payload.mjs,
+native_stub.py,holder.py,remote.py,run.py,runtime/python/*,
+oracle/{receipt.json,production-before.json,production-after.json,out/*},
+attempts/{red1,red2,green1}/*}.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-model20-m4-handoff-20261101/verification-report.html.
+Only existing canonical status document changes; no Work/Evidence registry or
+system/DOCUMENT_MAP/generated projection promotion. Next review a scoped Service
+integration/privilege packet; do not claim M20-4 or full Service readiness yet.
