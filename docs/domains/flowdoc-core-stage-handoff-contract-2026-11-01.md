@@ -1524,3 +1524,102 @@ package/source integrity and verification gaps. Keep all earlier outcomes intact
 No new runtime result is claimed by this plan. Review focus is covered by TP1/2/3:
 empty leaves versus empty cells; cross-group identity; image-only measurement
 omission; model20 assembly; and invalid fixtures mistaken for negative proof.
+
+## 2026-11-01 — TP1/TP2 executed: bounded structural constraint
+
+Owner authorizes execution of the preceding plan, and TP3 only if a natural
+admitted candidate exists. Discovery/Evidence Reviewer then PC Steward; inline
+IDs N/A; PC907c479, Core3e74f98, Servicea572025. No Core/Service/C1/cap changes,
+real data/service stop or push/release/install. Four controls ran ONCE in an
+isolated Oracle/OCI-host container; no Oracle DB connection. TP3 was NOT RUN.
+
+### TP1 closure and scope
+
+Pinned review of23 owner source files closes the reviewed ordinary same-group
+memberRepeat/text-group path: Service storage assembles retained format fragments
+and schemas, revalidates and checks fingerprints; normalization uses the actual
+Core task contract; composeTaskDocument drives the same composeSectionsSteps /
+expandRowsSteps algorithm as other composition paths. Per-member scalar and
+inline content vary, but non-label cell/block source topology comes from one row
+template. The label cell injected only into the first member is excluded.
+
+When a later member has a TextBlock, the same source TextBlock is present in
+the first member. Empty leaves still cause measureText to emit a positive blank
+line; native table quantization does not remove it. Oversized auto-format image
+omission removes image measurements only and is disabled for the fixed frame.
+Group validation prevents cell-repeat-owned/Area children and label keepStart
+disabling. A prior empty GROUP fallback or already-painted continuation is not
+an initially measurement-empty member in the SAME group.
+
+This supports a bounded structural constraint for the reviewed successful
+memberRepeat/text path. It is not universal dead-code proof for pendingLabel,
+every template/API/continuation or every native backend. No new measurement or
+renderer result is claimed: positive blank-line behavior has source evidence
+plus the prior model19 runtime control, not a fresh rendering run here.
+
+### TP2 results
+
+| Control | Actual pinned-runtime observation |
+| --- | --- |
+| repeat-outside | Valid model19 template; public Core task normalize/compose returns two FIRST/NEXT blocks with repeatId per-cell and itemIndex0/1. Real pure Service decompose/assemble preserves validated fingerprint |
+| repeat-inside | The independently valid group baseline plus the same valid repeat/schema scaffold rejects with3 INVALID_TEMPLATE issues: rowGroups[0], memberLabelText.bindings, emptyLabelText.bindings. No composition attempted; all issues retained |
+| different-groups | Service pure storage roundtrip and Core task composition succeed. Equal labelsG still have distinct groupIndex0/1; first group is empty/memberCount0 with fallback, next is nonempty/memberCount1 with NEXT. Not a same-group witness |
+| model20 | Genuine model20 sectionKey/instanceKey input normalizes with flowdoc-task-input/2 and composes. First TextBlock remains with zero leaves; second TextBlock has NEXT, same block source ID, itemIndex0/1. Actual Service decompose throws INVALID_DATA at nodeModelVersion |
+
+The model20 result exposes a concrete boundary: Core validateTemplate admits
+18/19/20, but Service templates/assembly.ts:14,31 admits only18/19 for its stored
+record. Runtime calls the unchanged compiled pure function; no DB or mocked
+registration success. Core composition PASS does not mean Service registration
+PASS. Model20 storage integration is BLOCKED on the current capability, not an
+unexpected harness/conversion failure. Whether Service SHOULD persist20 is a
+separate product decision; this proof does not classify the boundary as a bug.
+
+TP2 uses actual Service JSON reader/payload projection and pure assembly
+functions, with a labelled lab normalization adapter. It does NOT invoke
+registerTemplate/loadTemplate DB transactions, normalizeStoredTask, renderTask,
+render-child, HTTP, queues, reservations, ownership fencing or allocator.
+Consumer after producer exit loads no Core and verifies the entire captured
+facts tree, including admitted composeTaskDocument Result, through unchanged V2.
+No synthetic ResolvedDocument edits or artificial measurement/native runtime.
+
+### Resources, integrity and disposition
+
+Four controls pass their declared assertions; zero genuine target witnesses.
+**TP3 SKIPPED_NO_NATURAL_ADMITTED_CANDIDATE**, as planned; target remains
+**NOT_OBSERVED_ON_REVIEWED_SERVICE_TEMPLATE_SURFACE**. No worker pair, height
+sweep, renderer retry or product repair was used to force a positive result.
+Earlier direct-Core positive evidence and original8PASS/oneNOT_OBSERVED remain
+their own outcomes; these four controls are not added to those case counts.
+
+Entire admission/composition bundle peak41.23046875MiB under512MiB memory and
+memory+swap, CPU1, pids96, networknone, readonly root/input and64MiB tmpfs. All8
+producer/consumer helpers exit0, namespace clears, oom/oom_kill remain0. No native
+render worker was launched; this peak is NOT renderer/UAT/SRS/stage-memory proof.
+No runtime failure, timeout, retry or harness-code repair was needed.
+
+Source archive397 Service files and195 compiled/runtime files match retained
+image07c7190; Core vendor pin remains ed876f4d... and all250 package files stay
+byte-identical. Reviewed23 source hashes, protected Core/Service HEAD/clean state
+and C1's original two dirty file hashes are unchanged. Reused image/package,
+no build/pull/install. Lab container stopped; real-runtime identity metadata
+stays stable, with no real SQL/API/log/storage reads.
+
+One inherited explanatory string in as-run packet.scopeLimits[2] incorrectly
+describes the preceding worker/post-IPC capture. Preserve that packet and bind
+packet-clarifications.json to its SHA: THIS run captures a lab facts object with
+the real Core COMPOSITION Result, not a renderer post-IPC or engine Result.
+Producer/consumer code and case notices already have the correct scope; the
+string is not an execution input. No runtime result was changed or rerun.
+
+Disposition: TP1/TP2 bounded constraint review/controls complete; TP3 deliberately
+skipped. Preserve optional cursor fields. Model20 storage support or per-member
+topology would need a separate authorized product proposal; other schema,
+provenance/checkpoint, whole-stage memory and Service/Word adoption gates stay
+OPEN. No further proof is required for this round's accepted bounded scope.
+One fresh-context read-only final review of the harness, results, source
+constraints, two-document diff and report found no Important evidence/claim defect.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/service-template-representability-20261101-r1/
+{source-closure.json,packet.json,packet-clarifications.json,verification.json,
+oracle/receipt.json,oracle/out-schema/suite.json,oracle/out-schema/cases/<name>/*}.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-template-representability-20261101/verification-report.html.

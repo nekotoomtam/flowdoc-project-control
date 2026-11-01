@@ -578,3 +578,12 @@ image-omission paths before more workload. Budget:4 admission/composition
 controls and only2 native runs if a natural admitted candidate exists; otherwise
 record the bounded structural limitation. This is planning only, with unchanged
 512MiB per worker/caps and no new Oracle workload or product change.
+
+[TP1/TP2 bounded result](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--tp1tp2-executed-bounded-structural-constraint)
+closes the reviewed ordinary memberRepeat/text-group constraint with4 controls:
+standalone cell-repeat works, group-owned repeat rejects, empty/nonempty groups
+retain separate identities, and model20 Core composition retains the first
+TextBlock while Service storage rejects that model. No natural candidate, so
+TP3 is skipped; Service target remains NOT_OBSERVED. Admission/composition bundle
+peak41.23046875MiB under512MiB, no OOM; not a native-render memory result. No product,
+cap or real-data/service/push/release/install change; other adoption gates stay open.
