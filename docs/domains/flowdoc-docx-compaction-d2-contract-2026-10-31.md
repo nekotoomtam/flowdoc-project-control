@@ -751,3 +751,99 @@ C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/.
 Final remote project:flowdoc-corelive-8f5368b0def0; result:verification.json.
 Report:
 C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-core-live-20261101/verification-report.html.
+
+## 2026-11-01 — Memory ownership and diagnostic ZIP review: complete, causal proof open
+
+Authority Boundary: owner requested review BEFORE another experiment. Inline
+Evidence Reviewer / Planning Partner, then Project Control Steward; IDs N/A,
+routine risk. This section reviews existing sealed Oracle evidence and unchanged
+implementation; it does NOT authorize a harness repair, product port or runtime
+retry. No Oracle/SSH/container/Word execution this review, no Core/Service edits,
+real-data access/service stop, push/release/install. The lab contract remains
+512MiB memory AND total memory/swap,1CPU, default Node heap and unchanged
+50000XML/10000drawings/32MiB caps, SRS target<=49000.
+
+Observed heapUsed from the existing UAT logs (MiB, NOT retained-owner sizes):
+
+| Checkpoint | Standalone copy | Live Core with wrapper | Difference |
+| --- | --- | --- | --- |
+| Base planning starts |15.51|98.10|82.59 |
+| Raw document DOM parsed |155.70|241.53|85.83 |
+| Width planning ends |156.27|242.64|86.38 |
+
+Both logs report Node24.21.0 and V8 heap259MiB. After width planning, only about
+16.36MiB remains below that heap limit in the failed process; container512MiB is
+not a512MiB JavaScript heap. The observed parse-stage increases are140.19/143.43
+MiB, including allocation/collection effects, not exact DOM retained sizes. The
+same fixture node counts and document.xml byte lengths match across runs
+(UAT3526613/SRS5183340bytes), but their document.xml hashes differ. These are
+distinct workloads, NOT a controlled diagnostic-ZIP A/B comparison. Do not
+attribute the82.59MiB starting difference to ZIP alone.
+
+Ownership/lifetime traced from implementation (Core paths at3e74f98; lab paths
+below refer to the sealed docx-core-live-20261101 payload):
+
+| Layer / evidence | What overlaps at the reduction boundary | Review conclusion |
+| --- | --- | --- |
+| Lab worker.mjs:11-21,32 | Raw payload/template, asset lookup maps; a refs Map owns prepared image Buffers and provider.open closes over it | Explicit harness references; reachable-byte totals unmeasured. normalized is already reset at17, so do not claim the normalized string is deliberately retained. |
+| Core src/docx/engine.ts:134-176; profile.ts:435-444 | Pinned document, image preparation, preflight capsule, cloned intent document/texts/tables; intentOrigins maps live intent to preflight, capsules maps that live preflight to owned resources/document | WeakMap does not free the associated values while their keys remain live. Validation/ownership snapshots cannot be removed to obtain a pass. |
+| Core writer.ts:115-135,186-236; sections.ts return value | Native built.sections/footnotes plus receipt data; packed bytes and loaded JSZip; intent and source-layout guides are used again for receipts after reduction | Code reference paths support overlapping native/package/XML lifetimes. Exact heap ownership still requires runtime reachability evidence; lexical scope alone is not a retained-size measurement. |
+| Lab source-wrapper.mjs:18-20 | An extra generateAsync nodebuffer/DEFLATE runs before reduceLive; raw diagnostic ZIP is3020331bytes(2.88MiB) | Confirmed extra work, not a2.88MiB heap-cost estimate or a proven memory leak. |
+| Lab reduce-live.mjs:8-12; planner.mjs:48-69 | Part census, raw XML string and full DOM; table margin/border planning allocates arrays/plain property trees/JSON signatures after the width checkpoint | The last successful checkpoint is width planning; no cell-defaults-complete event. Exact failing allocation/owner is unverified. |
+| Lab reduce-live.mjs:40-46; worker.mjs:32-34 | Replacement strings, reparse/final ZIP and output chunk accumulation would create later peaks | NOT causes of this observed failure: these stages/sink writes were never reached. They remain later acceptance concerns. |
+
+ZIP review against the archived JSZip3.10.2 implementation:
+
+- lib/object.js:369 calls StreamHelper.accumulate; stream/StreamHelper.js:81-103
+  collects chunks and Buffer.concat creates the completed output. Default
+  streamFiles=false(object.js:320), so generate/ZipFileWorker.js also buffers
+  the current entry while constructing headers. Compression, chunks, XML data
+  and the final Buffer can overlap transiently; file size is not the peak.
+- StreamHelper clears its chunk array at end; GenericWorker.cleanUp clears
+  listener state and DataWorker.cleanUp sets data=null. The wrapper diagnostic
+  local Buffer loses its explicit reference when that function returns. This
+  is evidence AGAINST asserting a permanent diagnostic-Buffer leak from code
+  alone. The old comment "released here" means scope completion, not proof of
+  immediate GC or RSS/heap reclamation. No before/after diagnostic checkpoint or
+  heap ownership sample exists, so its exact contribution remains UNVERIFIED.
+- ZipObject._data retains its original string/promise or CompressedObject;
+  generateAsync does not replace it with the newly generated diagnostic ZIP.
+  CompressedObject.compressedContent can reference slices of the original
+  packed Buffer(NodeBufferReader.js:13-16). Clearing only writer bytes would
+  not guarantee release of aliased backing storage. Do not add overlapping
+  Buffer/slice lengths as if they were distinct allocations.
+- process.memoryUsage arrayBuffers is included in external; neither may be
+  added again to RSS as unique ownership. Cgroup peak/RSS/heapUsed have different
+  accounting. Docker OOMKilled=false remains compatible with fatal V8 heap OOM.
+
+Recommended NEXT proof, not performed or authorized by this review:
+
+1. Change ONLY the lab reduced-case diagnostic ZIP generation to metadata-only,
+   keeping Core/intent/native sections/font/image ownership and all other
+   harness state unchanged. Add scalar checkpoints immediately before/after
+   that boundary and before DOM parse. First UAT only, same sealed inputs,
+   default heap and512MiB/1CPU container/caps; no forced GC/heap snapshot or tuning.
+   Do not simultaneously scope away fixture objects, spool images or add new
+   raw-part capture: that would confound this hypothesis. If OOM, stop and return
+   to review; if PASS, that establishes only the tested no-diagnostic variant.
+2. Fixture/setup lifetime cleanup and a file-backed prepared-image provider are
+   separate later variables if justified. Existing Service render-child.ts
+   closes its reader/task at143-145 and spools prepared bytes at77-83, opening
+   file-backed image chunks at236-239. Reuse those lifecycle semantics in a lab
+   harness; do not delete Core snapshots/resources or assume unchanged results.
+3. Only after memory feasibility, evaluate bounded SAME-RUN raw-part capture
+   separately. Save one part at a time with hashes/counts, reconstruct the
+   diagnostic baseline ZIP outside the measured process, then independently
+   verify every XML/rels/resource, CRC and relationship. This avoids a second
+   full ZIP build in the critical path but introduces I/O/part-buffer overhead
+   that must itself pass the same cap. Old baselines cannot silently replace
+   this evidence. Final guard/byte caps/receipt and Word prerequisites remain.
+
+Confirmed: extra ZIP work and overlapping reference paths; prior instrumented
+OOM. Probable: overlapping Core/native state plus DOM limits headroom. Unverified:
+per-owner retained bytes, diagnostic ZIP causal share, no-ZIP UAT/SRS runtime
+and Word fidelity. No fix/512MiB runtime PASS is claimed. R1a/R1b/R1c/R2 remain
+open. Source/archive/input hashes and current Core/Service clean HEADs rechecked.
+Offline census/review output and reproducible analysis:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/memory-review/review.json
+and analyze.py in that directory. The prior failure packet/report stays immutable.

@@ -4759,3 +4759,19 @@ edits, installs, real-data access/service stop, push/release/install.
 
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/verification.json.
 Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-core-live-20261101/verification-report.html.
+
+### 2026-11-01 — Memory/diagnostic ZIP review complete; runtime cause still open
+
+Owner requested review first. Existing sealed evidence/code inspected offline;
+no Oracle rerun, Core/Service edits or real-service/data action. The D2 contract's
+new "Memory ownership and diagnostic ZIP review" section records reference paths,
+JSZip accumulation/cleanup and the proposed controlled follow-up. UAT planning
+starts at15.51MiB heap in the copy run versus98.10MiB in live Core; after parse
+155.70/241.53MiB of259MiB heap. These distinct workloads are NOT a ZIP-only A/B.
+Extra diagnostic ZIP is2.88MiB on disk; its actual memory/causal contribution is
+unverified, and JSZip cleanup prevents calling this a confirmed permanent leak.
+First proposed proof removes ONLY that diagnostic ZIP step, retaining other
+state; image spooling/setup lifetime changes and same-run Word baseline capture
+are separate later variables. No implementation/retry authorized this review.
+512MiB/default heap/caps unchanged; no pass for no-ZIP Core/SRS/Word; R1a-R2 open.
+Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-live-20261101/memory-review/review.json.
