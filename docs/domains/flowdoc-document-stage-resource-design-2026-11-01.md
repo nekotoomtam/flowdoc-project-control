@@ -443,3 +443,20 @@ be unsupported new restrictions. Codec exactness, complete real producer/
 consumer closure, ownership mapping, error-order compatibility, bounded resource
 proof and adoption remain OPEN. This round runs no Oracle/generation/OOM test
 and changes no Core/Service/C1/policy/cap/real-data/service/push/release/install.
+
+## 2026-11-01 — Copy-only codec matrix after contract review
+
+[Core contract codec addendum](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--copy-only-codec-proof-on-oracle)
+records corrected R2 matrix 57/57 PASS in Oracle: exact tested data semantics,
+all 664 prior UAT adaptations, large/chunked text, malformed input and aborts.
+Peak 95.3359375 MiB within the same 512-MiB worker, no OOM, no heap/GC tuning.
+An independent reviewer found leading-U+FEFF loss in the original lab codec;
+R1 results/code are preserved, an exact-old-codec RED control reproduces it,
+and corrected key/value/fragment cases pass. No Core/Service change follows.
+
+UAT typed wire 1061712 bytes exceeds 1 MiB: the old demonstrator's sidecar limit
+is not a generic product requirement. Complete Core schemas/private producer
+closure, universal key/index/depth memory bounds and actual Service adoption
+remain open. No rendering/XML/SRS/Word/pressure test or real data/service/
+push/release/install action in this round. Evidence is linked by the contract;
+no system map or previous generation acceptance is promoted.
