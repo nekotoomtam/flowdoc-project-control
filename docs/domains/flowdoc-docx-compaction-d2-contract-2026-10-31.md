@@ -1,8 +1,8 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **LIVE CORE SPIKE FAILED WITH NODE HEAP OOM; COPY PROOF RETAINED; WORD PENDING**,
-not Core implementation authorization or Core runtime acceptance. Single-room execution
+Partner / Cross-Repo Boundary Reviewer. Status **W1 UAT RUNTIME PASSED IN 512 MiB; SRS/WORD/PACKAGE ACCEPTANCE OPEN**,
+not an adopted Core compaction implementation or package-wide runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
 The queue/concurrency record retains status/history and D1 evidence authority.
@@ -1030,3 +1030,83 @@ and one full UAT, stop on failure; no sweeps or full-system suite. This review
 implements/runs NONE of them. R1a-R2/SRS/Word remain open. Evidence/input hash
 manifest and last-use classification:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/lifetime-review/review.json.
+
+## 2026-11-01 — W1 executed: setup equivalence and one live UAT bounded PASS
+
+Authority Boundary: owner explicitly authorized W1, equivalence first then one
+UAT in the isolated Oracle/OCI Docker lab, unchanged512MiB/caps and stop on OOM.
+Inline lab implementation/verification outside product repos; Evidence Reviewer
+then Project Control Steward; IDs N/A, routine risk. No Core/Service edit,
+real-data/DB/API/storage access, real-service stop, push/release/install or
+automatic W2/C1/C2/SRS/Word action. Previous failures/review remain immutable.
+
+Exactly the allowed runtime delta: worker.mjs changes and fixture.mjs plus
+buffer-provider.mjs are added. The remaining346 original runtime entries, including
+source-wrapper/reducer/planner/advanced/loader/dependencies/inputs, match the
+sealed no-ZIP base. The setup statement block is reused verbatim inside
+prepareFixture; returned fields are only document/engine/images/refs/counters.
+Provider code is a separate module that captures only refs/images; image Buffers
+are retained and read as before, not spooled or cleared. The protocol literal
+in this portable lab helper is explicitly checked against actual Core's public
+PDF_STREAM_CONTRACT in the control. Core package SHAed876f4/image106a0c8 remain.
+
+Portable provider test: intentional RED for missing helper, then GREEN1/1 for
+repeatable64KiB reads and retained Buffer identity. Windows Node24.15 local
+test is transport evidence only. The required Linux/Oracle control then ran in
+its own512MiB container, using fresh SEQUENTIAL baseline/candidate Node children:
+
+- identical composed-document digest, actual createDocxEngine input-font
+  metadata and prepared-image metadata/content hashes;
+- 189image placements,136variants,196prepared content/alpha refs;392repeat reads
+  all match byte length/hash/chunk contract after setup returns;
+- baseline setup is extracted from the sealed old worker; both control-only
+  modules record actual font-input metadata immediately before the unchanged
+  createDocxEngine call. Candidate control helper differs from actual helper
+  ONLY by that observation. Neither observation nor old setup objects enter
+  the later measured UAT process. Control peak150.13MiB, exit0.
+
+One FRESH full-UAT container then runs the unobserved W1 helper and unchanged
+real public Core generation. Node24.21.0, V8 heap259MiB, no NODE_OPTIONS;
+512MiB memory AND total memory/swap,1CPU, network none, readonly inputs/rootfs,
+original64MiB temp mount. No forced GC, heap snapshot, resource tuning or retry.
+
+| Full UAT result | Observed evidence |
+| --- | --- |
+| Process |exit0, OOMKilled=false, no fatal OOM |
+| Whole-container cgroup peak |437.54MiB |
+| XML/rels nodes |110767 ->36631;13369reserve below original50000cap |
+| Drawing / ZIP budget |190drawings below10000;2968247bytes below32MiB |
+| Plan/replay validation |9serialized replacements and9reparses, full plan applies |
+| Original Core output path |final guard accepts;46sink chunks,0abort; receipt hash/bytes match |
+| Boundary/integrity |no diagnostic ZIP; Core dist/source/HEAD and inputs unchanged; zero owned running containers; real runtime metadata stable |
+
+Independent Python XML parser, ZIP CRC and all internal relationship checks
+pass. The existing independent cascade oracle additionally compares this output
+with the older same-input raw Core diagnostic: protected structure, paragraph/
+run/mark cascades and cell formatting pass across all7original story parts
+(removed footer mapped to its retained same-section partner); media parts are
+byte-identical. This is a CROSS-RUN reference, not a same-run W1 raw baseline,
+native Word render/edit/navigation proof or full embedded-font equivalence.
+Actual source-font input identity matches in the separate setup control.
+Public artifact remains wordVerified=false. No exclusions were added to force
+the reference comparison to pass.
+
+Important interpretation: W1 has ONE bounded successful UAT, not a proven
+permanent OOM repair or universal/repeatable512MiB envelope. HeapUsed at planning/
+parsed/width checkpoints is107.68/240.19/242.23MiB versus the previous failed
+no-ZIP run99.17/238.91/238.92MiB. The checkpoints are NOT uniformly lower. Total
+peak is also not a measured saving: this run reaches serialization/output
+stages the earlier failure never reached. No retained-owner byte profile or
+causal GC measurement proves how many MiB the setup-scope change reclaimed.
+
+W1 setup-equivalence and this UAT execution proof pass; R1a/R1b/R1c/R2 overall
+remain OPEN. SRS with W1, same-run baseline/native Word, Core TypeScript adapter/
+packed product/Service adoption, cancellation/concurrency/repeats/growth remain
+unverified. Stop here per the agreed budget; further work needs its own bounded
+authorization. No new product package, plugin pin, Work/registry or map promoted.
+
+Durable evidence, exact packets/diffs/control probes/logs/receipts/validators:
+C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-lifetime-l1-20261101/.
+Result:verification.json; output-check.json; local test-provider.log; immutable
+source/result archives. Remote project:flowdoc-w1-4eab0d1cc5ba. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-20261101/verification-report.html.

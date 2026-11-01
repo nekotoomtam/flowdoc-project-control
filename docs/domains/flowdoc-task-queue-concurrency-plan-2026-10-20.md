@@ -4815,3 +4815,31 @@ C1/C2 Core packing/font scope are separate deferred options; Core edits require
 fresh explicit authorization. No auto-fallback, resource increase, real-data/
 service lifecycle/push/release/install action. R1a-R2/SRS/Word remain open.
 Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-nozip-20261101/lifetime-review/review.json.
+
+### 2026-11-01 — W1 setup equivalence and one full UAT PASS in512MiB
+
+Owner authorized W1, control first then UAT; stop on OOM. Runtime delta is ONLY
+worker.mjs plus fixture.mjs/buffer-provider.mjs; no Core/Service/reducer/resource/
+input/limit/sink/image-residency change. Original setup block reused verbatim;
+provider is outside setup lexical scope. Portable test RED->GREEN1/1; separate
+Oracle control uses fresh baseline/candidate children, actual font-input
+observation only in control. Document/font/image identities match;189placements,
+136variants,196prepared refs and392repeat reads pass. No control objects enter
+the measured generation process.
+
+One fresh public-Core UAT completes with exit0/no OOM, peak437.54MiB, XML
+110767->36631,190drawings,2968247bytes,9serialize+9reparse,46sink chunks,0abort
+and matching receipt. Same Node24.21/default259MiB heap,512MiB memory AND total
+memory/swap,1CPU, original caps/network/readonly/temp restrictions. Output XML/
+CRC/relationships pass; scoped cross-run reference model passes7story parts
+and media equality, NOT same-run Word/font fidelity. Source/inputs/Core dist/
+Core3e74f98/Servicea572025 unchanged, real runtime metadata stable,0owned running
+containers. No real-data/service stop/push/release/install action.
+
+This is bounded W1 UAT PASS, not permanent OOM repair/repeatability: checkpoint
+heap is NOT uniformly lower than the previous failed no-ZIP case; no exact GC/
+retained-byte savings proven. D2's executed W1 section owns details. R1a-R2,
+SRS/W1, same-run baseline/Word, product adapter/package/Service and concurrency/
+cancellation/growth remain open. Stop; no W2/C1/C2/SRS/Word automatic follow-up.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-wrapper-lifetime-l1-20261101/verification.json.
+Report: C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-wrapper-w1-20261101/verification-report.html.
