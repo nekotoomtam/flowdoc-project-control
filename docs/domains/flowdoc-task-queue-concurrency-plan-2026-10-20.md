@@ -4940,3 +4940,27 @@ M1runtime hashes verified unchanged. No real-data/service stop/push/release/
 install. C1 needs later explicit Core-candidate authorization; no loader/private
 mutation bypass. M1 runtime FAIL and R1a-R2/Word/product-adoption gaps retained.
 Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-dom-ownership-review-20261101/review.json.
+
+### 2026-11-01 — Isolated C1 implemented; required DOCX gate failed, STOP
+
+Owner authorized C1 candidate. Core worktree docx-c1-20261101 on branch
+codex/docx-c1-20261101/base3e74f98 changes only writer.ts/writer.test.ts. Private
+native-package helper returns archive/original bytes/change flag/plain receipt
+facts, preserving other Core/Service/limits contracts. Expected handoff RED then
+writer35/35GREEN; build PASS. Local DOCX247:209PASS/14FAIL/24SKIP,35included.
+
+Three failing suites(4baselineRules/3geometry/7metricPairs) select Linux-native
+shaper absent from this Windows checkout. Prerequisite absence confirmed; no
+paired clean-baseline/native-platform run proves failures pre-existing or C1
+free of regression. Required suite is NOT PASS. Stop before full parity/packed
+consumer/Oracle UAT/SRS; zero Oracle connection/container runs this round.
+No C1 memory/Word/fidelity result; M1 remains latest actual SRS failure.
+
+Candidate tar derived pinned vendor changes only dist/docx/writer.js; package
+not installed/published. Keep dirty UNCOMMITTED/UNMERGED candidate and durable
+patch/source copies; required checks failed. Protected Core/Service sources/
+HEAD clean/unchanged. No real-data/service stop/push/release/install or tuning.
+Next: review Linux-native test prerequisite using existing lab resources before
+parity/consumer and then UAT/SRS; do not skip failed/pending tests. D2 owns detail.
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-c1-20261101/verification.json.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-20261101/verification-report.html.

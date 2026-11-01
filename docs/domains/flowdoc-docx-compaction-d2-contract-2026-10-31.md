@@ -1,7 +1,7 @@
 # FlowDoc DOCX compaction D2 design and implementation contract
 
 Authority Boundary: Project Control canonical D2 design, owned by the Planning
-Partner / Cross-Repo Boundary Reviewer. Status **W1 UAT BOUNDED PASS; SRS HEAP OOM IN 512 MiB; WORD/PACKAGE ACCEPTANCE OPEN**,
+Partner / Cross-Repo Boundary Reviewer. Status **C1 CANDIDATE STOPPED AT DOCX PREREQUISITES; WORD/PACKAGE ACCEPTANCE OPEN**,
 not an adopted Core compaction implementation or package-wide runtime acceptance. Single-room execution
 IDs are not applicable. Core owns prospective code; Service is a later consumer.
 This document is the narrow authority for the D2 mechanism and R1 interfaces.
@@ -1566,3 +1566,80 @@ Read-only source hashes, structural assertions and M1 evidence references:
 C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-dom-ownership-review-20261101/review.json.
 No implementation, Oracle test or memory-saving result is contained in that
 inventory. The M1 fatal log remains the latest actual SRS execution evidence.
+
+## 2026-11-01 — C1 implemented in isolated candidate; DOCX gate FAIL, STOP
+
+Authority Boundary: owner explicitly authorized Core C1 candidate implementation,
+equivalence/failure checks first, then UAT before SRS at512MiB/default heap/caps,
+stop on OOM. The approved C1 plan also stops on prerequisite/check failure.
+Inline Core implementer / Evidence Reviewer, then PC Steward; IDs N/A. No real
+separate WORK or map promotion. This entry supersedes only the proposal's
+not-yet-authorized status, not previous W1/M1 evidence or product acceptance.
+
+Candidate: C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/docx-c1-20261101,
+branch codex/docx-c1-20261101, base3e74f98. Managed worktree creation rejected
+Core sourceRoot outside this chat's allowed Project Control roots; Git worktree
+fallback created the explicitly requested isolated Core candidate. No current
+checkout was switched. Existing dependencies were copied from the prior local
+Core lab, not installed/downloaded or shared for mutable test caches.
+
+Changed ONLY src/docx/writer.ts and tests/docx/writer.test.ts. Module-private
+prepareNativePackage owns native sections/fonts/TOC construction, packing,
+ZIP load, ending-area repair and font correction in the original order. Its
+explicit return is ZIP/originalBytes/fontSignatureChanged/plain receipt facts;
+writeDocx uses that projection after source-XML handoff, not the native built
+container. Mutable destructuring binds originalBytes directly as bytes, avoiding
+an extra persistent originalBytes alias after final repacking. Genuine intent,
+engine/profile/resources/source proofs/XML reducer/limits/sink contract unchanged.
+This establishes the intended source boundary, not proven GC savings/SRS fit.
+
+Regression control first: original writer failed the handoff test with
+Native build container read after source handoff (expected RED). After C1:
+npm run build PASS; writer.test.ts35/35 PASS. New checks cover native-container
+late reads, pack/ending/font failures with one cleanup/no staged output,
+cancellation after preparation, unchanged-byte fast path, commit failure and
+cleanup-failure issue preservation. Existing writer tests cover invalid options,
+budgets, image/mutation pinning and other cancellation/sink failures. The fast
+path check simulates no post-pack changes; it is NOT old/new full package parity.
+
+Required local DOCX suite then FAILED:247tests,209PASS,14FAIL,24SKIP;
+30/33suite files pass. Writer35 are INCLUDED in209, not additional. Failures:
+baselineRules.test.ts4,geometry.test.ts3,metricPairs.test.ts7. All three files
+explicitly select runtime/linux-x64/flowdoc-rustybuzz-smoke; that path does NOT
+exist in the Windows candidate. Observed fallbacks include metric-proof-
+unavailable/retain-native instead of expected measured spacing/geometry.
+The native prerequisite gap is confirmed, but no clean-baseline paired run on
+the correct platform was performed. Do NOT label all14 failures pre-existing,
+claim no C1 regression, convert24skips to PASS or narrow the required suite to
+the35passing writer tests. Starting the full suite on this Windows checkout did
+not supply its Linux-native prerequisite; it cannot settle full native behavior.
+
+STOP before the next gate, as planned. No old/new package-part/receipt parity
+control, existing Linux packed consumer, Oracle UAT, Oracle SRS, C1 memory/OOM
+proof or Word/output fidelity run. There were ZERO Oracle connections/container
+runs in this round. The latest actual SRS remains M1 exit134, NOT a C1 result.
+No retry, auto-fallback, unrelated product repair, cap/heap/resource increase or
+prerequisite installation was performed. Next work must resolve/review the
+Linux-native verification prerequisite with existing lab runtime/dependencies
+before resuming parity/consumer, then UAT/SRS. An inapplicable Windows result
+must not be rebranded as a passing prerequisite.
+
+An UNVERIFIED package candidate was assembled from pinned0.5.2vendorSHAed876f4
+with only dist/docx/writer.js changed; every other package file, including native
+assets, is unchanged. Tar SHA3be3f511e6a58798504a7b486b031a48ffd708f2707a3422c22ffc77cae67aac.
+No package installation/publication or Service/plugin pin change. Candidate is
+INTENTIONALLY UNCOMMITTED, DIRTY and UNMERGED because required checks failed;
+retain it, never clean it up as completed. Durable binary patch/source copies/
+status/hash manifest exist outside the checkout for recovery. Core development
+3e74f98 and Servicea572025 remain clean, source/hash/HEAD unchanged.
+
+No real data/DB/API/storage access, real-service stop, push/release/install.
+512MiB/default259MiB heap,50000XML/10000drawings/32MiB and SRS<=49000target
+remain unchanged; none has a new passing runtime result here. C1 completion/
+memory benefit, parity/consumer and native Word/product adoption stay OPEN.
+Passing Project Control documentation checks validate this status only.
+
+Evidence: C:/Users/nekot/Documents/FlowDoc-recovery/docx-core-c1-20261101/.
+Files:docx-tests.json,verification.json,candidate-manifest.json,candidate.patch,
+candidate-status.txt,core-c1-candidate.tgz and preserved source copies. Report:
+C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-core-c1-20261101/verification-report.html.
