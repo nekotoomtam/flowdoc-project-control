@@ -457,7 +457,7 @@ it does not add cases to the prior 10/170 runtime results.
 | --- | --- |
 | Structural data grammar; R2 schema.mjs shape/array helpers | Dense ordinary arrays with only indices/length; explicit object prototype/property-descriptor rules, no symbols/accessors/extra array properties, own-key/presence/order preservation. Test both decoder rejection and direct validator entry; codec rejection does not prove schema entry rejection |
 | Strings; R2 str helper versus docx/resources.ts:38-50 and fonts.ts:151 | V1 isWellFormed restriction conflicts with three reachable real Core receipts. Separate LAB V2 below preserves raw UTF-16 in 66 codec controls and 5 fresh Core transfers; reproduced gap closed in V2 only. Full branch/schema acceptance remains OPEN. No replacement/normalization or stricter Core admission |
-| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Cover text/image/node with required kind/nodeId/sourceNodeId and every optional attribution/cursor field, own-undefined versus absent included. Text does NOT universally require lineIndex: pending-label text has none. Cursor kind, diagnostic reason and Issue.reason are distinct domains; do not apply the four FormatStop reasons to all diagnostics |
+| FormatCursor / diagnostic; result.ts:1-3, layout/formatLayout.ts:3-14, documentFlow.ts:261,357-362, cellTableFlow.ts:87-97 | Text/image/node structural controls passed earlier. New dated table/group proof passes eight real PDF cases against a pre-layout TEST oracle; pending-label no-lineIndex target remains NOT_OBSERVED, not a passing runtime branch. Preserve source-declared optional fields. Cursor kind/diagnostic reason/Issue.reason and full semantic coverage remain distinct/open |
 | Format instances; composition/validateFormatInstances.ts:11-30 | Validate fixed/auto sizing, nonnegative safe indices, fixed rootStartIndex, root identity/order/ownership and omission boundaries. Consumer must use minimal Core-emitted lineage or sealed package evidence, not reload the original ResolvedDocument graph. Decide the minimal needed lineage before exporter implementation |
 | Resources / PDF usage; docx/resources.ts:38-91, fonts.ts:151, pdf/createPdfEngine.ts:104 | Distinguish font, PNG (decoded RGBA hash) and JPEG identities; font weight/style/license/release/native family and PDF selection/license order. Check duplicate identity policy per actual producer namespace, positive dimensions/product limits and binding to authorized original/derived resources. Add genuine image/library/schemaVersion2 controls; the small PDF case does not cover them |
 | Sections, bands, cells and quantities; docx/sections.ts:149-163, bands.ts:51,75,108 | Complete literal policy/shape/reason families from emitter branches and source formulas; units/ranges per field, not blanket nonnegative constraints (deltas/offsets may be signed). Preserve six-key reserved/native margins versus four-key source/estimated margins, page-type estimates and false verification flags. Add inheritance/omission/header/footer/merged-cell controls and source-based consistency checks |
@@ -986,3 +986,108 @@ oracle/out-schema/matrix.json,suite.json and core/<case>/facts.bin/producer-noti
 Codec/schema sources:codec.mjs,schema-v2.mjs; original V1 references retained.
 Original failed run:C:/Users/nekot/Documents/FlowDoc-recovery/core-codec-v2-20261101-r1.
 Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-codec-v2-20261101/verification-report.html.
+
+## 2026-11-01 — Table/group/pending-text cursor proof: PARTIAL
+
+Owner authorizes cursor schema proof on copies in isolated Oracle lab, 512 MiB
+per worker and unchanged caps. Evidence Reviewer then PC Steward; inline IDs
+N/A, medium/routine. Base PC 05bd1f4, Core 3e74f98/Service a572025, unchanged C1
+package/source candidate. Scope: external lab verification files, this contract
+and generic-design link. Proof budget: nine small genuine PDF cases, live V2
+transport after producer exit, pre-layout source test oracle, bounded negative
+mutations, one fresh review and one fixture repair. Two previously unrun cases
+completed separately after a golden assertion failed; candidate scripts stayed
+unchanged and the original FAIL remains. No Core/Service/C1/codec edits, fake
+runtime/helper cursor substitution, real data/API/DB/storage access, service
+stop, UAT/SRS/Word or push/release/install. No Work/map promotion.
+
+**PARTIAL_TABLE_GROUP_CURSOR_PASS_PENDING_LABEL_UNVERIFIED:** eight complete
+case PASS; one completed generation with schema-valid facts but original target
+assertion FAILED / NOT_OBSERVED. Do not summarize as 9/9 or full schema PASS.
+
+### Confirmed bounded results
+
+Every producer uses real validateTemplate,prepareGeneration,composeDocument,
+createPdfEngine.generatePdfTo and pinned bundled resources; no fake TextRuntime,
+private store reconstruction or synthetic call to formatCursor. Existing C1
+package is unchanged (250 files, tar SHA256
+3be3f511e6a58798504a7b486b031a48ffd708f2707a3422c22ffc77cae67aac).
+
+| Passing case | Actual evidence |
+| --- | --- |
+| table-split | Text cursor names table/row/cell and first remaining lineIndex 2 |
+| table-protected | Protected row yields first pending lineIndex 0 with correct cell ownership |
+| table-rowspan | Two simultaneously unfinished cells: source text line 4 and ctext line 2, distinct correct cell/row relationships |
+| group-members | companies groupIndex 0,itemIndex 2,lineIndex 0 and correct source/format attribution |
+| group-keep-start | First group remains identified at its protected start |
+| group-later | Correct later groupIndex 1; no fallback to first group's identity |
+| label-members | Actual labelled-group member remainder itemIndex 2,lineIndex 0, correct cell and group |
+| multi-instance | Same group names in two Format invocations keep separate node/format identities and areaEntryIndex 0/1 |
+
+Source catalog is made BEFORE engine layout from validated composed nodes,
+sourceMap, Format instances and actual table/row/cell membership. It is never
+learned from the pending cursors. A fresh consumer checks full Result and
+catalog against independent live-tree fingerprints/file pins through unchanged
+V2 codec, plus final PDF hash/length. It imports no Core/template/fonts/native;
+it DOES receive a small source index/text subset as an explicitly labelled
+**TEST ORACLE**, not a complete source document or Core checkpoint provenance.
+
+Eight passing cases contain ten cursors. Across those, 90 structural mutations
+and 96 source-oracle relationship mutations are rejected (186 total). 76 wrongly
+joined cursor objects still pass the structural type validator and fail the
+independent relationship check: types alone do not prove source/table/group
+ownership. The other relationship probes change section/Format attribution.
+No double-counting of six original/replayed captures. Golden exact line
+positions apply to these short-line fixtures, not arbitrary text wrapping.
+
+### Target not observed — retain the failed expectation
+
+label-pending asks for memberLabelText with no own lineIndex. Actual successful
+Core generation reports memberText,groupIndex 0,itemIndex 0,lineIndex 0. Full live
+facts/hash/source catalog match and the observed cursor passes structural/
+relationship validation. The original consumer still throws
+GOLDEN_PENDING_LABEL; a separate read-only diagnostic records
+SCHEMA_PASS_BUT_ORIGINAL_TARGET_NOT_OBSERVED. It is NOT a repaired/passing golden
+case or a Core defect finding. No expected value was changed to obtain PASS.
+
+Relevant static explanation: template/groupLabels.ts:17 requires a nonempty
+label; composition/validateRowGroupMetadata.ts:34 requires keepStart for label
+groups. cellTableFlow.ts:130-138 handles keepStart and rewinds bounded cuts
+before the pendingLabel assignment at149-154 and its cursor emission at94.
+This may explain why this valid public route reports the member first; it is
+NOT proof of universal branch unreachability. Internal helper controls from the
+earlier round do not establish this real runtime route. Preserve optional
+lineIndex until the source/compatibility decision is resolved.
+
+### Failures, continuation and resource evidence
+
+R1 completed six cases then stopped on an INVALID_TEMPLATE lab fixture: it
+omitted group-name allowEmpty=false required for groupLabel. R2 corrects only
+that declaration and reuses the six complete captures with explicitly pinned
+ORIGINAL execution headers; no rerender/retagging. R2 then stops on the genuine
+target-oracle mismatch above. R3 runs only previously unrun label-members and
+multi-instance, with byte-identical fixture/producer/consumer/schema/codec to
+R2, plus read-only diagnostic replay. This is not operational restart resume.
+The single fresh review found no Important harness defect; no further variants
+or repeated failing generation were added to force the pending-label route.
+
+All three containers enforce 512 MiB memory and memory+swap, CPU1, network none,
+readonly input/Core and 64-MiB tmpfs. No heap tuning/forced GC; OOMKilled=false
+for all. Last R3 bundle peak 64.82421875 MiB and oom/oom_kill=0. R1 progress peak
+67.84765625 MiB is PARTIAL; R2 final peak/events were not retained after its
+failure. Do not claim a measured maximum across all runs or full staged-memory
+acceptance. Owned containers stop; real-runtime metadata identity, protected
+Core/Service HEAD/source hashes and the dirty two-file C1 candidate stay intact.
+
+Next: review reachability/intended disclosure for the pending-label branch
+before another targeted proof or changing schema. General sourceOffset/wrapping,
+repeat attribution, diagnostic reason/payload completeness and other schema
+families remain OPEN. Test catalog is not a new Core emission API; provenance,
+preguard/error-order, whole-stage 512-MiB/storage/index bounds, UAT/SRS/Word and
+Service adoption remain OPEN/BLOCKED. No production action is authorized.
+
+Evidence:C:/Users/nekot/Documents/FlowDoc-recovery/core-cursor-lineage-20261101-r3/verification.json,
+oracle/out-schema/suite.json,label-diagnostic/diagnostic.json and original R1/R2
+progress/per-case facts.bin,test-oracle.bin,producer-notice.json,consumer.json/logs.
+Original failures retained under core-cursor-lineage-20261101-r1 and-r2.
+Report:C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-cursor-lineage-20261101/verification-report.html.

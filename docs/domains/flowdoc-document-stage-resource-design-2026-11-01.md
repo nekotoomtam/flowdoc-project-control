@@ -517,3 +517,19 @@ R2 corrected only packet/preflight, retaining identical codec/schema and origina
 failure. Full semantic schema, preguard capability/provenance, universal memory/
 storage bounds, staged UAT/SRS/Word and Service adoption remain open. No product,
 real-data/service, push/release/install or map changes.
+
+### Table/group cursor proof — partial result
+
+[Dated cursor evidence](flowdoc-core-stage-handoff-contract-2026-11-01.md#2026-11-01--tablegrouppending-text-cursor-proof-partial)
+records eight complete genuine PDF case passes, 90 structural and 96 independent
+source-oracle relationship rejections. Covers split/protected/rowspan tables,
+groupIndex 0/1, pending itemIndex 2 and distinct Format invocations. Source catalog
+is a TEST oracle built before layout, not implemented Core emission provenance.
+One label-pending case yields valid member cursor lineIndex 0; original no-lineIndex
+label target assertion remains FAILED / NOT_OBSERVED. No 9/9 or full schema claim.
+R1 fixture repaired once, six captures reused; R3 completes only the two unrun
+cases with unchanged candidate scripts and diagnoses sealed data without relaxing
+the golden test. 512 MiB enforced throughout, last R3 peak 64.82421875 MiB with
+zero OOM events; prior partial/missing peaks documented. Next is pending-label
+reachability/disclosure review. No product/codec/cap, real-data/service,
+push/release/install or map changes.
