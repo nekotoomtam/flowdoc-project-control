@@ -5,9 +5,9 @@
 > or agent merely because this plan has several steps.
 
 **Status:** PROPOSED for product implementation. P0 copy mechanism passed on
-2026-11-02 (22/22 final cases). P1 components, P2 legacy/font/image adapters and
-P3 task adapter passed in the separate Service candidate on 2026-11-02. P4–P5
-and full Service composition/acceptance remain unstarted.
+2026-11-02 (22/22 final cases). P1–P4 components, adapters and scoped Service
+composition passed in the separate candidate on 2026-11-02. P5 comprehensive
+Service acceptance remains unstarted; no production/release readiness claim.
 **Review completed:** 2026-11-02; source/evidence baselines are the revisions below.
 **Goal:** Connect Service-owned worker launches to verified per-worker memory
 envelopes without changing document contracts, allocation policy, or Core.
@@ -370,23 +370,23 @@ its acceptance passes. Do not merge/push/install as an implied final step.
 
 ### P4 — Font-admin/inspection injection and fail-closed composition
 
-- [ ] Edit `src/fonts/{inspection,service,heightProfiles,review,lifecycle}.ts`,
+- [x] Edit `src/fonts/{inspection,service,heightProfiles,review,lifecycle}.ts`,
   `src/http/{fonts-admin,server}.ts`, `src/server.ts` and the intake/context
   injection touched in P3. Carry bound inspector through all three callers and
   nested `createFontLibrary` construction. Retain parser queue, timeout and
   maxBuffer; launcher does not charge an inspector worker grant.
-- [ ] Inject per-specimen preflight wrapper from `fonts-admin` into lifecycle/
+- [x] Inject per-specimen preflight wrapper from `fonts-admin` into lifecycle/
   review using the existing transaction client. Normalize public errors only
   after preserving stop-unknown/poison state. No mutable global renderer.
-- [ ] Add `tests/worker-{font-wiring,readiness}.test.mjs`. RED: any remaining
+- [x] Add `tests/worker-{font-wiring,readiness}.test.mjs`. RED: any remaining
   required-mode direct-spawn/default-gate path, admin ready while launcher is
   down, parser advances after uncertain stop, wrong transaction client or
   nested factory loses injection. GREEN: no bypass across enabled HTTP routes;
   lock contention fails promptly; rollback and public error semantics hold.
-- [ ] Startup fails before processor/listener when required prerequisites are
+- [x] Startup fails before processor/listener when required prerequisites are
   missing; broker loss blocks new work. Shutdown drains workers before owner
   close; restart cannot rebind an old active lease. No hidden budget increase.
-- [ ] Build; run new tests plus affected `fonts-admin`, `fonts-lifecycle`,
+- [x] Build; run new tests plus affected `fonts-admin`, `fonts-lifecycle`,
   `fonts-height-profiles`, `fonts-intake` and `font-quota-lock-order` tests;
   commit `feat(workers): enforce scoped launch readiness across Service`.
 
@@ -816,3 +816,106 @@ must cover configured task deadlines (lab tasks use10 seconds, broker120 seconds
 while keeping the same PID-namespace/procfs and resource boundaries.
 No merge/push/release/install, real-data change or real-service stop occurred.
 Next recommended scope is P4 under a subsequent owner instruction.
+
+## 2026-11-02 — P4 font/admin and Service composition result
+
+Owner authorized P4 only, preserving512 MiB per worker and the1 GiB/2 CPU
+coordinator aggregate. Inline Product Implementation / Evidence Review then
+Project Control Steward; execution IDs are not applicable. Service candidate
+`8581644`, base `37d8ed1`, remains on
+`codex/service-worker-launcher-p1-20261102` in the same isolated linked worktree.
+Eleven paths changed: nine named P4 source files and the two new P4 test files.
+Core, P1 launcher/broker/Python, task transport, package, migrations and quota
+limits are unchanged. No integration into the development checkout occurred.
+
+### Behavior and ownership
+
+Composition creates one bound serial inspector and forwards it through import,
+height-profile measurement, review and the nested lifecycle library factory.
+Inspector retains parser timeout and metadata maxBuffer, acquires no worker
+credit, and poisons before propagating unknown stop. The unchanged launcher
+discards stderr; inspection tolerates its null stream while bounding stdout
+metadata (and any trusted piped stderr seam). Normal validation failures retain
+their existing public semantics; shutdown interruption becomes UNAVAILABLE so
+review rolls back instead of blaming a valid font.
+
+Admin specimens use the injected preflight renderer within the existing gate
+and the lifecycle's checked-out transaction client. The shared parser advisory
+lock60430416 now uses nonblocking acquisition in import/review, returning
+UNAVAILABLE on contention instead of holding a native waiter. No extra allocator
+or mutable global renderer was introduced.
+
+Required composition rejects missing dependencies. Startup authenticates the
+launcher before temp/native/DB/listener acquisition, binds legacy/image/task and
+font dependencies, then performs a capped startup font probe inside the existing
+preflight gate before processor/listener start. HTTP health, admin and native
+admission share launcher/inspector/gate readiness; task intake also checks its
+launcher. Broker loss does not reconnect an old launcher. Shutdown closes
+admission, settles frontend/task/parser work, stops the processor and drains
+scoped workers before closing the ownership fence and pool. Any uncertain-stop
+sentinel takes priority and retains the owner/pool for operator recovery.
+
+### Evidence and acceptance coverage
+
+Machine-local root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p4-20261102`.
+`verification.json` matches379 source/test/config/example/migration files across
+final `green6`, final `native2` and the candidate checkout. The exact Git manifest
+is the eleven allowed paths; blobs match with normal CRLF normalization.
+Protected Core/Service development, C1 and M20 base remain unchanged. The Core
+vendor0.5.2 checksum remains
+`ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532`.
+
+- Final `green6`: build passes at the existing1 GiB coordinator budget;41 tests
+  pass in seven focused/affected files in a512 MiB test container, with4 native
+  cases explicitly skipped. Includes all named fonts-admin, fonts-lifecycle,
+  fonts-height-profiles, fonts-intake and font-quota-lock-order cases on a fresh
+  isolated PostgreSQL lab. The existing lock-order assertions remain unchanged.
+- New DB tests prove nested inspector propagation, same-client parser-lock
+  ownership at the specimen wrapper, held worker credit and transaction rollback
+  when injected unknown stop occurs, plus prompt lock-contention rejection with
+  review status still pending. Held fake-parser tests prove serial admission,
+  output bound, poison-before-next-parser and active/queued shutdown errors.
+- Final `native2`: readiness file8/8 passes with no skips. Four overlap the unit
+  run and four are native-only, so the union is45 unique cases, not49. No full
+  Service suite or original six governor admission tests are claimed.
+- Actual capped inspector parses fonts during import, height measurement and
+  admin review. A real specimen PDF is served through the admin HTTP pipeline;
+  its render observes exactly one existing worker grant and returns to zero
+  active worker grants. Poppler extraction verifies Thai/English specimen text
+  and the one-page raster was visually inspected.
+- Actual Service startup with task credentials listens only inside the lab
+  container and passes health. A delayed wrapper around the real scoped drain
+  proves the original owner fence remains held until drain finishes. The trace
+  is `drain -> drained -> owner-close`; a new owner can open only after stop.
+  A second probe injects an uncertain result after the real drain and proves
+  readiness false and owner retention. Manual cleanup is performed only after
+  that assertion; this is a failure-branch probe, not an unreapable-child claim.
+- Restarting the lab broker makes existing HTTP health/admin unavailable and
+  the old inspector cannot launch. P0/P1 immutable identity/epoch/recovery proof
+  is reused for old-lease rejection; P5 retains broader real-Service restart
+  and ten-scenario acceptance.
+- Final native aggregate1 GiB, total memory+swap1 GiB,2 CPU; worker512 MiB/swap0.
+  App UID10001 drops all capabilities, broker retains the verified225 mask.
+  All worker scopes end empty, zero OOM/kill events, aggregate fixture peak
+ 435,187,712 bytes, app exited0, and both app and private DB are stopped. No
+  owned lab container remains running; known production identities are stable
+  by metadata comparison only. PostgreSQL has its own separate512 MiB lab cap.
+
+One fresh review found two defects, both reproduced before repair: the null
+stderr contract (`red-stdio` and native1), and shutdown cancellation being
+misclassified as INVALID_FONT_FILE (`red-shutdown`). Both are covered by final
+GREEN. Earlier lock-suite failures were caused by the lab's128 MiB tmpfs being
+below the unchanged storage floor; final checks use a new lab-only disk scratch
+directory. No application RAM, quota, floor or metadata limit was raised.
+
+P4 scoped composition is PASS. Oracle means the isolated OCI Linux VM hosting
+new PostgreSQL and Docker fixtures, not Oracle Database driver verification.
+Admin/health requests use Fastify injection; the actual Service listener is
+started inside the isolated container. Full document HTTP delivery, six native
+governor cases, complete model18/19/20 compatibility, rollout and portability
+remain P5. The broker still requires the pinned Service PID namespace/procfs;
+the trusted lab lease ceiling is3 hours, covering existing task deadlines without
+changing worker/aggregate resource caps. No host-service installer was created.
+No real data was read/changed, real service stopped, or merge/push/release/install
+performed. Next recommended scope is P5 under a subsequent owner instruction.
