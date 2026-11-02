@@ -1438,3 +1438,79 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-diag01-fix-
 `final-controls.json`, `terminal-db2/3/4.json`, `review.json`).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-diag01-fix-20261102/verification-report.html`.
+
+## Legacy diagnostics recovery on copies — 2026-11-02: bounded proof PASS
+
+User authorized planning and proof on copies only. Service owner, Evidence
+Reviewer role, single-room execution IDs not applicable. Product candidate
+83d7968 remains clean and unmodified. All planner/apply/test code is external
+under the evidence directory; no recovery command was added to the product.
+
+### Eligibility and proposed recovery sequence
+
+1. Identify a trusted historical writer and pin its evidence. The proof uses the
+   actual retained pre-DIAG model20 lab DB, source packet hash and known Core pin.
+   Take a dump into an isolated DB; compare inventories before planning.
+2. Read a consistent snapshot of the terminal task, normalization summary,
+   findings, reservation and existing events. Require no child/held queue,
+   settled storage accounting, known writer, no existing preparation ledger or
+   completion summary, complete normalization details and valid preparation rows.
+3. Recover exact preparation counts only when total retained details are
+   strictly below the shared detail cap. At the cap, extra observations may have
+   been discarded: refuse exact recovery rather than assume the retained total.
+   Incomplete, malformed, active or unknown-writer histories also refuse writes.
+4. Bind the plan to task allowlist, dump/writer hashes and snapshot digest.
+   Re-lock and revalidate before applying. Append one provenance-labelled
+   preparation-finding event with kind legacy-reconstruction/1; preserve the
+   task outcome and existing findings, usage, jobs, files, outputs and reserves.
+5. Verify the existing production taskSnapshot projection, idempotency and
+   post-write inventories. A changed snapshot rejects; a failed transaction
+   rolls back. Never render or resend a document to reconstruct observations.
+
+### Evidence obtained
+
+The source is the previously retained synthetic Oracle/OCI VM/private PostgreSQL
+lab, not real user data or Oracle Database. All49 table counts/digests were stable
+across source reads and matched the restored copy. Of its six original tasks,
+four already have completion summaries, one has provably zero preparation
+findings, and one failed DOCX has exactly one recoverable preparation finding.
+Only the latter needs recovery. Its existing public projection changes from
+findingCount0/omitted0 to1/1, retaining failed status, no output and the same
+instance-first detail. This calls production taskSnapshot directly with a
+read-only lab ownership adapter; it is not an HTTP authorization proof.
+
+Ten initial checks passed: original-history classification, cap ambiguity,
+incomplete normalization, active task refusal, unknown writer refusal, exact
+recovery/idempotency, simultaneous apply yielding one event, injected rollback
+with retry, stale-plan refusal and an expired terminal metadata-copy control.
+Fresh review found no material defect, but identified the packet's malformed-row
+branch as untested. One bounded follow-up supplied an invalid preparation row:
+BLOCKED_FINDING_INTEGRITY, no ledger write and all49 post-fixture inventories
+unchanged. Total **11 checks pass**; no skipped branch is counted as a pass.
+
+The main proof appends four recovery events across separate target/copy cases,
+plus one explicitly intentional stale-plan fixture event. The other48 tables
+are unchanged after fixture setup. Derived cases are metadata fixtures, not
+runnable storage restores; physical files and storage ownership are not proven.
+Restored triggers remain enabled and immutable history is not rewritten.
+
+Proof workers ran in separate512MiB/swap0/2CPU containers; compilation used the
+existing1GiB/2CPU envelope. No OOM; all five retained round-owned containers are
+stopped, source/proof hashes stable and known production identity metadata
+unchanged. Earlier harness-only failures (inventory SQL quoting, waiting for DB
+initialization, and freezing a host-inaccessible node_modules symlink) are
+retained separately; they are not product findings or recovery success claims.
+
+This proves the bounded copy-only recovery method, not production eligibility.
+Before any real operation, separately resolve live-writer fencing, credentials,
+actual historical provenance/caps and restore ownership. Capped or incomplete
+histories remain unverified; do not convert their lower bounds into exact totals.
+No Core/Service source, migration or ceiling change, real data/API/SQL/storage
+access, real service stop, merge, push, release or installation occurred.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-legacy-diag-20261102/`
+(`packet.json`, retained attempt receipts, `run3/packet.json`, `proof.mjs`,
+`results/result.json`, `results/invalid-result.json`, `receipt.json`,
+`final-controls.json`, root `verification.json` and `review.json`).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-legacy-diag-20261102/verification-report.html`.
