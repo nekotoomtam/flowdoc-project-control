@@ -1514,3 +1514,62 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-legacy-diag
 `final-controls.json`, root `verification.json` and `review.json`).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-legacy-diag-20261102/verification-report.html`.
+
+## Candidate legacy diagnostics CLI — 2026-11-02: scoped PASS
+
+User authorized preparing the recovery tool in Service and verifying it on the
+retained synthetic lab copy. Single-room implementation/verification, Service
+owner; execution IDs not applicable. Candidate commit
+bc3aca9a263ff3497a1da0851ce1a50e4ca95960 changes only src/cli.ts,
+src/tasks/legacy-diagnostics-recovery.ts, its test and code-adjacent docs/usage.md.
+
+Two explicit commands implement the reviewed method: diagnostics-plan reads
+only and emits an exact eligible plan; diagnostics-apply consumes that plan and
+the same writer evidence for one task. Database cluster system identifier,
+database OID/schema, task snapshot, writer evidence and proof digests are bound.
+The write revalidates eligibility under the task row lock and appends only a
+provenance-labelled legacy-reconstruction/1 preparation-finding event. It never
+generates a document or changes task outcomes, findings, usage, files, outputs
+or reservations. Repeat application validates the full existing event detail.
+Schema028 must match; no migration is applied by either command.
+
+The first approved profile is the pinned f82d7c6 legacy model20 source bundle.
+The evidence file is an operator attestation with reviewed source-byte hashes,
+not a runtime signature or authentication mechanism. Unknown writers, incomplete
+or capped evidence, malformed findings and live/held tasks refuse recovery.
+Input artifacts are limited64KiB and finding/event evidence reads8MiB. Reading
+pg_control_system requires existing operator permission; the tool does not grant
+itself rights or use a weaker identity fallback. Participating Service writers
+are serialized by the task lock; arbitrary privileged writers are not fenced.
+
+The actual unsupported CLI command was observed RED before implementation.
+GREEN2 built the exact candidate and passed **11 tests across2 files**: eight
+real-copy recovery/CLI cases plus the three existing CLI tests. Coverage includes
+read-only planning, actual CLI apply and repeat, unchanged non-event tables,
+public projection0→1, cap/incomplete/active/malformed/unknown-writer refusal,
+recomputed tampered totals and target fingerprint refusal, concurrent apply,
+conflicting receipt, stale snapshot, actual post-INSERT transaction rollback,
+oversized evidence and malformed/oversized input files, and old help/show/errors.
+One earlier GREEN fixture changed count without its omission bound and was
+correctly rejected structurally; its expectation was corrected to exercise the
+semantic mismatch branch. That failed receipt remains retained, not a PASS.
+
+Each fresh private DB restored the same immutable old-lab dump and matched all49
+source table inventories before testing. The proof process set, including real
+CLI subprocesses, shared a hard512MiB/swap0/2CPU container; build remained1GiB/
+2CPU. All nine round-owned containers are stopped, no OOM, frozen source stable
+and known production identity metadata unchanged. Fresh read-only whole-change
+review found no material issue; no full Service or native rendering suite claim.
+
+The tool and usage are prepared in the isolated candidate, not installed,
+released, merged or pushed. Real target eligibility, operator evidence, database
+rights and writer control still require their own review/authorization. No Core,
+migration, package or resource-ceiling change, real data/API/SQL/storage access
+or real service stop occurred. It is not a general historical-data restore tool.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-legacy-diag-tool-20261102/`
+(`packet.json`, red/green/green2 frozen archives/receipts/test logs,
+`green2/results/cli-plan.json`, `cli-apply.json`, root `verification.json`,
+`final-controls.json`, `review.json`).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-diag-tool-20261102/verification-report.html`.
