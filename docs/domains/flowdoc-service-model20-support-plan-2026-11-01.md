@@ -19,7 +19,9 @@ P0 copy kernel/authentication/lifecycle proof subsequently passed22/22 on
 2026-11-02. P1 launcher/broker components subsequently passed in separate Service
 candidate2f6cf43 (21 unique targeted cases), followed by P2 legacy/font/image
 adapters inc430780, final test candidate38ee2a0 (33 unique focused/affected cases including the native lab
-cases). P3–P5 and full Service composition remain unstarted. These results do
+cases), then P3 task adapter in37d8ed1 (50 unique focused/affected cases including
+native task transport and PDF/DOCX outputs). P4–P5 and full Service composition
+remain unstarted. These results do
 not close M20-4 or the six governor acceptance cases. See the focused plan's
 P1/P2 results for deployment constraints and evidence.
 

@@ -5,9 +5,9 @@
 > or agent merely because this plan has several steps.
 
 **Status:** PROPOSED for product implementation. P0 copy mechanism passed on
-2026-11-02 (22/22 final cases). P1 components and P2 legacy/font/image adapters
-passed in the separate Service candidate on 2026-11-02. P3–P5 and full Service
-composition/acceptance remain unstarted.
+2026-11-02 (22/22 final cases). P1 components, P2 legacy/font/image adapters and
+P3 task adapter passed in the separate Service candidate on 2026-11-02. P4–P5
+and full Service composition/acceptance remain unstarted.
 **Review completed:** 2026-11-02; source/evidence baselines are the revisions below.
 **Goal:** Connect Service-owned worker launches to verified per-worker memory
 envelopes without changing document contracts, allocation policy, or Core.
@@ -354,18 +354,18 @@ its acceptance passes. Do not merge/push/install as an implied final step.
 
 ### P3 — Task transport, ownership and existing reservations
 
-- [ ] Edit `src/tasks/{render,intake,processing}.ts` only for launcher injection
+- [x] Edit `src/tasks/{render,intake,processing}.ts` only for launcher injection
   and ordering. Keep `runtime/python/{task_launcher,task_python,task_owner}.py`
   unchanged unless a separately reviewed contract need is demonstrated.
-- [ ] Add `tests/worker-task-wiring.test.mjs`. RED: init before bind, DB PID update
+- [x] Add `tests/worker-task-wiring.test.mjs`. RED: init before bind, DB PID update
   failure while blocked, fence FD replaced/closed, JSON replacing advanced IPC,
   cancellation racing bind, owner untrack/refund before full stop.
-- [ ] GREEN: real task child advanced Buffer/BigInt/Map/typed-array RPC, exact
+- [x] GREEN: real task child advanced Buffer/BigInt/Map/typed-array RPC, exact
   FD4 file identity and stale fence rejection, existing file limiter, stream
   backpressure/reader-closed credit behavior, group kill/reap, failed DB save and
   reservation cleanup without duplicate execution. A lost broker ack does not
   spawn/start a second child. Reuse F1/INT-01 behavior; do not rewrite recovery.
-- [ ] Build and run new tests plus affected task ownership/render/governor tests;
+- [x] Build and run new tests plus affected task ownership/render/governor tests;
   commit `feat(workers): bind task execution without changing ownership`.
 
 ### P4 — Font-admin/inspection injection and fail-closed composition
@@ -729,3 +729,90 @@ real governor acceptance cases remain P3–P5. Same pinned PID namespace/procfs
 requirement from P1 remains. No merge, push, release, installation, real-data
 change or real-service stop occurred. Next recommended scope is P3 under a
 subsequent owner instruction; do not bypass existing task ownership/fence logic.
+
+## 2026-11-02 — P3 task adapter result
+
+Owner authorized P3 only in the same isolated Service candidate. Inline Product
+Implementation / Evidence Review then Project Control Steward; execution IDs
+are not applicable. Commit `37d8ed1`, base `38ee2a0`, on
+`codex/service-worker-launcher-p1-20261102`. Five paths changed: the three P3
+source files, `tests/worker-task-wiring.test.mjs` and its task fixture helper.
+Core, P1/P2 implementation, existing Python owner/fence/file limiter, package,
+migrations, SQL statements and allocation owners are unchanged.
+
+Task intake carries an injected worker launcher in its processing context.
+Required mode rejects a missing launcher before opening intake/processing or
+render resources. Render validates the existing owner/fence, spawns blocked,
+tracks the child and persists its PID before bind/start/init. Advanced IPC and
+the original fence FD4 remain in use. Scoped launcher stop proof precedes owner
+untracking, read-credit release, scratch cleanup and PID clearing. Unknown
+spawn/stop preserves retained state and the sentinel; existing task processing
+continues to own worker grants and reservations. No allocation/recovery/delivery
+rewrite or new refund owner was added.
+
+### Acceptance evidence
+
+Machine-local evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p3-20261102`.
+`verification.json` matches313 bundled source/test/config files across final
+`green4`, final `native3` and the candidate. The staged/committed Git manifest
+is exactly the five allowed paths; blobs match after CRLF normalization.
+Protected Core/Service development, M20 base and C1 source remain unchanged;
+Core vendor0.5.2 checksum remains
+`ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532`.
+
+- RED1 exposes missing injection/order/unknown-stop behavior in all five initial
+  P3 unit cases. The separate existing-owner EACCES failure was a lab archive
+  mode error, not a product regression. Lab copies now preserve Git executable
+  mode100755 for `task_python.py`; source bytes and repository mode are unchanged.
+- Final `green4`: build at the existing1 GiB coordinator budget; all six focused
+  files pass47 cases in a separate512 MiB container, with3 native cases skipped.
+  Includes unchanged task ownership8, read cache12, queue resources11, output
+  buffer8 and wire2 cases. The file-limit probe runs the unchanged Python
+  launcher and confirms a Node write cannot exceed its4096-byte inherited cap.
+- Final `native3`: task-wiring file passes8 cases, with1 deliberate limiter-probe
+  skip because that probe already passed in the512 MiB unit container. Five
+  cases overlap the unit run; the union is50 unique cases, not55. Skips are not
+  counted as passes. No complete Service suite is claimed.
+- Actual default task child renders small SRS PDF and DOCX through the gate and
+  unchanged Python file limiter, using the real ownership guardian and original
+  fence. Actual RPC writes are Buffer-valued, receipts match output hash/length,
+  and normal tasks return reader usage to their measured baseline.
+- Arbitrary Buffer/BigInt/Map/Uint16Array init transport and FD4 inode equality
+  are proved by the native echo fixture through the actual task adapter/gate.
+  That fixture is not the actual document renderer. Unchanged ownership tests
+  separately verify stale-runtime Python rejection and fence retention/recovery.
+- A real blocked child is stopped after injected DB PID-save failure, without
+  init. After actual PDF creation, an injected result-save query failure produces
+  `DB_RESULT_FAULT`; one worker launch, PID clearing and reader return to baseline
+  are verified. No retry or duplicate execution is observed in that case.
+  These are injected query dependencies, not actual DB socket failure tests.
+- The saved PDF was independently extracted with Poppler and its one-page
+  raster visually inspected; SRS/REQ-001/REQ-002 and Thai text are present.
+  DOCX ZIP integrity and document XML/text were checked independently. No native
+  Word layout/fidelity claim is made.
+- Final native aggregate1 GiB, swap total1 GiB,2 CPU; each data worker512 MiB
+  and swap0. Zero OOM/kill events, all scopes empty, container exited0, no owned
+  container left running. Fixture aggregate peak435,585,024 bytes is not a
+  document-capacity result. Production identity metadata was unchanged.
+
+One fresh review found no confirmed source defect. Its two acceptance gaps,
+file-limit enforcement and post-completion result-save failure, were filled by
+the bounded probes above. Synthetic unknown-stop deliberately retains one
+singleton reader grant until test-process exit; normal native tasks return to
+baseline, so this round does not claim global reader usage zero.
+
+Native attempt1 rejected the example's transport-level docKey during task
+normalization; the lab fixture was corrected to use the task API's data/sections
+body. Attempt2 passed before the final acceptance probes; final native3 includes
+them. Earlier failures remain recorded and are not relabelled as PASS.
+
+P3 adapter scope is PASS. Oracle here is the isolated OCI Linux VM; no Oracle
+Database or real-data connection was used. Actual DB reservation/transaction,
+socket-cut, HTTP delivery, full model18/19/20 and six governor acceptance remain
+P5; task allocation/delivery code is unchanged. P4 still owns application/admin
+composition, readiness/shutdown and broker packaging. Its trusted lease maximum
+must cover configured task deadlines (lab tasks use10 seconds, broker120 seconds)
+while keeping the same PID-namespace/procfs and resource boundaries.
+No merge/push/release/install, real-data change or real-service stop occurred.
+Next recommended scope is P4 under a subsequent owner instruction.
