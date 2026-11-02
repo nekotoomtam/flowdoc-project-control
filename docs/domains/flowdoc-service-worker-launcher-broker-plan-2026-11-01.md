@@ -5,8 +5,9 @@
 > or agent merely because this plan has several steps.
 
 **Status:** PROPOSED for product implementation. P0 copy mechanism passed on
-2026-11-02 (22/22 final cases). P1 component candidate passed on 2026-11-02;
-P2–P5 and actual Service integration are not started.
+2026-11-02 (22/22 final cases). P1 components and P2 legacy/font/image adapters
+passed in the separate Service candidate on 2026-11-02. P3–P5 and full Service
+composition/acceptance remain unstarted.
 **Review completed:** 2026-11-02; source/evidence baselines are the revisions below.
 **Goal:** Connect Service-owned worker launches to verified per-worker memory
 envelopes without changing document contracts, allocation policy, or Core.
@@ -336,19 +337,19 @@ its acceptance passes. Do not merge/push/install as an implied final step.
 
 ### P2 — Legacy, font preflight and image worker adapters
 
-- [ ] Edit `src/jobs/render.ts`, `src/jobs/processor.ts`,
+- [x] Edit `src/jobs/render.ts`, `src/jobs/processor.ts`,
   `src/fonts/{preflight-gate,readiness}.ts`, `src/images/{prepare,job}.ts`.
   Use a renderer factory bound to launcher and a renderer dependency bound to
   the font gate; readiness executes it only within the existing gate `.run`.
   Thread an injected image preparer through `ImageJobDependencies`.
-- [ ] Add `tests/worker-legacy-wiring.test.mjs` and
+- [x] Add `tests/worker-legacy-wiring.test.mjs` and
   `tests/worker-image-wiring.test.mjs`. RED: data sent before bind, required-mode
   missing renderer injection, double credit, early refund and changed image IPC.
-- [ ] GREEN: binary legacy roundtrip, exact result/error codes, existing output
+- [x] GREEN: binary legacy roundtrip, exact result/error codes, existing output
   limit, cancellation/reap before refund; image JSON and limits unchanged;
   serialize before suspension so large input is not retained across launcher
   waits. Preserve disabled-mode compatibility without a required-mode escape.
-- [ ] Build and run focused new tests plus `font-preflight-gate` and
+- [x] Build and run focused new tests plus `font-preflight-gate` and
   `fonts-readiness`; commit `feat(workers): bind legacy and image execution`.
 
 ### P3 — Task transport, ownership and existing reservations
@@ -629,3 +630,102 @@ governor acceptance tests ran. P2–P5, application startup/health composition,
 M20-4 closure, product integration and production readiness remain open. Nothing
 was merged, pushed, released, installed or changed in real data/services.
 Next recommended authorized scope is P2 adapters; do not bypass grant owners.
+
+## 2026-11-02 — P2 legacy, font and image adapter result
+
+The owner subsequently authorized P2 only in the isolated Service candidate,
+retaining512 MiB per worker and the1 GiB/2 CPU aggregate. Inline Product
+Implementation then Evidence Review / Project Control Steward; execution IDs
+are not applicable. No Core, task transport, application composition, package,
+migration or real-data/service changes. Implementation commit `c430780`, with
+final test-only correction `38ee2a0`, follows P1
+`2f6cf43` on `codex/service-worker-launcher-p1-20261102` in the same clean linked
+worktree. P1 history and its evidence remain separate and unchanged.
+
+Nine changed paths: the six source files named in P2, the two P2 test files and
+`tests/helpers/worker-adapter-fixture.mjs`. Renderer factories bind legacy or
+font-preflight kind to the launcher; readiness invokes the gate's injected
+renderer inside its existing `.run`. Image job dependencies carry one bound
+preparer, preserving JSON IPC, geometry, decoder limits and serial admission.
+The renderer serializes the document synchronously before awaiting launch.
+Reuse the bound image preparer instance across jobs; constructing one per job
+would defeat its instance-local serial guard.
+
+Adapters bind/start before sending stdin or IPC. Existing processor/font gate
+remain the worker grant owners; the launcher acquires no second credit. Default
+renderer/image entrypoints reject required mode without injection. Processor
+checks dependencies before taking its leader connection. Task/admin/startup
+wiring is still P3/P4, so this candidate is not a runnable required-mode server
+composition yet.
+
+### Proof and bounded repairs
+
+Machine-local evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p2-20261102`.
+The durable repository tests are the two P2 files and helper at `38ee2a0`, plus
+unchanged `font-preflight-gate`, `fonts-readiness`, `render-ownership` and
+`image-preparation` tests. `verification.json` binds311 source/test/config files
+to final `green8`, final `native4` and the candidate checkout; Git blobs match
+after normal CRLF-to-LF normalization. Core vendor0.5.2 checksum stays
+`ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532`.
+
+- Corrected RED `red2` fails all8 initial adapter cases against P1 product
+  files in a scratch archive. The earlier missing-manifest/syntax fixture
+  failures remain recorded and are not product defect evidence.
+- Additional REDs reproduce unknown abort hanging without child close,
+  premature image storage refund, and legacy/image success after cancellation
+  during stop proof. GREEN confirms repairs. One fresh review identified the
+  image reservation/error-masking path and late-cancellation behavior; these
+  received the bounded correction pass.
+- Final `green8`: build and all6 focused/affected files pass31 tests;2 native
+  cases are explicitly skipped there. Final `native4`: the legacy-wiring file
+  passes10/10 with no skips. Eight cases overlap, so the union is33 unique
+  cases, not41. No complete Service suite or six governor suite is claimed.
+- The Oracle/OCI Docker lab runs the actual fixed legacy render child to
+  produce a PDF, actual font preflight through its existing gate, and the actual
+  sharp image worker via JSON IPC. Image geometry/alpha match and cancellation
+  is followed by a successful new image preparation. This is kernel/adapter
+  proof on the Oracle VM, not Oracle Database integration proof.
+- The saved `native4/oracle/out/app/legacy.pdf` was independently extracted with
+  Poppler: `P2 ไทย English 123`. Its one-page raster was visually inspected.
+  Binary byte preservation, output cap, bounded layout codes, no early input,
+  held credit until stop and unknown-stop poison use deterministic adapter
+  fixtures; they are not substitutes for a full production document workload.
+- Final lab root is1 GiB memory/1 GiB memory+swap and2 CPU, worker scopes keep
+ 512 MiB/swap0. All scopes ended empty, no OOM/kill occurred, aggregate fixture
+  peak439,848,960 bytes, container exited0 and no owned container remained
+  running. Protected Core/Service development checkouts, C1 source and M20 base
+  remained unchanged. Known production identities were stable by metadata only.
+
+On unknown image worker stop, its32 MiB storage reservation is retained and
+progress writes are skipped so DB failure cannot overwrite the sentinel.
+Processor propagates that state, stops admission and retains its worker grant.
+Regression uses fake query/preparer dependencies; no real DB was accessed.
+Unknown renderer abort returns promptly, clears listeners/timer and preserves
+scratch. Both adapters recheck cancellation after stop proof before success.
+
+Native attempt1 stopped at the lab project-prefix guard before container
+creation. Attempt2 exposed the reused fixture's60-second lease ceiling versus
+the legacy adapter's existing120-second deadline; attempt3 pins the fixture
+lease maximum to120 seconds. Worker/aggregate RAM, CPU and adapter deadlines
+were unchanged. Earlier failures and extraction-tool compatibility repairs are
+retained; no failed run is relabelled as PASS.
+
+Final cap-scope correction: native3's disabled-mode comparison spawned a direct
+child under the aggregate limit, so it is not accepted as independent512 MiB
+worker proof. Test-only commit38ee2a0 removes that direct native comparison;
+native4 runs every real data worker through the capped launcher. Disabled-mode
+compatibility is covered by the focused suite in a separate512 MiB container.
+Green6 attempted the compiler itself at512 MiB and hit V8 heap OOM before tests;
+green7 had a runner string-escaping error before execution. Green8 separates
+the successful build at the existing1 GiB coordinator budget from the passing
+512 MiB test container. No worker or coordinator budget was increased. Final
+native4 has zero OOM events; compiler failure is retained as an explicit limit,
+not claimed as a passing512 MiB build.
+
+P2 adapter scope is PASS only. Full HTTP jobs, DB transactions/reservations,
+task worker/fence transport, admin/inspection/startup/health composition and six
+real governor acceptance cases remain P3–P5. Same pinned PID namespace/procfs
+requirement from P1 remains. No merge, push, release, installation, real-data
+change or real-service stop occurred. Next recommended scope is P3 under a
+subsequent owner instruction; do not bypass existing task ownership/fence logic.

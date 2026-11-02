@@ -17,9 +17,11 @@ is NOT accepted. The follow-up launcher/broker integration plan was reviewed on
 [focused Service launcher/broker plan](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)).
 P0 copy kernel/authentication/lifecycle proof subsequently passed22/22 on
 2026-11-02. P1 launcher/broker components subsequently passed in separate Service
-candidate2f6cf43 (21 unique targeted cases); P2–P5 and actual Service wiring
-remain unstarted. Neither result closes M20-4 or the six governor acceptance
-cases. See the focused plan's P1 result for deployment constraints and evidence.
+candidate2f6cf43 (21 unique targeted cases), followed by P2 legacy/font/image
+adapters inc430780, final test candidate38ee2a0 (33 unique focused/affected cases including the native lab
+cases). P3–P5 and full Service composition remain unstarted. These results do
+not close M20-4 or the six governor acceptance cases. See the focused plan's
+P1/P2 results for deployment constraints and evidence.
 
 ## Request, baseline and scope
 
