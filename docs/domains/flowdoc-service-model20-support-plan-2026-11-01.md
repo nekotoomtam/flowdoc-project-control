@@ -1310,3 +1310,77 @@ Evidence:
 `terminal-db2.json`, `review.json` and bounded collection scripts).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-t101-fix-20261102/verification-report.html`.
+
+## Nonempty instance diagnostics — 2026-11-02: attribution PASS, counts RED
+
+User authorized the remaining nonempty-finding proof in the isolated Oracle/OCI
+VM/private PostgreSQL Docker lab,512MiB/worker and existing1GiB/2CPU aggregate.
+Single-room execution IDs are not applicable; Service owns the runtime, role is
+Evidence Reviewer. Candidate stays at f82d7c6. Only the new local test
+`tests/model20-diagnostics-api.test.mjs` was added; it remains uncommitted while
+acceptance is RED. No Core or Service runtime source repair was performed.
+
+Six small real /documents requests reused the A(first),B(middle),A(last) fixture
+with the same asset key tiny in both A instances. The normalization controls
+omit one multipart image source; preparation controls supply a PNG with valid
+metadata but corrupted IDAT so actual pixel decoding fails. Fixture checks prove
+metadata succeeds and decoding rejects before submitting the latter controls.
+No finding, renderer result or lookup response is mocked.
+
+| Actual case | Instance attribution | Overall case |
+| --- | --- | --- |
+| Missing source, first/last A, PDF (two requests) | Correct instance-first/instance-last, /sections/0 or2/data/photo, affected1 | PASS, partial PDF |
+| Decode failure, first/last A, PDF (two requests) | Correct instance-first/instance-last, /sections/0 or2/assets/0, affected1; emitted preparation node sample identifies the same instance | PASS, partial PDF |
+| Missing source, first A, DOCX | Correct instance-first in DB and public findings | PASS, DOCX_UNSUPPORTED with no artifact |
+| Decode failure, first A, DOCX | Correct instance-first in DB and public findings | RED: aggregate public counters incorrectly0 |
+
+All six durable findings have distinct IDs and match actual HTTP lookup details;
+the unaffected counterpart is never blamed. Normalized source bindings and
+available/unavailable markers were observed before worker launch; preparation
+detail/node samples are emitted by the real worker and persisted by the parent.
+This is not an in-worker composition-object capture. Independent PDF parsing
+confirmed all four files retain ordered text/bands/numbering and only the
+unaffected instance's correctly colored image. Download receipts match hashes.
+
+### DIAG-01 — Confirmed Defect, Medium: failed DOCX loses aggregate counters
+
+In the last control, task_findings and the actual lookup findings array both
+contain one IMAGE_UNUSABLE for instance-first at /sections/0/assets/0, affecting
+one placement. Yet task.counts.findingCount and omittedImagePlacements are both0.
+`src/tasks/render-child.ts:215` persists the finding through RPC before the
+DOCX omission rejection at line224. It never reaches the completion summary at
+lines257–258. `src/tasks/public.ts:18` computes counts from normalization and
+generation summaries, so the missing generation_summary hides the preparation
+finding from totals. Detailed instance attribution remains correct.
+
+Impact is inconsistent API diagnostics for a failed document, not observed data
+corruption or a successful artifact with missing content. Proposed follow-up:
+retain authoritative preparation totals through failure and make lookup totals
+consistent without double-counting normalization or relying only on retained
+detail-row counts (which may be capped). Repair requires separate authorization.
+
+Native2 passed5/6 tests; the final assertion remains RED. Its generic harness
+receipt says FAIL_P5_GOVERNOR, but the log identifies a diagnostic-count failure,
+not a resource/governor failure. Native1 is retained as an earlier test-harness
+type mismatch: PostgreSQL bigint was a string; only the SQL-boundary numeric
+assertion was corrected before native2. Public numeric assertions stayed intact.
+
+All seven native2 bound groups measured512MiB/swap0. Final controls verify both
+projects' sources unchanged, no OOM, all four owned containers stopped, no held
+queue and held=used storage; each case also checked actual retained file sizes.
+Both DOCX failures publish no output and have confirmed child/group/scope stop.
+Known production identity metadata is stable; no real API/SQL/storage access,
+real service stop, merge, push, release, install or ceiling change occurred.
+Fresh read-only review confirmed the defect and bounded evidence.
+
+This closes the single-finding instance-attribution gap for the tested paths;
+the diagnostics suite remains open for DIAG-01. It does not prove multiple
+placements per finding, truncated-detail totals, DOCX last-instance failure,
+native Word layout, full Service/T2/T3 acceptance or general production readiness.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-diagnostics-20261102/`
+(`packet.json`, native1–2 frozen archives/receipts, six case JSON/wires,
+four PDFs, `verification.json`, `verify.py`, `final-controls.json`,
+`terminal-db2.json`, `review.json`).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-diagnostics-20261102/verification-report.html`.
