@@ -1983,3 +1983,94 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-wp1-writer-contract
 `verification.json`). Source evidence remains in the directly referenced
 service-model20-diagnostics-20261102 and service-model20-legacy-diag-20261102
 archives; original records are not modified.
+
+
+## Owner-directed old job reset and lab retirement — 2026-11-02: PASS
+
+The owner decided historical diagnostics recovery is unnecessary because the
+system is not yet in use, and explicitly authorized clearing old jobs in the
+prepared-use system as well as lab after the scope question. This is a bounded
+exception to the earlier no-real-data-write boundary for this cleanup only; it
+is not standing permission to alter real data later. No real service stop, product code
+change, push, release or installation was authorized or performed.
+
+Owner Service; role Product Implementation Agent for this authorized data
+maintenance, with Evidence Reviewer responsibility. Single-room, execution IDs
+not applicable. No closed execution context reopened. Changed canonical writing
+is limited to this existing section; no map or product-readiness promotion.
+
+Read-only orientation identified the exact prepared Docker project
+flowdoc_oracle052, unchanged from the earlier recorded container identities.
+Its schema remains001..026. It contained zero tasks, findings, task events,
+usage or reservations, but37 legacy generation_jobs:36 succeeded and1 failed,
+all terminal, last created2026-10-27. Therefore this prepared system did not
+contain the synthetic old task-diagnostics fixtures discussed in WP1; the
+cleanup is not evidence that the37 legacy jobs had DIAG-01.
+
+The reset target was the closed six-table job-history set only:
+
+| Table | Rows before | Rows after |
+| --- | ---: | ---: |
+| generation_jobs |37 |0 |
+| document_outputs |36 |0 |
+| job_processing |37 |0 |
+| job_font_snapshots |36 |0 |
+| job_font_assets |81 |0 |
+| upload_job_claims |0 |0 |
+
+Job font associations were removed; font-library assets were not removed.
+All43 non-target table count/content inventories remain unchanged, including
+schema, template, publication and font records. Upload/task tables remain empty.
+Output storage and staging/jobs and staging/tasks were already empty, so no
+prepared-system files needed removal. No credential/configuration edits.
+
+Before mutation, a private mode0600 full custom-format backup was captured at
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-schema-reset-oldjobs-20261102/source.dump`
+(849324 bytes; SHA256
+906bfc0c91325fea38a845c4c996f37cb9c2ac851bb12a6f5e42bbae05447c84).
+It was restored into a fresh network-none512MiB/swap0/1CPU PostgreSQL18 lab
+container. All49 restored table inventories matched the source. The proposed
+six-table reset passed on that copy, with43 other inventories unchanged.
+Two earlier preparation attempts failed in the harness: readiness was accepted
+before database creation, then an inventory helper omitted the private DB role.
+Both are retained as failed attempts; neither modified prepared-system data.
+The corrected rehearsal passed before any prepared-system reset was applied.
+
+Actual reset ran in one transaction: NOWAIT table locks,1s lock timeout and10s
+statement timeout; rechecked exact pre-reset count/content digests under the
+locks; TRUNCATE of the explicit six tables with RESTRICT. No CASCADE, trigger
+disabling, migration, privilege change or sequence reset. New/changed job history
+would abort the preflight rather than silently broaden the old-data target.
+No prepared-system container restart, worker rendering or document transmission
+was performed.
+
+Afterward, all target counts were zero, all43 other inventories matched, and
+GET /health returned200 with ok:true. API, database and HTTPS proxy container
+IDs/images/start times/restart counts/running states match the pre-reset state.
+This is a continuity/health check, not new-job/render/native acceptance.
+
+Within the exact diagnostics/recovery lab project families,34 stopped containers
+and14 disposable DB data directories were removed, including this round's two
+private restore containers. Every selected container was already stopped. Each
+DB path was resolved and constrained to its exact lab project root before
+removal; no running consumer was permitted. No global prune, image deletion,
+prepared-system volume deletion or unrelated lab cleanup occurred. Historical
+source/proof archives, synthetic dump, reports and the verified prepared-system
+backup remain retained. Prior retained-container statements are historical;
+those containers are now intentionally retired rather than still available.
+
+Owner decision: defer the unstarted WP2/WP3/WP4 historical recovery/gateway path
+because these old operational records have been discarded. WP1 and prior tests
+remain completed historical evidence, not erased or retroactively failed.
+Candidate recovery CLI code remains retained and uninstalled; removal or a new
+diagnostics implementation would be a separate scope. No new diagnostics design
+or runtime change is accepted by this reset. Future work need not solve old-job
+provenance to proceed with a separately reviewed new diagnostics design.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-reset-old-jobs-20261102/`
+(`prepare.py`, retained failed attempts, `resume2.py`, `prepare-receipt.json`,
+`proof-db-state.json`, `apply.py`, `apply-receipt.json`, before/after inventories,
+`cleanup-lab.py`, `lab-cleanup-manifest.json`, `lab-cleanup-receipt.json`,
+`final-controls.json`, `verification.json`). The backup stays private on the
+host; its contents are not emitted into reports. No Core/Service source changes
+or ceiling changes. Service candidate remains c452867; no push/release/install.
