@@ -7,7 +7,7 @@ acceptance, implementation authorization, a release plan or a migration runbook
 for real data. It does not change the existing stage/checkpoint contract.
 
 Current scoped status, reviewed2026-11-02: clean Service candidate
-`f23ed86c45610a799300522f37f3498ded7de1cd` includes M20-1/2/bounded3 and the
+`7b25ff2` includes M20-1/2/bounded3, the runtime schema guard and the
 P1–P5 launcher/broker integration. P5-01 is fixed; scoped P5 passed72 cases,
 including all six unchanged governor cases and actual model18/19 HTTP delivery.
 The original P5 failure and all earlier scoped results are retained below.
@@ -17,16 +17,15 @@ See the [focused launcher/broker result](flowdoc-service-worker-launcher-broker-
 | --- | --- | --- |
 | M20-1/2/3 | Definition/contract/storage/migration/authoring subset passed; five focused suites34 cases reran in P5-01 | No promotion to native20 task delivery or unsupported granular authoring |
 | M20-4 | Actual worker isolation and six governors passed through P5-01; initial topology blocker resolved | Native20 /jobs/preview/documents, instance/asset isolation, same-pinned-Core output comparison and model20 interruption/retry |
-| M20-5 | Genuine027→028 queued18/19-job upgrade and transactional migration failure rollback passed in existing two migration tests | Required-schema startup/admission behavior, old binary compatibility, recovery after20 writes and complete Service-suite case coverage |
+| M20-5 | Genuine027→028 upgrade/failure rollback plus required-schema startup guard passed; missing028, bad checksum and matching028 verified | Old binary compatibility, recovery after20 writes and complete Service-suite case coverage |
 
 Full model20 support remains NOT accepted. The next bounded plan is
 [M20-4/M20-5 continuation](#m20-4m20-5-continuation-plan--2026-11-02).
-Latest T0 result: **FAIL missing028 readiness/capability gate** on the same
-unchanged candidate. Schema027 started with health200/readytrue, advertised20 and
-validated20; save returned503 STORAGE_FAILED with no recorded20 current/published
-rows, jobs or tasks. Precise save-failure cause is untraced. Dependent proof is
-stopped; see the [T0 result](#t0-execution-result--2026-11-02). No product repair
-or integration was performed.
+Latest T0 result: **PASS schema guard correction**,61 selected checks including
+all three actual startup controls. The [original T0 failure](#t0-execution-result--2026-11-02)
+is preserved; the [correction result](#t0-schema-guard-correction-result--2026-11-02)
+supersedes that blocker. Native20 T1/full model20 acceptance remains unrun/open.
+No integration, push, release or installation was performed.
 
 ## Request, baseline and scope — initial 2026-11-01 planning context
 
@@ -892,7 +891,7 @@ criterion coverage still match. Any product repair re-evaluates affected evidenc
   the existing coordinator accounting. Reference-Core native runs use their own
  512MiB bundles sequentially, not the Service coordinator heap. Compilation is a
   separate disposable build step using the already reviewed toolchain budget.
-- [ ] Create a027-only disposable schema and start the new candidate through
+- [x] Create a027-only disposable schema and start the new candidate through
   the real launcher. Proposed acceptance: required028 must be confirmed before
   model20 admission/capability publication; a fail-fast startup or explicitly
   unavailable admission must leave no partial20 rows or document worker. Observe
@@ -1113,3 +1112,73 @@ oracle receipts/logs/ledger/functions/HTTP observations, `review.json`, `verify.
 `verification.json`). Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-t0-20261102/verification-report.html`.
 No new Work/Evidence registry, map or generated-truth promotion.
+
+## T0 schema guard correction result — 2026-11-02
+
+**PASS for the authorized correction and T0 controls.** Service candidate
+commit `7b25ff2` contains only src/server.ts, new src/db/runtime-schema.ts and
+two new test files. Explicit owner request supersedes the prior verification-only
+boundary; original T0 RED remains immutable. Product Implementation Agent then
+Evidence Reviewer/PC Steward, single-room execution IDs not applicable.
+
+assertRuntimeSchema reads the shipped contiguous001–028 filenames/bytes and
+compares exact names, ordering, count and SHA256 checksums with a single SELECT
+from schema_migrations. Missing ledger or a missing/mismatched required row
+throws RUNTIME_SCHEMA_REQUIRED; unrelated DB/permission/transport or incomplete
+runtime-bundle failures throw RUNTIME_SCHEMA_UNAVAILABLE with safe messages.
+It does not apply migrations, repair ledger rows, write domain data or change
+existing SQL. This binary intentionally refuses unknown future ledger entries;
+a future migration requires an explicit runtime contract update.
+
+startService now creates its pool and checks the schema after required launcher
+authentication, before native probes, temp/resource stores, ownership/processing
+and the listener. Existing failure cleanup drains acquired launcher state and
+closes the pool. MCP authoring remains an HTTP proxy to that guarded server;
+CLI administrative workflows and direct test composition are unchanged. This is
+startup ledger verification, not continuous monitoring or an attestation of every
+DDL/function an operator might manually change without changing the ledger.
+
+| Actual owned Oracle/OCI lab control | Result |
+| --- | --- |
+|027, no028 | Recognized RUNTIME_SCHEMA_REQUIRED; no health/capability listener, native launch or ownership; ledger/counts unchanged |
+|028 applied, checksum deliberately wrong in fixture | Same recognized refusal; no listener/native/ownership; wrong checksum remains unchanged by the app |
+|028 with source-matching checksums | HTTP health200/readytrue, model20 contract/validation and save200/revision1; current20=1, no jobs/tasks/reservations |
+
+The test fixture explicitly restores the correct checksum before the positive
+case; that restoration is not product behavior. Negative tests require the exact
+schema error code/message/path and reject an arbitrary startup error, correcting
+the old external test's !started weakness. They also prove no writers.lock or
+early ownership exists. The positive case is authoring/storage, not model20
+native PDF/DOCX generation; T1 remains a separate next scope.
+
+Fresh native1 RED ran the new assertion against unchanged pre-fix runtime: the
+first missing028 case started and failed, with two controls unexecuted. Native2
+GREEN passed3/3. Additional affected checks passed: guard unit9 plus the five
+M20-1/2/3 suites34 (focused43), native3 readiness/startup/shutdown8, native4 actual
+HTTP5, native5 coordinator recovery1 and native6 actual-job OOM/recovery1.
+Total **61 passed,0 failed across11 files**, not a full Service suite. Intentional
+coordinator SIGKILL stage1 and child OOM are explicitly scoped fault controls,
+not unhandled acceptance failures or root/coordinator OOM claims.
+
+All worker bounds remain512MiB/swap0 and aggregate/coordinator1GiB/2CPU. Native
+positive startup preflight placement was measured; negatives launched no worker.
+Root-local OOM counters stayed0; native6's expected child OOM and Docker flag are
+retained separately. All13 retained app/DB containers created in this round are
+stopped, scopes empty, and known production identity metadata stable. Core0.5.2
+archive pin, protected Core/Service development, Core C1 sources, migration files,
+package/configuration and resource ceilings are unchanged. No real data/API/SQL/
+storage access or real service stop, merge, push, release or installation.
+
+Fresh independent whole-diff/evidence review found no Critical/Important issue
+and compared native2–6 archive bytes with the final candidate. Candidate remains
+isolated; no Work/Evidence registry, map or generated-truth promotion. All T0
+bullets now pass within this scope. Next eligible work is separately authorized
+T1 model20 routes/instance-assets/native outputs; M20-5 old-binary/restore/full-suite
+acceptance and deployment/native Word/large-document gates remain open.
+
+Evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-schema-guard-fix-20261102/`
+(`packet.json`, native1–6 archives/receipts/case JSON/logs, `focused`, `review.json`,
+`verify.py`, `verification.json`, `final-audit.json` and bounded harness scripts).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-schema-guard-fix-20261102/verification-report.html`.
