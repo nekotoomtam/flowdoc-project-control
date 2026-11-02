@@ -1648,3 +1648,209 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-legacy-diag-privile
 `review.json`, and retained proof scripts).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-diag-privileges-20261102/verification-report.html`.
+
+
+## Writer provenance and constrained recovery gateway — proposed plan, 2026-11-02
+
+### Authority and scope
+
+User requested a plan only. Owner: Service; role: Planning Partner with Evidence
+Reviewer responsibility. Single-room discussion/planning; execution IDs not
+applicable. Work Size: bounded design; Risk Tier: routine for this read-only
+planning step. Later privileged gateway implementation needs its own scoped risk
+assessment. This proposal is not implementation approval or a passing gateway
+result. Prior scoped PASS remains limited to the earlier candidate.
+
+Current inputs: Service c4528677d50c0ec2a834f9cc023264b71c69d8d5 (runtime source
+bc3aca9a263ff3497a1da0851ce1a50e4ca95960), schema001..028, previous section and
+service-legacy-diag-privileges-20261102/verification.json. The generated snapshot
+is dated2026-10-04 and unrelated; it does not supersede the current bounded
+request or this canonical record. No old execution context is reopened.
+
+Allowed now: inspect local candidate/evidence and update this existing plan.
+Forbidden now: product code, migrations, SQL/ACL changes, lab execution, real
+API/SQL/storage access, real service stop, Core edits, push/release/install/merge.
+Future proof remains on synthetic copies in PostgreSQL18 Docker on an OCI Linux
+VM, not Oracle Database:512MiB/swap0/2CPU per worker process set including CLI
+children; DB512MiB/1CPU and build1GiB/2CPU remain separate existing envelopes.
+No renderer work, ceiling increase or new dependency is proposed.
+
+Model decision: this is an inline continuation on the supplied host model;
+no new model/room dispatch or delegated WORK is performed or claimed. Future
+registered execution must resolve its own model against host availability.
+Document Budget: this section only. Proof Budget now: local source/evidence
+review and documentation checks only; no new runtime proof. Future proof stages
+below are proposals, each stops when its stated criteria pass. Reuse the prior
+27 checks for unchanged claims; they do not prove the new gateway.
+
+### Alternatives and recommended boundary
+
+1. Keep a trusted operator with direct INSERT: lowest change cost, but preserves
+   the demonstrated SQL bypass and does not meet the requested protection.
+2. Sign evidence or wrap the CLI without changing DB writes: improves artifact
+   integrity/attribution, but neither proves historical writer use nor removes
+   direct INSERT. A signature on an unsupported statement is still unsupported.
+3. Recommended proposal: independently reviewed, per-task writer evidence plus
+   an approved-snapshot registry and a narrow database apply gateway. This needs
+   a small future Service/schema change and careful privilege tests, but removes
+   arbitrary event construction from the recovery caller.
+
+The database cannot authenticate which executable a shared login runs. The
+promise is that every permitted recovery write obeys gateway checks, whether
+called through CLI or raw SQL. It cannot promise that only the CLI can connect.
+Protection is scoped to recovery identities, not malicious superusers, schema
+owners, approval authorities or other trusted writers holding broad event rights.
+If protection against ordinary Service credentials is also required, expanding
+all runtime event-writing paths is a separate design decision before proceeding.
+
+### WP1 — establish evidence rules before implementation
+
+Inventory only retained synthetic archives first. Separate four claims:
+source identity; built artifact identity; artifact deployed in a bounded runtime
+interval; that runtime actually processed the specific task. Map each claim to
+its artifact and collector, not merely a claimed version or matching timestamp.
+
+The reviewed packet must bind writer source hashes, immutable image/artifact
+digest, build/lock/vendor/Core identities, configuration and schema/caps, runtime
+identity and time range, task-to-runtime log/reference, source snapshot/dump
+identity and custody. Keep original bytes plus hashes; reject contradictory,
+missing, swapped-task or merely self-referential evidence. Rebuilding matching
+source today is useful compatibility proof, not historical execution proof.
+
+Classify evidence as source-only, artifact-linked, or task/runtime-linked, with
+explicit unsupported claims. These are proposed assurance labels, not new runtime
+contract values. Only a reviewed chain sufficient for the exact historical
+finding semantics can authorize exact reconstruction. Missing legacy runtime
+identity may be supported by an independent retained task/execution link; if
+none exists, leave the task UNVERIFIED and refuse automatic approval. Do not
+retroactively manufacture runtime identity or silently accept source-only proof.
+A separate owner risk decision may defer recovery, but must not relabel proof.
+
+Acceptance: a complete synthetic positive chain and negative missing/conflicting/
+wrong-task chains receive the expected classification. Real eligibility remains
+unknown because real evidence is outside scope. First deliverable is the compact
+evidence contract and list of genuinely obtainable retained artifacts.
+
+### WP2 — define approval and write contract on copies
+
+Use a separate trusted reviewer/publisher credential to approve one exact target,
+not the apply credential. Separate credentials do not themselves prove review
+by two independent people; any human dual-approval requirement needs an owner
+choice. Publisher is an explicit trust anchor and cannot be made honest by SQL.
+
+An approval binds its ID/version, database fingerprint, task, complete bounded
+snapshot of task/findings/events/reservation, schema/policy/writer identities,
+evidence digest and assurance, exact approved totals, permitted apply login,
+reviewer identity, expiry and revocation state. Only the publisher can create
+approval records through a bounded publication path; applier cannot create,
+modify, revoke or replace them. Keep immutable approval/revocation/receipt
+history; record consumption atomically with the resulting event.
+
+Proposed apply interface accepts only approvalId, not counts/actor/detail/free
+SQL. Values come from the approved record. Under one transaction and fixed lock
+order, lock the target task then approval, authenticate session_user against the
+approved login, check target/schema/policy/expiry/revocation, re-read actual rows
+and compare with the approved snapshot, check terminal/lifecycle/resource guards,
+then append exactly one fixed-key event and receipt. Derive actor from the DB
+principal and persist reviewer separately; do not trust caller operator strings.
+Concurrent calls serialize; identical committed retries return the same receipt;
+conflicting or stale state refuses. Rollback must leave no event/consumption pair.
+Expiry/revocation blocks a new write; an already committed matching receipt may
+be returned as history, never as permission for another write.
+
+The current Node classifier remains the source of finding-semantic eligibility
+for the trusted publication step. Do not independently port it to SQL casually.
+Prove a bounded exact snapshot comparison, preferably DB-native JSONB/typed row
+equality collected on both publication and apply, avoiding assumptions that
+PostgreSQL JSON serialization equals Node's canonical digest. Preserve sequence,
+NULL/numeric semantics and size caps; bind the existing plan/proof hashes as
+references rather than accepting caller-recomputed hashes as authorization.
+
+The gateway must recheck mutable lifecycle/fencing facts. A task-row lock alone
+is not proof that all child-table writers participate. Trace normal writers in
+repository.ts/render.ts and recovery before selecting the fence. If background
+writes can still alter a target outside this lock, refuse that target until a
+bounded target fence is designed/proven; no whole-service stop is assumed.
+
+### WP3 — database privilege design to prove before Service changes
+
+Applier keeps no direct INSERT/UPDATE/DELETE on events, findings, tasks,
+reservations or approvals; only the required connect/schema/read rights and
+EXECUTE of the gateway. Move the previously required tasks(id) UPDATE and event
+INSERT/uuid-default rights to a dedicated NOLOGIN function owner with minimal
+rights, not a superuser or table owner. No caller membership/SET ROLE route to
+that identity. A separate provisioning identity owns protected approval objects.
+Do not strip privileges from existing runtime accounts without impact analysis.
+
+Use a SECURITY DEFINER function with a fixed trusted search_path, pg_temp last,
+qualified objects, fixed parameterized SQL, bounded reads and lock/statement
+timeouts. Revoke PUBLIC EXECUTE and grant only the intended signature, in the
+same transaction that creates it. No caller-controlled identifiers, dynamic
+privileged SQL, mutable session GUC as approval, or arbitrary event payload.
+Audit inherited/PUBLIC rights and callable helper functions as well as explicit
+grants. Keep credentials and DB internals out of public errors.
+
+A trigger or RLS alone is not the proposed approval authority. RLS also has
+owner/superuser/BYPASSRLS exceptions. Existing append-only event triggers remain;
+new recovery receipt/approval objects must not weaken normal history guards.
+A future schema migration would be newly numbered after rechecking HEAD
+(current highest028); do not rewrite001..028 or assume029 is reserved. Candidate
+runtime schema checks and CLI contract versioning must change together, with
+old/new compatibility explicitly tested. No migration is authored in this round.
+
+### WP4 — bounded lab proof, then candidate implementation if authorized
+
+First prove WP1/WP2/WP3 together on throwaway copies outside Core/Service; do not
+promote a copy-only result as Service readiness. Required scenario groups:
+
+| Group | Expected evidence |
+| --- | --- |
+| Provenance positive and missing/tampered/conflicting/task-swapped sources | Valid chain approved; unsupported chain refused without write |
+| Approval identity and scope | Forged/unapproved ID, other task/DB/login/policy, expired or revoked approval refused |
+| SQL bypass | Direct INSERT, INSERT SELECT, COPY FROM, UPDATE/DELETE/TRUNCATE, role escalation and helper-function routes denied for applier |
+| Gateway via raw SQL | Same valid approval obeys exactly the same checks; caller cannot choose totals/actor/event key |
+| Snapshot fidelity | NULL, numeric representation, ordered rows and any task/finding/event/reservation change detected; over-budget reads refused |
+| Lifecycle and fence | Active/held/writer-changing target blocked; participating writers serialize; no lost update or deadlock |
+| Retry/concurrency | Two applications/retry create one event and one matching receipt; stale/conflicting requests write nothing |
+| Cancellation/DB loss | Failure before/after insert rolls back event and consumption; lost commit response resolves through receipt, no duplicate |
+| Privileged-function attacks | PUBLIC/other login denied; search_path/temp/overload substitution and session-setting spoofing cannot broaden authority |
+| Compatibility and resources | Existing schema/history guards and normal event writers preserved;512MiB, bounded evidence, no OOM, non-target inventory unchanged |
+
+Retain SQLSTATE, command result, before/after per-table inventories and exact role
+ACLs; distinguish intentional rejected/forged fixtures from legitimate recovery.
+Stop on OOM or a containment failure; do not increase memory/ceilings to pass.
+One focused read-only review of the proposed gateway/ACL is budgeted after the
+copy proof; another cycle requires a concrete failure or missing prerequisite.
+
+Only after those results are accepted and implementation is separately
+authorized: create a fresh isolated Service candidate, add the new migration and
+approval/gateway CLI integration, rerun affected recovery/schema/CLI and normal
+writer tests on PostgreSQL Docker, then review final diff. No Core change is
+expected. Do not retain the old direct-INSERT apply credential as a fallback;
+missing gateway/schema/approval must refuse. Any wider runtime permission change
+returns to design before implementation.
+
+### Open decisions and stopping conditions
+
+Blocking before gateway proof: exact retained writer evidence availability;
+approval snapshot equality/budget; all target writer participation/fence; trusted
+publisher and login mapping; helper/PUBLIC privilege inventory. These are bounded
+lab questions, not permission to inspect real systems. Blocking before real use:
+real historical provenance, restore ownership, live-target fence and separate
+operator authorization. Deferred: production provisioning, credential rotation,
+installation/release and fleet-wide runtime writer hardening. Irrelevant to this
+round: rendering/Word fidelity, Core architecture and general data restoration.
+
+Plan acceptance now means documented scope, proposed trust boundary, sequence,
+proof cases and unresolved decisions only. No runtime claim is advanced. Next
+recommended request: WP1 evidence contract and retained-lab artifact inventory;
+then decide whether WP2/WP3 copy proof is warranted. This plan authorizes neither
+of those executions by itself.
+
+Implementation anchors reviewed locally: src/tasks/legacy-diagnostics-recovery.ts
+(evidence22..26, classify38..59, apply74..90), src/tasks/public.ts (latest
+preparation-finding projection), src/tasks/repository.ts and src/tasks/render.ts
+(event writers), migrations/022_task_intake.sql (event table/history guards).
+PostgreSQL18 design references: [safe privileged functions and atomic grants](https://www.postgresql.org/docs/18/sql-createfunction.html#SQL-CREATEFUNCTION-SECURITY),
+[RLS ownership/bypass boundaries](https://www.postgresql.org/docs/18/ddl-rowsecurity.html).
+These support the proposed mechanism, not its unimplemented correctness.
