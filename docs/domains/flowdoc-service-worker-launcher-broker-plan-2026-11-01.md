@@ -5,7 +5,8 @@
 > or agent merely because this plan has several steps.
 
 **Status:** PROPOSED for product implementation. P0 copy mechanism passed on
-2026-11-02 (22/22 final cases); P1–P5 and actual Service integration are not started.
+2026-11-02 (22/22 final cases). P1 component candidate passed on 2026-11-02;
+P2–P5 and actual Service integration are not started.
 **Review completed:** 2026-11-02; source/evidence baselines are the revisions below.
 **Goal:** Connect Service-owned worker launches to verified per-worker memory
 envelopes without changing document contracts, allocation policy, or Core.
@@ -321,17 +322,17 @@ its acceptance passes. Do not merge/push/install as an implied final step.
 
 ### P1 — Launcher, strict client, gate and scoped broker
 
-- [ ] Add `src/workers/{contracts,config,broker-client,launcher}.ts`,
+- [x] Add `src/workers/{contracts,config,broker-client,launcher}.ts`,
   `runtime/python/worker_gate.py`, `runtime/broker/{worker_broker,worker_reaper}.py`
   and tests `tests/worker-{broker-protocol,launcher}.test.mjs`. Preserve P0's
   verified privilege/profile boundary; no automatic host-service installer.
-- [ ] RED: missing broker, invalid proof, bind timeout/cancel/error, frame limits,
+- [x] RED: missing broker, invalid proof, bind timeout/cancel/error, frame limits,
   same-request retry, FD leakage, early input and exit-before-ready. Demonstrate
   a blocked direct child before writing the adapters.
-- [ ] GREEN: exact state transitions, stable PID/PGID/start identity, 512 MiB/swap0
+- [x] GREEN: exact state transitions, stable PID/PGID/start identity, 512 MiB/swap0
   proof before GO, closure of gate/capability FDs, bounded cleanup and explicit
   stop-unknown result. Launcher contains no call to `tryAcquire` or `releaseWorker`.
-- [ ] Run build and those tests; commit `feat(workers): add verified blocked launcher`.
+- [x] Run build and those tests; commit `feat(workers): add verified blocked launcher`.
 
 ### P2 — Legacy, font preflight and image worker adapters
 
@@ -552,3 +553,79 @@ launch used isolated/no-site Python with trusted fixture environment; it did not
 prove rejection of malicious loader configuration or every product worker kind.
 P0 passes only the bounded kernel/authentication/lifecycle copy proof above;
 it is not production readiness, M20-4 closure or permission to begin P1.
+
+## 2026-11-02 — P1 component candidate result
+
+The owner subsequently authorized P1 in a separate Service candidate. Inline
+Product Implementation / Evidence Review, then Project Control Steward;
+registered execution IDs are not applicable. Scope is P1 only, with no Core,
+existing application wiring, DB, migration, dependency or package changes.
+
+Candidate: `codex/service-worker-launcher-p1-20261102`, commit `2f6cf43`,
+base `257bdd521dc2298dbb714308363b1b0d432809da`, worktree
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/service-worker-launcher-p1-20261102`.
+Fifteen new files implement strict framed RPC, fixed-kind blocked launcher,
+isolated Python gate, scoped broker, delegated-FD opener and recovery reaper,
+plus regression tests. No consumer imports the launcher yet. There are no
+launcher calls to resource acquisition/refund owners.
+
+### Evidence and coverage
+
+Durable repository tests: `tests/worker-broker-protocol.test.mjs`,
+`tests/worker-launcher.test.mjs`, `tests/helpers/worker-broker-policy.py` at the
+candidate commit. Machine-local evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p1-20261102`.
+`verification.json` independently matches all307 bundled source/test/config
+hashes across final `green4`, final `native5` and the candidate; the15 new staged
+Git blobs also matched. Protected Core/Service development checkouts, M20 base
+candidate, C1 source hashes and Core vendor archive remained unchanged.
+
+- Initial RED records missing implementation. Helper-FD cleanup and empty
+  partially configured scope recovery each have a retained failing regression
+  followed by GREEN. Earlier compilation, namespace and claim failures remain
+  under their original attempts; none are relabelled as passing.
+- `green4`: build passed; protocol5 and launcher boundary2 passed, native14
+  skipped in that unprivileged test context. Skips are not acceptance evidence.
+- `native5`: native launcher file16/16 passed, no skips, on the isolated
+  Oracle/OCI Linux VM. Together these are21 unique Vitest cases, not23.
+  This is Docker/kernel component proof, not Oracle Database proof.
+- Coverage includes blocked child/early-input rejection, stable PID identity,
+  512 MiB/swap0 verification before GO, repeated bind/start, cancellation before
+  and after binding, escaped descendants, advanced IPC and exact fence FD4,
+  silent-gate timeout, forged receipt rejection, broker loss, drain racing ARM
+  and identity acquisition, and unknown teardown before handle registration.
+- Python policy checks cover bounded slots/cache, evicted replay rejection,
+  helper failure FD cleanup/reaping and empty partial-scope recovery. Actual
+  kernel negative probes reject nested PID peers and ancestor procfs views;
+  an actual crash/reaper probe removes an empty unconfigured journalled scope.
+- Worker scopes ended empty; aggregate memory events report zero OOM/kill.
+  Lab aggregate1 GiB, swap total1 GiB,2 CPU; observed aggregate peak438,194,176
+  bytes is fixture evidence only. App UID10001 drops all capabilities; broker
+  retains caps225, reaper drops all. Final lab container exited0, no owned
+  container remained running, and known production container identities were
+  unchanged (metadata comparison only).
+
+One fresh review found drain/start and broker-loss bootstrap races plus a helper
+FD leak on wait failure. These were repaired and covered by the final runs.
+Unknown stop remains latched and closes readiness; it does not reconnect,
+silently retry work or claim confirmed resource release.
+
+### Deployment constraint and remaining gates
+
+Preserving the P0 capability boundary requires the broker to share the pinned
+Service PID namespace and matching procfs view. Cross-UID nondumpable namespace
+symlinks were unavailable under the original caps; the implementation checks
+its own namespace identity plus kernel NSpid vectors and rejects nested/ancestor
+views instead of adding SYS_PTRACE. This is a narrow topology requirement;
+production placement/packaging remains P4, not demonstrated portability.
+See the Linux [proc status](https://man7.org/linux/man-pages/man5/proc_pid_status.5.html)
+and [PID namespace](https://man7.org/linux/man-pages/man7/pid_namespaces.7.html)
+semantics for that restriction.
+
+P1 component scope is PASS. The fixed default legacy entry was reached with
+invalid input (expected failure), not a successful document render. No API job,
+DB/reservation/delivery test, image/font adapter integration or original six
+governor acceptance tests ran. P2–P5, application startup/health composition,
+M20-4 closure, product integration and production readiness remain open. Nothing
+was merged, pushed, released, installed or changed in real data/services.
+Next recommended authorized scope is P2 adapters; do not bypass grant owners.
