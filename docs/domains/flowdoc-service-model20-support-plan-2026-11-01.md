@@ -1182,3 +1182,80 @@ Evidence:
 `verify.py`, `verification.json`, `final-audit.json` and bounded harness scripts).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-schema-guard-fix-20261102/verification-report.html`.
+
+## T1 actual model20 API proof — 2026-11-02: OPEN / RED
+
+User authorized T1 in the isolated Oracle/OCI Linux VM lab, using private
+PostgreSQL Docker fixtures,512MiB per worker and the existing1GiB/2CPU aggregate.
+This is not Oracle Database verification. Single-room execution IDs are not
+applicable; owner is Service, role Evidence Reviewer. Service candidate base
+is7b25ff224bc7b166428334f1bab6aa8f67cbf5ec in
+`service-worker-launcher-p1-20261102`. Only
+`tests/model20-tasks-api.test.mjs` and `tests/helpers/model20-native.mjs` were
+added locally. No product source, Core, migration, package or ceiling changed.
+The test additions remain uncommitted because acceptance is RED; do not merge
+or describe the entire T1 suite as passing.
+
+| T1 criterion | Evidence and disposition |
+| --- | --- |
+| Published model20 /jobs PDF | Native6 PASS; exact published version1/fingerprint and PreparedInput schema3 |
+| Saved-revision preview PDF | Native6 PASS; admitted revision1 rendered after a visible draft edit to revision2; old definition retained and edited marker absent |
+| /documents PDF and DOCX | Native6 PASS; same-key tiny red/blue images bound to instance-first/instance-last; Service normalization2 and Core flowdoc-task-input/2 separately checked |
+| Independent pinned-Core references | Native2/reference-out PASS; standalone512MiB PDF and DOCX bundles; all250 package files match the vendored Core0.5.2 archive |
+| Downloaded artifact semantics | artifact-verification.json PASS; FIRST/MIDDLE/LAST order, headers/footers, numbering1/2/1, local links and middle-to-last cross link, distinct image pixels; parsed DOCX XML/.rels/media/bookmarks and1856 XML nodes; receipts/hash/transport bytes match |
+| Library font provenance | Native6 PASS; bound real inspection, owned font/license import, review/render/approve/activate, active selection retained by the owning draft; after retirement copied JSON has no retained rights and preview rejects; owning schema2 preview downloads successfully |
+| Client disconnect and explicit retry | Native6 PASS; stopped child/group/scope, no failed-task output, released DB queue and settled held=used=actual787 bytes; fresh request reuses instance keys and exact input digest/published pin; one old-task launch, no resend observed for500ms, one fresh retry succeeds |
+|2000-instance and50000 expansion bounds | Native7 selected check PASS; normalization accepts2000 and rejects2001; actual authoring validation rejects2001 and52000 source-block expansion; no giant native render, no extra native launch |
+| Four invalid-input forms | Native7 RED for /jobs HTTP status; /documents rejects each with INVALID_DATA, no output/child/held queue and settled held=used=actual retained input |
+
+### T1-01 — Confirmed Defect, Medium: model20 input errors become HTTP503
+
+`src/http/server.ts:25` maps known legacy input errors to422 but omits
+SECTION_INPUT_SHAPE, SECTION_ASSEMBLY_EMPTY, SECTION_INSTANCE_DUPLICATE and
+SECTION_KEY_UNKNOWN. Actual POST /jobs returns each exact Core issue in its
+body with503 through the fallback status. The invalid-input422 classification
+in `docs/usage.md:379` and existing input mappings makes this a transport error
+classification defect, not a transient service failure. Clients may retry an
+unchanged invalid request unnecessarily. No data corruption was observed.
+
+Reproduce using the four inputs in the final test's negative case against the
+published small A-B-A fixture. Soft HTTP assertions intentionally retain all
+four failures while allowing rejection/accounting assertions to run. Proposed
+next repair: explicitly map the supported model20 client-input codes at the
+Service HTTP boundary, preserve genuine overload/unavailability503, and rerun
+the affected negative-route tests. This round does not implement that repair.
+
+Native6's first five cases and Native7's corrected bounds case support six
+individual passing cases; Native7's negative case contains four failing status
+assertions. Both enclosing run receipts remain FAIL. The unchanged successful
+native6 test prefix/helper was compared with native7 before result reuse. No
+complete-suite PASS or broad M20 closure is claimed.
+
+Earlier attempts are retained: native1's footer lacked the public compact page
+field setting and DOCX correctly refused unsupported slots; native2 corrected
+only that fixture. The initial standalone reference adapter used a non-UUID
+asset marker and was corrected before reference generation. Native4/5 exposed
+test observations taken before asynchronous sender/storage release; bounded
+settlement checks passed in native6. Native6's bounds fixture duplicated inline
+IDs and was corrected/validated in native7. None required a product repair.
+
+All16 bound groups observed in native6/7 had memory.max536870912 and swap0.
+Final controls found no OOM, changed archived candidate source or running owned
+container across the seven projects and standalone reference bundles. Known
+production container identity metadata stayed stable; no real API/SQL/storage
+was accessed and no real service stopped. Lab containers are retained stopped.
+No push, release, installation, merge or limit increase occurred.
+
+Fresh independent read-only review confirmed T1-01 and the evidence reuse.
+Limits: no native Word layout proof (fieldRefresh remains required and
+wordVerified false), no in-worker composition capture, no nonempty
+instance-scoped diagnostic attribution case, no long-term no-resend claim,
+no full Service suite/T2/T3/production readiness. T1 remains open for the
+confirmed status repair and these explicitly bounded coverage limits.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-t1-20261102/`
+(`packet.json`, native1–7 frozen archives/receipts, native2/reference-out,
+`artifact-verification.json`, `terminal-db6.json`, `terminal-db7.json`,
+`final-controls.json`, `review.json`, test and collection scripts).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-t1-20261102/verification-report.html`.
