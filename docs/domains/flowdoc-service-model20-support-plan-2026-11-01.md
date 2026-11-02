@@ -21,7 +21,12 @@ See the [focused launcher/broker result](flowdoc-service-worker-launcher-broker-
 
 Full model20 support remains NOT accepted. The next bounded plan is
 [M20-4/M20-5 continuation](#m20-4m20-5-continuation-plan--2026-11-02).
-This review performs no new lab workload, product edit or integration.
+Latest T0 result: **FAIL missing028 readiness/capability gate** on the same
+unchanged candidate. Schema027 started with health200/readytrue, advertised20 and
+validated20; save returned503 STORAGE_FAILED with no recorded20 current/published
+rows, jobs or tasks. Precise save-failure cause is untraced. Dependent proof is
+stopped; see the [T0 result](#t0-execution-result--2026-11-02). No product repair
+or integration was performed.
 
 ## Request, baseline and scope — initial 2026-11-01 planning context
 
@@ -878,12 +883,12 @@ criterion coverage still match. Any product repair re-evaluates affected evidenc
 
 ### T0 — Freeze the lab packet and schema prerequisite first
 
-- [ ] Prepare one new owned OCI lab prefix, private PostgreSQL/socket/storage and
+- [x] Prepare one new owned OCI lab prefix, private PostgreSQL/socket/storage and
   synthetic credentials; no published host ports, production connection, package
   install/pull, Docker socket in app or host-root cgroup write. Reuse the reviewed
   P5 holder/broker/reaper topology. Record source/build/Core/image/runtime/kernel
   hashes, UID/caps, worker/root limits and final owned-container inventory.
-- [ ] Bind actual Service workers at512MiB/swap0, preserve aggregate1GiB/2CPU and
+- [x] Bind actual Service workers at512MiB/swap0, preserve aggregate1GiB/2CPU and
   the existing coordinator accounting. Reference-Core native runs use their own
  512MiB bundles sequentially, not the Service coordinator heap. Compilation is a
   separate disposable build step using the already reviewed toolchain budget.
@@ -893,7 +898,7 @@ criterion coverage still match. Any product repair re-evaluates affected evidenc
   unavailable admission must leave no partial20 rows or document worker. Observe
   actual listener/health and capability behavior; do not assume migrate() runs
   during startService(). Also check checksum mismatch and successful028 startup.
-- [ ] If it starts/adopts20 against missing/incompatible schema, retain RED and
+- [x] If it starts/adopts20 against missing/incompatible schema, retain RED and
   stop dependent native20 proof. Report a Service startup/admission correction
   packet; do not edit src/server.ts or migrations inside verification. This is
   the first proposed experiment because the source inspection is not runtime
@@ -1031,3 +1036,80 @@ authoring/clone/conversion, plugin/Editor/native Word adoption, large-document
 capacity, deployment portability and the separate pending-label topology witness.
 No full Core/PC suite, new Work/registry/map, Core edit, production action or
 push/release/install is implied. This planning review checks documentation only.
+
+## T0 execution result — 2026-11-02
+
+**FAIL / dependent proof blocked.** This separately authorized T0 verification
+used unchanged Servicef23ed86 and Core0.5.2 in a new private027-only PostgreSQL
+on the owned OCI lab VM. Execution IDs not applicable; Evidence Reviewer then PC
+Steward. No Core/Service source, repo test, configuration or migration edits.
+The proposed tests/model20-runtime-compatibility.test.mjs was injected only into
+the scratch lab archive from an external suite, not added to the candidate.
+
+### T0-01 — ready/capability published without required028
+
+Confirmed Defect in schema-dependent readiness/capability; High reliability
+impact when new Service is launched against027. One primary test ran and failed.
+
+| Actual TCP observation | Result |
+| --- | --- |
+| Applied migration ledger before/after/after shutdown | Exactly001–027; source checksums match;028 absent; no auto-migration |
+| startService and GET /health | Started;200, value.ready=true, including after failed save |
+| Authenticated GET /authoring/contract |200; nodeModelVersions=[18,19,20] |
+| POST /authoring/validate with valid20 definition, no sampleRequest |200 ok:true, composed:false, fontReadiness styles ready; not a document generation result |
+| Create blank draft then PUT model20 definition | Blank identity201; save503 STORAGE_FAILED; subsequent draft remains revision0/definitionnull |
+| Recorded final counts | model20 current0, published0, generation_jobs0, tasks0; task_resource_reservations=[] |
+
+Execution path: setup applies copied001..027 via existing migrate, then exact
+src/server.ts:31–90 startup opens the real listener through the real broker.
+src/http/authoring.ts:34 publishes20; src/authoring/service.ts:122–128 accepts
+definition validation. Save enters the existing service/storage path at:83;
+its503 is generic STORAGE_FAILED, not a recognized schema refusal. No DB error
+trace was collected, so its exact cause remains UNKNOWN. Do not present a
+probable old-trigger mismatch as a newly traced runtime cause.
+
+The finding is limited to readiness/capability/validation exposure without028.
+It does not prove successful20 persistence, task admission, document generation,
+delivery or data corruption. Counts above cover the named entities; they are not
+an exhaustive inventory of every possible partial entity. The intentionally
+created blank draft identity remains ordinary lab fixture data.
+
+Only one worker launched: startup font-preflight, with observed512MiB/swap0
+before exec. No legacy/task document worker ran. Aggregate/coordinator1GiB/2CPU,
+nonroot UID10001, capsdropALL and networknone remained unchanged. Final workers0,
+credits128MiB, no OOM, scope empty; both owned app/DB containers are stopped.
+All candidate tracked hashes, selected protected Core/Service development heads,
+Core archive pin and copied source hashes stayed unchanged. Production check was
+container identity metadata only; no real API/SQL/storage access or real service
+operation, merge, push, release or installation.
+
+Stop rule applied: checksum-mismatch negative, successful028 startup control and
+T1 native20 output were not run. These are NOT PASS or executed skips; T0 full
+acceptance remains open. P5-01's prior scoped passing result is not rewritten.
+
+### Proposed correction packet — not implemented
+
+Owner Service; smallest proposed change is a required-schema/checksum preflight
+after DB-pool acquisition and before startup native probe, ownership/admission
+and listener publication. Check required ledger prefix through028 against the
+immutable migration files; missing/mismatched schema must yield a distinguishable
+schema refusal and drain acquired resources. Do not auto-run migrations, edit
+applied SQL, touch Core, raise limits or mask the failure as generic storage.
+Exact helper/API design remains subject to the separately authorized correction.
+
+Before future GREEN acceptance, tighten the external test: its !started branch
+currently treats arbitrary startup failure as guard success. The present RED is
+valid because started=true is independently asserted by verify.py. Future checks
+must recognize schema refusal and exclude unrelated broker/font/credential/DB
+failures. Then run027 missing028, wrong028 checksum and matching028 controls,
+verify no premature worker/write/ready state and successful legitimate authoring
+on matching028. Do not advance T1 until prerequisites pass.
+
+Fresh independent read-only review confirmed the narrow RED conclusion and these
+limits. No product repair was made. Retained evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-t0-20261102/`
+(`packet.json`, `suite.mjs`, setup/native runner, native1 packet/archive,
+oracle receipts/logs/ledger/functions/HTTP observations, `review.json`, `verify.py`,
+`verification.json`). Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-t0-20261102/verification-report.html`.
+No new Work/Evidence registry, map or generated-truth promotion.
