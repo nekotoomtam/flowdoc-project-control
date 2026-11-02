@@ -2337,3 +2337,114 @@ Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-omission-cause-20261102/verification-report.html`.
 No Core/Service source/schema/ACL changes, new document outputs, real-data access,
 real service stop, push, merge, release or installation.
+
+## Authorized DOCX image omission repair — bounded acceptance 2026-11-02
+
+The owner subsequently authorized proceeding through the R0–R3 plan above.
+This is a single-room implementation/verification round; execution IDs are not
+applicable. Core owns omission selection validation and frame representation;
+Service owns durable diagnostics, lifecycle and the exact package pin. The
+earlier diagnosis and proposed plan remain historical input, not current blockers.
+
+**Result: PASS for the bounded candidate.** The three previously failing small
+UAT/SRS DOCX cases now deliver genuine DOCX with succeeded generation/delivery,
+partial completeness and finding/omitted-placement counts1/1,1/1,1/2. Shared
+resource keys do not remove good pictures from another instance. Full UAT/SRS
+capacity, all Word geometries, a complete Service suite and release/install/
+integration readiness are not claimed.
+
+### Implementation and package identity
+
+- Core candidate branch `codex/docx-image-omission-20261102`, base
+  `3e74f98b8a14cefea4dd147644318ea3108999b1`, commit
+  `db828b2b528fe0402ce99cff5edea540c562f048`. Versioned opt-in
+  `docx-image-omissions/1` selects bounded, unique existing body image node IDs;
+  strict default and undeclared-resource refusal remain. Core snapshots the
+  selection before asynchronous resource access, retains the original native
+  paragraph/run/frame without a drawing, emits explicit adaptations/warnings,
+  and creates no fake image resource. Unsupported geometry/containers still
+  refuse. No Core budget was raised.
+- New private package `flowdoc-core-0.5.2-image-omissions-db828b2.tgz`, SHA256
+  `5cdb6f4cc34f5c89b7292715c1f707e1a63e73aee71aebb1c16aaf49d058f026`.
+  Compiled output comes from the tested Core candidate; unchanged native/font/
+  resource bytes come from the previous exact pin. No source TypeScript or
+  installation scripts were added. Existing published archives remain unchanged.
+- Service candidate branch `codex/docx-image-omission-20261102`, base
+  `c4528677d50c0ec2a834f9cc023264b71c69d8d5`. Manifest, dependency and lockfile
+  use the new archive/digest. Startup checks the capability before acquiring a
+  pool/listener. The task child passes only its locally computed omitted body
+  node IDs after existing durable diagnostics acknowledgements, preserving
+  duplicate-warning suppression. No HTTP omission control or migration was added.
+  Terminal commit `bdd8740b344b2275628371815cbdd3925ba0bd56` is retained in the
+  external ledger and verification report below. Code-adjacent README/usage
+  contracts were updated.
+
+### Acceptance and reusable evidence
+
+1. R0:7 baseline/partial real-HTTP cases plus3 controlled omission copies.
+   Word16 read-only exports preserve3 pages and following-text coordinates for
+   bounded24/40pt frames (delta0.0pt). This establishes the native representation
+   only for those geometries; it is not universal pixel equality.
+2. R1: meaningful RED before implementation, then Linux build and102 tests in
+   six files, including20 omission tests. Strict/malformed/unknown/non-image/
+   header selection, shared-resource separation, mutation during open, geometry,
+   XML limit, sink abort and cancellation are covered.512MiB worker, no OOM.
+3. R2: private package root-import consumer passes strict-default refusal and
+   opt-in genuine DOCX/PDF output at512MiB. Vendor identity check passes. Actual
+   new Service plus old Core refuses `RENDERER_PIN_MISMATCH` before DB startup;
+   the startup resource-acquisition unit check also passes. No package install
+   into a real system was performed.
+4. R3: fresh-data API10/10 and following-text API10/10 pass on the new pair.
+   Independently checked multipart attachments, stream/DB/download hashes and
+   lengths, ZIP CRC/XML/internal relationships, Thai markers, image colors per
+   placement and unchanged XML ceiling. Diagnostics8 passed/1 optional capped
+   case not selected in the ordinary run; cap1 run9/9 passes, including a genuine
+   unsupported fixed-height DOCX failure after durable findings, totals2 while
+   retained detail count1. Failure still has no delivered artifact. These are
+   overlapping suite configurations, not unique aggregate test counts.
+5. Native interrupted-worker/explicit-retry regression8/8 passes, with stopped
+   scopes, released reservations and healthy subsequent admission. Legacy DOCX
+   processing6/6 and paired API18/18 pass with external fixture-only native
+   launcher/ownership injection, assertions unchanged; normal and queue routes,
+   typography, merges and navigation remain covered. Five additional affected
+   compatibility files pass20/20 at512MiB for the entire legacy process set.
+6. Actual new-Core DOCX outputs:10 files opened read-only/exported in Word16;
+   all30 pages visually reviewed. Expected text/images/page counts remain and
+   following-marker deltas against R0 references are0.0pt. Original DOCX hashes
+   remain unchanged. Runtime receipts correctly retain `wordVerified:false`;
+   external QA does not turn that into a universal renderer guarantee.
+7. One fresh-context whole-change review found no confirmed product defect.
+   Its compatibility/Word evidence gaps were resolved by the final native and
+   compatibility runs and Word verification. Product code did not change after
+   that review. Final source/package hashes match the frozen passing candidate.
+
+All native acceptance used the isolated OCI Linux/PostgreSQL18 Docker lab:
+512MiB/swap0 per worker, coordinator/aggregate1GiB, private DB512MiB/1CPU,
+network-none containers. Existing50000 XML nodes,10000 placement/drawing and
+32MiB DOCX ceilings remain. Successful final runs have no OOM, stopped owned
+containers and unchanged prepared-system Docker identity metadata. No real
+API/SQL/storage/data access or real-service stop occurred. Oracle here means
+the OCI VM, not Oracle Database.
+
+Retained unsuccessful harness attempts are not PASS: first R0 fixture had
+duplicate marker IDs; first Core geometry run lacked archived native shaper
+binaries; initial compatibility run lacked required proof/font inputs and
+used a512MiB coordinator for a1GiB queue; first native fixture adaptation lacked
+runtime ownership. Corrected copies supplied unchanged prerequisites and the
+same product/test assertions. The initial wrong-Core probe lacked the examples
+fixture; the corrected private probe passes. No product repair was made merely
+to suppress these harness failures.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-docx-omission-implementation-20261102/`
+(`ledger.json`, `verification.json`, `r0b/`, `core-red/`, `core-green2/`,
+`packed/`, `service-red/`, `service-green/`, `frame-green/`, `diagnostics/`,
+`diagnostics-cap/`, `t1-regression/`, `native-api2/`, `native-processing2/`,
+`compatibility2/`, `wrong-core2/`, `word-verification.json`,
+`word-receipt.json`). Raw earlier attempts remain with explicit failure status.
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-omission-fix-20261102/verification-report.html`.
+
+The bounded repair acceptance is closed; next work is separate candidate
+integration review if requested. Product candidate branches remain separate.
+No merge, push, release, installation, real-data change or real-service stop.
