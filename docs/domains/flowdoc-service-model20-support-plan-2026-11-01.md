@@ -1854,3 +1854,132 @@ preparation-finding projection), src/tasks/repository.ts and src/tasks/render.ts
 PostgreSQL18 design references: [safe privileged functions and atomic grants](https://www.postgresql.org/docs/18/sql-createfunction.html#SQL-CREATEFUNCTION-SECURITY),
 [RLS ownership/bypass boundaries](https://www.postgresql.org/docs/18/ddl-rowsecurity.html).
 These support the proposed mechanism, not its unimplemented correctness.
+
+
+## WP1 writer evidence contract and retained inventory — 2026-11-02
+
+**PASS for bounded contract/inventory; writer approval remains UNVERIFIED.**
+User authorized WP1 only: define the evidence contract and inspect retained
+synthetic lab evidence. Owner Service, role Evidence Reviewer/Planning Partner;
+single-room discovery, execution IDs not applicable. Current Service remains
+c4528677d50c0ec2a834f9cc023264b71c69d8d5, runtime source bc3aca9. No prior
+execution round is reopened. This section is canonical review-contract prose,
+not a new product API, codec, authorization token or runtime behavior.
+
+Scope: the retained model20 diagnostics native2 packet and its directly linked
+synthetic outputs/build/dump. Allowed external audit scripts and output files
+are separate from Core/Service. Proof Budget: one read-only evidence check plus
+one focused image inventory to resolve a discovered dependency-evidence gap;
+no formal audit or delegated work. Document Budget: this existing section and
+inspectable external JSON evidence. No new map, Work or registry promotion.
+
+### Review contract: flowdoc-writer-evidence-review/1
+
+The full field catalog is retained as contract.json in the evidence directory.
+Each claim must name its original artifacts, byte digests, collector and custody;
+unsupported claims stay explicit. Four claims are assessed separately: source,
+built artifact, runtime deployment/loading, and execution of the specific task.
+
+| Block | Mandatory review material |
+| --- | --- |
+| Review identity | Version, review ID, UTC time, synthetic/real scope, reviewer and collector principals |
+| Original artifacts | Stable ID, allowlisted locator, byte length, lowercase SHA256, collection time and custody reference |
+| Source | Writer commit, exact source manifest and original source bytes; normalized Git comparison is supporting only |
+| Build/dependencies | Compiled-output manifest, build controller/compiler, immutable dependency identity and Core payload identity |
+| Runtime | Image content ID plus separately loaded/mounted Service payload identity, runtime instance, process-start identity or equivalent, bounded time range and execution reference |
+| Target | Database/schema and original snapshot binding, exact task ID, input/normalization digest, finding policy/caps and task-to-execution evidence |
+| Assessment | Per-claim status/references, contradictions, missing links, semantic compatibility rationale, decision and limitations |
+
+Canonical serialization and executable schema validation are not implemented by
+WP1. This contract is deliberately separate from the existing CLI's writer
+attestation/1 input; it must not be passed to the old CLI as though supported.
+No user-supplied operator string, SHA256 or signature authenticates historical
+execution by itself. An immutable base-image identity does not identify Service
+source/dist mounted separately at runtime. Package metadata alone is not a full
+Core-payload identity. Retain raw original bytes; reject contradictory/missing/
+wrong-task references and references outside the authorized evidence roots.
+
+Review outcomes: UNVERIFIED_NO_APPROVAL, CONTRADICTED_NO_APPROVAL, or a reviewable
+chain with explicit scope. The lab decision-table positive is named
+REVIEWABLE_SYNTHETIC_CHAIN and is hypothetical, not a recovered actual chain or
+permission to write. A missing legacy runtime field may be supported by an
+independent retained execution link with reviewer rationale; absence of such a
+link is not repaired by regenerating an artifact today. SHA256 protects byte
+identity, not historical truth. Collector/reviewer trust remains explicit.
+
+### Retained evidence checked
+
+The source project is flowdoc-schema-m20diag-native-2-20261102. The external
+read-only check mounted only its named source/archive/receipt/observations,
+compiled candidate and the earlier terminal-inventory mirror. It did not mount
+its database data/socket or query/start any database. All seven named artifact
+mirrors matched their retained lab bytes. The terminal JSON is a reused local
+export, not a newly observed database snapshot.
+
+- All391 archived source files match the source packet; the three pinned writer
+  source-byte hashes match the approved f82d7c6 profile.
+- All204 retained compiled files match the historical compiledHashes receipt.
+- Six captured task IDs, normalization digests and runtime/storage identities
+  match the earlier terminal inventory. Instrumentation links them to one
+  coordinator; it does not uniquely bind each to a worker lease/payload digest.
+- The retained worker observations record seven worker groups at512MiB/swap0.
+- The original synthetic dump still hashes to
+  e400e9f034af1a820c0ea066cb96877582c642db0e979e9c1be05c78fbe0223e.
+
+The source archive has no lockfile, which initially left dependency evidence
+unresolved. A focused read-only inspection of the exact cached lab image
+07c71903922ef511587627683cb2a5041faa62273ee18da2cb52b434b5900388 found:
+
+- /app/package-lock.json, SHA256
+  64b3f57932b380f1f96d43d2553c1d59c965263d7ebbe1827a0cdee60ee66135;
+- node_modules/.package-lock.json, SHA256
+  79291049f83c21730fb1314121f0f3541a903bbb846dbf0a5900af8d709c6a7e;
+- 250 installed Core files with no symlinks, deterministic path/content manifest
+  SHA25687b757ff8c4f07b357af4170a2214eab548537b1470bdd9b555fa846a65e184d.
+
+Thus dependency evidence is available in the pinned image; do not report that it
+is wholly missing. This supplements the package.json hash and vendor declaration
+without proving which bytes every historical task loaded. The initial result.json
+is retained unchanged; verification.json explicitly records these follow-up
+resolutions. It does not silently rewrite initial observations.
+
+The retained native2 receipt is FAIL_P5_GOVERNOR. WP1 verifies artifact consistency
+and bounded provenance observations only; it does not relabel that historical
+suite PASS. Fifteen decision-table exercises cover a hypothetical complete chain
+and missing/conflicting/swapped-task claims; they are specification exercises,
+not tests of a production validator, signature system or database security.
+
+### Remaining gaps and next boundary
+
+Blocking actual automatic writer approval: task-to-worker/payload binding or an
+adequate independent alternative; reviewed custody/build-to-loaded-payload chain;
+semantic eligibility and exact target snapshot/schema/cap binding. Historical
+source/dist mounts were writable, so current matching hashes alone cannot exclude
+transient replacement. There is no independent signed producer/task anchor in
+this inspected packet; a signature is not the only possible evidence, but a
+shared collector's statements must not be called independent proof. These are
+verification gaps, not evidence that replacement or forgery actually occurred.
+Real-target provenance and operator identity remain uninspected.
+
+WP1 is complete as discovery and contract definition. WP2 may next design the
+approval/snapshot contract with explicitly synthetic fixtures; actual task
+approval stays blocked until the required chain is reviewed. This result does
+not authorize WP2/WP3 execution, ACL changes, a gateway migration, real recovery,
+or dropping the CLI's existing eligibility checks.
+
+Two new network-none, read-only worker runs used512MiB/swap0/2CPU each; both are
+stopped, exit0, no OOM. The first audit peaked at17136KiB RSS. No DB, Service,
+coordinator or build was started in this round. SSH/host metadata collection is
+outside the worker cgroup and is not claimed as512MiB application proof. Prior
+DB/build resource envelopes and product ceilings are unchanged. Inputs were
+mounted read-only and named input hashes remained unchanged. No production
+containers were inspected in this round. No Core/Service code, schema or ACL
+changes, real data access, real service stop, push, merge, release or installation.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-wp1-writer-contract-20261102/`
+(`contract.json`, exact exercised input `contract-exercised.json`,
+`local-manifest.json`, `audit.py`, `runner.py`, `result.json`, `receipt.json`,
+`image-inventory.py`, `image-inventory.json`, `image-receipt.json`,
+`verification.json`). Source evidence remains in the directly referenced
+service-model20-diagnostics-20261102 and service-model20-legacy-diag-20261102
+archives; original records are not modified.
