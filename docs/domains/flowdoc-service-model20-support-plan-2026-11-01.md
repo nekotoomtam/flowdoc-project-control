@@ -1384,3 +1384,57 @@ four PDFs, `verification.json`, `verify.py`, `final-controls.json`,
 `terminal-db2.json`, `review.json`).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-diagnostics-20261102/verification-report.html`.
+
+## DIAG-01 correction — 2026-11-02: PASS in Service candidate
+
+User authorized the Service correction and isolated Oracle/OCI VM/private
+PostgreSQL Docker proof, retaining512MiB/worker and1GiB/2CPU aggregate. Owner:
+Service; implementation followed by frozen verification in one room; execution
+IDs are not applicable. Commit83d7968385994291fe8bf1a9a0ecc75c9e21def4 changes
+only `src/tasks/render.ts`, `src/tasks/public.ts` and the diagnostics test file.
+
+The parent now commits cumulative preparation finding/omission observations into
+the existing append-only task_events detail in the same locked transaction as
+the capped finding detail insert. Existing preparation limits bound the ledger
+to at most10000 observations per task. A DOCX failure or exhausted detail cap
+therefore cannot discard totals already acknowledged by the parent. This does
+not fabricate a completion summary, change schema or broaden worker messages.
+Lookup selects these durable totals, falling back to existing completed-task
+summaries when no ledger exists; it never adds two copies of the same totals.
+The truncation flag compares observed totals with retained details.
+
+Fresh native1 RED reproduced the original failed-DOCX zero counter. Native2
+GREEN passed8 diagnostics cases at default bounds: the original six plus
+one-finding/two-placement PDF and DOCX controls. The separate cap fixture is
+explicitly skipped in that run. Native3 runs that fixture alone, lowering only
+its test-owned retained-detail setting to1 through the existing intake policy
+seam: one normalization and one preparation finding still report totals2 and
+omitted placements2, with one retained detail and detailsTruncated true after
+DOCX failure. Product default findingDetails10000 and all resource ceilings are
+unchanged. Native4 passed the affected T1 real API suite8/8. Total **17 scoped
+cases passed** across the three GREEN runs; selection skips are not passes.
+
+Independent verification rechecked the original four partial PDFs, exact
+instance attribution and counters, multi-placement totals and capped ledger.
+Affected T1 downloaded PDF/DOCX artifacts again match the unchanged standalone
+Core semantic references and transport receipts. DOCX remains fieldRefresh
+required / wordVerified false. All26 observed GREEN worker scopes measured
+512MiB/swap0; no OOM, sources match frozen candidates and all eight retained
+round-owned app/DB containers are stopped. Reservations settled with no held
+queue; failed inputs remain accounted at actual retained bytes.
+
+Fresh read-only review found no material issue. DIAG-01 is closed for
+observations made by this candidate. Historical failed tasks that have neither
+the new observation ledger nor a completion summary are not backfilled; this
+round does not recover absent historical totals or alter any real data. Legacy
+completed-summary fallback remains in place. No Core, migration, package,
+configuration, product ceiling or worker runtime change, real API/SQL/storage
+access, real service stop, merge, push, release or installation occurred.
+Full Service, native Word, T2/T3 and general readiness claims remain out of scope.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-diag01-fix-20261102/`
+(`packet.json`, native1 RED/native2–4 GREEN frozen archives and receipts,
+`verification.json`, `verify.py`, `artifact-verification.json`,
+`final-controls.json`, `terminal-db2/3/4.json`, `review.json`).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-diag01-fix-20261102/verification-report.html`.
