@@ -1573,3 +1573,78 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-legacy-diag-tool-20
 `final-controls.json`, `review.json`).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-diag-tool-20261102/verification-report.html`.
+
+
+## Writer evidence and recovery privileges — 2026-11-02: scoped PASS
+
+User authorized writer-evidence review and minimum-rights testing on a fresh
+synthetic Oracle Cloud lab copy. Service owner, Evidence Reviewer, single-room;
+execution IDs not applicable. Runtime remains candidate
+bc3aca9a263ff3497a1da0851ce1a50e4ca95960. Only code-adjacent docs/usage.md changed,
+committed as c4528677d50c0ec2a834f9cc023264b71c69d8d5. No runtime repair was needed.
+
+Three retained source files match the approved raw byte hashes; their normalized
+content matches Git f82d7c6840ca105cbfdc2d3f14bb3075b4c8282d. This verifies the
+retained synthetic source chain, not a real task's executable identity. The
+sourceEvidenceSha256/operator/basis fields remain operator attestations, not
+authenticated runtime provenance. Real-target writer eligibility is unverified.
+
+**27 scoped database/CLI checks pass**:21 main checks and6 narrower-profile
+checks, including actual command planning/apply/repeat, missing-rights refusals
+without business writes, invalid SCRAM credentials, identity-guard enforcement,
+and refusal of unrelated reads, outcome writes, deletion, DDL and owner SET ROLE.
+
+The tested required profile on PostgreSQL18/schema028 is:
+
+- Both roles: CONNECT database; USAGE public; SELECT schema_migrations(name,
+  checksum); full SELECT tasks, task_findings, task_events and
+  task_resource_reservations; EXECUTE pg_catalog.pg_control_system().
+- Apply only: UPDATE tasks(id) for SELECT FOR UPDATE; INSERT task_events only
+  (task_id, sequence, event_key, event_type, previous_state, new_state, actor,
+  reason, detail); EXECUTE zero-argument pg_catalog.uuidv7() for the event default.
+- No superuser, ownership, memberships, pg_monitor, full-table task UPDATE or
+  event INSERT, unrelated generation/output reads, CREATE/TEMP/DELETE/ALTER,
+  or uuidv7(interval) execution. The existing trigger rejects changing task id.
+
+This corrects the prior guide's incomplete write-right description: PostgreSQL
+row locking also requires UPDATE privilege and the event default requires UUID
+function execution. Full to_jsonb snapshots require all columns in the four
+read tables. The narrowed ledger/function rights were tested with real fresh
+recoveries. This is a tested required profile for the exact candidate, schema
+and remaining standard catalog PUBLIC ACLs, not a universal minimum certificate.
+
+Two confirmed capabilities remain **Medium Design Concerns**, not newly proven
+runtime defects: an arbitrary evidence reference with an approved source profile
+can produce an operator-attested plan; the column-limited apply role can directly
+INSERT a misleading preparation event/actor outside CLI validation. A separate
+synthetic metadata clone deliberately showed501 via the public projection. That
+fixture is not a legitimate recovery. SQL grants do not enforce task scope,
+actor identity or event semantics. Use a trusted dedicated operator; database
+write-gateway/policy enforcement requires separate design/authorization.
+
+The fresh private cluster restored the immutable synthetic dump (SHA256
+ e400e9f034af1a820c0ea066cb96877582c642db0e979e9c1be05c78fbe0223e)
+and initially matched all49 table inventories. Non-event business tables were
+unchanged relative to post-fixture baselines. Main proof distinguishes the
+legitimate recovery event from the intentional direct-SQL fixture; narrowing
+proof adds two genuine recoveries on derived metadata clones. Those clones do
+not prove physical storage restoration or runnable jobs.
+
+Actual database is PostgreSQL18 Docker on an Oracle Cloud Linux VM, not Oracle
+Database. Each proof process set used512MiB/swap0/2CPU; DB512MiB/1CPU and build
+1GiB/2CPU are separate quotas. All four round-owned containers are stopped,
+no OOM, candidate source hashes stable and known production identity metadata
+unchanged. Fresh read-only evidence review found no material issue; it did not
+independently rerun the lab. No full Service/native/HTTP acceptance claim.
+
+Before real recovery, writer fencing, historical provenance/caps, target rights,
+restore ownership and trusted-operator controls remain separate gates. No Core,
+runtime, schema or ceiling change, real data/API/SQL/storage access, real service
+stop, merge, push, release or installation occurred. No map promotion.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-legacy-diag-privileges-20261102/`
+(`writer-source-review.json`, `results/result.json`, `results/narrow-result.json`,
+`receipt.json`, `narrow-receipt.json`, `final-controls.json`, `verification.json`,
+`review.json`, and retained proof scripts).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-legacy-diag-privileges-20261102/verification-report.html`.
