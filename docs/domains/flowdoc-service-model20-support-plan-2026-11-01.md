@@ -2448,3 +2448,42 @@ Report:
 The bounded repair acceptance is closed; next work is separate candidate
 integration review if requested. Product candidate branches remain separate.
 No merge, push, release, installation, real-data change or real-service stop.
+
+## Owner-authorized local development integration — 2026-11-02
+
+The owner subsequently requested merging both accepted candidates into their
+primary development branches. This is a bounded single-room integration scope;
+execution IDs are not applicable. It does not reopen historical recovery work
+or authorize release, installation, push or runtime/data access.
+
+Live `git ls-remote --symref origin HEAD` confirmed the GitHub default branches
+before mutation: Core `codex/template-binding`, Service `codex/template-registry`.
+Both primary development checkouts and both accepted candidate lanes were clean.
+Core advanced by1 commit from `3e74f98` to `db828b2`; Service advanced by15 commits
+from `a572025` to `bdd8740`, including the previously separate model20/launcher/
+diagnostics prerequisite history. This is not an omission-only cherry-pick.
+
+**PASS: Core → Service local fast-forward integration.** Each resulting commit
+and full Git tree exactly equal its accepted candidate. Service's vendor check
+passes with Core source `db828b2` and SHA256
+`5cdb6f4cc34f5c89b7292715c1f707e1a63e73aee71aebb1c16aaf49d058f026`.
+The scoped Linux/OCI/PostgreSQL, package-consumer, worker, API, diagnostics and
+Word evidence above is reused on identical tested content, dependencies and
+configuration; this integration did not change the runtime environment or
+product files. No new full-suite or broader capacity claim is made. Existing
+M20-5/deployment/full-suite/large-document limitations remain as recorded.
+
+Release refs remain Core `55315ca` and Service `25e912f`. No remote refs were
+written, no runtime/DB/storage was accessed, and no real service was stopped.
+Current-round `docx-image-omission-20261102` worktrees and their local branches
+were removed through normal Git operations after clean/merged/no-ignored-output
+checks. External evidence and commits remain retrievable; older unrelated lanes
+were preserved. Current source locators are:
+
+- `C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/development`
+- `C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/development`
+
+Evidence: the same external root's `integration-20261102.json` and updated
+`ledger.json` retain exact before/after refs, tree identities, proof-reuse scope,
+release invariance and cleanup receipts. Previous bounded acceptance and its
+historical candidate locators are retained, not relabeled as a new test run.
