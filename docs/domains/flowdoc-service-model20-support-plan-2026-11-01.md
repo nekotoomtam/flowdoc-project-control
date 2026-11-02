@@ -6,27 +6,24 @@ model20 definition/request/composition semantics. This document is not product
 acceptance, implementation authorization, a release plan or a migration runbook
 for real data. It does not change the existing stage/checkpoint contract.
 
-Current scoped status 2026-11-01: M20-1 passed in candidate9f20506, M20-2 in
-85a4d0e, and bounded M20-3 authoring/API in257bdd5. These remain only in the
-separate Service candidate. M20-4 delegation and copy-only pre-exec/IPC/fence
-spikes passed on Oracle; actual Service launcher/broker integration remains
-unimplemented and unverified. Six governor admission tests remain unrun; M20-5
-is not started. Full model20 support
-is NOT accepted. The follow-up launcher/broker integration plan was reviewed on
-2026-11-02; product implementation remains open (see
-[focused Service launcher/broker plan](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)).
-P0 copy kernel/authentication/lifecycle proof subsequently passed22/22 on
-2026-11-02. P1 launcher/broker components subsequently passed in separate Service
-candidate2f6cf43 (21 unique targeted cases), followed by P2 legacy/font/image
-adapters inc430780, final test candidate38ee2a0 (33 unique focused/affected cases including the native lab
-cases), then P3 task adapter in37d8ed1 (50 unique focused/affected cases including
-native task transport and PDF/DOCX outputs). P4 scoped font/admin/startup-health-
-shutdown composition subsequently passed in8581644 (45 unique cases). P5 full
-Service acceptance remains unstarted. These results do
-not close M20-4 or the six governor acceptance cases. See the focused plan's
-P1/P2 results for deployment constraints and evidence.
+Current scoped status, reviewed2026-11-02: clean Service candidate
+`f23ed86c45610a799300522f37f3498ded7de1cd` includes M20-1/2/bounded3 and the
+P1–P5 launcher/broker integration. P5-01 is fixed; scoped P5 passed72 cases,
+including all six unchanged governor cases and actual model18/19 HTTP delivery.
+The original P5 failure and all earlier scoped results are retained below.
+See the [focused launcher/broker result](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md).
 
-## Request, baseline and scope
+| Stage | Current evidence boundary | Remaining |
+| --- | --- | --- |
+| M20-1/2/3 | Definition/contract/storage/migration/authoring subset passed; five focused suites34 cases reran in P5-01 | No promotion to native20 task delivery or unsupported granular authoring |
+| M20-4 | Actual worker isolation and six governors passed through P5-01; initial topology blocker resolved | Native20 /jobs/preview/documents, instance/asset isolation, same-pinned-Core output comparison and model20 interruption/retry |
+| M20-5 | Genuine027→028 queued18/19-job upgrade and transactional migration failure rollback passed in existing two migration tests | Required-schema startup/admission behavior, old binary compatibility, recovery after20 writes and complete Service-suite case coverage |
+
+Full model20 support remains NOT accepted. The next bounded plan is
+[M20-4/M20-5 continuation](#m20-4m20-5-continuation-plan--2026-11-02).
+This review performs no new lab workload, product edit or integration.
+
+## Request, baseline and scope — initial 2026-11-01 planning context
 
 Owner requests review and planning ONLY. Planning Partner / Cross-Repo Boundary
 Reviewer then PC Steward; single-room execution IDs N/A. Current PC44d6bd2,
@@ -49,7 +46,12 @@ Implementation locators below are relative to those owners. Reusable evidence:
 including the real model20 task-compose success and Service decompose rejection.
 That41.23MiB composition result is NOT renderer or full Service compatibility.
 
-## What actually blocks support
+## Original baseline incompatibilities — retained diagnosis
+
+The table below describes pre-M20 Servicea572025, not current candidatef23ed86.
+M20-1/2/3 results below resolve their bounded rows; the current-status table and
+continuation plan describe what remains. Retaining this diagnosis does not reopen
+the original failures or invalidate the later passing evidence.
 
 | Boundary | Implementation evidence | Status and consequence |
 | --- | --- | --- |
@@ -173,7 +175,7 @@ additional constraint change can be needed.
 
 ### M20-4 — Real input/lifecycle and native output in Oracle-host lab
 
-- [ ] First prove that the lab can bind the512MiB hard limit to each actual
+- [x] First prove that the lab can bind the512MiB hard limit to each actual
   worker/process bundle through its launch/exit lifecycle. Do not lower the
   Service coordinator profile or treat a shared1GiB Service cgroup as a per-worker
   limit. The existing standalone worker lab does not prove this real-API wiring.
@@ -196,7 +198,9 @@ additional constraint change can be needed.
   not an in-worker object capture; use actual emitted diagnostics/output for
   assertions about the Service result.
 - [ ] Invalid/empty/duplicate-instance/unknown-section input rejects without
-  retained output or reservations. Verify limits and errors remain authoritative
+  published output or leaked queue/storage reservations. Account for any input
+  deliberately retained under the existing recovery TTL; see the continuation
+  plan's held-versus-used checks. Verify limits and errors remain authoritative
   in Core; preserve current max2000 instances,50k expansion budget and Service
   record/image/XML/output caps. No new giant stress/SRS workload is required.
 - [ ] Run one bounded interrupted request and retry using the existing lab
@@ -230,8 +234,12 @@ passing claim when the Linux tooling, fonts, DB or native backend is unavailable
 ## Resource, acceptance and stop rules
 
 Lab/test fixtures only, existing limits; hard512MiB memory AND memory+swap per
-worker/bundle, CPU1/pids96 as prior lab. DB/Service coordinator totals are separate
-and recorded. Native rendering uses real processes/fonts with measured peak,
+worker/bundle. Current accepted P5 topology has aggregate/coordinator1GiB/2CPU
+and app pids-limit128; worker memory.swap.max=0. Earlier CPU1/pids96 values describe
+standalone proof bundles, not additional limits implemented by the current
+broker. Do not claim a per-worker CPU/pids cap from them. DB/Service coordinator
+totals are separate and recorded; lab PostgreSQL remains512MiB/1CPU. Native
+rendering uses real processes/fonts with measured peak,
 zero OOM and cleanup checks. OOM/timeout returns to design; no heap tuning,
 forced GC, higher cap, alternative renderer or silent fallback to19.
 
@@ -833,3 +841,193 @@ No Core/product-main integration, real data/service operation, push, release or
 installation. Original M20-4/M20-5/full-suite, native Word and deployment
 portability gates remain separate. No Work/Evidence registry or map promotion.
 Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p501-fix-20261102/verification.json`.
+
+## M20-4/M20-5 continuation plan — 2026-11-02
+
+Planning only, authorized by the owner's latest review request. Owner: Service
+for future test/lifecycle work; PC for this existing canonical plan. Roles:
+Planning Partner / Cross-Repo Boundary Reviewer, then PC Steward. Inline execution
+IDs not applicable. Work Size medium; Risk Tier routine, with concrete blockers
+for identity/data-integrity failure, schema mis-admission or resource escape.
+The2026-10-04 generated Current Truth Snapshot is unrelated and stale; current
+request, live Git facts and the referenced scoped evidence govern this plan.
+
+Baseline: Service candidatef23ed86, clean; product main/developmenta572025 remains
+clean. Core0.5.2 pin SHA256
+`ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532` is unchanged.
+No product source/test, Core/C1, migration, configuration or lab mutation is
+authorized by this planning turn. Future test additions need the next explicit
+execution instruction; product repairs found during verification return as a
+separate bounded correction, not an automatic fix to obtain PASS.
+
+### Evidence reuse and verified gaps
+
+| Evidence/source checked | Reusable conclusion | Does not establish |
+| --- | --- | --- |
+| P5-01 verification.json, candidate/source manifests and native receipts |512MiB/swap0 bound workers; original1GiB/2CPU coordinator/aggregate; six governors,18/19 HTTP, fault cleanup/health, font/image/native wiring | Model20 request identity, images/fonts/output through actual task workers |
+| tests/model20-migration.test.mjs:8–26; current migration028 | Upgrade genuine027 current/snapshot/published18/19 graphs and queued jobs; replay; injected failure restores functions and checksum ledger | Old executable on upgraded DB, pending task/file recovery, missing028 admission guard or backup/restore |
+| tests/model20-authoring-api.test.mjs | Model20 authenticated save/validate/preview pin and bounded capabilities; model18/19 compatibility | Successful20 preview download or native task PDF/DOCX |
+| tests/helpers/model20.mjs | Small A-B-A fixture exists; schema2 and rich roundtrip variants exist | rich=true clears examples; it has no valid task image uploads or complete native reference fixture |
+| src/tasks/normalize.ts:10–39 and src/tasks/render.ts:43 onward | Production path loads exact published pin, calls Core normalizeTaskInput, persists bindings and uses injected task launcher | Actual20 runtime success; a source path or direct Core composition is not a result |
+| src/server.ts:31–90 | Current startup/health composition can be located; this review found no explicit schema_migrations/028 preflight there | Runtime proof that missing028 is safely rejected; classify as blocking verification gap, not a confirmed defect |
+| tests/model20-tasks-api.test.mjs | File is absent at reviewed HEAD | Any claim that original M20-4 task acceptance ran |
+
+Keep the existing P5-01 receipt directory immutable. Reuse passing results only
+when candidate content, relevant dependencies/configuration/environment and
+criterion coverage still match. Any product repair re-evaluates affected evidence.
+
+### T0 — Freeze the lab packet and schema prerequisite first
+
+- [ ] Prepare one new owned OCI lab prefix, private PostgreSQL/socket/storage and
+  synthetic credentials; no published host ports, production connection, package
+  install/pull, Docker socket in app or host-root cgroup write. Reuse the reviewed
+  P5 holder/broker/reaper topology. Record source/build/Core/image/runtime/kernel
+  hashes, UID/caps, worker/root limits and final owned-container inventory.
+- [ ] Bind actual Service workers at512MiB/swap0, preserve aggregate1GiB/2CPU and
+  the existing coordinator accounting. Reference-Core native runs use their own
+ 512MiB bundles sequentially, not the Service coordinator heap. Compilation is a
+  separate disposable build step using the already reviewed toolchain budget.
+- [ ] Create a027-only disposable schema and start the new candidate through
+  the real launcher. Proposed acceptance: required028 must be confirmed before
+  model20 admission/capability publication; a fail-fast startup or explicitly
+  unavailable admission must leave no partial20 rows or document worker. Observe
+  actual listener/health and capability behavior; do not assume migrate() runs
+  during startService(). Also check checksum mismatch and successful028 startup.
+- [ ] If it starts/adopts20 against missing/incompatible schema, retain RED and
+  stop dependent native20 proof. Report a Service startup/admission correction
+  packet; do not edit src/server.ts or migrations inside verification. This is
+  the first proposed experiment because the source inspection is not runtime
+  proof of a schema guard.
+
+Proposed new test owner/path: tests/model20-runtime-compatibility.test.mjs.
+This is a test plan, not an existing test or approved implementation.
+
+### T1 — M20-4: small real model20 requests, identities and native files
+
+- [ ] Add tests/model20-tasks-api.test.mjs and a narrowly owned helper such as
+  tests/helpers/model20-native.mjs after execution authorization. Reuse the small
+  A(first),B(middle),A(last) family; preserve the existing rich roundtrip fixture.
+  Pin real published version1 and a saved draft revision, not forged DB-only
+  provenance. Derive supported reference/asset syntax from the pinned Core public
+  contract before building the fixture; unsupported cross-instance references
+  are a contract blocker, not an invented input or silent test omission.
+- [ ] Exercise actual TCP HTTP /jobs PDF, saved-revision authoring preview PDF,
+  /documents PDF and /documents DOCX. Keep legacy/preview GenerationRequest
+  (input to prepareGeneration, not its PreparedInput result) distinct from raw
+  task sections[{sectionKey,instanceKey,data,...}].
+  Check prepared schema3, Core flowdoc-task-input/2 and Service normalization2
+  independently. Repeated instanceKeys across different requests are legal;
+  duplicates within one request reject.
+- [ ] Use distinct FIRST/MIDDLE/LAST text, repeated A headers/footers, numbering,
+  local/cross-instance references where supported, and same asset key with
+  different tiny images in first/last. Assert text order, two distinct asset
+  hashes/section_id bindings, no ownership leak and correct instance-scoped
+  diagnostics in emitted files/findings. Independent Core composition/source IDs
+  are a reference, not evidence of an in-worker object capture.
+- [ ] Produce one small reference PDF and DOCX with the exact pinned Core under
+  separate512MiB native bundles. Compare semantic text/order, numbering/bands,
+  diagnostics/source identities, parsed DOCX XML/.rels/media/links and download
+  hashes/receipts, not nondeterministic ZIP/PDF byte equality. Retain actual
+  field-refresh/wordVerified metadata; no native Word layout claim from XML.
+- [ ] Add a small schema2/library-font case using owned staged assets/licenses
+  and actual bound inspection/preflight; copied or foreign tuples must reject
+  without gaining font rights. Existing schema1-only native P5 output does not
+  substitute for this provenance boundary. Keep draft-edit-after-admission
+  preview pinned to the accepted revision; do not publish a new version during
+  the interrupted-task retry case and accidentally change its expected pin.
+- [ ] Invalid shape, empty assembly, duplicate instance and unknown section
+  reject through actual routes. Pinned taskInput.js exposes SECTION_INPUT_SHAPE,
+  SECTION_ASSEMBLY_EMPTY, SECTION_INSTANCE_DUPLICATE and SECTION_KEY_UNKNOWN;
+  verify Service's documented public mapping rather than guessing HTTP codes.
+  Exercise the2000-instance and50k expansion bounds with bounded validation/
+  normalization fixtures; do not render a giant boundary document or raise caps.
+- [ ] After failure: no published artifact, live worker or held queue slot.
+  Failed input deliberately retained under current TTL is permitted only when
+  storage held equals actual used bytes; assert that accounting explicitly.
+  This clarifies the original "no reservations" phrase as no leaked reservation,
+  not deletion of payloads that existing recovery policy intentionally retains.
+- [ ] Run one bounded interrupted model20 request and a fresh explicit retry
+  using existing lab controls. Verify original pinned version/revision, instance/
+  asset identity, truthful generation/delivery status, stop proof, DB slot/storage
+  accounting and job/task-linked launch counts. The old task must not resume/
+  auto-deliver; a new request may reuse the same instanceKeys independently.
+
+Document-workload budget: one small fixture family, the four Service route/output
+cases above, two pinned-Core native references, one schema2 delivery, and one
+interruption plus one successful retry. Native preflight/font checks required by
+those paths remain real and measured. No UAT/SRS, large-doc/OOM stress expansion.
+
+### T2 — M20-5: old executable and truthful recovery boundary
+
+- [ ] Reuse the two passing027→028 migration cases if their files/dependencies
+  remain unchanged. Add only the missing pending-task/file-state fixture when
+  required for a claimed upgrade lifecycle; compare row/function/ledger/pin/file
+  hashes, not just reassembled JSON. Never alter applied migrations or downgrade
+  SQL. Migration-transaction rollback is distinct from binary rollback.
+- [ ] Pin old Service sourcea572025 and its exact dependency/Core/build identity;
+  build a scratch copy from existing cached dependencies without changing that
+  checkout. Against a fresh upgraded18/19-only copy, exercise old metadata/API/
+  persistence behavior. Keep its fixture free of runnable queued jobs and forbid
+  generation admission: the old executable lacks the new launcher. Running its
+  direct-spawn document workers under a1GiB app would violate the requested
+  per-worker boundary and is not authorized by this plan.
+- [ ] Report old-executable DB/metadata compatibility separately from operational
+  rollback readiness. Before20 rows, that limited proof can support a database
+  compatibility claim; it does not prove old native-worker isolation. An actual
+  old-runtime rollback/generation rehearsal needs a separately reviewed envelope
+  that preserves the current resource contract, not a lowered coordinator budget.
+- [ ] After20 current/snapshot/task/job rows exist, the proposed default is
+  forward recovery with the new compatible candidate. Treat old-binary use as
+  refused unless a separately verified compatibility route exists. A lab script
+  that refuses to launch an old executable is an operator/runbook safeguard,
+  not proof that a product startup guard already exists. Do not delete/coerce20
+  rows or assume an18/19-only filter makes the old runtime safe.
+- [ ] Quiesce only the owned lab service and create a consistent PostgreSQL dump
+  plus referenced task/font/output storage snapshot. Restore to new lab names/
+  volumes; preserve storage identity and immutable pins, create a fresh runtime
+  ownership identity under the real fence/recovery path. Compare input/font/
+  license/output hashes and usage/delivery evidence, terminal job history and
+  released/retained accounting. No automatic resend of restored completed work;
+  verify one fresh small request on the restored new candidate.
+
+### T3 — M20-5 complete-suite coverage and final acceptance
+
+- [ ] Freeze the final candidate before verification. Run the six focused M20
+  files (including the currently absent tasks API file once added), schema/
+  compatibility/recovery additions, and then the complete Service test inventory.
+  Use the existing cached toolchain, build and private DB; do not call the legacy
+  scripts/checkDatabase.mjs blindly: it builds images and asserts an obsolete
+  migration list ending018. Do not install dependencies to make verification run.
+- [ ] Full ordinary Vitest run: one file/worker at a time inside a512MiB test
+  bundle, with real native descendants inside that same cap. Actual Service
+  coordinator remains in its separate1GiB/2CPU topology for native acceptance;
+  do not shrink its profile to satisfy a test-bundle limit.
+- [ ] Inventory every conditional/skip by case, not only aggregate counts.
+  Native FLOWDOC_WORKER_LAB suites need their matching per-file owned topology/
+  coordinator PID/anchor. A single global lab flag on full npm test cannot bind
+  every fork to one fixed broker. Map ordinary and dedicated native results as
+  a union; reuse exact P5-01 cases only within unchanged relevant dependencies.
+  Refresh uncovered P2/P3/P4 native assertions when their older broker/runtime
+  base differs; actual P5 representative output does not mark those assertions
+  executed. Required skipped/missing cases keep the full-suite gate OPEN.
+- [ ] Check final diff/scope, source stability during tests, case-to-criterion
+  coverage, stop/reap/accounting, root-local events and final owned inventory.
+  One final review/fix cycle; unexpected OOM, timeout, identity mismatch, schema
+  mis-admission or unconfirmed stop halts dependent proof. No extra RAM, heap/GC
+  tuning, higher cap, replacement renderer or fallback to19.
+
+This plan's document budget is this existing canonical file only. Future proof
+budget is T0 prerequisites, one small T1 family, the bounded T2 recovery chain,
+one full ordinary suite plus necessary unmatched native cases, and one final
+review/correction cycle. Stop after acceptance; no automatic integration. Future
+PLAN defaults Astra/medium per workflow policy; the execution packet must record
+its own available host/model choice. No model switch, dispatch or lab execution
+was performed here.
+
+Blocking unknowns: actual missing028 startup behavior; complete native20 assets/
+references/library-font results; restore consistency; full-suite coverage; old
+native runtime rollback envelope if that route is required. Deferred: granular20
+authoring/clone/conversion, plugin/Editor/native Word adoption, large-document
+capacity, deployment portability and the separate pending-label topology witness.
+No full Core/PC suite, new Work/registry/map, Core edit, production action or
+push/release/install is implied. This planning review checks documentation only.
