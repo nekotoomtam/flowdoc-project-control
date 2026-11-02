@@ -2168,3 +2168,172 @@ The prepared-use system remains separate; no test data was inserted there.
 Stop at scoped acceptance; any change to DOCX omission handling requires its own
 reviewed scope and authorization. No Core/Service source/schema/ACL change,
 push, merge, release, installation or historical-data recovery.
+
+
+## DOCX image omission diagnosis and proposed repair — 2026-11-02
+
+**Diagnosis confirmed; repair remains unimplemented/unapproved.** User authorized
+investigating the three fresh-data DOCX_UNSUPPORTED cases and planning a fix in
+isolated Oracle Cloud lab,512MiB/worker and unchanged ceilings, no Core/Service
+edits, real data/service action or push/release/install. Owner: Service for the
+current rejection and wiring; Core for the DOCX resource/layout contract. Active
+role: Cross-Repo Boundary Reviewer/Evidence Reviewer. Single-room discovery,
+execution IDs not applicable. Work Size bounded, Risk Tier routine for this
+read-only investigation; future implementation needs its own scoped decision.
+No old recovery execution is resumed. WP2/WP3 legacy recovery stays deferred.
+
+Authority inputs: clean Service c452867, frozen fresh-data API evidence above,
+and the exact vendor Core package SHA256
+ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532.
+Packaged JS is the Core runtime authority here, not assumptions about current
+Core main. Its image/engine/profile/PDF-engine hashes and actual compiled
+Service render-child hash were checked against the retained lab image/candidate.
+No model or separate WORK dispatch was performed; host model continuation only.
+Proof Budget: reuse unchanged actual API failures, one bounded Core helper probe
+and source tracing; no new DB/build/full API rerun. Document Budget: this section
+and external evidence/report; no map promotion or synthetic execution records.
+
+### Confirmed path and impact
+
+This is one confirmed implementation limitation/cross-component contract gap,
+not three independent defects. Severity Medium: DOCX cannot produce partial
+output when an image is missing/unusable, while valid-image DOCX succeeds.
+The current guard is intentional protection for the strict packed Core API.
+There is no evidence here of RAM/XML exhaustion or incorrect diagnostics totals.
+
+| Case | Normalization omissions | Preparation omissions | Observed terminal reason |
+| --- | ---: | ---: | --- |
+| uat-missing-first |1 |0 |DOCX_CAPABILITY_UNSUPPORTED |
+| srs-corrupt-last |0 |1 |DOCX_CAPABILITY_UNSUPPORTED |
+| uat-shared-corrupt |0 |2 |DOCX_CAPABILITY_UNSUPPORTED |
+
+Service src/tasks/render-child.ts161..166 adds unavailable-* image nodes to the
+omitted set. Lines187..219 handle unusable image preparation, group affected
+nodes by instance, await durable finding acknowledgement, and mark those nodes
+omitted. Line224 unconditionally throws DOCX_CAPABILITY_UNSUPPORTED when format
+is DOCX and omitted.size is nonzero. This precedes font snapshot/engine creation
+at225..226 and generateDocxTo at244. src/tasks/public.ts31 maps that internal
+code to DOCX_UNSUPPORTED. Existing API outcomes and recorded omission counts
+support the same path for all three cases; no repaired render is claimed.
+
+The exact packed Core dist/docx/images.js64..78 gathers all image resource IDs
+from document/band graphs and rejects missing metadata with DOCX_RESOURCE_INVALID.
+dist/docx/engine.js138 calls it before preflight/writing. Merely removing the
+Service guard leaves this resource contract unsatisfied. The PDF counterpart
+explicitly warns IMAGE_UNAVAILABLE with authored-frame-retained semantics at
+packed dist/pdf/createPdfEngine.js58, explaining why PDF can produce partial
+output with the same missing image. This does not itself prove a native blank
+DOCX frame has equivalent Word geometry.
+
+### Bounded Oracle lab proof and limits
+
+One network-none read-only512MiB/swap0/2CPU worker checked the pinned package and
+compiled Service hashes, reconstructed template fingerprints, then called the
+unchanged prepareDocxImages helper. No-image control returned an empty image
+list. Minimal synthetic image-node metadata modeling each recorded omission
+produced DOCX_RESOURCE_INVALID/Missing prepared image in all three cases.
+The worker exited0, stopped, no OOM. No DB, coordinator or Service was started;
+no prepared-system metadata/API/SQL/storage was accessed in this round.
+
+This is an internal resource-contract probe plus reuse of the earlier real HTTP
+outcomes, not a full-engine counterfactual export with the Service guard removed.
+The first read-only collector could not locate the first original normalized
+artifact by stored ID in the permitted directories and stopped before collecting
+the remaining cases or starting a worker. Therefore no original ResolvedDocument
+replay is claimed. Original API inputs/results and findings remain retained.
+That artifact gap is not a data-loss diagnosis and does not justify recreating
+historical evidence. The final minimal probe and its limits are explicit.
+
+### Proposed approach and alternatives
+
+1. Improve the error description only: low scope, but leaves all three DOCX
+   requests without a document. Useful independently, insufficient for partial
+   DOCX output.
+2. Remove image nodes in Service: requires rewriting graph/container references
+   and frame/layout semantics outside their owner. Risks collapsing space,
+   disturbing anchors or changing unaffected instances. Not recommended without
+   an owned Core contract and layout proof.
+3. Recommended proposal: Core owns an explicit, opt-in per-image-node omission
+   contract and native frame representation; Service supplies only already
+   diagnosed omitted node IDs. Existing callers remain strict by default.
+
+Proposed semantics: skip the picture, preserve the authored frame/flow footprint
+and all unaffected content, and disclose partial completeness. Do not key the
+policy solely by shared resource ID: two instances may use the same asset key
+but only one instance is unusable. Caller-declared node IDs must be bounded,
+unique, existing image placements with valid dimensions and supported containers.
+Unknown/non-image IDs refuse; undeclared missing/corrupt resources still refuse.
+Do not synthesize fake image bytes or silently delete structural references.
+Initially cover placements already supported by DOCX, not new header/table/image
+features. Unsupported geometry/containers continue to fail explicitly.
+
+### Prioritized repair plan, not execution authorization
+
+**R0 — copy-only contract and Word footprint proof first.** Define the omission
+selection, result/warning disclosure and native blank-frame representation.
+Compare controlled copies with text immediately after images, shared/repeated
+instances, numbering and anchors, using Word and PDF. The previous small fixture
+has mostly blank pages after pictures, so it cannot alone prove no flow collapse.
+Use bounded supported geometry and refuse unrepresentable cases. Establish
+whether native paragraphs/spacers can retain the intended footprint before
+choosing a production representation. Record uncertainty rather than promising
+pixel equality. No Core/Service change in this stage.
+
+**R1 — Core candidate only after separate authorization.** Reconcile the current
+source base against the pinned package first; use a fresh isolated lane. Add a
+versioned optional omission contract with strict default behavior. Validate the
+selection before resource opens, snapshot it once, omit only selected resource
+requirements, and carry omitted placement identities into preflight/intent/native
+writing. Preserve frame references and authored dimensions in the Core-owned
+representation proven by R0. Keep warnings/receipts explicit; do not clone whole
+documents or allocate placeholder pixels. Source, XML, drawing, image-pixel,
+resource, output-byte and worker limits all remain unchanged. Unit/component
+proof includes clean default, valid omissions, malformed/unknown IDs, unlisted
+missing resources, shared-resource placement separation, unsupported geometry,
+near/over limits, cancellation and output.abort behavior.
+
+**R2 — package and Service wiring only after Core acceptance.** Build a reviewed
+candidate package with a new identity/digest; update Service pin and verify the
+new capability before changing the unconditional guard. Do not edit an old
+published/applied artifact. Pass the locally computed omitted set after the
+existing durable diagnostics acknowledgements. No HTTP field lets clients choose
+omissions. Service continues owning lifecycle/diagnostics; Core owns layout.
+Reuse IMAGE_UNAVAILABLE-style warning suppression only for omissions whose
+corresponding durable diagnostics are established; do not turn image omissions
+into an extra FORMAT_CONTENT_OMITTED count. Check old/new caller/package mixes;
+missing/wrong pin or capability must refuse safely. No DB migration is expected
+from this design; a changed schema need returns to review.
+
+**R3 — full affected acceptance on the new pair.** The three original cases must
+produce valid DOCX with succeeded delivery and partial completeness, while
+counts remain1/1,1/1,1/2 and unaffected instances retain pictures. Rerun the ten
+fresh-data cases with revised DOCX expectations, the affected diagnostics tests
+including cap/truncation, and PDF clean/partial regressions. Preserve a real
+DOCX failure-after-finding scenario using a separately unsupported feature or
+bounded writer failure, since image omission would no longer exercise DIAG-01's
+failed-render ledger path. Verify stream/DB/file hashes, graph/ZIP relationships,
+no extra artifact on abort/failure, retry/cancellation, released reservations,
+health, bounded memory and native Word layout. Do not count HTTP200 alone as
+success. Existing before-fix failure tests cannot silently remain the acceptance
+criteria for the new behavior.
+
+Keep512MiB/swap0 per worker, coordinator/aggregate1GiB and existing DB512MiB/1CPU
+when used; unchanged50000 XML nodes,10000 drawing/placement ceilings and32MiB
+DOCX output. OOM, containment failure or a missing package/geometry prerequisite
+stops dependent proof. Small fixtures do not prove full UAT/SRS scalability.
+
+Next recommended work: R0 copy-only omission contract and blank-frame feasibility.
+The diagnosis does not authorize R0 execution or Core/Service implementation by
+itself. Current blockers for repaired-output acceptance are unimplemented Core
+omission semantics, unproven Word footprint and absent new package/wiring.
+Production/release/integration and historical recovery remain outside scope.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-docx-omission-cause-20261102/`
+(`packet-exercised.json`, corrected-method `packet.json`, original case metadata,
+exact `pinned-core/dist/` files, helper probe/result/receipt, collector-gap notes,
+`verification.json`). Reused actual API evidence is the fresh-data directory
+above, not newly replayed traffic.
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-docx-omission-cause-20261102/verification-report.html`.
+No Core/Service source/schema/ACL changes, new document outputs, real-data access,
+real service stop, push, merge, release or installation.
