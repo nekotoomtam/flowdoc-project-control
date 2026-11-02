@@ -412,13 +412,13 @@ its acceptance passes. Do not merge/push/install as an implied final step.
   lab anchor, preserving all six bodies and assertions. Record the setup diff;
   add placement observations without weakening old expectations. Keep this real
   native component suite distinct from the actual HTTP Service runs above.
-- [ ] Re-run the ten handoff scenarios through real launcher wiring where
+- [x] Re-run the ten handoff scenarios through real launcher wiring where
   applicable and P0's broker-death/restart cases. Inspect limits and descendants,
   stop/reap order, credit baseline and actual DB reservations. On intentional
   worker OOM, confirm no root-local OOM/coordinator death, other work isolation,
   no automatic resend and recovery only after teardown. One unexpected OOM:
   stop; do not increase RAM/caps or continue into large documents.
-- [ ] Accept this integration only with complete criteria-to-evidence coverage,
+- [x] Accept this integration only with complete criteria-to-evidence coverage,
   unchanged source during verification and no unsupported fallback. Original
   M20-4 and broader M20-5/full-suite gates remain separate until their full
   criteria pass; selected tests/native screenshots do not close them by proxy.
@@ -999,3 +999,72 @@ Report:
 No new Work/Evidence registry, system map, DOCUMENT_MAP or generated truth
 projection promotion. The first four P5 checklist bullets are supported; the
 handoff/recovery bullet and final acceptance remain unchecked.
+
+## P5-01 correction and scoped P5 acceptance — 2026-11-02
+
+**PASS for the isolated candidate scope.** This new authorized correction
+supersedes the blocker above; the original P5 FAIL64/1 evidence remains immutable.
+Service candidate commit `f23ed86` on `codex/service-worker-launcher-p1-20261102`
+contains the broker correction and retained P5 tests. No integration/merge, push,
+release, installation or product/configuration promotion is implied.
+
+The only runtime change is `runtime/broker/worker_broker.py:179–183`: after
+unchanged peer/schema/epoch/capability/coordinator/sequence/state validation,
+COMMIT with an exited bound child marks only that lease stopping, replies
+WORKER_GATE_FAILED and keeps the authenticated session open. CANCEL/WAIT_EMPTY,
+child reap, process-group disappearance and scope emptiness remain mandatory
+before the existing owners return credits. Invalid control traffic still closes
+the session; no general exception normalization or automatic reconnect was added.
+
+Fresh native1 RED reproduced the unchanged original regression:1 failed,
+1 passed,1 unexecuted plus teardown failure. Final native9 GREEN passed3/3,
+including the same unweakened gate-death assertion and a live sibling/subsequent
+payload check. Actual Service HTTP native10 passed5/5: legacy model18/19 PDF,
+task PDF/DOCX/images, native font preflight/inspection/admin specimen, client
+disconnect/DB-slot cleanup/retry, and injected gate death after bind through the
+real default renderer path. The interrupted job failed once, stop proof completed,
+worker grants returned to128MiB baseline, health stayed200 and the next PDF
+succeeded. Job-linked launches bound the500ms no-resend observation and subsequent
+work; no indefinite no-retry claim.
+
+Final selected acceptance: **72 passed,0 failed across13 files**:
+
+- native9 handoff3; native10 actual HTTP5; native11 unchanged governor6;
+- native5 existing launcher16, including forged receipt, deadline, cancellation,
+  advanced IPC/fence and broker death/restart handling;
+- native12 intentional worker OOM1; native13 actual submitted-job OOM1;
+- native14 coordinator crash/restart1 (stage1 intentional SIGKILL, stage2 PASS);
+- compatibility: the five named M20-1/2/3 suites34 plus broker protocol5.
+
+Worker512MiB/swap0, aggregate/coordinator1GiB/2CPU and Core0.5.2 package checksum
+remain unchanged. Root-local OOM counters stayed0; intentional child OOM counters
+are separately retained. Restart recovery returned the DB queue slot and reduced
+held storage to actual retained payload bytes; fresh task output succeeded. This
+is process/identity restart within the lab container, not container recreate or
+host deployment portability. Native5/compatibility proof reuse after the final
+test guard correction is limited to unchanged product, tested files, dependencies,
+limits and environment; all native suites whose guards changed were rerun.
+
+Fresh independent review found no Important/Critical product issue. Its test
+usability observation was corrected: six native-only files now explicitly skip
+outside FLOWDOC_WORKER_LAB=1. Non-native labguard check reports17 skipped; those
+skips are not counted as native passes. Governor's six bodies still match SHA256
+`de9d18a4070efa48a7223bdc67a823e683a89208b5ce2a1bc1e37d170b9c1840`.
+
+Evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p501-fix-20261102/`
+(`packet.json`, `native1–14`, `compatibility`, `labguard`, `review.json`,
+`verify.py`, `verification.json`, `final-audit.json` and bounded runner scripts).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-p501-fix-20261102/verification-report.html`.
+
+All30 retained app/DB containers created in this correction were stopped.
+Protected Core/Service development, Core C1 sources and the Core pin match;
+known production container identity metadata is stable. No real API/SQL/storage
+access or real service operation. Oracle denotes the OCI VM with new isolated
+PostgreSQL/Docker fixtures, not Oracle Database. No Core edit, raised cap,
+Work/Evidence registry, map or generated-truth promotion. The six P5 checklist
+bullets now pass for this candidate; original M20-4, broader M20-5/full-suite,
+native Word fidelity, large-document capacity and rollout/portability remain
+separate. Next work requires its own bounded owner scope; do not merge/deploy as
+an implied completion step.

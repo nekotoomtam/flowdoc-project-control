@@ -812,3 +812,24 @@ push, release or installation. Test-only candidate changes remain uncommitted;
 no Work/Evidence registry or map promotion.
 
 Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p5-20261102/verification.json`.
+
+## P5-01 correction accepted for candidate — 2026-11-02
+
+The separately authorized correction is committed in Service candidate
+`f23ed86`; [focused result](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)
+records **72 selected passes,0 failures in13 files**. Broker COMMIT for an
+authenticated bound child that has died now preserves the session for confirmed
+stop proof, without changing invalid-session handling or returning grants early.
+The original P5 FAIL64/1 record is preserved above, superseded by this scoped
+candidate acceptance rather than rewritten as a historical PASS.
+
+Gate-crash/sibling/next-work, real HTTP health/grant cleanup, unchanged six
+governors, existing launcher/protocol, intentional worker/job OOM, coordinator
+task recovery and M20-1/2/3 compatibility passed in the isolated OCI VM with fresh
+PostgreSQL/Docker fixtures. Worker512MiB and aggregate1GiB/2CPU/Core pin unchanged.
+Native-only suites explicitly skip17 cases outside the lab; skips are not PASS.
+
+No Core/product-main integration, real data/service operation, push, release or
+installation. Original M20-4/M20-5/full-suite, native Word and deployment
+portability gates remain separate. No Work/Evidence registry or map promotion.
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p501-fix-20261102/verification.json`.
