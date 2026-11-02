@@ -789,3 +789,26 @@ records the race, required contract refinements, evidence and remaining boundari
 No Core/Service, real data/service, install/release/push operation; no actual
 Service/native/API/DB job or six governor test was run. Next scope is P1 review
 and separately authorized candidate implementation, not automatic execution.
+
+## P5 actual Service acceptance — 2026-11-02
+
+The [focused launcher plan](flowdoc-service-worker-launcher-broker-plan-2026-11-01.md)
+now records **64 selected passes / 1 failure in12 files; P5 not accepted** on
+Service8581644. Six unchanged governor cases passed with real capped workers;
+actual TCP HTTP covered model18/19 legacy PDF, task PDF/DOCX/images, font admin
+and client cancellation. M20-1/2/3's five suites passed34 cases. Intentional worker
+OOM and actual task coordinator restart passed their scoped isolation/recovery
+checks, with job-linked launch traces and DB reservation evidence. Worker512MiB
+and aggregate1GiB/2CPU remain unchanged in the isolated OCI VM/PostgreSQL lab.
+
+P5-01 is a confirmed reliability blocker: a bound gate dying before COMMIT closes
+the broker control session and prevents CANCEL/WAIT_EMPTY stop proof; launcher
+drain reports WORKER_STOP_UNCONFIRMED. The red native14 regression is retained;
+no product repair was authorized in this verification round. Next scope is that
+bounded correction and affected acceptance rerun, not integration. Existing
+M20-4/M20-5/full-suite, native Word and deployment portability gates remain
+separate. No Core/runtime source change, real data/service operation, merge,
+push, release or installation. Test-only candidate changes remain uncommitted;
+no Work/Evidence registry or map promotion.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p5-20261102/verification.json`.

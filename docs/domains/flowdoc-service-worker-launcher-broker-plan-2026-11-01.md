@@ -392,21 +392,21 @@ its acceptance passes. Do not merge/push/install as an implied final step.
 
 ### P5 — Actual Service acceptance in the isolated Oracle lab
 
-- [ ] Use a lab-only topology/overlay and the exact built candidate/pinned Core.
+- [x] Use a lab-only topology/overlay and the exact built candidate/pinned Core.
   Non-root app, no Docker socket/host-root cgroup write, no production compose
   changes. Capture exact source/image/config/kernel/limits and before/after owned
   scope inventory. No new package install or production connection.
-- [ ] Run actual Service launches for legacy PDF, task PDF/DOCX, image preparation,
+- [x] Run actual Service launches for legacy PDF, task PDF/DOCX, image preparation,
   actual-input font preflight, admin specimen, and font inspection. Include
   model18/19 compatibility and supported M20-1/2/3 contracts. Verify valid output
   artifacts and representative content; synthetic `%PDF-LAB` is insufficient.
-- [ ] Run all **six unchanged** cases in
+- [x] Run all **six unchanged** cases in
   `tests/font-preflight-admission.test.mjs`: queue rejection before native launch;
   serialized native work/one 320 MiB grant; headroom reject/recover; abort group
   before credit return/retry; cross-DB permit prevents native work; authoring
   queue/receipt idempotency. The aggregate must enable the real governor while
   each data worker is independently capped at 512 MiB.
-- [ ] The current suite creates `gate=createFontPreflightGate(resources)` directly
+- [x] The original suite created `gate=createFontPreflightGate(resources)` directly
   at line 6; running that old setup could exercise disabled/direct-spawn behavior.
   Update only its setup/teardown to inject the real bound renderer/launcher and
   lab anchor, preserving all six bodies and assertions. Record the setup diff;
@@ -919,3 +919,83 @@ the trusted lab lease ceiling is3 hours, covering existing task deadlines withou
 changing worker/aggregate resource caps. No host-service installer was created.
 No real data was read/changed, real service stopped, or merge/push/release/install
 performed. Next recommended scope is P5 under a subsequent owner instruction.
+
+## P5 acceptance result — 2026-11-02
+
+**FAIL / not accepted.** Candidate product remains Service
+`85816441ac88a085eb89acb8027ef2f8ce025bc6`; no source/runtime/Core repair,
+integration, push, release or installation. Inline Evidence Reviewer scope;
+registered execution IDs not applicable. Only governor setup/teardown and new
+acceptance tests/helper changed in the isolated Service candidate. The failing
+regression and passing tests remain uncommitted pending the product correction.
+
+Selected unique cases: **64 passed, 1 failed across12 test files**. Repeated
+attempts are not added to totals. Oracle means the owned OCI Linux VM with a new
+isolated PostgreSQL fixture, not Oracle Database. Worker512MiB/swap0,
+aggregate/coordinator1GiB/2CPU, existing quotas/Core0.5.2 pin unchanged.
+
+- Six governor bodies remain byte-equivalent after normalized line joining,
+  SHA256 `de9d18a4070efa48a7223bdc67a823e683a89208b5ce2a1bc1e37d170b9c1840`;
+  native18 passed6/6 with actual bound renderer and shared governor enabled.
+- Existing launcher boundary/ABI/fault suite native2 passed16/16. Actual Service
+  TCP HTTP native15 passed4/4: model18/19 legacy PDF, task PDF/DOCX with JPEG/PNG,
+  actual font preflight/inspection/admin specimen, client disconnect/stop and
+  retry. Files have real content; PDF extraction and representative visual
+  inspection passed; DOCX ZIP/XML/content/media checks passed. No native Word
+  fidelity or large-document capacity claim.
+- The five named M20-1/2/3 suites passed34/34 in compatibility2, including
+  model18/19. This compatibility lane does not claim required-mode native M20-4.
+- Intentional worker OOM native10 passed sibling/coordinator isolation and
+  post-teardown native recovery. Actual submitted HTTP job OOM native16 passed:
+  failed once, stop confirmed, worker credits returned to128MiB baseline, health
+  200 and next PDF successful. Synthetic OOM payload is explicitly a trusted
+  fault-injection seam, not the default document renderer. Root-local OOM=0;
+  hierarchical OOM counters and Docker OOMKilled legitimately include the child.
+- Coordinator crash/restart native17 passed stage2 after an intentional stage1
+  SIGKILL (its Vitest error is expected, not another passing case). Actual task
+  became WORKER_INTERRUPTED, its single job failed, queue slot returned and storage
+  held reduced to actual retained payload bytes. Fresh HTTP PDF succeeded. This
+  restarts the Service process/identity in the same lab container, not a container
+  recreate or host-portability proof. Job/task-linked launch traces strengthen
+  no-resend evidence:500ms observation plus fresh work; no unbounded retry claim.
+- Handoff native14: ARM-expiry bind denial passed; **bound-gate crash failed**.
+  All owned P5 containers were stopped (37 app/DB containers across retained
+  attempts); protected Core/Service development and Core C1 source hashes match.
+  Production comparison used container identity metadata only, with no real
+  API/SQL/storage access or service operation.
+
+### P5-01 — bound child death closes the broker control session
+
+Confirmed Defect, High reliability impact; fail-closed safety remains intact.
+`runtime/broker/worker_broker.py:179` rejects COMMIT when its bound child's pidfd
+has exited. `serve` converts the ordinary per-lease race to a protocol exception;
+its finalizer closes the whole coordinator session and marks the broker closing.
+Launcher CANCEL/WAIT_EMPTY can no longer confirm cleanup, so start and drain
+return WORKER_STOP_UNCONFIRMED and admission stays closed. Native14's second test
+reproduces: bind actual gate, SIGKILL it, await close, then start. Journal retains
+the stopping lease; host-scoped reaper subsequently empties it. No product repair
+or weakened expectation was used to obtain a green acceptance result.
+
+Next proposed correction: distinguish operational per-lease COMMIT rejection
+from invalid/unauthorized control traffic; keep authenticated stop/empty proof
+available for the dead child, without returning credits before reap/group/scope
+confirmation. Preserve the red regression; cover deaths around bind/COMMIT/GO
+and sibling isolation after separately authorized implementation. P5 remains
+unaccepted until this correction and affected checks pass. Original M20-4,
+M20-5/full-suite and rollout/portability gates remain separate.
+
+Fresh independent review confirmed P5-01 and identified a no-resend evidence
+weakness; job-linked launch counting was added to tests only and native16/17
+passed. All earlier failed setup/transport attempts remain retained, including
+transport archive links, DB-finalization observation timing, explicit Python
+executable/site configuration, group OOM counters and lab journal rotation.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-worker-launcher-p5-20261102/`
+(`packet.json`, `verify.py`, `verification.json`, `final-audit.json`, native1–18
+packets/receipts/logs, compatibility/compatibility2 and bounded lab harness).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-service-launcher-p5-20261102/verification-report.html`.
+No new Work/Evidence registry, system map, DOCUMENT_MAP or generated truth
+projection promotion. The first four P5 checklist bullets are supported; the
+handoff/recovery bullet and final acceptance remain unchecked.
