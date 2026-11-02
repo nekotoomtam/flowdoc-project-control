@@ -1259,3 +1259,54 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-t1-20261102
 `final-controls.json`, `review.json`, test and collection scripts).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-t1-20261102/verification-report.html`.
+
+## T1-01 correction — 2026-11-02: PASS within the authorized fix scope
+
+User authorized the Service candidate repair and four actual422 controls in
+the same isolated Oracle/OCI VM/private PostgreSQL Docker envelope. This result
+supersedes T1-01's unresolved status above; the earlier RED receipts remain
+immutable. Single-room execution IDs are not applicable. Owner: Service; role:
+Product Implementation Agent followed by Evidence Reviewer.
+
+Service candidate commit f82d7c6840ca105cbfdc2d3f14bb3075b4c8282d adds exactly four
+explicit422 entries at `src/http/server.ts:25`: SECTION_INPUT_SHAPE,
+SECTION_ASSEMBLY_EMPTY, SECTION_INSTANCE_DUPLICATE and SECTION_KEY_UNKNOWN.
+There is no broad SECTION-prefix catch; default503 and QUEUE_FULL503 remain
+unchanged. The same commit retains the previously uncommitted T1 fixture/test
+and strengthens exact-code, no-legacy-job-write and actual contention controls.
+
+Fresh native1 RED ran the strengthened invalid-input test before the fix:
+all four actual /jobs responses were503, with exact Core issue codes preserved.
+Frozen native2 GREEN built successfully and passed **8/8 scoped T1 tests**:
+published /jobs PDF, saved-revision preview, task PDF/DOCX, schema2 font rights,
+interruption/retry, instance/expansion bounds, genuine preflight contention503,
+and four invalid inputs422. The latter create no legacy job; /documents retains
+its INVALID_DATA error stream with no published output/child/held queue and
+settled held=used=actual storage. The genuine contention control holds the
+private DB's existing preflight advisory permit, returns503 UNAVAILABLE and
+starts no worker or job; it does not simulate a response or edit runtime code.
+
+Downloaded outputs were independently checked again against the unchanged
+standalone Core references: semantic PDF order/bands/numbering/links/pixels and
+DOCX XML/.rels/media/bookmarks/receipts pass, with1856 XML nodes and the original
+fieldRefresh required / wordVerified false disclosure. The cached Core's250
+files again match the vendored archive. All15 observed bound worker scopes had
+memory.max536870912 and swap0; aggregate/coordinator remains1GiB/2CPU, no OOM.
+Both projects' four retained lab app/DB containers are stopped. Frozen source
+hashes match the committed candidate; production identity metadata is stable.
+
+Fresh read-only review found no material issue. Product changes are limited to
+the HTTP mapping and the two T1 test/helper files. No Core, migrations, package,
+configuration or limits changed; no real data/API/SQL/storage access, real
+service stop, merge, push, release or installation. T1-01 is closed. This is not
+a full Service suite, native Word layout proof, nonempty instance-scoped
+diagnostic attribution proof, long-term no-resend proof or T2/T3 acceptance.
+The previous coverage limits remain explicit; no additional gate is promoted.
+
+Evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-t101-fix-20261102/`
+(`packet.json`, native1 RED/native2 GREEN frozen archives and receipts,
+`artifact-verification.json`, `verification.json`, `final-controls.json`,
+`terminal-db2.json`, `review.json` and bounded collection scripts).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-t101-fix-20261102/verification-report.html`.
