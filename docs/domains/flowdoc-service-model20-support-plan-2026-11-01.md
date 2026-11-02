@@ -2074,3 +2074,97 @@ Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-reset-old-jobs-2026
 `final-controls.json`, `verification.json`). The backup stays private on the
 host; its contents are not emitted into reports. No Core/Service source changes
 or ceiling changes. Service candidate remains c452867; no push/release/install.
+
+
+## Fresh synthetic PDF/DOCX API data — 2026-11-02: scoped PASS
+
+User authorized new synthetic data and actual PDF/DOCX API verification in the
+isolated Oracle Cloud lab,512MiB per worker, no real data/service action or
+push/release/install. Owner Service; role Evidence Reviewer; single-room
+verification, execution IDs not applicable. Service candidate remains clean at
+c4528677d50c0ec2a834f9cc023264b71c69d8d5, with the prior DIAG-01 correction.
+This verifies existing behavior; it does not implement a new diagnostics design
+or resume the deferred historical recovery/gateway work.
+
+The new project flowdoc-schema-freshapi-1-20261102 used a fresh empty PostgreSQL18
+Docker database on an OCI Linux VM, migrated001..028 and registered two synthetic
+model20 templates. No real/saved source database or old test state was imported.
+Five new datasets contain short UAT/SRS-topic Thai/English strings, headers,
+footers, page fields and red/blue images on the bounded A-B-A fixture. These are
+not full UAT/SRS source documents. An external test/data overlay was included in
+a frozen source archive; no Core/Service working-tree file was edited.
+
+Proof Budget: one fresh build/database and ten requests, independent artifact
+checks and bounded visual review; no formal audit or broader suite. Document
+Budget: this existing record and external test artifacts/report. Runtime
+source/config/migrations and ceilings stayed fixed. API/client exchange was
+actual HTTP loopback inside the OCI lab, not an in-process inject call or a
+workstation-to-public-endpoint network/TLS proof.
+
+All ten cases passed their declared expectations:
+
+| New dataset | Findings / omitted placements | PDF | DOCX |
+| --- | --- | --- | --- |
+| uat-clean |0 /0 |Succeeded |Succeeded |
+| srs-clean |0 /0 |Succeeded |Succeeded |
+| uat-missing-first |1 /1 |Succeeded, partial |Failed, DOCX_UNSUPPORTED |
+| srs-corrupt-last |1 /1 |Succeeded, partial |Failed, DOCX_UNSUPPORTED |
+| uat-shared-corrupt |1 /2 |Succeeded, partial |Failed, DOCX_UNSUPPORTED |
+
+The shared asset occurs twice in each A instance. Corrupting the first instance
+produces one finding affecting two placements; the unaffected last instance
+still contains both pictures. The fault cases intentionally omit an upload or
+corrupt PNG IDAT bytes while preserving readable PNG metadata. There are seven
+successful files (five PDF/two DOCX), not ten successful document generations.
+The three DOCX omission paths retain the known unsupported capability; they emit
+no attachment/output row and report failed delivery, with diagnostics preserved.
+No new unexpected product failure was observed in this scoped run.
+
+For each request, POST /documents streaming response and subsequent HTTP task
+lookup were checked against declared expected counts, task_findings, preparation
+ledger and affected placements. Findings belong to the correct first/last
+instance. No double counting or truncation was observed. Terminal state, stopped
+worker proof, cleared queue reservation, held=used storage and actual stored
+file bytes agreed. Lab /health stayed200 after every case.
+
+Independent checks parsed multipart responses, actual attachments and artifact
+metadata; SHA256/length matched download, stream metadata and DB output rows.
+All PDF files have three readable pages with expected markers and picture
+presence/absence. DOCX ZIP/CRC, all XML/.rels, internal relationship targets,
+original Thai strings, image colors and the unchanged50000-node XML cap passed.
+Both DOCX files opened read-only in installed Microsoft Word16.0, exported to
+three-page PDFs, and their six native-rendered pages were inspected at full PNG
+resolution. All seven three-page previews were also inspected. No clipping,
+overlap, missing-glyph boxes or extra pages observed in these samples. Source
+DOCX hashes remained unchanged. This offline sample review does not rewrite the
+API's wordVerified:false disclosure or certify all DOCX layouts.
+
+Observed eleven worker cgroups (including startup font check), each memory.max
+536870912 and swap.max0. Coordinator/worker aggregate and build envelope stayed
+1GiB/2CPU, DB512MiB/1CPU separately. Aggregate container peak454488064 bytes;
+no OOM. Worker scopes were empty after cleanup; both round-owned containers are
+stopped. Source hashes match the frozen packet. Only known prepared-system
+Docker identity metadata was compared before/after and stayed unchanged; no
+real API/SQL/storage access or real service stop occurred in this round.
+
+Harness-only corrections are retained separately: local archive extraction used
+an unsupported Python filter argument after the successful API run; the artifact
+checker initially treated a ZIP directory as an image and undercounted the
+unaffected shared-asset pictures. These were checker assumptions, not product
+fixes; API requests were not rerun to hide failures. Existing Poppler supplied
+PNG rendering when the bundled Python lacked fitz; existing Word supplied DOCX
+rendering without installing anything. Final independent checks and visual
+review pass. No full-suite, load, interruption or release readiness claim.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/service-fresh-data-api-20261102/`
+(`packet.json`, `dataset.json`, external test, frozen candidate archive,
+`oracle/receipt.json`, ten input/result/wire captures, seven files,
+`artifact-verification.json`, Word receipt/exports, `visual-review.json`,
+`diagnostics-summary.json`, `harness-notes.json`, `verification.json`).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-fresh-data-api-20261102/verification-report.html`.
+Download bundle: external evidence directory/fresh-api-results.zip.
+The prepared-use system remains separate; no test data was inserted there.
+Stop at scoped acceptance; any change to DOCX omission handling requires its own
+reviewed scope and authorization. No Core/Service source/schema/ACL change,
+push, merge, release, installation or historical-data recovery.
