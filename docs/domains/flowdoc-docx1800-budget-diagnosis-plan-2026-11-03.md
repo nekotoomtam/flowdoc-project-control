@@ -820,3 +820,107 @@ still uncommitted pending broader R1 acceptance. Original container identities
 and frozen package tree are stable; owned running lab containers are zero.
 No original API/SQL/storage access, service stop, merge, push, release,
 installation, map promotion or old execution-context mutation was performed.
+
+## Remaining15 R1 groups,2026-11-03: bounded external-coordinator verification passes
+
+The owner explicitly authorized the fifteen remaining groups using the same
+external-coordinator arrangement,512MiB/worker, original caps and immediate
+stop on OOM. This is verification only: owner Core, Evidence Reviewer role,
+single-room execution IDs not applicable. Input PCd31c341, Core6f36c42 plus the
+unchanged ten-file unfinished candidate, Service db15e9d. No product repair,
+package promotion or integration is part of this result.
+
+**PASS_FIFTEEN_REMAINING_R1_GROUPS_BOUNDED.** This closes the requested group
+execution, not complete R1 acceptance, an original full Vitest invocation,
+Word/PDF/API readiness, or the separate source-guide XML problem.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1-remaining-alone-20261103/`.
+Use `verification.json`, `groups.json`, `transpile-proof.json`, assertion and
+registration controls, `vitest-list.json`, `oracle/receipt.json` and
+`run2/oracle/receipt.json`. Per-case results, assertion counts and external
+cgroup/process samples remain under each group's output directory.
+
+### Contract preservation and coverage
+
+Twenty-seven original test/helper files are externally transpiled with only
+module-specifier changes. Product imports target the existing compiled Core;
+fixtures remain the originals in the read-only candidate snapshot. Original
+Vitest4.1.9 assertion and spy libraries are reused without loading Vite or its
+coordinator inside processing workers. A small registration adapter preserves
+tuple expansion, conditional registration and scoped afterEach cleanup. Eleven
+negative matcher checks, valid promise/subset/spy checks and registration/hook
+controls pass. This is an explicit standalone test harness, not an assertion
+that the old memory-constrained Vitest command now passes.
+
+Independent original Vitest collection outside the processing workers finds168
+portable cases, matching actual executed per-file counts. The eleven native
+Linux cases are excluded by the local Windows collector's runIf condition;
+their original file has two direct cases and nine native input-array entries,
+all executed on Linux. There are179 executed cases,1495 original assertions
+and zero skips across the fourteen original-test groups.
+
+| Group | Cases passed | Worker peak bytes |
+| --- | ---: | ---: |
+| pageFieldPosition |3 |40296448 |
+| paginationRules |29 |106790912 |
+| public port |4 |56631296 |
+| resources |23 |156286976 |
+| sectionAssembly |1 |48603136 |
+| sourceFrameBudget |2 |19939328 |
+| sourceShapeContainers |4 |25600000 |
+| sourceShapeStyles |4 |25788416 |
+| sourceWordBoundaries |7 |19001344 |
+| strokeStyles |13 |62668800 |
+| tableBorderStyle |12 |59097088 |
+| writer |27 |63369216 |
+| composition/data |39 |213504000 |
+| native compatibility |11 |54124544 |
+
+Existing per-test options, including explicit expanded-XML option contract
+tests, are preserved exactly; Core's defaults/hard bounds are not raised.
+Each fresh worker retains all work and assertions for its actual documents;
+no document is split or given reset counters to manufacture a pass. Native
+children belong to the same512MiB/swap0 worker cgroup. There is no in-worker
+test coordinator, while genuine native helpers can add processing children.
+
+### Fifteenth group: refreshed compiled-native proof
+
+The initial attempt at this last group fails during module loading because
+the frozen original `/baseline` mount was omitted. Its FAIL receipt is retained.
+The lab-only correction mounts that exact frozen Core read-only and runs only
+the final group in a new namespace; the fourteen passing groups are reused
+without repetition. No candidate file is repaired or changed.
+
+The refreshed proof passes all1800 complete measurement comparisons against
+the original, with7918 native requests under8192 and735523 combined charged
+units under1048576. The separate native oracle validates3531 certified
+prefixes, and contextual/unsupported font comparisons remain equivalent.
+
+The real default public engine proceeds past measurement and retains its
+`DOCX_OUTPUT_BUDGET_EXCEEDED` refusal at `word/document.xml`, with zero output
+bytes. This expected refusal is part of the proof result; the source-guide
+document has not become a successful full DOCX. Its exact expanded XML count
+remains unmeasured here.
+
+That group's cgroup peak is376897536 bytes (359.4375MiB), the largest of these
+fifteen groups. Exit codes and all `oom`/`oom_kill` counters are zero for the
+accepted runs. The external coordinator's observed Python RSS stays below
+its128MiB address-space bound. All Core generation, native children and original
+assertions remain inside the512MiB workers; no installed tool, dependency or
+runtime budget is increased.
+
+### Scope close and remaining work
+
+The fifteen requested groups are now verified within this declared harness.
+Stop here. The accepted exact Linux packed artifact/consumer and independent
+whole-change review remain pending before broader R1 closeout or verified
+product commit. The default source-guide XML refusal and Word/Service/API
+acceptance remain separate work. The earlier Core-alone nativeRunBudget pass
+also remains distinct from this source-guide workload.
+
+Candidate hashes still match the immutable input packets. Core remains dirty/
+uncommitted; Service is unchanged. Original container identities and frozen
+package tree are stable; no owned lab container remains running. No original
+API/SQL/storage access, original service stop, merge, push, release,
+installation, map promotion or old execution-context mutation was performed.
