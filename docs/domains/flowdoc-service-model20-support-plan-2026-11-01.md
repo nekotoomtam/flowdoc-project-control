@@ -2487,3 +2487,111 @@ Evidence: the same external root's `integration-20261102.json` and updated
 `ledger.json` retain exact before/after refs, tree identities, proof-reuse scope,
 release invariance and cleanup receipts. Previous bounded acceptance and its
 historical candidate locators are retained, not relabeled as a new test run.
+
+## Model20 cold backup and forward restore — 2026-11-03
+
+**PASS within the authorized lab scope.** The owner authorized the recommended
+backup/restore rehearsal after local integration. Single-room verification;
+execution IDs N/A. This closes the consistent-backup/forward-restore bullet of
+T2 for the tested synthetic fixture, not the other T2 old-binary compatibility
+items, T3 full-suite gate, generalized stage/checkpoint design or deployment.
+No Core/Service changes or installations were made.
+
+### Frozen input and fixture
+
+Service development `bdd8740b344b2275628371815cbdd3925ba0bd56`, Core
+`db828b2b528fe0402ce99cff5edea540c562f048`, exact private vendor archive and cached
+Linux runtime were used. OCI Linux/PostgreSQL18 Docker,512MiB/swap0 per worker,
+coordinator/aggregate1GiB/2CPU and private DB512MiB/1CPU; unchanged document caps.
+All included tracked archive files match the clean current Service checkout,
+all archived files match recorded hashes, and compiled trees are identical
+between the passing source and restored lanes.
+
+Source fixture has11 tasks,9 generation jobs,2 image findings and9 job-font
+snapshots. It includes published20 and saved preview definitions, successful
+PDF/DOCX task delivery, interrupted/invalid failures, two partial-image tasks,
+one normalized but unexecuted task, and a genuinely inspected/reviewed licensed
+library font. Retired font rights remain with the owning saved draft; copying
+its tuple does not grant rights. The fixture is synthetic, not a real-data dump.
+
+### Execution and results
+
+1. `source2`:9 tests pass, including the reused actual T1 fixture controls and
+   a new backup control. Stop only the owned lab Service and close its pools
+   before `pg_dump -Fc` plus complete runtime-directory archive. Bind dump,
+   storage archive and source snapshot with SHA256. Source Service remains
+   stopped; no running writers participate in the cold snapshot.
+2. `restored4`: restore into a newly named lab project/container, fresh DB data
+   directory and new host storage directory. Preserve in-container logical
+   paths for persisted references. Before application startup, compare all49
+   public table datasets, one sequence state,23 function definitions,22 file
+   byte hashes/modes and3 available PDF output records/bytes exactly. Migration
+   ledger, pins, provenance, input, events, diagnostics and usage are included
+   in the table comparison. Two internal font-staging hardlinks retain their
+   inode relationship. This is not an independent comparison of every column,
+   index, constraint or trigger definition.
+3. Start the real Service through its normal fenced ownership/launcher path.
+   Storage identity stays unchanged; runtime identity is fresh and ready.
+   The normalized pending task becomes `WORKER_INTERRUPTED`, with no child or
+   writer PID, released queue reservation and held=used=actual retained bytes.
+   Terminal generation jobs, output records, findings, font snapshots and
+   immutable pins remain unchanged. Live task lookup reports original delivery
+   success and finding/omitted-placement counts matching retained source rows.
+4. No task/legacy render is observed during750ms after readiness. Through the
+   subsequent requests, the only such launches are two explicitly new task
+   renders and one explicitly new library preview. This is a bounded observation
+   with launch accounting, not an indefinite no-resend guarantee.
+5. Download an available old `/jobs` PDF and match its independent pre-backup
+   hash. Fresh HTTP PDF/DOCX tasks succeed; independently parse PDF and DOCX ZIP/
+   XML/relationships, verify three-page PDF marker order and distinct images,
+   and match streamed file bytes/hash against the new DB output records. Both
+   new tasks have zero findings/warnings and settled zero-byte reservations.
+   The owning draft can still create a successful preview using its retired
+   library font after restore. The3 restored acceptance tests pass.
+6. A final read-only audit of only the restored private lab DB confirms the10
+   old terminal usage rows remain exact and the two new task states/diagnostics/
+   output hashes/reservations agree. That lab DB was temporarily opened for
+   this audit, then stopped again; no real DB was queried. All owned containers
+   finish stopped, no OOM counters, and prepared-system Docker identity metadata
+   is unchanged. Core and Service checkouts stay clean at their input commits.
+
+Five streamed task outputs were already expired/deleted under normal task
+cleanup at the backup point. Their truthful records/history are restored;
+no downloadable bytes are fabricated. The three available old output files,
+pending task files, font/license assets and all other archived files are proven
+restored. Legacy `/jobs` output DB SHA values remain NULL as implemented by
+`src/jobs/processor.ts`; independent backup hashes verify these files without
+rewriting DB metadata.
+
+### Review, failed attempts and evidence boundaries
+
+One fresh-context review found no product correctness blocker for this scope.
+It identified stale inherited `candidateHead=c4528677` metadata in both passing
+as-run packets. Preserve them and bind `packet-clarifications.json` to their
+digests; actual archive/clean-Git/compiled-byte comparisons establish `bdd8740`.
+The stale descriptive field is not an execution input. It also found a vacuous
+comparison of nonexistent `tasks.delivery_status`; it contributes no evidence.
+Exact pre-start `task_usage` equality, live public delivery checks and the final
+independent read-only usage audit provide the actual delivery evidence instead.
+
+Retained attempts are not silently PASS: first source backup check assumed a
+non-null legacy SHA; first restore rejected legitimate internal hardlinks;
+second restore compared Date objects against JSON strings; third restore used
+generation-only findings as the expected public total and missed normalization
+findings. Corrected external checks retain actual DB values and existing
+product assertions. No product code, resources or limits were changed to pass.
+The final independent checker also validates genuine output files, beyond the
+native suite's signature checks. Raw failed receipts and corrected runs remain.
+
+Evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-model20-backup-restore-20261103/`
+(`ledger.json`, `source2/`, `restored4/`, `verification.json`,
+`packet-clarifications.json`, `verify.py`, `inspect-final-db.py`; final private
+read-only audit files are under `restored4/oracle/out/app/`). As-run archives
+and raw lab backup remain outside product repositories. Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-model20-restore-20261103/verification-report.html`.
+
+Still open: old-binary compatibility/operational rollback, complete Service test
+inventory and unmatched native cases, generalized stage/facts/checkpoint and
+large-document memory work. No real data/API/SQL/storage access, real service
+stop, push, release or installation. Oracle here denotes OCI, not Oracle Database.
