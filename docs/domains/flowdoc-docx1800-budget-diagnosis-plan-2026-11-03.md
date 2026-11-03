@@ -1192,7 +1192,9 @@ primarily reduce bytes, not the element count that currently refuses.
 
 Before Core implementation, the next bounded copy-only request should do:
 
-- [ ] **R2-A: define a general grouping contract and non-writing projection.**
+- [x] **R2-A: define a general grouping contract and non-writing projection.**
+  Assessment completed with a refused projection, not an accepted repair; see
+  the current R2-A result below. The requested49000-node target is not met.
   Read SourceWord/font/line facts and the mapping consumer. Specify continuity,
   exact source ranges, font/script/spacing/position/ink/baseline compatibility,
   semantic barriers and an exact accounting rule. Use current1800 and the
@@ -1248,3 +1250,131 @@ acceptance follows from this census. No Core/Service code change, original
 data/service action, limit increase, merge, push, release, install or map
 promotion occurred. Stop after the discovery/plan and focused documentation
 checks; request the next copy-only feasibility scope before proceeding.
+
+## R2-A copy-only assessment,2026-11-03: target not met
+
+Status: **R2_A_ASSESSMENT_COMPLETE_TARGET_NOT_MET_RETURN_TO_DESIGN**.
+The bounded discovery is complete; the proposed line-box grouping is refused.
+This is not R2 acceptance and does not satisfy the R2-B prerequisite.
+
+Owner remains Core for any eventual implementation and Project Control for
+this plan. Roles Evidence Reviewer/Planning Partner; single-room execution
+IDs not applicable. Explicit owner authorization permits copy-only grouping
+analysis, not Core/Service edits or contract promotion. The active model is
+used inline without another room/agent. Core remains582f141, Service db15e9d;
+the source packet records their full identities and this plan's starting
+commit6575784. The stale October4 generated snapshot is not current R2-A truth.
+
+### Reproducible copies and diagnostic contract
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r2a-group-projection-20261103/`.
+Use `verification.json` and the corrected `general/packet.json`,
+`general/oracle/receipt.json`, and each fixture's `projection.json` and
+`group-plan.json` under `general/oracle/{current,uat,srs}/`.
+`project.py`, `prepare-general.py`, `general/run.py` and `general/remote.py`
+retain the copy-only method. No XML, ZIP, product source or limit is changed.
+
+The current fixture reuses the exact R2 final-stage XML/rels snapshots, whose
+complete162741-node input identities are checked. The two historical full
+Word baseline copies are independently pinned, never regenerated or installed:
+
+- UAT `uat-full-baseline.docx`, SHA256
+  bb473945f03f4abdc528aa51ccb23159bbad4179b08d6668ab52948be8fab6a1;
+- SRS `srs-existing-baseline.docx`, SHA256
+  4c024b28e4572c2396f1284852b00185d49494c7c8cd7bf67e9bd6106a83c144.
+
+Each virtual-plan artifact has schema `flowdoc.r2a.group-plan/0`: a diagnostic
+ledger, not an approved runtime checkpoint or source-map version. It retains
+original shape IDs, owner tag/line, all visible run text and resolved-property
+signatures, original VML geometry attributes and inner paragraph properties,
+plus the complete original source map and property-signature registry.
+Roundtrip manifest checks preserve these serialized facts, not hidden Core
+glyph/ink facts or native Word behavior.
+
+The bounded grouping proposal is: within one owned source line, concatenate
+the ordered member runs; coalesce only adjacent equal property signatures and
+equal xml:space. Never cross source paragraph/line ownership or a semantic
+barrier. A future implementable contract would additionally require actual
+font/glyph/cluster continuity, exact common coordinate frame and member
+offsets, baseline/ink/clipping equivalence, unsupported-style refusal and
+native Word evidence. Resolving property signatures here is planning data,
+not a theorem about all OOXML toggle/cascade or shaping behavior.
+
+Every original source-word/1 map range is validated against its existing shape,
+UTF16 text length, complete per-paragraph text digest and ordered coverage.
+Original geometry and styles remain attached to members in the virtual plan.
+Eight manifest-tamper controls per fixture reject missing/duplicate controls,
+changed text/style/geometry/ranges/map coverage and altered style registry.
+These are integrity controls, not native-rendering or general schema tests.
+
+### Count result and refusal
+
+| Fixture | Original whole-package nodes | Mapped source lines / shapes | Specified one-box-per-line/run-sharing projection |
+| --- | ---: | ---: | ---: |
+| Current1800 |162741 |1800 /10800 |92541 |
+| Historical full UAT baseline |39191 |63 /519 |35513 |
+| Historical full SRS baseline |49965 |39 /146 |49192 |
+
+Each projection retains the other original package parts and original map/style
+counts, but does not pay for new style definitions or a revised map/control
+contract. It is optimistic arithmetic for a specified representation, not a
+serialized valid DOCX count or Word acceptance. The UAT/SRS projections cover
+their mapped source-line subsets; the whole-package count includes all parts,
+including other protected/native content. The UAT arithmetic is below target;
+the SRS explicit strategy is192 nodes above target even before new definitions.
+Neither is a newly generated or Word-reviewed export.
+
+For current1800 every source line has6 boxes and10 runs. Equal adjacent
+property signatures reduce10 runs to7, not one. The specified representation
+needs a7-node shared shape/paragraph/wrap skeleton plus4 nodes per remaining
+explicit run, giving92541 across the complete package before new definitions.
+
+An intentionally invalid lower-bound calculation removes ALL document pPr/rPr
+properties and the entire styles part, and counts just5 structural nodes per
+new line box plus2 nodes per retained run. Its independently checked formula
+is108473 -90000 +1800*(5+2*7) = **52673**. It still exceeds both49000 and50000.
+It is not a proposal to remove formatting. This rules out the assessed
+one-box-per-line/seven-run topology, not every imaginable representation.
+
+The virtual ledger preserves original map facts, but it cannot make removed
+shape IDs resolve in a new DOCX. Replacing them with shared IDs or aliases
+requires explicit source-word/1 semantics and consumer/version review. The
+`source-word-layout` receipt still describes editable word boxes. Neither this
+receipt nor a map version is silently changed. External consumers remain
+unknown, and no grouped XML or new map is emitted.
+
+### Preserved corrections and verification scope
+
+The initial historical-fixture branch incorrectly claimed UAT/SRS lacked a
+current map without testing their schema. That conclusion is withdrawn:
+both contain source-word/1 with line-paragraphs-word-boxes. Initial results
+remain retained but are excluded from acceptance. The generalized projector
+actually reads each map and validates its mapped controls and ranges; it passes
+on both baseline copies. No product change was needed for this harness repair.
+An intermediate facts-only rerun also fixes the diagnostic artifact's omission
+of full original geometry facts; the corrected generalized artifacts retain
+them durably along with the style registry.
+
+All seven sequential diagnostic workers across retained attempts use512MiB,
+swap0,network none and the external coordinator's existing128MiB budget.
+No OOM/oom_kill occurs; maximum peak267583488 bytes (**255.1875MiB**).
+Original container identities and input/package trees remain stable, all
+owned lab containers are stopped, and Core/Service candidates remain clean.
+Oracle here is the OCI lab VM; no database or original API/SQL/storage is used.
+
+### Return to design, not implementation
+
+Do not start R2-B, Word comparison or Core implementation on this refused
+projection. A new design request should assess the source-line representation
+and encoding of the remaining spacing/style runs together, including the
+outer control structure and versioned mapping semantics. Measure each option
+against the same complete-package49000 target before constructing a copy.
+Removing spacing runs, switching layout mode or dropping original mapping
+facts is not an approved shortcut. Retaining the current conservative budget
+refusal remains the fallback if no faithful compact representation is proven.
+
+No native Word/new grouped-file geometry, ligatures, page breaks, clipping or
+source-map ABI compatibility is claimed. No Core/Service edits, real-data or
+service actions, merge, push, release, installation or map promotion occurred.
+Only this existing canonical plan and external diagnostic artifacts change.
