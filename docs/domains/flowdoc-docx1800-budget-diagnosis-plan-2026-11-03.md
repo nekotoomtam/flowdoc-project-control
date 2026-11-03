@@ -175,13 +175,18 @@ remove Gate2.
 
 ### R1 — implement the proven shaping change in an isolated Core candidate
 
-- [ ] Add a regression that reproduces the exact8193-request failure before
+2026-11-03: the bounded measurement/runtime candidate is accepted; see the
+Linux package and whole-change review closure below. Affected Word regressions
+here are the repository DOCX/Word-XML tests. Native Word rendering/pagination
+and full-document acceptance remain the explicit R3 gate.
+
+- [x] Add a regression that reproduces the exact8193-request failure before
   implementation, then proves successful completion of measurement within
   the unchanged limits, with equivalent measured output for eligible cases.
-- [ ] Implement only the R0-proven strategy in the actual measurement owner;
+- [x] Implement only the R0-proven strategy in the actual measurement owner;
   preserve guarded fallback, failure and cancellation behavior. Core is owner;
   Service changes are unnecessary unless separate evidence proves otherwise.
-- [ ] Re-run affected line/source-layout/reading-plan/Word regressions, then
+- [x] Re-run affected line/source-layout/reading-plan/Word regressions, then
   the1800 case under512MiB. Stop OOM; record the next actual gate and its counters
   rather than claiming XML success when only measurement passes.
 
@@ -924,3 +929,125 @@ uncommitted; Service is unchanged. Original container identities and frozen
 package tree are stable; no owned lab container remains running. No original
 API/SQL/storage access, original service stop, merge, push, release,
 installation, map promotion or old execution-context mutation was performed.
+
+## R1 bounded candidate closure,2026-11-03: Linux archive and review accepted
+
+The owner authorized the remaining exact Linux package checks and Core review
+before R1 closure, with512MiB/worker, unchanged caps and immediate OOM stop.
+This was single-room verification/review, IDs not applicable, input PC63c3960,
+Core6f36c42 plus the exact ten-file candidate and Service db15e9d. No product
+file changed during verification. Only the already verified candidate was
+locally committed after acceptance; no integration/promotion occurred.
+
+**R1_ACCEPTED_BOUNDED_MEASUREMENT_RUNTIME_CANDIDATE.** This closes R1's shaping/
+runtime repair and repository regression scope. It does not complete R2/R3,
+deliver the default source-guide1800 DOCX, prove native Word rendering, establish
+Service/API readiness or authorize installation/release. Earlier failures and
+OOM stops retain their original outcomes; qualified current acceptance does
+not turn them into passes.
+
+Core candidate commit:
+`582f141566d1dd0cc4df53a7779818cab9c3d111`, branch
+`codex/model20-only-20261103`. The ten reviewed/tested file hashes are unchanged
+through commit and the Core worktree is clean. No merge or push was performed.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1-linux-package-review-20261103/`.
+Use `verification.json`, `review.txt`, `candidate-manifest.json`,
+`fresh-build-verification.json`, the initial Linux build receipt,
+`run2/oracle/receipt.json` and `xml-counter/oracle/receipt.json`. The accepted
+archive is retained in `artifacts/flowdoc-core-0.5.2-r1-linux-candidate.tgz`.
+
+### Exact Linux package gate
+
+An offline Linux `npm pack --ignore-scripts` produces265 files. Every packaged
+file hash matches the candidate inputs, including the new private compiler;
+the two frozen native binaries retain mode0755 and their resource hashes.
+An external fresh TypeScript source build emits252 dist files, all byte-equal
+to the accepted archive's dist. Native binaries are reused unchanged, not
+rebuilt or downloaded.
+
+Archive SHA256:
+`32484c0eac1f4dbbd578d05d7d2d04142bd7a0095a43471a777a736236f4e357`.
+This is a private candidate archive, not a new release/tag or installed build.
+
+Isolated consumers extract that exact tarball and resolve the public package
+root to `file:///target/dist/index.js`. They do not mount the current Core
+source tree. Cached runtime dependencies match the package's exact declarations:
+docx9.13.0, jszip3.10.2, pngjs7.0.0 and xmldom0.9.12. No dependency install,
+network acquisition, image build or original-service change is performed.
+This is an execution check against the retained dependency graph, not a fresh
+installation claim.
+
+| Packed consumer | Verified result |
+| --- | --- |
+| Public-root native DOCX |3 original nativeRunBudget cases; all1800 ordered records; independent ZIP CRC/XML/rels checks |
+| Runtime lifecycle |10 original cases, including complete1800 measurement, abort/close, failed segmenter, killed shaper, unavailable compiler and compiler reaping including TERM refusal |
+| Public PDF API |actual four-style one-page and overflow two-page files; concurrent generation; immutable inputs; invalid model rejection; temporary cleanup; basic PDF structure/page-count crosscheck |
+| Compiled source measurement |1800 equivalent measurements;7918 requests;735523 charged units;3531 independent native-prefix checks; contextual/unsupported font equivalence |
+
+The native DOCX's full25-part XML/rels count is49227, zero drawings and215076
+bytes, within unchanged50000/33554432 caps. This remains the fonts-only
+nativeRunBudget fixture, not the separate source-guide fixture.
+
+The first consumer attempt fails in the test metadata reader because docx does
+not export package.json. Only that reader is corrected to inspect metadata
+from the resolved dependency entry. The passing Linux archive is reused byte
+for byte; no repack or product repair masks the failed setup. The failure
+receipt remains retained.
+
+All processing/native children and assertions remain inside512MiB/swap0 workers
+with the test coordinator outside. All accepted workers have zero OOM/oom_kill.
+Including the final counter observation, the maximum cgroup peak is
+385458176 bytes (367.6015625MiB). The archive and package tree remain unchanged
+through every consumer. PDF smoke is not visual rendering/text-fidelity proof.
+
+### Whole-change review and coverage decision
+
+The independent read-only reviewer `/root/r1_core_review` examines all ten
+files against base6f36c42 and the immutable manifest. It reports no confirmed
+Critical, Important or Minor finding and no bounded-R1 blocker. It reviews
+GSUB/GPOS closure/bounds against cached Rustybuzz, outward ink arithmetic,
+private ownership, unchanged limits, failure/invalidation/cleanup and optional
+Python compatibility. No reviewer file or Git mutation occurs.
+
+The parent checks results as well as coverage. R1's8193-request RED, current
+equivalent1800 measurement, guarded fallback and lifecycle repair are supported
+by the earlier and freshly packed evidence. Affected line/source/reading-plan
+and DOCX/Word-XML repository regressions are covered by the recorded groups;
+native Word visual/pagination acceptance remains R3, not relabelled PASS.
+
+The review does not establish exhaustive malformed-font/scheduler/process-tree
+proof, hypothetical future callers' immutable files, full original Vitest
+execution, arbitrary document capacity or Word/Service/API readiness. Those
+scope dispositions are recorded in `review.txt`; none is promoted by the
+bounded package result. Current production certificate setup remains through
+DOCX-owned snapshots and supported font profiles; unknown cases fall back.
+
+### R1 next-gate counters and R2 handoff
+
+R1's original acceptance asks for the next actual gate and counters. One final
+read-only inspector observation on the accepted package fills that prerequisite
+without rewriting package/source, retaining the ZIP or overriding options.
+It reads live locals at the existing XML guard and compares the full error/
+warnings/output/abort result with the accepted unobserved run; they match.
+
+At `word/document.xml`, cumulative counters are:
+
+- XML nodes158426 against50000;
+- drawings0 against10000;
+- output bytes0, abort `DOCX_OUTPUT_BUDGET_EXCEEDED`.
+
+This is the guard's cumulative count when that part is visited, not an
+independent all-part census or a claim that document.xml alone has158426 nodes.
+The source template fingerprint remains705aedd73be735a3b2b5cd39efa3a1b18cfd9fc7b4e911df757eba6bb0383001.
+The old97411 count belongs to the different native-policy diagnostic and must
+not replace this source-path evidence.
+
+R2 must be assessed against this actual source-guide gate before choosing a
+reduction strategy. No XML repair, limit increase, R2 implementation or Word
+verification was performed here. Stop with the bounded R1 candidate accepted.
+Original identities/frozen package tree and Service remain unchanged, and no
+owned lab container remains running. No original data/API/SQL/storage access,
+service stop, merge, push, release, installation, map promotion or old execution
+context mutation occurred.
