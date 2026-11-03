@@ -2595,3 +2595,98 @@ Still open: old-binary compatibility/operational rollback, complete Service test
 inventory and unmatched native cases, generalized stage/facts/checkpoint and
 large-document memory work. No real data/API/SQL/storage access, real service
 stop, push, release or installation. Oracle here denotes OCI, not Oracle Database.
+
+## Old metadata compatibility and suite prerequisite — 2026-11-03
+
+Owner authorized continuing old-binary checks, then the remaining Service suite,
+and returning for discussion if blocked. Single-room verification, IDs N/A;
+Evidence Reviewer / Project Control Steward. No product implementation or change
+to RAM/caps, real system, push/release/install was authorized by this check.
+
+### Bounded old metadata result
+
+**PASS for the tested old HTTP metadata/persistence subset**, not operational
+binary rollback. Old Service source `a572025b80fe932add664ca0b529633a3a091545`
+was exported into a scratch copy.170 archived files match that Git commit after
+CRLF/LF normalization where required and match exact receipt hashes as executed.
+Its original Core0.5.2 archive SHA256
+`ed876f4d011ad943ead937307af9123581c231124cab198de34f60b832f6a532`
+was verified and unpacked separately. Build used the pinned cached Linux image
+and its installed non-Core dependencies/toolchain. This did not independently
+establish a historically exact resolved old dependency graph; preserve that
+qualification rather than claiming an identical old deployed installation.
+
+The actual compiled old authoring HTTP handlers/current/publication modules
+create/save model18 and19 fixtures on genuine027, then use their old read/save
+paths after current migration028. Both models return GET200 and PUT200,
+revision1→2, with equivalent definition/fingerprint/readiness; published
+version1 definitions remain unchanged. Upgrade changed the migration ledger
+without changing other pre-existing table datasets. No generation job or task
+was queued. HTTP served only the external allow-listed metadata routes; `/jobs`,
+`/documents` and preview generation were refused403 by the lab safeguard.
+
+This did **not** call old `startService`, start its processor or launch an old
+document-render worker. The entire metadata process and its descendants were
+hard-capped512MiB/swap0. Its32 allow-listed bundled resource probe calls ran
+inside that same bundle: fixed shaper/segmenter checks and Python/fontTools
+version inspection only. They are not native document-generation acceptance.
+Build used1GiB; private PostgreSQL18 used512MiB/1CPU. No dependencies installed.
+
+A separately restored post20 lab DB is checked through one read-only client
+transaction. The corrected external eligibility guard finds5 current20,
+2 published20,9 model20 jobs and11 model20 tasks using immutable version joins
+and prepared-input envelopes. It refuses old-executable admission and compares
+all table datasets before/after unchanged. This is a runbook/operator safeguard,
+not evidence that the old product has a model20 startup guard. Forward recovery
+remains the verified choice after20 writes.
+
+### Confirmed prerequisite gap before T3
+
+**T3 full Service suite NOT RUN.** Inventory identifies168 tracked test files,
+not168 executed cases. Mandatory task/stdio cases use FlowDocMake; its retained
+reviewed integration candidate `0.3.1-candidate.3` pins old Core `ed876f4d…`,
+while current Service `bdd8740` pins `5cdb6f4c…`.
+
+A network-none512MiB probe invokes that candidate's unmodified
+`validateCandidateConfig` against the actual frozen current Service/package/
+vendor archive. It returns exactly
+`Candidate Service/Core archive identity mismatch`. No Service is started by
+this probe. Candidate refusal is working as designed; it does not establish a
+Service renderer defect or license weakening the pin check. The mandatory
+plugin prerequisite is not ready, so dependent full-suite proof stopped before
+execution, as the owner requested. No Service suite or native-case union PASS.
+
+Next proposed bounded implementation: prepare a separately identified plugin
+candidate matching Core `5cdb6f4c…`; review compatibility and supported model20
+behavior, not just the digest. Current plugin `compatibility.mjs` requires exact
+old contract arrays `[18,19]` and `[19]`; current Service advertises model20.
+That is a source-derived follow-up concern, not a claim that a new pin-only
+candidate was executed. Verify candidate bootstrap, stdio/task consumers and
+claims/guides first; then resume full ordinary-suite and dedicated native-case
+coverage under the unchanged resource contract. No plugin edits were made here.
+
+### Evidence and review limits
+
+One fresh-context read-only review accepted the narrow metadata claim and
+confirmed stopping on the plugin prerequisite. It required the historical
+dependency qualification and compatibility review beyond a digest replacement.
+The first old-metadata run remains FAIL_HARNESS_ASSERTION: GET was compared
+against PUT-only diff fields. The corrected run compares shared metadata and
+requires ready font resources. Initial post20 counts missed nested task/job
+envelopes; that earlier result remains, with a separate corrected read-only
+probe joining immutable versions. Neither correction changed product code.
+As-run packet descriptors inherited from an older harness are not new workflow
+authority; the new ledger and hash-bound clarifications define the scope.
+
+All owned lab containers, including the follow-up guard and plugin probe, end
+stopped with no OOM. Prepared-system Docker identity metadata stayed unchanged.
+Core `db828b2` and Service `bdd8740` stay clean. No real API/SQL/storage/data
+access, real-service stop, push, release or installation.
+
+Evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/service-oldbinary-suite-20261103/`
+(`attempt2/` as-run source/build/probe/receipts, retained initial `oracle/` and
+`as-run-attempt1/`, `post20-guard-corrected.json`, `guard-followup-receipt.json`,
+`plugin-preflight.json`, `packet-clarifications.json`, `verification.json`).
+Report:
+`C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-old-metadata-suite-gap-20261103/verification-report.html`.
