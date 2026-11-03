@@ -2015,3 +2015,123 @@ independent read-only review, documentation diff review and `git diff --check`.
 No Node documentation/test process was started after the OOM. Core and Service
 remain unchanged and clean; original service identities stayed stable. No
 original data/service action, merge, push, release or installation occurred.
+
+## Lab reader repair and isolated refusal matrix (2026-11-04 checkpoint)
+
+The owner next explicitly authorized splitting test-data lifetimes and repairing
+the external lab XML reader to check the same budgets before DOM construction,
+then continuing tests with512MiB/worker and first-OOM stop. This is a new bounded
+implementation/verification scope, not permission to change Core/Service or
+reopen an old registered round. Single-room execution IDs remain not applicable.
+Role: external lab implementer, then Evidence Reviewer/Project Control Steward.
+Authority for product implementation remains with its owner repositories; this
+entry records lab evidence only. The evidence namespace retains20261103 because
+it was opened before the local date changed; this checkpoint is2026-11-04.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/source-line2-node-reader-20261103/`.
+`verification.json` reconciles immutable per-stage packets, receipts, hashes,
+case results, passing output body hashes, non-OOM failures and unproven claims.
+Relevant external source files are `xml-preflight.mjs`, `node-map.mjs`,
+`negative.mjs`, `prepare-negatives.py`, `guard-test.mjs` and `reader-test.mjs`.
+The Node codec/Python reference remain unchanged; all worker mounts are read-only
+apart from dedicated lab outputs. No dependency installation is used.
+
+### Repair and regression proof
+
+The RED test instruments actual DOM document/element creation. The old reader
+created1 document and50,001 elements before rejecting the node case, and1
+document/129 elements before rejecting excessive depth. This confirms that the
+test exposes the old DOM-before-guard behavior rather than merely checking an
+error string.
+
+The lab candidate first runs the pinned xmldom0.9.12 SAX parser through a custom
+counting handler that allocates no DOM document/elements. It retains only a
+depth-bounded stack of open tag names and parser state, and checks50000 element
+starts/depth128/32MiB before calling the original DOM/schema reader. This is a
+parser pass, not regex tag counting. XML warnings/errors, invalid UTF-8 and
+declarations remain refusals; the unchanged second pass still validates the
+map schema, namespace/attribute shape, members and envelope bindings. This
+strategy preserves the existing element-count contract; it does not introduce
+a new total count across all attributes, comments or text nodes.
+
+Final guard tests reject over-limit inputs with0 DOM documents and0 DOM elements
+created.20 reader checks pass, including exact node/depth boundaries, schema/
+index/envelope preservation, escaped delimiters, comments/PI/CDATA, declarations,
+unknown entities, duplicate attributes, malformed tags, multiple roots, trailing
+text, namespace/prefix errors, duplicate provenance, invalid UTF-8 and byte cap.
+
+The refusal harness now prepares immutable bad inputs in a separate worker that
+exits before consumers launch. Five fresh Node consumer groups read one case
+file at a time: wire10, gzip/JSON9, semantic3, XML9 and inflate-bomb1. Consumers
+hold no positive baseline merely to manufacture bad inputs and retain only
+compact result rows. The original31 cases per fixture remain; a32nd case swaps
+two valid-looking unique anchors. All3 swap cases reached embedded decode and
+real payload/index comparison before returning MAP_INDEX_DRIFT. Early syntax
+rejection is therefore not being substituted for that comparison.
+
+### Passing scope and memory
+
+| Fixture | Exact Node-to-fresh-Python body/coverage | Refusals | Node positive peak | Highest fixture worker peak |
+| --- | --- | --- | --- | --- |
+| current1800 |1800 paragraphs/1800 lines/10800 members |32/32 |303.04MiB |329.09MiB |
+| UAT metadata |58 paragraphs/63 lines/519 members |32/32 |63.89MiB |78.06MiB |
+| SRS metadata |39 paragraphs/39 lines/146 members |32/32 |39.75MiB |72.85MiB |
+
+All3 positive Node producers exited0 before unchanged fresh Python consumers;
+restored raw-body SHA256 and complete map/coverage match on both sides. All96
+refusals pass (the prior93 plus3 valid-anchor swaps). The frozen codec's earlier
+85 bidirectional vectors are reused from the preceding checkpoint; they were
+not needlessly rerun. These UAT/SRS objects are complete source-line metadata
+fixtures from the pinned prior Python proof, not newly rendered full DOCX files.
+
+Every launched worker retained512MiB memory with equal memory+swap (swap0),
+default V8 heap and unchanged caps. The coordinator stayed outside with its
+128MiB address-space bound. No V8/cgroup OOM occurred in this scope. There were29
+worker invocations including RED and non-OOM development failures; no two
+processing workers ran concurrently.
+
+### Recorded failures, review and evidence limits
+
+Two non-OOM failures are retained rather than relabelled as passes. The first
+GREEN stage passed its guard, then its coordinator attempted a duplicate
+node_modules symlink when reusing a harness folder; the next reader worker was
+not launched. A separate immutable stage then exposed missing open-tag context
+for CDATA in the new counting handler. That context was repaired using bounded
+name-only state. The final candidate passed the reader suite and a repeated
+zero-DOM guard before all3 fixture matrices. These bounded corrective runs
+account for the extra worker invocations; they were not OOM retries. Earlier
+failed packets/results remain immutable.
+
+The current1800 positive driver's inherited `readerConformance` summary still
+names the old reader gap. Its functional checks used the final candidate; the
+dedicated guard/source hashes and `verification.json` explicitly reconcile this
+stale summary. UAT/SRS use the same assertions with only that summary label
+corrected. Do not silently rewrite the original result or infer a second parser
+failure from its inherited prose.
+
+The private xmldom handler API is pinned lab machinery, not a supported product
+interface. The preflight still holds bounded input text and per-tag attributes;
+it is not a constant-memory streaming reader or proof against every possible
+hostile XML. This result supports the tested resource/lifetime organization,
+not an exact explanation of every historical failing allocation, a general
+memory-leak claim or product-wide XML security acceptance. Final independent
+static read-only review returned PASS for this bounded lab proof with no
+actionable correctness findings. `review.json` preserves its scope and declined
+items: arbitrary hostile XML, full XML conformance, other/private parser APIs,
+all DOM allocation types, historical OOM/leaks, integrated product memory,
+actual DOCX/Word fidelity, R2/production readiness and unrecorded external side
+effects. All remain unverified or outside scope; none is promoted to PASS.
+
+PASS is limited to the lab pre-DOM guard and the3-fixture codec/refusal scope.
+Static source/input/receipt reconciliation, coverage review and documentation
+diff checks support that checkpoint. R2 actual renderer/XML reduction, integrated Core working-set
+memory, true rendered target binding, Word content/geometry and Core/Service
+integration remain open. Next proposed work is to review the source-line/2
+representation and lifetime contract for an actual Core candidate before any
+product changes; do not treat this lab reader as integration permission.
+
+Only this existing PC plan is updated. Core/Service heads and clean state are
+unchanged; receipts compare stable original container identities and show no
+owned running lab workers at completion. No original API/SQL/storage access,
+service stop, merge, push, release, installation or map promotion occurs.
