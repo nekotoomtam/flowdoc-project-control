@@ -1,0 +1,10 @@
+import {test}from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';
+import{assess,checkGroupLabelCapability}from'../plugins/flowdocmake-model20/compatibility.mjs';
+const contract=JSON.parse(readFileSync(new URL('./fixtures/flowdocmake-model20-contract.json',import.meta.url))),runtime={service:'0.5.2',core:'0.5.2',coreArtifactSha256:'ef82f85163be57159c89dd64a535efd11a8791d4c7274f16ae5bb1670cf7aba8',corePackageFilesSha256:'47cdac6d28661e1e98e02603e04e5a80e6e6d6254adaf3f9d16e65016f9cb427',port:'3018'};
+test('accepts the actual model20-only029 Service discovery with the exact reviewed Core pin',()=>{assert.deepEqual(assess({contract,runtime,pdf:true}),{ready:true,code:'READY'});});
+test('refuses mixed/legacy capabilities, old Section instance contracts and wrong archive without version-only approval',()=>{
+ for(const patch of [{nodeModelVersions:[18,19]},{nodeModelVersions:[18,19,20]},{sectionInstances:{model:19,input:'array-by-id'}},{sectionDefinitions:{...contract.sectionDefinitions,instanceKey:'optional'}},{formatSizing:{...contract.formatSizing,nodeModelVersions:[19]}}])assert.equal(assess({contract:{...contract,...patch},runtime,pdf:true}).ready,false);
+ assert.equal(assess({contract,runtime:{...runtime,coreArtifactSha256:'647235de33308ecf99aa201c63ff1e663e15c17c3b9259bde0ecf5f6dc819318'},pdf:true}).ready,false);
+ assert.equal(assess({contract,runtime:{...runtime,corePackageFilesSha256:'a'.repeat(64)},pdf:true}).ready,false);
+});
+test('checks model20 group label capability at declaration owners and refuses model19 equivalents',()=>{const definition={schemaVersion:2,nodeModelVersion:20,sections:[],areaFormats:{rows:{rowGroups:[{groupLabel:{}}]}}};assert.deepEqual(checkGroupLabelCapability(definition,contract),{ok:true});assert.equal(checkGroupLabelCapability({...definition,nodeModelVersion:19},contract).ok,false);assert.equal(checkGroupLabelCapability(definition,{...contract,groupLabelSpans:{...contract.groupLabelSpans,nodeModelVersions:[19]}}).ok,false);});

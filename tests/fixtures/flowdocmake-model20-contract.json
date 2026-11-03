@@ -1,0 +1,598 @@
+{
+  "documents": {
+    "version": 1,
+    "route": "/documents",
+    "input": "section-assets-multipart-v1",
+    "response": "task-v1",
+    "lookup": "exact-record-only",
+    "queue": {
+      "mode": "queue-v1",
+      "earlyResponse": true,
+      "continuedUpload": true,
+      "maxOutstanding": 10,
+      "maxOwnerTasks": 10,
+      "maxIntakes": 2,
+      "maxProcessing": 2,
+      "maxSenders": 2
+    },
+    "serviceVersion": "0.5.2",
+    "coreVersion": "0.5.2",
+    "coreSha256": "ef82f85163be57159c89dd64a535efd11a8791d4c7274f16ae5bb1670cf7aba8"
+  },
+  "nodeModelVersions": [
+    20
+  ],
+  "sectionDefinitions": {
+    "model": 20,
+    "input": "array-by-section-key",
+    "instanceKey": "required-unique-per-request",
+    "assembly": "request",
+    "reuseDefinitions": true,
+    "authoring": "whole-definition",
+    "createSection": false,
+    "importSections": false,
+    "cloneTemplate": false
+  },
+  "groupLabelSpans": {
+    "version": 1,
+    "nodeModelVersions": [
+      20
+    ],
+    "schemaVersions": [
+      1,
+      2
+    ],
+    "continuationSuffix": " (\u0e15\u0e48\u0e2d)",
+    "fixed": "formatSizing-v2",
+    "diagnosticsVersion": 1
+  },
+  "formatSizing": {
+    "version": 2,
+    "nodeModelVersions": [
+      20
+    ],
+    "fontSchemaVersions": [
+      1,
+      2
+    ],
+    "modes": [
+      "auto",
+      "fixed"
+    ],
+    "fixedContexts": [
+      "section-flow-root"
+    ],
+    "diagnosticsVersion": 1
+  },
+  "schemaVersions": [
+    1,
+    2
+  ],
+  "fonts": {
+    "catalog": "/authoring/fonts",
+    "readiness": "/authoring/drafts/:id/font-readiness",
+    "selection": "exact-release-weight-style",
+    "syntheticFaces": false,
+    "automaticFallback": false,
+    "adminSeparate": true,
+    "heightAdjustment": {
+      "methodId": "thai-bo-baseline-top-v1",
+      "optIn": true,
+      "proposalTtlSeconds": 900,
+      "precisionDecimals": 6,
+      "layoutCheck": "not_checked"
+    }
+  },
+  "flow": [
+    "create-identity",
+    "save-definition",
+    "validate",
+    "preview"
+  ],
+  "draftDefinitionVersion": 1,
+  "publicationEnabled": false,
+  "bodyLimitBytes": 2097152,
+  "maxOutstanding": 10,
+  "areaValue": "ordered array of {format,data}",
+  "examples": {
+    "definition": {
+      "schemaVersion": 1,
+      "nodeModelVersion": 20,
+      "templateId": "c0924373-ed58-582d-8e3f-97d4deffb56a",
+      "docKey": "area-document",
+      "version": 1,
+      "name": "Explicit Area document",
+      "book": {
+        "contentSlot": "body",
+        "defaultPageLayoutId": "normal"
+      },
+      "globalSchema": {
+        "type": "object",
+        "fields": {}
+      },
+      "styles": {
+        "body": {
+          "fontFamilyKey": "sarabun",
+          "fontWeight": "normal",
+          "fontSize": {
+            "value": 12,
+            "unit": "pt"
+          },
+          "lineHeightPt": 20
+        }
+      },
+      "examples": [],
+      "pageLayouts": {
+        "normal": {
+          "page": {
+            "size": "A4",
+            "orientation": "portrait",
+            "margin": {
+              "top": {
+                "value": 20,
+                "unit": "mm"
+              },
+              "right": {
+                "value": 20,
+                "unit": "mm"
+              },
+              "bottom": {
+                "value": 20,
+                "unit": "mm"
+              },
+              "left": {
+                "value": 20,
+                "unit": "mm"
+              }
+            }
+          }
+        }
+      },
+      "sections": [
+        {
+          "id": "2a62f049-72ba-57c8-8401-a68c841364d3",
+          "source": {
+            "kind": "authored",
+            "fragment": {
+              "rootIds": [
+                "area"
+              ],
+              "nodes": {
+                "area": {
+                  "id": "area",
+                  "type": "area",
+                  "props": {
+                    "areaId": "main-details"
+                  }
+                }
+              }
+            },
+            "repeats": []
+          },
+          "inputSchema": {
+            "type": "object",
+            "fields": {
+              "details": {
+                "type": "area",
+                "areaId": "main-details",
+                "required": true
+              }
+            }
+          },
+          "sectionKey": "S0001",
+          "label": "main",
+          "nameBase": "main"
+        }
+      ],
+      "areaFormats": {
+        "meeting": {
+          "inputSchema": {
+            "type": "object",
+            "fields": {
+              "companies": {
+                "type": "array",
+                "required": true,
+                "items": {
+                  "type": "object",
+                  "fields": {
+                    "name": {
+                      "type": "string",
+                      "required": true
+                    },
+                    "members": {
+                      "type": "array",
+                      "required": true,
+                      "items": {
+                        "type": "object",
+                        "fields": {
+                          "name": {
+                            "type": "string",
+                            "required": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "fragment": {
+            "rootIds": [
+              "table"
+            ],
+            "nodes": {
+              "table": {
+                "id": "table",
+                "type": "table",
+                "props": {
+                  "headerRowCount": 0,
+                  "repeatHeaderRows": false
+                },
+                "columns": [
+                  {
+                    "width": {
+                      "value": 400,
+                      "unit": "pt"
+                    }
+                  }
+                ],
+                "rowIds": [
+                  "before",
+                  "company",
+                  "labels",
+                  "member",
+                  "empty",
+                  "after"
+                ]
+              },
+              "before": {
+                "id": "before",
+                "type": "table-row",
+                "props": {
+                  "allowBreak": true
+                },
+                "cellIds": [
+                  "beforeCell"
+                ]
+              },
+              "beforeCell": {
+                "id": "beforeCell",
+                "type": "table-cell",
+                "props": {},
+                "childIds": [
+                  "beforeText"
+                ]
+              },
+              "beforeText": {
+                "id": "beforeText",
+                "type": "text-block",
+                "role": {
+                  "role": "paragraph"
+                },
+                "props": {
+                  "textStyleId": "body"
+                },
+                "children": [
+                  {
+                    "id": "beforeLeaf",
+                    "type": "text",
+                    "text": "before"
+                  }
+                ]
+              },
+              "company": {
+                "id": "company",
+                "type": "table-row",
+                "props": {
+                  "allowBreak": true
+                },
+                "cellIds": [
+                  "companyCell"
+                ]
+              },
+              "companyCell": {
+                "id": "companyCell",
+                "type": "table-cell",
+                "props": {},
+                "childIds": [
+                  "companyText"
+                ]
+              },
+              "companyText": {
+                "id": "companyText",
+                "type": "text-block",
+                "role": {
+                  "role": "paragraph"
+                },
+                "props": {
+                  "textStyleId": "body"
+                },
+                "children": [
+                  {
+                    "id": "companyLeaf",
+                    "type": "field-ref",
+                    "scope": "group",
+                    "key": "name"
+                  }
+                ]
+              },
+              "labels": {
+                "id": "labels",
+                "type": "table-row",
+                "props": {
+                  "allowBreak": true
+                },
+                "cellIds": [
+                  "labelsCell"
+                ]
+              },
+              "labelsCell": {
+                "id": "labelsCell",
+                "type": "table-cell",
+                "props": {},
+                "childIds": [
+                  "labelsText"
+                ]
+              },
+              "labelsText": {
+                "id": "labelsText",
+                "type": "text-block",
+                "role": {
+                  "role": "paragraph"
+                },
+                "props": {
+                  "textStyleId": "body"
+                },
+                "children": [
+                  {
+                    "id": "labelsLeaf",
+                    "type": "text",
+                    "text": "labels"
+                  }
+                ]
+              },
+              "member": {
+                "id": "member",
+                "type": "table-row",
+                "props": {
+                  "allowBreak": true
+                },
+                "cellIds": [
+                  "memberCell"
+                ]
+              },
+              "memberCell": {
+                "id": "memberCell",
+                "type": "table-cell",
+                "props": {},
+                "childIds": [
+                  "memberText"
+                ]
+              },
+              "memberText": {
+                "id": "memberText",
+                "type": "text-block",
+                "role": {
+                  "role": "paragraph"
+                },
+                "props": {
+                  "textStyleId": "body"
+                },
+                "children": [
+                  {
+                    "id": "memberLeaf",
+                    "type": "field-ref",
+                    "scope": "item",
+                    "key": "name"
+                  }
+                ]
+              },
+              "empty": {
+                "id": "empty",
+                "type": "table-row",
+                "props": {
+                  "allowBreak": true
+                },
+                "cellIds": [
+                  "emptyCell"
+                ]
+              },
+              "emptyCell": {
+                "id": "emptyCell",
+                "type": "table-cell",
+                "props": {},
+                "childIds": [
+                  "emptyText"
+                ]
+              },
+              "emptyText": {
+                "id": "emptyText",
+                "type": "text-block",
+                "role": {
+                  "role": "paragraph"
+                },
+                "props": {
+                  "textStyleId": "body"
+                },
+                "children": [
+                  {
+                    "id": "emptyLeaf",
+                    "type": "text",
+                    "text": "empty"
+                  }
+                ]
+              },
+              "after": {
+                "id": "after",
+                "type": "table-row",
+                "props": {
+                  "allowBreak": true
+                },
+                "cellIds": [
+                  "afterCell"
+                ]
+              },
+              "afterCell": {
+                "id": "afterCell",
+                "type": "table-cell",
+                "props": {},
+                "childIds": [
+                  "afterText"
+                ]
+              },
+              "afterText": {
+                "id": "afterText",
+                "type": "text-block",
+                "role": {
+                  "role": "paragraph"
+                },
+                "props": {
+                  "textStyleId": "body"
+                },
+                "children": [
+                  {
+                    "id": "afterLeaf",
+                    "type": "text",
+                    "text": "after"
+                  }
+                ]
+              }
+            }
+          },
+          "repeats": [],
+          "rowGroups": [
+            {
+              "id": "companies",
+              "tableId": "table",
+              "rowTemplateIds": [
+                "company",
+                "labels",
+                "member",
+                "empty"
+              ],
+              "source": {
+                "scope": "local",
+                "key": "companies"
+              },
+              "memberRepeat": {
+                "rowTemplateId": "member",
+                "source": {
+                  "scope": "group",
+                  "key": "members"
+                },
+                "emptyRowTemplateId": "empty"
+              },
+              "pagination": {
+                "keepStart": true
+              }
+            }
+          ],
+          "key": "meeting",
+          "ownerAreaId": "main-details"
+        },
+        "break": {
+          "key": "new-page",
+          "ownerAreaId": "main-details",
+          "inputSchema": {
+            "type": "object",
+            "fields": {}
+          },
+          "fragment": {
+            "rootIds": [
+              "break"
+            ],
+            "nodes": {
+              "break": {
+                "id": "break",
+                "type": "page-break"
+              }
+            }
+          },
+          "repeats": []
+        }
+      }
+    },
+    "sampleRequest": {
+      "docKey": "area-document",
+      "data": {},
+      "sections": [
+        {
+          "data": {
+            "details": [
+              {
+                "format": "meeting",
+                "data": {
+                  "companies": [
+                    {
+                      "name": "Company A",
+                      "members": [
+                        {
+                          "name": "Person A"
+                        },
+                        {
+                          "name": "Person B"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Company B",
+                      "members": []
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "sectionKey": "S0001",
+          "instanceKey": "I0001"
+        }
+      ]
+    },
+    "instruction": "Replace definition.templateId/docKey and sampleRequest.docKey with the identity returned by create. Definition.version stays 1; revision is separate."
+  },
+  "validation": "Core validateTemplate is authoritative; examples are not an exhaustive JSON schema. validate(sampleRequest) composes but does not prove pagination; preview performs layout.",
+  "retry": "Successful authoring receipts retained until administrative database cleanup; reuse key only for identical request. Preview retry returns original job even after PDF expiry; use a new key for a fresh preview.",
+  "uploadLimits": {
+    "fileBytes": 52428800,
+    "setBytes": 209715200,
+    "stagingBytes": 1073741824,
+    "maxItems": 20,
+    "maxSessions": 100,
+    "streams": 2,
+    "base64Bytes": 1048576,
+    "idleMs": 3600000,
+    "readyMs": 3600000,
+    "absoluteMs": 14400000,
+    "requestIdleMs": 60000,
+    "requestMs": 600000,
+    "metadataMs": 86400000
+  },
+  "variableSchemas": [
+    "globalSchema",
+    "sections[].inputSchema",
+    "sections[].header.inputSchema",
+    "sections[].footer.inputSchema",
+    "areaFormats[].inputSchema"
+  ],
+  "emptyDraft": {
+    "revision": 0,
+    "definition": null,
+    "preview": false
+  },
+  "preview": {
+    "published": false,
+    "pinnedRevision": true,
+    "downloads": "repeatable until output TTL",
+    "images": true
+  },
+  "errors": [
+    "INVALID_TEMPLATE",
+    "MISSING_REQUIRED",
+    "UNKNOWN_FORMAT",
+    "STALE_CURRENT",
+    "DRAFT_EMPTY",
+    "IDEMPOTENCY_CONFLICT"
+  ],
+  "identityRules": "Server creates templateId. Save definition under that ID with the same docKey and version=1. Internal IDs are server owned."
+}

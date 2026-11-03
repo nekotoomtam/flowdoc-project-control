@@ -7,7 +7,8 @@ import {pathToFileURL,fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
-import {assess,usesGroupLabels,checkGroupLabelCapability} from './compatibility.mjs';
+import * as compatibility from './compatibility.mjs';
+const {assess,usesGroupLabels,checkGroupLabelCapability}=compatibility;
 import {runCandidatePlan} from './candidate-workflow.mjs';
 import {documentTask,classifyFailure} from './document-task.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -34,11 +35,11 @@ async function preflight(){
    const inspect=JSON.parse(run('docker',['inspect',config.container]))[0];
    const ports=Object.values(inspect.NetworkSettings.Ports).flat().filter(Boolean);
    const port=ports.find(p=>p.HostIp==='127.0.0.1'&&p.HostPort===new URL(config.url).port)?.HostPort;
-   const versions=JSON.parse(run('docker',['exec',config.container,'node','-e',"const fs=require('fs'),m=require('./vendor/manifest.json');if(!/^[a-zA-Z0-9_.-]+[.]tgz$/.test(m.file))throw Error('artifact');const actual=require('crypto').createHash('sha256').update(fs.readFileSync('./vendor/'+m.file)).digest('hex');if(actual!==m.sha256)throw Error('artifact');console.log(JSON.stringify({service:require('./package.json').version,core:require('./node_modules/@flowdoc/core/package.json').version,coreArtifactSha256:actual}))"]));
+   const versions=JSON.parse(run('docker',['exec',config.container,'node','-e',compatibility.runtimeProbeScript??"const fs=require('fs'),m=require('./vendor/manifest.json');if(!/^[a-zA-Z0-9_.-]+[.]tgz$/.test(m.file))throw Error('artifact');const actual=require('crypto').createHash('sha256').update(fs.readFileSync('./vendor/'+m.file)).digest('hex');if(actual!==m.sha256)throw Error('artifact');console.log(JSON.stringify({service:require('./package.json').version,core:require('./node_modules/@flowdoc/core/package.json').version,coreArtifactSha256:actual}))"]));
    runtime={...versions,port,imageId:inspect.Image,identitySource:'local Docker container inspection, not HTTP contract'};
   }catch{}
   try{run(config.python,['-c','from pypdf import PdfReader; from PIL import Image']);run('pdftoppm',['-v']);pdf=true;}catch{}
-  return {...assess({contract,runtime,pdf,expectedPort:new URL(config.url).port}),packageVersion,documentation:manifest,runtime,contract:{groupLabelSpans:contract?.groupLabelSpans,formatSizing:contract?.formatSizing,sectionInstances:contract?.sectionInstances,nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
+  return {...assess({contract,runtime,pdf,expectedPort:new URL(config.url).port}),packageVersion,documentation:manifest,runtime,contract:{...(contract?.sectionDefinitions?{sectionDefinitions:contract.sectionDefinitions}:{}),groupLabelSpans:contract?.groupLabelSpans,formatSizing:contract?.formatSizing,sectionInstances:contract?.sectionInstances,nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
  } catch{return {ready:false,code:'LOCAL_CONFIGURATION_OR_GUIDE_ERROR'};}
 }
 serveStdio(()=>{
