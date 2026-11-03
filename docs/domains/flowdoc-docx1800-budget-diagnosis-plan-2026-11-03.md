@@ -734,3 +734,89 @@ to raise RAM, bypass the failing case, reset document budgets or continue past
 the OOM stop. All original container identities, the frozen package tree and
 Service remain unchanged; no owned lab container remains running. No shared
 map or closed execution record is promoted or reopened.
+
+## Core-alone nativeRunBudget proof,2026-11-03: three original cases pass
+
+The owner explicitly authorized separation of the test coordinator and proof
+of nativeRunBudget on Core alone, keeping512MiB/worker and existing caps, with
+an immediate stop on OOM. Scope is bounded verification only; Core/Service are
+read-only, no remaining R1 groups or implementation are authorized by this
+result. Single-room execution IDs are not applicable. Input PC4ba2001,
+Core6f36c42 plus its unchanged ten-file unfinished candidate, Service db15e9d.
+
+**PASS_NATIVE_RUN_BUDGET_CORE_ALONE_BOUNDED.** This passes the requested
+three-case scope, not the complete R1 suite or original Vitest command. The
+earlier OOM records remain failures with their original evidence.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1-core-alone-20261103/`.
+See `verification.json`, `transpile-proof.json`, `adapter-check.json` and
+`run2/oracle/receipt.json`. The three DOCX files, case/assertion results and
+external per-process/cgroup samples are retained in `run2/oracle/proof/`.
+
+### Separation and preservation of the actual test contract
+
+The processing container runs a single Node24.21 process against the existing
+compiled Core candidate. Generation, original assertions and their ZIP/XML
+inspection all remain inside its512MiB/swap0 cgroup, with2CPU,128pids,
+network none and read-only product/input mounts. There is no Vitest coordinator,
+compiler/transpiler or Python monitor process inside the worker.
+
+The host Python coordinator only launches, observes and collects. Its own soft
+virtual-address bound is128MiB and observed peak RSS20184KiB. Docker CLI retains
+its original host virtual-address limits. An initial pre-worker setup failure
+incorrectly inherited the Python address bound into the Go CLI, which could
+not reserve its virtual page-summary area. That attempt never created a Core
+worker; it is preserved as infrastructure failure, not a Core OOM or a pass.
+
+The original `tests/docx/nativeRunBudget.test.ts` and helper are copied and
+transpiled outside the worker using the existing TypeScript compiler. Only
+imports change: compiled Core, copied helpers and a small node:assert adapter.
+Restoring those imports reproduces the original transpiled bodies byte for
+byte. All three cases and24 original assertions execute; the1800 workload is
+not split, reduced or given reset counters. Matcher controls reject eight
+deliberately invalid checks and accept six valid checks. A wrapper captures
+the original staged output objects for retention, without changing their
+write/abort behavior. This is an explicit alternate test harness, not a claim
+that the original Vitest invocation has now passed.
+
+### Results and independent file verification
+
+Worker cgroup peak is194740224 bytes (185.71875MiB), exit0, `oom 0` and
+`oom_kill 0`. External cgroup process samples establish a maximum of one process.
+
+| Original case | Result | XML plus rels nodes | Drawings | DOCX bytes |
+| --- | --- | ---: | ---: | ---: |
+| Complete1800 plain-text records | PASS |49227 |0 |215076 |
+| Authored spans, whitespace and line break | PASS |687 |0 |188521 |
+| Thai runs separate from adjacent Latin/Common text | PASS |677 |0 |188525 |
+
+Each output contains25 XML/rels parts. A separate parser after worker exit
+checks ZIP CRC, parses every XML/rels part and independently confirms the
+counts, all1800 ordered record texts, preserved spaces/newline, and isolated
+Thai run with its complex-script marker. Its count agrees with the original
+test's counter. The unchanged XML cap is50000 and byte cap33554432. The first
+file is retained with SHA256
+afd4ac10aef4431299545df679c4eec20e37a5c4cab2982d19e5139ddf5bfdd4.
+No native Word rendering or pagination claim is made.
+
+### Interpretation and stopping boundary
+
+This establishes that this exact nativeRunBudget workload and its assertions
+fit512MiB when run on compiled Core without the in-worker Vitest coordinator.
+Together with the prior combined-worker OOM, it supports separating test-runner
+overhead from processing-worker capacity. It does not identify every allocation
+in the old OOM, establish that Vitest alone caused it, or prove arbitrary
+documents fit this budget.
+
+This fixture invokes the fonts-only native writer. The separate default source-
+guide1800 XML refusal remains open; do not merge the two1800 workload claims.
+The fifteen later R1 groups, refreshed compiled-source-guide proof, accepted
+Linux packed consumer and independent whole-change review are still pending.
+No further R1 group was run after the requested bounded proof passed.
+
+Core/Service files and the exact candidate hashes remain unchanged. Core is
+still uncommitted pending broader R1 acceptance. Original container identities
+and frozen package tree are stable; owned running lab containers are zero.
+No original API/SQL/storage access, service stop, merge, push, release,
+installation, map promotion or old execution-context mutation was performed.
