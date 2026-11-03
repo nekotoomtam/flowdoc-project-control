@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "nodeModelVersion": 18,
+  "templateId": "tpl-srs-basic",
+  "docKey": "srs-basic",
+  "version": 1,
+  "name": "SRS MVP",
+  "book": {
+    "contentSlot": "body",
+    "defaultPageLayoutId": "normal"
+  },
+  "globalSchema": {
+    "type": "object",
+    "fields": {}
+  },
+  "styles": {
+    "body": {
+      "fontFamilyKey": "sarabun",
+      "fontWeight": "normal",
+      "fontSize": {
+        "value": 12,
+        "unit": "pt"
+      },
+      "lineHeightPt": 18
+    }
+  },
+  "examples": [],
+  "pageLayouts": {
+    "normal": {
+      "page": {
+        "size": "A4",
+        "orientation": "portrait",
+        "margin": {
+          "top": {
+            "value": 20,
+            "unit": "mm"
+          },
+          "right": {
+            "value": 20,
+            "unit": "mm"
+          },
+          "bottom": {
+            "value": 20,
+            "unit": "mm"
+          },
+          "left": {
+            "value": 20,
+            "unit": "mm"
+          }
+        }
+      }
+    }
+  },
+  "sections": [
+    {
+      "id": "legacy-section",
+      "key": "legacy-section",
+      "inputSchema": {
+        "type": "object",
+        "fields": {}
+      },
+      "formats": {},
+      "source": {
+        "kind": "blank"
+      }
+    }
+  ],
+  "areaFormats": {}
+}

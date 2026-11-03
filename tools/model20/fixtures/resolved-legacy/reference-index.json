@@ -1,0 +1,20 @@
+{
+  "authority": "Negative/migration source goldens only; not supported runtime inputs.",
+  "sourceCommit": "4a14176",
+  "files": [
+    {
+      "path": "fixtures/pdf/four-styles.resolved.json",
+      "sourceCommit": "4a14176",
+      "beforeSha256": "597bc1cdb7d4e3b30b95c02a6b4fd753fcb97598994060dab2d703c80bb9e530",
+      "afterSha256": "4bae180e42db3d1f839f0f027c40abb51330524de156d440b1d2bca69ebcadbb",
+      "allContentAndFormattingEqualUnderExplicitIdentityMap": true
+    },
+    {
+      "path": "fixtures/pdf/overflow.resolved.json",
+      "sourceCommit": "4a14176",
+      "beforeSha256": "22631c263038711b530cde816391d6cc9f80c4e29e0ec91ce4d2b53812cf5055",
+      "afterSha256": "0857158c661f90b61c681edd487b6cf825dac93466c6b8ea4a8be3fb719c5bc4",
+      "allContentAndFormattingEqualUnderExplicitIdentityMap": true
+    }
+  ]
+}

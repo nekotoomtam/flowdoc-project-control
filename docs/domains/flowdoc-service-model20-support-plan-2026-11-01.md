@@ -2690,3 +2690,21 @@ Evidence:
 `plugin-preflight.json`, `packet-clarifications.json`, `verification.json`).
 Report:
 `C:/Users/nekot/.codex/visualizations/2026/10/27/01a17da5-b6ab-7ff0-a66c-e46d7e2cf42d/flowdoc-oracle-old-metadata-suite-gap-20261103/verification-report.html`.
+
+### Owner-approved pre-use20-only follow-up,2026-11-03
+
+The owner confirmed Oracle/OCI is pre-use performance testing and chose explicit
+legacy-template conversion followed by20-only Core/Service/plugin candidates,
+instead of further backward-runtime compatibility investment. The governing
+candidate plan is `flowdoc-model20-only-transition-2026-11-03.md`; historical
+old-binary metadata/suite gaps above remain historical, not newly passed.
+
+The owner then ordered full UAT/SRS XML repair before legacy removal. That Core
+prerequisite now passes scoped source/native/package/Word checks at commit
+`4a14176`: UAT36435/SRS48879 nodes with unchanged caps and512MiB workers, and
+Word73/101 pages respectively equal to retained references at72dpi/full text.
+Evidence and qualifications are in the transition plan and external
+`model20-only-20261103/xml-verification.json`.18/19 are still present at this
+checkpoint; Service/plugin candidates have not been edited.20-only cutover,
+new named DB, full suite/native acceptance and final review remain dependent
+work. No prepared-system data access, service stop, merge, push, release or install.
