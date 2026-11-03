@@ -148,6 +148,11 @@ No fixture names, record-number branches, lowered content or larger limits.
 
 ### R0 — prove measurement reduction before choosing a product algorithm
 
+2026-11-03 outcome: evaluated on copies; **NOT ACCEPTED**. The tested generic
+whole-line-fit-first method changes line layout for a real native contextual
+font. See the R0 outcome below. R1 remains gated; these acceptance boxes are
+intentionally not marked complete.
+
 - [ ] On external copies, compare the current prefix search with a proposed
   whole-line-fit-first or equivalent line-selection strategy. The primary
   candidate would shape a fitting paragraph once and reuse that exact result,
@@ -224,3 +229,93 @@ native-policy switch or new XML cap. Stop on unexpected OOM, source/package
 mutation, incomplete content, unproven layout/ownership assumptions or a change
 requiring architecture/contract expansion. No further experiments are required
 to close this diagnosis.
+
+## R0 outcome,2026-11-03: measurement reduction found, equivalence fails
+
+This follow-up is the owner's explicitly authorized R0 copy-only proof. Core
+and Service stay at the exact commits/tree above; PC plan input was9b8dbd9.
+Single-room discovery IDs remain not applicable. No separate agent room or
+implementation authority was created. The candidate is an external copy of the
+exact packed `dist/layout/measureText.js`, with imports rebound to the unchanged
+Core and one whole-line-fit-first branch before its original prefix search.
+It does not alter counters, limits, source layout mode or product files.
+
+Evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r0-line-measurement-20261103/`:
+`verification.json`, `copy-only-diff.txt`,
+`wiring2/oracle/proof/result.json`, and
+`line-counterexample/oracle/proof/result.json` plus the two actual receipts.
+The initial missing relative import in the external harness is a retained failed
+prerequisite, not an algorithm test pass. Only the repaired external wiring is
+used for the following results.
+
+### Positive evidence, with its exact scope
+
+- 17 bounded function comparisons agree, including fitting/overflowing Latin,
+Thai marks, mixed text, a regular-font ligature sample, overhang-sensitive text,
+tabs, line breaks, empty paragraphs, grapheme-sized frames, short first-line
+width, and fixed/heading guards. This does not certify routing through all
+protected source-layout owner contexts.
+- All1800 fixture paragraphs return exactly the original per-paragraph measured
+structures, including glyph/ink/line fields, on the tested bundled regular font.
+The independent per-paragraph references require12600 requests across1800
+separate bounded comparisons; they are not a successful unmodified full1800
+document. Its original aggregate guard still refuses at row1171/request8193.
+- The candidate sequence measures all1800 paragraphs with1800 requests and64800
+shaped units. Its maxima are1 request/36 units per block, with736 authored units
+remaining. All4 shaping limits and the65536 authored-unit budget stay unchanged.
+This is a request-count reduction, not a measured7x latency claim or DOCX pass.
+
+### Confirmed counterexample: both paths succeed, layout differs
+
+A small self-authored lab-only font contains a valid contextual Latin GSUB
+ligature for `a space b space a`. No original/product font is edited or claimed
+to have this behavior. The actual pinned native shaper and segmenter process
+the same text `a b a`,12pt font and10pt frame:
+
+| Legal prefix | Actual native extent |
+| --- | ---: |
+| `a ` |9.6pt |
+| `a b ` |19.2pt |
+| `a b a` |6pt |
+
+Actual ICU breaks are[0,2,4,5]. The old greedy prefix path sees19.2pt exceed
+the frame and emits3 lines: `a `, `b `, `a` (60pt total). The candidate sees
+the complete6pt shape fit and emits1 line: `a b a` (20pt). All authored text is
+retained, but line count/height differs, violating the owner's same-layout
+criterion. No glyph slicing or fabricated widths are used.
+
+The contextual font's SHA, native glyph results and independent binary GSUB
+inspection are in `verification.json`. Its actual5-component substitution is
+authoritative; a copied metadata description still abbreviated the earlier
+3-component fixture and is explicitly corrected in that derived record, while
+raw evidence remains unchanged. This is not evidence that bundled Sarabun has
+the same issue or that this font has passed a product font-import/Word gate.
+
+An earlier native contextual case also changes rejection into successful
+layout. The successful3-line→1-line case above is sufficient to reject the
+generic shortcut, independently of whether the earlier rejection should one
+day be treated as a separate layout bug.
+
+### Disposition and next decision
+
+**FAIL_R0_EQUIVALENCE_DO_NOT_START_R1.** Lab execution/isolation succeeded; the
+candidate method did not meet acceptance. Preserve the old path and return to
+design review as required by R0. Do not patch around this font, silently switch
+to native policy, assume prefix monotonicity, count work after a cache, or raise
+a budget. A subsequent scope must establish a genuine conservative eligibility
+proof for a shortcut or another algorithm before any Core implementation.
+
+Not proved: complete fixed/cover/table/keep/link/field/cancellation integration,
+all supported font behaviors, whole-document source guides/pagination, full
+DOCX/Word equivalence, Service API acceptance or a repair of the separate97411
+XML-node refusal. These are not waived by the1800 positive comparisons. Further
+experiments were stopped after recording the decisive counterexample.
+
+Both successful proof lanes run in fresh Oracle/OCI containers at512MiB,
+swap0, network none and read-only product mounts. Actual cgroup peaks are
+58765312 bytes (56.04MiB) and49201152 bytes (46.92MiB), no OOM/oom_kill. They
+measure the function-level workload, not full DOCX memory capacity. The Core
+package tree remains47cdac6d..., owned containers are stopped and original
+container identities remain stable. No original API/SQL/storage data access,
+original service stop, Core/Service edit, merge, push, release or installation.
