@@ -1500,3 +1500,165 @@ identity drift occurs. All owned lab containers stop. Oracle denotes the OCI
 VM, no DB or original API/SQL/storage access. Product candidates remain clean.
 Only this plan and external comparison evidence change. No Core/Service edits,
 new DOCX/XML, Word run, merge, push, release, install or truth-map promotion.
+
+## source-line/2 lab contract and lossless metadata proof,2026-11-03
+
+Status: **PASS_SOURCE_LINE2_LAB_CONTRACT_AND_LOSSLESS_METADATA_ONLY**.
+The owner explicitly authorized defining source-line/2 and proving lossless
+metadata reduction on copies. This accepts only the lab contract/transport
+scope below, not the proposed renderer, a production profile or R2/R3 as PASS.
+Project Control owns this shared lab contract; Core owns any later runtime
+implementation. Roles Planning Partner/Evidence Reviewer; single-room execution
+IDs not applicable. Active host model inline, no separate room/agent. Core
+582f141 and Service db15e9d remain unchanged; the packet pins full hashes and
+starting PC41820a3. The stale generated October4 snapshot is not this authority.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/source-line2-metadata-20261103/`.
+`contract.json` is the compact machine-readable companion; use
+`verification.json` for independent acceptance. The corrected complete-map
+proof is under `map/packet.json`, `map/oracle/receipt.json`, and
+`map/oracle/{encode,decode}-{current,uat,srs}/`. Producers retain
+`source-line2.xml`, `provenance.xml`, `metadata-envelope.json`, `reference.json`
+and `encode.json`; consumers retain `restored-body.json`,
+`readable-primary-map.json` and `decode.json`. `codec.py`, `mapxml.py`,
+`encode.py`, `decode.py`, `prepare-map.py` and `verify.py` explain the method.
+The first carrier-only round remains supporting evidence, not a complete-map
+claim. Adding the readable index was a bounded missing contract prerequisite;
+neither round retries an OOM or changes a product candidate.
+
+### Defined contract: identity, offsets and ownership
+
+The standalone part is `flowdocSourceLines`, version `source-line/2`, profile
+`lab-copy`, targetEvidence `virtual-plan`. The body schema is also
+`source-line/2`; its exact top-level fields are schema, profile, sourceDigest,
+sourcePlanSha256, targetPlanSha256, primaryMap and provenance. A production
+`core-generation` profile is not implemented and is explicitly refused by the
+lab decoder. Unknown schema versions/profiles must not fall back to v1.
+
+- Root sourceDigest binds the original source; sourcePlanSha256 binds the
+  exact retained original-fact ledger and targetPlanSha256 the proposed line
+  plan. The lab binds against independent producer references. SHA256/CRC
+  checks prove integrity, not producer authentication or genuine Core ownership.
+  Production must obtain trusted bindings from its actual owned generation
+  context and validate the emitted targets, not trust caller strings/ID prefixes.
+- Each readable paragraph names sourceNodeId, sourceTag and
+  textSha256Utf16le. Each line names index, sourceStart/sourceEnd, targetPart,
+  anchorKind/anchorValue, targetStart/targetEnd, textSha256Utf16le and members.
+  `members` is readable JSON, with provenanceShapeId, sourceRange and
+  targetRange for every original segment. Unknown schema-owned attributes or
+  elements are refused; opaque nested provenance remains preserved as data.
+- Source ranges are half-open UTF16 code-unit offsets in the original source
+  paragraph. Target ranges are half-open offsets local to one emitted line
+  paragraph. No holes, overlaps, duplicated members/owners/anchors or missing
+  mapped data are permitted. Member order, full line coverage and text digests
+  are checked. The new text digest is SHA256 over UTF16LE code units, without
+  normalization or surrogate replacement. Original UTF8 digest fields retain
+  their original meaning inside provenance; they are not silently redefined.
+- The target is word/document.xml plus a candidate w14:paraId and local range.
+  Former shape IDs are provenance only and cannot be treated as surviving Word
+  shapes. Lab IDs refer to a virtual line plan, not an emitted DOCX. Actual
+  paragraph lookup, geometry/style identity and Word-save/edit persistence
+  remain unverified. The earlier Word-version/anchor concerns remain open.
+- Legacy source-word/1 files, maps and receipts are unchanged. Any future
+  source-line receipt must truthfully identify line paragraphs rather than
+  editable word boxes, keep wordVerified false and never infer layout evidence
+  from a successful metadata decode. No migration is performed by this contract.
+
+### Defined contract: readable index and bounded provenance codec
+
+The map part contains paragraph/line index elements followed by exactly one
+provenance element. The index stays readable without decompressing metadata.
+The provenance body contains a complete copy of the primary index, original
+member text, geometry attributes, resolved style registry, original maps and
+source facts available in the serialized copies. The reader must cross-check
+the readable and decoded indexes and source/target bindings before accepting
+the aggregate. A checksum alone does not establish target validity.
+
+Metadata version `source-line-metadata/1`, codec `gzip-json/1`: compact ASCII
+JSON, one gzip member and strict Base64. The envelope/provenance attributes
+declare profile, sourceDigest, targetPlanSha256, uncompressedBytes,
+compressedBytes and SHA256 of the original uncompressed JSON. Full original
+unknown nested provenance is retained, never executed or interpreted as paths,
+runtime options or commands. Rendered text/styles are not moved into metadata
+to evade XML limits; the planned Word line/run/style structure remains separate.
+
+The Python lab encoder uses deterministic compact ASCII JSON and gzip headers.
+The prototype checks its own canonical byte roundtrip; this is not an RFC8785
+or JavaScript interoperability claim. Unicode is checked by UTF16 code units,
+including supplementary characters, combining marks and isolated surrogates.
+No normalization occurs. Integers outside the exact JavaScript-safe range and
+nonfinite numbers are refused. Core/Node serializer/decoder interoperability,
+including number formatting, remains a separate prerequisite before integration.
+
+All raw/inflated JSON, XML/carrier and declared byte sizes must remain within
+the existing33554432-byte bound. Decompression reads bounded128KiB chunks and
+detects a one-byte-over-limit sentinel; it never trusts a claimed length to
+allocate unbounded output. Single-member EOF, exact lengths, gzip CRC and
+payload SHA256 must pass. Trailing/concatenated/truncated data, invalid Base64,
+wrong bindings, unknown fields, duplicate JSON keys, unsafe/nonfinite numbers,
+depth above128 or above2000000 preflight JSON token sentinels are refused.
+
+XML is parsed incrementally with node/depth checks, rejects DTD/entity
+declarations, unknown elements/attributes and index/payload drift. The hard
+XML cap50000, target49000, byte cap32MiB and worker512MiB are not raised.
+The JSON/reader guards are additional conservative bounds, not a replacement
+for the original whole-package XML guard. A final runtime consumer must return
+only an aggregate whose index, payload, ownership and actual targets all pass;
+atomic staging/publication/abort behavior is not implemented by these lab scripts.
+
+### Closed-producer and malformed-input evidence
+
+Each fixture has a producer container followed by a different consumer
+container. The host verifies the producer has exited successfully before
+copying only the carriers and reference digests into a fresh read-only delivery.
+The consumer mounts decoder code/carrier/reference, not original plan/fixture
+ledgers or snapshots. It reconstructs all original provenance after producer
+exit, validates ranges and compares both readable/decoded indexes. Independent
+verification then compares the reconstructed data with the retained originals
+in full, including canonical bytes and every original geometry/style/map fact.
+
+| Fixture | Uncompressed transport body | Gzip/Base64 XML carrier | Complete readable map part | Actual map XML nodes |
+| --- | ---: | ---: | ---: | ---: |
+| Current1800 |16818429 bytes |789515 bytes |2939461 bytes |3602 |
+| UAT baseline |847040 bytes |61564 bytes |155490 bytes |123 |
+| SRS baseline |259562 bytes |21472 bytes |58622 bytes |80 |
+
+The raw bodies include the new primary index and all old provenance, so they
+are larger than the earlier provenance-only byte estimate. Complete-map sizes
+include the readable index outside the compressed payload, not just gzip bytes.
+Exact preserved member counts are10800,519 and146. Actual map-node counts equal
+the prior budget model's old-map-plus-one counts. This confirms the metadata
+component only;45805/34656/48557 remain renderer/style/full-package projections.
+
+Per fixture,23 payload controls refuse bad versions/profiles/codecs, wrong
+bindings/hash/length, invalid Base64, gzip truncation/trailing/concatenation/
+CRC damage, duplicate JSON keys, excessive depth/tokens, unsafe/nonfinite
+numbers, lost members, range drift, anchor collision and a32MiB+1 inflate bomb.
+Eight XML controls refuse DTD, wrong version, unknown attributes/children,
+duplicate provenance, readable-index drift and depth/node exhaustion. Total
+negative cases93; all refuse. Twelve UTF16 edge vectors per fixture roundtrip.
+These are scoped transport/schema controls, not an exhaustive hostile-input
+theorem or native Word/rendering tests.
+
+Twelve sequential workers across the supporting carrier and complete-map
+rounds use512MiB/swap0/network none. The external coordinator keeps its existing
+128MiB address-space budget. Maximum worker peak353681408 bytes
+(**337.296875MiB**); all OOM/oom_kill counters remain zero. This includes
+negative tests but not a simultaneous real Core renderer. Input/package trees,
+Core/Service candidates and original container identities stay unchanged; no
+owned lab container remains running. Oracle is the OCI VM; no DB or original
+API/SQL/storage is used.
+
+### Remaining gates and stop
+
+The metadata losslessness/size and lab-contract scope is accepted. Do not
+claim actual source-line Word targets, native glyph/baseline/ink fidelity,
+JavaScript/Core interoperability, integrated memory/publication lifecycle or
+full DOCX acceptance. Raw Core glyph/ink facts absent from these snapshots
+still need the actual owned producer. The next useful bounded proof is the
+same codec/contract in Node on copies, then actual style/line XML and target
+binding, before Word comparison or Core implementation authorization.
+No Core/Service code edits, DOCX construction, Word run, original-data/service
+action, merge, push, release, installation or map-truth promotion occurred.
+Only this canonical plan and external lab contract/proof artifacts change.
