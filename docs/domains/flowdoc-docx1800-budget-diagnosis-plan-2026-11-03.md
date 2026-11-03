@@ -319,3 +319,100 @@ measure the function-level workload, not full DOCX memory capacity. The Core
 package tree remains47cdac6d..., owned containers are stopped and original
 container identities remain stable. No original API/SQL/storage data access,
 original service stop, Core/Service edit, merge, push, release or installation.
+
+## Pre-R1 review,2026-11-03: preserve decisions, exact reuse is insufficient
+
+The owner's next request authorized review and external-copy experiments,
+not Core/Service implementation. PC input is21dba8f; Core6f36c42 and Service
+db15e9d remain unchanged. Single-room discovery IDs are not applicable. This
+review preserves the previous whole-line-first rejection; it does not reopen
+or relabel that failed R0 method as accepted.
+
+### Reviewed alternative
+
+The external copy keeps the original legal-prefix loop, first-overflow stop,
+grapheme fallback, normalization, first-line width and actual glyph emission.
+Only successful scalar extents of exactly the same shaped text can be reused
+under a private lab-owned font/runtime context, selected font ID and size.
+Every current width comparison still occurs in the old order. No whole-line
+shortcut, glyph slicing or source/native-layout policy switch is introduced.
+
+The proof limits retained entries to128 and aggregate key content to16384
+UTF-16 units; retained values are scalar extents, not shared glyph arrays.
+These are explicit count/content bounds, not exact V8 heap-byte claims.
+The existing8192/1048576 document and2048/262144 block shaping guards remain
+before actual runtime shaping;65536 authored units also remain unchanged.
+`spacingProbe` opts out because its shaped extent can depend on node ID.
+The lab owner/epoch is not a production cache API or accepted trust contract.
+
+### Actual Oracle/OCI result
+
+External evidence directory:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r0-order-preserving-review-20261103/`:
+`verification.json`, `packet.json`, `copy-only-diff.txt`,
+`oracle/receipt.json` and `oracle/proof/result.json`.
+
+- All19 bounded function cases agree. The earlier contextual-font case stays
+  at3 lines in both methods, with complete returned measurement structures
+  equal. Independent font-table comparison confirms the same semantic font
+  tables as the earlier counterexample, excluding only timestamps/checksum
+  adjustment. It is still a self-authored lab font, not original/product data.
+- The capped1800-row attempt produces1365 paragraph measurements exactly equal
+  to their independent original references, then refuses row1366 at request8193.
+  Shaped units are240292; the other shaping budgets are not the failing guard.
+- The original1800 independent reference paragraphs make12600 high-level
+  `TextRuntime.shape` requests. The exact query corpus contains10801 distinct
+  (font ID,size,text) keys. Only `RESOURCE-` repeats,1800 times. Even ideal
+  unlimited exact reuse saves1799 requests, leaving2609 more than8192.
+- The actual bounded memo peaks at128 entries and15133 key UTF-16 units.
+  The aggregate refusal is not a completed1800 document or published DOCX.
+
+10801 is a limit of this exact-reuse strategy on this corpus, not a theorem
+that all algorithms require that many shapes. These counters are logical
+`TextRuntime.shape` calls; a mixed-script call can issue multiple native IPC
+requests and must not be confused with a packet count.
+
+The one fresh worker has512MiB, swap0, network none, read-only product mounts,
+actual cgroup peak61927424 bytes (59.06MiB), no OOM/oom_kill. Core package tree
+47cdac6d... and source packet hashes remain unchanged; owned containers stop
+and original container identities remain stable. No DB, original API/SQL/
+storage data access, original service stop, merge, push, release or install.
+
+### Decision and proposed next proof
+
+**Review complete; NOT_READY_RESOURCE_ACCEPTANCE_FAILED. Do not start R1.**
+The bounded successes support retaining original decision order, but exact
+reuse alone cannot solve this1800-row budget. No production cache is approved.
+Live native-session failure/epoch invalidation, cancellation during cache hits
+and actual source-layout owner integration remain unproved. In particular,
+the no-op abort check in the stable-session throughput fixture is not evidence
+of cancellation correctness. No full source-guide, DOCX, Word or Service/API
+acceptance is claimed.
+
+Proposed next discovery, R0-B (not implementation authority): investigate a
+conservative **per-prefix fit proof**. For each prefix in the unchanged order,
+skip exact shaping only if a justified upper bound proves that same prefix
+fits the current frame; otherwise use the old exact measurement and stop rule.
+This would not infer prefix behavior from the final full-line width or assume
+monotonic shaping.
+
+Before such a method could enter R1 it needs:
+
+1. A clear proof source owned by Core's runtime/font snapshot, covering the
+   actual shaper, selected font bytes/features, size, script and ink/advance
+   context. `SourceFontMetrics.advance/ink` exposes nominal TrueType glyph
+   metrics; it does not establish a contextual GSUB/GPOS prefix bound.
+2. Outward-safe numeric bounds, unknown/unsupported-case fallback, explicit
+   probe/session/cancellation handling and bounded proof computation/storage.
+   The proof work itself must be accounted before it is performed.
+3. Adversarial contextual-font and boundary comparisons, full returned-line
+   equivalence for eligible cases, and a real capped1800 measurement pass.
+   Sampled font calibration or a font/fixture-name whitelist is insufficient.
+4. Separate later acceptance for the remaining XML guard and Word/full-document
+   behavior. A successful fit-proof spike would still not complete those gates.
+
+Do not substitute a larger counter, reset8192 between chunks, charge many
+logical shapes as one batched request, or silently fall back to native guide
+policy. Those choices change accounting or layout contracts. R0-B feasibility
+is currently unknown and belongs in a bounded discovery scope before R1; this
+review makes no claim that the proposed bounds already exist or will suffice.
