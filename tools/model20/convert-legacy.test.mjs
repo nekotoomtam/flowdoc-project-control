@@ -61,8 +61,25 @@ test('19 scoped reference ownership maps to the new occurrence',async()=>{
 });
 test('18 cover and document-wide TOC survive conversion',async()=>{
  const b=bundle();b.template.sections[0].role='cover';b.template.sections[0].source={kind:'authored',repeats:[],fragment:{rootIds:[],nodes:{}}};
- b.template.sections[1].source={kind:'authored',repeats:[],fragment:{rootIds:['toc'],nodes:{toc:{id:'toc',type:'table-of-contents',props:{textStyleId:'body'}}}}};
+ b.template.sections[1].source={kind:'authored',repeats:[],fragment:{rootIds:['heading','toc'],nodes:{heading:{id:'heading',type:'text-block',role:{role:'paragraph'},props:{textStyleId:'body',anchorId:'heading',toc:{level:1}},children:[{id:'heading-text',type:'text',text:'Contents'}]},toc:{id:'toc',type:'table-of-contents',props:{textStyleId:'body'}}}}};
  const a=good(await convertLegacyBundle(b,sdk));assert.equal(a.template.sections[0].role,'cover');assert.deepEqual(a.template.sections[1].source.fragment.nodes.toc.props.scope,{kind:'document'});
+});
+
+test('18 empty document TOC is refused instead of silently losing its page',async()=>{
+ const t=structuredClone(base);t.examples=[];t.sections[0].source={kind:'authored',repeats:[],fragment:{rootIds:['toc'],nodes:{toc:{id:'toc',type:'table-of-contents',props:{textStyleId:'body'}}}}};
+ t.sections.push({id:'blank',key:'blank',inputSchema:{type:'object',fields:{}},formats:{},source:{kind:'blank'}});
+ const request={docKey:t.docKey,sections:{'legacy-section':{data:{}},blank:{data:{}}}};
+ const old=legacyCore.composeDocument(legacyCore.validateTemplate(t).value,legacyCore.prepareGeneration(legacyCore.validateTemplate(t).value,request).value);
+ const flow=await import(new URL('./layout/documentFlow.js',pathToFileURL(process.env.LEGACY_CORE)));
+ assert.equal((await flow.documentFlow(old.value,{})).pages.length,2);
+ const r=await convertLegacyBundle({template:t,requestKind:'generation',request,imageParts:[]},sdk);
+ assert.equal(r.ok,false);assert.equal(r.issues[0].code,'LEGACY_TOC_LAYOUT_UNPROVEN');
+});
+
+test('invalid legacy dynamic TOC heading is not repaired by conversion',async()=>{
+ const b=bundle();b.template.sections[0].source={kind:'authored',repeats:[],fragment:{rootIds:['h'],nodes:{h:{id:'h',type:'text-block',role:{role:'paragraph'},props:{textStyleId:'body',anchorId:'h',toc:{level:1}},children:[{id:'hf',type:'field-ref',scope:'local',key:'text'}]}}}};
+ b.template.sections[1].source={kind:'authored',repeats:[],fragment:{rootIds:['toc'],nodes:{toc:{id:'toc',type:'table-of-contents',props:{textStyleId:'body'}}}}};
+ assert.equal((await convertLegacyBundle(b,sdk)).issues?.[0]?.code,'SOURCE_TEMPLATE_INVALID');
 });
 test('contract kinds, target identity and failed SDK validation are not guessed',async()=>{
  const b=bundle();delete b.requestKind;assert.equal((await convertLegacyBundle(b,sdk)).ok,false);

@@ -113,13 +113,13 @@ Do not drop the cover role to make conversion validate.
   and authoring/task examples to20-only; preserve exact archive guard. Build a
   separately identified candidate with new Core hash, test bootstrap and actual
   stdio/API PDF/DOCX paths. Do not patch installed plugin/cache or released files.
-- [ ] T7: fresh named Oracle lab namespace has only converted20 templates and
+- [x] T7: fresh named Oracle lab namespace has only converted20 templates and
   newly seeded fonts/provenance, no old operational history. Compare available
   documents and diagnostics, native worker caps, interruption/DB fault/storage
   exhaustion/recovery. Inventory every active test and conditional; run complete
   ordinary suite and dedicated native counterparts, one file at a time. Do not
   delete tests just to reduce failures. Stop on actual OOM/containment failure.
-- [ ] T8: frozen whole-change review; commit only checked candidate changes,
+- [x] T8: frozen whole-change review; commit only checked candidate changes,
   record exact sources/archives/evidence/limitations and retained data. No merge,
   push, release or install without the corresponding owner instruction.
 
@@ -415,3 +415,85 @@ still execute only on the exact owned Service container. No daemon socket or
 fabricated ready values. Reader-tool raw receipt matches the controller hash.
 All containers in the accepted namespace stop; original identities stay stable.
 This does not claim that total lab RAM is1GiB or that software was installed.
+
+## T7 suite coverage and T8 review correction
+
+Current Service candidate `db15e9d` passes the frozen159-file ordinary execution:
+813 passed,0 failed,6 skipped. Three skips are native task transport cases covered
+by the actual capped native lane; three remain historical stage4 font-height
+operator-harness cases, explicitly NOT RUN and not claimed PASS. All173 tracked
+test files are inventoried in external `service-t7-suite-coverage.json`:9 fresh
+native lanes,5 earlier native lanes with checked affected-input reuse, the
+ordinary/native worker-task-wiring overlap, and one owner-cancelled historical
+diagnostics-recovery file. No test was deleted to obtain these counts.
+
+The one fresh-context whole-change review returned needs-revision for one P1:
+a valid18 TOC-only Section with no contents entries can lose its page in20.
+Resolved-graph parity alone did not catch this render-time distinction. The
+offline converter now refuses18 TOCs with `LEGACY_TOC_LAYOUT_UNPROVEN` unless
+an unconditional, non-cover authored root heading with literal nonempty text
+proves document contents nonempty for every request/example. Nested/repeated
+or dynamic evidence is deliberately insufficient. Core's intentional20 empty
+TOC behavior remains unchanged; no synthetic paragraph or page is invented.
+
+Frozen Oracle512MiB regression reproduces the legacy two-page layout and fails
+before this guard, then passes16/16 after it. Full UAT/SRS conversion and complete
+resolved-graph comparison pass2/2 on the final Core snapshot, with unchanged
+target digests. The refreshed legacy fixture inventory honestly marks cases
+without the conservative TOC proof as needing explicit reauthoring, rather than
+reusing their earlier graph-only conversion acceptance. See external
+`converter-review-toc-final/`, `full-parity-review-toc/` and
+`fixture-migrate-review-toc/outputs/migration-plan.json`.
+
+The rebuilt plugin `plugin-package6-final` contains50 files byte-identical to
+the native13-tested package; only sourceCommit, inventory and the absolute
+launch path metadata differ. `plugin-final-package-verification.json` supports
+proof reuse; it is not described as a fresh native execution of the rebuild.
+
+Runtime failure proof remains separate from the suite: real PostgreSQL terminal
+writer termination after complete delivery passes both PDF/DOCX, preserves the
+artifact hash and generation/delivery evidence, records FINALIZATION_FAILED,
+does not replay a task and returns unused reservations.1800-item synthetic DOCX
+is explicitly unsupported: a read-only child observer confirms
+DOCX_OUTPUT_BUDGET_EXCEEDED (public LIMIT_EXCEEDED); PDF1800 succeeds. This is
+neither a successful1800-DOCX output nor a failure of the full UAT/SRS Core/Word
+acceptance. Storage-full/recovery is not yet accepted at this checkpoint.
+
+### Final bounded candidate acceptance
+
+The checkpoint above is superseded for disk-only recovery by
+`model20-runtime-faults10-host-injector`:2/2 actual fault tests pass, with
+independent file/XML/PDF verification in `runtime-faults-final-verification.json`.
+PDF/DOCX64-record outputs preserve every ordered record before and after full
+storage; actual ENOSPC/freeBytes0 gives health503 and both intakes503 without
+FONT_CHECK_UNAVAILABLE or a new task. Removing only the owned filler restores
+health200 and actual successful output on the same Service. Queue slots and
+unused reservations return; retained files honestly remain charged held=used.
+The actual post-delivery PostgreSQL writer-termination test also passes both
+formats, with one generation job per task and no task replay. Worker512MiB/
+swap0 and Service1GiB remain unchanged, no unexpected OOM, owned containers
+stopped, private loop mount detached and original container identities stable.
+
+Runs6–9 remain failed combined disk/cache-pressure experiments. Their filler
+ran inside Service and charged loop-image page cache to its RAM scope;9 hit
+memory.max without OOM. One snapshot observed WalSync, which is not proof of
+the sole cause. Accepted10 places only the disk fault injector in the host
+controller outside the Service cgroup, with exact private-path checks and
+before/after memory.stat receipts. This does not certify recovery from combined
+disk and memory pressure or make the earlier timeouts passes.
+
+The one review's P1 is corrected by the executor's single fix pass:16/16
+converter cases and full UAT/SRS graph parity2/2 pass in Oracle512MiB, target
+source unchanged. The refreshed20-family historical inventory has18 ready and
+2 conservative TOC refusals (`cell-repeats`, `contents`); the2 DOCX families
+retain their separate earlier evidence. Their earlier graph-only acceptance
+does not override the new refusal. Existing successful UAT/SRS target bundle
+digests remain exactly unchanged, so their Core/package/Word evidence is reused.
+No second independent review or reviewer approval of the fix is claimed.
+
+T0–T8 close for isolated reviewable candidates with the explicit exclusions
+above. This is not integration or production readiness. Deferred:1800-item
+synthetic DOCX capacity, combined disk/RAM pressure recovery,3 historical
+operator-harness cases, generalized checkpoint/facts/memory redesign and any
+original-runtime migration or cleanup. No original data was accessed/changed;
+no original service stopped; no merge, push, release or product installation.

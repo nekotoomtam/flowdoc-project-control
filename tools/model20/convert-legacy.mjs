@@ -48,6 +48,16 @@ export async function convertLegacyBundle(bundle,{legacyCore,targetCore}){
   const validated=legacyCore.validateTemplate(source);
   if(!validated.ok)refuse('SOURCE_TEMPLATE_INVALID','template',validated.issues);
   if(model===18)visit(bundle,(x,path)=>{if(x.type==='reference')refuse('LEGACY_GLOBAL_REFERENCE_UNSUPPORTED',path);});
+  if(model===18){
+   // Model18 preserves the page of an empty document TOC;20 may omit it.
+   // Only a guaranteed authored root heading proves document contents nonempty
+   // for the request AND every example. Dynamic/repeated/nested evidence is
+   // intentionally unsupported here rather than materializing a second graph.
+   const nonempty=source.sections.some(s=>s.role!=='cover'&&s.source?.kind==='authored'&&s.source.repeats.length===0&&(s.source.fragment.rootIds??[]).some(id=>{
+    const n=s.source.fragment.nodes[id];return n?.type==='text-block'&&n.props?.toc&&n.children.some(c=>c.type==='text'&&c.text.trim().length>0);
+   }));
+   if(!nonempty)visit(source,(x,path)=>{if(x.type==='table-of-contents')refuse('LEGACY_TOC_LAYOUT_UNPROVEN','template'+path);});
+  }
   const sourcePlacements=new Set(await checkRequest(legacyCore,validated.value,bundle.request,bundle.requestKind,'request'));
   const template=structuredClone(source),sourceTemplateDigest=digest(source);
   const mapping=source.sections.map((s,i)=>({sourceId:s.id,...(model===18?{sourceKey:s.key}:{}),

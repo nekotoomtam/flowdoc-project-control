@@ -2708,3 +2708,14 @@ Evidence and qualifications are in the transition plan and external
 checkpoint; Service/plugin candidates have not been edited.20-only cutover,
 new named DB, full suite/native acceptance and final review remain dependent
 work. No prepared-system data access, service stop, merge, push, release or install.
+
+Latest bounded candidate state supersedes that prerequisite checkpoint:
+Core6f36c42 and Service db15e9d are20-only candidates; the separately named
+plugin candidate pins the exact tested Core archive/tree. The transition plan
+records full UAT/SRS DOCX/Word fidelity, Service ordinary813pass/0fail/6skip
+with explicit native/historical dispositions, actual DB-loss and disk-only
+recovery, and the one review's corrected conservative empty-TOC refusal.
+Original/prepared runtime and main/release remain unchanged. Acceptance is for
+reviewable isolated candidates, not permission to integrate, deploy or delete
+original data. Remaining limitations are listed in the transition plan's final
+bounded acceptance and external `model20-only-20261103/` receipts.
