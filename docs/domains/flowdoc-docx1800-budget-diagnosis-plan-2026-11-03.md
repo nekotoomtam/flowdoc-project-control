@@ -2381,3 +2381,171 @@ geometry/styles, mixed ownership, stale maps, references and lifecycle gates.
 Static source/evidence/reference-hash review and `git diff --check`
 verify only the plan update. Core/Service remain clean and unchanged. No real
 data/service access, merge, push, release, installation or map change occurs.
+
+## R2-B0 owned facts, source-map draft and Word references (2026-11-04)
+
+Status: **B0_FACTS_AND_REFERENCE_PREPARATION_PASS_CURRENT_WORD_REFERENCE_OPEN**.
+This closes the bounded preparation/capture proof, not all reference eligibility,
+B1, R2 or Word acceptance. The owner explicitly authorized B0 only in isolated
+OCI lab with512MiB/worker, unchanged caps and first-OOM stop. Core/Service edits,
+original data/services, merge, push, release and installation remain forbidden.
+Role: lab observer implementer, then Evidence Reviewer/Project Control Steward;
+single-room execution IDs not applicable. The existing plan is the sole prose
+authority. Core582f141566d1dd0cc4df53a7779818cab9c3d111, Service
+db15e9d45973fb3f7682ee8b6bae37c5d82124a4 and PC96c257cd were the starting bases.
+The stale Editor snapshot remains unrelated. No B1 emitter or Core port starts.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r2-b0-20261104/`.
+`verification.json` reconciles all9 immutable stage packets/receipts, source
+hashes, producer/consumer results, reference hashes, failures and limitations.
+`fixture-manifest.json` pins reusable ledger paths/hashes and complete producer
+input inventories. Legacy Word references are comparison inputs, not automatic
+new model20 staging bases: B1 must bind actual native base parts, genuine new
+guide tags/context and target identities without relabelling old source IDs.
+`source-map-contract.json` is the lab draft for the next copy-only scope, not
+adoption of a product profile or public API. `review.json` records independent
+static read-only review. No new Work registry or map-truth entry is created.
+
+### Genuine producer capture and closed-producer checks
+
+Node Inspector observes the unchanged packed Core at the real
+`serializeSourceLayout` boundary after eligible table-row quantization, before
+source XML serialization. The observer reads genuine applied SourceGuides,
+calls the owned font's read-only ink/advance methods and writes an explicit
+bounded JSONL ledger synchronously. It retains no extra complete ZIP/guide
+graph and never changes Core files, caller options, caps or source guides.
+The frozen Linux archive remains
+32484c0eac1f4dbbd578d05d7d2d04142bd7a0095a43471a777a736236f4e357.
+
+Records contain guide identity/text/effective font/style, section/container IDs,
+line text/ranges/frame/baseline, member text/ranges/x/advance and11 declared
+glyph fields including actual native advances/offsets/clusters plus independent
+font advances and ink bounds. Missing ink is null, not a zero box. Coordinates
+are source-guide-local: they are not absolute Word page positions. Cumulative
+local Y derives from prior line frameTwips; native paragraph/section/table
+context stays in pinned package XML and must be bound by B1. This is a plain
+numeric-value/geometry record, not a heap-identity or arbitrary IEEE-bit clone.
+
+Each producer exited successfully before its fresh Python consumer received
+only immutable ledgers, original font bytes and the applicable reference/map.
+The consumer imports no Core and reads TrueType hmtx/loca/glyf/OS2 directly.
+Current1800 matches all10800 members/ranges against the original captured map;
+text UTF8 and UTF16LE digests are checked separately. UAT/SRS additionally match
+all original applied-guide texts/line/member ranges and reconstruct every
+retained source-word outer box against the original DOCX. Margin/width/height
+tolerance is1.0001e-6pt, accounting only for the old six-decimal serialization.
+Core glyph values are captured from the real producer; this is not independent
+reshaping of each glyph or proof of every inner baseline/run property.
+
+| Fixture | Guides / lines / members | Captured glyphs | Ledger bytes | Producer peak |
+| --- | --- | ---: | ---: | ---: |
+| current1800 |1800 /1800 /10800 |64800 |7584776 |375.80MiB |
+| UAT |58 /63 /519 |2234 |337493 |340.27MiB |
+| SRS |39 /39 /146 |969 |137137 |445.21MiB |
+
+These UAT/SRS counts cover applied source guides, not every paragraph in the
+full document. The complete retained reference packages independently count
+39191 and49965 XML/rels elements respectively, unchanged. SRS still needs the
+new representation to meet the49000 target; this is not a new reduction result.
+All processing workers used512MiB memory and equal memory+swap (swap0), cached
+runtime/default heap, network none and unchanged shaping/XML/byte/drawing caps.
+The coordinator stayed outside with its existing128MiB address-space bound.
+There was no V8/cgroup OOM; no owned lab worker remains running.
+
+UAT/SRS use the complete immutable earlier legacy bundles, accepted offline
+converter and original verified image/font adapter. Conversion target digests
+match the prior accepted results. Legacy SDK is mounted read-only only for
+conversion/image preparation; actual glyph measurement uses the exact new
+packed Core. No legacy template is edited, no subset replaces a full fixture,
+and no original API/SQL/storage is accessed. The current1800 complete engine
+result equals the earlier expected default budget refusal with zero output.
+UAT/SRS outcome bytes are counted/discarded by the B0 sink; no new source-line
+DOCX is emitted. Their inherited capture status string says unchanged result,
+but only current1800 performs that full prior-result equality assertion.
+Do not infer byte-identical UAT/SRS exports from the inherited label.
+
+### Lab source-map contract decisions
+
+The external draft fixes source-guide-local units, UTF16 half-open ranges,
+ordered coverage, null ink semantics, resource/source identities and the exact
+ordered fields of `flowdoc.actual-line-targets/1`. targetPlanSha256 covers the
+canonical target manifest, actual text/ranges/resolved properties, frame/inset
+facts and owned base context hashes; it excludes the carrier itself, ZIP
+timestamps/compression and declared Word rsid noise. Missing/ambiguous styles
+or context refuse; no guessed values or self-referential ZIP digest is allowed.
+
+The target key is exact allowlisted part + legal unique w14:paraId + line-local
+range. Collision allocation inventories every paragraph in the part. Source
+text/member ownership and readable/decoded index must agree with actual targets;
+former shape IDs remain provenance only. The first B1 draft converts all applied
+eligible guides together or keeps the complete old source-word path. Native or
+protected content outside those guides remains unchanged. Partial applied-guide
+migration, unknown map entries/extensions or ownership collisions refuse.
+
+The proposed new map part is `customXml/flowdoc-source-lines.xml`, with distinct
+relationship/content-type registration included in the full-package count.
+A proposed receipt reports `source-line-layout`/native-source-line-paragraphs,
+regenerate-after-edit and wordVerified:false. Product adoption and consumer
+migration are not authorized. Existing files and source-word/1 semantics stay
+unchanged. A saved/edited target must not remain falsely verified.
+
+Actual-copy maps must distinguish emitted-copy from virtual-plan. The frozen
+lab XML reader currently accepts only virtual-plan; therefore B1 must implement
+and exercise this explicit reader/contract delta and rerun affected positive/
+refusal cases. The prior96/85 results cannot silently certify the new binding.
+No new actual-target XML or reader was implemented in B0. Resolved styles,
+actual target lookup and final manifest application remain B1 proof obligations.
+
+### Word reference preparation and open eligibility
+
+Lab-only copies of the pinned UAT/SRS DOCX were opened in existing native Word
+16.0.20527.20112 on Windows. Both displayed without an observed repair step.
+Both asked whether fields referring to other files should update; No was
+selected. They were closed without saving and their hashes still exactly match
+the originals/pinned packet. UI endpoint evidence is under `word/*-open-state.json`.
+These are recorded operator observations with endpoint/hash support, not an
+independent reconstruction of every UI interaction. Word was then closed;
+no installation, external field update or original-reference write occurred.
+Native Word runs outside OCI; no512MiB Word-host claim is made.
+
+This establishes reference-file identity/native-open preparation, plus applied
+guide/outer-box compatibility. It does not certify full native/protected text,
+headers/footers/table/section coverage, all-page pagination, font substitution,
+editing, Save As persistence or equivalence to a new inline candidate. Those
+remain before full Word comparison acceptance. Current1800 still has no valid
+whole-document Word reference: the original default run refused with zero
+bytes. No oversized bypass package or smaller slice is substituted for one.
+
+### Preserved failures, review and next boundary
+
+Three non-OOM failures remain visible. The first independent verifier applied
+the old census's UTF8 digest to UTF16LE bytes; code inspection established the
+encoding mismatch, and a fresh consumer now checks both explicit digests.
+Producer facts were unchanged. The first UAT preflight rejected an intentionally
+needed legacy SDK /candidate mount; relocating it then broke its absolute
+/candidate/vendor/installed-core/package symlink. Bounded read-only inspection
+identified that dependency. The final packet preserves the original read-only
+mount and scopes only that absence assertion out of the lab environment guard;
+/target source/test absence and exact packed-Core file/dependency checks remain.
+No actual UAT generation had started in those failed preflights. These were
+bounded prerequisite corrections, not OOM retries or Core/Service repairs.
+
+Independent static review returned PASS for bounded B0 preparation with no
+blocking defect, retaining the shaping/inner-geometry/reference/UI-observation
+limits above. B1 emission/counts, actual targets, style fidelity, Word/save-edit,
+integrated lifecycle and Service behavior were not judged or promoted to PASS.
+Source/input/receipt/font/map/reference hashes and coverage were reconciled;
+the documentation change receives static diff review and `git diff --check`.
+
+Next recommended request is B1's small copy-only renderer/actual-target test
+scope, including the explicit emitted-copy reader delta. It must retain the
+complete-package49000 target/hard50000/32MiB and512MiB/default heap, prove styles
+and target/context ownership before full fixtures, and stop on first OOM.
+Current1800's whole-document reference and full native/protected reference
+eligibility must be resolved before claiming Word fidelity. No B1, R2-C or
+Core implementation begins under this B0 authorization.
+
+Core/Service remain clean at the starting hashes; original container identities
+are stable across all stages. No original data/service action, merge, push,
+release, installation, public contract promotion or DOCUMENT_MAP change occurs.
