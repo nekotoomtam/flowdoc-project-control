@@ -1746,3 +1746,171 @@ the design or that a product defect is proven. Following the stop condition,
 only evidence reconciliation and this status update are performed; no further
 Node/Python codec/lab tests run. The status-only Markdown change uses a static
 diff check and direct receipt/log review, not a new runtime test claim.
+
+## Node codec/harness lifetime review and proposed proof,2026-11-03
+
+Status: **READ_ONLY_LIFETIME_REVIEW_AND_PROPOSED_PROOF_PLAN_COMPLETE_NOT_EXECUTED**.
+The runtime gate remains STOPPED_V8_HEAP_OOM_NODE_1800_NO_RETRY. The explicit
+request permits reviewing retained evidence and planning only: no rerun,
+instrumentation, codec/harness repair or Core/Service edit is performed.
+Owner Project Control for this review/plan; Core for any eventual product
+implementation. Roles Evidence Reviewer/Planning Partner; single-room IDs not
+applicable. Active host model inline; no separate room/agent. Product pins
+remain Core582f141 and Service db15e9d, with PCefc9952 at review start. The old
+generated October4 snapshot concerns other Work and is not current lab truth.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/source-line2-node-lifetime-review-20261103/`.
+Read `review.json`; `record-review.py` only reads frozen source, existing
+receipts/samples/archive mtimes, artifact metadata/hashes and Git state.
+No codec is imported/executed. No Node, Oracle/SSH/Docker/API or lab test is
+run. Prototype hashes remain unchanged, as do the earlier evidence inputs.
+
+### Confirmed implementation facts and their practical limits
+
+Source references below are the immutable prior matrix copies under
+`source-line2-node-interop-20261103/matrix/harness/node/`, not product files.
+
+| Source | Lifetime/overlap established by implementation |
+| --- | --- |
+| node-worker.mjs:4-5,10-18 |The positive body is needed again at line18; generated.raw and xml also have final uses. They therefore span refusal testing. Semantic negatives decode a second complete body while the original good body still has a future use. |
+| node-codec.mjs:20-29,31-46,65 |decode holds inflated bytes and builds a parsed graph, then canonical validation builds chunks/joined JSON/a Buffer. strictParse also creates ASCII text and per-object order metadata. Several representations can overlap; their total heap cost is not the JSON byte count. |
+| node-map.mjs:12-15; node-worker.mjs:4,16 |parseMap builds a complete XML DOM and another index. rejectXml decodes a complete body before comparing that index. The outer good body is still available to the harness, making duplicate live graphs a plausible peak path. |
+| node-worker.mjs:12-13,17 |Arrays eagerly construct4 compressed,5 raw-JSON and8 XML variants before iteration. Several XML variants represent complete maps. Future array entries remain referenced; physical string copies may share storage and cannot be inferred from logical lengths alone. |
+
+A separate **confirmed lab-prototype contract deviation** exists in
+node-map.mjs:12: DOMParser.parseFromString builds the full DOM before the
+traversal checks50000 nodes/depth128. The Python mapxml.py XMLPullParser
+checks incrementally, as required by the existing lab contract. Node's input
+byte cap still applies, but does not make the node/depth checks pre-allocation
+guards. This is not a confirmed cause of the observed OOM or a Core defect.
+A passing finite test set must not waive this known reader-ordering gap.
+
+This is confirmed allocation/lifetime structure, not confirmation of the exact
+OOM allocation. The order/floatFields WeakMaps are not by themselves evidence
+of a leak: weak keys do not establish a persistent root. Actual retained
+strings, dead top-level bindings, GC reclamation, per-object overhead and the
+heap/external split were not measured. No leak or product defect is proven.
+
+The retained restored-body is16818429 bytes and its SHA256 remains
+6b3e268ae44fb56219ad87f58f3f320ac04bca28a52649eed8fdada08b1aa6ea.
+The node-vectors artifact is complete JSON with85 entries. Archive mtimes
+place the base/vector outputs around2-3 seconds after container start, with
+one-second precision. Existing host samples rise after that interval and peak
+at481464320 bytes in the roughly5-second bucket; fatal GC occurs near the
+end of the13-second run. Host and archive timing origins differ slightly.
+
+These observations support **Probable Risk: later refusal workloads overlap
+retained positive data**. They do not identify the failing case or distinguish
+codec internals from the harness's additional live data. No phase markers,
+heapUsed/external samples, heap snapshot or isolated full-size terminal PASS
+exist. The partial files are still not accepted producer outputs or a passing
+worker, and cannot bypass the previous stop condition.
+
+### Proposed proof sequence, not authorized execution in this review
+
+Keep the original Node codec/map modules and Python reference byte-identical
+for the first proof. Change only a separately scoped future lab driver/case
+preparation lane. No product branch or runtime architecture changes follow
+from reorganizing the lab. Keep the same cached image/Node version, default
+heap configuration,512MiB/swap0 per worker, existing coordinator128MiB budget,
+50000 hard XML nodes,49000 target and32MiB byte cap. No GC forcing, larger
+heap, heap snapshots, smaller corpus/bomb, weakened canonical/CRC checks or
+dropped refusal cases.
+
+1. **L0: prove the measurements on small cases first (2 workers).** Add
+   bounded driver-boundary begin/end/case markers, emitted synchronously as
+   compact numeric JSONL. Record process.memoryUsage (rss, heapUsed, heapTotal,
+   external, arrayBuffers), v8 heap_size_limit and only relevant Node flags.
+   arrayBuffers is included in external; do not add them as disjoint memory.
+   Keep host cgroup current/peak/events alongside the worker trace. No values,
+   glyphs, full JSON/XML, env dump or in-memory sample history belongs in the
+   trace. The first worker rechecks all85 pinned Python->Node vectors and
+   emits Node vectors; the fresh unchanged Python consumer checks those85
+   outputs after the Node producer exits successfully. Compare bytes/hashes,
+   IEEE754 bits, Unicode units, key order and selected small refusal reasons
+   with the prior scope. A changed result/fixture/configuration stops L1.
+2. **L1: isolate the full positive interop path (2 workers per fixture).**
+   Start with current1800. Reuse only successful immutable pinned Python
+   producer inputs; do not reuse the failed Node worker as an accepted producer.
+   A fresh Node worker performs decode, index validation and re-encode only,
+   writes a terminal result and exits0 before a fresh Python consumer checks
+   its complete data. It contains no golden-vector or refusal loops. Scope
+   XML/index comparison to a function returning only compact results, and
+   do not retain redundant graph/raw/XML objects for a later final report.
+   Function scopes permit collection but do not guarantee it; successful
+   process exit is the resource-release boundary. Codec modules stay frozen.
+   Do not clone decoded objects through ordinary JSON/structuredClone to
+   discard state: that can lose numeric-literal/key-order metadata and change
+   the canonical wire bytes. Current1800 must pass before later fixtures.
+3. **Reader-contract prerequisite before acceptance.** After the L0/L1
+   current1800 diagnostic milestone, review the Node DOM-before-guard gap
+   separately. A lab-only reader repair must establish node/depth/resource
+   checks during bounded parsing or before large DOM allocation, preserve
+   complete schema/entity/namespace validation and be verified against the
+   Python reference. Do not substitute a naive tag-count regex or change
+   the original contract/limits. This is not repair permission in the
+   driver-only proof. The unchanged reader cannot receive full contract
+   acceptance even if a reorganized harness happens to pass.
+4. **L2: preserve every refusal case with separate input lifetimes.** Only
+   after that known contract gap is resolved, a fresh bounded preparation
+   worker for each fixture creates pinned malformed
+   input files without editing the good input; it then exits. Five fresh Node
+   consumer groups handle envelope/wire10 cases, gzip/JSON9, semantic-map3,
+   XML8 and inflate-bomb1. Consume one file at a time using small path/case
+   descriptors, not arrays of full payload variants. Refusal consumers must
+   not first decode/retain a good baseline body merely to construct bad data.
+   Prepare lost-member/range/collision cases with valid CRC/hash so the
+   intended semantic guard is exercised. XML index-drift still requires real
+   payload comparison. The32MiB+1 inflate bomb gets its own worker with no
+   unrelated positive graph. Return only case ID/error category/counts;
+   do not accumulate errors or parsed objects between cases. Collection is
+   not assumed; stop on OOM in any group rather than silently splitting or
+   retrying that failed group again.
+5. **L3: close coverage conditionally.** Finish current1800 positive and
+   refusal coverage first, then the same UAT and SRS paths if prerequisites
+   pass. Preserve all85 vectors in both directions and31 refusal cases for
+   each fixture (93 total). L1 alone is not full codec acceptance. The coverage
+   ledger must distinguish reused immutable inputs, newly passing terminal
+   results, failed cases and unrun groups. The prior Python-only proof and
+   small preflight are not substitutes for the remaining matrix.
+
+Proposed first diagnostic budget:4 workers, L0's2 small workers plus the
+current1800 L1 Node/Python pair. Later, once the known reader gap and its
+separately agreed repair checks are resolved, the complete matrix has a
+conditional ceiling of26 sequential worker invocations:2 small workers plus,
+per fixture,2 positive workers,1 case-preparation worker and5 refusal workers.
+Reuse unchanged passing evidence where valid;26 does not include a reader
+repair's separate budget or require repeating passing scopes. At most one
+processing worker runs at a time; the coordinator stays outside.
+These are ceilings, not permission to run now or repeat passed work. Stop on
+the first V8/cgroup OOM, timeout, unexpected mutation, fixture/binding mismatch
+or failed semantic prerequisite. Preserve case/phase traces and unrun coverage;
+no automatic retry, new grouping, dependency install or heap adjustment.
+
+### Interpretation and conditional repair route
+
+If unchanged codec L1 fails on its own, return to codec design with the last
+bounded function marker and memory split. Potential later lab-only work is
+incremental canonical hashing/writing or reducing parse/DOM overlap, preserving
+all Unicode/number/order/budget/CRC/ownership rules. Do not implement those
+changes inside a driver-only verification scope; they need a separate request
+and full affected interop revalidation. Internal per-allocation hooks, if later
+needed, must be an explicitly instrumented scratch copy checked for semantic
+equivalence, not silently substituted for the frozen codec.
+
+If frozen-code L1 passes, it supports the baseline-alone fit hypothesis but
+does not isolate the original bad case or settle the XML reader contract gap.
+If the later conforming reader and every isolated L2 group pass, the result
+supports the proposed lifetime organization while incorporating that separate
+reader repair. It must not be attributed to a harness-only fix. It still
+does not establish the exact original failing allocation, every hostile input, integrated Core
+working-set memory, Word geometry or production readiness. Actual line/style
+XML, target binding and the remaining R2/R3 gates stay open.
+
+This review changes only this existing canonical plan and external static
+analysis. Verification is direct source/receipt/timestamp/hash review plus a
+static documentation diff check, not a new runtime test. No prototype/harness,
+Python reference, Core/Service or original data/service is changed. No remote
+lab/Oracle/Docker request, rerun, merge, push, release, installation or map-truth
+promotion occurs in this review. The proposed proof awaits a new instruction.
