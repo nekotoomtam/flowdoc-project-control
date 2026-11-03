@@ -536,3 +536,86 @@ its next real XML/drawing gate under512MiB. The earlier97411-node count belongs
 to a native-policy diagnostic, not this now-measurable default path. Full DOCX,
 Word/pagination, package consumers and Service/API acceptance remain separate.
 Do not infer that this R0-B proof completes R1/R2/R3 or authorizes product edits.
+
+## R1 partial outcome,2026-11-03: measurement passes; stop on test-worker OOM
+
+The owner subsequently authorized R1 Core candidate implementation and real
+runtime cancellation/failure checks, keeping512MiB/worker, original caps and
+the no-original-data/service/no-merge/push/release/install boundary. This is
+single-room implementation; execution IDs are not applicable. Base Core6f36c42,
+Service db15e9d, PC9eec480. The existing clean isolated Core candidate is reused.
+
+**STOPPED_R1_INCOMPLETE_TEST_WORKER_OOM.** R1 acceptance boxes remain open.
+The Core candidate has eight uncommitted changed/new files. Do not promote it,
+commit it as verified, start R2/R3, or infer cancellation/failure readiness.
+
+External evidence:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1-prefix-runtime-20261103/`.
+See `verification.json`, `progress.txt`, `candidate-tracked.diff`,
+`untracked-source/` and `green3/oracle/receipt.json`. File hashes preserve the
+unfinished local candidate. Service is not edited.
+
+### Candidate behavior and confirmed bounded results
+
+- Runtime-private capabilities hold font certificates compiled by packaged
+  Python/fontTools code from owned DOCX font snapshots. Documents cannot supply
+  a certificate. The existing explicit `pythonExecutable` resource is optional;
+  if unavailable, unsupported or exhausted, measurement uses the original path.
+  `DocxResources` admits that existing optional resource key; no required public
+  option or new installed dependency is introduced. This additive boundary
+  still needs final package/consumer review.
+- `measureText` retains prefix order, first-overflow behavior and actual output
+  shaping. Source measurement charges proof work alongside native units without
+  raising or resetting the original global/block limits. The owner connects
+  close/abort and observed native-shaper failure checks; full lifecycle
+  acceptance remains incomplete.
+- RED on the frozen original completed1170 paragraphs and refused request8193.
+  The real compiled candidate then completed all1800 function-level comparisons
+  with complete returned structures equal to independent original references:
+  7918 actual shape calls,735523 combined charged units, including498490 proof
+  units. The original references are independently bounded, not a successful
+  unmodified full-document baseline.
+- The native oracle validates3531 certified prefixes. Twelve generated-font
+  comparisons preserve success or refusal, including the contextual3/3/1-line
+  case. The real default public DOCX engine proceeds past source measurement
+  and refuses `word/document.xml` with `DOCX_OUTPUT_BUDGET_EXCEEDED`; it writes
+  zero output bytes. This is not full DOCX/Word acceptance, and no exact new
+  default-path XML count was collected.
+- That proof worker exits0 with peak379908096 bytes (362.31MiB), no OOM. The
+  separate Linux Vitest worker then reaches536870912 bytes, exits137, and records
+  one `oom`/`oom_kill`. The final test report is unavailable. Stop further lab
+  runs under the declared OOM rule; do not raise RAM, silently restart, or call
+  the suite PASS. These facts establish test-worker OOM, not its precise cause
+  or an application-worker OOM.
+
+Earlier retained attempts are not relabelled: `green1` comparison harness failed
+to capture an expected narrow-frame LayoutError; `green2` reached serialization
+but lacked xmldom in its tool-module mount. `green3` uses already cached
+xmldom0.9.12 read-only. No installation was performed.
+
+### Coverage gaps and proposed return route
+
+The local TypeScript build and diff check pass. A selected local runtime/source
+word suite passed53 tests with14 skipped. The Windows full suite has1255 passes,
+16 failures and49 skips:14 failed native metric/geometry assertions lack their
+Linux executable runtime; two concurrent-run failures in rowGroups and
+composeTaskDocument pass when rerun separately (39 tests). This is not a passing
+full suite. The Linux interrupted suite does not close those gaps.
+
+The candidate contains tests for close/abort, native-shaper death, compiler-child
+cleanup and fallback, but their complete Linux results are unverified. Three
+additional lifecycle tests (segmentation failure, pending-request abort and
+missing compiler) were added locally after the `green3` snapshot and have not
+run. Code inspection suggests the prefix guard may miss failed segmenter state;
+this is a probable gap, not a confirmed runtime finding. Do not fix it without
+observing the regression and then proving the correction.
+
+Next proposed work, not executed: inspect test-runner overhead and split the
+acceptance suite into bounded fresh workers, each retaining512MiB and the
+unchanged actual document-wide budgets. This is test isolation, not document
+batching or budget reset. Confirm/fix the segmenter guard if reproduced, finish
+cancellation/failure/cleanup and protected-source-route checks, then verify the
+packed consumer and obtain one independent whole-change review. Product commit
+and R1 acceptance remain gated on that evidence. Current original container
+identities and frozen package tree are unchanged; no owned lab container remains
+running. No map, old execution registry or completed acceptance was rewritten.
