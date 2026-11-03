@@ -33,7 +33,7 @@ if(profile){
   if(existsSync(references)&&realpathSync(references)!==references)throw Error('Candidate reference directory must not be redirected');
   rmSync(references,{recursive:true,force:true});
   const overlay=join(repo,'plugins/flowdocmake-model20');
-  for(const name of ['compatibility.mjs','candidate-entry.mjs','core-package-identity.mjs'])cpSync(join(overlay,name),join(plugin,'scripts',name));
+  for(const name of ['compatibility.mjs','candidate-entry.mjs','core-package-identity.mjs','candidate-workflow.mjs','call_tool_file.mjs'])cpSync(join(overlay,name),join(plugin,'scripts',name));
   cpSync(join(overlay,'README.md'),join(plugin,'README.md'));
   cpSync(join(overlay,'SKILL.md'),join(plugin,'skills/flowdocmake/SKILL.md'));
  }
