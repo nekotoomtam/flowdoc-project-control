@@ -1378,3 +1378,125 @@ No native Word/new grouped-file geometry, ligatures, page breaks, clipping or
 source-map ABI compatibility is claimed. No Core/Service edits, real-data or
 service actions, merge, push, release, installation or map promotion occurred.
 Only this existing canonical plan and external diagnostic artifacts change.
+
+## Source-line alternatives after R2-A,2026-11-03: proposed design only
+
+Status: **COMPARATIVE_DESIGN_COMPLETE_PROPOSED_NOT_APPROVED_OR_RENDERED**.
+The owner's continuation authorizes bounded comparison of source-line,
+spacing/run and mapping alternatives. It does not authorize product changes,
+new DOCX construction, adopting a new contract or reopening R2-A as PASS.
+Owner Core for any eventual renderer; Project Control for this comparison.
+Roles Evidence Reviewer/Planning Partner; single-room execution IDs not
+applicable. Inline active model, no separate agents/rooms. Core582f141 and
+Service db15e9d remain unchanged; the packet pins full hashes and PC9047d3a.
+The October4 generated snapshot remains unrelated to this bounded round.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r2-line-design-20261103/`.
+Use `verification.json`, `packet.json`, `oracle/receipt.json`, and
+`oracle/{current,uat,srs}/design.json` plus `design-plan.json`.
+The input is the corrected R2-A complete original-fact ledgers and pinned
+XML/rels/Word baseline copies; no source Word file or package is overwritten.
+Three sequential offline512MiB/swap0 workers enumerate alternate node ledgers
+and preserve the complete old member/map/style facts in their virtual plans.
+The coordinator stays outside with its128MiB address-space budget. No Core
+generation, new XML/DOCX, Word process or new environment installation runs.
+
+### Compared alternatives and explicit accounting
+
+All changed representations below are hypothetical and require new mapping
+semantics. Counts retain every unaffected original package part and old style
+definition, add enumerated paragraph/character style nodes, retain the original
+source-map element count and add one provenance metadata element. The model
+does not move visible text or visible formatting into metadata to evade caps.
+Text remains in ordered w:r/w:t runs; the metadata retains original member
+facts only. No actual serialized count or ZIP-size claim is made.
+
+| Representation | Current1800 | UAT baseline | SRS baseline |
+| --- | ---: | ---: | ---: |
+| Current source-word/1 unchanged |162741 |39191 |49965 |
+| One VML line box, shared styles, attribute anchor (optimistic) |62005 |35223 |48908 |
+| Inline source-line paragraph, shared styles, attribute anchor (hypothetical) |45805 |34656 |48557 |
+| Inline source-line paragraph with two bookmark nodes per line instead |49405 |34782 |48635 |
+
+For current1800,7 adjacent property groups remain per line. Choosing the most
+frequent group as the paragraph's default run formatting leaves4 plain and3
+explicit exception runs per line. The paragraph model is3 structural nodes
+(p/pPr/pStyle) plus2 per default run and4 per exception run:23 per line.
+It replaces158400 owned control nodes with41400 line/run nodes, keeps4341
+other original nodes, adds63 style nodes (1 paragraph and3 character
+definitions) and1 metadata node: **45805**. No spacing/cs/position run is
+discarded. Bookmark anchors would add3600 nodes, missing the49000 target.
+
+The inline/attribute model has3195 nodes of margin to49000 for current1800,
+14344 for UAT and443 for SRS. That is useful planning evidence, not a guaranteed
+valid package. Correct style ordering/cascade, unsupported attributes,
+relationship or mapping requirements may change a real serialization count.
+The VML line model still misses the current1800 cap and is not recommended
+as the primary solution. The unchanged path retains its existing safe refusal.
+
+### Proposed source-line contract and unresolved behavior
+
+The promising option is ordinary inline paragraphs with exact source-measured
+line boundaries and shared complete paragraph/run formatting. Original owned
+source controls would be replaced, not silently relabelled as equivalent word
+boxes. Proposed `source-line/2` is a new version, not an implementation decision.
+It would identify each emitted source line, preserve every original UTF16
+range/member ID as provenance and bind those ranges to a verified new line
+target plus character offsets. Removed shape IDs must not remain live targets.
+The receipt's generatedControls/policy must truthfully describe the new
+representation; old source-word/1 continues to mean the original word boxes.
+No existing file or caller is migrated by this comparison.
+
+The budget model uses candidate paragraph attribute anchors. Microsoft exposes
+`w14:paraId` on Paragraph for Office2010+ in its
+[official Open XML API reference](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.paragraph.paragraphid?view=openxml-3.0.1).
+This confirms the attribute exists, not that it is an immutable application ID.
+Actual schema validation, collision allocation across the relevant parts,
+native Word save/edit identity behavior and supported Word versions remain
+prerequisites. Bookmark targets are the separately counted alternative, not
+a cost-free substitute. Unknown external map consumers remain a contract risk.
+
+Preserving the old resolved property signatures in a plan does not establish
+Word style-toggle/cascade, kerning/ligatures or baseline equivalence after
+removing textbox boundaries. Normal paragraph baselines, ink/clipping and
+line/page breaks must be checked against an agreed valid reference. The old
+native Word baseline documents are distinct inputs, not proof that a newly
+generated candidate renders the same. Protected/native sections, links,
+fields, bookmarks, merged cells and unknown extensions must retain their
+original path or trigger refusal; grouping cannot cross their barriers.
+
+Straight retention of full original geometry/member/map provenance would add
+15096915 escaped metadata bytes for current1800 (UAT760933, SRS227558).
+This is roughly15MB of additional metadata, not a measured final ZIP size.
+The next design/proof must reduce repeated provenance losslessly, measure
+actual source-map and styles part bytes, and include real Core working sets
+under512MiB. Keeping useful metadata is not permission to grow memory without
+measurement or raise any cap. Raw Core glyph/ink facts are not recoverable
+from these serialized snapshots alone and remain required for geometry proof.
+
+### Recommended next bounded choice and checks
+
+Recommend the inline source-line/shared-style option for a separately approved
+copy-only feasibility proof, with an explicit source-line/2 mapping contract.
+It is the only assessed option below49000 on all three fixtures with a margin
+on current1800. This is a proposal for owner review, not an approved design or
+permission to implement Core. Keep the earlier failed projection and evidence.
+
+Before constructing a diagnostic DOCX, settle the anchor/version/receipt
+contract, exact spacing and common baseline model, valid reference, and a
+lossless bounded provenance encoding. Then enumerate actual style/map XML,
+independently parse/recount all XML/rels, test negative ownership/collision/
+schema cases and no-op/refusal semantics. Only an eligible count permits a
+copy-only layout/Word check and later real-Core memory/cleanup proof. A failed
+schema, geometry, anchor or budget check returns to design rather than erasing
+facts, switching layout policy silently or increasing limits.
+
+Current proof is limited to independent virtual-ledger arithmetic and retained
+input-fact integrity. Four manifest-integrity controls per fixture are scoped
+to altered provenance, not native rendering tests. Maximum worker peak is
+286273536 bytes (**273.01171875MiB**); no OOM/oom_kill, mutation or original
+identity drift occurs. All owned lab containers stop. Oracle denotes the OCI
+VM, no DB or original API/SQL/storage access. Product candidates remain clean.
+Only this plan and external comparison evidence change. No Core/Service edits,
+new DOCX/XML, Word run, merge, push, release, install or truth-map promotion.
