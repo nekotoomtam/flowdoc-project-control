@@ -1914,3 +1914,104 @@ static documentation diff check, not a new runtime test. No prototype/harness,
 Python reference, Core/Service or original data/service is changed. No remote
 lab/Oracle/Docker request, rerun, merge, push, release, installation or map-truth
 promotion occurs in this review. The proposed proof awaits a new instruction.
+
+## Node lifetime proof and labelled OOM localization (2026-11-03)
+
+The owner's subsequent instruction authorized following the diagnostic plan to
+find the cause. This single-room scope changed only external lab drivers and
+metrics; the Node codec/map and Python reference remained frozen. Execution IDs
+are not applicable. Evidence Reviewer/Planning Partner owns this checkpoint;
+Project Control owns this bounded status append. No Core/Service implementation
+or map-truth change follows from it.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/source-line2-node-isolated-20261103/`.
+The reconciled `verification.json` links the packets, source/input hashes,
+terminal receipts, phase traces and coverage. The three receipt scopes are
+`oracle/receipt.json`, `control/oracle/receipt.json` and
+`labelled-original/oracle/receipt.json`. All workers retained512MiB/swap0,
+the cached runtime image, default V8 heap and unchanged contract budgets. The
+coordinator remained outside the processing worker. Oracle denotes the isolated
+OCI VM, not an Oracle Database exercise.
+
+### Accepted bounded results
+
+- L0:85 small vectors passed in both directions through the instrumented Node
+  driver and a fresh unchanged Python consumer;3 small refusals also passed.
+- L1 current1800: the frozen Node codec completed decode/index validation/
+  re-encode and exited0 before the fresh Python consumer. Both restored the
+  exact16,818,429-byte body/hash,1,800 paragraphs/lines and10,800 members.
+  Observed Node cgroup peak was308,957,184 bytes (294.64MiB); Python peak was
+  183,013,376 bytes. This establishes baseline-alone fit for this fixture only.
+- Controlled cohorts: the same3 semantic JSON refusals and1 XML index-drift
+  refusal passed when isolated, after a positive prefix with references released,
+  and with a minimal positive context retained for later use. Respective
+  observed cgroup peaks were321.81,316.63 and400.40MiB. Retaining that minimal
+  baseline alone was therefore not sufficient to reproduce the OOM.
+
+Because all controlled cohorts passed, a further bounded diagnostic packet
+preserved the original full driver's factories, retention and execution order
+and added phase markers only. This was a diagnostic extension before the first
+OOM in this round, not a retry after an OOM. The source-text inverse of the
+metric insertions matches the frozen original driver. Metrics can still affect
+timing/GC, so this is not proof of identical runtime allocation behavior.
+
+### Confirmed failure interval and stop
+
+The labelled full-workload worker failed with V8 heap exhaustion, exit139.
+Its observed cgroup peak was522,858,496 bytes (498.64MiB); Docker reported
+OOMKilled:false and the retained cgroup OOM counters were0. The V8 heap limit
+was271,581,184 bytes (259MiB), with no added heap flags or NODE_OPTIONS.
+
+The final marker was `xml:index-drift:decode:begin`. XML parsing had returned;
+the call `decode(m.envelope, reference)` did not return, so readable-index
+comparison was not reached. At the last marker, heapUsed was145,170,352 bytes,
+rss440,455,168, external62,123,605 and arrayBuffers48,229,761. ArrayBuffers is
+part of external, not an additional disjoint total. These samples localize an
+interval; they do not identify the exact internal failing allocation.
+
+All23 payload refusals and the first4 XML refusals emitted rejection markers
+before the OOM. These27 observations are not a terminal passing full worker.
+XML child/depth/node-limit cases remained unrun. All experiments stopped on
+this first OOM; there was no retry, heap adjustment, reader repair or further
+runtime test. Partial output from the failed worker is not an accepted producer.
+
+### Interpretation, limits and next boundary
+
+Confirmed: the full positive fixture fits alone, the controlled refusal cohorts
+pass, and the labelled original composition exhausts V8 heap while decoding the
+embedded payload in XML index-drift after XML parsing. The leading explanation
+is overlapping working sets/allocation pressure from positive state, earlier
+variants, parsed XML/index and another full JSON decode/canonical representation.
+No individual retained object or factory is proven necessary or sufficient;
+strict JSON parsing versus canonical serialization inside decode remains
+unresolved. The exact case/instruction of the earlier uninstrumented OOM is
+also not proven by this labelled reproduction. This is not evidence of a
+general memory leak.
+
+The independent known Node reader gap remains: DOM construction precedes
+node/depth guards. It was neither fixed nor proved to cause this OOM. Full
+reader/codec acceptance, UAT/SRS coverage, integrated Core memory and Word
+content/geometry gates remain open. R2 is not closed.
+
+Next proposed scope: retain separate worker/input lifetimes for refusals;
+separately authorize a lab-only reader candidate with early bounded XML/schema
+guards and preserve genuine payload/index comparison. The existing index-drift
+fixture changes an anchor to invalid syntax; future acceptance must also include
+a valid-looking unique anchor swap so an early syntax rejection cannot replace
+the actual index/payload comparison. Then complete the affected matrix without
+repeating unchanged passing scopes. No repair or additional run is authorized
+by this status entry.
+
+Instrumentation evidence caveat: `instrumentation-manifest.json` hashes the
+instrumented source with LF normalization; the archived packet separately hashes
+the actual CRLF file bytes. Source-text reversal was checked with universal
+newline normalization. Do not interpret those two different digests as a
+byte-exact reversible archive claim. The frozen codec/map hashes are recorded
+in `verification.json` and match across these runs.
+
+Closure of this diagnostic checkpoint uses receipt/trace/hash reconciliation,
+independent read-only review, documentation diff review and `git diff --check`.
+No Node documentation/test process was started after the OOM. Core and Service
+remain unchanged and clean; original service identities stayed stable. No
+original data/service action, merge, push, release or installation occurred.
