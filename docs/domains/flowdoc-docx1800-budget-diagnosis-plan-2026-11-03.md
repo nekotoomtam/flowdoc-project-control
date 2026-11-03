@@ -1662,3 +1662,87 @@ binding, before Word comparison or Core implementation authorization.
 No Core/Service code edits, DOCX construction, Word run, original-data/service
 action, merge, push, release, installation or map-truth promotion occurred.
 Only this canonical plan and external lab contract/proof artifacts change.
+
+## Node/Python interoperability,2026-11-03: stopped on V8 heap OOM
+
+Status: **STOPPED_V8_HEAP_OOM_NODE_1800_NO_RETRY**.
+The owner explicitly required stopping on OOM. The full interoperability gate
+is not accepted. No further codec/lab run, repair, heap/cap increase or retry
+occurs after the observed OOM. This records the stop, not a new execution round.
+Owner remains Core for any future implementation and Project Control for
+status. Role Evidence Reviewer; single-room IDs not applicable. Product pins
+remain Core582f141 and Service db15e9d; the packet records full identities and
+starting PCa79e80c. No product files or Python reference contract are changed.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/source-line2-node-interop-20261103/`.
+Use `verification.json`, `oracle/preflight/preflight.json`,
+`oracle/receipt.json`, `matrix/packet.json`, `matrix/oracle/receipt.json`,
+`matrix/oracle/node-current/run.log` and `host-samples.jsonl`.
+`record-stop.py` only reconciles retained logs/receipts/artifact hashes and
+candidate state; it does not execute another codec test.
+
+The bounded external Node prototype preserves parsed object key order,
+UTF16 string units and numeric literal kind for the existing Python lab JSON
+dialect, and checks a single gzip member/CRC/length with bounded inflate.
+The unchanged Python codec/map/encoder files are byte-hash checked against the
+accepted prior proof. No Python protocol was changed to force compatibility.
+All prototype files live outside Core/Service; the Node codec worker itself
+does not launch Python (one process sampled in its cgroup).
+
+### Accepted small proof, not full acceptance
+
+One512MiB preflight worker passes85 Python-generated cases:82 finite float64
+values (targeted edges and64 deterministic samples), Unicode/UTF16 edge
+strings, ordered/numeric-looking keys including data-only __proto__, and
+safe integers. The Node decoder/re-encoder matches Python's canonical body
+hashes. Fresh Node float values also match the expected IEEE754 bits and
+serialized hashes for these cases. A direct raw-inflate consumed-byte probe
+checks the gzip member boundary on the pinned Node24.21.0 runtime.
+This is finite scoped evidence, not an exhaustive float64/canonicalizer proof.
+
+The subsequent full matrix planned fresh Python producer -> fresh Node
+decoder/encoder -> fresh unchanged Python decoder for each of current1800,
+UAT and SRS, with31 payload/XML refusal cases per full Node worker.
+Execution stops after these two groups:
+
+| Group | Outcome | Peak cgroup bytes |
+| --- | --- | ---: |
+| py-encode-current |completed, exit0 |188067840 |
+| node-current |V8 heap OOM, exit139 |481464320 |
+
+The fatal log states `Allocation failed - JavaScript heap out of memory` after
+GC near a roughly256MB heap. Maximum total worker memory is459.16015625MiB
+under the unchanged512MiB/swap0 cap. Docker OOMKilled is false and cgroup
+oom/oom_kill counters are0: this is a confirmed V8 heap OOM, not a cgroup kill.
+Zero cgroup OOM counters must not be reported as a no-OOM PASS.
+
+The Node group has partial envelopes, source-line2.xml, restored-body.json and
+node-vectors.json, but no final node-result.json/result.json. Source ordering
+and these artifacts indicate progress through the base/vector output path;
+there are no phase markers establishing the exact failing allocation. Do not
+promote partial outputs to a completed worker or assume the codec alone,
+rather than retained harness data/refusal workloads, caused the allocation.
+The end-to-end Python->Node acceptance remains incomplete.
+
+py-decode-current and every UAT/SRS matrix group are unrun. Therefore actual
+full-fixture Node->Python consumption, complete refusal coverage and the
+full UAT/SRS interop paths remain unverified. The collector's missing-directory
+tar warnings refer to those unrun groups; they are not the OOM's cause.
+
+### Stop disposition
+
+No retry or larger heap is attempted. All owned lab containers are stopped;
+original container identities, source/package trees and Core/Service Git state
+remain stable. Oracle is the isolated OCI VM; no original API/SQL/storage or
+DB access, original service stop, merge, push, release or installation occurs.
+The prior Python-only metadata proof remains valid in its prior scope; it
+does not cover this failed full Node worker.
+
+Recommended next request: read-only review of object lifetimes in the Node
+codec and its harness, using these artifacts, then agree a bounded new proof.
+Keep512MiB and all existing caps. Do not infer that raising V8's heap solves
+the design or that a product defect is proven. Following the stop condition,
+only evidence reconciliation and this status update are performed; no further
+Node/Python codec/lab tests run. The status-only Markdown change uses a static
+diff check and direct receipt/log review, not a new runtime test claim.
