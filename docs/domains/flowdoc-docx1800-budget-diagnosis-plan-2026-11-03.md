@@ -416,3 +416,123 @@ logical shapes as one batched request, or silently fall back to native guide
 policy. Those choices change accounting or layout contracts. R0-B feasibility
 is currently unknown and belongs in a bounded discovery scope before R1; this
 review makes no claim that the proposed bounds already exist or will suffice.
+
+## R0-B outcome,2026-11-03: bounded prefix-fit proof succeeds on copies
+
+The owner explicitly authorized the proposed copy-only prefix-fit study. Its
+input is PC68c2e8f, Core6f36c42 and Service db15e9d. Role remains discovery/
+Evidence Reviewer; single-room execution IDs are not applicable. No product
+implementation, old-round reactivation or integration is performed.
+
+**PASS_R0B_BOUNDED_COPY_PROOF_NO_PRODUCT_CHANGE.** The proof is limited to its
+declared eligibility profile and function-level integration. It is not a full
+Core/Service/DOCX/Word acceptance, a general font theorem or a completed R1.
+The earlier whole-line-first failure and exact-reuse insufficiency remain true.
+
+Evidence directory:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r0-prefix-fit-proof-20261103/`.
+Primary records: `verification.json`, `proof-run2/packet.json`,
+`proof-run2/oracle/receipt.json`, `proof-run2/oracle/proof/result.json`,
+`proof-run2/oracle/proof/certificate.json` and `certified-prefixes.json`.
+`audit/` retains the initial font audit; `proof-run1/` retains the cancellation
+RED. Existing cached fontTools/native resources were used, with no installation.
+
+### Criterion and why it preserves the original decisions
+
+The external copy still visits each legal prefix/grapheme in the old order and
+stops at the first actual overflow. It uses an upper bound only when that bound
+itself fits the current frame plus the original epsilon. Otherwise it executes
+the original exact measurement. Chosen lines always obtain their actual native
+glyphs; proof values are never used as output advances, heights or glyph data.
+
+The private laboratory compiler:
+
+1. Derives an ASCII alphabet from the document input, not a font/fixture-name
+   whitelist. Selected Unicode cmap mappings must agree. Unknown text, sizes,
+   font identity and node-dependent spacing probes use the old path.
+2. Computes a conservative glyph closure across all GSUB primitive actions.
+   Reachable glyph growth/deletion, missing glyphs and mark classes refuse the
+   profile. Thus an eligible N-character prefix emits no more than N glyphs.
+3. Bounds non-contextual GPOS advance/placement effects per glyph. Lookup-stage
+   multiplicity is conservatively bounded by distinct feature tags plus the
+   required-feature allowance, using pinned rustybuzz0.20.1 `ot_map.rs` and
+   pair-position source. Device/variation, contextual positioning, reachable
+   mark/cursive, legacy kern/AAT and unknown profiles refuse. Negative advance
+   cannot be permitted by a certificate.
+4. Uses TrueType ink boxes and outward IEEE-754 rounding to bound the complete
+   cursor/ink extent. If A bounds nonnegative advance, P bounds absolute x
+   placement, and L/R bound glyph ink, an N-glyph envelope includes both N*A
+   and (N-1)*A+P+R, plus any possible negative left ink. Every floating operation
+   is rounded outward with `nextUp`; nominal advances alone are insufficient.
+
+The target regular font certificate has50 reachable glyphs, unitsPerEm1000,
+max advance831, min advance231, x-placement bound0, left-ink bound0 and
+right-ink bound803. Its compiler records1374 bounded work units, below1000000.
+These facts are tied to actual font bytes b8150084..., Core package tree47cdac6d...
+and pinned native behavior. The laboratory certificate object is not a trusted
+client-supplied JSON option or an approved product contract.
+
+### Actual measurement and independent checks
+
+| Metric | Result |
+| --- | ---: |
+| Complete candidate measurement sequence |1800 paragraphs |
+| Complete returned measurement structures equal to original references |1800/1800 |
+| Actual `TextRuntime.shape` requests |7918 of8192 |
+| Native shaped UTF-16 units |237033 |
+| Precharged proof-work units |498490 |
+| Combined charged units |735523 of1048576 |
+| Authored input units |64800 of65536 |
+| Distinct regular-font certified prefixes checked by separate native oracle |3531 |
+| Independent Python outward-arithmetic comparisons |3531 |
+
+Original references require12600 requests across1800 separately bounded
+paragraph comparisons; they are not an unmodified full1800-document pass.
+The candidate attempt keeps one unchanged document-wide native request budget.
+It has274 native requests of headroom; this is not broad capacity headroom.
+
+Proof attempts are themselves capped at8192. Each reserves2*N+8 work units
+before alphabet scanning and N outward cursor steps, charged conservatively
+alongside native units under the existing global/block unit ceilings. Once
+proof work is exhausted, the old measurement resumes; no counter is reset and
+no collection of logical shapes is charged as one batch. The verification
+oracle has its own bounded test budget and is not hidden production work.
+
+All22 ordinary/opt-out/cancellation cases agree. Three contextual-font frames
+give3/3/1 lines in both methods, preserving the former3-line counterexample.
+Six further comparisons cover positive GPOS placement/advance, explicit GSUB
+growth refusal and negative-advance refusal. Unsupported profiles really fall
+back; they are not reported as eligible proofs. No observed certified prefix
+exceeds its computed bound. The oracle uses actual native measurements, not
+sampled widths to construct a certificate.
+
+### Cancellation correction and remaining ownership gate
+
+The first run's cancellation test was RED: its copy guard threw signal.reason,
+whereas pinned `createTextRuntime` closes synchronously on abort and checks
+`closed` before signal.reason. The second copy guard mirrors that existing
+closed-runtime behavior and matches the original error. The failed run is
+retained, not relabelled PASS. Product R1 must share the actual runtime owner's
+check/epoch/invalidation mechanism, not duplicate an error string or introduce
+a second cancellation policy. Arbitrary native-session failure recovery is not
+established by this one deterministic cancellation comparison.
+
+The final worker uses512MiB/swap0,2CPU, network none and read-only product mounts;
+actual cgroup peak62943232 bytes (60.03MiB), no OOM/oom_kill. Its packet and exact
+262-file Core package tree stay unchanged, owned containers stop and original
+container identities remain stable. No original API/SQL/storage data access,
+original service stop, Core/Service edit, merge, push, release or installation.
+
+### Proposed R1 boundary, still not started
+
+This evidence supports preparing a bounded Core candidate implementation of
+the declared prefix-proof/fallback policy. Before product acceptance, R1 must
+prove the real private owner, native generation/failure lifecycle, cancellation,
+all protected source-layout routing, work accounting and cleanup. Unknown cases
+must retain the original path and the source-of-truth resource snapshot.
+
+After that integration, re-run the actual1800 source-guide pipeline and observe
+its next real XML/drawing gate under512MiB. The earlier97411-node count belongs
+to a native-policy diagnostic, not this now-measurable default path. Full DOCX,
+Word/pagination, package consumers and Service/API acceptance remain separate.
+Do not infer that this R0-B proof completes R1/R2/R3 or authorizes product edits.
