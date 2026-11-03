@@ -190,7 +190,13 @@ and full-document acceptance remain the explicit R3 gate.
   the1800 case under512MiB. Stop OOM; record the next actual gate and its counters
   rather than claiming XML success when only measurement passes.
 
-### R2 — prove and implement native generated-style sharing
+### R2 — original native generated-style proposal, superseded as the primary source-path strategy
+
+2026-11-03 R2 discovery below establishes that style-only sharing cannot make
+the actual source-guided fixture fit. The following original proposal is
+retained as history and a possible subordinate optimization; it is not the
+current implementation instruction. Use the latest R2 discovery/proposed plan
+at the end of this document. No R2 implementation has been authorized.
 
 - [ ] On captured external native XML, study sharing exact run properties AND
   repeated paragraph/mark properties. Preserve all text, language, `w:cs`,
@@ -1051,3 +1057,194 @@ Original identities/frozen package tree and Service remain unchanged, and no
 owned lab container remains running. No original data/API/SQL/storage access,
 service stop, merge, push, release, installation, map promotion or old execution
 context mutation occurred.
+
+## R2 discovery and proposed reduction plan,2026-11-03
+
+Status: **R2_DISCOVERY_COMPLETE_REPAIR_FEASIBILITY_OPEN**. This completes only
+the explicit read-only analysis/planning request. R1 remains accepted in its
+bounded scope. R2 repair, R3, Word fidelity and Service integration are open.
+
+### Scope, authority and reproducible inputs
+
+Owner: Core for any future implementation; Project Control for this plan.
+Roles: Evidence Reviewer, then Planning Partner/Project Control Steward.
+Single-room execution IDs: not applicable. Risk routine for read-only lab
+discovery; no product change is authorized. The generated October4 Current
+Truth Snapshot concerns another Editor round and is not R2 authority; this
+request and the current bounded plan/retained R1 evidence resolve this work.
+
+Pinned Core candidate582f141566d1dd0cc4df53a7779818cab9c3d111; Service remains
+db15e9d45973fb3f7682ee8b6bae37c5d82124a4. Reuse the exact accepted R1 Linux
+archive32484c0eac1f4dbbd578d05d7d2d04142bd7a0095a43471a777a736236f4e357,
+without rebuilding, installing dependencies or changing package files.
+The template fingerprint is705aedd73be735a3b2b5cd39efa3a1b18cfd9fc7b4e911df757eba6bb0383001.
+This is the current synthetic1800-paragraph/64800-UTF16-unit model20 fixture,
+not the historical72000-run fixture, fonts-only nativeRunBudget or full UAT/SRS.
+Oracle means the isolated OCI VM; no database is used in this Core-only work.
+
+Proof budget: one actual public-root generation with read-only inspector
+snapshots, then one offline independent XML census worker. Both workers have
+512MiB memory/swap0,2CPU,128pids,network none and read-only product mounts;
+the coordinator remains outside with its existing128MiB address-space budget.
+Stop on any OOM, input mutation or original-container identity drift. Only
+existing plan prose is updated; no new registry, map or product Markdown.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r2-xml-analysis-20261103/`.
+Read `verification.json`, `packet.json`, `oracle/receipt.json`,
+`oracle/xml-counter/result.json`, `oracle/xml-counter/snapshots.json`,
+`census/oracle/receipt.json` and `census/oracle/xml-counter/census.json`.
+Raw XML/rels copies for all three stages are under `oracle/xml-counter/`.
+`run.py`/`remote.py`, `prepare.py` and `census.py` retain the bounded method.
+
+The observer retains existing ZIP-entry references before source serialization,
+after it and before the final guard, then reads each part after generation
+returns. It does not edit XML, rewrite Core, override options, generate another
+ZIP or publish a DOCX. This deliberately retains extra diagnostic references;
+its memory result is observation-specific, not a production memory guarantee.
+The complete error/warnings/output/abort result equals the prior unobserved
+result: `DOCX_OUTPUT_BUDGET_EXCEEDED`, `word/document.xml`, zero output bytes.
+
+### Confirmed counts and amplification path
+
+Independent Python ElementTree expanded-element counts equal the writer's
+lexical counter for every captured `.xml` and `.rels` part. All three stages
+contain the exact ordered1800 expected records and64800 UTF16 units, with text
+SHA2566abfad9bbd0c1106190d767aa095f966370c5f3d4cb47b22df8d9bacafc2bd6c.
+Text equality here does not prove Word rendering, reading order or pagination.
+
+| Stage in this same default generation | XML/rels parts | Whole-package nodes | document.xml nodes | VML textboxes |
+| --- | ---: | ---: | ---: | ---: |
+| Native package before source serialization |25 |99627 |99013 |0 |
+| After source serialization, before compaction |26 |195111 |190813 |10800 |
+| Final private staging, before guard |26 |162741 |158413 |10800 |
+
+The158426 R1 counter is the cumulative guard prefix:13 nodes in the preceding
+document relationship part plus158413 in document.xml. The newly established
+complete package total is162741, not158426. The old97411 native-policy count
+belongs to another diagnostic and is not replaced or reused as this baseline.
+
+Implementation evidence against the pinned Core candidate:
+
+- `src/docx/source-layout-xml.ts:66-78`: `wordRuns` emits alternating runs for
+  required native advance/spacing corrections and shares equal adjacent run
+  styles only within one SourceWord. These runs must not be flattened blindly.
+- `src/docx/source-layout-xml.ts:87-105`: each source line loops over
+  `line.words`, creates one independently positioned VML shape/textbox per
+  segment, then records its source range. In this fixture there are1800 source
+  lines and10800 boxes:6 segments per record. Examples are `RESOURCE-`,
+  `ROW-0001 ` and `before-`; SourceWord is a segmentation boundary, not
+  necessarily a linguistic word. Shape positions, padding, baseline, script,
+  spacing and source maps are part of the current representation.
+- `src/docx/source-layout-xml.ts:122-145`: existing compaction shares outer
+  `w:r/w:pict` wrappers and combines supported uniform paragraph/run styles.
+  Measured savings are32370 nodes net:18000 wrapper nodes plus14400 run-style
+  reference nodes, offset by30 added style-definition nodes. Only
+  `word/document.xml` and `word/styles.xml` change between the last two stages.
+- `src/docx/writer.ts:147-184`: source compaction remains conditional on real
+  source serialization and an over-budget count; the final unchanged guard
+  still rejects before publishing. `src/docx/compaction/package.mjs:13-24,58`
+  and `src/docx/compaction.ts:18-21` conservatively refuse ineligible or
+  still-over-budget plans. This run did not observe the generic planner's
+  internal refusal reason, so do not claim a specific one.
+
+Classification: **Confirmed capacity refusal and structural amplification**;
+the protective guard is not itself a confirmed defect. The earlier R2
+native-style-only proposal is an insufficient primary strategy for this path.
+
+### Why repeated-style or footer cleanup alone cannot meet the cap
+
+Final document.xml contains18000 text nodes,19800 runs,12600 paragraphs and
+10800 VML shapes/textboxes. Its shape subtrees alone contain90000 nodes even
+after hypothetically removing every nested paragraph/run property subtree.
+That is a structural lower-bound diagnostic, not a valid transformation.
+
+A stronger deliberately invalid arithmetic test removes every document
+`w:pPr/w:rPr` subtree once (union54000 nodes) and the entire268-node styles
+part. The package would still have108473 nodes, above50000. Therefore merely
+sharing/removing those repeated properties cannot solve the observed case
+while retaining the existing box/run topology. Actual valid style sharing
+saves less than this impossible upper bound. The custom source map is3601
+nodes; deleting it would lose required facts and also cannot close the gap.
+
+Drawing guard0 is the `wp:docPr` counter. It does not mean there are no text
+shapes:10800 VML shapes are independently counted by the XML budget. Attribute
+deduplication, shared VML shape attributes or a smaller compressed ZIP would
+primarily reduce bytes, not the element count that currently refuses.
+
+### Proposed approaches and recommended next request
+
+1. **Study a compact source-line/compatible-span representation on copies
+   first (recommended).** Reduce independently positioned containers and
+   coalesce only provably equivalent adjacent run fragments. Keep source
+   measurement/line choices unchanged. Carry all original segment offsets and
+   source ranges into an explicit mapping, including multiple ranges per
+   container if the design supports them. A single box per line is only a
+   hypothesis: retaining all existing runs/references may still exceed the cap.
+   No complete projection or Word-equivalence proof exists yet.
+2. **Native generated-style sharing** remains useful as a subordinate
+   optimization or a separately designed explicit native-layout mode. Turning
+   off source layout changes the layout policy and is not an approved repair.
+   Do not infer source fidelity from the smaller native intermediate above.
+3. **More style/footer/attribute deduplication with the current source-word
+   topology** is rejected as the primary remedy by the measured lower bound.
+   Do not spend another implementation round on it alone or increase caps.
+
+Before Core implementation, the next bounded copy-only request should do:
+
+- [ ] **R2-A: define a general grouping contract and non-writing projection.**
+  Read SourceWord/font/line facts and the mapping consumer. Specify continuity,
+  exact source ranges, font/script/spacing/position/ink/baseline compatibility,
+  semantic barriers and an exact accounting rule. Use current1800 and the
+  retained UAT/SRS as separate fixtures; never special-case text, counts or IDs.
+  Review `source-word/1`, generatedControls and paragraphMap receipt semantics
+  (`src/docx/source-layout.ts:34-35`), not just XML appearance. No runtime
+  reader was found by the bounded Core/Service-src marker search, but external
+  consumers remain unknown. Reusing a shape ID for multiple ranges or changing
+  a control's meaning must not silently retain an incompatible map version;
+  an unavoidable contract change returns for explicit design/scope review.
+  Count every proposed XML/rels part plus new styles/maps. Target<=49000,
+  hard cap50000, output32MiB and512MiB/worker unchanged. If the projection
+  cannot fit while preserving facts, return for design review before coding.
+- [ ] **R2-B: prove the eligible representation on external copies.** Only
+  after a valid projection, construct a diagnostic candidate with strict
+  ownership, count-before/apply-after and no-op/refusal/rollback semantics.
+  Verify Unicode/source ranges, all text/style and glyph-advance corrections,
+  layout coordinates and package graph independently. Cover mixed Thai/Latin,
+  combining marks, zero/negative adjustments, line wraps, links/fields,
+  bookmarks, tables/cells, unknown extensions and partial/unsupported cases.
+  Preserve the original path for unsupported cases and fail safely at caps.
+- [ ] **R2-C: establish Word fidelity before approving the Core design.**
+  Compare with a declared valid reference, not a failed export or small slices
+  treated as whole-document proof. Check line/page breaks, Thai shaping,
+  positions, clipping, editing/navigation and source-map roundtrip. If Word is
+  unavailable in OCI, the native-Word gate remains open for a separate review
+  on the existing Word host; do not install it or substitute XML text equality.
+- [ ] **R2-D: only after separate implementation authorization**, implement
+  the proven general representation in a Core candidate. Expected owners are
+  `src/docx/source-layout-xml.ts` for emission, `src/docx/source-layout.ts` for
+  facts only if required, and source-map consumers/tests located in R2-A.
+  Do not change `measureText`, R1 budgets, public API or Service without new
+  evidence and scope approval. Test negative compatibility/ownership,
+  cancellation/failure cleanup, under-budget no-op and exact Linux package;
+  then proceed to the existing R3 end-to-end/Word/Service acceptance.
+
+R2-A/B/C are proposed next work, not performed in this request. Their outcome
+can reject the grouping design. Production implementation is intentionally
+deferred until compatibility, memory, Word/reference and useful-budget-margin
+questions have evidence.
+
+### Verification limits and stop
+
+Capture peak379834368 bytes (362.23828125MiB); census peak176881664 bytes
+(168.6875MiB). Both workers have zero OOM/oom_kill and no remaining owned
+running container. Packaged bytes, frozen installed-package tree, Core/Service
+candidate Git state and original container identities remain unchanged.
+No real API/SQL/storage was accessed; identity metadata alone was compared.
+
+No XML was edited and no successful DOCX output is claimed. No native Word,
+full UAT/SRS, Service/API, new representation, concurrency or production-memory
+acceptance follows from this census. No Core/Service code change, original
+data/service action, limit increase, merge, push, release, install or map
+promotion occurred. Stop after the discovery/plan and focused documentation
+checks; request the next copy-only feasibility scope before proceeding.
