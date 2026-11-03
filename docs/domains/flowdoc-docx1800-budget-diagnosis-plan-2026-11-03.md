@@ -2135,3 +2135,249 @@ Only this existing PC plan is updated. Core/Service heads and clean state are
 unchanged; receipts compare stable original container identities and show no
 owned running lab workers at completion. No original API/SQL/storage access,
 service stop, merge, push, release, installation or map promotion occurs.
+
+## R2 reviewed route from lab evidence to Core and Word (2026-11-04)
+
+Status: **R2_PLAN_REVIEW_COMPLETE_COPY_RENDERER_PREREQUISITES_OPEN**.
+The owner requested a plan review/preparation only. No Core/Service changes,
+new DOCX, Oracle/OCI/Docker call, Word launch or runtime experiment is performed
+in this review. The preceding lab checkpoint is retained as accepted in its
+bounded scope; this section does not reopen its verification or promote R2.
+
+Owner: Project Control for this canonical plan; Core for future renderer,
+mapping/receipt and resource-lifetime changes. Role: Evidence Reviewer then
+Planning Partner/Project Control Steward. Single-room IDs: not applicable.
+Work size medium, risk routine for read-only planning. Active host model inline;
+no new room/agent/model dispatch is needed. Document budget: this existing plan
+only. Current proof budget: source/evidence/reference review and static diff
+checks, zero runtime workers. The stale October4 Editor snapshot is not R2
+authority; the explicit request and these current records resolve the scope.
+
+Rechecked bases: Core582f141566d1dd0cc4df53a7779818cab9c3d111 and Service
+db15e9d45973fb3f7682ee8b6bae37c5d82124a4 are clean; PC starts this review at
+2d6250280b9a0cd9b4603203736b6289b92c2ba7. The accepted Linux archive remains
+32484c0eac1f4dbbd578d05d7d2d04142bd7a0095a43471a777a736236f4e357.
+Do not substitute an installed/main package or overwrite prior lab evidence.
+
+### What the latest lab result changes
+
+The lossless source-line metadata codec, guarded lab XML reader and separated
+refusal lifetimes now have3-fixture Node/Python evidence. Reuse
+`source-line2-node-reader-20261103/verification.json` under the external recovery
+root and its immutable receipts, plus the earlier85-vector proof. The96
+refusals include3 genuine payload/index comparisons using valid-looking anchor
+swaps. This removes the previous tested lab-reader/lifetime prerequisite; it
+does not prove actual emitted line geometry, actual target lookup, a supported
+Core codec dependency, whole-renderer512MiB fit or Word fidelity.
+
+Keep inline source-line paragraphs with shared complete styles as the proposed
+primary representation. Do not revive style-only cleanup or one-VML-box-per-line
+as the primary repair: their measured/projected current1800 counts do not fit.
+The following remain projections until actual serialization of every XML/rels
+part, including all styles, maps and relationship/content-type entries:
+
+| Fixture | Projected complete-package nodes | Margin to49000 | Actual rendered result |
+| --- | ---: | ---: | --- |
+| current1800 |45805 |3195 |Unverified |
+| retained UAT baseline |34656 |14344 |Unverified |
+| retained SRS baseline |48557 |443 |Unverified |
+
+The3 source-map counts3602/123/80 are measured metadata components; they are
+not complete DOCX counts. A compressed payload is not a substitute for visible
+Word text/styles. Never add isolated lab peaks to estimate combined memory or
+treat512 minus329.09MiB as proven headroom for the Core renderer.
+
+### Rechecked owner paths and contract gaps
+
+- `src/docx/source-layout.ts:19-35` owns SourceWord/SourceLine/SourceGuide,
+  genuine private guide identity and the current receipt. It explicitly reports
+  editable word boxes, `source-word-layout`, regenerate-after-edit and the old
+  map path. A line representation cannot silently keep those descriptions.
+- `src/docx/source-layout-xml.ts:25-116` consumes genuine applied guides,
+  quantizes eligible table row frames, emits glyph-advance/spacing corrections,
+  computes ink padding/baselines and writes the existing source-word/1 map.
+  Removing boxes changes positioning/shaping context even when strings and
+  resolved property signatures are equal. Snapshot metadata lacks some raw
+  glyph/ink facts; preserve this gap rather than inventing them from XML.
+- `src/docx/writer.ts:147-184` serializes source layout before counting and
+  attempting compaction; the final loop checks all XML/rels and relationship
+  targets before publication. Do not simply append a full decoder/DOM/reducer
+  to that peak working set or weaken this final guard to make a plan pass.
+- The lab profile remains `lab-copy`/`virtual-plan`. Its targetPlanSha256 does
+  not yet bind an emitted Word paragraph. Product version/profile, actual
+  target digest basis, mixed old/new controls and consumer compatibility need
+  explicit review before Core adoption. Neither a decoded checksum nor a
+  known tag name proves that the actual target exists and owns that range.
+
+### Ordered next work, not execution authorization
+
+Each item below needs its own bounded kickoff before execution. Preserve
+R2-A's refused result; these steps continue R2-B/C/D without relabelling it.
+
+- [ ] **R2-B0: settle actual facts, anchors and reference eligibility.**
+  Freeze a fixture manifest with input/template/resource/package hashes and
+  the complete visible-text/section/table/source-map coverage for current1800,
+  UAT and SRS. Specify a plain bounded fact record produced by the real owned
+  SourceGuide path: exact UTF16 text/ranges, ordered members, glyph clusters,
+  advances/offsets/ink, line origins/frames/baselines, table insets, section
+  ownership and effective font/style identities. No functions, font adapters,
+  caller XML hints or live producer handles may be transported. First resolve
+  how these missing raw facts can be observed in an explicitly instrumented
+  scratch copy; do not edit the product checkout or assume a public API exists.
+  Keep data within the unchanged byte/worker bounds; inability to fit returns
+  to design, not truncation or a larger cap.
+
+  Define source-line/2 actual-target lookup and truthful receipt fields before
+  emitter work. A target key includes its part and legal noncolliding paraId;
+  allocate against existing paragraphs, not just new lines. Bind the map to
+  actual visible target/style facts without a self-referential whole-ZIP hash.
+  Reject absent/ambiguous targets, overlaps, stale digests and collisions.
+  Specify whether old box maps and new line maps can coexist and how each
+  control is counted/owned; otherwise refuse a mixed case. Do not announce a
+  new product profile or migrate old source-word/1 consumers in a lab proof.
+
+  Microsoft specifies paraId as unique within the document part with values
+  greater than0 and below0x80000000; this does not establish save/edit stability.
+  See the [official paraId contract](https://learn.microsoft.com/en-us/openspecs/office_standards/ms-docx/a0e7d2e2-2246-44c6-96e8-1cf009823615).
+  Keep lab acceptance separate from this actual-target/Word identity gate.
+
+- [ ] **R2-B1: build and count a line/style/map candidate on external copies.**
+  Owner files for a later Core port are `src/docx/source-layout-xml.ts` and
+  `src/docx/source-layout.ts`; the first implementation stays outside those
+  repos. Start with small regression fixtures that expose style/geometry and
+  ownership errors before running current1800, then UAT and SRS sequentially.
+  Preserve R1 measurement and line decisions; no document-specific IDs, counts
+  or string rules. Keep section properties on the actual final paragraph,
+  exact whitespace, source order, table/cell/row frames and protected content.
+  Do not coalesce across fields, links, bookmarks, ownership or shaping barriers.
+  A matching style alone is not permission to change kerning/ligature context.
+
+  Build shared paragraph and character styles with valid ordering, explicit
+  off/toggle semantics and all required font/script/spacing/position settings.
+  Test paragraph-mark properties separately from text defaults: putting rPr
+  under pPr is not a general text-run default. Use the paragraph style's run
+  properties where applicable, then prove the resolved styles and Word result.
+  Microsoft's [paragraph-style guidance](https://learn.microsoft.com/en-us/office/open-xml/word/how-to-create-and-add-a-paragraph-style-to-a-word-processing-document)
+  and [Open XML primer, paragraph/run properties](https://download.microsoft.com/download/e/1/4/e14fb96f-83b8-4a2a-84db-7fa8acbe061a/Office%20Open%20XML%20Part%203%20-%20Primer.pdf)
+  distinguish these mechanisms; the old arithmetic does not validate inheritance.
+
+  Emit real XML/style/map/relationship/content-type changes into private staging.
+  Independently parse/recount every .xml and .rels part, not document.xml alone;
+  validate part ownership, style references and actual map targets. Require
+  <=49000 nodes on every complete fixture, unchanged hard50000/32MiB/drawing
+  bounds and all visible content/styles retained. SRS's443-node projected
+  margin is not a waiver: any required extra structure must be recounted.
+  A49001..50000 result misses the chosen acceptance target even if it passes
+  the hard guard. Over-target or geometry-ineligible cases return to design.
+
+  Preserve no-op bytes for unchanged/ineligible content; an unsupported case
+  retains its old path only if the complete package still passes its budgets.
+  Otherwise retain the existing safe refusal. Cover no-op, stale ownership,
+  forged index, wrong part, duplicate anchor/style IDs, partial mixed controls,
+  malformed input and abort/rollback without publishing a partial candidate.
+  Codec support for isolated surrogate code units is not permission to emit
+  illegal XML characters or silently replace/normalize source text.
+
+- [ ] **R2-C: native Word comparison after B0/B1 pass.**
+  Use existing Word on a separately identified review host, not a new install in
+  OCI. The512MiB ceiling applies to each OCI processing worker; do not claim
+  the native Word application was constrained or proved under that ceiling.
+  Record Word version/build, fonts, compatibility mode, page setup and render
+  settings for reference/candidate. Word outputs are new disposable copies;
+  baseline hashes remain unchanged. Availability is not rechecked in this review.
+
+  Reference inventory: the retained line-design harness has
+  `harness/legacy/uat-full-baseline.docx` and
+  `harness/legacy/srs-existing-baseline.docx`, under the external recovery
+  `docx-r2-line-design-20261103/` root. Their exact bytes are pinned in that
+  packet's inputEvidence, and both file hashes were rechecked in this review.
+  Recheck full-document coverage and successful native Word open before
+  designating them valid comparison references; their
+  existence is not current candidate-fidelity proof. For current1800 no valid
+  whole-document Word reference has been established by the retained R2 run:
+  its default export refused with zero bytes. Failed/staged XML, a bypassed
+  oversized ZIP or successful smaller slices are not a whole-document reference.
+  Settle a valid reference and its acceptance basis before closing that case.
+
+  Compare all pages, not selected previews: text/UTF16 order and coverage,
+  fonts/Thai marks and Latin shaping, line/page breaks, baselines/ink clipping,
+  paragraph spacing, indentation, columns, tables/merged/protected cells,
+  headers/footers/page fields, section boundaries and preserved native content.
+  Establish geometry measurement tolerance from the reference/repeatability
+  before inspecting candidate differences; do not enlarge it after a mismatch.
+  No missing/duplicated text, changed intended line/page break, clipping or font
+  substitution may be hidden by a whole-page similarity score.
+
+  Open with no repair prompt, capture native rendering and close without saving
+  the original. Separately Save As a copy, reopen, revalidate actual target
+  lookup/map ownership/part identity and recount the saved package. Exercise
+  navigation/selection plus an edit that makes old offsets stale: a changed
+  target must invalidate/rebind explicitly, never remain falsely verified.
+  The existing regenerate-after-edit behavior is not live-edit map stability.
+  An unchanged Save As must meet the declared persistence contract. A repaired
+  or changed file is not a pass merely because Word can display it. A Word-saved
+  artifact that exceeds the unchanged budget is not accepted for bounded reuse.
+
+- [ ] **R2-D: port only the proven design to a separately authorized Core candidate.**
+  After copy/schema/Word gates, define a narrow product implementation scope.
+  Expected change owners: line emission/styles in `source-layout-xml.ts`,
+  genuine facts/receipt in `source-layout.ts`, staging/count/cleanup integration
+  in `writer.ts`, and focused source-layout/mapping/codec tests. Select an
+  internal version-pinned XML/codec implementation deliberately; do not blindly
+  ship the lab's private xmldom handler hook, metrics or fixture drivers.
+  No measureText/R1/native-budget/public API/Service change is included by default.
+
+  Plan lifetimes before porting: do not retain the native ZIP, old full word-box
+  XML, new full line XML, complete fact graph, decode graph and DOM concurrently
+  by default. Choose the representation before materializing unnecessary old
+  containers where safe; maintain the byte-identical no-op path. Release scopes
+  using real ownership/process boundaries, not forced GC or assumed collection.
+  Measure the integrated producer->serialize->map->ZIP->sink path under512MiB,
+  default heap/swap0 with the coordinator outside. Standalone329.09MiB is not
+  integrated acceptance. A new OOM stops the whole proof without retries.
+
+  Write failing regression tests first, then port the minimum change. Reuse
+  unchanged R1 evidence while rerunning changed/affected source layout, style,
+  source-frame, mapping, compaction and writer/sink lifecycle checks. Include
+  cancellation/failure at each new boundary, exactly-once abort/cleanup,
+  no partial commit, no-op repeat generation and unchanged budgets. Verify the
+  exact Linux packed archive and public-root generation before the final R3
+  end-to-end Word/package/consumer gate. Service wiring remains a later scope.
+
+### Prerequisites and stopping decisions
+
+Blocking before actual-copy fidelity acceptance: raw owned glyph/ink facts,
+actual target/profile/receipt/mixed-map contract, exact serialized totals/styles
+and eligible whole-document Word reference. Blocking before Core adoption:
+those copy/Word results plus integrated512MiB resource/lifecycle/package evidence
+and a separately authorized implementation. Unknown external consumers are a
+compatibility blocker for product adoption, not evidence that one exists or
+permission to migrate it. Resolve this through bounded consumer inventory or
+an explicit owner disposition of the unsupported/deprecated contract; do not
+demand an unbounded proof that no external reader can exist. Other Word
+versions/hostile XML universality/general
+memory-leak diagnosis remain deferred claims, not newly required broad tests.
+
+Proposed first execution budget after a new instruction: B0 only, contract and
+immutable input/reference/fact-capture preparation; no full renderer/Word/Core
+port until its missing prerequisites are resolved. B1 then starts with one
+small RED/GREEN scope, one current1800 candidate worker and one independent
+fresh package verifier, followed conditionally by the same UAT/SRS pairs.
+Case-specific schema/refusal checks belong to the small scope. Freeze concrete
+commands/timeouts and captured inputs in that kickoff; this plan does not
+invent passing outputs or authorize an unlimited investigation. No repeated
+85/96-case matrix is needed unless codec/reader/contracts change.
+
+At every future stage:512MiB per processing worker, swap0, existing coordinator
+budget, hard50000 nodes/target49000/32MiB and existing shaping/drawing limits;
+stop on first V8/cgroup OOM, changed inputs/ownership, unsupported geometry,
+source-target drift, count mismatch or original-container identity drift.
+Do not raise caps, hide formatting in metadata, silently switch layout policy,
+truncate text, run a larger-heap retry or promote partial output.
+
+Review closure: this section is a proposed ordered route, not a product contract
+approval. Self-review covered scope, task dependencies, owner paths, unsupported
+geometry/styles, mixed ownership, stale maps, references and lifecycle gates.
+Static source/evidence/reference-hash review and `git diff --check`
+verify only the plan update. Core/Service remain clean and unchanged. No real
+data/service access, merge, push, release, installation or map change occurs.
