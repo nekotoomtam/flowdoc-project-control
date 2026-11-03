@@ -619,3 +619,118 @@ packed consumer and obtain one independent whole-change review. Product commit
 and R1 acceptance remain gated on that evidence. Current original container
 identities and frozen package tree are unchanged; no owned lab container remains
 running. No map, old execution registry or completed acceptance was rewritten.
+
+## R1 grouped continuation,2026-11-03: lifecycle fixed; stop on isolated writer-suite OOM
+
+The owner explicitly resumed OOM diagnosis and grouped R1 tests, keeping
+512MiB/worker, original document-wide caps and the no-original-data/service/
+no-merge/push/release/install boundary. Stop on any further OOM. This remains
+single-room Core implementation followed by verification; IDs are not
+applicable. Input Core6f36c42 and unfinished candidate, PC8a7cb53, Service db15e9d.
+The preserved candidate matched its prior tenable eight-file input manifest.
+
+**STOPPED_R1_GROUPED_OOM_ACCEPTANCE_INCOMPLETE.** The new OOM stop is active.
+Core now has ten uncommitted changed/new files. Lifecycle evidence improves;
+R1 acceptance, package readiness, final review and product commit remain open.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r1-grouped-20261103/`.
+Use `verification.json`, `progress.txt`, `candidate-tracked.diff`,
+`untracked-source/` and each run's immutable packet/receipt. In particular,
+`remaining2/oracle/docx-nativeRunBudget.test/` retains the new OOM's log,
+per-process samples, cgroup counters and telemetry. Prior failed runs are
+retained with their actual outcomes, not relabelled PASS.
+
+### Confirmed lifecycle defects and bounded fixes
+
+1. **Failed segmentation could leave an admissible prefix proof.** The first
+   lifecycle RED returned `true` after the real segmenter failed. Core now
+   exposes its actual session failure check to the same runtime guard used by
+   breaks, shaping and prefix proof. The regression subsequently rejects the
+   proof. This is actual runtime evidence, superseding the earlier probable
+   risk; it does not rewrite that earlier evidence as confirmed at the time.
+2. **Compiler cancellation returned before its child exited.** With executable
+   lab fixtures, both ordinary and TERM-ignoring compilers remained alive when
+   `runtime.close()` returned. Core now waits for the real child `close` event
+   and explicitly sends SIGKILL on owner cancellation. `execFile`'s timeout
+   killSignal is not forwarded to spawn's AbortSignal behavior; the initial
+   attempted fix still timed out on the TERM-ignoring case and is retained.
+   Both variants now close within the regression's two-second bound, and the
+   child PID no longer exists before the close operation is accepted.
+
+The lifecycle GREEN has nine executed passes: closed/aborted owner, unsupported
+or exhausted proof fallback, killed idle real shaper and fresh-runtime use,
+compiler cleanup with and without TERM handling, failed segmentation, abort of
+a pending native request, and unavailable compiler fallback. The1800 case was
+selected separately and passes; its skip in the lifecycle group is not a gap.
+A new public-engine regression cancels after real prefix initialization,
+receives `DOCX_CANCELLED`, writes zero bytes and removes the owned font snapshot
+directory. It passes within the25-test source-layout group.
+
+Lab setup issues were resolved without product workarounds: `/tmp` was
+confirmed `noexec` with an EACCES execution probe; only fresh test-container
+tmpfs mounts permit the trusted executable fixtures. A required explicit old
+segmenter fixture was initially omitted, then found non-executable in the
+cache. Its cached bytes/mode remain untouched. A fresh private copy verifies
+SHA256 b80f4e94bc52d38477f11070ade15f97781aa0eeb5927afa8b4d37dedbc7644d
+and has executable mode. The compatibility regression then passes. No install
+or original-service action was involved.
+
+### Coverage achieved before the new OOM
+
+There are575 distinct passing test cases across27 accepted groups, excluding
+failed setup groups and duplicate reruns. The evidence manifest identifies each
+case by file, index and name. This count is not a passing complete suite.
+
+- Lifecycle9, complete1800 measurement1, source-layout25, runtime-1 group37.
+- The accepted continuation contributes503 cases: corrected runtime
+  compatibility, all seven layout groups, and DOCX groups through metricPairs.
+- Measurement1800 retains the complete equivalent-output assertion and original
+  request/unit ceilings. Prior compiled real-runtime proof records7918 requests;
+  no counter is reset or document split to manufacture capacity.
+- The source-layout group peaks at481607680 bytes (459.30MiB) with no OOM;
+  lifecycle peaks at136241152 bytes (129.93MiB). Each group gets a fresh worker
+  but every actual document keeps its original counters and caps.
+
+### New OOM and what the evidence does and does not establish
+
+The single-file `docx-nativeRunBudget.test` group reaches536870912 bytes,
+records `oom 1`/`oom_kill 1`, and exits137. Execution stops immediately; fifteen
+later groups are unrun and this group is incomplete. No named test completed
+before its log ended. Do not infer which assertion or allocation triggered it.
+
+Telemetry establishes that coordinator Node PID8 terminated, while its child
+Node PID23 remained running briefly (reparented to PID1) before the container
+namespace exited. At the highest sampled summed RSS, their RSS values were
+328536KiB and203056KiB, alongside the monitor/shell. Summed RSS double-counts
+shared pages and is not cgroup usage. The sampled cgroup maximum451899392 bytes
+misses the actual512MiB peak between samples; use `memory.peak` for the cap.
+
+This supports combined runner/child overhead as a contributor, not a claim
+that Vitest alone caused all allocation or that the workload alone would pass.
+The precise allocation and the old all-suite OOM's failing file remain unknown.
+Code inspection establishes this test uses `createDocxEngine(fonts())` without
+shaper/segmenter/Python, so its workload does not enter R1 prefix compilation.
+That does not make the OOM irrelevant to acceptance or prove the writer's own
+standalone capacity. Source changes stop at this boundary.
+
+### Preserved candidate and next discussion
+
+The local build passed before the grouped runs, and the final product-file
+hashes still match the immutable `remaining2` packet. Core is not committed as
+verified. The remaining DOCX groups, native compatibility group, composition/
+data group, refreshed compiled-engine proof, exact Linux packed consumer and
+independent whole-change review remain unfinished.
+
+Linux packaging was prepared but never launched after the OOM. A preliminary
+local Windows npm pack has correct file bytes but native mode0644; it is
+explicitly rejected as an accepted runtime package. It is not released,
+installed or pinned in Service. No fresh packed-artifact acceptance is claimed.
+
+Next discussion should decide a bounded way to separate runner overhead from
+the native writer workload, retaining512MiB for the processing worker and any
+existing coordinator budget. This is a proposed investigation, not authorization
+to raise RAM, bypass the failing case, reset document budgets or continue past
+the OOM stop. All original container identities, the frozen package tree and
+Service remain unchanged; no owned lab container remains running. No shared
+map or closed execution record is promoted or reopened.
