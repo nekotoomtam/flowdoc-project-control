@@ -1,0 +1,50 @@
+{
+  "docKey": "section-array-example",
+  "data": {},
+  "sections": [
+    {
+      "data": {
+        "projectName": "Project A",
+        "details": [
+          {
+            "format": "cover",
+            "data": {}
+          },
+          {
+            "format": "new-page",
+            "data": {}
+          },
+          {
+            "format": "contents",
+            "data": {}
+          },
+          {
+            "format": "new-page",
+            "data": {}
+          },
+          {
+            "format": "heading",
+            "data": {
+              "text": "Introduction",
+              "anchor": "intro"
+            }
+          },
+          {
+            "format": "paragraph",
+            "data": {
+              "text": "Independent content 1"
+            }
+          }
+        ]
+      },
+      "header": {
+        "title": "Header A"
+      },
+      "footer": {
+        "note": "Footer A"
+      },
+      "sectionKey": "S0001",
+      "instanceKey": "I0001"
+    }
+  ]
+}

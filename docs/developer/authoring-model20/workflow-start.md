@@ -1,0 +1,42 @@
+# FlowDocMake: อ่านตามช่วงงาน
+
+## Authority Boundary
+
+Owner: FlowDoc Project Control. This guide is for the private model20 candidate
+only: Core6f36c42 / Service4972902 / schema029 and its exact reviewed archive.
+It does not describe the currently installed package or authorize publication,
+installation, real-data access or a release. Core owns validation/rendering and
+Service owns persistence/admission. Runtime discovery and verified output take
+precedence over prose. The old prepared18/19 guide sources remain historical
+inputs; they are not shipped as model20 examples in this candidate.
+## เริ่มด้วยเป้าหมาย
+
+ยึดคำขอที่ชัดแล้ว ไม่ถามอนุมัติซ้ำ: แกะข้อมูลใช้ช่วง 0–1; โครงพร้อมตัวอย่าง
+ใช้ 0–4 แล้วตรวจรับตัวอย่างใน 6; ถอดแบบฉบับเต็มใช้ 0–6.
+PDF อย่างเดียวเริ่มได้. ถ้ามี JSON ให้รักษาทั้งสองแหล่งและแยกค่าขาด/ว่าง/ขัดแย้ง;
+ชื่อ Format ใน JSON ไม่บังคับโครงใหม่. แยกผลตรวจข้อมูล โครง/พฤติกรรม และภาพ.
+
+## เปิดเฉพาะช่วงปัจจุบัน
+
+| ช่วง | อ่านตอนนี้ | ผลที่ต้องได้ก่อนต่อ |
+| --- | --- | --- |
+| 0 กำหนดโจทย์ | หน้านี้; [นิยามเป้าหมาย](../../domains/flowdoc-ai-template-authoring-guide-model20.md#เลือกเป้าหมายก่อนเลือกขั้นตอน) เฉพาะเมื่อขอบเขตยังไม่ชัด | รู้ไฟล์ ขอบเขต ผลส่งมอบ แหล่งหลักและข้อจำกัดเวลาที่มีจริง |
+| 1 แกะข้อมูลดิบ | เฉพาะ [Extract source data](reference-coverage.md#extract-source-data-before-designing-a-template) | ข้อความ รายการ แถว/ช่อง กลุ่ม รูปและความสัมพันธ์ แยกเก็บพร้อมหน้า/ตำแหน่งและจุดไม่แน่ใจ |
+| 2 สำรวจ/จับคู่รูปแบบ | [Inspect the PDF](reference-coverage.md#inspect-the-pdf-before-selecting-a-template); [กรณี](reference-mapping.md#2-เลือกหมวดตามลักษณะการจัดหน้า) | วัดแบบผูกข้อมูล; แยกรองรับ/ทดแทน/ข้อจำกัดมีหลักฐาน/งานค้าง ก่อน draft |
+| 3 วางโครง/แปลงข้อมูล | [developer index](README.md) เพื่อเลือกเฉพาะบท schema/node/layout ที่ต้องใช้ | native Section/Area/Format และ request ที่ย้อนกลับข้อมูลดิบได้; ไม่เขียนทับข้อมูลดิบ |
+| 4 ทดลองตัวอย่าง | [preflight](draft-selection.md#authoring-preflight), [เลือก target](draft-selection.md#separate-the-candidate-from-the-target), [mechanics](draft-selection.md#mechanical-steps-through-the-tool); เปิด progress/representative ตาม prerequisite ของ tool | ตัวอย่างจริงที่ตรวจข้อมูล โครง พฤติกรรมและภาพตามเป้าหมาย; งานโครงส่งตรวจรับตัวอย่างได้ |
+| 5 ขยายเมื่อขอ | เฉพาะ [representative gate](draft-selection.md#representative-pages-before-expansion) และ mechanics ที่ยังต้องใช้ | ทุก family ผ่านก่อนขยาย; ใส่ข้อมูลครบและได้ succeeded PDF ของ revision จริง |
+| 6 ตรวจรับ | งานฉบับเต็ม: [full delivery](reference-coverage.md#reconcile-the-entire-document-before-full-document-delivery); งานตัวอย่าง: เกณฑ์ที่ขอ | ตรวจทุกหน้าของผลลัพธ์ในขอบเขต ส่งไฟล์พร้อมผลตรวจ/ความต่าง ไม่อ้างว่าทำครบงานที่ไม่ได้ตรวจ |
+
+ลิงก์ที่มี `#หัวข้อ` หมายถึงอ่านเฉพาะช่วงหัวข้อนั้นถึงหัวข้อระดับเดียวกันถัดไป.
+ลิงก์ไฟล์ที่ไม่มีหัวข้อใช้ค้นหาหัวข้อที่เกี่ยวข้องก่อน ไม่โหลดทั้งชุดหรือไล่ลิงก์ซ้อน.
+รายการในตารางเป็นเส้นทางเลือกอ่าน ไม่ใช่รายการให้เปิดพร้อมกันตั้งแต่ต้น.
+
+## ทำต่อโดยคงจุดผ่าน
+
+จุดผ่านเป็นการตรวจภายใน เมื่อผ่านให้เดินต่อเองจนถึงเป้าหมาย ไม่จบ turn ทุกช่วง.
+ถ้าอ่านข้อมูลผิดกลับ 1; จำแนก/วัดผิดกลับ 2; schema/binding ผิดกลับ 3;
+รูปแบบตัวอย่างผิดกลับ 4. เก็บของเดิมและตรวจใหม่เฉพาะผลที่ได้รับผลกระทบ.
+บอกความคืบหน้าสั้น ๆ ว่าอยู่ช่วงไหน ได้อะไรแล้ว และจุดผ่านใดยังค้าง.
+ไม่ต้องเปิดประวัติทดลองหรือแผนเก่าเพื่อเริ่มงานใหม่; เปิดเมื่อมีปัญหาที่ต้องสืบจริง.
+ข้อจำกัด helper และ deadline เดิมยังใช้ ไม่ใช้การแบ่งช่วงเป็นทางเลี่ยง gate.

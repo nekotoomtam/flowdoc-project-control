@@ -1,0 +1,98 @@
+{
+  "expectedRevision": 2,
+  "idempotencyKey": "example-two-preview",
+  "sampleRequest": {
+    "docKey": "section-array-example",
+    "data": {},
+    "sections": [
+      {
+        "data": {
+          "projectName": "Project A",
+          "details": [
+            {
+              "format": "cover",
+              "data": {}
+            },
+            {
+              "format": "new-page",
+              "data": {}
+            },
+            {
+              "format": "contents",
+              "data": {}
+            },
+            {
+              "format": "new-page",
+              "data": {}
+            },
+            {
+              "format": "heading",
+              "data": {
+                "text": "Introduction",
+                "anchor": "intro"
+              }
+            },
+            {
+              "format": "paragraph",
+              "data": {
+                "text": "Independent content 1"
+              }
+            }
+          ]
+        },
+        "header": {
+          "title": "Header A"
+        },
+        "footer": {
+          "note": "Footer A"
+        },
+        "sectionKey": "S0001",
+        "instanceKey": "I0001"
+      },
+      {
+        "data": {
+          "projectName": "Project B",
+          "details": [
+            {
+              "format": "cover",
+              "data": {}
+            },
+            {
+              "format": "new-page",
+              "data": {}
+            },
+            {
+              "format": "contents",
+              "data": {}
+            },
+            {
+              "format": "new-page",
+              "data": {}
+            },
+            {
+              "format": "heading",
+              "data": {
+                "text": "Introduction",
+                "anchor": "intro"
+              }
+            },
+            {
+              "format": "paragraph",
+              "data": {
+                "text": "Independent content 2"
+              }
+            }
+          ]
+        },
+        "header": {
+          "title": "Header B"
+        },
+        "footer": {
+          "note": "Footer B"
+        },
+        "sectionKey": "S0002",
+        "instanceKey": "I0002"
+      }
+    ]
+  }
+}

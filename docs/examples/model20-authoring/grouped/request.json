@@ -1,0 +1,36 @@
+{
+  "docKey": "area-document",
+  "data": {},
+  "sections": [
+    {
+      "data": {
+        "details": [
+          {
+            "format": "meeting",
+            "data": {
+              "companies": [
+                {
+                  "name": "Company A",
+                  "members": [
+                    {
+                      "name": "Person A"
+                    },
+                    {
+                      "name": "Person B"
+                    }
+                  ]
+                },
+                {
+                  "name": "Company B",
+                  "members": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "sectionKey": "S0001",
+      "instanceKey": "I0001"
+    }
+  ]
+}
