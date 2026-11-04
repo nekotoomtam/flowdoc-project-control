@@ -3423,3 +3423,48 @@ in this inspection. Read-only JSON/XML/receipt checks and final diff/check are
 sufficient for this bounded result; no512MiB runtime or native Word acceptance
 is claimed. Product repositories remain unchanged; no data/service action,
 merge/push/release/install or map promotion.
+
+## Module-only top-margin copy for owner Word export (2026-11-04)
+
+Status: **COPY_DELIVERY_PASS_OWNER_WORD_EXPORT_PENDING**. Owner explicitly
+requested a copy changing only Module top margin while retaining Menu textboxes,
+then DOCX handoff for owner PDF export. Scope: first summary table8, merged
+Module group Cut Length/Cut Beam System, rows1-3 column0 (zero-based). Use8pt
+rather than24pt to match Menu top margin. All other Module groups and properties
+remain unchanged. Roles external lab implementer/Evidence Reviewer/PC Steward;
+inline IDs not applicable. Existing PC plan remains the bounded authority.
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-margin-20261104/`.
+Use delivery.json, build2/packet.json, immutable build.py/remote.py,
+build2/oracle/receipt.json, outputs/verification.json and files/. Retain the
+first failed run: its precondition found both border and margin top tags and
+exited before output, without OOM. Corrected build2 selects tcMar/top only.
+No failed output is delivered or represented as passing.
+
+The fresh Oracle-host worker exits0, OOMKilled=false, peak154.074MiB under
+512MiB memory/equal memory-swap (swap0), network none/read-only mounts; host
+Python coordinator address-space bound128MiB. Original container identities,
+start times/restart counts and proof inputs remain unchanged; no owned worker
+running. This is copy-building proof only, not Core rendering performance.
+
+P0 control remains09c7d8a3fa8899eeb6e423c3d9f31581304d2b47aa097de2a8fc33e9cfbe8ed4.
+P4 UAT-P4-module-top-8pt.docx SHA256 is
+d169bb3391e1a82ae8abbb3f33e9e063ebaa696eaea85c2c87bba0bf47f82e38.
+Exactly three w:tcMar/w:top/@w:w values change480→160twips: restart plus two
+vertical-merge continuation cells. Surgical byte replacement preserves all
+other document.xml bytes; restoring the values recovers the original XML bytes.
+All other ZIP parts are byte-identical; ZIP CRC and every XML/rels parse pass;
+actual XML/rels nodes remain112084. Independent local received-file verification
+checks the three-cell-only semantic diff, all VML shape XML, ordered text and
+output/source hashes. Menu textbox positions/sizes/styles and paragraph frames,
+cell bottom/side margins, merges, fonts, media and source maps are unchanged.
+
+Deliver both P0 and P4 under files/ with distinct names for owner export using
+the same Word settings; existing P0 PDF may be reused if settings unchanged.
+Native Word rendering intentionally remains pending the owner's conversion;
+no height improvement, clipping safety or root cause is claimed yet. Compare
+the first table (P0 page5), Module text top, Menu text positions and row borders,
+then pagination/ink/text integrity. Stop at delivery. No Core/Service edits,
+original data/service action, merge/push/release/install or map promotion.
+Only this existing PC prose changes in Git; evidence coverage/final diff and
+git diff --check close the file-preparation scope.
