@@ -3935,3 +3935,195 @@ and all9page-end crops; image decoding/evidence links pass. Only existing PC
 prose changes in Git; final coverage/diff check closes comparison. No new Oracle
 worker or512MiB claim (this is local PDF analysis), Core/Service edit, original
 data/service action, further probe, merge/push/release/install or map promotion.
+
+## MR plan for repeated Module continuation labels in DOCX (2026-11-04)
+
+Status: **REVIEW_AND_PROOF_PLAN_ONLY_NO_PRODUCT_CHANGE**.
+Owner requests a plan for DOCX Module repetition with the literal suffix
+" (ต่อ)" on continuation pages, preserving M1 geometry and Menu textboxes;
+explicitly no Core/Service implementation or integration. Roles Planning
+Partner/Evidence Reviewer/PC Steward; inline IDs not applicable. This existing
+PC plan is the work authority, Core is the prospective owner. Candidate4200813
+is immutable input. Work Size medium for the prospective planning problem;
+Risk Tier routine for read-only planning, future implementation risk/scope to
+be reassessed when page-fact ownership is resolved. Proof budget this turn is
+targeted code/spec/evidence review only; no lab/Word run or copy mutation.
+Document budget: this section only, no new Work or product-repo planning files.
+
+### Findings and constraints
+
+- tables.ts:160-183 emits source label text only in the first physical cell;
+  continuations contain structural empty paragraphs. writer.ts:203-206 explicitly
+  declares native-rowspan with continuationLabel:not-repeated. M1 changes local
+  inset representation, not label occurrence or pagination ownership.
+- engine.ts:38/193 returns pageCount:null. buildBodyFlow assembles native Word
+  flow; tables.ts:55 receives full bodyHeightPt but not actual current-page
+  remaining Y. sections.ts:134/137 calls it for body and ending Areas. A general
+  per-page label emitter needs page-boundary facts that this path does not own.
+- cellTableFlow.ts already handles label.active continuation text, label minimum
+  extent, repeat headers and line/page cuts for Core layout. That is relevant
+  source-logic evidence, not permission to call generatePdfTo from DOCX or import
+  rendered PDF coordinates/cuts as production authority.
+- Source guides explicitly use source-only facts and regenerate-after-edit
+  (source-layout.ts:32-35); paragraph control/map ownership remains unique in
+  source-layout-xml.ts:53-115. These invariants stay. Proposed scope targets the
+  regenerated export, not live automatic re-pagination after arbitrary Word edits.
+- Native Word evidence already proves long80 has9pages with equal member-page
+  allocation, row68.40-68.43pt versusCore67.90, and first-row positions unchanged
+  acrosspages. UAT M1 is72pages with first table198.39pt and label relative61.62pt.
+  Those are immutable regression inputs, not universal rows-per-page constants.
+
+Primary specification support (reviewed2026-11-04):
+
+- Microsoft OpenXML TableHeader: tblHeader repeats contiguous leading table rows,
+  not an arbitrary merged body cell; an isolated nonleading header row is ignored.
+  https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.tableheader?view=openxml-3.0.1
+- Microsoft Word Support warns manual page breaks inside a table do not repeat
+  its automatic header. Any explicit-fragment design must provide its own real
+  header row per fragment and prove boundary placement, not insert an in-table
+  break and assume native repetition.
+  https://support.microsoft.com/en-us/word/repeat-table-header-on-subsequent-pages
+- lastRenderedPageBreak records a prior paginating application's saved result;
+  it is not an instruction that makes Word generate a label on its next page.
+  https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.lastrenderedpagebreak
+
+### Alternatives for review
+
+1. Turn Module into repeated table header content: native header mechanics exist,
+   but this changes row/location ownership, may repeat the wrong group on a page
+   containing several groups, and violates the requested merged-cell appearance.
+   Not the recommended default.
+2. Let Word paginate, then rewrite its output in a second layout-aware pass:
+   potentially observes actual Word boundaries, but requires Word runtime and
+   a stable export/update loop. Oracle Linux Core currently has no such owner;
+   no installation, deployment or Service dependency is authorized. Cached
+   lastRenderedPageBreak and conditional fields are not equivalent proof.
+3. Recommended direction to PROVE: private DOCX page-fragment planning plus
+   explicit native table/merge fragments. Each page fragment carries a label
+   restart and its own header, using the same source row/cell content and M1
+   inset. This may require controlled page boundaries; Word fit and separator
+   paragraph effects must be proven before choosing a production design.
+
+Recommendation is a proposed approach, not an owner-approved implementation
+or a proved generic pagination solution. If native live-reflow behavior after
+editing is required, return to design; do not silently substitute this snapshot/
+regenerate-after-edit approach.
+
+### Display and ownership contract
+
+- Fragment0 of EACH logical group prints the exact source label, even if that
+  group first starts on page2 or later. Fragment1+ prints the source label plus
+  one generated " (ต่อ)" suffix. A new group on an existing page is not itself
+  a continuation. Append as generated display data, never mutate business text.
+- Match Core's suffix composition rather than stripping literal source text
+  which happens to end in "(ต่อ)". XML escaping/native text runs remain mandatory.
+- One label per visible group/page fragment, not one per member or physical row.
+  Multiple groups on one page may each have one label. Empty/single-row groups
+  and non-crossing tables keep current M1 output unchanged.
+- For every emitted visible label, preserve M1's physical peer top plus single
+  paragraph offset accounting (24=8+16 in this fixture). The16pt offset is once
+  PER LABEL FRAGMENT, not on all continuation rows; new visible continuation
+  label has its own single inset. No offset accumulation or new Menu offsets.
+- Move each existing Menu SDT/paragraph/shape exactly once; do not regenerate,
+  duplicate or rasterize its word boxes. Preserve font/run/line/X-Y anchoring
+  properties, source ranges and unique tags/IDs. Header clones and generated
+  label fragments need collision-free derived identities/bookmarks, not copied
+  duplicate IDs or invented source business nodes.
+- Record logical table/group/source-cell IDs, fragment index, source row range,
+  label role/origin and suffix provenance separately. Source paragraph maps
+  retain source ownership; generated continuation display must not pretend to
+  be extra source text. No caller-supplied page/cut hints or UAT/name/80/9 constants.
+
+### MR0: copied-document representation feasibility gate (next proposed work)
+
+- [ ] On fresh copies only, use the observed long80 member/page boundaries as
+  LAB FIXTURE DATA. Build native table fragments per observed page, close/restart
+  merges within each fragment, repeat the actual column header, emit the original
+  first label and8continuation labels with suffix. Keep every Menu XML block and
+  data cell/row content exactly once. Keep a reversible manifest and immutable
+  M1 source; do not import these recorded boundaries into Core.
+- [ ] Isolate the separator/boundary mechanism: any page break sits BETWEEN
+  physical fragment tables, not inside an old table. Prevent Word from silently
+  coalescing adjacent tables. Measure any mandatory paragraph height, top inset,
+  border and section/header/footer effects; do not hide it by resizing Menu or
+  changing page margins. Reuse M1 geometry, style, grid and resources.
+- [ ] Test the base80/9page case plus a continuation label whose suffix wraps,
+  a final fragment with very few rows, and two groups sharing a page. Native
+  label height must fit the fragment; if it cannot, stop rather than clip text,
+  keep an entire long group or raise budgets. Do not insert a page-number-only
+  rule that puts "ต่อ" on the first fragment of a later-starting new group.
+- [ ] Oracle-host512MiB/worker, swap0, existing coordinator and budget options,
+  immutable fonts and inputs, no network/data/services; stop on OOM. Check ZIP/
+  XML/rels/IDs, every source member exactly once, original Menu shape/XML hashes,
+  source-map coverage and generated-label provenance before owner Word export.
+- [ ] Native Word PDF must retain9pages and the same member allocation for the
+  long80 fixture, original label once plus8suffixed labels, label near each
+  fragment start and complete visible text, no new row-height/first-line shifts
+  beyond measured twip rounding. Compare against M1 and Core at240dpi, including
+  every page start/end. UAT M1's non-crossing groups must retain72pages and the
+  first198.39pt table/Module position. No whole-document pixel-parity claim.
+- [ ] Failure returns to representation design. Passing proves only display/
+  fragments on copies, not how a production exporter discovers page boundaries.
+
+### MR1: source-owned page-fact feasibility, before product implementation
+
+- [ ] Define private input/output facts: validated source/group/row/line IDs,
+  column widths, owned font/fit hashes, M1 native row/label/header extents, section
+  band reservations, current remaining page capacity and fragment cuts. Require
+  ordered gap-free single coverage, forward progress and capacity proof that
+  includes the repeated label plus suffix and headers/separators.
+- [ ] Reuse measured source facts when genuinely available; inspect whether a
+  renderer-neutral row/group planner can share logic without changing PDF output.
+  Do not call the PDF engine or retain a second PDF draw/glyph/ZIP working set.
+  Do not subtract a universal0.5pt or assume the9rows observed in this fixture.
+- [ ] The current DOCX builder lacks actual Word page positions and current-flow
+  remaining height. Prove partial-page starts, preceding text/tables, multiple
+  sections and different first/default header/footer reservations. If solving
+  those needs wider shared-layout/source-guide changes, return a scope/contract
+  proposal first; do not widen this plan's Core mutation allowance implicitly.
+- [ ] Start with proven whole-row cuts only. Core can split long rows at line
+  boundaries, whereas moving Menu as an unchanged SDT assumes no internal split.
+  Rows taller than a page, images/complex merges or intra-row cuts are a separate
+  prerequisite: either derive a validated line-fragment map preserving boxes and
+  source spans under a newly reviewed contract, or mark them unsupported. Never
+  claim generic continuation support while silently dropping their labels.
+- [ ] Choose explicit unsupported/overflow behavior before M2 (capability issue
+  versus clearly reported native-no-repeat fallback). No silent partial feature,
+  stale cached cuts, arbitrary Word font substitution or unbounded update loops.
+- [ ] Compare source-predicted plans and actual owner Word page allocation on
+  several boundary-sensitive fixtures. If added labels cause Word to spill or
+  create blank pages, reject the plan rather than keep republishing/retrying.
+
+### MR2: prospective Core implementation only after MR0/MR1 and authorization
+
+Potential private files: src/docx/group-fragment-plan.ts (facts/validation),
+src/docx/group-fragment-tables.ts (native fragment emission), tests/docx/
+groupLabelContinuations.test.ts. tables.ts/buildBodyFlow would need a deliberate
+multi-FileChild path rather than assuming one logical table returns one native
+Table; sections.ts uses that flow for BOTH ordinary body and ending Areas.
+Ending-Area/header/protected cases stay out until specifically proven. writer.ts
+must describe the actual continuation policy instead of unconditional
+not-repeated. M1 helper stays the inset authority; no generic schema/Service/API
+or default-cap change is approved by this plan.
+
+- [ ] Test0/1/many members, multi-page labels, new groups starting on later pages,
+  several groups on one page, repeated headers, near-bottom starts, one-row final
+  fragments, suffix wrapping, Unicode and literal source suffix, number/TOC/
+  bookmark integrity, source-map ID uniqueness, and unsupported row-split cases.
+- [ ] Pin non-crossing M1 XML/Menu/geometry and all supported80member page/label
+  invariants. Add cancellation, timeout, staged sink abort/cleanup and resource
+  limits; preserve partial-failure containment. Budget repeated headers/labels
+  within unchanged node/byte/drawing caps before construction/publication.
+- [ ] Packed Linux consumer and representative UAT/long fixtures in isolated
+  Oracle512MiB, then native Word PDFs; keep receipt wordVerified=false as a
+  general export claim, record bounded verification as separate Evidence.
+  Local/unit/copy/CorePDF results alone do not close native pagination gates.
+
+Unknowns deliberately open: stable Word fit/cuts under unchanged Menu content,
+separator space, label-fit rebalance, partial-page cursor facts, intra-row
+fragment ownership, edited-Word reflow contract, unsupported-policy choice and
+metadata/node-growth limits. No final Core design or implementation is claimed.
+This turn changes only this existing PC prose, after spec/code/evidence review
+and final diff/check; no new copies, Oracle access, Core/Service changes,
+merge/push/release/install or map promotion. Next proposed task is MR0 copy
+feasibility, not an automatic implementation of page fragmentation.
