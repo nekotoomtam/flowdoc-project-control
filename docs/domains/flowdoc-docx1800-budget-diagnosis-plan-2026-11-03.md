@@ -3376,3 +3376,50 @@ PDFs/DOCX and Core/Service candidates unchanged; no original data/service action
 merge/push/release/install. Static report embeds both images without JavaScript;
 image/link validation, result coverage review and final diff/check close this
 bounded comparison. Only this existing Project Control prose changes in Git.
+
+## Menu versus Req field and DOCX representation inspection (2026-11-04)
+
+Status: **REPRESENTATION_DIFFERENCE_CONFIRMED_HEIGHT_CAUSALITY_OPEN**.
+Owner requested read-only inspection of Menu/Req variables after P0-P3 comparison.
+Roles Evidence Reviewer/PC Steward; inline IDs not applicable. This existing plan
+owns the bounded result. No Core/Service change or integration is authorized.
+Evidence: owner-pdf-comparison/menu-req-representation.json and inspect-menu-req.py
+under the same docx-cell-padding-box-20261104 evidence root. Retained UAT full
+fixture template/payload and generation.json are the inputs; generation output
+SHA256 matches P0 control, so these are matched generation records, not an
+unrelated current fixture or a fresh render claim.
+
+Confirmed: Menu binds item.menu (summary-dynamic/v15); Req no. binds item.id
+and Features List binds item.description (requirements variants). All are plain
+string fields, not HTML/rich-text data. Menu and Req description/id reference
+textStyleId8e34188f-52fe-4299-b167-4aa523dc0ead: same library font release, normal,
+weight300, authored8.4pt and lineHeight17.3pt. Req ID is center-aligned, Menu left,
+Req description default-left. Thus a different authored base font/line-height
+is not supported by this fixture.
+
+The resulting Word representation does differ. All8Menu body cells contain
+36generated VML word boxes in total, exact346twip outer line frames, and8/8pt
+vertical cell padding. All60Req ID and60Req description cells contain0VML
+shapes; sampled native body paragraphs use346twip atLeast line spacing and
+5/5pt cell padding. Native paragraphs and source-guided exact-line word boxes
+have different text-position/row-height ownership; equal authored style alone
+does not imply equal Word layout behavior.
+
+Matched input/receipt evidence explains routing: all8Menu strings lack authored
+newlines. Of60Req descriptions,43contain newlines. bindInlines.ts:21-25 expands
+string newlines into line-break inlines; source-layout.ts:62 excludes non-text
+spans from generated word-box guides. The receipt records43Req descriptions as
+protected-or-nonplain-native-content, with the remaining17 protected by the
+reading plan. sourceParagraph/source-layout-xml.ts:20-22 retains native Word
+paragraphs when no eligible guide exists. This is intentional guarded routing,
+not proof of incorrect binding or a reason to remove the guards.
+
+The representation difference is confirmed; its contribution to the excess
+Menu row height is not isolated from24pt group-label padding and merged-cell
+geometry. Next comparison should explicitly distinguish native paragraph versus
+word-box behavior while preserving content/line breaks/reading-plan protections,
+and isolate group-label margins. No new probe, renderer run or product repair
+in this inspection. Read-only JSON/XML/receipt checks and final diff/check are
+sufficient for this bounded result; no512MiB runtime or native Word acceptance
+is claimed. Product repositories remain unchanged; no data/service action,
+merge/push/release/install or map promotion.
