@@ -4127,3 +4127,56 @@ This turn changes only this existing PC prose, after spec/code/evidence review
 and final diff/check; no new copies, Oracle access, Core/Service changes,
 merge/push/release/install or map promotion. Next proposed task is MR0 copy
 feasibility, not an automatic implementation of page fragmentation.
+
+
+## MR0 base80 copy pilot — 2026-11-04, native Word pending
+
+Owner authorized the base80 copy experiment only, preserving M1 and Menu
+textboxes. Active roles: isolated lab copy implementer, Evidence Reviewer and
+Project Control Steward; inline execution IDs not applicable. This section
+records bounded evidence and does not close the full MR0 checklist above.
+
+- Artifact root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-repeat-mr0-20261104`.
+  Durable receipts: `oracle/receipt.json`, `oracle/outputs/verification.json`,
+  `delivery.json`; reproduction: `build.py`, `remote.py`, `run.py` and packet.
+- Delivered copy: `files/M1-MR0-repeat-Module-long-80.docx`,174800bytes,
+  SHA256 `a7f8181ef03c0fd1b91a28d8d598765dce75e4514831c5b584474118736579d1`.
+  Immutable M1 source SHA256
+  `5845bae5e5452b7a8a29dc494da180c18b6e615e2a50c169b0beec22fec6e253`.
+- Copy-only builder used observed Word cuts as fixture data: nine physical
+  table fragments, nine members per fragment1–8 and eight in fragment9.
+  Original Module label appears in fragment1; the other eight append generated
+  ` (ต่อ)` in a native text run. Original header is cloned per fragment; original
+  total row appears only once at the end. This is not a production cut algorithm.
+- Preserved M1 physical top160twips and label paragraph-before320twips once
+  per visible fragment label. Continuation rows retain zero paragraph-before.
+  Closed/restarted Module merges and fragment bottom borders; inserted eight
+  between-table page-break paragraphs with1twip exact line height. Their native
+  layout effect remains unverified; unchanged row/page geometry is not claimed.
+- Oracle-host worker512MiB, swap0, coordinator128MiB: exit0, OOMKilled=false,
+  observed cgroup peak42987520bytes (40.996MiB). Original three container
+  identities/start times/restart counts remained stable; inputs unchanged and
+  no owned worker remained running. No SQL or original data was accessed.
+- Builder and independent post-download checks passed:80member markers exactly
+  once in source order,80unique original control IDs, all320non-Module cells
+  preserved, Menu SDT and VML shape blocks byte-identical on independent check,
+  every other ZIP part byte-identical, ZIP CRC and XML/rels parse valid. Replacing
+  the nine fragments with the immutable original table recovers original XML.
+  XML/rels count27676nodes; existing lab option300000unchanged. Source-map
+  blocks remain unchanged; generated-label roles/ranges are separate manifest
+  provenance, not a newly implemented Core source-map contract.
+
+Status: PASS for base80 copy structural/resource checks; WORD PENDING, not full
+MR0 PASS. Owner should export this exact DOCX in native Word with the prior
+settings and retain its filename. Then compare all page starts/ends against
+M1/Core: nine pages and original member allocation, nine complete Module labels
+including eight suffixes, table/Module/Menu baselines, borders, blank pages and
+clipping. Do not infer these from the structural receipt. Suffix wrapping,
+few-row final fragment, multiple groups sharing a page and non-crossing UAT
+regression remain unverified. If Word reflows or clips, return to representation
+design before implementation; no automatic retry or cap increase.
+
+Core M1 candidate42008134 and Service candidate db15e9d remain read-only;
+no Core/Service edits, code integration, original service stop, merge, push,
+release or installation are part of this pilot. Next action is owner Word PDF
+conversion, then bounded comparison; MR1/MR2 remain gated.
