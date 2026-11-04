@@ -4976,3 +4976,142 @@ Status PASS_NATIVE_ORIGIN_DEPENDENCE_AND_EXACT_DECIMAL_CHECK. Native-profile/
 frame/origin-aware bounds remain necessary before a safe cursor; remainingSafe
 null/full MR1 open. No original data/service operation, SQL, Core/Service edit,
 integration/merge/push/release/install or map promotion.
+
+## MR1 row-height interval plan after the Word origin probes — 2026-11-04
+
+Status: PLAN READY FOR REVIEW; no new experiment or product implementation.
+Owner request: plan safe row-height intervals from the retained Word evidence,
+preserving M1 and Menu textbox, Oracle512MiB per worker, no original data/service
+operation or integration. Project Control owns this plan; Core owns any eventual
+adapter. Active role Planning Partner/Evidence Reviewer, prose stewardship here;
+single-room IDs N/A. Work size small planning increment, risk routine: no runtime
+change authorized. A wrong future upper bound could cause false page fits, so
+the acceptance gate below stays strict. Reuse the two current documents and
+immutable evidence; no new Work/registry/map or product-repository Markdown.
+The generated snapshot is dated2026-10-04 and concerns another workstream; it
+does not override this request or the current MR1 contract/evidence sections.
+
+### Decision: scoped intervals, with unknown outside justified coverage
+
+Reject a universal +0.05pt correction and reject using the observed maximum
++0.17pt as a safety margin. Also defer a full Word-compatible pagination engine:
+the present evidence does not justify that scope. Proposed approach: separate
+source arithmetic, native painted observations and predictive flow bounds;
+bind every bound to its supported profile and explicit proof obligation.
+No assumption of a0.12pt periodic grid, independence or cancelling row errors.
+
+The current four probes establish only these observed painted-interior ranges:
+
+| Quantity | Observed interval pt | Meaning |
+| --- | ---: | --- |
+| Member1 |[33.24,33.36] |Same first member in four origin probes |
+| Member2 |[50.52,50.64] |Same second member in four origin probes |
+| Member3 |[50.55,50.67] |Same third member in four origin probes |
+| Actual three-member interior sum |[134.55,134.67] |Joint observations, source stack134.50 |
+| Sum of separate member intervals |[134.31,134.67] |Conservative hull of those observations only |
+
+These are neither native layout-advance guarantees nor bounds for another row,
+page origin, group length, document or Word build. Lower values can be below
+source stacks; do not clamp signed residuals to zero. The joint group range must
+not be reused for an arbitrary subset or repeated per row. The prior approximately
+1.44pt border contribution is also sample-specific, not a fixed group charge.
+
+### Proposed bound record and accounting rules
+
+Keep this a private lab proposal, not a Core/Service API. Each record binds:
+
+- source snapshot/map, row and fragment identities, measurement revision;
+- Word executable/build, compatibility/settings, exact font files/digests,
+  section/frame and table policy, M1/Menu revision and tested origin domain;
+- quantity/reference plane: source stack, painted interior, stroke-center
+  interval, outer fragment envelope or predictive flow advance; never mix them;
+- integer micro-point [lo,hi], outward rounding and evidence/proof locator;
+- qualification: observed-only, justified-profile-bound or unknown, with covered
+  input domain and limitations. The second status requires an explicit bound
+  derivation or exhaustive finite-domain coverage, not a sampled maximum.
+
+Preserve the contract's confidence vocabulary: source arithmetic remains
+exact-source where justified; observed-only native data stays estimated for
+prediction. Only a justified predictive interval may become bounded-source for
+the cursor. Exact decimal PDF operands establish painted coordinates, not exact
+Word layout extents or glyph ink. Extraction comparison tolerance0.00003pt is
+a verifier tolerance for the existing evidence, not a native layout allowance.
+
+Assign every border/gap one ledger owner, keyed by physical boundary and its
+plane conversion. Reconcile internal shared boundaries, fragment top/bottom,
+header/body/total interfaces and continuation boundaries once; do not charge
+the same stroke in two rows or omit outer edges. Establish this conversion
+before adding interior and border intervals. Keep terminal cell paragraphs,
+spacing and textbox anchor effects explicit, not absorbed into an unexplained
+epsilon. M1's8pt physical top and16pt before apply once per visible Module label;
+the label shares the member area and is not extra member-row advance.
+
+Accumulate row advances with outward interval arithmetic, including preceding
+flow, repeated header, total and disjoint reservations. Preserve correlation
+when justified; otherwise add individual upper bounds without cancellation.
+For merged labels require member-area lower bound >= label-extent upper bound
+in the same plane. Existing remainingSafe formulas still apply. A justified
+upper cost <= safe capacity permits a model fit; a justified lower cost above
+capacity permits no-fit; overlap/unsupported/missing bounds return
+NEEDS_SOURCE_FACTS, remainingSafe=null where the prefix itself is unresolved.
+Unknown must never become zero, an invented margin or a forced break decision.
+
+### Bounded discovery sequence; future execution requires owner authorization
+
+- [ ] **HB0 — Reconcile existing observations, no new Word export.** On copies
+  under a new lab artifact directory, replay the four origin probes plus the
+  earlier border controls. Produce a row/boundary ledger and the bound-record
+  proposal above. Verify the table's individual/joint ranges, outer-edge closure,
+  signed residuals, no double charges and stale/profile mismatch rejection.
+  Oracle512MiB worker, existing pinned runtime/image, no Core/Service build.
+  Gate: every observed measurement reconciles; undocumented native conversion
+  remains unknown. Stop for review if a predictive bound cannot yet be derived.
+- [ ] **HB1 — Challenge a derivation, not fit a constant.** Only after HB0 yields
+  a concrete, reviewable bound argument and supported domain, freeze it before
+  native holdouts. Budget at most8 desktop Word exports: fresh unchanged control;
+  three origin-only probes +4/+7/+11twips relative to the original; one short
+  final-fragment case; one80-member continuation; one wrapped-"ต่อ" plus total;
+  one preceding-text/table case near the predicted page boundary. Reuse existing
+  fixtures where possible, keep M1/Menu unchanged, and prepare source-based
+  expectations before export. Origins challenge a proposed model, not prove an
+  assumed period. Bind source hashes and all intentional copy differences.
+  Check all relevant fragment edges, line membership, row/label coverage, totals,
+  page transitions and visual clipping. PDFs are comparison evidence only, never
+  page-cut input. If a bound is exceeded, FAIL and return to review; do not tune
+  and call the same holdout an independent pass or automatically add exports.
+- [ ] **HB2 — Prove decision behavior in a lab-only replay.** For any justified
+  intervals test capacity just below lo, inside [lo,hi], and just above hi using
+  integer micro-points; exact equality with hi must follow the defined fit rule.
+  Include many-row accumulated error, shared borders, first/continuation frames,
+  header/total ownership, preceding text/table gaps, M1 once, empty cells, unknown
+  images/metrics, stale fonts/profile and interval overlap. No false-fit verdict;
+  unsupported cases must stay unresolved. Physical near-page behavior in HB1
+  is separate from these arithmetic tests. A replay PASS alone is not native
+  Word pagination acceptance or permission to implement the adapter.
+
+### Acceptance, resources and stopping rule
+
+This planning increment passes when evidence versus proposals are distinct,
+bound provenance/planes/ownership and rejection behavior are specified, staged
+proof is finite, and product edits remain excluded. Review formulas/units,
+evidence locators, final diff and whitespace; no runtime suite needed for this
+prose-only increment. Reuse prior results only within their documented scope.
+
+Future lab budget: HB0 one worker; HB1 at most one copy-build and one analysis
+worker plus8 native exports; HB2 one replay worker, sequential.512MiB per worker,
+swap0, coordinator128MiB unchanged; stop on OOM, preserve receipt and review,
+never raise memory/limits or retry automatically. Native Word and PDF parsing
+remain desktop work outside that cap. Pin the environment anew before execution.
+No live SQL/API/storage or original service control is required by this plan.
+
+A future discovery PASS needs a justified domain-specific bound, holdout coverage,
+ledger closure and honest unknowns. Finite successful samples alone only earn
+an observed envelope. If the derivation is unavailable, the valid result is
+RISK/UNKNOWN with remainingSafe=null; stop rather than pursue unlimited rounding
+experiments. Full MR1 remains open. No Core/Service code, original data/service,
+merge/push/release/install, or shared map promotion is authorized here.
+
+Planning review complete: the interval table was independently recalculated
+from the retained Oracle result, individual extrema and hull arithmetic agree;
+scope/units/decision gates reviewed and git diff --check passes. Only these two
+Project Control prose files change; no Oracle/Word runtime test was run anew.

@@ -1031,3 +1031,15 @@ and remainingSafe remain unresolved/full MR1 open. A future mapping must bind
 its native profile/frame/origin assumptions and use justified intervals rather
 than an exact source stack plus0.05. No Core/Service edit, original data/service
 operation, SQL, integration/merge/push/release/install or map promotion.
+
+## Next proposal: qualified native row intervals — 2026-11-04
+
+The existing plan's "MR1 row-height interval plan after the Word origin probes"
+section owns the proposed HB0/HB1/HB2 sequence. It separates source stacks,
+observed painted extents and justified predictive advances; specifies profile/
+plane binding, border ownership, signed outward interval accumulation and
+fail-closed handling of unknowns. The four-probe envelopes are observations,
+not universal safety bounds. Existing confidence/verdict/remainingSafe semantics
+above are preserved. Status PLAN READY FOR REVIEW, no new experiment this round.
+M1/Menu and Oracle512MiB remain fixed; no Core/Service implementation, original
+data/service operation, integration or map promotion follows from this proposal.
