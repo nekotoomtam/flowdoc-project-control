@@ -4420,3 +4420,52 @@ this exact file using previous Word settings, keep its name, then compare both
 pages with M1/E3 and verify the entire total row stays on page2. No automatic
 closing of E3/MR0. No Core/Service edits or integration, merge/push/release/install,
 original data/service changes or map promotion; product candidates remain clean.
+
+
+## MR0 E3R1 owner Word PDF acceptance — 2026-11-04
+
+Owner supplied the17member E3R1 PDF and authorized read-only comparison, not
+product changes/integration. Active role Evidence Reviewer/Project Control
+Steward; inline IDs not applicable. Existing E3R1 native page/total/wrap checks
+are the bounded acceptance target. Prior E3R1 WORD PENDING is superseded by
+this result; original18member E3 page-target failure remains historical evidence.
+
+Evidence: E3R1 artifact root's `owner-pdf-comparison/` contains immutable
+`references/`, `comparison.json` (PDF hash/metadata, text/row/group coordinates),
+`checks.json` (automated assertions), `result.json` (post-visual-review outcome)
+and240dpi `renders/`. Reproduction scripts: `compare-pdf.py`, `check-pdf.py`.
+Native owner PDF SHA256
+`8ab5d1d82dc115e7e3c2b5b0df8cf3a13c46afa8186d05193cc554b94d6c15ad`.
+Source PDF and delivered DOCX hashes rechecked unchanged after review. No
+Oracle session or memory-test rerun was needed for local PDF inspection.
+
+PASS_E3R1_BOUNDED_NATIVE_WORD_FIXTURE:
+
+- Exactly2pages,9/8members, all17markers once in order. Footer fields read
+  Page1of2 and Page2of2; no third/blank page.
+- Two complete Module labels. Source label5lines on page1; page2continuation
+  6lines with exact `(ต่อ)` alone on the new last line. Text/line positions and
+  bounded label ink are identical to previously verified E3, including suffix.
+  No manual break was added in the DOCX.
+- Every Menu text complete and inside its native row bounds; both Module labels
+  complete and within merged-cell bounds. All17non-Module data-character lists
+  and coordinates match original M1 rows exactly. Horizontal row edges match;
+  member heights remain68.40/68.42/68.43pt. All17member interiors are pixel-
+  identical to M1 at240dpi (x188–565pt, row edges trimmed0.6pt). No whole-page
+  parity or removal of existing M1/Core geometry differences is claimed.
+- Total153/153/0 appears once on page2, entirely inside its row: top682.06pt,
+  bottom715.90pt, height33.84pt; text699.15664–707.67664pt. Unchanged section
+  body bottom750.90pt leaves35.00pt. This confirms the prior fit projection for
+  this exact fixture, not a universal Word pagination formula.
+- Inspected both complete-page240dpi renders plus detailed continuation and
+  final-member/total crops. No visible clipping, overlap, missing text, blank
+  page or header/footer damage observed. Visuals: `E3R1-both-pages.png`,
+  `E3R1-page2-wrap.png`, `E3R1-page2-final-row-and-total.png`.
+
+E3R1 native acceptance is closed for this copy, alongside the previously proven
+E1/E2 edge cases and base80 rendering. Full MR0/generic continuation acceptance
+is not promoted: non-crossing UAT regression and source-owned page-fact/MR1
+requirements remain outside this proof. Retain total/header/section capacity
+accounting and the18member overflow evidence. Stop this bounded verification;
+no Core/Service edits, code integration, merge/push/release/install, original
+data/service changes or map promotion. Product candidates remain clean.
