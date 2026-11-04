@@ -3187,3 +3187,32 @@ records hashes and scope. Validation decodes/verifies all17 embedded images and
 confirms zero script tags. Browser display itself is not claimed verified because
 the known local-file browser restriction remains; a direct local image is also
 delivered in chat. No runtime re-test or Core/Service/data change is involved.
+
+
+## UAT cell-ending paragraph copy probe; owner Word export pending (2026-11-04)
+
+Owner authorized trying DOCX adjustments from the visible UAT table difference,
+then steered delivery to supplying the DOCX files for their own conversion.
+Status: **STRUCTURAL_COPY_CHECKS_PASS_NATIVE_WORD_EXPORT_PENDING_OWNER**.
+Roles external lab implementer/Evidence Reviewer/PC Steward; IDs not applicable.
+No Core/Service implementation. Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-cell-terminator-20261104/`.
+
+The selected UAT tables8-11 have source-guided SDT-ending cells. A hypothesis
+is that Word supplies additional paragraph/line space at that boundary; this
+is not yet a confirmed cause. The copy-only probe adds an explicit empty1twip
+paragraph with controlled tiny paragraph-mark formatting at9 such cells, leaving
+all existing widths, margins, text, styles, VML shapes/maps and other ZIP parts
+unchanged. Removing those9 additions restores the original semantic XML tree.
+ZIP CRC/text/other-part byte identity checks pass; actual XML/rels total112174.
+The512MiB/swap0 Oracle worker peaks232.85MiB, exits0 with no OOM; original
+container identities and product/package/input hashes stay stable.
+
+`files/UAT-control.docx` is byte-identical to the original delivered full UAT.
+`files/UAT-explicit-cell-end.docx` is the probe; `delivery.json` and the Oracle
+probe/receipt records retain hashes and scope. Owner will convert both using
+the same Word settings and separate PDF names before geometry/flow acceptance.
+Native Word rendering is not verified. GUI preparation did not reach a verified
+conversion; no text was typed and no document save/export occurred before the
+owner redirected to file delivery. No more UI action is taken. No original
+PDF/DOCX overwrite, product change, merge/push/release/install or map promotion.
