@@ -4235,3 +4235,78 @@ forced suffix wrapping and non-crossing UAT regression remain open. Production
 page-fact discovery still needs MR1; no product implementation is authorized.
 Core/Service candidates remain clean/read-only, no original data/service access,
 merge/push/release/install, product map or shared readiness promotion.
+
+
+## MR0 three edge-fixture copies — 2026-11-04, Word pending
+
+Owner authorized three additional copy-only Oracle512MiB cases, preserving M1
+and Menu textboxes, for owner Word PDF conversion. Active role: isolated copy
+implementer/Evidence Reviewer; Project Control Steward for this existing-plan
+append. Inline execution IDs not applicable. Scope is the three open MR0
+representation cases, not MR1 pagination discovery or a product implementation.
+
+Artifact root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-repeat-mr0-edges-20261104`.
+Reproduction: immutable `original.docx`, `build.py`, `remote.py`, `run.py`,
+`packet.json`, and independent `verify-local.py`. Evidence: `oracle/receipt.json`,
+`oracle/outputs/verification.json`, cgroup files, `transport.log`, `delivery.json`.
+Source remains SHA256
+`5845bae5e5452b7a8a29dc494da180c18b6e615e2a50c169b0beec22fec6e253`.
+
+- E1 `files/MR0-E1-last-page-2-rows.docx`: selected original members0–19,
+  fixture cuts9/9/2, three Module labels and two continuation suffixes. The last
+  two-row fragment tests original long-label fit. XML/rels8440nodes; SHA256
+  `8847192c38debd623c0d738d8372c12580e0c6b8e92391e0252d650559122e6c`.
+- E2 `files/MR0-E2-multiple-groups.docx`: members0–19 partitioned into synthetic
+  A0–3, B4–13, C14–19. Target page1 A then B; page2 B (ต่อ) then newly starting
+  C WITHOUT suffix; page3 C (ต่อ). Five visible labels, two suffixes, cuts9/9/2.
+  XML/rels8470nodes; SHA256
+  `0fb352454eedc3d6b6d41963bf2393d4054e821616468e4854f8ca9102d76382`.
+- E3 `files/MR0-E3-suffix-wrap.docx`: members0–17, cuts9/9. Source label is the
+  original long label plus `label wordslabel iii`, chosen to leave less than
+  suffix width at the end of its predicted last line. Continuation appends the
+  normal ` (ต่อ)` run: NO forced break/no-break-space/paragraph change inside
+  the label. Two labels, one suffix. XML/rels7594nodes; SHA256
+  `2ffe3493e535e8ac823155fa24e646acbff5fe3a5cb7f3e732d1ddd102d89f09`.
+  Automatic wrapping is a TARGET, not a confirmed Word outcome; compare source
+  page1 and continuation page2 after owner export. If it does not wrap, this
+  gate remains open rather than being reported as a passing wrap case.
+
+These are intentionally smaller synthetic fixtures, not replacements for the
+original80member document. Excluded member indices are explicit in the manifest;
+retained row order/values are unchanged. Fixture totals are recomputed210/210/0
+for20members and171/171/0 for18. Synthetic grouping changes native Module
+merges/labels only; original selected Menu SDT source group0 lineage is retained
+byte-for-byte. External manifest maps fixture partitions back to original row
+indices; it does not pretend Core emitted new A/B/C source-map identities.
+
+Oracle-host worker512MiB/swap0, coordinator128MiB, pinned prior image,
+network-none/read-only input: exit0, OOMKilled=false, observed peak34742272bytes
+(33.133MiB), cgroup oom_kill0, inputs unchanged. Original three container
+identities/images/start times/restart counts unchanged, no owned worker running
+at return. No SQL, old business data or original service operation was performed.
+
+PASS structural checks in worker and independent downloaded-package checks:
+all selected members once/in order, unique control IDs20/20/18, raw Menu SDT/VML
+blocks unchanged, selected non-Module cells unchanged, every non-document ZIP
+part byte-identical, CRC/XML/rels valid, section/header/footer/style resources
+unchanged. Each visible label keeps M1 physical top160twips plus before320twips
+once; continuing rows before0. Merges close/restart per fragment or group;
+only between-table page-break paragraphs use the prior1twip separator. All
+options remain unchanged, including current lab XML option300000. Internal
+continuous-table controls for each fixture are retained under `oracle/outputs/`
+for comparison; only the three requested candidate DOCX files are delivered.
+
+Independent verifier initially searched raw XML for contiguous markers; Menu
+text is split across runs, yielding zero raw matches. Corrected only the local
+verifier to concatenate native text nodes before marker checks; all six candidate/
+control packages then passed. No document repair or Oracle rerun was needed.
+
+Result: PASS_MR0_EDGES_STRUCTURAL_WORD_PENDING. Owner deliberately performs
+native Word export; no substitute renderer result or native layout PASS is
+claimed. Actual page counts, labels/headers/borders at page/group boundaries,
+row heights, first-line position, clipping, forced-extra-line fit and field
+refresh remain pending. Expected pages3/3/2 are fixture targets, not observations.
+Compare all three PDFs with preserved M1 geometry and their manifests before
+closing the three MR0 cases. Non-crossing UAT regression and MR1 remain open.
+No Core/Service edits or integration, original service stop, merge, push,
+release/install or map promotion. Product candidates remain read-only.
