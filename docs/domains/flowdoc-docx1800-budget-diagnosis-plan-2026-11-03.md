@@ -4901,3 +4901,45 @@ Next bounded work: resolve native reference-plane/paragraph/stroke contribution
 to the observed residual before applying a row bound. No original data/service
 operation, SQL, Core/Service edit, integration/merge/push/release/install or map
 promotion.
+
+## MR1 controlled native border-cause proof — 2026-11-04
+
+Owner authorized copy-only residual-cause proof in Oracle512MiB, preserving
+M1/Menu and excluding product/original data/service changes/integration. Inline
+Evidence Reviewer/Project Control Steward, IDs N/A. Reuse existing contract/plan;
+two final Oracle phases, four native desktop Word exports, independent review.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-row-delta-cause-20261104`.
+The source-flow contract's Controlled native Word border-cause experiment
+section records controlled copy changes, native API version, raw events,
+reference-plane definition, retained failures and complete evidence locators.
+Installed Word20527 exports read-only copies on desktop; Oracle builds/checks
+copies/events under512MiB. The cap does not include desktop Word or PDF parsing.
+
+All4copies retain text/Menu textbox bytes and M1 top8pt+before16pt. Common
+numeric-cell markers are proven geometry-neutral against the original Word PDF.
+A/control native span135.99001pt; B/zero-border134.55pt; C/1pt-border137.55pt;
+D/ten ordinary AtLeast-toExact paragraphs135.99001pt. All13blocks retain source
+line membership; target crops visually inspected without clipping. D shifts
+ordinary glyph baselines and is not a proposed product change.
+
+Confirmed:1.44001of1.49001pt is the border/reference-plane component omitted
+from the source-stack comparison. A paints about0.48pt per row; B removes this
+component while preserving total interior. D excludes ordinary AtLeast expansion
+as row-height cause for this sample. Residual0.05pt is localized to native
+interior mapping, but its internal algorithm remains Unverified. C redistributes
+interior by0.12pt, so no universal+0.5pt/residual correction or Core defect claim.
+Word Cell.Height's automatic9999999values are unusable, not actual measurements.
+
+Final Oracle peaks127.09765625MiB build/41.26953125MiB comparison, swap0,
+exit0/no OOM. Ten analysis+8independent checks pass. Failed ZipInfo metadata and
+overstrict PDF-coordinate precision checks remain archived; corrective lab-only
+runs do not alter source files, native PDFs or product code. Original baselines/
+container identities unchanged, product candidates clean, no owned lab workers.
+
+Status PASS_CONFIRMED_BORDER_COMPONENT_WITH_UNVERIFIED_INTERIOR_RESIDUAL.
+Next bounded decision: define native stroke/reference-plane ownership and handle
+the remaining native-interior uncertainty before a safe row bound. RemainingSafe
+null/full MR1 open. No original data/service operation, SQL, Core/Service edit,
+integration/merge/push/release/install or map promotion.

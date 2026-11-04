@@ -850,3 +850,105 @@ page cursor, resolve the native reference-plane/paragraph/stroke effects and
 validate the resulting model on its intended scope. RemainingSafe stays null;
 full MR1 stays open. No Core/Service edit, original data/service operation,
 SQL, integration/merge/push/release/install or map promotion.
+
+## Controlled native Word border-cause experiment — 2026-11-04
+
+Owner authorized residual-cause proof on copies, Oracle512MiB, M1/Menu retained,
+no Core/Service/original data or service changes/integration. Inline discovery
+Evidence Reviewer/Project Control Steward; IDs N/A. Proof budget: one copy-build
+worker, four native desktop Word exports, one comparison worker and independent
+review. Corrective lab-only runs below repair verified harness failures; no OOM
+or native export retries. Reuse this contract and existing plan.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-row-delta-cause-20261104`.
+Final copy inputs: `run2/oracle/outputs/`; `build.py` records controlled OOXML
+changes. Fresh native outputs: `word-pdf/`, with `word-export.json` and
+`export-word.ps1`. `word-geometry.json`/`read-word-geometry.ps1` retain a separate
+read-only API probe. Final analysis: `analysis-run2/`, including raw full page5
+events, PDFs, input hashes, script and `oracle/outputs/verification.json`.
+Independent checks: `verify-local.py`/`verification-local.json`; hash inventory
+`artifact-hashes.json`. Four same-named PNG crops retain visual review.
+
+The installed Word build16.0.20527 (executable16.0.20527.20112) exported all4
+copies at72pages via an independent Word COM document API instance, read-only
+inputs, macros disabled, no recent-file registration and no saving to DOCX.
+Each instance/document closed in finally. The connected Word document tool had
+no session; the UI file dialog did not reliably accept targeted input, so the
+existing document API was used instead. No software/font installation or cloud
+upload. Word export and PDF parsing/rendering run on the desktop, not inside
+the Oracle memory boundary. Oracle constructs copies and checks immutable
+native events under512MiB/swap0; do not claim Word itself ran within that cap.
+
+Each copy has common passive shading in the numeric cell of each member row,
+giving observable top/bottom interior strips when borders are absent. Beyond
+that marker, B/C/D each change one factor relative to A. All text and complete
+Menu textbox XML stay byte-identical; M1 top160twips/before320twips retained.
+Only word/document.xml changes; every other package part stays byte-identical.
+
+| Case | Factor beyond common marker | Native3row span pt | Measured interior sum pt |
+| --- | --- | ---: | ---: |
+| A | Original0.5pt border/AtLeast ordinary paragraphs |135.99001 |134.55 |
+| B | Border disabled, original ordinary paragraph rules |134.55 |134.55 |
+| C | Border doubled to1pt, original ordinary paragraph rules |137.55 |134.67 |
+| D | Ten ordinary member paragraphs AtLeast toExact;0.5pt border retained |135.99001 |134.55 |
+
+A reproduces the prior unmarked native row-stroke centers exactly within PDF
+serialization precision:134.78/168.62/219.62/270.77001pt. Thus markers are neutral
+for the observed row geometry. In B, marker-strip interior endpoints are
+contiguous between members, allowing a borderless span without inventing an
+invisible stroke center. A/C/D marker interior plus the actual painted stroke
+width reproduces each observed row-stroke interval. Column/text and line-member
+checks match all13source blocks in all4variants, still Module1/Menu1-2-2/
+ordinary peers1line. All four target crops were inspected: no visible clipping
+in this group. D changes ordinary glyph baseline position, an expected copy-only
+experimental difference, while its row boundaries remain unchanged. Do not
+present D as a product fix or as preserving all original glyph positions.
+
+Confirmed decomposition of the earlier1.49001pt comparison residual:
+
+`135.99001 - 134.50 = (135.99001 - 134.55) + (134.55 - 134.50)`
+
+`= 1.44001pt border/reference-plane component + 0.05pt native-interior residual`
+
+For A the nominal0.5pt borders paint approximately0.48pt per member row in this
+PDF, accounting for1.44pt across3rows. B removes that component while retaining
+the same total interior. Doubling border width in C increases the span with no
+new line wraps; the painted stroke becomes approximately0.96pt and native
+interior redistribution adds0.12pt relative to A. AtLeast/Exact in D does not
+change row height, so ordinary minimum-line-rule expansion is excluded as this
+sample's height cause. These are controlled native observations, not an assumed
+0.5pt correction copied from the previous unexplained result.
+
+The remaining0.05pt is located in native interior mapping, NOT confirmed as one
+specific Word rounding algorithm. The colored padding strips are8.04pt each
+for the unchanged8pt source settings; measured remaining interior area also
+differs from source line stacks. These painted regions describe PDF geometry,
+not a general Word layout API. C's different interior sum shows why a constant
+residual cannot be promoted. Keep this internal-cause portion Unverified; the
+border/reference-plane portion is Confirmed. No Core product defect or severity
+is inferred merely from comparing quantities with different reference planes.
+
+The direct Word API returns Cell.Height=9999999 with automatic HeightRule=0;
+those unusable values are retained but never treated as actual heights. Native
+PDF strokes/marker strips and visual evidence provide the measured geometry.
+Root-cause implication for a future adapter: give strokes/reference planes an
+explicit charge owner, separate source stack from bounded native row advance,
+and validate the chosen mapping; do not add0.5pt to every row universally.
+
+Final copy worker peak133271552bytes (127.09765625MiB); final comparison worker
+peak43274240bytes (41.26953125MiB). Both512MiB/swap0, coordinator128MiB,
+exit0/OOMKilled=false/oom_kill0. Ten Oracle analysis checks and8independent checks
+pass. Initial builder failed because zipfile.writestr mutates shared ZipInfo
+offsets; copying each ZipInfo fixes the lab verifier without changing source
+files. Initial analysis used a1e-8pt equality stricter than actual PDF coordinates;
+the retained corrective run uses0.00003pt, consistent with existing edge checks.
+No native PDF or hypothesis was changed to pass. Failed receipts/logs remain.
+
+Status `PASS_CONFIRMED_BORDER_COMPONENT_WITH_UNVERIFIED_INTERIOR_RESIDUAL`.
+This closes the dominant border/reference-plane cause for the sampled span;
+the0.05pt internal mapping and a general safe native upper bound remain open.
+RemainingSafe stays null/full MR1 open. Baseline DOCX/PDF and original3container
+identities/start/restart counts unchanged, no owned lab worker running;
+Core42008134/Servicedb15e9d clean. No original data/service operation, SQL,
+Core/Service edit, integration/merge/push/release/install or map promotion.
