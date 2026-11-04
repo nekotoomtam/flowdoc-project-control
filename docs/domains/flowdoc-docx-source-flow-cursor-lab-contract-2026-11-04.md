@@ -952,3 +952,82 @@ RemainingSafe stays null/full MR1 open. Baseline DOCX/PDF and original3container
 identities/start/restart counts unchanged, no owned lab worker running;
 Core42008134/Servicedb15e9d clean. No original data/service operation, SQL,
 Core/Service edit, integration/merge/push/release/install or map promotion.
+
+## Native page-origin sensitivity of the interior residual — 2026-11-04
+
+Owner authorized copy-only proof of the remaining0.05pt, Oracle512MiB, M1/Menu
+retained and no product/original data/service changes/integration. Inline
+Evidence Reviewer/Project Control Steward, IDs N/A. Proof budget: one copy-build
+worker, four desktop Word exports and one Oracle analysis worker, independent
+exact-number/visual review. Reuse this contract and plan; no code repair.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-interior-origin-proof-20261104`.
+Oracle copy inputs/results: `build.py`, `oracle/receipt.json`,
+`oracle/outputs/verification.json` and Y0/Y1/Y2/Y3 DOCX copies. Native exports:
+`word-pdf/`, `export-word.ps1`/`word-export.json`. Analysis: `analysis/`, including
+`native-cases.json`, source/plan snapshots, script, receipt and
+`oracle/outputs/verification.json`. Independent review:
+`verify-local.py`/`verification-local.json`, four native PNG crops and
+`artifact-hashes.json`. No additional software installation or active real data.
+
+The sole intervention is section top margin: original2120twips, then2121/2122/
+2123twips (origin shifts0/0.05/0.10/0.15pt). Y0 is whole-file byte-identical to
+the prior marked control. Replacing the one changed pgMar tag in the other
+copies restores the entire original document.xml byte-for-byte; all other
+package parts are identical. Every cell/text/font/style/line/border property,
+M1 top8pt+before16pt and complete Menu textbox XML stay unchanged. These are
+intentional page-origin counterfactuals on copies, not new product page settings.
+
+Installed Word20527 exports all4read-only copies at72pages, same API/settings as
+the prior experiment, no DOCX save. PDF parsing/rendering occurs on the desktop.
+Oracle512MiB verifies hashes/copy containment and compares immutable native
+events; Word itself and desktop PDF parsing are outside that memory cap.
+
+| Page-origin shift pt | Native interior row heights pt | Sum pt | Residual against unchanged134.50pt source stack |
+| ---: | --- | ---: | ---: |
+|0 |33.36 /50.52 /50.67 |134.55 |+0.05 |
+|0.05 |33.36 /50.64 /50.67 |134.67 |+0.17 |
+|0.10 |33.24 /50.64 /50.67 |134.55 |+0.05 |
+|0.15 |33.36 /50.64 /50.55 |134.55 |+0.05 |
+
+All13native text-block line memberships remain the same, Module1/Menu1-2-2/
+peers1each. Source row-stack costs remain134.50pt because no measured text,
+usable width, style, cell inset or content changed. First interior top is135.02pt
+for the0/0.05probes and135.14pt for0.10/0.15probes. The one-twip perturbation
+changes the residual by0.12pt and redistributes native row intervals despite
+identical cell source facts. Four target crops were inspected: no visible
+truncation in this group; small absolute-origin shifts are the intended change.
+
+Two independent PDF readers agree on geometry: desktop pdfplumber coordinates
+and pypdf's actual painted rectangle operators with graphics-state matrices.
+Marker rectangles use identity matrices. Native decimal operands are retained
+as strings and Oracle uses Decimal arithmetic throughout; independent review
+finds all24selected operand sequences literally in decoded PDF content streams.
+Thus the original0.05 and perturbed0.17 are present in native serialized data,
+not artifacts of Python binary-float subtraction, image scaling or OCR.
+
+Confirmed: the observed residual is native origin/coordinate-phase dependent.
+It cannot justify a fixed missing0.05pt content-height correction in Core. The
+experiment establishes a causal native-pipeline dependence, not Word's exact
+closed-source algorithm: layout-grid quantization versus painting/PDF coordinate
+serialization is still Unverified. PDF format itself is not claimed to mandate
+a0.12pt grid. Observed0.12pt changes and maximum0.17pt residual in these4cases
+are not a universal step/error bound or permission to add a constant to all rows.
+This does not exclude every possible mixed native mechanism; it rejects treating
+the measured residual as an invariant source-content quantity.
+
+Seven Oracle analysis checks and9independent checks pass. Copy worker peak
+62685184bytes (59.78125MiB), analysis43606016bytes (41.5859375MiB), both
+512MiB/swap0, coordinator128MiB, exit0/OOMKilled=false/oom_kill0; no failures,
+OOMs or corrective reruns this round. Original baselines and3container identities/
+start/restart counts unchanged, no owned lab workers running, Core/Service clean.
+
+Status `PASS_NATIVE_ORIGIN_DEPENDENCE_AND_EXACT_DECIMAL_CHECK`. The residual's
+position dependence/native serialization evidence is now proven for the sample;
+the earlier generic internal-cause unknown is narrowed, not rewritten as an
+exact Word algorithm proof. Safe native row bounds, the stage-specific mapping
+and remainingSafe remain unresolved/full MR1 open. A future mapping must bind
+its native profile/frame/origin assumptions and use justified intervals rather
+than an exact source stack plus0.05. No Core/Service edit, original data/service
+operation, SQL, integration/merge/push/release/install or map promotion.

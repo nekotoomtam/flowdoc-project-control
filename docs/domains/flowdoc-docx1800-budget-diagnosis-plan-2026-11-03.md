@@ -4943,3 +4943,36 @@ Next bounded decision: define native stroke/reference-plane ownership and handle
 the remaining native-interior uncertainty before a safe row bound. RemainingSafe
 null/full MR1 open. No original data/service operation, SQL, Core/Service edit,
 integration/merge/push/release/install or map promotion.
+
+## MR1 native origin-dependent interior residual — 2026-11-04
+
+Owner authorized remaining0.05pt proof on copies, preserving M1/Menu, no product
+or original data/service changes/integration. Inline Evidence Reviewer/Project
+Control Steward, IDs N/A; one Oracle copy-build, four desktop native Word exports
+and one Oracle comparison worker. Reuse this plan and source-flow contract.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-interior-origin-proof-20261104`.
+The contract's Native page-origin sensitivity section records controlled changes,
+exact PDF operators, scripts/receipts, native crops and remaining limitations.
+Only section top margin changes by0/1/2/3twips. Y0 is byte-identical to the prior
+marked control; every cell/text/style/border/M1/Menu property stays identical.
+
+Four native Word20527 exports retain72pages and all13line memberships. Interior
+sums are134.55/134.67/134.55/134.55pt against unchanged134.50pt source stack,
+giving residuals0.05/0.17/0.05/0.05pt. One0.05pt origin perturbation changes the
+native residual by0.12pt. Decimal arithmetic on literal PDF rectangle operands
+and independent PDF-reader agreement exclude Python binary-float/OCR artifacts.
+Confirmed: residual is native position/coordinate-phase dependent, not a justified
+fixed missing-content correction. The exact internal split between Word layout
+grid and painting/PDF export remains Unverified; no universal0.05/0.12/0.17bound.
+
+Seven Oracle+9independent checks pass; four target crops inspected without visible
+truncation. Oracle512MiB/swap0, peaks59.78125MiB build/41.5859375MiB analysis,
+exit0/no OOM, no reruns. Desktop Word/PDF parsing is outside those peaks. Original
+baselines/container identities stable, candidates clean, no owned lab workers.
+
+Status PASS_NATIVE_ORIGIN_DEPENDENCE_AND_EXACT_DECIMAL_CHECK. Native-profile/
+frame/origin-aware bounds remain necessary before a safe cursor; remainingSafe
+null/full MR1 open. No original data/service operation, SQL, Core/Service edit,
+integration/merge/push/release/install or map promotion.
