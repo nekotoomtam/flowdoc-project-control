@@ -2695,3 +2695,217 @@ receipts, independent review disposition and coverage were reconciled; final
 documentation verification is diff review plus `git diff --check`. Original
 container identities and Core/Service heads stay unchanged. No original data/
 service action, merge, push, release, installation or DOCUMENT_MAP update occurs.
+
+
+## Baseline reference-chain review and proposed calibration plan (2026-11-04)
+
+Status: **REVIEW_COMPLETE_OLD_FORMULA_REJECTED_NEW_FORMULA_NOT_PROVEN**.
+Owner request: review the textbox/parent-paragraph reference and plan the next
+formula before more execution. Active roles: Planning Partner and Evidence
+Reviewer, then PC Steward for this existing canonical note. Product owner: Core;
+shared planning owner: PC. Single-room Work/Phase/Checklist execution IDs are
+not applicable. This is bounded discovery/planning, routine risk; it authorizes
+no implementation or further runtime/Word calibration. Current PC base5c2676c;
+Core582f141 and Service db15e9d remain read-only. The generated October4 Editor
+snapshot is unrelated to this request; the explicit scope and this plan govern.
+
+Document budget: this section only; no new Work, map or product documentation.
+Proof budget: static inspection of the retained small DOCX/PDF/facts and one
+bounded local measurement reconciliation using two existing PDF parsers. No
+remote connection, new lab worker, app control or original-service access.
+The correction preserves B1's structural pass and geometry refusal; it does
+not reopen a historical registered execution or turn its proof into readiness.
+
+### Reconciled result of the interrupted small Word round
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r2-baseline-word-20261104/`.
+Use `protocol.json`, `produce/oracle/receipt.json`,
+`produce/oracle/current/geometry-result.json`, the three DOCX/PDF pairs and
+`baseline-review.json`. The new JSON records static remeasurement of existing
+outputs, not a new Word or Oracle test. All three DOCX SHA256 values still match
+the immutable Oracle producer result. Word's interrupted close action remains
+unverified; no app action was attempted in this review.
+
+| Existing Word export | Line1 baseline from page top | Line2 | Pitch |
+| --- | ---: | ---: | ---: |
+| Original source-word reference |91.70pt |111.62pt |19.92pt |
+| Inline, copied position5 |70.20pt |90.26pt |20.06pt |
+| Inline, former formula position2 |71.76pt |91.82pt |20.06pt |
+
+Both PDF parsers independently agree on the first RESOURCE text origin of each
+line: pdfplumber/pdfminer character matrices and pypdf text visitors. All66
+non-whitespace characters occupy the expected two baselines in each export;
+non-whitespace text/order and12pt size agree. Embedded PDF font-stream hashes
+agree across all three exports; settings/fontTable part bytes are unchanged.
+The prior Oracle producer used39.0625MiB peak without OOM, unchanged512MiB
+memory and equal memory+swap (swap0). This is reused receipt evidence, not a
+current live Oracle state assertion or a512MiB native-Word-host claim.
+
+The translated variant is19.94pt and19.80pt above the reference. Its pitch error
+is0.14pt, above the already-declared0.05pt criterion; the first-line baseline
+error also exceeds0.25pt. Non-whitespace glyph x-origin differences reach0.12pt
+within the declared0.25pt small-case horizontal criterion. XML preserves exact
+source whitespace, but PDF non-whitespace measurement alone is not complete
+whitespace/shaping/ink fidelity proof. All variants have one equal-sized page.
+No clipping or full source-map acceptance is inferred from these measurements.
+
+The original prediction15.02pt was adapter-local arithmetic, not a native Word
+page coordinate. Do not compare it directly with91.70pt or treat the residual
+as a universal20pt correction. The previous round's UI was stopped by physical
+Escape after exports; this section reconciles its retained results without
+claiming a completed UI cleanup or reopening UI control.
+
+### Confirmed reference facts and limits
+
+Implementation owner evidence:
+`flowdoc-core/src/docx/source-layout-xml.ts:85-105`, especially96-102.
+The serializer retains the parent paragraph properties, replaces its text with
+owned VML shapes and assigns an exact outer frame. Each shape uses
+`mso-position-vertical-relative:text`, `margin-top=-top-cellInsetPt`, zero textbox
+insets and a top-anchored inner paragraph. Its inner frame and w:position are
+computed together from padded font/ink geometry. The small reference has400twip
+outer frames,463twip inner frames, margin-top=-1pt, position5, and no preceding
+body paragraph; the body has two SDTs followed by sectPr. There is no XML proof
+of an extra blank20pt body paragraph. The section margin top is1134twips and
+compatibilityMode15. Section grid linePitch360 is present, but exact lineRule is
+also present on both relevant frames.
+
+Microsoft's [shape implementation notes](https://learn.microsoft.com/en-us/openspecs/office_standards/ms-oi29500/edfd844d-bf1a-4109-81cd-4caa788f1449)
+define vertical `text` relative to the paragraph owning the anchor, whereas
+`line` is relative to the anchor line; margin-top offsets that reference area.
+Neither means that the origin is the glyph baseline or SourceGuide line top.
+Its horizontal `char` basis is separately relative to the object anchor.
+The [run position definition](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.position?view=openxml-3.0.1)
+raises positive values and lowers negative values relative to surrounding
+non-positioned text in half-points. It does not define the initial baseline as
+four-fifths of exact line height. The4/5 factor is the existing Core adapter's
+model, not a guaranteed Word layout law.
+
+The [grid line-pitch definition](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.docgrid.linepitch?view=openxml-3.0.1)
+allows exact paragraph line spacing to override grid pitch. Therefore missing
+paragraph snapToGrid=false is a possible controlled diagnostic only, not proof
+that grid caused this discrepancy. No docGrid removal or style normalization
+is proposed as an automatic repair.
+
+Confirmed defect is in the lab translation hypothesis: it treats old/new local
+origins/default-baseline functions as interchangeable. The exact native cause
+of the large residual and0.14pt pitch difference remains unverified. Parent
+anchor layout, paragraph-mark metrics, inherited context and Word rounding are
+candidate contributors, not confirmed product defects. Equal font bytes rule
+out a changed embedded font stream in this comparison, but not every shaping
+or layout effect. The old Word reference itself is not yet proved to match the
+source/PDF design; preserving legacy geometry and matching SourceGuide intent
+must remain separate acceptance questions.
+
+### Proposed formula: compose coordinate systems before solving position
+
+Use a page-downward point coordinate system. For line i define:
+
+- A_old[i]: native Word page coordinate of the parent reference area used by
+  the original shape, including flow/section/cell/paragraph context;
+- m[i]: emitted shape margin-top; q[i]: textbox top inset, zero here;
+- T_in(C_in,L_in,p_old): actual inner default-line layout plus run positioning,
+  returning baseline relative to textbox content origin;
+- A_new[i]: page coordinate of the new inline paragraph reference area;
+- T_out(C_out,H,p_new): actual inline baseline relative to that area;
+- C: font/style/paragraph-mark, inherited formatting, compatibility, grid and
+  first-line/page/table context. Geometry-affecting context must be explicit.
+
+The required equality is:
+
+    Y_old[i] = A_old[i] + m[i] + q[i] + T_in(C_in,L_in,p_old)
+    Y_new[i] = A_new[i] + T_out(C_out,H,p_new)
+    Y_new[i] = Y_old[i]
+
+Only if calibration proves a stable position response without changing line
+flow may T(C,L,p) be represented as U(C,L)-p/2 plus bounded renderer rounding.
+Then the conditional closed-form candidate is:
+
+    p_new = round(p_old + 2*((A_new-A_old) + (U_out-U_in) - m - q))
+
+This is a proposed equation, not a selected numeric correction. Round only the
+final representable half-point value; retain source values and separate
+quantization residual from Word/PDF measurement uncertainty. If the position
+response or parent flow changes with p, solve the measured bounded response
+instead of forcing this linear form. No U=0.8*lineHeight substitution is admitted
+without evidence. No new numeric p or per-template lookup table is adopted.
+
+Baseline equality is insufficient: require equality of Y[i+1]-Y[i] as well.
+A first-line shift cannot remove the observed pitch drift. Keep every400twip
+outer frame and total source row/section budget unchanged. If exact baseline,
+pitch, ink and budget cannot coexist, refuse the representation and return to
+design rather than introducing cumulative spacing or altering line choices.
+
+### Approaches considered and recommended next proof
+
+1. Add a constant20pt correction or select position from this output: rejected.
+   Two lines already show different errors; it would fit observed data without
+   explaining anchor layout or generalizing to page/table/font contexts.
+2. Separate the native reference origins and position response: recommended.
+   It preserves the inline target and existing caps while exposing the unknown
+   terms. It requires a small Word calibration before there is a numeric formula.
+3. Retain one positioned textbox per source line: fallback to assess only if the
+   inline origin/pitch cannot be represented. It may retain the old anchor model,
+   but shared-line text can change shaping and adds drawing/XML costs. Neither
+   the49000-node target nor Word fidelity is proved; this is not an approved
+   renderer or automatic fallback.
+
+Proposed future copy-only stages, not executed by this review:
+
+- **G0: recover observation reliability.** Reconcile original paragraphs,
+  paragraph-mark properties, source owner tags, frame/section/style context and
+  exact fonts. Use copies of the same small base and retain hashes. Repeat the
+  unmodified reference and inline control once in the same Word build/export
+  settings to quantify baseline and pitch repeatability before judging0.05pt.
+  If exporter variation exceeds the criterion, stop and review measurement;
+  never widen tolerance silently. Verify baseline extraction through both
+  parsers and page context. Probe markers/outlines must not be assumed inert:
+  compare probe and control layouts first and reject perturbing probes.
+- **G1: isolate the anchor reference.** On separate diagnostic copies change
+  only margin-top by a predeclared+1pt, and separately change `text` to `line`
+  while retaining old inner geometry. Measure all lines, glyph baselines,
+  any measurable shape/parent origins and next-paragraph positions. These are
+  response experiments, not outputs claiming preserved geometry. If a shape
+  outline is used to locate the box, establish that it leaves text/flow intact.
+  Do not infer absolute A_old from a baseline residual alone.
+- **G2: isolate baseline response and pitch.** With anchor context fixed,
+  independently vary p=0,+2,-2 in inner and inline copies; keep font/mark,
+  line frames and every other property unchanged. These test points are chosen
+  by units/symmetry, not tuned to the desired result. Measure one-step response,
+  first versus later lines and pitch. If paragraph-mark/default context must
+  be changed, make it a separate one-factor probe; do not combine it with p.
+  Do not extrapolate the400twip/12pt result to other frames or fonts.
+- **G3: derive, freeze and validate.** Use G1/G2 calibration only to derive
+  context-bound U/origin rules. Freeze the equation and expected errors before
+  a held-out small document with at least three equal-frame lines and a changed
+  preceding-context position. Check first and subsequent baselines, all glyph
+  coordinates, pitch and unchanged total budget. Additional font/style/page or
+  table contexts need their own bounded eligibility evidence. If the narrow
+  case fails, stop; do not tune/retry full1800/UAT/SRS.
+
+Keep the existing small-case criteria: exact source text/ranges/styles/font,
+equal page count, baseline error<=0.25pt, pitch error<=0.05pt, horizontal
+error<=0.25pt, no missing/changed/clipped glyph or ink and unchanged source frame
+budget. These tolerances do not certify full-document fidelity. Small passes
+must precede re-binding emitted source-line targets and full-package XML/rels,
+drawing/byte-cap validation. Full fixtures and source-map admission remain held.
+
+Future Oracle processing workers remain512MiB each, equal memory+swap (swap0),
+the existing coordinator budget and unchanged default heap/runtime. Hard caps
+remain50000 XML/rels nodes and32MiB, with49000-node target and old drawing/
+shaping limits. Stop at the first V8/cgroup OOM. Native Word/export observation
+is on the Windows host and is not represented as a512MiB worker proof.
+
+### Disposition
+
+Planning acceptance is complete: references, failed assumption, conditional
+formula, alternatives, staged proof, stopping criteria and unknowns are explicit.
+The numeric renderer formula, exact residual cause and general Word fidelity are
+**not proven**. No new calibration, Core/Service edit, original-data/service
+operation, remote inspection, merge, push, release or installation occurred.
+Only this existing PC plan and one external measurement JSON are added to the
+current scope. Existing producer/codecs/maps/artifacts remain unchanged. No
+DOCUMENT_MAP or generated shared truth promotion. Verification for this prose
+is evidence reconciliation, final diff review and git diff --check; no runtime
+suite is applicable to a read-only design review.
