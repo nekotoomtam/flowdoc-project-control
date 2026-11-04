@@ -4374,3 +4374,49 @@ Menu geometry, to exercise wrapping AND fit the two-page target. Preserve the
 reservations in capacity facts. Non-crossing UAT regression and generic source-
 owned pagination remain unverified. No Core/Service edits, merge/integration,
 push/release/install, original data/service changes or map promotion.
+
+
+## MR0 E3R1 17member copy — 2026-11-04, Word pending
+
+Owner authorized the proposed copy-only17member E3 revision in Oracle512MiB,
+keeping M1/Menu and the exact proven wrapping label, for owner Word export.
+Scope/role: isolated fixture implementer then Evidence Reviewer; Project
+Control Steward for this append, inline IDs not applicable. Existing MR0 E3
+page-capacity criterion stays open pending native evidence; no product lane.
+
+Artifact root `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-repeat-mr0-e3-17-20261104`.
+Immutable source plus `build.py`, `remote.py`, `run.py`, `packet.json` reproduce
+this bounded worker; `verify-local.py` independently checks downloaded output.
+Receipts: `oracle/receipt.json`, `oracle/outputs/verification.json`, cgroup files,
+`transport.log`, `delivery.json`. Prior18member E3 documents/PDF/results remain
+unchanged and retain their three-page capacity failure.
+
+Delivered `files/MR0-E3R1-17-members-suffix-wrap.docx`, SHA256
+`5829498c7136dd526a4f49ec12ed96712433a0e2b095f6efe6722b60419382ce`.
+Fixture selects original members0–16 once, in order; cuts9/8, two Module labels,
+one generated suffix, total153/153/0. Original excluded indices17–79 are explicit
+in the manifest. No change to long source-label text, suffix run/font/spacing,
+M1 physical top160twips/paragraph-before320twips or native Menu textboxes.
+Both fragment-start Module cells are byte-equivalent after parsing to the
+18member E3 counterparts. No manual line break inside either label; one
+between-table page-break paragraph, two physical tables. Internal continuous
+17member control copy is retained under `oracle/outputs/`, not delivered.
+
+PASS worker and independent checks:17unique controls/member markers, all17
+selected raw Menu SDT/VML blocks identical, all68non-Module data cells unchanged,
+every other ZIP part byte-identical, CRC/XML/rels valid. XML/rels7299nodes with
+unchanged lab option300000. Source/section/header/footer/style parts unchanged.
+Oracle worker512MiB/swap0 and coordinator128MiB: exit0, OOMKilled=false,
+cgroup oom_kill0; observed peak30736384bytes (29.3125MiB). Inputs and original
+three container identities/start times/restart counts unchanged; no owned worker
+running at return. No SQL, old business-data access or original-service action.
+
+Projection only, from previous native E3 positions: member17bottom682.06pt plus
+prior total height33.84pt =715.90pt against unchanged body bottom750.90pt,
+leaving35.00pt. This is not a newly rendered two-page result or a clipping PASS.
+Actual page count, automatic suffix wrapping, row/label positions, totals/footer
+refresh and clipping remain PENDING_OWNER_WORD_EXPORT. Owner should convert
+this exact file using previous Word settings, keep its name, then compare both
+pages with M1/E3 and verify the entire total row stays on page2. No automatic
+closing of E3/MR0. No Core/Service edits or integration, merge/push/release/install,
+original data/service changes or map promotion; product candidates remain clean.
