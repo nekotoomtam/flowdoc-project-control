@@ -4310,3 +4310,67 @@ Compare all three PDFs with preserved M1 geometry and their manifests before
 closing the three MR0 cases. Non-crossing UAT regression and MR1 remain open.
 No Core/Service edits or integration, original service stop, merge, push,
 release/install or map promotion. Product candidates remain read-only.
+
+
+## MR0 E1–E3 owner Word PDF review — 2026-11-04
+
+Owner supplied all three PDFs and requested read-only layout/content checks,
+not candidate edits or integration. Active role Evidence Reviewer/Project
+Control Steward; inline IDs not applicable. Existing MR0 edge checklist is the
+acceptance target. This append supersedes Word-pending for the reviewed facts,
+while retaining the prior two-page E3 target and its failure in history.
+
+Evidence directory: prior MR0-edges root's `owner-pdf-comparison/`. Immutable
+PDF copies/hashes/metadata and detailed measurements in `references/` and
+`comparison.json`; assertions, pixel checks and E3 capacity in `checks.json`;
+bounded outcome in `result.json`. Reproduction: `compare-pdfs.py` and
+`check-pdf-results.py` at artifact root. All9owner pages rendered at240dpi;
+all-page contact sheets and every Module-label crop visually inspected.
+PDF and delivered DOCX SHA256 values rechecked unchanged after analysis.
+No Oracle connection or memory-test rerun was needed for this local review.
+
+- E1 PASS within fixture:3pages,9/9/2members. All20members and3complete
+  Module labels, suffix on pages2–3 only. The final two-row merged cell contains
+  the entire five-line continuation label with26.01336pt below its text bounds.
+  Total210/210/0 remains on page3. No visible clipping or missing text observed.
+- E2 PASS within fixture:3pages,9/9/2members. Exact labels in order are A, B,
+  B (ต่อ), C, C (ต่อ). A/B share page1; B continuation/C share page2. Newly
+  starting C on page2 correctly has NO suffix. All20members and5labels complete;
+  total210/210/0 remains on page3. Native label origin is33.05664pt below its
+  group top, except B on page1 at33.07664pt (0.02pt rounding); no cumulative inset.
+- E3 WRAP PASS / PAGE TARGET FAIL: actual3pages against target2, members9/9/0.
+  All18members, two Module labels and one generated suffix complete. Source
+  label has5lines; continuation has6, with exact ` (ต่อ)` on the new last line
+  at254.35664pt top,17.28pt below the preceding line. No manual label break in
+  DOCX. Six-line label remains well inside its merged cell; no clipping observed.
+
+E3 third page is NOT blank: it has repeated column header and total171/171/0,
+with no source member or Module fragment. The copy plan mistakenly reserved no
+space for the total after9last-page members: last member bottom750.46pt,
+unchanged section body bottom750.90pt, remaining0.44pt; measured total-row height
+33.84pt would place its bottom784.30pt. Word moved that row and repeated the
+header on page3. Candidate has only ONE explicit break between two physical
+tables, so page3 is native overflow, not an extra inserted page break. All member
+row heights/coordinates remain M1-exact, with no label-driven row expansion.
+This proves a fixture capacity-planning omission, not a newly established Core
+bug. Do not silently change expectedPages to3 or call the whole E3 case PASS.
+
+For all three fixtures: row heights68.40/68.42/68.43pt, horizontal row edges and
+all non-Module data-character coordinates match original M1 rows exactly.
+Every Menu text is complete and within row bounds; every label complete and
+within its merged bounds. All58selected member-row interiors are pixel-identical
+to original native M1 at240dpi (x188–565pt, each row trimmed0.6pt at both edges).
+This is a bounded interior check, not whole-page parity; grouping, labels,
+footer page counts and totals intentionally differ. No observed new text cut,
+wrong suffix, missing total, blank page or header/footer damage in the9pages.
+Existing M1/Core geometry differences are not fixed or reclassified by this review.
+
+Overall PARTIAL_PASS_E3_PAGE_TARGET_NOT_MET. E1/E2 native edge cases and E3
+natural suffix wrapping are proven in these copies; retain E3 capacity as open
+before claiming full MR0 acceptance. Proposed next copy-only revision, not
+executed: E3 with17members9/8 plus total (153/153/0), identical long label and
+Menu geometry, to exercise wrapping AND fit the two-page target. Preserve the
+18member overflow evidence. MR1 must include totals/repeated headers/section
+reservations in capacity facts. Non-crossing UAT regression and generic source-
+owned pagination remain unverified. No Core/Service edits, merge/integration,
+push/release/install, original data/service changes or map promotion.
