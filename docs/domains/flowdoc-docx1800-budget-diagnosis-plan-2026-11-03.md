@@ -4527,3 +4527,109 @@ MR1 source-owned page facts/capacity, row-split/unsupported behavior and any fut
 Core integration still require their own work and authorization. Stop this
 regression here. Core/Service candidates remain clean; no code integration,
 merge/push/release/install, original data/service changes or map promotion.
+
+
+## MR1 source-only first proof — 2026-11-04, bounded PASS / MR1 incomplete
+
+Owner authorized MR1 copies in Oracle512MiB without old-PDF cut inputs, preserving
+M1/Menu and product repositories. Role discovery/proof implementer and Evidence
+Reviewer; Project Control Steward for this existing-plan append. Inline IDs not
+applicable. Work authority remains lab discovery; no Core/Service implementation.
+
+Artifact root `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-repeat-mr1-source-20261104`.
+Final proof is `run2/`: packet/source hashes, `build.py`, `remote.py`, `run.py`,
+`oracle/receipt.json`, `oracle/outputs/verification.json`, `verify-local.py`,
+`verification-local.json`, `node-budget-check.json`, `verify-native-reuse.py`,
+`native-reuse-verification.json` and `files/`. Initial run is retained/superseded
+for separator review: its page-break paragraph omitted MR0's1pt run defaults.
+Run2 restores the exact MR0 separator; only the lab wrapper changed. Models and
+cut calculations stayed unchanged. Do not deliver/reuse the initial outputs.
+
+### Input and computation boundary
+
+No PDF, PDF engine, captured native page facts, observed boundaries or earlier
+fragment-cut manifest was admitted to either producer. Inputs are continuous
+M1-derived DOCX sources (no table page breaks or lastRenderedPageBreak), owned
+TTF/license catalog bytes, original summary template and80member request.
+The request's label and all80Menu/numeric values independently match the source
+DOCX; template label padding24pt is retained as M1 physical8+before16.
+17/20member sources are continuous controls, not prior fragmented candidates.
+
+Source font hashes: Sarabun Light
+`d6b2e60fb81aa933aaf61564e41732a5ab2cdcaafffac5242ea72cbc1f9e2722`, Sarabun
+`b8150084e25734e6f31696c57ff009f5564efa09d295848b717d9e2328c0311d`.
+The lab model reads TrueType cmap/hmtx/OS2 metrics, declared paragraph line rules,
+cell margins/widths/borders and section margins. Source guide outer paragraphs
+supply Menu line extents; no textboxes are regenerated. Native label wrapping
+is a prediction from font advances, not certified Word shaping/kerning.
+
+For this profile: body capacity644.9pt, header28.5pt, member68.4pt, total33.8pt.
+Member cost comes from three exact17.3pt paragraphs +8pt top/bottom +source
+border halves, not a measured PDF row or universal0.5pt correction. Label minima
+include M1 inset and generated suffix: long label115pt, wrapped continuation
+132.3pt. Repeated header and1twip separator charged per fragment; total once on
+final fragment with members. Ordered gap-free whole-row coverage, label fit,
+forward progress and nonnegative spare capacity are asserted. Search selects
+cuts from these costs; no9-row/9-page rule or UAT/name special case is used.
+
+### Observed final-run result and independent verification
+
+| Source copy | Derived member cuts | Pages | Label lines source/continued |
+| --- | --- | --- | --- |
+| long80 |9/9/9/9/9/9/9/9/8|9|5/5|
+| wrap17 +total153 |9/8|2|5/6|
+| last20 +total210 |9/9/2|3|5/5|
+| multi20 A/B/C +total210 |9/9/2|3|1/1|
+
+Oracle worker512MiB/swap0, coordinator128MiB: exit0, OOMKilled=false,
+oom_kill0; final peak69128192bytes (65.926MiB), initial peak69529600bytes
+(66.309MiB). Inputs and original three container identities/start/restart counts
+unchanged; no owned workers running. No SQL, original data or service operations.
+All member SDTs/VML and non-Module cells preserved, source controls unique,
+all other ZIP parts unchanged, CRC/XML/rels valid. Final node counts
+27676/7299/8440/8470 remain within unchanged lab option300000.
+
+AFTER producer completion and hashed output freeze, independent verification
+compared final outputs with the previously owner-Word-verified MR0/E3R1 files.
+All four WHOLE DOCX files are byte-identical, with hashes respectively
+`a7f8181ef03c0fd1b91a28d8d598765dce75e4514831c5b584474118736579d1`,
+`5829498c7136dd526a4f49ec12ed96712433a0e2b095f6efe6722b60419382ce`,
+`8847192c38debd623c0d738d8372c12580e0c6b8e92391e0252d650559122e6c`,
+`0fb352454eedc3d6b6d41963bf2393d4054e821616468e4854f8ca9102d76382`.
+Prior native PDF hashes and member allocations were rechecked; existing visual/
+clipping/total/wrap proof is reusable for these exact files. This is independent
+convergence of source-only cuts with frozen native evidence, not feeding prior
+cuts into the model or a fresh Word export. Source cost estimates are not claimed
+identical to every native coordinate; observed twip/device rounding remains.
+
+### Open MR1 criteria and proposed private fact contract
+
+UAT is explicitly UNSUPPORTED_FLOW_CURSOR_REQUIRED, with no output: its95tables
+and preceding paragraphs/sections do not fit this single-table profile. Half-
+page capacity and100pt-smaller following-page capacity produce different cuts
+in synthetic arithmetic probes; those probes do NOT prove Word preceding-flow,
+multiple-section behavior or first/default header/footer extents.
+
+Core implementation evidence: tables.ts163–198 builds native paragraphs and
+TableRow without an explicit source-owned row-height/page-cursor contract;
+text.ts142–147 retains native AtLeast where no exact source baseline applies.
+SourceGuide data in source-layout.ts21–42 remains an intent-owned private
+capsule. The proof extracts native DOCX/source-guide representation facts and
+checks matching template/request; it does not expose Core checkpoint facts or
+prove complete source/group/line ownership beyond preserved SDT lineage.
+
+Before broader MR1 or any product mutation, proposed contract review must cover:
+source section/group/row/line IDs, resolved font/fit hashes and confidence;
+ordered source-flow cursor with consumed/remaining capacity; actual first/default
+header/footer reservation/overlap; repeated-header/separator/total and per-label
+suffix extents; whole-row eligibility and explicit tall-row/row-split failure.
+Caller cuts, prior PDF page facts and a universal rounding correction stay out.
+Unknown shaping/rounding or unbounded preceding blocks must fail closed rather
+than silently generating partial continuation behavior. A renderer-neutral source
+fact adapter may be needed; this is a proposal, not an approved Core change.
+
+Status PASS_BOUNDED_SOURCE_ONLY_CUTS_WITH_REUSED_NATIVE_EVIDENCE_MR1_INCOMPLETE.
+Four whole-row single-table copies are proven within their fixture/environment;
+full MR1, native complex-flow proof, generic pagination and Core integration
+remain open. Product heads42008134/db15e9d stayed clean/read-only. No merge,
+push/release/install, original data/service changes or map promotion.
