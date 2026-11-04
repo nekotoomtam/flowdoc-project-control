@@ -4633,3 +4633,46 @@ Four whole-row single-table copies are proven within their fixture/environment;
 full MR1, native complex-flow proof, generic pagination and Core integration
 remain open. Product heads42008134/db15e9d stayed clean/read-only. No merge,
 push/release/install, original data/service changes or map promotion.
+
+
+## MR1 source remaining-page contract — 2026-11-04
+
+Owner authorized contract definition and a copy-only Oracle512MiB lab spike,
+not product changes. Reusable proposal and bounded evidence are canonical in
+`flowdoc-docx-source-flow-cursor-lab-contract-2026-11-04.md` (new document budget
+justified by the source/spacing/ownership contract that must precede an adapter).
+Role Planning Partner/Evidence Reviewer, Project Control Steward; inline IDs N/A.
+
+The proposal separates source registry/snapshot, measured footprint confidence,
+first/continuation frame reservations, ordered preceding-text/table replay,
+pending spacing/reservations and derived cursor/checkpoint. The prefix subset
+cannot accept caller remaining-height/page-cut overrides or promote estimates.
+Generated structural items require an explicit derived-reference variant; they
+must not impersonate new business source nodes. M1/Menu remain untouched.
+
+Final artifacts are
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-flow-contract-20261104/run2/`.
+Strict schema,44synthetic acceptance/rejection cases and6checkpoint checks
+passed in Oracle512MiB/swap0, coordinator128MiB; peak61599744bytes (58.746MiB),
+exit0, no OOM. Independent dimensional arithmetic confirms402.2pt remaining
+before a target after preceding text, spacing and a whole-fit table. The full
+44cases are model/contract checks, NOT44native Word or real-UAT layout passes.
+An isolated total-reservation probe checks one-time commitment, not a production
+reservation transaction. Schema hash and locators are recorded in the contract.
+
+Review preserved two confirmed initial lab-reducer failures (zero-height logical
+roots incorrectly lost authored breaks/next spacing); final run tracks logical
+progress separately and both added cases pass. Initial42-case results remain
+historical/superseded. No Core bug or product fix is claimed from this lab repair.
+
+Source inventory preserves M1 DOCX bytes and reads95tables,58mapped paragraphs /
+63lines. Existing Core sections/root order/sourceMap and source-guide/band facts
+must be projected by a genuine private adapter; no such adapter is implemented
+by this contract. Real UAT cursor status remains NEEDS_SOURCE_FACTS. Native
+preceding flow/section transitions, split handling, Word fit, actual bands and
+renderer cancellation are not established by this lab. Full MR1 remains open.
+
+Contract status: PASS_PROPOSED_CONTRACT_LAB_ONLY, ready for review and a separately
+bounded source-adapter proof on copies. No DOCX output, PDF/renderer execution,
+SQL, original data/service change, Core/Service edit, integration/merge,
+push/release/install or map promotion. Product candidates remain clean.
