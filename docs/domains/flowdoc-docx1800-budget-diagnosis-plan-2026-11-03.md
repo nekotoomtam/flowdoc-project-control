@@ -3173,3 +3173,17 @@ proof artifacts are preserved. Report links/images and JS syntax validate;
 final evidence/prose diff review plus git diff --check close this comparison.
 No Core/Service edit, original data/API/SQL/storage/service change, map promotion,
 merge, push, release, installation or new native Word control occurs.
+
+
+### Inline correction: report images require no script (2026-11-04)
+
+Owner reported images not displaying. The original HTML's five img elements
+had no src and depended entirely on JavaScript initialization; actual PNG files
+exist. Script suppression in the host viewer is plausible, not directly proved.
+The external report now embeds17 static comparison JPEGs as data URIs with no
+script/external image requests. The interactive original is preserved separately,
+and original PDF/full-resolution overlays are unchanged. `image-display-fix.json`
+records hashes and scope. Validation decodes/verifies all17 embedded images and
+confirms zero script tags. Browser display itself is not claimed verified because
+the known local-file browser restriction remains; a direct local image is also
+delivered in chat. No runtime re-test or Core/Service/data change is involved.
