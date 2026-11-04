@@ -3468,3 +3468,54 @@ then pagination/ink/text integrity. Stop at delivery. No Core/Service edits,
 original data/service action, merge/push/release/install or map promotion.
 Only this existing PC prose changes in Git; evidence coverage/final diff and
 git diff --check close the file-preparation scope.
+
+## Owner Word P4 versus P0 Module-margin comparison (2026-11-04)
+
+Status: **TARGET_MARGIN_EFFECT_CONFIRMED_TEXT_INTACT_COVER_DIFFERENCE_OPEN**.
+Owner supplied new P0/P4 PDFs and requested comparison only. Roles Evidence
+Reviewer/PC Steward; inline IDs not applicable. Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-margin-20261104/owner-pdf-comparison/`.
+Use verification.json, verification-report.html,
+reference-manifest.json, row-borders.json, target-text-positions.json,
+global-character-inventory.json, changed-text-extraction.json,
+all-page-characters.json, all-page-raster-comparison.json and detail/240dpi crops.
+
+Both owner exports identify Word365 and retain73pages. P0 was re-exported11:21:30,
+P4 at11:21:04; new P0 matches previous P0 non-whitespace text/character boxes
+and all73page rasters96dpi. All current original/snapshot PDF hashes and both
+DOCX delivery hashes recheck unchanged. No further DOCX edits in this turn.
+
+Confirmed controlled-copy effect: only Module group top margins24→8pt change,
+while Menu VML remains unchanged, and table8 page5 height drops245.43→198.39pt
+(47.04pt reduction). Core reference195.80pt: excess falls49.63→2.59pt.
+P0 row heights28.56/49.80/66.60/66.63/33.84pt become
+28.56/33.84/51.00/51.15/33.84pt in P4. This proves a material causal contribution
+of the merged Module margins in this cohort; the earlier implication that Menu
+textboxes were the main established cause was too strong. It does not prove
+all remaining geometry matches Core or every document shares this cause.
+
+Module text top moves167.83664→151.87664pt (up15.96pt). Menu rows1/2/3 move
+up16.08/31.56/47.07pt. Independently matched target strings have identical
+horizontal coordinates, font sizes and text/line content.240dpi visual review
+of target text and pages5-6 finds no newly clipped target text. The25/25/0 row
+with Scan Change Grade text moves intact from page6 to5; total72/72/0 stays
+page6. Page count therefore stays73; no full-document pagination fix is claimed.
+
+Whole-file96dpi comparison:70pages pixel-identical; changed pages1,5,6.
+Per-page extraction is intentionally not called all-text-equal: page5/6 content
+moves. Global character inventory shows no removed character occurrences and
+one additional asterisk on P4 page1: Times New Roman0.96pt atx36/top106.06736pt,
+one weak changed pixel96dpi. Cause of this cover export difference remains
+unverified despite unchanged DOCX delivery hashes and three-attribute-only
+source diff. Preserve it as an open difference, not a clean whole-file fidelity
+PASS. Global character counts alone do not prove ordering or absence of clipping;
+target cell matches, extraction differences and visual review supply the scoped
+proof. No universal absence of pre-existing clipping is claimed.
+
+Static report embeds images (side-by-side, same-origin red/blue overlay, target
+text detail); embedded image decoding/evidence link checks pass. Existing plan
+only changes in Git; final diff/check and coverage review close this comparison.
+No new Oracle worker or512MiB runtime claim, further probe, Core/Service edit,
+original data/service action, merge/push/release/install or map promotion.
+Remaining scoped gaps: residual2.59pt versus Core and tiny cover export mark.
+Stop at reporting; no fix adopted.
