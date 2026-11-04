@@ -4829,3 +4829,40 @@ Next bounded discovery: Module/peer source line-flow facts, then carrier-inclusi
 image/paragraph footprints, before complete native row bounds or page replay.
 No original data/service operation, SQL, Core/Service edit, merge/push/release/
 install or map promotion.
+
+## MR1 Module/peer copied Core line plans — 2026-11-04
+
+Owner authorized copy-only Oracle512MiB Module/peer wrap proof, preserving
+M1/Menu without product changes/integration. Inline Evidence Reviewer/Project
+Control Steward, IDs N/A. One genuine capture/generation then one independent
+measurement worker, sequential512MiB/swap0 each; reuse the existing contract.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-module-peer-wrap-20261104`.
+The source-flow contract's Module and peer source line-plan proof section
+records snapshots, unmodified Core entrypoints, exact coverage and limitations.
+SourceLayout intentionally skips the merged Module, reason
+native-merged-or-unresolved-cell; this is not a confirmed defect. Additional
+lab measurement does not inject a guide or change native DOCX flow.
+
+Unchanged Core measureText over13genuine captured text nodes/styles/widths gives
+15source lines: Module26UTF16units at141pt fits one17.3pt line; Menu reproduces
+the existing1/2/2line guides exactly;9ordinary peers each fit one source line.
+All text/ranges/font identities and selected width fit checked. Source stacks
+33.3/50.6/50.6pt sum134.5pt; Module overlay requires45.3pt once, not an extra row
+charge. These are source constraints, not certified native row advances.
+
+Generation peak354.796875MiB; separate measurement17.94921875MiB, runtime closed
+after36shape calls/425UTF16units. Both exit0/no OOM, no retry. Independent12new
+checks plus20base/11row/15representative checks pass. M1/Menu content preserved;
+timestamps/font obfuscation explain non-content differences, decoded fonts equal.
+No fresh native Word/PDF/fit/clipping test, no general long/empty/Unicode proof.
+
+Status PASS_MODULE_PEER_CORE_LINE_PLANS_COPY_ONLY_NATIVE_HEIGHT_UNKNOWN.
+Source-plan gap closed for these13copied sample blocks only. Native paragraph/
+merged-row allocation and remainingSafe remain unresolved, full MR1 open. Next
+bounded work: compare these source plans against native flow on the same span.
+Core/Service candidates/source/package/harness/baseline unchanged; original
+container identities stable; no owned workers running. No original data/service
+operation, SQL, Core/Service edit, integration/merge/push/release/install or map
+promotion.

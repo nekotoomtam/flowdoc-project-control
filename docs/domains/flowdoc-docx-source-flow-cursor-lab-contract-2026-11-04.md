@@ -697,3 +697,81 @@ Full MR1 remains open. Core42008134/Servicedb15e9d remain clean; source/package/
 harness/baseline inputs and original3container identities/start/restart counts
 unchanged, no owned worker running. No Core/Service edit, original data/service
 operation, SQL, merge/push/release/install or map promotion.
+
+## Module and peer source line-plan proof — 2026-11-04
+
+Owner authorized copy-only Oracle512MiB proof of Module/peer wrapping, preserving
+M1/Menu without Core/Service edits or integration. Inline Evidence Reviewer/
+Project Control Steward, execution IDs N/A. Proof budget: one genuine UAT
+capture/generation, followed by one separate selected-text measurement worker;
+512MiB/swap0 per worker, sequential, stop on OOM. Reuse this contract and plan.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-module-peer-wrap-20261104`.
+`module-adapter.mjs` captures actual source text nodes, quantized source styles,
+effective font identities, source tuples, selected cell-space policies and native
+usable widths. `oracle/outputs/module-peer-input.json` is the snapshot;
+`measurement-resources.json` retains the same pinned resource metadata.
+`measure.mjs` invokes the unchanged packed Core `layout/measureText.js` and
+`runtime/textRuntime.js` over those copies, reading verified owned font files.
+It does not run prepareSourceLayout again, inject a guide or alter export policy.
+Measurement uses a new runtime after the generation container has exited, not
+the already-closed generation runtime or a retained full renderer graph.
+
+Actual `sourceLayoutReceipts` explain the earlier absence: Module was deliberately
+retained as `native-merged-or-unresolved-cell` by source-layout.ts's merged-cell
+eligibility rule. Its lack of a SourceGuide is not a confirmed bug. Ordinary
+peer paragraphs also retain their original native policy. The new plans below
+are an additional source-only experiment, NOT new guides used by the writer.
+
+The first eligible3member M1 span supplies13actual text blocks:1Module,
+3Menu guides and9ordinary peer blocks, yielding15source lines. All use the
+actual selected cell content widths; font bytes match pinned metadata, and
+font selection/native half-point sizes match the captured effective styles.
+No old PDF coordinates, caller cuts or synthetic replacement text are input.
+
+| Source role | Copied Core measurement result |
+| --- | --- |
+| Module |26UTF16units,141pt usable width, one17.3pt line spanning0–26, occupied width107.763pt. |
+| Menu members0/1/2 |101pt width,1/2/2lines. Text ranges, line text and heights exactly reproduce the existing genuine guides:0–19;0–28/28–32;0–21/21–39. |
+| Nine ordinary peers | Usable widths69/73/97pt; each is one17.3pt source line. No source text is lost or rewritten. |
+
+Selected text is in the bounded no-CR/tab/authored-newline profile. Every plan
+preserves full text/source hash, ordered line spans, local glyph-cluster range
+coverage and width fit. This is not a general Unicode/empty-text/newline proof.
+Only compact line/cluster facts survive; no duplicate full glyph/font graph is
+published as checkpoint data. Native runtime closes successfully after36shape
+calls/425UTF16units, within the lab call/work bounds.
+
+Independent source-stack arithmetic, explicitly NOT native Word row heights:
+ordinary member-cell maxima after selected8pt top+8pt bottom yield33.3/50.6/
+50.6pt, sum134.5pt. Module's one source line plus8pt top+16pt before+4pt bottom
+requires45.3pt against that span; do not add45.3pt again to its member rows.
+These are source constraints before unresolved native paragraph, border,
+merged-row allocation and rounding effects. Feasible source arithmetic does
+not certify that native Word rows preserve those exact advances.
+
+Raw measurement result: `oracle/outputs/measurement/measurement.json` with
+its own cgroup files/log; runtime states are in `oracle/receipt.json`.
+Independent `verify-module.py`/`verification-module.json` add12checks to the
+reused20base/11row/15representative checks. All pass; these are source/identity/
+constraint checks, not native Word layout tests. `artifact-hashes.json` binds
+retained scripts and results. Input snapshots/styles/resources remain unchanged.
+
+Generation peak372031488bytes (354.796875MiB),7107.272ms; subsequent measurement
+peak18821120bytes (17.94921875MiB). Both workers512MiB/swap0, exit0,
+OOMKilled=false/oom_kill0; coordinator128MiB, no retries.267compiled/127source
+files, harness and reviewed M1 baseline remain unchanged. Generated content/
+Menu/M1 parts match baseline byte-for-byte; only timestamps/font obfuscation
+differ, full decoded fonts identical. No fresh native Word/PDF/fit/clipping test.
+
+Verdict `PASS_MODULE_PEER_CORE_LINE_PLANS_COPY_ONLY_NATIVE_HEIGHT_UNKNOWN`.
+The source line-plan gap is now closed for these13copied sample blocks; the
+writer still emits Module/ordinary peers as native flow. Native upper bounds,
+actual merged-row allocation and remainingSafe stay unresolved. Full MR1 and
+all-document wrapping/continuation proof remain open. Next bounded work should
+compare this source plan with native paragraph/merged-row behavior on the same
+representative span before claiming row heights or page cuts. No Core/Service
+edit, original data/service operation, SQL, integration/merge/push/release/install
+or map promotion. Original3container identities/start/restart counts unchanged;
+both owned workers exited, none left running. Core42008134/Servicedb15e9d clean.
