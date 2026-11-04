@@ -2549,3 +2549,149 @@ Core implementation begins under this B0 authorization.
 Core/Service remain clean at the starting hashes; original container identities
 are stable across all stages. No original data/service action, merge, push,
 release, installation, public contract promotion or DOCUMENT_MAP change occurs.
+
+## R2-B1 small structural/binding proof; geometry admission refused (2026-11-04)
+
+Status: **SMALL_STRUCTURE_AND_BINDING_PASS_GEOMETRY_BLOCKED_FULL_NOT_RUN**.
+The owner's continuation after B0 authorizes the next bounded B1 small-copy
+proof. It does not close B1/R2 or approve a Core renderer. Role: external lab
+implementer, then Evidence Reviewer/Project Control Steward; single-room IDs
+not applicable. Owner remains Core for future product behavior and PC for this
+shared status. Starting PCfa9e287955b0d186beef9bf9ad46529597a09320; Core582f141
+and Service db15e9d remain unchanged and clean. The unrelated historical Editor
+snapshot supplies no execution authority here. No product files are edited.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-r2-b1-small-20261104/`.
+Use `verification.json`, `review.json` and the per-stage immutable packets,
+receipts and results. Final producer tests are `review-green/oracle/current/`;
+the fresh Node check is `review-consumer/oracle/current/consumer-result.json`.
+`baseline/` contains the original default-path small DOCX and observed facts.
+This is a separate2-record/2-line/12-member/72-glyph document; none of its
+results represents the full1800, UAT or SRS acceptance matrix.
+
+### What was exercised
+
+The unchanged packed public Core generated the small source-word baseline
+under default caps; receipt bytes/hash match the captured DOCX. The real guide
+observer exited before any copy transformer/reader launched. A RED passthrough
+control exposed the missing emitted-copy map before implementation.
+
+The external Python structural probe replaces12 owned VML boxes with2 actual
+line paragraphs, adds4 shared paragraph/character styles and a new versioned
+source-line map. It preserves exact visible text/order, source ranges and old
+member/shape/style XML provenance. It never moves visible text/formatting into
+metadata. Paragraph text defaults are defined by paragraph-style run properties;
+paragraph-mark properties remain separate. Shared character styles contain
+relative deltas so common bold/italic toggles are not applied twice. Only
+equal-property ASCII fragments with kerning disabled are merged; other shaping
+boundaries are retained. This is a restricted structural experiment, not proof
+that all Word inheritance or shaping contexts are supported.
+
+The probe uses actual part/paraId/range targets, a canonical target manifest
+bound to the closed producer's fact hash, source-owner tags and source/target
+digests. It creates a distinct source-line relationship ID, preserves root
+namespace bindings referenced by mc:Ignorable, and checks part/ID collisions.
+Only dedicated private XML/map/rels/binding files are emitted. No inline DOCX
+is committed or opened in Word because geometry admission remains refused.
+
+Final35 Python checks cover text, targets, the16 bold/italic toggle combinations,
+formatting/anchor corruption, part/relationship collisions, conservative profile
+refusals and geometry/no-DOCX disposition. A fresh Node consumer uses the frozen
+codec with an explicit emitted-copy-only XML-reader delta. It decodes the map,
+cross-checks readable/primary indexes, actual target text/ranges, resolved-style
+fingerprints and paragraph/section context hashes. It checks source-owner tags,
+source fact text/font identities, exact manifest field sets and known profiles.
+Its16 refusal cases include virtual-plan substitution, declaration/attribute/
+index drift, manifest defects and direct formatting/style/ancestry/owner drift.
+
+The independent Node check reconstructs only a private part set from the closed
+baseline plus delivered changed parts. All XML/rels parts parse; total expanded
+elements are800, drawings0, and internal relationship targets resolve with unique
+IDs. This is a measured small-package total, not an extrapolation to49000 on
+the large fixtures. No final new-DOCX ZIP byte-size/Word claim is made.
+
+### Geometry block and stopping decision
+
+The source-word implementation computes w:position together with the padded,
+shifted textbox and its own inner paragraph frame. The small case has:
+
+| Value | Observed/model value |
+| --- | ---: |
+| Original inner paragraph line frame |463twips |
+| Original textbox vertical displacement |-1pt |
+| Ordinary line paragraph frame |400twips |
+| Copied w:position |5 half-points |
+| SourceGuide baseline |15.016pt |
+| Existing Core adapter arithmetic, old context |15.02pt |
+| Same arithmetic naively applied to ordinary frame |13.5pt |
+
+The last two rows use the Core adapter's4/5 model and are **not native Word
+measurements**. They demonstrate why equal run properties are insufficient
+evidence of a valid baseline translation; they do not prove Word will render
+an exact1.516pt discrepancy. No ordinary-paragraph baseline/ink translation has
+been established, so admission is `REFUSE_UNTRANSLATED_TEXTBOX_BASELINE`.
+Full1800/UAT/SRS runs were not started. No larger heap, cap increase, forced GC,
+shaping change or publication bypass follows from the small structural pass.
+
+The eligible prototype profile is deliberately narrow: section-root applied
+guides, empty Normal/default contexts and no existing paraIds. It checks actual
+XML ancestry as well as supplied fact types. Unsupported table, inherited-style,
+existing-anchor or direct-formatting contexts refuse. This does not implement
+the future general collision allocator or mixed/native-context renderer.
+
+### Failures, review corrections and coverage limits
+
+Seventeen sequential worker invocations include RED and non-OOM development
+failures. Peak was47.55MiB; every worker retained512MiB memory with equal
+memory+swap (swap0), default heap/network none and the old XML/byte/shaping caps.
+The coordinator stayed outside with its existing128MiB address-space bound.
+No V8/cgroup OOM occurred and no owned processing worker remains running.
+
+Retained failures exposed a wrong provenance member key, missing distinct
+relationship ID, lost mc:Ignorable-only namespace bindings during serialization,
+missing expected target digest in the first Node handoff, and overbroad profile
+acceptance. Fixes addressed those implementation causes in new immutable stages;
+none was an OOM retry, cap change or product-repository repair. The reused remote
+driver's terminal PASS_B0_CAPTURE_STAGE label is historical wrapper prose, not
+reopening B0; stage-specific results/packets determine this B1 scope.
+
+Independent static review returned RISK for two guard gaps: direct paragraph/
+run formatting could bypass verification, and style/default/XML-ancestry
+rejection was broader in prose than code. One bounded correction pass added
+nine regressions; `review-red` showed all9 accepted incorrectly, then
+`review-green` rejected them and passed the final35 checks. A fresh Node check
+also rejects those relevant target profile changes. There was no second
+independent re-review; `review.json` preserves the initial findings, fix evidence
+and unjudged areas rather than changing the initial verdict to PASS.
+
+The six private document/styles/map/rels/content-types/binding artifacts remain
+byte-identical across checks2, profile-green and review-green. Hash reconciliation
+allows the same bytes to be consumed independently while changed rejection paths
+receive their own tests. This reuses artifact evidence, not unrun behavior tests.
+Full emitted-copy interoperability/refusal coverage, generic OOXML/XSD validity,
+Word rendering, save/edit behavior, complete native/protected content, integrated
+Core memory/lifecycle and Service wiring remain unverified. The original85/96
+proofs do not certify this changed reader/profile automatically.
+
+### Return route before a full fixture
+
+Return to the geometry design on the small valid old-path reference. Define
+how inline line frames, before/after spacing, font/ink extents and run position
+map to the measured source baseline without changing total source row budgets,
+line choices or glyph corrections. A separately bounded copy-only native Word
+calibration can test that model against the small reference before admitting
+full fixtures. Preserve all source facts and full context; do not select a
+convenient property value or tolerance after seeing the desired result.
+
+Only after that mapping has evidence should B1's complete1800 candidate and
+independent whole-package verifier resume, followed conditionally by UAT/SRS.
+The current1800 whole-document Word reference gap also remains. This checkpoint
+does not authorize that calibration, full-fixture retries or any Core/Service
+implementation; the present continuation stops at the declared geometry gate.
+
+Only this existing PC plan is updated. Source/input/output hashes, immutable
+receipts, independent review disposition and coverage were reconciled; final
+documentation verification is diff review plus `git diff --check`. Original
+container identities and Core/Service heads stay unchanged. No original data/
+service action, merge, push, release, installation or DOCUMENT_MAP update occurs.
