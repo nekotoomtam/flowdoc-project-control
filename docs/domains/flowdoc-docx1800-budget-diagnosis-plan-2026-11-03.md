@@ -3717,3 +3717,56 @@ Only this existing PC prose changes in Git. Final source/evidence coverage revie
 and git diff --check close copy delivery. Core/Service, original data/services
 and authoring inputs remain unchanged; no merge/push/release/install, further
 probe or map promotion. Stop at file handoff pending owner PDF.
+
+## Owner Word M0 comparison against P0/P4 (2026-11-04)
+
+Status: **M0_BOUNDED_NATIVE_PROOF_PASS_RESIDUAL_CORE_GAPS_REMAIN**.
+Owner requested read-only comparison of the exported M0 PDF; no Core/Service
+edits/integration. Roles Evidence Reviewer/PC Steward, inline IDs not applicable.
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-offset-m0-20261104/owner-pdf-comparison/`.
+Use verification.json, verification-report.html, reference-manifest.json,
+row-borders.json, target-text-positions.json, target-ink-checks.json,
+global-character-inventory.json, all-page-characters.json and
+all-page-raster-comparison.json. Reference PDF hashes match retained P0/P4/Core;
+original/snapshot PDF hashes and M0 DOCX delivery hash recheck unchanged.
+
+M0 Word365 export11:40:36 retains73pages. First-table border centers exactly
+match P4:106.22/134.78/168.62/219.62/270.77/304.61pt. Heights are
+28.56/33.84/51.00/51.15/33.84pt, total198.39pt: no extra height from the once-only
+16pt paragraph offset. P0245.43pt is47.04pt taller; Core195.80pt remains2.59pt
+shorter. The M0 within1pt-of-P4 height gate passes (actual difference0).
+
+Module text top returns to167.83664pt, exactly P0, versus P4151.87664pt. Table-
+relative positions: Core57.71, P0/M061.61664, P445.65664pt. Error versus Core
+improves from12.05336pt too high in P4 to3.90664pt too low in M0, matching the
+pre-existing P0 error and passing the explicit no-worse-than-P0 gate. This is
+not perfect baseline parity and does not solve the remaining text-position gap.
+
+Independent matched target character boxes (text/x/y/size) verify Module=M0/P0
+and all three Menu lines=M0/P4. At240dpi Module ink cropx40-185/y163-178pt is
+pixel-identical M0/P0; non-Module first-table regionx188-558/y107-304pt is
+pixel-identical M0/P4. Visual review of target text, overlay and pages5-6 finds
+no newly clipped target glyphs. The label may extend below a peer first-row
+border because its own cell spans3rows; this is not clipping at that peer line.
+
+Whole-file non-whitespace character counts show no additions/removals versus
+P0. Per-page differences5/6 identify exactly the intact25/25/0 Scan Change Grade
+row moved to5, as in P4.96dpi full-file rasters: M0/P0 have71identical pages,
+differences5/6; M0/P4 have71identical pages, differences1/5. The P4 tiny extra
+cover asterisk is absent in M0; M0 cover matches P0. Cause of that earlier P4
+export difference remains unverified, but it is not reproduced in M0.
+
+M0's scoped single-group gates pass: same P4 row heights, restored logical label
+placement no worse than P0, unchanged Menu flow, text/ink checks and no observed
+new target clipping. This does not prove long/cross-page groups, other labels,
+SRS, generic adapter behavior, universal pre-existing clipping absence or Core
+readiness. M1 remains unimplemented and needs separate authorization/scope check.
+No further probe after passing the bounded gate.
+
+Static report embeds four-panel comparison, same-origin P4-red/M0-blue overlay
+and target text detail; image decoding and all evidence links pass. No new
+Oracle worker or512MiB runtime claim: current work is local PDF analysis; prior
+512MiB receipt remains copy-building proof only. Final coverage/diff review and
+git diff --check close this comparison. Only existing PC prose changes in Git;
+Core/Service and source files unchanged, no original data/service action,
+merge/push/release/install, extra implementation or map promotion.
