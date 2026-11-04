@@ -3865,3 +3865,73 @@ owner Word comparison; do not start integration or auto-close that gate.
 Only this existing PC prose changes here; no map/record promotion or synthetic
 Work. Final PC diff/check closes status recording. Stop with frozen candidate
 and reviewable exports pending Word evidence.
+
+## Owner native Word exports for M1 UAT and long80 comparison (2026-11-04)
+
+Status: **SCOPED_NATIVE_M1_CHECKS_PASS_KNOWN_LAYOUT_DIFFERENCES_RETAINED**.
+Owner supplied both PDFs and requested read-only comparison, no Core/Service
+edits or integration. Roles Evidence Reviewer/PC Steward; inline IDs not
+applicable. Candidate4200813 stays frozen. Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/core-m1-merged-inset-20261104/owner-pdf-comparison/`.
+Use verification.json, verification-report.html, reference-manifest.json,
+uat-target-geometry.json, uat-first-table-ink.json,
+uat-all-summary-module-positions.json, uat-aligned-character-comparison.json,
+uat-aligned-raster-comparison.json, toc-page-numbers.json,
+long-comparison.json and long-row-text-and-bounds.json. All original/snapshot
+PDF hashes and prior delivered DOCX/CorePDF hashes recheck unchanged.
+
+Word365 owner exports12:47:28 UAT and12:48:13 long case. UAT M1 has72pages versus
+M073. First table198.39pt and borders106.22/134.78/168.62/219.62/270.77/304.61pt
+exactly match M0. Module absolute top167.83664pt/table-relative61.61664pt also
+matches. First-table crop240dpi is pixel-identical. Other summary Module
+relative positions are unchanged in tables9/10 and differ by0.12pt in table11
+following row-height quantization; no repeated16pt displacement is observed.
+
+Page reduction is accounted for: total72/72/0 moves from M0p6 to M1p5, eliminating
+one continuation header and leaving downstream M1p6-72 aligned with M0p7-73.
+Body85-765pt is identical in text/character boxes and96dpi RGB on70aligned pages.
+Only body pages3 and5 differ:18TOC entries show first2unchanged and remaining16
+page values decreased by1; page5 adds the moved total. Body character counts
+match after exactly accounting for that repeated header and TOC page digits.
+Native summary page visually reviewed: all4summary tables/totals now fit page5.
+Do not describe this as unexplained content loss or blanket whole-file equality.
+
+Long Word and Core both9pages, same80members exactly once and on exactly the
+same pages (9members on each page1-8,8onpage9). Every member's normalized Menu
+text equals the synthetic source string, not merely matching a marker. All80
+Menu character bounds stay within their physical row. First Menu text position
+relative to table top is42.05664pt on every Word page, versus41.71pt Core;
+no page-continuation16pt offset reapplication. Word body row heights68.40-68.43pt
+versus67.90pt Core (extra0.50-0.53pt; mean0.509pt). First Module relative top
+61.61664pt versusCore57.71pt retains the known3.90664pt lower baseline.
+
+240dpi Word first/last row crops on all9pages visually inspected; no clipped
+head/tail glyphs found. Complete target strings/bounds and same page allocation
+supply complementary checks. UAT first table exact ink and70unchanged bodies
+support the no-new-clipping result there. This is evidence for supplied fixtures,
+not universal Word/font/content fidelity or every pre-existing defect's absence.
+
+Known design difference is now demonstrated natively: Word prints the complete
+Module label once on page1, blank merged-label continuation cells onpages2-9;
+Core prints it9times with8continuation suffixes. Source label content on page1
+matches exactly in both exports. src/docx/writer.ts:206 explicitly declares
+native-rowspan/continuationLabel:not-repeated. Classify this as an existing
+format-policy Design Concern if visual parity is desired, not evidence of an
+M1 inset defect or text being clipped. Do not claim full Core visual parity.
+No change to label repetition policy is authorized or performed.
+
+Initial strict single-word marker detection missed Word's fragmented extracted
+words (R OW etc). That analysis failure is corrected using contiguous nonspace
+character sequences with original coordinates; raw results are not promoted as
+missing members. Source-aware80string checks and visible glyph review confirm
+coverage. No runtime retry or product change was involved.
+
+The native-export gap for these two supplied fixtures is now observed and
+reported: scoped inset/row/data/page-break checks pass, with row/baseline and
+label-repetition differences explicitly retained. This does not set product
+receipt wordVerified=true, prove all documents, approve integration or silently
+waive known differences. Static report embeds UAT target, continuation comparison
+and all9page-end crops; image decoding/evidence links pass. Only existing PC
+prose changes in Git; final coverage/diff check closes comparison. No new Oracle
+worker or512MiB claim (this is local PDF analysis), Core/Service edit, original
+data/service action, further probe, merge/push/release/install or map promotion.
