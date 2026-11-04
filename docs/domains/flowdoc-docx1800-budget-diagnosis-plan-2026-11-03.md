@@ -3671,3 +3671,49 @@ This turn performs none of M0-M2: no candidate code/test/fixture edit, new rende
 Oracle access or service operation. Only this existing PC plan is changed, with
 source/P4 evidence review and final diff/check. No merge/push/release/install or
 map promotion. Next proposed work is M0 copy proof, not an automatic Core patch.
+
+## M0 copy preparation and owner Word handoff (2026-11-04)
+
+Status: **M0_STRUCTURAL_DELIVERY_PASS_WORD_GEOMETRY_PENDING**. Owner authorized
+M0 copy building on the isolated Oracle host512MiB worker: top8pt plus first
+Module paragraph-before16pt once, preserving Menu boxes. Roles external lab
+implementer/Evidence Reviewer/PC Steward; inline IDs not applicable. Existing
+M0 plan and explicit request govern; no Core/Service implementation or integration.
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-offset-m0-20261104/`.
+Use packet.json, build.py, remote.py, oracle/receipt.json,
+oracle/outputs/verification.json, verify-delivery.py and delivery.json.
+Delivery: files/UAT-M0-module-top-8pt-before-16pt.docx,3019611bytes, SHA256
+2313ba8d8653a0ec255a71700905adc40005a0a3ace3ac388d7ade0ff8b111ef.
+Matched P0 source remains09c7d8a3fa8899eeb6e423c3d9f31581304d2b47aa097de2a8fc33e9cfbe8ed4.
+
+Four attribute values only in document.xml: table8 rows1/2/3 column0 Module top
+480→160twips (RESTART and two CONTINUE cells), and existing first label paragraph
+spacing before0→320twips.24pt=8pt+16pt accounting passes; no new paragraph, text,
+font/run, line-height, merge, border, bottom/side margin or continuation-paragraph
+change. Surgical edit manifest includes original/modified offsets and values;
+reversal restores the entire source document.xml bytes. Other ZIP parts are
+byte-identical, XML/rels parse and ZIP CRC pass, nodes remain112084 with no cap
+change. Independent local received-file verification confirms source diff,
+ordered text, all Menu cell/shape XML, all other parts and hashes. Against P4,
+reverting only the first label before-offset recovers the complete P4 semantic
+XML tree; no other difference is hidden by that comparison.
+
+Fresh worker exits0 first run, OOMKilled=false, peak156.707MiB under512MiB memory
+and equal memory-swap (swap0), network none/read-only proof mount. Coordinator
+Python address-space bound128MiB. Original container identities/start/restart
+counts and input hashes stable; no owned worker remains running. No Core runtime,
+renderer performance or native Word512MiB claim: this receipt proves copy building.
+
+M0 preparation gates pass; native geometry/text/ink gates remain unchecked until
+owner Word PDF export using previous settings. Compare M0 with retained P0/P4:
+row heights, Module relative position, Menu lines, page flow and actual clipping;
+apply existing M0 stop/return-to-design rules if offset inflates/collapses/repeats.
+Keep the P4 cover asterisk/export difference visible in review. Do not mark M0
+complete or start M1 from a structurally valid DOCX alone. No automatic rendering
+via another application replaces the owner's requested Word export.
+
+Only this existing PC prose changes in Git. Final source/evidence coverage review
+and git diff --check close copy delivery. Core/Service, original data/services
+and authoring inputs remain unchanged; no merge/push/release/install, further
+probe or map promotion. Stop at file handoff pending owner PDF.
