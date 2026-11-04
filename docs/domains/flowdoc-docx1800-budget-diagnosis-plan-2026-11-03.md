@@ -3269,3 +3269,55 @@ coverage/results and final diff plus git diff --check close the request. No
 Core/Service edit, original data/service action, merge/push/release/install or
 map promotion. The prior512MiB copy-building proof remains scoped to that prior
 worker; local PDF analysis is not represented as a new512MiB runtime proof.
+
+
+## Separate UAT cell-padding and textbox-height copies for owner export (2026-11-04)
+
+Status: **STRUCTURAL_FACTOR_COPIES_PASS_OWNER_WORD_EXPORT_PENDING**.
+Owner authorized separate-factor copies and requested DOCX delivery for their
+own PDF conversion, explicitly no Core/Service change or integration. Roles
+external lab implementer/Evidence Reviewer/PC Steward; IDs not applicable.
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-cell-padding-box-20261104/`;
+use delivery.json, files/, build2 immutable harness/packet/Oracle receipt and
+variants.json. Original control SHA256 remains09c7d8a3fa8899eeb6e423c3d9f31581304d2b47aa097de2a8fc33e9cfbe8ed4.
+
+Each variant independently starts from that full original UAT, without the
+previous unsuccessful tiny cell-ending paragraphs. Target cohort is8 content/
+menu cells (column1) in tables8-11 with explicit8pt top/bottom padding. The
+special group-label cell at table9,row1,column0 has24/4pt padding and is retained
+unchanged. Outputs:
+
+- P0 control: byte-identical original.
+- P1 padding-top-0: only top160→0twips on8 selected cells; bottom unchanged.
+- P2 padding-bottom-0: only bottom160→0twips on8 cells; top unchanged.
+- P3 box-height-17p3: only VML height18.3→17.3pt on36 shapes in those8 cells,
+  matching existing346twip outer frames; all padding, positions, font/runs and
+  inner paragraph geometry unchanged.
+
+The first build's precondition rejects the broad9-cell SDT-ending cohort on
+special group-label padding; it exits1 at84.62MiB without OOM before outputs.
+That failure is retained. Corrected build2 narrows to the8 matching content
+cells and exits0 with294.98MiB peak under512MiB/equal memory-swap (swap0),
+default heap/network none and the existing coordinator budget. Final exit/OOM/
+identity checks pass; original containers/product/package/input bytes unchanged,
+no owned processing worker remains. This is copy-building memory, not renderer
+or native Word performance.
+
+Validation: source hash, exact target preconditions, independent variants;
+reverting only each named factor restores the entire original semantic XML
+tree; existing visible text and all other ZIP parts (styles/fonts/media/maps)
+are byte-identical. ZIP CRC and every XML/rels part parse; actual nodes112084
+for each modified copy, unchanged from source and below the authorized300000
+lab budget. Files delivered with checked hashes and distinct P0/P1/P2/P3 names.
+
+These are diagnostic response probes, not accepted fixes. Zero padding or a
+smaller textbox can affect glyph position/ink clipping; Word PDF review must
+check text/ink and row/page geometry, not height alone. Owner should export all
+four with the same settings and retain their distinct PDF names. No Word
+rendering, improved row height or root cause is claimed before those exports.
+
+Only this existing PC plan changes in Git. External proof/delivery manifests
+record scope; final evidence/diff review and git diff --check close file delivery.
+No Core/Service edit, original data/service action, new Word control,
+merge/push/release/install or map promotion. Stop pending owner PDFs rather
+than inventing an outcome or making a further adjustment.
