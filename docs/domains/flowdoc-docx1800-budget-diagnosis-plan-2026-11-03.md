@@ -3013,3 +3013,60 @@ Only the existing PC plan is changed in Git. Final coverage: reconciled actual
 receipts/artifacts, independent package/source-map checks, unchanged Core/Service
 heads and clean status, final prose diff review and git diff --check. No
 DOCUMENT_MAP promotion, merge, push, release or installation.
+
+
+## Matched full PDF companions for delivered DOCX (2026-11-04)
+
+Status: **PASS_MATCHED_PDF_GENERATION_SELECTED_PREVIEWS_WORD_COMPARISON_OPEN**.
+Owner asked to generate PDF companions to inspect alongside the successful
+original-renderer DOCX. Single-room IDs not applicable; roles external lab
+implementer/Evidence Reviewer/PC Steward. Core owns rendering; PC shared status.
+Scope: two full PDF workers (UAT/SRS), reuse the already-passing matched1800 PDF,
+inspect retained outputs, and deliver paired files. No product source repair,
+DOCX regeneration, new Word control or permanent XML-policy change.
+
+Evidence root extends the prior experiment:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-node-override-20261104/pdf-pairs/`.
+Use `verification.json`, `verification-report.html`, `files/`, `previews/` and
+`uat-pdf/`/`srs-pdf/` immutable harnesses/packets/Oracle receipts. Prior DOCX and
+1800 PDF artifacts remain unchanged; user-facing copies are SHA256 verified.
+
+| Full fixture | PDF pages | PDF worker peak MiB | PDF seconds | Paired prior DOCX peak MiB |
+| --- | ---: | ---: | ---: | ---: |
+|1800 |50 |108.52 |3.31 |260.63 |
+|UAT |70 |217.35 |5.62 |313.63 |
+|SRS |98 |204.09 |5.90 |421.25 |
+
+The two new workers use unchanged512MiB memory/equal memory+swap (swap0), default
+heap/runtime,2CPU,128pids, network none, read-only product mounts and existing
+coordinator budget. Both exit0 without V8/cgroup OOM; original container identities,
+product/package/input bytes remain unchanged; no owned worker remains running.
+PDF creation changes only the chosen engine/generate call and output extension.
+Static identity checks confirm identical fixture inputs/fonts/assets/conversion
+helpers and frozen Core archive versus each DOCX run; the fixture setup differs
+only at createPdfEngine versus createDocxEngine. One run per format, not a load
+or repeatability guarantee. UAT/SRS elapsed time includes fixture preparation.
+
+Local independent pypdf checks match generator byte/hash/page-count receipts;
+all50/70/98 pages contain extractable text. All1800 row identifiers occur once
+in order in the existing PDF. All three document pairs are delivered together;
+the DOCX XML override remains300000 in the prior lab calls only and does not
+apply to PDF. No claim that PDF was converted from DOCX through Word.
+
+Poppler renders page1,2,middle,last of each PDF for inspection (1800:1/2/25/50,
+UAT:1/2/35/70, SRS:1/2/49/98). These selected views were inspected, with no obvious
+rendering break at contact-sheet scale. This is not all-page clipping, full
+semantic fidelity, source-layout or Word/DOCX parity acceptance. Local parser/
+preview work runs outside the Oracle generation workers and is not represented
+as capped512MiB generator memory. Native Word opening/visual comparison remains
+open; no further stress test is necessary for this PDF delivery request.
+
+Only this existing PC plan changes in Git; external report/files/previews carry
+bounded evidence. Verification: matched input/package identity, runtime receipts,
+artifact hashes and independent page counts, selected rendered views, final diff
+review and git diff --check. No Core/Service edit, original data/API/SQL/storage/
+service change, DOCUMENT_MAP promotion, merge, push, release or installation.
+
+Automatic report opening in the in-app browser was blocked by its file-protocol
+policy. The report was not opened; direct PDF/DOCX artifact links are delivered
+to the user instead. No alternate-browser/server workaround was attempted.
