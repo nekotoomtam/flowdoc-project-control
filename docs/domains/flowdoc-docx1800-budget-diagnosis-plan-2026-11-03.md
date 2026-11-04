@@ -3070,3 +3070,106 @@ service change, DOCUMENT_MAP promotion, merge, push, release or installation.
 Automatic report opening in the in-app browser was blocked by its file-protocol
 policy. The report was not opened; direct PDF/DOCX artifact links are delivered
 to the user instead. No alternate-browser/server workaround was attempted.
+
+
+## Fresh Core PDFs overlaid with owner-converted Word PDFs (2026-11-04)
+
+Status: **COMPARISON_COMPLETE_OUTPUT_DIFFERENCES_CONFIRMED_CAUSES_OPEN**.
+The owner explained that the currently named UAT-full.pdf/SRS-full.pdf had been
+replaced by their Word conversions and requested fresh Core PDFs plus overlays.
+Roles: external lab implementer/Evidence Reviewer/PC Steward; single-room IDs
+not applicable. Owner Core for future renderer changes; PC shared comparison.
+This is bounded discovery, not a product repair or fidelity acceptance.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-node-override-20261104/pdf-pairs/word-overlay-20261104/`.
+Use `reference-manifest.json`, `docx-source-identity.json`, `verification.json`,
+`verification-report.html`, `compare.py`, `overlay.py`, text-anchor JSONs,
+page alignment/text JSONs, `overlays/`, `files/` and the new generation receipts.
+The HTML offers original PDF pairs, selected raw-origin cyan/magenta overlays,
+and an opacity slider. Direct links are the delivery route; no attempt to bypass
+the known browser file-protocol restriction is made.
+
+### Provenance and fresh generation
+
+Both user-named PDFs have Microsoft Word365 creator/producer metadata and
+hashes different from the prior Core files. They were snapshotted before any
+new generation; their originals remain byte-identical after comparison. The
+current paired DOCX hashes still equal the prior delivered originals. The user
+identifies these as Word conversions; metadata and hashes do not constitute a
+cryptographic proof of the source DOCX/export options. No new Word UI is used.
+
+Fresh Core PDF output matches the prior Core PDF byte-for-byte for each full
+fixture, including matching expected model20 conversion digest and unchanged
+Core package/assets/fonts. Each fresh worker retains512MiB, swap0, default heap,
+network none and read-only product mounts. Coordinator budget remains128MiB.
+No OOM, original-container identity change, source/package/input mutation or
+owned running worker is observed. No database is involved.
+
+| Fixture | Fresh Core PDF | Owner Word-converted PDF | Fresh Core peak MiB | Seconds |
+| --- | ---: | ---: | ---: | ---: |
+|UAT |70pages |73pages |208.65 |5.68 |
+|SRS |98pages |101pages |198.20 |5.79 |
+
+UAT's generation/artifact receipt is PASS, but its host sampler encountered
+errno19 (cgroup disappeared after worker exit), before recording the final
+Docker state. The failed driver receipt is preserved. A separate read-only
+Docker inspect confirms exit0, non-OOM, stopped state and512MiB/equal memory-swap;
+worker memory files show zero OOM. UAT is not rerun. SRS uses a fresh2 namespace
+with only errno19-at-sampling handling added; final exit/OOM/identity checks stay
+unchanged. Its driver and worker pass. The original unlaunched SRS packet is
+retained. Neither condition is a product failure or an OOM retry.
+
+### Confirmed output differences
+
+1. **Pagination:** Word has3 additional pages for each fixture. This is directly
+   counted, not inferred from footer text or same-index page matching.
+2. **Nonuniform vertical displacement:** matched initial-glyph PDF text matrices
+   show Word lower than Core on UAT p1 by5.925pt at User Acceptance Record,
+   16.472pt at Version,16.992pt at Author and17.567pt at Updated Date. SRS p10
+   differs by11.351pt at Non-Functional,37.521pt at Minutes of Meeting and
+   39.551pt at Agreement. These are measured glyph-origin differences in the
+   delivered PDFs, not proof of a particular source-layout formula or cause.
+   A single constant page translation does not explain them.
+3. **Table flow/wrapping:** UAT Core p5 content spans Word p5/p6; visible line
+   wraps/row heights differ. SRS Core p49 and Word p50 share REQ0030 onward,
+   but Word p50 starts at REQ0029 and reaches about REQ0037, while Core p49
+   reaches REQ0039. This is different page/row placement, not proof of omission.
+4. **TOC presentation/page references:** Word has dot leaders where Core does
+   not, and references follow their differing pagination; for example UAT
+   Basic Feature points to6 in Core versus7 in Word. SRS TOC pages4-9 also
+   differ. Renderer/field-refresh behavior remains a possible explanation;
+   this observation alone is not classified as a data defect.
+
+### Method, coverage and limits
+
+All pages are read for candidate content alignment using Unicode NFKC,
+whitespace-free character4gram TF-IDF cosine and monotone1:1/1:2/2:1/gap grouping.
+Page counters and generated dot leaders/trailing TOC page numbers are ignored
+only for alignment, not hidden from original text/images or the findings.
+The first mapping was dominated by Word dot leaders and yielded near-zero TOC
+similarities; it is retained under alignment-v1-retained. The corrected mapping
+is an inspection aid, not full semantic equality or a missing-page verdict.
+
+Seventeen selected image pairs are rendered at the same120dpi and page origin,
+with white padding only; no translation, rotation or resizing to force agreement.
+All paired raster dimensions agree. Cyan is Core-only darkness, magenta is
+Word-only darkness, black is shared darkness. Pixel difference fractions measure
+raster disagreement, not percentages of lost content. Key cover/TOC/table/flow
+comparisons were inspected; complete page-by-page visual fidelity remains open.
+Local parsing/raster/overlay work is outside the measured Oracle generation
+workers and is not claimed as a512MiB generator test.
+
+Extraction differences alone are not findings of missing content: e.g. UAT
+Module Scope is visible in the Word-rendered image despite not appearing in its
+first-page text extraction. No complete text-loss conclusion is made. Exact
+root causes in font metrics, paragraph/row spacing, fields or Word export
+settings remain unverified; this round does not edit any renderer or choose a
+baseline correction. The obsolete50000 XML gate is not a cause of these
+successful-file layout differences.
+
+Only the existing PC plan changes in Git; the original user PDFs/DOCX and prior
+proof artifacts are preserved. Report links/images and JS syntax validate;
+final evidence/prose diff review plus git diff --check close this comparison.
+No Core/Service edit, original data/API/SQL/storage/service change, map promotion,
+merge, push, release, installation or new native Word control occurs.
