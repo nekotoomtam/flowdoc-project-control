@@ -4180,3 +4180,58 @@ Core M1 candidate42008134 and Service candidate db15e9d remain read-only;
 no Core/Service edits, code integration, original service stop, merge, push,
 release or installation are part of this pilot. Next action is owner Word PDF
 conversion, then bounded comparison; MR1/MR2 remain gated.
+
+
+## MR0 base80 owner Word PDF comparison — 2026-11-04
+
+Owner supplied `files/M1-MR0-repeat-Module-long-80.pdf` and authorized read-only
+comparison with M1/Core, not further copy construction or product changes.
+Active role: Evidence Reviewer with Project Control Steward for this append;
+inline IDs not applicable. Existing MR0 checklist is the acceptance target.
+The preceding WORD PENDING result remains historical; this bounded result
+supersedes that pending state for the base80 fixture only.
+
+Evidence root is the same MR0 artifact directory's `owner-pdf-comparison/`:
+`references/` pins all three PDFs; `comparison.json` records hashes, metadata,
+per-page markers, text coordinates and edges; `text-and-geometry-summary.json`,
+`raster-comparison.json`, `bounded-ink-check.json` and `result.json` hold the
+checks. Reproduction scripts are `compare-mr0.py`, `render-mr0.py` and
+`visual-check-mr0.py` in the MR0 root. PDF rendering/comparison ran locally;
+there was no Oracle connection or rerun of the prior memory test this turn.
+
+- PASS: MR0, M1 and Core each have9pages, members9/9/9/9/9/9/9/9/8,
+  all80markers once in original order and exactly the same page allocation.
+- PASS: MR0 Module label once on each of9pages; original label on page1,
+  exact original plus generated ` (ต่อ)` on pages2–9. All label text extracted
+  completely and all nine rendered label regions inspected. Suffix fits the
+  existing last line here; this does not prove a forced-extra-line suffix case.
+- PASS: every member's complete Menu text matches the fixture and lies inside
+  its row bounds. All non-Module data-character coordinates and horizontal
+  row-edge centers are exactly equal to M1 on all9pages. Member row heights
+  remain68.40–68.43pt, compared with Core67.90pt (existing0.50–0.53pt delta).
+- PASS within fixture: MR0 labels share the original M1 page1 position on every
+  page: top167.83664pt,61.61664pt below table top. Core label top161.71pt,
+ 57.71pt below its table top: existing relative difference3.90664pt and absolute
+  difference6.12664pt remain; this is not coordinate parity with Core. Menu
+  first-line top148.27664pt remains unchanged from M1, versus Core145.71pt.
+- Rendered all27reference pages at240dpi. MR0/M1 non-Module table interiors
+  x188–565pt,y85–765pt are pixel-identical on all9pages. No changed pixels lie
+  outside the bounded Module area x30–188pt,y134–752pt. Broader crop starting
+  x186pt includes a3pixel border-join difference on pages1–8: the Module's
+  bottom border is explicitly closed at each fragment end. Do not call the
+  entire table or entire page pixel-identical.
+- Inspected all9Module starts, all18first/last member rows, full9page sheet
+  and page2M1/MR0/Core comparison. No new visible clipping, missing suffix,
+  blank page, header/footer displacement or total-row loss observed in this
+  fixture. Existing text/geometry differences from Core remain visible.
+
+Result: PASS_BASE80_NATIVE_WORD_COMPARISON_ONLY. Useful visual evidence:
+`MR0-all-module-starts.png`, `MR0-all-page-ends.png`, `MR0-all-pages.png`,
+`page2-M1-MR0-Core.png`, and same-origin overlay
+`page2-M1-magenta-MR0-cyan-overlay.png` (coincident ink black; new MR0 ink cyan).
+This closes the base80 Word-pending comparison, not full MR0/MR1 or generic
+DOCX continuation support. Few-row final fragments, multiple groups per page,
+forced suffix wrapping and non-crossing UAT regression remain open. Production
+page-fact discovery still needs MR1; no product implementation is authorized.
+Core/Service candidates remain clean/read-only, no original data/service access,
+merge/push/release/install, product map or shared readiness promotion.
