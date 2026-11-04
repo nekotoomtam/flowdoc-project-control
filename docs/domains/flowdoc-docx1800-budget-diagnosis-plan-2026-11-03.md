@@ -3216,3 +3216,56 @@ Native Word rendering is not verified. GUI preparation did not reach a verified
 conversion; no text was typed and no document save/export occurred before the
 owner redirected to file delivery. No more UI action is taken. No original
 PDF/DOCX overwrite, product change, merge/push/release/install or map promotion.
+
+
+## Owner-exported UAT control/probe comparison: no useful improvement (2026-11-04)
+
+Status: **COMPARISON_PASS_PROBE_DOES_NOT_IMPROVE_ROW_HEIGHT_OR_PAGINATION**.
+Owner supplied both Word-converted PDFs and requested comparison only, with no
+Core/Service changes or integration. Roles Evidence Reviewer/PC Steward; IDs
+not applicable. Evidence extends `docx-cell-terminator-20261104/` under
+`owner-pdf-comparison/`: reference manifest/snapshots, verification.json/report,
+measure.py, raster-compare.py, all-page character/raster JSONs, border measurement
+JSON and visuals. Owner source PDFs remain unchanged after the comparison;
+DOCX hashes still match the delivered control/probe. Both PDFs identify Word365.
+Export options/source binding are owner-provided context, not cryptographically
+attested. No new Word UI or Oracle runtime is used in this verification.
+
+Both exports have73pages; the original matched Core PDF has70. Non-whitespace
+text/order, page dimensions and font names ignoring subset prefixes agree for
+all73 pages. Character-box differences occur only on p5, maximum0.36pt;
+272p5 non-whitespace character boxes move by more than0.01pt. Font sizes agree
+within floating-point precision. This compares the two supplied Word outputs,
+not complete semantic correctness against all source content.
+
+Independent border geometry on p5 reads the first six black horizontal border
+centers crossing x=400pt: stroked lines in Core, thin filled black rectangles
+in Word; nonpainted clipping rectangles are excluded. First target table:
+
+| Variant | Table height pt | Row heights pt, header through total |
+| --- | ---: | --- |
+|Core PDF |195.80 |28.00 /33.30 /50.60 /50.60 /33.30 |
+|Word control |245.43 |28.56 /49.80 /66.60 /66.63 /33.84 |
+|Word probe |245.55 |28.56 /49.80 /66.72 /66.63 /33.84 |
+
+The probe table is0.12pt taller, and remains49.75pt taller than Core. There is
+no improved pagination or removal of the roughly16pt excess in the body rows.
+All73 pages were independently rendered with Poppler at96dpi without alignment:
+72pages are pixel-identical; only p5 changes (9094RGB pixels, difference bbox
+48,423–746,950). Finite raster resolution is not unlimited-precision equality;
+unchanged pages also do not certify the already-different baseline layout.
+A144dpi p5 overlay and same-coordinate first-table comparison were inspected.
+
+Decision: do not implement/adopt this explicit-empty-paragraph addition as the
+fix on this evidence. The proposed useful repair is unsupported; this does not
+prove all implicit-paragraph or VML layout hypotheses false. The main height
+cause remains open. Any next experiment should first isolate actual source-guided
+textbox/paragraph/cell row-height ownership rather than tune unrelated spacing.
+No further adjustment is made in this comparison request.
+
+The static report embeds its images (no JavaScript dependency); image decoding
+and evidence links validate. Only this existing PC plan changes in Git. Review
+coverage/results and final diff plus git diff --check close the request. No
+Core/Service edit, original data/service action, merge/push/release/install or
+map promotion. The prior512MiB copy-building proof remains scoped to that prior
+worker; local PDF analysis is not represented as a new512MiB runtime proof.
