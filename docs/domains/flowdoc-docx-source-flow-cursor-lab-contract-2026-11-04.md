@@ -264,3 +264,86 @@ subset are ready to review; genuine Core adapter/ref-union implementation,
 native UAT preceding-flow, actual section/band footprints, row/line splitting,
 Word fit equivalence and full MR1 acceptance remain open. Core/Service product
 files and runtime behavior were not changed.
+
+## Genuine Core read-adapter proof — 2026-11-04
+
+Owner next authorized a read-only adapter on copies, preserving M1/Menu. The
+bounded proof used one genuine UAT generation in Oracle512MiB/swap0, with the
+coordinator separately limited to128MiB. No product implementation or package
+rebuild. This extends the earlier synthetic contract evidence; the earlier
+statement that no genuine adapter had been proven is historical. The prefix
+schema still accepts only its declared synthetic fixtures: this real-source
+projection was not mislabeled as `lab-synthetic` or a complete wire schema.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-core-read-adapter-20261104`.
+Inputs: `expected-core-src.json`, `read-adapter.mjs`, `worker.mjs`, `remote.py`,
+`run.py` and `packet.json`. Outputs: `oracle/receipt.json`,
+`oracle/outputs/read-adapter-facts.json`, `read-adapter-summary.json`,
+`result.json`, `result.docx` and cgroup records. Independent checks:
+`verify-local.py` and `verification-local.json`. The scripts and raw receipts,
+not this prose alone, support these claims.
+
+The adapter observes the actual branded ExportIntent and actual `buildSections`
+result at the writer's pre-package boundary, using a one-shot in-process Node
+inspector breakpoint. It does not patch Core code or package files. All267
+compiled package files remain identical to the tested M1 archive;127tracked
+source files match current Core42008134. The private Core brand rejects a
+shallow forged intent. Eight in-worker checks cover genuine registry reading,
+forged intent rejection, altered source/order/missing/duplicate root rejection,
+stale-style snapshot rejection and before/after source/measurement equality.
+Registry/snapshot rejection checks are lab-adapter validation, not new Core API
+guarantees. No caller HTTP fact or PDF/page-cut input is accepted by this proof.
+
+Actual snapshot sourceDigest:
+`9c4c27b2bcc39bb01e88ed3b3e8bce6c2e4b0c3cb737908907eb2e47c906c968`.
+Read facts:1section,179ordered roots,3315source-map entries,95table roots,
+4grouped tables,58applied source guides and63lines. All179roots have one source
+action;54derived between-table references retain both source owners and match
+the real emitter's separator count. Actual SourceEntry tuples are copied,
+not decoded from names. Source UTF16 spans/tags/text hashes and line counts
+match the emitted custom map. The projection retains compact line/font facts,
+not a second glyph or ZIP graph.
+
+Native M1 receipts include three merged labels with480twips source top mapped
+to160twips physical top plus320twips first-label offset once (8pt+16pt).
+The single-member group correctly remains480+0 under `retain-native`.
+This checks actual selected policy and content preservation, not a fresh Word
+render or a new native continuation-label implementation.
+
+Worker exit0, OOMKilled=false, oom_kill0, peak349970432bytes (333.758MiB),
+generation+observation6996.186ms. One generation only; no OOM or retry.
+The initial remote comparator remains FAIL because it allowed only timestamp
+differences and correctly stopped on changed embedded-font parts. Independent
+review of the pinned docx obfuscation implementation and package relationships
+decoded both fonts: complete font bytes match baseline and observed Core style
+resource SHA256s. Only their per-generation GUID keys and first32obfuscated
+bytes differ. Do not rewrite the original failed receipt as PASS.
+
+Independent20checks pass, including parsing all26XML/.rels parts. Of171package
+entries,167are byte-identical, including document.xml, styles, source map,
+headers/footers and Menu textbox markup. The four reviewed differences are
+created/modified timestamps in core.xml, GUIDs in fontTable.xml and the two
+obfuscated font parts. Thus M1 content/geometry/decoded fonts are preserved,
+but whole-file byte equality is NOT claimed. New DOCX SHA256:
+`6b1c06cabab2020427cf2af58ce8b7d3bf610fd97b94e0bd7816f46b3d3de8d5`.
+No fresh Word/PDF export or native page-count assertion was made.
+
+Remaining gaps are explicit, with `remainingSafe:null` and
+`fullCursorStatus:NEEDS_SOURCE_FACTS`: complete preceding-root advances and
+spacing/keeps; automatic native row advances and explicit total-row roles;
+bounded first/continuation band footprints; special ending/TOC/scope and split
+transitions. Source line frames alone are not complete native flow advances.
+Core capacities remain estimated/wordFootprintVerified=false. Unclassified
+rows are not guessed to be totals from text or last-row position. This proof
+does not establish transport authentication, cancellation or all-document
+adapter coverage.
+
+Status: `PASS_GENUINE_READ_ADAPTER_WITH_CURSOR_GAPS`. Next bounded discovery
+should project preceding paragraph/table boundary facts and classify unsupported
+native automatic-height cases before attempting cursor replay. Full MR1 and
+product adapter implementation remain open. Core/Service heads42008134/db15e9d
+stay clean. Source/package/harness/baseline hashes and original three container
+identities/start/restart counts unchanged; no owned worker left running.
+No SQL, original data/service change, Core/Service edit, merge/push/release/
+install, or map promotion.

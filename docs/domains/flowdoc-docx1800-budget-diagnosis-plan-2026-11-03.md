@@ -4676,3 +4676,42 @@ Contract status: PASS_PROPOSED_CONTRACT_LAB_ONLY, ready for review and a separat
 bounded source-adapter proof on copies. No DOCX output, PDF/renderer execution,
 SQL, original data/service change, Core/Service edit, integration/merge,
 push/release/install or map promotion. Product candidates remain clean.
+
+## MR1 genuine Core read-adapter proof — 2026-11-04
+
+Owner authorized the next copy-only source-adapter proof in Oracle512MiB,
+preserving M1/Menu with no Core/Service edits or integration. Inline role:
+Evidence Reviewer/Project Control Steward; execution IDs N/A. Proof budget:
+one genuine UAT generation with a one-shot read observer and independent local
+verification. Reuse the existing source-flow contract; no new shared document.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-core-read-adapter-20261104`.
+Detailed implementation/provenance, comparison limits and evidence locators are
+in `flowdoc-docx-source-flow-cursor-lab-contract-2026-11-04.md`, section Genuine
+Core read-adapter proof. An inspector observation reads the actual Core-branded
+intent and built-section receipts without patching any Core/package file.
+
+Read1section/179ordered roots/3315source-map entries/95tables/4grouped tables,
+58applied guides/63lines and54owned derived between-table boundaries. Eight
+in-worker checks pass; independent20checks cover the emitted source map,
+immutable snapshots, XML/.rels and package/boundary evidence. Worker peak
+333.758MiB, exit0, oom_kill0; no retry or OOM. All127tracked Core source files
+and267compiled package files match immutable M1 inputs.
+
+Initial remote comparison FAIL is retained: embedded fonts have new random
+obfuscation GUIDs. Independent decoding confirms identical full font bytes;
+167of171parts are byte-identical. Remaining differences are font GUIDs/their
+first32obfuscated bytes and creation/modification timestamps. M1 geometry,
+Menu textbox and source-map parts are preserved; whole-DOCX byte equality or a
+fresh Word rendering is not claimed.
+
+Status PASS_GENUINE_READ_ADAPTER_WITH_CURSOR_GAPS. This advances availability
+of genuine facts beyond the preceding synthetic-only proof, but does not close
+MR1. `remainingSafe:null`: native automatic row advances, preceding boundary/
+keep projection, explicit total roles, bounded bands and special/split flows
+remain unresolved. Next discovery should project/classify preceding-flow
+footprints without promoting estimated capacities or unknown heights to exact.
+Source/product/baseline inputs and original container identities stay unchanged;
+Core42008134/Servicedb15e9d clean. No original data/service operation, SQL,
+Core/Service change, merge/push/release/install or map promotion.
