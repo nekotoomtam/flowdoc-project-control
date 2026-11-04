@@ -775,3 +775,78 @@ representative span before claiming row heights or page cuts. No Core/Service
 edit, original data/service operation, SQL, integration/merge/push/release/install
 or map promotion. Original3container identities/start/restart counts unchanged;
 both owned workers exited, none left running. Core42008134/Servicedb15e9d clean.
+
+## Reused native Word row comparison — 2026-11-04
+
+Owner authorized comparison of the copied Module/peer plans with real Word
+row geometry, preserving M1/Menu and no product edits/integration. Inline
+Evidence Reviewer/Project Control Steward, IDs N/A. Proof budget: existing
+native evidence extraction/render plus one Oracle512MiB comparison worker.
+Reuse this contract and plan; no new Word export or product generation.
+
+Native evidence is the previously owner-exported M1 Word365 PDF, page5 of72,
+paired with the reviewed M1 DOCX. PDF SHA256
+`ec1b60796e9351339221c3aa9b53facec5f499531874fdf68cf963eecf0d5fc9`;
+DOCX SHA256
+`32f3fb82a0be71d0ea707e8bf3483ee2759e4210bacab11dfe72394bf6f85f91`.
+Metadata identifies Microsoft Word for Microsoft365, export2026-11-04 12:47:28
+UTC+7; source pairing/provenance comes from the retained owner-export record,
+not an assertion that PDF metadata cryptographically binds a DOCX hash.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-word-row-comparison-20261104`.
+Inputs: `original.pdf`, `original.docx`, `source.json`, `plans.json` and
+`native-raw.json`. `prepare.py` uses the existing desktop bundled pdfplumber to
+export all page5 characters/rectangles and metadata. The pinned Oracle image
+has no PDF parser/rendering tools; nothing was installed. Oracle does NOT parse
+or render the PDF: it verifies input hashes and computes against the immutable
+extracted events. `build.py`, `oracle/receipt.json` and
+`oracle/outputs/verification.json` retain the comparison. Independent review:
+`verify-local.py`/`verification-local.json`, `artifact-hashes.json`.
+
+The first summary table is identified by actual header/source text, then row
+rules are recovered from native black vector rectangles. Heights below are
+distances between row-stroke centers, not Word automation Row.Height or a
+universal paragraph advance. Source stack values exclude unresolved native
+paragraph/border/merge/rounding effects. Comparing them is an observation of
+their residual, not proof that the two definitions should be numerically equal.
+
+| Member row | Core source stack pt | Word stroke-center height pt | Difference pt |
+| --- | ---: | ---: | ---: |
+|0 |33.30 |33.84 |+0.54 |
+|1 |50.60 |51.00 |+0.40 |
+|2 |50.60 |51.15 |+0.55 |
+| Sum |134.50 |135.99 |+1.49 |
+
+Native member boundaries are134.78/168.62/219.62/270.77001pt on page5. All13
+selected text blocks have matching native/source line counts and line content
+after ignoring PDF-extraction whitespace: Module1line, Menu1/2/2lines, nine
+ordinary peers1line each. This is not byte-exact PDF text/whitespace fidelity.
+Native actual column stroke centers differ from source-grid positions by less
+than0.1pt; independent review confirms the small offsets cannot change any
+selected text's cell assignment. Source and native source-cell ownership remain
+consistent. Module is visibly complete within its3row merged span.
+
+Visual evidence: `native-crop.png`, the existing Word page5 first summary table
+rendered at240dpi with bundled desktop pdfplumber/PDFium. The image was inspected:
+Module/Menu/peer text is complete and no visible truncation/overlap is found in
+this group. PDF character boxes are not true glyph ink, so the coordinate checks
+alone are not claimed to prove absence of clipping. No statement covers other
+pages, long-group continuations, different fonts/data or an edited Word file.
+
+Oracle22sample checks and independent11checks pass. Worker512MiB/swap0,
+coordinator128MiB, peak14491648bytes (13.8203125MiB), exit0,
+OOMKilled=false/oom_kill0, no retries. This measures comparison work only;
+desktop PDF parsing/rendering and full Core generation are outside that peak.
+Word/DOCX/Core/Service inputs stay unchanged. Original3container identities/
+start/restart counts stable; no owned worker running; Core/Service heads clean.
+
+Verdict `PASS_REUSED_WORD_SAMPLE_COMPARISON_WITH_ROW_DELTAS`. Source/native line
+agreement is established for this13block sample, and native row geometry is now
+observed. Exact source-stack/native-row equivalence is disproved for it. The
+residual's cause/allocation is not established; do not label it a Core defect or
+apply an invented0.5pt/universal correction. Before a safe row upper bound or
+page cursor, resolve the native reference-plane/paragraph/stroke effects and
+validate the resulting model on its intended scope. RemainingSafe stays null;
+full MR1 stays open. No Core/Service edit, original data/service operation,
+SQL, integration/merge/push/release/install or map promotion.

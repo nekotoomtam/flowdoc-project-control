@@ -4866,3 +4866,38 @@ Core/Service candidates/source/package/harness/baseline unchanged; original
 container identities stable; no owned workers running. No original data/service
 operation, SQL, Core/Service edit, integration/merge/push/release/install or map
 promotion.
+
+## MR1 reused Word row comparison — 2026-11-04
+
+Owner authorized native Word comparison on copies, preserving M1/Menu without
+product edits/integration. Inline Evidence Reviewer/Project Control Steward,
+IDs N/A. Reuse the already owner-exported M1 Word365 PDF and exact reviewed
+DOCX, not a new export. Proof budget desktop extraction/render plus one isolated
+Oracle512MiB comparison worker; reuse this plan and source-flow contract.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-word-row-comparison-20261104`.
+The contract's Reused native Word row comparison section records immutable
+hashes, raw events, scripts, native image, numerical results and limitations.
+Oracle image lacks a PDF parser; desktop bundled pdfplumber/PDFium reads the
+existing page5 and Oracle validates immutable exported coordinates/text. No
+installation or new native Word/Core generation. Word PDF is verification
+evidence only, never an input to the source cut planner.
+
+All13sample blocks match native/source line counts and line content ignoring
+PDF-extraction whitespace: Module1, Menu1/2/2, peers1each. Rendered crop inspected,
+no visible clipping in this group. Actual native stroke-center row heights are
+33.84/51.00/51.15pt versus source stacks33.30/50.60/50.60pt: differences
+0.54/0.40/0.55pt, sum1.49pt. These source/native reference quantities are not
+interchangeable. No confirmed cause or universal correction is established.
+
+Oracle22sample+independent11checks pass, worker512MiB/swap0, peak13.8203125MiB,
+exit0/no OOM. Peak covers comparison only, not desktop extraction or Core.
+Source inputs/baseline/product candidates unchanged; original container
+identities stable, no owned worker running. Status
+PASS_REUSED_WORD_SAMPLE_COMPARISON_WITH_ROW_DELTAS. Sample line-agreement gap
+closed; safe native upper-bound model/remainingSafe and full MR1 remain open.
+Next bounded work: resolve native reference-plane/paragraph/stroke contribution
+to the observed residual before applying a row bound. No original data/service
+operation, SQL, Core/Service edit, integration/merge/push/release/install or map
+promotion.
