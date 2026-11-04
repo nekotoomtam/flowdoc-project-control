@@ -2909,3 +2909,107 @@ current scope. Existing producer/codecs/maps/artifacts remain unchanged. No
 DOCUMENT_MAP or generated shared truth promotion. Verification for this prose
 is evidence reconciliation, final diff review and git diff --check; no runtime
 suite is applicable to a read-only design review.
+
+
+## Owner-authorized XML budget override: original full DOCX server proof (2026-11-04)
+
+Status: **PASS_SERVER_GENERATION_AND_SCOPED_PACKAGE_CHECKS_WORD_NOT_RUN**.
+The owner explicitly requested removing the50000-node restriction for a server
+retest. This supersedes the earlier keep-XML-cap constraint for these isolated
+lab calls only. The R2 inline-reduction/baseline route is held; no new reducer
+or numeric baseline correction is used. This is a fresh single-room bounded
+lab experiment, not reactivation of a historical execution. IDs not applicable.
+Core owns runtime behavior; PC owns shared status. Roles: external lab implementer,
+Evidence Reviewer, PC Steward. Risk routine, bounded read-only product mounts.
+Acceptance: original full fixtures complete under512MiB, artifact/receipt hashes
+agree, XML/rels/relationships and source-guided content independently validate;
+record failures, memory, time and remaining Word gaps. Document budget: this
+existing section; evidence reused from frozen package and fixture manifests.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-node-override-20261104/`.
+Use `verification.json`, `verification-report.html`, per-stage immutable
+packets/run scripts/receipts and actual output files. PC starting base3b94ddf;
+Core582f141 and Service db15e9d remain clean and unchanged. The unrelated
+October4 Editor snapshot grants no authority for this experiment.
+
+### What changed for the test
+
+The unchanged public API already supports `maxXmlNodes:300000`. Each DOCX call
+uses that explicit option in place of its default50000; this is not unlimited
+XML, a product patch, a new release, or a changed Service/default configuration.
+The source-node cap50000, output cap32MiB, drawing/shaping caps, default heap,
+512MiB worker memory with equal memory+swap (swap0),2CPU,128pids, network none,
+read-only product mounts and existing128MiB coordinator budget remain unchanged.
+The first V8/cgroup OOM would stop further work; none occurred.
+
+Generation uses the original source-word renderer. No inspector/guide capture,
+new XML reducer, forced GC or DOM verifier runs inside the generation worker.
+Each format/fixture has a fresh worker. Output is written to lab files rather
+than retained again in harness chunk arrays. UAT/SRS reuse the accepted full
+legacy-to-model20 fixture conversion and original font/image adapters; expected
+conversion digests match, and bounded/trimming mode is absent.
+
+| Actual generation | Worker peak MiB | Elapsed seconds | Final XML/rels nodes | File bytes |
+| --- | ---: | ---: | ---: | ---: |
+|1800 DOCX |260.63 |5.80 |195111 |540129 |
+|1800 PDF |108.52 |3.31 |not applicable |923287 |
+|Full UAT DOCX |313.63 |6.29 |112084 |3019602 |
+|Full SRS DOCX |421.25 |11.23 |182587 |875521 |
+
+These are one-run observations, not capacity guarantees or benchmark
+percentiles. Matched1800 PDF and DOCX use the same template/request, Core archive,
+resources and worker limits; DOCX peak is152.11MiB higher, about2.40times PDF.
+UAT/SRS timings include their fixture conversion/image/font setup and must not
+be compared directly to1800 generation complexity. Native Word is not run here.
+
+Existing writer compaction is conditional on xmlBudget
+(`src/docx/writer.ts:152-170`). Therefore the higher override changes which
+already-existing compaction branches run.195111 is the independently measured
+final count for this delivered1800 file, not the earlier162741 default-rejection
+count or a projection. This is still original product behavior under an option;
+no experimental source-line or ordinary-paragraph representation is enabled.
+
+### Independent checks, failures and practical boundary
+
+Fresh separate512MiB workers validate all XML and rels parts with ElementTree,
+ZIP CRC/unique entries, internal relationship targets/IDs and final node counts
+against the Core receipt. File SHA256 and byte lengths match the generator.
+The1800 check validates exact text and UTF16 member ranges for all1800 paragraphs
+and10800 word boxes. UAT/SRS verify every retained source-guided line and member
+against the closed producer's genuine facts, including owner tags/text digests
+and UTF16 source slices. This is not a full native unguided-content or visual
+comparison. Full native text, all-page layout/ink, edit/save behavior and native
+Word opening remain unverified for these outputs.
+
+Seven actual processing workers exit0 with no cgroup/V8 OOM. Independent verifier
+peaks are133.95MiB for1800,88.11MiB for UAT and120.25MiB for SRS; these are
+separate from generation peaks. Every receipt confirms unchanged original
+container identities, source/package/input hashes and no owned running worker.
+Only identity metadata is inspected for the original containers; no original
+API, SQL, storage or service action occurs.
+
+The first coordinator reused one harness folder for two groups and failed
+before PDF launch on an existing node_modules symlink. Its DOCX worker had
+already completed successfully. That failed driver receipt and unlaunched PDF
+entry are preserved; the first stage is not reported as an overall driver PASS.
+PDF then ran in a fresh stage; DOCX was not repeated. No OOM retry or candidate
+repair occurred. The inherited terminal label PASS_B0_CAPTURE_STAGE is driver
+prose only; new namespaces and generation/independent results govern this scope.
+
+The former50000 XML limit was a confirmed blocker for these cases, while the
+retained original renderer can complete all three under512MiB in this test.
+This removes the current evidence-based need to continue the new baseline/XML
+reduction route solely to satisfy50000. It does not establish unlimited growth,
+production/concurrent capacity or a correct full Word visual result.
+
+Next appropriate work is native Word review of these actual successful full
+outputs, then choosing an explicit product XML policy and any Service HTTP
+wiring based on measured workload/capacity. Do not silently remove all guards
+or promote this override as the permanent default. No further stress/repeat/
+concurrency experiment is required to close this bounded generation request.
+
+Only the existing PC plan is changed in Git. Final coverage: reconciled actual
+receipts/artifacts, independent package/source-map checks, unchanged Core/Service
+heads and clean status, final prose diff review and git diff --check. No
+DOCUMENT_MAP promotion, merge, push, release or installation.
