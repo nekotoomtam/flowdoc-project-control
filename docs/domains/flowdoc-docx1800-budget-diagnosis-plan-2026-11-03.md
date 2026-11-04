@@ -3321,3 +3321,58 @@ record scope; final evidence/diff review and git diff --check close file deliver
 No Core/Service edit, original data/service action, new Word control,
 merge/push/release/install or map promotion. Stop pending owner PDFs rather
 than inventing an outcome or making a further adjustment.
+
+## Owner Word P0-P3 comparison (2026-11-04)
+
+Status: **COMPARISON_COMPLETE_NO_HEIGHT_IMPROVEMENT_CAUSE_OPEN**.
+Owner supplied all four Word PDF exports and requested row-height, text-position
+and clipping comparison only; no Core/Service edits or integration. Roles
+Evidence Reviewer/PC Steward, inline execution IDs not applicable. Existing
+plan remains the canonical bounded result; no map or readiness promotion.
+Evidence: `C:/Users/nekot/Documents/FlowDoc-recovery/docx-cell-padding-box-20261104/owner-pdf-comparison/`;
+verification.json, reference-manifest.json, row-borders.json,
+row-padding-inventory.json, all-page-characters.json,
+all-page-raster-comparison.json, detail-raster-comparison.json,
+p3-changed-characters-page5.json and static verification-report.html.
+
+Confirmed results:
+
+- Owner exports identify Microsoft Word365 and each has73pages. Current DOCX
+  hashes match delivery; original and snapshot PDF hashes recheck unchanged.
+- First table page5: all four have border centers106.22,134.78,184.58,251.18,
+  317.81,351.65pt and height245.43pt. Core reference table is195.80pt, so all
+  retain49.63pt excess. Corresponding row heights are28.56/49.80/66.60/66.63/
+  33.84pt versus Core28.00/33.30/50.60/50.60/33.30pt.
+- Every page's extracted non-whitespace character sequence agrees with P0 for
+  P1/P2/P3, with unchanged font sizes. P1/P2 character boxes agree exactly.
+  P3 extraction boxes differ on40characters only on page5 (top/bottom-.12pt),
+  but this is not evidence of a visible glyph displacement: raster ink agrees.
+- Poppler96dpi, whole-page origins/dimensions unchanged and exact RGB comparison:
+  P1/P2/P3 each have73/73 pixel-identical pages versus P0. Additional240dpi
+  checks of pages5-6 are pixel-identical for each variant (6 comparisons).
+  Visual inspection of page5 and text-detail crops finds no incremental ink
+  clipping; equality at tested resolutions supports no new visible clipping
+  versus P0. This does not certify absence of pre-existing clipping everywhere,
+  equality with Core throughout, or native Word performance under512MiB.
+
+Interpretation: changing only the selected Menu top/bottom padding or the1pt
+textbox excess did not reduce row heights/page count in these exports. Do not
+adopt these changes as a fix, and do not infer that all cell padding is harmless.
+
+**Probable Risk, not confirmed cause:** table8 body-row group-label cells,
+including vertical-merge continuations, retain24pt top/4pt bottom padding;
+other content cells retain8pt top/bottom. P1/P2 modified only Menu cells, leaving
+these and other row cells unchanged. Row-level margin interaction may therefore
+mask the Menu probe. The24-8=16pt difference closely matches the approximately
+16pt extra body-row height but correlation is not causal proof. Existing
+merged-cell/paragraph ownership remains an alternative needing isolation.
+
+Next recommended work is a separately authorized one-factor copy probe of the
+group-label top margin and merged continuation margins, retaining all other
+geometry/text and repeating native Word text/ink/row checks. No additional probe
+is built in this verification-only turn. No new Oracle worker execution; prior
+512MiB copy-building receipt is reused only for its original scope. Source
+PDFs/DOCX and Core/Service candidates unchanged; no original data/service action,
+merge/push/release/install. Static report embeds both images without JavaScript;
+image/link validation, result coverage review and final diff/check close this
+bounded comparison. Only this existing Project Control prose changes in Git.
