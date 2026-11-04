@@ -626,3 +626,74 @@ Core42008134/Servicedb15e9d clean; Word-reviewed M1 DOCX hash unchanged. No new
 DOCX/PDF, renderer, Core/Service change, original data/service operation, SQL,
 merge/push/release/install or map promotion. Original3container identities/
 start/restart counts unchanged; no owned worker running.
+
+## Genuine representative text/image/merge facts — 2026-11-04
+
+Owner authorized a copy-only Oracle512MiB representative-row proof under the
+proposed contract, preserving M1/Menu without Core/Service changes/integration.
+Product owner Core; inline Evidence Reviewer/Project Control Steward, IDs N/A.
+Proof budget: one genuine UAT generation with a read observer and independent
+source-to-package checks; stop on OOM. Reuse this contract and the existing plan.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-representative-rows-20261104`.
+`representative-adapter.mjs` reads the actual branded intent at the unchanged
+writer observation point; `oracle/outputs/representative-source.json` retains
+selection reasons, actual SourceEntry tuples, raw selected text/line spans,
+cached extent facts, image resource/geometry identities and merged-label policy.
+Other raw outputs/receipt/cgroup records are under `oracle/`; checks/results are
+`verify-base.py`/`verification-base.json`, `verify-rows.py`/`verification-rows.json`
+and `verify-representative.py`/`verification-representative.json`.
+`artifact-hashes.json` binds retained local artifacts. No source shaper, image
+builder or rendering policy is called a second time by the observer: cached
+measurements/resource bytes are read, not regenerated. The single generation
+is genuine Core work, not the prior synthetic contract checker.
+
+Selection is based on actual source capabilities, not prior PDF coordinates:
+resolved soft-wrap, authored multiline, cached multiline measurement, mixed
+text/image cell and largest table-image frame. All five roles were found; their
+union plus the first eligible M1 merged span covers7rows in5tables,24text blocks
+and5inline images. Counts describe this fixture subset, not all document types.
+
+| Representative | Confirmed Core-to-output facts | Remaining native-height gap |
+| --- | --- | --- |
+| Summary/Menu, area entry8, group0 members0–2 | Three genuine guides supply five Exact outer line frames. Source lengths19/32/39 map to ranges0–19;0–28/28–32;0–21/21–39. The two-line examples contain no authored newline. All text/spans/tags and outer frames match emitted SDT content. | Line frames do not bound every peer cell or merged row. Inner VML word boxes remain overlays, not extra flow lines. |
+| Authored multiline cover row | Text106characters with three explicit newlines is preserved in one ordinary native paragraph with breaks. | No guide or cached measurement for this block; authored breaks do not establish all native wraps/row height. |
+| Requirement area entry18 | Cached aggregate at212pt source-width key reports11lines/190.3pt for330characters with8newlines; emitted ordinary paragraph preserves text and breaks. | Cache exposes height/line count, not line source ranges or a native Word line cursor. Measurement recipe includes1.5pt width safety; it is not an exact Word measurement. |
+| Mixed Requirement cells, entries16/18 | Two8×8pt image frames and two28×25pt frames match actual inline geometry, contained picture scale/offset and embedded-byte hashes. Entry16 text cache reports1line/17.3pt. | Images retain native AtLeast carrier paragraphs. The image frame height is not a complete carrier-inclusive native row advance. |
+| Largest table image, mobile figure entry142 |451×212.4pt frame matches actual inline extent; contained picture transform and resource bytes match Core identity. | Caption/paragraph/carrier and cell interactions remain part of unresolved row advance. |
+| Module merged over the three summary members | Source group/cell identity, rowSpan3 and all member IDs preserved. Actual XML keeps8pt physical top+16pt first-label offset once. | Module text itself has neither SourceGuide nor cached extent at this width; no certified merge allocation/label-wrap upper bound is available. |
+
+All24selected text blocks match their emitted text and source hashes; guides
+cover five full source-line frames. Two cached extents are explicitly retained
+as aggregate-only facts. Source content widths match selected native widths for
+these cells; this is checked, not assumed for other policies. For all5images,
+private resource-byte SHA256 equals both the intent metadata and the actual
+relationship-target part hash. Image wrapper line budgets/zero spacing,
+frame extents, aspect-containment transforms and offsets also match. Physical
+picture dimensions are distinguished from the enclosing frame.
+
+Worker512MiB/swap0, coordinator128MiB: exit0, OOMKilled=false/oom_kill0,
+peak365809664bytes (348.86328125MiB),7009.196ms, one generation/no retry.
+Eight inherited in-worker checks pass; independent20base,11row/boundary and
+15representative checks pass. All26XML/.rels parts parse.127Core source files
+and267compiled files match M1;167of171DOCX parts match the reviewed baseline
+byte-for-byte. Remaining differences are timestamps/font obfuscation GUIDs and
+first32bytes; full decoded fonts match. Menu/M1/source-map markup unchanged.
+No fresh Word/PDF export, page count, clipping or native fit claim is made.
+
+Verdict `PASS_GENUINE_REPRESENTATIVE_FACTS_WITH_NATIVE_HEIGHT_GAPS`.
+Real text/resource/geometry facts can be read without product changes. This does
+not complete flowdoc-row-footprint/1: cached11line measurements cannot supply
+line-cut ownership; Module wrap and merge allocation remain missing; image
+carriers and ordinary peer paragraphs lack complete native upper bounds.
+All7row native advances and remainingSafe stay null. No fake row height is
+derived from image dimensions, paragraph count or an aggregate text height.
+Next bounded discovery should establish source line/flow facts for the Module
+label and its ordinary peer cells, then carrier-inclusive image/paragraph
+footprints, before claiming a complete row bound or replaying page cuts.
+
+Full MR1 remains open. Core42008134/Servicedb15e9d remain clean; source/package/
+harness/baseline inputs and original3container identities/start/restart counts
+unchanged, no owned worker running. No Core/Service edit, original data/service
+operation, SQL, merge/push/release/install or map promotion.

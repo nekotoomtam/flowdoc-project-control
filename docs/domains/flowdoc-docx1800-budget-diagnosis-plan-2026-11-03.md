@@ -4794,3 +4794,38 @@ rows before full preceding-flow replay. Full MR1 remains open. Core/Service
 heads clean, M1 DOCX unchanged, original3container identities/start/restart counts
 stable, no owned worker running. No new DOCX/PDF or renderer, original data/
 service operation, Core/Service edit, merge/push/release/install or map promotion.
+
+## MR1 genuine representative-row facts — 2026-11-04
+
+Owner authorized representative text-wrap/image/merge proof on copies in
+Oracle512MiB, preserving M1/Menu and excluding product edits/integration. Inline
+Evidence Reviewer/Project Control Steward, IDs N/A. Proof budget one genuine
+UAT generation plus independent checks; reuse this plan/source-flow contract.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-representative-rows-20261104`.
+The source-flow contract's Genuine representative text/image/merge facts section
+records selection roles, source identities, coverage table and executable/raw
+evidence locators. Actual intent observation covers7rows/5tables,24text blocks,
+3guides/5line frames,2aggregate cached extents and5inline images, including a
+3member Module merge. Text/line spans and inline media bytes/geometry match the
+emitted DOCX; source/native widths and M1's8pt+16pt offset are checked.
+
+Requirement text with8authored newlines has a Core cached11line/190.3pt aggregate
+at212pt width key, but no line-range cursor. Module label has neither a guide
+nor cached extent; ordinary peer/image-carrier bounds and merge allocation
+are also incomplete. All7native row advances and remainingSafe remain null.
+Do not infer row heights from paragraph count, image frame or aggregate text.
+
+Oracle peak348.86328125MiB, swap0, exit0/no OOM,7009.196ms; one generation/no
+retry. Eight in-worker checks and independent20base+11row+15representative
+checks pass. M1/Menu content parts remain byte-identical to the reviewed M1;
+timestamps/font obfuscation explain the4differing parts, decoded fonts identical.
+No fresh Word/native fit/clipping assertion. Core/Service source/package inputs
+and original container identities unchanged; candidates clean, no owned worker.
+
+Status PASS_GENUINE_REPRESENTATIVE_FACTS_WITH_NATIVE_HEIGHT_GAPS, MR1 still open.
+Next bounded discovery: Module/peer source line-flow facts, then carrier-inclusive
+image/paragraph footprints, before complete native row bounds or page replay.
+No original data/service operation, SQL, Core/Service edit, merge/push/release/
+install or map promotion.
