@@ -3770,3 +3770,98 @@ Oracle worker or512MiB runtime claim: current work is local PDF analysis; prior
 git diff --check close this comparison. Only existing PC prose changes in Git;
 Core/Service and source files unchanged, no original data/service action,
 merge/push/release/install, extra implementation or map promotion.
+
+## M1 Core candidate implementation and Oracle lab proof (2026-11-04)
+
+Status: **M1_IMPLEMENTED_ORACLE_PROOF_PASS_NATIVE_WORD_ACCEPTANCE_PENDING**.
+Authority: owner explicitly authorized isolated Core candidate M1 plus long/
+cross-page Oracle-host512MiB lab tests, preserving Menu boxes; no Service,
+original data/services or merge/push/release/install. Roles Product Implementation
+Agent, then Evidence Reviewer/PC Steward. Single-room IDs not applicable; reviewer
+subagent performed read-only review, no separate WORK dispatch/registry. Work
+Size bounded, Risk Tier routine for isolated reversible candidate; no promotion.
+
+Scope/base: Core582f141566d1dd0cc4df53a7779818cab9c3d111. Candidate worktree
+`C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/m1-merged-inset-20261104`,
+branch codex/m1-merged-inset-20261104, terminal42008134b67107cff78185fb12e155ef3008cad1.
+Actual Git manifest exactly src/docx/tables.ts,
+src/docx/merged-cell-top-insets.ts, tests/docx/mergedCellTopInsets.test.ts.
+No source-layout, PDF/layout, template, schema, resources, caps, Service or
+version changes. Source/RAM/input constraints from the approved M0/M1 plan stay.
+The managed-worktree tool could not target Core from this PC chat; explicit
+owner isolation authorization was fulfilled with a separate Git worktree.
+Existing base lane and Service remain clean at their prior heads.
+
+Pure helper derives physical top from validated uniform peer tops, preserving
+sourceTop=physicalTop+firstLabelBefore. No UAT IDs or8pt constant in production.
+Adapter changes only local space-policy entries for proven merged group labels;
+logical source stays intact and offset reaches first real label paragraph only,
+not continuation empty paragraphs. Additive per-label receipts record source,
+physical inset, offset, covered rows, policy/reason and wordVerified=false.
+Mixed/missing peers, single/empty groups, multiline or protected label content,
+ending Areas, custom borders/other unsuitable cases retain their existing path.
+Ordinary mapper guards, Menu guides, text frames and PDF path are not relaxed.
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/core-m1-merged-inset-20261104/`.
+Use verification.json/report (verification-report.html), source manifests,
+run4/oracle/receipt.json and run5/oracle/receipt.json, full/generation.json,
+public package-resolution.json, long/long-proof.json, final merged/vitest.json,
+verify-outputs.py and srs-applicability.json. Native source artifacts are frozen
+and hashed; exact product source hashes match the tested snapshots before commit.
+
+TDD: retained m1-red-local.log observes480twip merged margins where160 expected;
+three mapped cases fail on that actual defect. A fourth nonmerged assertion was
+corrected because the existing ordinary mapper already supplies an offset there;
+no production behavior was changed to satisfy that mistaken assertion. Initial
+GREEN and later local focused tests pass. Linux package build passes at234.46MiB.
+Oracle final coverage is71tests across6groups: merged22(final run5), groupLabels6,
+cellVerticalOffsets4, sourceLayout25, sourceFrameBudget2, tableBorderStyle12.
+Final tests include fractional/zero insets,0/1/3/80members, long and multiline
+labels, multiple groups, repeated headers, custom borders, ending Area fallback,
+input immutability, pre-cancel and cancellation after serialization writes with
+staged-output discard. Highest focused-test peak304.39MiB; final merged279.27MiB.
+
+Packed public-root full-UAT generation succeeds at321.82MiB. First table semantic
+XML equals approved M0; ordered text and all519VML shapes match P0. Source-line
+maps/styles/media are byte-identical. Exactly7physical Module cells in3merged
+groups change; single-member case stays on prior path. Non-XML random package
+differences are not hidden: docProps/core.xml has generation metadata, fontTable
+keys/odttf files have docx9.13 random embedding obfuscation GUIDs. Decoded font
+SHA256s and normalized font table equal baseline; this is verified font identity,
+not byte-identical regenerated font containers.
+
+Synthetic long-label group80members produces DOCX and actual CorePDF at189.52MiB.
+CorePDF has9pages and each ROW-000-END through ROW-079-END occurs exactly once,
+covering pages1-9. Generated DOCX has80physical merge cells with8pt top and one
+16pt before-offset; complete member texts occur once. Core PDF reference pages
+1/5/9 rendered; middle page visually inspected. This proves an actual multi-page
+INPUT and structural DOCX export, not native Word continuation geometry. The
+retained SRS fixture has0groupLabel declarations; no new SRS runtime claim.
+
+Every worker512MiB memory, equal memory-swap(swap0), network none, image pinned;
+coordinator Python address-space128MiB. All passing workers exit0/OOMKilledfalse;
+no owned worker remains running. Original container ID/image/start/restart
+snapshots, immutable inputs, candidate source and retained native baseline hashes
+unchanged. Retained harness failures precede passing rounds: initial dangling
+container-only node_modules link, run2 scratch-dist ownership, run3 dependency
+mount hierarchy. No OOM and no service mutation. Run4 passes build/tests/consumers;
+run5 reruns only the changed guard test file, reusing identical product/dependency/
+configuration build and consumers rather than repeating full generation.
+
+Two fresh-context read-only reviews find no actionable code defect. Follow-up
+adds header/border/multiple-group/ending-Area/mid-output-cancel assertions; native
+Word gap is explicitly retained. Final tsc(noEmit), diff/check and source hash
+coverage pass. Candidate is committed locally, not merged, pushed or released.
+
+Delivery files under files/: UAT-M1-candidate.docx, M1-long-group-80.docx and
+M1-long-group-80-Core-reference.pdf; hashes in verification.json. Static report
+embeds a clearly-labelled CorePDF reference image; links/images/hashes validate.
+Native Word PDF export of BOTH DOCX files remains mandatory to assess actual
+merged continuation, row geometry and glyph clipping. Keep wordVerified=false;
+M0's residual2.59pt table-height/3.91pt Module-position gaps remain known. No
+claim that Word, SRS, Service or whole-system acceptance passed. Next step is
+owner Word comparison; do not start integration or auto-close that gate.
+
+Only this existing PC prose changes here; no map/record promotion or synthetic
+Work. Final PC diff/check closes status recording. Stop with frozen candidate
+and reviewable exports pending Word evidence.
