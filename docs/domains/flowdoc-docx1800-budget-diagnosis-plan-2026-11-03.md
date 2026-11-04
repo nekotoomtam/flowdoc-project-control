@@ -4469,3 +4469,61 @@ requirements remain outside this proof. Retain total/header/section capacity
 accounting and the18member overflow evidence. Stop this bounded verification;
 no Core/Service edits, code integration, merge/push/release/install, original
 data/service changes or map promotion. Product candidates remain clean.
+
+
+## MR0 UAT non-crossing preservation regression — 2026-11-04
+
+Owner authorized UAT non-crossing copy regression against M1 in Oracle512MiB,
+not Core/Service mutation or integration. Active role isolated lab implementer /
+Evidence Reviewer, Project Control Steward for this append; inline IDs not
+applicable. Existing MR0 non-crossing preservation criterion is the target.
+
+Important evidence boundary: MR0 has no product transformer wired into Core.
+This tests a LAB-ONLY representation selector and its unchanged-package branch,
+using trusted fixture facts from the existing native M1 Word PDF. It is not a
+Core regression suite, a new UAT render/export or proof of generic page discovery.
+
+Artifact root `C:/Users/nekot/Documents/FlowDoc-recovery/docx-module-repeat-mr0-uat-regression-20261104`.
+Inputs `original.docx`, `original.pdf`, `facts.json`, `crossing-control.json` are
+packet-hashed. Reproduction `prepare-facts.py`, `build.py`, `remote.py`, `run.py`,
+`verify-local.py`. Evidence `oracle/receipt.json`, `oracle/outputs/verification.json`,
+cgroup files, `result.json`; native visual `native-evidence/M1-UAT-four-noncross-tables.png`.
+DOCX input/output SHA256
+`32f3fb82a0be71d0ea707e8bf3483ee2759e4210bacab11dfe72394bf6f85f91`;
+existing native PDF SHA256
+`ec1b60796e9351339221c3aa9b53facec5f499531874fdf68cf963eecf0d5fc9`.
+
+- Independently matched all four Module/Menu summary tables (source indices8–11)
+  and all8member rows to native M1 page5. Every Menu/numeric cell text matches
+  source after whitespace removal; all4Module labels complete inside the
+  corresponding table bands. Three groups use vertical merges and one is a
+  single-member group. All members of each group occupy page5.
+- Lab selector chooses PASSTHROUGH_UNCHANGED for those four groups. Actual
+  native long80 facts exercise the opposite branch NEEDS_FRAGMENTATION without
+  passing it through. Six invalid-fact checks (missing/duplicate/unknown group,
+  missing members, changed member text, invalid page) reject before publishing.
+  All8checks passed; the selector consumes fixture facts, not a Word page API.
+- Oracle output `files/UAT-MR0-noncross-regression.docx` is WHOLE-FILE BYTE-
+  IDENTICAL to M1; all171ZIP parts independently equal,95tables and59SDT controls
+  unchanged, ZIP CRC/XML/rels parse valid. No serialization, labels, suffixes,
+  row fragments or page breaks added. XML/rels112084nodes, no limit changes.
+  All layout/source-map/font/image/header/footer/style data remain exact.
+- Native layout proof is REUSED M1 evidence, enabled by exact package identity:
+  72pages, first summary table198.39pt and first Module61.61664pt below its table
+  top. Other summary heights112.20/147.26/129.99pt, relative Module origins
+  58.13664/61.63664/61.64664pt. Rendered pinned M1 page5 at240dpi and inspected
+  all four groups; no new appearance/clipping change is introduced by no-op.
+  Do not report72freshly exported pages, a new native A/B pixel comparison, or
+  a Core MR0 acceptance based on this identity proof.
+- Oracle worker512MiB/swap0, coordinator128MiB, pinned image: exit0,
+  OOMKilled=false, oom_kill0, observed peak106270720bytes (101.348MiB).
+  Inputs unchanged; original three container identities/start/restart counts
+  unchanged, no owned worker left running. No SQL, old business-data access,
+  original service stop, release or installation.
+
+PASS_LAB_NONCROSS_PASSTHROUGH_REGRESSION closes this copy-level UAT preservation
+check. Prior base80/E1/E2/E3R1 evidence remains bounded to copied representations;
+MR1 source-owned page facts/capacity, row-split/unsupported behavior and any future
+Core integration still require their own work and authorization. Stop this
+regression here. Core/Service candidates remain clean; no code integration,
+merge/push/release/install, original data/service changes or map promotion.
