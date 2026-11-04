@@ -3519,3 +3519,155 @@ No new Oracle worker or512MiB runtime claim, further probe, Core/Service edit,
 original data/service action, merge/push/release/install or map promotion.
 Remaining scoped gaps: residual2.59pt versus Core and tiny cover export mark.
 Stop at reporting; no fix adopted.
+
+## Merged Module top-margin investigation and proposed Core plan (2026-11-04)
+
+Status: **DISCOVERY_COMPLETE_PLAN_PROPOSED_NO_IMPLEMENTATION**.
+Authority: owner's request to trace Core's merged-cell margin construction and
+plan from P4, retaining Menu textboxes; explicitly no Core/Service edits or
+integration. Roles Planning Partner/Evidence Reviewer/PC Steward. Owner of a
+future runtime change is Core, not Service; this existing PC document owns the
+shared plan. Inline IDs not applicable; Work Size bounded, Risk Tier routine
+for this read-only planning scope. Future geometry implementation requires a
+fresh scope/base check and its own implementation authorization. No separate
+room/agent/dispatch or synthetic records. Planning/proof budget: targeted code,
+matched retained inputs and P0/P4/Core PDF evidence only, no new runtime trial.
+Document budget: this section only. Active host model used for inline discovery;
+future execution must resolve its own model decision through current policy.
+
+### Actual construction path, pinned to Core582f141
+
+1. Retained model19 UAT template already declares summary-dynamic/v14 padding
+   top24pt, bottom4pt, sides5pt; Menu/v16 has its own8pt top/bottom. The exact
+   template is under docx-node-override-20261104/uat-full/harness/capture/
+   uat-full.template.json, v14 around3848 and Menu text v15 around3922.
+   This is an authored fixture value, not a24pt constant introduced by DOCX.
+   convert-legacy.mjs:52 clones the template; version/identity conversion does
+   not rewrite cell padding. P4 was a diagnostic override, not source semantics.
+2. src/binding/expansionSteps.ts:38-42 clones the declared group-label cell into
+   the first member and sets rowSpan=memberCount; the generic clone at52-59
+   preserves its props. One logical cell represents the three-row label.
+3. src/docx/profile.ts:267-270 validates the grid and converts padding with
+   toTwips:24pt becomes480twips. The mapped cell retains source geometry.
+4. src/docx/geometry-policy.ts:21-24 adjusts only its proven4/4pt case.24/4pt
+   retains native values; tables.ts:74-77 and108 store480 as nativeTopTwips.
+5. tables.ts:112-119 excludes every vertically merged table from the existing
+   row-minimum-margin/paragraph-offset mapper; source-guided Menu paragraphs
+   also fail that ordinary-cell eligibility. Do not remove these guards blindly.
+6. tables.ts:130-139 builds occupancy entries carrying the SAME logical cell ID
+   into all physical rows. Continuations get an empty structural paragraph at
+   149-154, but margins at163 always read that logical cell's nativeTopTwips.
+   Thus RESTART and both CONTINUE cells all receive top480twips. This exactly
+   matches retained XML and the3attribute-only P4 patch.
+7. PDF is different: src/layout/cellTableFlow.ts:27 and45-61 account for padding
+   in a logical merged label's total extent, then76 emits its text at top plus
+   padding once. It does not instantiate a24pt margin on each physical row.
+
+Confirmed defect scope: native DOCX representation of this merged-label inset
+produces materially different row geometry than Core's logical layout. P4 proves
+that lowering the three physical top margins removes47.04pt of excess while
+Menu boxes remain byte-identical. Authored24pt itself is NOT proven erroneous.
+No blanket conclusion about all merged cells or arbitrary Word margin behavior.
+
+### Important acceptance distinction
+
+P4 table height198.39pt is close to Core195.80pt, but P4 is not a complete visual
+golden. Absolute Module text top: Core161.71, P0167.83664, P4151.87664pt.
+Relative to each first-table top: Core57.71, P061.61664, P445.65664pt. P4 therefore
+puts Module12.05336pt higher than Core after table-origin alignment; P0 was
+3.90664pt lower. A global clamp24→8 would improve rows but discard authored
+inset and worsen label placement. Prior claims of height improvement remain
+valid; do not promote P4 to full text-position parity.
+
+### Approaches and recommendation for review
+
+- Template-only24→8: valid only if owner explicitly wants a new authored inset;
+  changes PDF/source layout too and does not repair generic DOCX mapping. Not
+  the recommended Core fix and not implicitly authorized by this request.
+- Recommended: retain logical source24pt, use a proven peer-row physical top
+  margin for the merged native cell, and move the remaining logical offset
+  into the FIRST label paragraph exactly once. For this fixture the hypothesis
+  is physical8pt plus label-before16pt, with no offset on CONTINUE paragraphs.
+  Preserve bottom/side margins, merge/border/keep policies and all Menu XML.
+  This is a proposed representation rule, NOT a proved Word result.
+- Converting/removing Menu textboxes is outside this plan; P4 already demonstrates
+  a height improvement without doing so.
+
+### M0: mandatory copy proof before Core implementation
+
+- [ ] On a fresh copy of matched P0, apply only the proven three Module margin
+  changes plus a16pt before-offset on its existing first label paragraph.
+  No text/runs/line height/font baseline/Menu/other ZIP part changes. Emit a
+  reversible edit manifest. Validate the24=8+16 inset accounting, source hash,
+  every XML/rels/CRC and byte-identical Menu boxes/paragraphs/media/maps.
+- [ ] Build/check under the same Oracle-host512MiB worker, swap0 and previous
+  coordinator budget; network none, immutable inputs, no service/data access.
+  Keep the retained fixture's existing XML-budget option unchanged; no new cap
+  increase or global default change. Stop on OOM, retain failure, do not rerun
+  unchanged. Owner exports using the same Word settings as P0/P4.
+- [ ] Compare first-table borders, label position relative to table/cell origins,
+  every Menu line, relocated rows/pages and actual glyph clipping at240dpi.
+  Proposed gates: table height within1pt of P4 (no recurrent~16pt row excess),
+  Module table-relative position no worse than P0's3.90664pt Core error, same
+  target text/line breaks/x/font sizes, no new clipped/duplicated/missing text.
+  This explicitly permits the existing residual baseline/height gap; it is NOT
+  pixel parity. Record exact residuals. Isolate the tiny P4 cover asterisk as an
+  unresolved export difference; never report all-file exact-text equality PASS.
+- [ ] If the paragraph offset itself inflates rows, collapses or repeats at page
+  breaks, or label alignment requires new baseline behavior, return to design.
+  Do not touch Core to force the proposed representation through this gate.
+
+### M1: future bounded Core candidate, only after M0 and authorization
+
+Proposed files: new src/docx/merged-cell-top-insets.ts (pure guarded decision
+helper), src/docx/tables.ts (adapter/receipt wiring), new
+ tests/docx/mergedCellTopInsets.test.ts plus focused existing regression tests.
+No source-layout.ts/source-layout-xml.ts/Service/template/layout/PDF changes.
+
+- [ ] Pure decision input: validated group-label identity/row span, logical inset,
+  peer physical row tops and label paragraph capability. Output sourceTopTwips,
+  physicalTopTwips, firstLabelBeforeTwips, covered row IDs and eligible/fallback
+  reason. Enforce sourceTop=physicalTop+offset, nonnegative finite integer twips.
+- [ ] Initial eligibility is deliberately narrow: genuine validated groupLabel,
+  span>1, one plain native auto-height label paragraph, columnSpan1, body rows,
+  established legacy borders; all non-label peer tops across the covered rows
+  must be present and equal. Derive the shared value from those peers, never
+  from UAT names or a hard-coded8pt. Require source top>=peer top. Preserve all
+  peer cell/Menu padding and guides. Complex/nested/image/fixed label content,
+  headers/ending areas, crossing merges, mixed peer tops or unsuitable paragraph
+  keep/fragment conditions retain the previous path with an explicit reason.
+- [ ] Add the accepted decision only to this logical label's LOCAL spacePolicy:
+  physical margin then naturally applies to restart/continues; paragraph-before
+  offset adds to the first actual label fragment only. Never put it on empty
+  continuation paragraphs, never mutate resolved/template/source data. Keep
+  existing ordinary-cell mapper guards; avoid double applying offsets.
+- [ ] Add an additive per-label receipt recording source/native top, single
+  offset, merge rows and fallback reason; keep wordVerified=false until actual
+  Word evidence. Existing source/native receipt fields must remain truthful.
+
+### M2: focused acceptance and integration remains separate
+
+- [ ] Pin24/8/three-member reproduction, uniform/no-op,0/1/3/80member groups,
+  different peer inset values, fractional-unit/twip conversion, zero padding,
+  multiple groups, long/multiline labels, page-spanning merges and repeated
+  headers. Unsupported shapes must retain their previous representation.
+- [ ] Test merged and ordinary tables together; group-label count/source map,
+  input immutability, merge perimeter, reading keeps, no repeated label text,
+  source Menu shape XML/text/line frames and source-line maps unchanged.
+  Relevant existing files: groupLabels.test.ts, cellVerticalOffsets.test.ts,
+  sourceLayout.test.ts, sourceFrameBudget.test.ts, tableBorderStyle.test.ts.
+  Add bounded cancellation/output-abort/cleanup checks for the new export path.
+- [ ] Only after focused tests: packed Linux consumer and actual full UAT on the
+  retained runtime in Oracle lab512MiB, same inputs/fonts/options, followed by
+  owner Word PDF comparison. Inspect SRS/other retained fixture applicability;
+  run affected merge cases where present, record non-applicability otherwise.
+  No automatic unrelated full-system suite or repeat after unchanged PASS.
+- [ ] Candidate acceptance must meet M0 gates and regression coverage. Inspect
+  residual2.59pt height and baseline errors as separate open gaps, not evidence
+  of full parity. Any need to alter Menu/PDF/schema/caps or broader authoring
+  semantics returns to scope/design before implementation.
+
+This turn performs none of M0-M2: no candidate code/test/fixture edit, new render,
+Oracle access or service operation. Only this existing PC plan is changed, with
+source/P4 evidence review and final diff/check. No merge/push/release/install or
+map promotion. Next proposed work is M0 copy proof, not an automatic Core patch.
