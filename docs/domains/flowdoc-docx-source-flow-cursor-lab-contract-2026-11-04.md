@@ -432,3 +432,197 @@ Core42008134/Servicedb15e9d remain clean;127source/267package files, harness,
 baseline and original3container identities/start/restart counts unchanged.
 No owned worker running. No original data/service changes, Core/Service edit,
 merge/push/release/install or map promotion.
+
+## Proposed row footprint and page-transition contract — 2026-11-04
+
+Owner authorized contract definition and bounded copy-only Oracle512MiB checks,
+not a Core/Service change. Role Planning Partner/Evidence Reviewer, Project
+Control Steward for this canonical prose; inline IDs N/A. Proof budget one
+synthetic checker worker plus independent evidence review; one corrective run
+was justified by the test-harness JSON comparison failure recorded below.
+Document budget: extend this contract and add a pointer to the existing plan.
+
+Proposed private sub-contract: `flowdoc-row-footprint/1`. Keep the existing
+snapshot/source-reference/confidence/units rules above. Choose explicit source
+constraints and certified row allocations over forcing fixed native row heights
+or guessing from default AtLeast values. A renderer-only native measurement
+could verify examples, but does not replace the required source-owned facts.
+This choice preserves M1 and Menu while making missing facts visible.
+
+### Required fact ownership
+
+| Fact | Required meaning and binding |
+| --- | --- |
+| Snapshot | Genuine intent source digest, source-map/order/style/font/image digests, metric/wrap/geometry revisions and actual selected native widths/insets. Producer trust comes from the private intent boundary, never an origin string or digest alone. |
+| Row reference | Section/table/source row ID and ordinal, explicit header/member/total role, allowBreak, keep edges and member/group identity. Do not infer totals from text or final-row position. |
+| Cell reference | Anchor row/column, rowSpan/colSpan and covered grid slots; source child order; physical-cell continuation references share the same logical owner. Validate occupancy, not just index/count. |
+| Text plan | Text/style/font hashes, source UTF16/cluster-safe line ranges and stable line IDs, usable width, line frames/flow advances and boundary policy. Ranges cover the owned span once; preserve empty text/paragraphs and authored newlines. |
+| Image/object | Resource/geometry hashes, inline/floating/overlay mode, anchor/flow owner, aspect/crop and complete advance including carrier/baseline/clearance. Authored image height alone is insufficient. |
+| Insets/strokes | Final Core-selected top/bottom and paragraph offsets, owned border/terminal/structural terms and geometry recipe. Each term has one charge owner. Use net selected margins; do not re-add an already compensated stroke. |
+| Row allocation | A measured/bounded advance interval per physical source row, allocation recipe/proof revision and constraints it satisfies. It must be valid for the native profile; a proposed number is not proof Word will use it. |
+| Fragment transition | Source row/line ranges, frame/page class, repeated-header/label occurrences, split/keep/total rules, spacing ledger and next cursor. Never accept prior PDF cuts or caller remaining-height hints. |
+
+All advances use nonnegative integer micro-points with outward-rounded bounds.
+`exact-source` and `bounded-source` describe source evidence, not native Word
+equivalence. Estimated/unknown native footprints cannot certify fit. A complete
+safe row upper bound needs both complete source coverage and a bounded mapping
+to the selected native profile; otherwise the native interval stays unknown.
+
+### Cell and row composition
+
+For each cell, resolve its ordered child stack: every text line's flow frame,
+inline object advance and resolved inter-paragraph gap. Gaps must already state
+additive/max-adjacent/contextual/page-top treatment; raw before/after values
+cannot simply be added. Then include selected physical insets and disjoint
+owned geometry terms once. Empty cells retain their emitted structural line.
+Separate painted ink, paragraph advance and row advance throughout.
+
+For a nonspanning cell, its required interval constrains one row. The natural
+source row requirement is the maximum across cells, not their sum. This is a
+source constraint, not automatic proof of a native Word row height. Wrapping
+must be resolved at the actual colspan width after selected insets; a single
+paragraph may occupy multiple lines. Unknown wrapping yields unknown advance,
+not `style.line * 1`. Fixed/Exact line frames also need explicit overflow policy.
+
+An inline image contributes its complete carrier-inclusive advance once.
+Unknown image decode/resize/aspect/carrier facts stop planning. Floating wraps
+need a separate flow-interaction recipe and are unsupported initially. Menu's
+VML word boxes remain overlays of their owned outer source line: do not sum
+their inner paragraph/box heights as extra flow. Their ink/overflow envelope
+must fit the permitted line/cell region or return NEEDS_SOURCE_FACTS; this
+contract does not permit changing/removing the textbox to force a fit.
+
+For a cell spanning rows i..j, retain a span constraint rather than distribute
+its height equally or charge it in every row. With preserve-row-extents:
+
+`sum(allocatedRowAdvance[k].lo, k=i..j) >= spanningCellRequired.hi`
+
+Also require each allocated row's lower bound to cover all its nonspanning
+cell upper bounds. A span total alone does not prove each member row fits.
+Multiple overlapping merge constraints must hold simultaneously. Without a
+source-owned valid allocation/proof, return NEEDS_ROW_ALLOCATION. Feasible
+arithmetic allocations are not automatically native measurements. Missing row
+facts cannot be filled by dividing label height or treating continuation cells
+as independent label content.
+
+M1 keeps the selected8pt physical top plus16pt first-label offset once for each
+eligible visible label occurrence; include these in that label's span constraint.
+The single-member retain-native case remains unchanged. Check the label against
+its member rows without adding its height again to the table. Do not silently
+grow/rebalance rows when a label does not fit. A future continuation occurrence
+must separately measure its label+suffix and bind its offset policy; a new
+source group beginning later is not a continuation.
+
+### Whole-row admission and page transitions
+
+Receive current/fresh capacity only from a valid source-flow cursor and bounded
+first/continuation frame, after preceding text/tables. Form a keep closure over
+affected row/paragraph/group/total edges before deciding a cut. cantSplit is a
+break restriction, not a height measurement. The initial capability is whole
+rows/keep groups; no guessed intra-row split is allowed.
+
+Charge per actual fragment: repeated header rows once, resolved next-boundary
+gap once, member rows once and disjoint reservations once. Header IDs/roles are
+explicit, excluded from the member-row sum if already charged as occurrences.
+Totals commit at their source location; release a tentative reservation in the
+same transition so it is not both reserved and consumed. Structural/terminal
+paragraphs need derived ownership. Authored rules/spacers remain source content,
+including the observed155pt/142pt gaps; do not normalize them to1pt separators.
+
+Let C be the complete fragment cost interval and R the remaining frame interval:
+
+- If C.hi <= R.lo, the supplied model is a safe fit, conditional on the native
+  evidence/profile. `LAB_FIT_CURRENT` is never a Word-verification claim.
+- If C.lo <= R.hi but the upper bound does not fit, return NEEDS_SOURCE_FACTS.
+  Do not pick a page cut from overlapping intervals.
+- If it definitely does not fit current space and its complete upper bound fits
+  a valid fresh frame, move the whole row/keep closure. Re-resolve boundary,
+  first/continuation header and label facts for that frame; do not reuse a stale
+  current-page cost when those differ.
+- If even the row lower bound exceeds fresh capacity, an unsplittable row is
+  TALL_ROW_UNSUPPORTED. allowBreak=true only authorizes considering a split;
+  it does not supply the missing fragment plan. Multiple ordinary rows may
+  instead require a whole-row fragment planner, not an intra-row split.
+
+A future intra-row fragment plan must partition every cell's source lines into
+ordered, gap-free, cluster-safe ranges. Images/atomic objects cannot be split
+without an explicit supported recipe. For every fragment prove header/total/
+keep constraints, per-fragment merge allocation, label+continuation suffix fit,
+M1 insets and any retained structural cell paragraph. Record first/last-member
+ownership and merge restart/continue materialization. Reject a cut that loses,
+duplicates or clips source content; do not emit a partial success.
+
+Break/continuation outputs atomically publish the consumption ledger and next
+row/line cursor against the same snapshot/revisions. Cancellation discards an
+uncommitted transition; resume must match its ledger and make source progress.
+An empty fresh page with no feasible row must terminate with a bounded failure,
+not loop. Native split rendering, cancellation and checkpoint implementation
+remain separate unproven work; no product implementation is authorized here.
+
+### Bounded contract evidence and open prerequisites
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-row-contract-20261104`.
+Final inputs/results are under `run2/`: `row_contract.py`, `cases.json`,
+`build.py`, `packet.json`, `correction.json`, `oracle/receipt.json` and
+`oracle/outputs/verification.json`/`real-gap.json`. Independent review:
+`verify-local.py`, `verification-local.json` and `artifact-hashes.json` at the
+artifact root. Canonical contract prose does not replace these executable facts.
+
+The executable subset is `flowdoc-row-footprint-lab/1`, accepting only explicitly
+synthetic facts; a forged Core origin is rejected. It is a bounded trusted-fixture
+checker, not a general JSON Schema engine, hostile-input validator or genuine
+producer implementation. Top-level/part unknown fields and caller/PDF fit hints
+are rejected. The full source/grid/role/image provenance contract above is not
+implemented by this subset; declared source/native certification is not forged
+by supplying lab numbers.
+
+Oracle final45cases matched expected verdicts and available hand-calculated
+extents. Coverage: resolved wrapped lines, cell maximum rather than sum, resolved
+paragraph gap, carrier-inclusive image, Menu line overlay, owned border term,
+merged-label allocation/once-only M1 offset and insufficient member/span cases;
+whole-fit/move, uncertainty, tall row and missing fragment planner; repeated
+header/boundary/total reservation charges; stale source, unknown/estimated or
+invalid bounds, bad span coverage/cluster cuts, duplicate owners/reservations,
+unbounded boxes/images/floats and caller hints.
+
+Independent examples: three10pt lines+4pt+4pt padding=38pt; max(18pt,28pt)=28pt,
+not46pt;10pt text+21pt carrier-inclusive image+8pt padding=39pt. Synthetic
+22pt+22pt member rows cover an8pt+16pt+20pt merged label once; do not charge
+another44pt. Header5pt+boundary1pt+row18pt=24pt cannot fit23pt current space and
+moves when a valid fresh frame permits. These are model examples, not measurements
+of actual UAT rows or evidence of Word-equivalent image/box/border behavior.
+
+The subset treats one row/keep group atomically, using supplied model capacity
+and the same aggregate overhead policy on current/fresh pages. Differing actual
+page-class headers/labels/gaps require a new fragment cost and remain outside
+the executable subset. It returns NEEDS_FRAGMENT_PLANNER instead of selecting
+whole-row/intra-row cuts. Native pagination, continuation materialization,
+cross-process producer authentication, cancellation and atomic checkpoint
+publication are specified prerequisites, not implemented/tested product behavior.
+
+Initial worker failed in the test harness because Python interval tuples were
+compared directly to expected JSON arrays; numeric extents matched. Raw failed
+receipt/log remain at `oracle/`. Run2 adds output JSON round-trip before result
+comparison; the reducer bytes are unchanged. No OOM or budget increase. Local
+review also distinguishes the intentional forged-origin rejection case from
+accepted synthetic inputs; it does not claim every invalid payload is a valid
+synthetic fact.
+
+Final worker512MiB/swap0, coordinator128MiB: exit0, OOMKilled=false/oom_kill0,
+peak10051584bytes (9.5859375MiB). This measures a small contract checker, NOT Core
+generation memory. Independent15checks pass, including dimensional examples,
+input hashes, unchanged reducer, cgroup limits and source-preservation checks.
+The copied real inventory is byte-identical to the prior genuine row proof:
+all181native row advances/upper bounds remain unknown and remainingSafe=null.
+It is not fed to the synthetic checker as an asserted height model.
+
+Status `PASS_PROPOSED_ROW_CONTRACT_LAB_ONLY`. The row-height/transition contract
+is ready for review; no real UAT native height/cut or full MR1 acceptance is
+established. Next bounded proof should read complete source text-wrap/image/
+merge facts for representative rows, establish coverage and native confidence,
+and preserve unknowns where the adapter cannot yet certify a row footprint.
+Core42008134/Servicedb15e9d clean; Word-reviewed M1 DOCX hash unchanged. No new
+DOCX/PDF, renderer, Core/Service change, original data/service operation, SQL,
+merge/push/release/install or map promotion. Original3container identities/
+start/restart counts unchanged; no owned worker running.

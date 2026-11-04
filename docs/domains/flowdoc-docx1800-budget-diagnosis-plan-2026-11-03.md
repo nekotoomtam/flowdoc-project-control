@@ -4754,3 +4754,43 @@ image/box/merge footprints and split/keep transitions are still missing. The
 next bounded step is a complete row-footprint contract/proof with unsupported
 cases, before replaying preceding flow. Full MR1 remains open. No original data/
 service change, Core/Service edit, merge/push/release/install or map promotion.
+
+## MR1 proposed row footprint/page-transition contract — 2026-11-04
+
+Owner authorized contract-first design with copy-only Oracle512MiB validation,
+preserving M1/Menu and excluding Core/Service edits/integration. Inline Planning
+Partner/Evidence Reviewer, Project Control Steward; IDs N/A. Reuse the existing
+source-flow contract for required text-wrap/image/merge/spacing/role facts,
+span constraints and native-confidence/page-transition conditions.
+
+Proposed private contract flowdoc-row-footprint/1 separates line/inline-image
+flow from Menu word-box overlays, takes the maximum across ordinary cells, and
+requires explicit valid row allocation under every merged-cell constraint.
+M1's8pt+16pt label inset is included once in its span, not recharged per member.
+Unknown wrapping/overflow/native upper bounds stop fit claims. Whole-row moves
+recompute frame-specific headers/gaps/labels; allowBreak does not supply an
+intra-row plan. Full split ownership/coverage, atomic images, keep/total and
+continuation-label rules are proposed prerequisites, not implementation.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-row-contract-20261104`.
+Final run2 has45synthetic contract cases matching expected verdicts/extents in
+Oracle512MiB/swap0; peak9.5859375MiB, exit0/no OOM. Independent15checks pass.
+This small arithmetic checker does not measure full Core memory or native Word
+rendering. Initial failed tuple-vs-JSON-array harness comparison is preserved;
+one corrective run adds serialization before comparison with reducer unchanged.
+No product repair or memory-limit increase.
+
+The executable lab/1 subset handles an atomic row/keep group and unchanged
+aggregate current/fresh overhead. It does not implement the full proposed
+source/grid/role proof, differing page-class costs, row fragmentation, native
+Word mapping, authentication or cancellation/checkpoint publication. The prior
+genuine181row inventory stays byte-identical with unknown native upper bounds
+and remainingSafe=null; it is not promoted by synthetic cases.
+
+Status PASS_PROPOSED_ROW_CONTRACT_LAB_ONLY, ready for review. Next bounded work:
+source-wrap/image/merge fact coverage and native-confidence proof on selected
+rows before full preceding-flow replay. Full MR1 remains open. Core/Service
+heads clean, M1 DOCX unchanged, original3container identities/start/restart counts
+stable, no owned worker running. No new DOCX/PDF or renderer, original data/
+service operation, Core/Service edit, merge/push/release/install or map promotion.
