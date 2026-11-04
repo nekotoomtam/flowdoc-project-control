@@ -347,3 +347,88 @@ stay clean. Source/package/harness/baseline hashes and original three container
 identities/start/restart counts unchanged; no owned worker left running.
 No SQL, original data/service change, Core/Service edit, merge/push/release/
 install, or map promotion.
+
+## Genuine row and inter-content constraints — 2026-11-04
+
+Owner authorized the next copy-only Oracle512MiB proof of row heights and
+inter-content spacing, preserving M1/Menu. Scope: one genuine UAT generation,
+read-only inspector observation plus source-to-output XML comparison. Product
+owner Core; inline Evidence Reviewer/Project Control Steward; execution IDs N/A.
+Reuse this contract and the existing plan. This is discovery of available and
+missing height facts, not authorization to alter automatic native layout.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-row-boundary-proof-20261104`.
+`row-adapter.mjs` extends the unchanged prior lab observer, reading text/source
+properties, effective styles, actual baseline decisions and the cached Core
+reading plan. `oracle/outputs/row-boundary-source.json` is the genuine snapshot;
+`read-adapter-facts.json` retains source order and selected cell-space policies.
+`oracle/receipt.json`, cgroup records and `result.docx` retain the runtime proof.
+`verify-base.py`/`verification-base.json` and
+`verify-rows.py`/`verification-rows.json` are independent output checks.
+`artifact-hashes.json` binds scripts and raw results. No Core source/package
+patch, new shaping pass, resource installation or SQL is involved.
+
+Confirmed implementation and emitted constraints:
+
+- `tables.ts:196` constructs TableRow without a height option. All181source
+  rows have only `allowBreak`; all181native rows lack `w:trHeight`. Their
+  cantSplit/header-repeat flags match source policy. Native automatic row
+  height is therefore unresolved, not zero or a source-specified exact value.
+- 95source tables map in actual emission order to95body tables and181rows.
+  Occupancy/column spans and restart/continue merges map522logical cells to
+  526physical cells, including4continuations. All2104emitted margin attributes
+  match the actual Core cell-space receipts.
+- 511ordinary cell text paragraphs match actual style line budgets, AtLeast
+  policy and per-child before/after offsets. The13guided table line frames
+  match their emitted outer Exact frames. Across716cell flow paragraphs,
+  699are AtLeast (including image paragraphs),13guided frames are Exact and
+  4continuation-cell structural paragraphs are Exact20twips. Inner textbox
+  paragraphs are excluded from flow accounting. AtLeast is a minimum line
+  setting, not a measured line count or row height.75of594source body text
+  blocks contain authored newlines; a paragraph cannot be assumed one line.
+- 713outer cell paragraphs have before0 and3have before320twips; all716have
+  after0. The three M1 merged labels keep160twips physical top plus320twips
+  first-label offset (8pt+16pt) once, rather than per member row. This does not
+  turn a merged-label overlay into a separate row charge.
+- `tables.ts:50,247` emits54owned between-table structural paragraphs. Actual
+  XML for each has Exact20twips (1pt), before0/after0 and no text/image/box.
+  The1080twip declared-line sum is not a claim of54pt native page consumption:
+  breaks, keeps and page transitions must still be resolved.
+- Nine other table-paragraph-table adjacencies are authored source content,
+  not those structural separators:5headings with AtLeast560twips,1page break
+  and3rules. The rules' before/after settings match source via `bands.ts:15`:
+  6pt/5pt,155pt/0 and142pt/0. The large authored gaps must not be erased,
+  normalized to1pt or counted twice. This is fixture content, not a confirmed
+  Core defect. Full preceding-flow transitions remain outside this comparison.
+
+Initial local verifier incorrectly assumed every table-paragraph-table
+adjacency was a generated separator. It failed on authored source content.
+`verify-rows-initial.py` is retained; the final verifier requires the genuine
+source program and both table owner IDs. It preserves and checks all9authored
+cases separately. Only local read-only verification was corrected; no worker
+retry, source change or generated DOCX rewrite occurred.
+
+Runtime: worker512MiB/swap0, coordinator128MiB, one generation; exit0,
+OOMKilled=false/oom_kill0, peak384368640bytes (366.5625MiB),7033.290ms.
+Eight inherited in-worker checks pass. Independent20base checks and11row/
+boundary checks pass; these are constraint/provenance checks, not31native
+height/layout tests. All26XML/.rels parts parse. The167unchanged package parts
+include M1 geometry/Menu textbox/source-map markup; the other4parts differ only
+in timestamps and font obfuscation GUIDs/first32bytes, with full decoded font
+bytes identical. No fresh Word export or native page/clipping claim.
+
+Verdict: `PASS_SOURCE_ROW_AND_BOUNDARY_CONSTRAINTS_NATIVE_HEIGHT_UNKNOWN`.
+This proves selected spacing/line/merge constraints can be read from Core and
+matched to output. It does NOT prove exact row advances or a finite native row
+upper bound. Wrapping, image/box footprint, cell/merged-row interactions and
+split/keep transitions must be bounded before summing a cursor. Source reading
+measurements used for selected relationships are not a complete per-row native
+height contract. `remainingSafe:null` and unknown row bounds remain; MR1 stays
+open. Next design/proof should define a complete row footprint over source
+line/image/merge facts with explicit unsupported cases before cursor replay.
+
+Core42008134/Servicedb15e9d remain clean;127source/267package files, harness,
+baseline and original3container identities/start/restart counts unchanged.
+No owned worker running. No original data/service changes, Core/Service edit,
+merge/push/release/install or map promotion.

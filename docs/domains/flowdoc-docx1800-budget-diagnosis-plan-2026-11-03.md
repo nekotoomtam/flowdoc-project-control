@@ -4715,3 +4715,42 @@ footprints without promoting estimated capacities or unknown heights to exact.
 Source/product/baseline inputs and original container identities stay unchanged;
 Core42008134/Servicedb15e9d clean. No original data/service operation, SQL,
 Core/Service change, merge/push/release/install or map promotion.
+
+## MR1 source row/boundary constraint proof — 2026-11-04
+
+Owner authorized one additional copy-only Oracle512MiB UAT generation to prove
+row-height and inter-content facts, preserving M1/Menu without product edits.
+Inline discovery role Evidence Reviewer/Project Control Steward, IDs N/A;
+document budget reuse this plan and the existing source-flow contract.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-row-boundary-proof-20261104`.
+The source-flow contract's Genuine row and inter-content constraints section
+records implementation anchors, raw JSON/script/receipt locators and limits.
+Genuine cached Core/source observation matches95tables/181rows/526physical
+cells,2104margin attributes,511ordinary text paragraph decisions and13guided
+table line frames. All181native rows remain automatic without `w:trHeight`.
+699cell flow paragraphs use AtLeast;13guided frames and4continuation-cell
+structural paragraphs are Exact. These settings do not give native row heights.
+
+54generated between-table paragraphs are Exact1pt with zero before/after.
+Nine other table-paragraph-table adjacencies retain authored source ownership:
+5headings,1break and3rules, including155pt/142pt authored before gaps. An initial
+local verifier failed by treating all such adjacencies as generated separators;
+the retained initial script and corrected source-owned comparison distinguish
+them. No worker rerun or output/source modification. M1's three merged labels
+retain8pt physical top+16pt first-label offset once; Menu markup stays unchanged.
+
+Oracle worker peak366.5625MiB, swap0, exit0/no OOM,7033.290ms. Eight in-worker
+checks and independent20base+11row/boundary checks pass.167of171package parts
+are byte-identical to the previously reviewed M1; timestamps/font GUIDs explain
+the remaining4with complete decoded fonts identical. No fresh Word/page fit or
+clipping claim. Source/package/harness/baseline inputs and original container
+identities unchanged; Core42008134/Servicedb15e9d clean, no owned worker running.
+
+Status PASS_SOURCE_ROW_AND_BOUNDARY_CONSTRAINTS_NATIVE_HEIGHT_UNKNOWN.
+Native row upper bounds and `remainingSafe` remain null: complete wrapping,
+image/box/merge footprints and split/keep transitions are still missing. The
+next bounded step is a complete row-footprint contract/proof with unsupported
+cases, before replaying preceding flow. Full MR1 remains open. No original data/
+service change, Core/Service edit, merge/push/release/install or map promotion.
