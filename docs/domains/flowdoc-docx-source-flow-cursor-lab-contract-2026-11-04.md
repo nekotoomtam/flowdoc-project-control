@@ -1199,3 +1199,25 @@ No native predictive bound was accepted: predictiveBound=null,
 remainingSafe=null, HB1Ready=false/full MR1 open. No new Word/PDF processing,
 Core/Service edit, original data/SQL/API/storage/service operation,
 merge/push/release/install or map promotion.
+
+## Source-derived native-bound proof proposal before HB1 — 2026-11-05
+
+The plan's "Source-to-Word row-bound proof plan before HB1" section owns the
+SB0 source/emitted-recipe coverage matrix, SB1 primitive/composition derivation
+or explicit unknown, and SB2 frozen proof-candidate/HB1 entry review. Status
+PLAN READY FOR REVIEW; no new experiment or implementation. It requires native
+flow advance rather than painted extents, covers the whole entry-origin domain,
+and adds native frame/prefix and break/keep proof obligations. Core frame
+receipts remain estimated/wordFootprintVerified=false at the pinned context.
+
+Any proposed flowdoc-native-row-bound-proof/1 record is a future private
+candidate, not an admitted proof family. The repaired observation gate still
+rejects all prediction; even a reviewed experiment candidate cannot enable it.
+An accepted primitive/coverage/composition chain and separately authorized
+verifier are prerequisites for predictive admission. Native holdouts test a
+frozen proposal and cannot manufacture missing proof from sample extrema.
+Keep existing unit, border ownership, M1-label sharing, remainingSafe and
+unsupported-input semantics above. Current native-bound/frame gaps remain
+UNKNOWN; no numeric upper bound or Word page-fit guarantee is established.
+M1/Menu and Oracle512MiB remain fixed. No new Word/PDF processing, Core/Service
+edit, original data/service operation, integration or map promotion.

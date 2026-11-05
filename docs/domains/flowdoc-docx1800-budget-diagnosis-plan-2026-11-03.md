@@ -5185,3 +5185,157 @@ remainingSafe remain null, HB1Ready=false/full MR1 open. Operator-pinned read-on
 inputs are a bounded lab trust assumption, not writer authentication or product
 integration. No new Word/PDF processing, Core/Service edit, original live
 SQL/API/storage/service operation, merge/push/release/install or map promotion.
+
+## Source-to-Word row-bound proof plan before HB1 — 2026-11-05
+
+Status PLAN READY FOR REVIEW, no new runtime/native experiment. Owner requests
+a source-derived row-height proof plan before HB1, preserving M1/Menu and
+Oracle512MiB; no new Word export, product/original data/service changes or
+integration. Project Control owns the plan, Core any eventual adapter; inline
+Planning Partner/Evidence Reviewer and prose stewardship, execution IDs N/A.
+Work size small planning increment, risk routine with a strict false-fit gate.
+Reuse this plan and the source-flow contract; no new records/maps/product docs.
+Current local base e56c1f5 and the latest HB0/gate sections govern; the older
+generated snapshot does not supersede this request. Future proof execution,
+native exports and product implementation each remain separately unauthorized.
+
+### Chosen approach and current implementation boundary
+
+Use a renderer-profile-bound source model with explicit proof obligations for
+each primitive and their composition. Do not infer a universal correction or
+Word rounding period from the four painted probes. A per-file PDF replay proves
+observations, not prediction for another document; a full Word layout clone is
+outside this scope. The supported domain must be structural, not a whitelist
+of UAT/SRS names or node IDs, and must retain the current M1/Menu path.
+
+Read-only Core42008134 anchors checked for this plan:
+
+- `src/docx/tables.ts:193-198` emits cells/margins, native automatic rows and
+  wordLayoutVerified=false; it does not set a source-derived row height there.
+- `src/docx/cell-vertical-offsets.ts` moves unequal margin differences into
+  paragraph offsets; raw source padding alone is not the emitted cell recipe.
+- `src/docx/merged-cell-top-insets.ts` and tables.ts own M1's physical top and
+  once-per-label offset; preserve them and the complete Menu textbox XML.
+- `src/docx/groups.ts` contains row/required-start estimates. They are reusable
+  implementation facts, not native Word upper-bound evidence by their names.
+- `src/docx/sections.ts:96,109` marks band/frame receipts wordFootprintVerified
+  false and capacities estimated. A row proof alone cannot certify page fit
+  against an unproven body capacity.
+
+### Proof target and obligations
+
+For an unchanged supported source snapshot, every permitted entry position and
+pinned Word profile, prove that a proposed interval contains the actual native
+flow advance of each indivisible row/group, and that the body-frame interval
+contains the actual usable frame. Painted geometry is a separate observed
+quantity. A safe-fit decision also needs supported break/keep semantics; a
+geometric upper bound alone cannot establish Word's exact page-break choices.
+
+| Component | Source facts to bind | Additional proof needed for native use |
+| --- | --- | --- |
+| Text/cell content |Resolved text, fonts, widths, line plan, line rule, paragraph spacing, terminal paragraph |Word line/paragraph advance enclosure and wrap equivalence; source glyph/line bounds alone are insufficient |
+| Menu textbox |Existing guide, box geometry, anchor/parent paragraph and emitted XML |Separate floating-box ink from parent paragraph's flow contribution; no textbox replacement |
+| M1 merged label |8pt physical top,16pt first-label before, member area, continuation label |Label fits shared area without hidden row growth; offset once per visible label |
+| Borders/spacing |Emitted cell/table policies and HB0 boundary ownership |Convert to a common native flow reference plane, including fragment outer edges; no double charge |
+| Frame/prefix |Section/page class, margins/bands, preceding text/tables, structural gaps |Usable-frame lower bound and prefix upper bound; source order and reservations complete |
+| Page transitions |cantSplit, keeps, repeated header, totals and continuation ownership |Supported atomic units/fragment transitions; no assumed permission to split a tall row |
+
+For each native primitive, record a finite bound with a justified derivation or
+exhaustive coverage of an explicitly finite supported domain. Every assumption
+must name its evidence and applicability. Sampling extrema, package metadata,
+a style rule's name or a reviewer label cannot establish that bound. Any relied-
+on Word/compatibility behavior needs authoritative or independently established
+profile evidence; a source implementation formula proves only what Core emits.
+If a critical primitive is unknown, keep the composed result unknown instead
+of inventing an allowance. This plan supplies no new native numerical bound.
+
+### Source-first derivation and interval accounting
+
+Use the existing integer micro-point representation, outward rounding and
+source/derived reference union. Produce a source recipe for every emitted
+paragraph/cell/row/boundary, including generated structural paragraphs. Each
+term references its primitive proof and origin domain. Do not substitute the
+old PDF's Y, row height, page cut or measured extrema into the source evaluator.
+Retained Word evidence is only a separate consistency/falsification oracle.
+
+Propose a native row transformer H_i(Y,context) returning an advance interval
+over the entire possible entry-position interval Y. Its source recipe includes
+the maximum cell requirement only if the native max-cell composition rule is
+itself justified for that domain; merged labels and floating textboxes prevent
+blind application. Do not assume a twip-only lattice,0.12pt periodicity or a
+universal accumulated error. For successive supported blocks:
+
+`Y_next in Y + H_i(Y,context)`
+
+Prove interval containment by induction from a justified initial frame/prefix.
+Account shared borders, repeated headers, totals and disjoint reservations once;
+retain dependencies or use conservative interval addition without cancellation.
+M1 label extent shares member space: member-area lower bound must cover label
+extent upper bound in the same plane, rather than adding that label twice.
+
+Use the existing contract's remainingSafe definitions. All required primitive,
+frame/prefix and transition proofs must apply before comparing upper cost to
+lower safe capacity. If the intervals overlap, entry origin escapes coverage,
+an unsupported keep/split occurs or a frame is only estimated, return the
+existing unresolved/unsupported verdict; do not force a page cut. Row-height
+prediction and absence of glyph clipping remain separate acceptance criteria.
+
+### Pre-HB1 tasks and concrete stopping gates
+
+- [ ] **SB0 — Inventory source recipes and missing native facts.** Reuse the
+  immutable Core snapshot/source/line plans and HB0 ledgers on copies. Emit a
+  coverage matrix for every term in the table above: source locator, emitted
+  OOXML locator, plane, unit, proof status, applicability and missing evidence.
+  Include fonts/fallback, compatibility/settings and allowed origin intervals.
+  Do not reclassify Core font hashes as proof of Word's selected font. Gate:
+  no omitted flow term; missing facts listed explicitly, including native frame.
+- [ ] **SB1 — Derive a bounded model or an explicit unknown.** Build only a
+  lab specification/evaluator on copies after authorization, using source
+  recipes and justified primitive bounds. Write the no-false-fit obligation
+  first; exercise exact arithmetic, per-edge versus fragment errors, many-row
+  accumulation, unknown primitives, widened entry intervals, M1 once, Menu
+  parent flow, shared borders and frame/prefix uncertainty. Synthetic positive
+  fixtures prove algebra only. Replay existing Word observations to falsify
+  proposed bounds; never fit a constant and call the same observations a proof.
+  Gate: each finite output has a derivation/coverage chain; otherwise UNKNOWN
+  with the exact missing primitive. No new Word export in this stage.
+- [ ] **SB2 — Freeze a reviewable proof candidate and HB1 entry decision.** A
+  proposed private proof family may be named flowdoc-native-row-bound-proof/1;
+  it is not yet supported by the gate or a public API. Bind source/profile/
+  emitter/measurement revisions, covered grammar/origins, primitive proofs,
+  composition argument, frame/break policy and exclusions. An independently
+  replayable derivation and review disposition are required; a hash or accepted
+  string is not sufficient. Freeze model/tests before selecting native holdouts.
+  Produce either READY_FOR_HB1_REVIEW with bounded scope/remaining assumptions,
+  or UNKNOWN/UNSUPPORTED with a finite next evidence request. Readiness for a
+  holdout experiment does not authorize predictive admission or product use.
+
+The repaired HB0 gate continues to reject every predictive request. It is not
+changed by this plan or by creation of a proof-candidate file. A future verifier
+for a specific native derivation requires separate design/authorization; no
+generic approval flag may enable it. HB1 itself still requires owner approval,
+its frozen at-most8-export budget and native/visual checks. Passing finite
+holdouts cannot discharge an unproven primitive or enlarge the declared domain.
+
+### Budget, acceptance and unresolved result
+
+Planning now changes only these two prose documents. Checks: source anchors,
+formula/plane consistency, coverage of the table and original constraints,
+final diff/whitespace. No Oracle worker, Word export or runtime suite now.
+Future SB0/SB1: at most one source-inventory worker then one specification-replay
+worker sequentially, Oracle512MiB/swap0 each, coordinator128MiB and pinned
+runtime unchanged; stop on OOM and review without automatic retry or raised
+limits. SB2 is review of those artifacts, not another experiment. No live SQL,
+API, original storage or service control is required. Desktop Word, if later
+authorized under HB1, remains outside the Oracle worker memory boundary.
+
+This plan is complete when the proof target, missing primitive/frame facts,
+source-only prediction route, tests and HB1 entry/stop gates are explicit.
+There is currently no justified native flow/frame bound; predictiveBound and
+remainingSafe remain null, HB1Ready=false/full MR1 open. No native numerical
+correction, Core/Service change, original data/service operation,
+merge/push/release/install or map promotion is authorized by this plan.
+
+Planning review complete: source anchors at Core42008134, obligation coverage,
+interval/reference-plane consistency and unchanged scope reviewed; final diff
+and git diff --check pass. No runtime proof or native readiness is claimed.
