@@ -5289,7 +5289,7 @@ prediction and absence of glyph clipping remain separate acceptance criteria.
   Include fonts/fallback, compatibility/settings and allowed origin intervals.
   Do not reclassify Core font hashes as proof of Word's selected font. Gate:
   no omitted flow term; missing facts listed explicitly, including native frame.
-- [ ] **SB1 — Derive a bounded model or an explicit unknown.** Build only a
+- [x] **SB1 — Derive a bounded model or an explicit unknown.** Build only a
   lab specification/evaluator on copies after authorization, using source
   recipes and justified primitive bounds. Write the no-false-fit obligation
   first; exercise exact arithmetic, per-edge versus fragment errors, many-row
@@ -5376,3 +5376,38 @@ PredictiveBound/remainingSafe null, HB1Ready=false/full MR1 open. SB1/HB1 are
 not started or authorized by this result. No new generation/render/export,
 Core/Service edit, original live SQL/API/storage/service mutation,
 merge/push/release/install or map promotion.
+
+## SB1 source arithmetic verified; native range remains unknown — 2026-11-05
+
+Owner authorized SB1 with explicit unknown when proof is insufficient, retaining
+M1/Menu, Oracle512MiB and no new Word export/product/original data/service changes
+or integration. Inline lab specification/discovery Evidence Reviewer and Project
+Control stewardship, IDs N/A. The contract's "SB1 conditional interval model with
+native bounds unknown" section owns exact scope, output locators and limitations.
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-sb1-interval-model-20261105`.
+
+Source recipe comparators are33.3/50.6/50.6pt, member sum134.5pt; M1 label45.3pt
+shares that source area once. Nominal XML frame644.9pt is exact arithmetic only.
+Native row/group/frame/prefix advances and remainingSafe remain unknown, rather
+than using those source numbers or omitted prefix costs as native facts.
+
+Oracle38checks pass (14retained-data +24synthetic algebra).4864finite synthetic
+worlds exercise conditional fit/no-fit/unknown; they do not prove Word enclosure.
+Retained samples reject invariant+0.05pt correction, residual sign-clamping and
+using a per-edge tolerance once over a fragment. Observed+0.17pt is not promoted
+to a universal bound. All11native obligations remain open; zero closed. The lab
+model does not implement native proof admission; the repaired gate is unchanged.
+
+Independent16checks pass. One512MiB/swap0 worker, coordinator128MiB,
+peak9.8359375MiB, exit0/no OOM, no Oracle retries. Local verification corrected
+Windows/slash hash-inventory key normalization without changing evidence or
+rerunning Oracle. All18original files, product candidate heads/clean state and
+original3container identities stable, no owned worker running.
+
+SB1's model-or-explicit-unknown task is complete; native Word proof is not.
+PredictiveBound/remainingSafe null, HB1Ready=false/full MR1 open. Stop here;
+SB2/HB1 are not started. Further arithmetic alone cannot supply missing native
+primitive/frame evidence. No fresh Word/PDF processing, Core/Service edit,
+original live SQL/API/storage/service operation, merge/push/release/install
+or map promotion.

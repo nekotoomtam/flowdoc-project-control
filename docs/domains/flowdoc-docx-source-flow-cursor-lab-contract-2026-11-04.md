@@ -1313,3 +1313,85 @@ authorize SB1 over this missing-evidence matrix, retaining unknown outputs when
 primitive/frame proofs are absent. No Word/PDF processing beyond read-only DOCX
 inspection, Core/Service edit, original SQL/API/storage/service mutation,
 merge/push/release/install or map promotion.
+
+## SB1 conditional interval model with native bounds unknown — 2026-11-05
+
+Owner authorized SB1 in Oracle512MiB and explicitly retained unknown when proof
+is absent; M1/Menu unchanged, no new Word export, Core/Service/original data or
+service change/integration. Inline discovery lab specification/Evidence Reviewer
+and Project Control stewardship, execution IDs N/A. One bounded specification-
+replay worker; reuse this contract and the source-bound plan. Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-sb1-interval-model-20261105`.
+The model consumes copied SB0 links/frame/prefix/gaps, retained source/line plans,
+HB0 observations and the repaired-gate result. It does not execute Core, derive
+new Word metrics, parse/export DOCX/PDF or change the existing evidence gate.
+
+Candidate/spec: `interval_spec.py`, `tests_spec.py`, `build.py`, `prepare.py`,
+`run.py`, `remote.py`, `packet.json` and `provenance.json`. Oracle outputs under
+`oracle/outputs/`: `source-recipes.json`, `frame-prefix-derivation.json`,
+`observational-falsification.json`, `dependency-proof-status.json`,
+`conditional-algebra-proof.json`, `verification.json`. Receipt/cgroup evidence:
+`oracle/receipt.json`, memory files and run log. Independent review:
+`verify-local.py`/`verification-local.json`; `artifact-hashes.json` retains the
+input/code/result hashes. Remote directory:
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-mr1-sb1-interval-model-20261105`.
+
+What is established:
+
+- Exact source/emitted-recipe arithmetic reconstructs the selected three row
+  comparators as33.3/50.6/50.6pt, member sum134.5pt. The comparator is the maximum
+  of selected nonmerged cell line-stack/inset/offset sums; it is NOT an accepted
+  native Word max-cell composition rule. Every term binds source identities,
+  text hashes and SB0 XML locators, never a PDF coordinate or page cut.
+- M1's source label comparator is45.3pt (8top+16before+17.3line+4bottom) and
+  shares member area. It is not added to each row or to the member sum. Menu's
+  retained1/2/2exact346twip parent-line recipe is unchanged; its actual native
+  parent/cell/shape interaction remains an unproven primitive.
+- Emitted page-size/margin arithmetic reconstructs nominal frame644.9pt exactly.
+  Captured native usable-frame proof and the21-root/1separator/opening-scope
+  prefix advance are missing. Nominal XML arithmetic does not become a safe
+  lower frame bound, and missing prefix cost is never assigned zero.
+- Conditional interval operations use integer micro-points, outward rounding,
+  signed errors and unique charge ownership.24synthetic checks cover unknown
+  propagation, six-edge error accumulation,80-row worst cases, border halves,
+  shared Module area/offsets, unknown Menu/frame/prefix/reservations, entry-domain
+  widening and exact fit/no-fit/overlap thresholds. Exhaustive4864finite toy
+  worlds exercise fit/no-fit/unknown without false decisions under those assumed
+  input bounds. This proves only conditional arithmetic on that finite domain,
+  not that any input interval encloses Word or any font/image/keep behavior.
+- Retained observations falsify an invariant+0.05pt interior correction and
+  nonnegative-only row residuals. The doubled-border case's approximately
+  -0.00004pt accumulated marker/stroke bridge has greater magnitude than a
+  single0.00003pt per-edge comparator tolerance, so per-edge tolerances cannot
+  be spent only once over a fragment. This is comparison accounting, not a new
+  native error allowance. The observed+0.17pt maximum remains unproven outside
+  its four painted samples and never enters the source cost evaluator.
+
+What remains unknown: all11SB0native obligations. No accepted text/paragraph,
+Menu-host, merge/split, border-to-flow, prefix/fields, generated-paragraph,
+frame/band, Word-font/profile, total-role, image-host or origin-domain proof was
+created. Every proposed native row transformer has unknown entry domain and
+advance; native row/group/frame/prefix bounds and remainingSafe are null. No
+self-asserted accepted/qualified status or numeric observation can enable the
+native query. This lab model has no native proof-admission path and is not a
+new or replacement native verifier. The repaired HB0 gate/code/tests remain
+unchanged and still reject predictive admission.
+
+Oracle38checks pass:14retained-data checks plus24synthetic algebra checks.
+Sixteen independent checks confirm local/Linux results, source reconstruction,
+the unchanged gate and original boundaries. One worker, pinned image07c71903922e,
+512MiB/swap0, coordinator128MiB; peak10313728bytes (9.8359375MiB),
+exit0/OOMKilled=false/oom=0/oom_kill=0, no Oracle failures/retries. Independent
+desktop review initially used slash-form keys against a Windows-path hash
+inventory; separator normalization corrected that review only, with no evidence
+changes or Oracle rerun. All18original DOCX/PDF hashes and Core42008134/
+Servicedb15e9d heads/clean state unchanged; original3container IDs/start/restart
+counts stable and no owned worker running. No new native/visual QA is claimed.
+
+Status PASS_SB1_SOURCE_ARITHMETIC_WITH_NATIVE_BOUND_UNKNOWN. SB1's bounded-model-
+or-explicit-unknown gate is satisfied with explicit unknown native results;
+zero native obligations closed. HB1Ready=false/full MR1 open. SB2 may review the
+missing-evidence chain only after authorization; arithmetic reruns alone cannot
+fill native primitive/frame gaps. No SB2/HB1, new Word/PDF processing,
+Core/Service edit, original SQL/API/storage/service operation,
+merge/push/release/install or map promotion is authorized by this result.
