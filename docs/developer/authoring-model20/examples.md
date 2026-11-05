@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. This guide is for the private model20 candidate
-only: Core6f36c42 / Service4972902 / schema029 and its exact reviewed archive.
+only: Core0.6.0 / Service0.6.0 / schema029 and its exact reviewed archive.
 It does not describe the currently installed package or authorize publication,
 installation, real-data access or a release. Core owns validation/rendering and
 Service owns persistence/admission. Runtime discovery and verified output take

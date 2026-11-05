@@ -1,6 +1,6 @@
 import {test}from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';
 import{assess,checkGroupLabelCapability}from'../plugins/flowdocmake-model20/compatibility.mjs';
-const contract=JSON.parse(readFileSync(new URL('./fixtures/flowdocmake-model20-contract.json',import.meta.url))),runtime={service:'0.5.2',core:'0.5.2',coreArtifactSha256:'ef82f85163be57159c89dd64a535efd11a8791d4c7274f16ae5bb1670cf7aba8',corePackageFilesSha256:'47cdac6d28661e1e98e02603e04e5a80e6e6d6254adaf3f9d16e65016f9cb427',port:'3018'};
+const contract=JSON.parse(readFileSync(new URL('./fixtures/flowdocmake-model20-contract.json',import.meta.url))),runtime={service:'0.6.0',core:'0.6.0',coreArtifactSha256:'145af7ff91416094e35ff9d283e350e6f86f7f7e2bb1707783591c877185e3fb',corePackageFilesSha256:'df69f433956a921ada4be8c42eb66df0d42df5fc84b9b3b777bce2da69a8897d',port:'3018'};
 test('accepts the actual model20-only029 Service discovery with the exact reviewed Core pin',()=>{assert.deepEqual(assess({contract,runtime,pdf:true}),{ready:true,code:'READY'});});
 test('refuses mixed/legacy capabilities, old Section instance contracts and wrong archive without version-only approval',()=>{
  for(const patch of [{nodeModelVersions:[18,19]},{nodeModelVersions:[18,19,20]},{sectionInstances:{model:19,input:'array-by-id'}},{sectionDefinitions:{...contract.sectionDefinitions,instanceKey:'optional'}},{formatSizing:{...contract.formatSizing,nodeModelVersions:[19]}}])assert.equal(assess({contract:{...contract,...patch},runtime,pdf:true}).ready,false);

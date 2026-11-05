@@ -497,3 +497,41 @@ synthetic DOCX capacity, combined disk/RAM pressure recovery,3 historical
 operator-harness cases, generalized checkpoint/facts/memory redesign and any
 original-runtime migration or cleanup. No original data was accessed/changed;
 no original service stopped; no merge, push, release or product installation.
+
+## Authorized local candidate integration and version plan — 2026-11-05
+
+Owner explicitly chose the complete Core/Service candidate set, not M1 alone.
+Single-room work; execution IDs N/A. Owners: Core package, Service pin/runtime,
+Project Control shared record and private plugin profile. Active roles: Planning
+Partner, then owner implementation and Evidence Reviewer. Work size medium,
+risk routine for reversible local Git/package promotion; model20 compatibility
+break is explicit. Existing isolated worktrees are reused. No registered room
+is reopened. Source bases: Core42008134, Servicedb15e9d, PCad64ea9. Integration
+targets: Core codex/template-binding, Service codex/template-registry, PC main;
+release branches/tags, installed plugins and original data/services forbidden.
+
+1. Prepare Core0.6.0 (model20-only, R1 and M1) with lockfile and owner guides.
+   Build/pack on the pinned Linux runtime using retained native resources;
+   prove packed source/runtime identity and affected DOCX/PDF consumers within
+   Oracle512MiB/worker. Reuse unchanged prior suite results only with exact
+   source/dependency/configuration coverage; skips/exclusions remain explicit.
+2. Prepare Service0.6.0 with the exact new archive, SHA/source manifest and
+   lockfile. Historical migrations remain byte-identical, schema029 mandatory.
+   Build and test the repinned consumer, including genuine PDF/DOCX API work
+   against a newly owned lab PostgreSQL namespace. No original API/DB calls.
+3. Align only the private model20 plugin profile with the new package identities
+   and test its build/compatibility guards. Keep installed/default plugin intact.
+4. Review changed metadata/guides and evidence coverage; commit after checks.
+   Fast-forward the three clean development targets in Core→Service→PC order.
+   Reuse verification after unchanged fast-forward. Retain lanes; cleanup is
+   outside this request. No push/tag/release/install or runtime migration.
+
+Proof budget: one bounded Linux package build, affected Core groups/packed
+consumers, one repinned Service lab acceptance plus relevant ordinary tests,
+plugin contract/build checks, manifest/reuse review and PC data/doc checks.
+Document budget: extend this record and existing owner README/guides; no new
+Work/registry/map/report prose. Evidence goes under
+`C:/Users/nekot/Documents/FlowDoc-recovery/candidate-integration-060-20261105`.
+Native Word/font fallback, general row/frame prediction and Module continuation
+parity remain deferred, not PASS. Preserve M1/Menu and existing explicit
+resource limits; no new rendering/layout repair is part of this integration.

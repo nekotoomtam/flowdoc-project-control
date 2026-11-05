@@ -7,14 +7,14 @@ description: Use when the user asks for flowdocmake, PDF source-data extraction 
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Private candidate0.3.2-candidate.1 routes draft-only tools;
+Owner: FlowDoc Project Control. Private candidate0.4.0-candidate.1 routes draft-only tools;
 it changes no Core/Service behavior or publication permission. Target versions:
-Service0.5.2 / Core0.5.2, nodeModelVersions20 only (explicit reusable definitions and ordered occurrences), schemaVersion 1/2, definition.version 1.
+Service0.6.0 / Core0.6.0, nodeModelVersions20 only (explicit reusable definitions and ordered occurrences), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.
 
-## 0.5.2 prepared compatibility
+## 0.6.0 candidate compatibility
 
-This source package pins the exact reviewed0.5.2 archive; it does not change an
+This source package pins the exact reviewed0.6.0 archive; it does not change an
 installed0.3.0 cache. New shared stroke/B properties require this matched runtime;
 see the node reference for B's ASCII/unmerged/one-line body profile and known
 Word continuation borders. Output defaultFileName is template metadata; request

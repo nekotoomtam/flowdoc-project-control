@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. This guide is for the private model20 candidate
-only: Core6f36c42 / Service4972902 / schema029 and its exact reviewed archive.
+only: Core0.6.0 / Service0.6.0 / schema029 and its exact reviewed archive.
 It does not describe the currently installed package or authorize publication,
 installation, real-data access or a release. Core owns validation/rendering and
 Service owns persistence/admission. Runtime discovery and verified output take
@@ -12,8 +12,8 @@ inputs; they are not shipped as model20 examples in this candidate.
 
 This candidate accepts nodeModelVersion20 only, with font schema1/2 and draft
 definition.version1. Migration029 is mandatory. The reviewed Core SHA256 is
-`ef82f85163be57159c89dd64a535efd11a8791d4c7274f16ae5bb1670cf7aba8`.
-The installed262-file Core tree must also match its reviewed identity. Matching
+`145af7ff91416094e35ff9d283e350e6f86f7f7e2bb1707783591c877185e3fb`.
+The installed267-file Core tree must also match its reviewed identity. Matching
 version strings or a vendor archive alone is insufficient. This is a private
 candidate; full integration, native wiring and whole-suite acceptance are separate.
 
