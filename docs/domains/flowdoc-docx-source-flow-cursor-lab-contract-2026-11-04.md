@@ -1489,3 +1489,84 @@ future lab limits; no worker or service operation is started here, so there is
 no new runtime/peak result. Only the existing two Project Control documents
 change. No Word export, Core/Service edit, original SQL/API/storage/service
 operation, merge/push/release/install or map promotion.
+
+## Read-only desktop Word version and retained actual font evidence — 2026-11-05
+
+Owner authorized installed Word/actual-font inspection read-only, preserving
+M1/Menu and Oracle512MiB, no new Word export/product/original data/service change
+or integration. Inline Evidence Reviewer/Project Control Steward, IDs N/A.
+This first profile inspection queries Windows file metadata/font registration
+and reads already retained DOCX/PDF bytes. No Word process is launched or
+attached; no document is reopened, saved, printed, rendered or exported. The
+connected document-control discovery found no Word session. Oracle is not
+queried/run; desktop inspection is outside its unchanged worker memory cap.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-word-font-profile-readonly-20261105`.
+`collect-profile.ps1`/`desktop-profile.json` capture current file/registry facts.
+`inspect-fonts.py`/`verification.json` bind the controlled retained Y0-origin
+Word PDF to its original export manifest/source-copy hash and inspect page5.
+`verification-baseline-fonts.json` preserves the initial unmarked M1 PDF check.
+`verify-local.py`/`verification-local.json` retain independent review;
+`artifact-hashes.json` binds scripts/results. These are evidence JSONs, not a
+new DOCX/PDF/native export. Missing fontTools in the bundled runtime was avoided
+by bounded standard-library TrueType table parsing; nothing was installed.
+
+Confirmed current Windows installation:
+
+- `C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE`, PE file/product
+  version16.0.20527.20112; executable SHA256
+  `e3c23a9bdde0ebeea66e159d852581beec4d8f102e8f31354d2f35cc5573d0c3`.
+- Click-to-Run VersionToReport16.0.20527.20112, Platform x64. Its separate
+  ClientVersionToReport field is16.0.20527.20088; it is not substituted for the
+  actual WINWORD PE version or labeled a product defect.
+- No WINWORD process was present at capture time. No matching Sarabun entries
+  were found in the four explicitly queried HKLM/HKCU Fonts/FontSubstitutes
+  keys. That limited registry result does NOT establish absence from document,
+  private or cloud font stores and is not proof that font substitution occurred.
+
+Confirmed actual font use in RETAINED native Word output:
+
+- Controlled Y0-origin.pdf SHA256
+  `674c89937497d27e40e44c0c810bd32dd59247fbf18175ae1205389d6f87c1f9`
+  is tied to the earlier Word version16.0/build16.0.20527 manifest and original
+  input-copy hash. This is historical export evidence, not a new Word session
+  or proof that the old executable bytes equal today's executable hash.
+- All13selected page5Module/Menu/peer blocks associate their actual PDF text
+  with embedded subset resources matching source Sarabun Light. The summary
+  header text associates with the Sarabun regular resource. Text identity is
+  checked against the bound source, excluding extraction whitespace only.
+- Private names such as ___WRD_EMBED_SUB_49 are not treated as family proof.
+  Embedded TrueType programs retain PostScript identities Sarabun-Light/
+  Sarabun-Regular; every populated glyph record and its advance width is
+  byte-identical at the same glyph index to the deobfuscated source font.
+  Light F2/F4/F5 resources match183/90/183populated glyph records respectively;
+  regular F3 matches135. These are resource counts, not unique sample glyph
+  counts. Source full-font SHA256 values remain d6b2e60f... for Light and
+  b8150084... for regular, with complete hashes in verification.json.
+- A TimesNewRoman resource also exists on page5; it is not attributed to the
+  selected13blocks. Presence in a resource dictionary alone is not proof that
+  it rendered a particular source character. No whole-document/no-fallback
+  statement is made from this selected sample or from font naming alone.
+
+Method boundary: Microsoft documents Font.Name as an object-name property and
+FontNames as available-font names; neither documentation promises a per-glyph
+physical rendering trace. We therefore do not promote a declared/available
+name to proof of actual use. References: [Font.Name](https://learn.microsoft.com/en-us/office/vba/api/word.font.name),
+[Application.FontNames](https://learn.microsoft.com/en-us/office/vba/api/word.application.fontnames).
+The actual-use claim above rests on retained PDF resource association plus
+binary glyph/advance matching, not those name APIs or a speculative live query.
+
+Eleven extraction/consistency checks and11independent checks pass. All18original
+DOCX/PDF hashes and Core42008134/Servicedb15e9d heads/clean state remain unchanged.
+No new native visual/layout test or Oracle peak/OOM result is claimed. No font
+installation, substitution edit, UI interaction or configuration change occurred.
+
+Disposition: profile/font obligation PARTIALLY RESOLVED. Installed Word version
+is current; actual used font programs are confirmed for the retained selected
+sample. Actual font/fallback selection in a fresh current rendering, complete
+glyph/profile applicability and field/compatibility behavior remain UNKNOWN.
+The entire word-profile-fonts obligation is not closed; row/frame bounds and
+remainingSafe remain null, HB1Ready=false. No gate or prior frozen artifact is
+changed. No new Word/PDF export, Core/Service edit, original SQL/API/storage/
+service operation, integration/merge/push/release/install or map promotion.

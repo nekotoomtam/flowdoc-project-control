@@ -5452,3 +5452,35 @@ Oracle worker, runtime test, measured peak or Word processing. Future lab
 limits512MiB/worker, swap0, coordinator128MiB remain unchanged. No Core/Service
 edit, original live SQL/API/storage/service operation, integration/merge/push/
 release/install or map promotion.
+
+## Word/profile first read-only inspection partially resolves font evidence — 2026-11-05
+
+Owner authorized Word-version/actual-font inspection read-only, M1/Menu and
+Oracle512MiB unchanged, no new Word export/product/original data/service changes
+or integration. Inline Evidence Reviewer/Project Control Steward, IDs N/A.
+The contract's "Read-only desktop Word version and retained actual font evidence"
+section owns exact scope, file hashes, method, references and limitations.
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-word-font-profile-readonly-20261105`.
+
+Current Windows WINWORD PE version is16.0.20527.20112, pinned by executable
+hash. No Word process was present and no connected Word session existed at
+inspection. Registry queries alone are not used as font selection proof.
+Retained controlled Word PDF/source-copy/manifest hashes bind the prior export;
+page5Module/Menu/peer13blocks use Sarabun Light and the header uses Sarabun
+regular. Actual text-to-resource associations and complete populated subset
+glyph/advance matches to the source fonts support this, beyond family labels.
+The private embedded aliases do not indicate a missing font by themselves.
+
+Eleven consistency and11independent checks pass; all18original files and product
+candidate heads/clean state unchanged. Desktop binary/registry/PDF reading only:
+no Word launch/open/render/save/export, no installation/substitution/config edit,
+no Oracle worker or new memory/peak test. Oracle512MiB/worker policy is retained.
+
+word-profile-fonts is PARTIALLY RESOLVED, not closed. Fresh-session rendering/
+fallback and full source-glyph/profile/field applicability remain UNKNOWN; the
+old output cannot establish every future current rendering. Row/frame bounds
+and remainingSafe remain null, HB1Ready=false/full MR1 open. No frozen proof,
+gate or native admission is changed. No Core/Service edit, original live
+SQL/API/storage/service operation, integration/merge/push/release/install
+or map promotion.
