@@ -5058,7 +5058,7 @@ Unknown must never become zero, an invented margin or a forced break decision.
 
 ### Bounded discovery sequence; future execution requires owner authorization
 
-- [ ] **HB0 — Reconcile existing observations, no new Word export.** On copies
+- [x] **HB0 — Reconcile existing observations, no new Word export.** On copies
   under a new lab artifact directory, replay the four origin probes plus the
   earlier border controls. Produce a row/boundary ledger and the bound-record
   proposal above. Verify the table's individual/joint ranges, outer-edge closure,
@@ -5115,3 +5115,41 @@ Planning review complete: the interval table was independently recalculated
 from the retained Oracle result, individual extrema and hull arithmetic agree;
 scope/units/decision gates reviewed and git diff --check passes. Only these two
 Project Control prose files change; no Oracle/Word runtime test was run anew.
+
+## HB0 accounting complete; predictive promotion blocked — 2026-11-05
+
+Owner authorized only HB0 in Oracle512MiB, retained M1/Menu, no new Word export
+or product/original data/service changes/integration. Inline discovery Evidence
+Reviewer/Project Control Steward, IDs N/A; no new registered round or map truth.
+The source-flow contract's "HB0 retained row/border ledger replay" section owns
+the complete result, artifacts, original failure/collection correction and gaps.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-hb0-ledger-20261105`.
+All8retained cases close their row/fragment ledgers. One shared-stroke owner
+allocates half to adjacent rows; center span and outer painted span differ by
+the remaining outer halves. Original-control interior134.55pt / center135.99001pt
+/ outer136.47pt stay distinct. Signed coordinate bridges and negative residuals
+are explicit. Observed joint range[134.55,134.67] differs from separate-row hull
+[134.31,134.67]; neither becomes a predictive native-flow guarantee.
+
+Oracle15checks/10initial mutation rejections pass; independent10checks confirm
+the ledger and reveal a lab-only prototype guard gap: a forged qualification
+string can bypass its predictive branch without accepted proof. This is not
+a Core/Service finding. Actual records stay observed-only; no predictive bound
+or safe cursor was emitted. Do not adopt this validator. A trusted immutable
+accepted derivation/coverage record must gate promotion, and none exists now;
+this contract revision remains unimplemented/unverified on Oracle.
+
+HB0 accounting complete, with predictive-bound/schema readiness RISK/UNKNOWN;
+HB1Ready=false, remainingSafe=null/full MR1 open. Do not proceed to HB1 merely
+because accounting passes. Next review must address the trusted-proof gate and
+justify source-to-native-flow bounds or explicitly retain unsupported status.
+No new native experiments or implementation are authorized by this result.
+
+One512MiB/swap0 worker, coordinator128MiB, peak19.390625MiB, exit0/no OOM or
+Oracle retries. Desktop archive collection needed a Python3.10 compatibility
+correction only; worker evidence was reused unchanged. All18original DOCX/PDF
+hashes and original3container identities stable; product candidates clean.
+No Word/PDF processing, live SQL/API/storage, original service control,
+Core/Service edit, integration/merge/push/release/install or map promotion.

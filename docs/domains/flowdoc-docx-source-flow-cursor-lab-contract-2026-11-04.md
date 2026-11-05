@@ -1043,3 +1043,87 @@ not universal safety bounds. Existing confidence/verdict/remainingSafe semantics
 above are preserved. Status PLAN READY FOR REVIEW, no new experiment this round.
 M1/Menu and Oracle512MiB remain fixed; no Core/Service implementation, original
 data/service operation, integration or map promotion follows from this proposal.
+
+## HB0 retained row/border ledger replay — 2026-11-05
+
+Owner authorized HB0 only, no new Word export, Oracle512MiB, M1/Menu unchanged.
+Inline discovery Evidence Reviewer/Project Control Steward; IDs N/A. The current
+request and reviewed HB0 plan govern; no historical execution is reactivated.
+Document budget remains this contract plus the existing plan. Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-hb0-ledger-20261105`.
+Inputs are copies of the two retained native event families, source/line plans,
+export manifests and prior receipts. No PDF parsing, Word, Core build or live DB
+access occurs. Source/raw-event provenance is reused within its prior scope,
+not freshly authenticated or extracted from PDF in this worker.
+
+Durable outputs: `oracle/outputs/row-boundary-ledgers.json`,
+`oracle/outputs/bound-record-proposal.json`, `oracle/outputs/verification.json`,
+`oracle/receipt.json` and cgroup records. Scripts/packet: `build.py`, `prepare.py`,
+`run.py`, `remote.py`, `packet.json`, `provenance.json`. Independent review:
+`verify-local.py`/`verification-local.json`; collection correction:
+`collect-local.py`/`collection-correction.json`; `artifact-hashes.json` binds the
+retained files. Remote directory:
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-mr1-hb0-ledger-20261105`.
+
+Confirmed accounting for all8retained cases, including border-zero/doubled-border
+controls and four origin probes:
+
+- Each physical horizontal boundary has one ledger owner. An internal shared
+  stroke allocates half its width to each neighboring row; its total is one
+  stroke. A center-to-center fragment includes half of each outer stroke.
+- Full painted outer span includes those two remaining outer halves. For the
+  original marked control: interior sum134.55pt, center span135.99001pt and
+  outer span136.47pt, rounded here only for readability. These are different
+  reference quantities, not three conflicting estimates of native flow height.
+- Every row allocation and fragment sum closes with its retained endpoints.
+  Tiny signed marker-to-stroke coordinate differences are explicit bridges,
+  not discarded by a tolerance or invented native padding. Largest absolute
+  individual bridge is approximately0.00002pt. In the doubled-border case their
+  signed sum is approximately-0.00004pt across the fragment. The retained
+  per-edge0.00003pt comparison tolerance is not a fragment-wide or layout bound.
+- Source stacks reconstruct as33.30/50.60/50.60pt without adding Module again;
+  M1 top8pt/before16pt is unchanged. The four-probe interior joint range remains
+  [134.55,134.67]pt, while adding separate row envelopes gives[134.31,134.67]pt.
+  Negative per-row residuals are retained; neither correlation nor cancellation
+  is assumed. These are painted one-dimensional interval ledgers, not a2D paint
+  union, glyph-ink extent or native pagination-consumption proof.
+
+Oracle status PASS_HB0_OBSERVATION_LEDGER_WITH_PREDICTIVE_BOUND_UNKNOWN:
+15checks pass,10negative mutations reject duplicate owners/allocations, missing
+outer half stroke, stale source/plan, profile/plane mismatch, unobserved origin,
+reordered rows and direct use of an observed envelope as predictive. Independent
+review has10checks, including a further qualification-forgery challenge below;
+its PASS means the ledger and explicit blocking result were verified, not that
+the proposed predictive gate passed all adversarial cases.
+
+Confirmed lab-prototype gap: changing only qualification to
+`justified-profile-bound` passes the isolated prototype's `validate_record`
+predictive branch without an accepted derivation. The independent local AST
+challenge reproduces this; it does not invoke or repair the Oracle worker.
+This is a defect of the lab proposal validator, NOT a Core/Service defect.
+Actual output records remain observed-only, predictiveBound=null,
+remainingSafe=null and HB1Ready=false. The prototype cannot be adopted as an
+enforcement gate. Required contract revision: resolve an immutable accepted
+bound proof and exact coverage/domain/profile/plane from trusted authority,
+not a caller label or supplied proof ID; no accepted proof exists now, so all
+predictive promotions must reject. That revision is not implemented or Oracle-
+verified in this round. Ten initial mutation rejections are not full schema PASS.
+
+Other blockers remain: no justified source-to-native-flow upper conversion,
+no complete native font/settings/origin domain, and no header/total/continuation
+or preceding-flow coverage from this three-row sample. HB0 accounting is complete;
+predictive-bound/schema-promotion readiness remains RISK/UNKNOWN. Stop at this
+gate; no HB1/HB2 execution, safe cursor claim or wider Word proof follows.
+
+One Oracle worker, pinned image07c71903922e,512MiB/swap0, coordinator128MiB;
+peak20332544bytes (19.390625MiB), exit0/OOMKilled=false/oom=0/oom_kill=0.
+No Oracle retry or OOM. The desktop collection wrapper initially failed because
+Python3.10 lacks tarfile.extractall(filter=...); the already downloaded archive
+was collected after explicit member-type/path containment checks. This repaired
+only local result collection, without changing inputs/worker or rerunning it.
+
+All18retained original DOCX/PDF hashes unchanged; Core42008134/Servicedb15e9d
+clean and unchanged; original3container IDs/start times/restart counts stable,
+no owned lab worker running. No new visual review/export is claimed. No
+Core/Service edit, original data/storage/SQL/API/service operation,
+merge/push/release/install or map promotion.
