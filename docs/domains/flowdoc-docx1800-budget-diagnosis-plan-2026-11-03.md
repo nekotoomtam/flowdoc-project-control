@@ -5282,7 +5282,7 @@ prediction and absence of glyph clipping remain separate acceptance criteria.
 
 ### Pre-HB1 tasks and concrete stopping gates
 
-- [ ] **SB0 — Inventory source recipes and missing native facts.** Reuse the
+- [x] **SB0 — Inventory source recipes and missing native facts.** Reuse the
   immutable Core snapshot/source/line plans and HB0 ledgers on copies. Emit a
   coverage matrix for every term in the table above: source locator, emitted
   OOXML locator, plane, unit, proof status, applicability and missing evidence.
@@ -5339,3 +5339,40 @@ merge/push/release/install or map promotion is authorized by this plan.
 Planning review complete: source anchors at Core42008134, obligation coverage,
 interval/reference-plane consistency and unchanged scope reviewed; final diff
 and git diff --check pass. No runtime proof or native readiness is claimed.
+
+## SB0 inventory complete with eleven native-proof gaps — 2026-11-05
+
+Owner authorized SB0 only on retained copies in Oracle512MiB, M1/Menu fixed,
+no new Word export or product/original data/service changes/integration. Inline
+discovery Evidence Reviewer/Project Control Steward, IDs N/A. The contract's
+"SB0 source-to-XML inventory and missing native evidence" section owns exact
+coverage, output locators, resource/profile evidence and remaining limitations.
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-sb0-source-xml-inventory-20261105`.
+
+179source roots plus54table separators and2TOC scope paragraphs account for235
+body-flow slots, with sectPr as236th child.95tables/181rows/526cells have source/
+XML structural links.58guided blocks/63line records bind custom XML/SDT tags;
+detailed mapping covers13selected text blocks,18Menu word ranges and5image
+representatives. M1 remains8pt top +16pt before once, Menu parent lines remain
+exact346twips. Structural links are not full semantic/native validation of every
+cell or document. All26XML/rels parts parse; baseline content parts are unchanged
+and decoded embedded fonts match despite recorded timestamp/obfuscation changes.
+
+Coverage matrix preserves11native gaps: text/wrap, Menu host flow, merge/split,
+border conversion, preceding roots/TOC, generated paragraph advances, native
+frame/bands, Word font/profile, total roles, image host flow and entry-origin
+domain. Nominal XML capacity644.9pt is not a usable native lower bound. The
+selected table's21preceding roots,1separator and opening scope paragraph cannot
+be omitted when deriving remaining page space. Unclassified totals stay unknown.
+
+Oracle18checks and15independent checks pass, with additional desktop linkage of
+181row split/header flags. One512MiB/swap0 worker, coordinator128MiB,
+peak67.9765625MiB, exit0/no OOM, no Oracle retries. All18original files, product
+candidate heads/clean state and original3container identities unchanged.
+
+SB0 complete within stated coverage; native layout proof remains UNKNOWN.
+PredictiveBound/remainingSafe null, HB1Ready=false/full MR1 open. SB1/HB1 are
+not started or authorized by this result. No new generation/render/export,
+Core/Service edit, original live SQL/API/storage/service mutation,
+merge/push/release/install or map promotion.

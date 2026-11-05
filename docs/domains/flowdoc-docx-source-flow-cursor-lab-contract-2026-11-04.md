@@ -1221,3 +1221,95 @@ unsupported-input semantics above. Current native-bound/frame gaps remain
 UNKNOWN; no numeric upper bound or Word page-fit guarantee is established.
 M1/Menu and Oracle512MiB remain fixed. No new Word/PDF processing, Core/Service
 edit, original data/service operation, integration or map promotion.
+
+## SB0 source-to-XML inventory and missing native evidence — 2026-11-05
+
+Owner authorized only SB0 in Oracle512MiB, retaining M1/Menu, no new Word export,
+Core/Service changes, original data/service operation or integration. Inline
+discovery Evidence Reviewer/Project Control Steward, IDs N/A. Reuse the current
+source-bound plan and these two prose records; no execution registry or map
+promotion. Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-sb0-source-xml-inventory-20261105`.
+Input copies bind the retained genuine-Core source/row/representative captures,
+13block line plans, captured DOCX, immutable native-Word M1 baseline, HB0 ledgers
+and prior repaired-gate result. Core42008134 source files are copied read-only
+for emitter locators. No Core generation, measurement or native export occurs.
+
+Scripts/authority: `prepare.py`, `build.py`, `run.py`, `remote.py`, `packet.json`,
+`provenance.json`. Durable Oracle outputs:
+`body-source-inventory.json`, `table-inventory.json`, `table-cell-inventory.json`,
+`selected-text-links.json`, `style-inventory.json`, `image-source-links.json`,
+`profile-frame-inventory.json`, `coverage-matrix.json`, `missing-evidence.json`,
+`inventory-summary.json`, `verification.json` under `oracle/outputs/`, plus
+`oracle/receipt.json` and cgroup records. Independent review:
+`verify-local.py`/`verification-local.json`, `row-transition-links.json` and
+`artifact-hashes.json`. Remote directory:
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-mr1-sb0-source-xml-inventory-20261105`.
+
+Confirmed on this retained UAT M1 fixture:
+
+- 179source roots +54between-table paragraphs +2scoped-TOC boundary paragraphs
+  account for235body-flow slots; sectPr is the236th body child. The source
+  program has233items before the section's two outer scope paragraphs. None of
+  these generated paragraphs is treated as a zero-height native footprint.
+- 95tables,181rows and526XMLcells, including4generated merge continuations,
+  align with source-program/table ordering, grid widths and cell spans. These
+  are ordinal/structural links backed by the emitter recipe, not a claim that
+  every cell embeds a literal source ID or all content semantics were proved.
+- 58guided source blocks/63line records link custom XML source identities and
+  actual SDT tags. The selected13Module/Menu/ordinary-peer blocks additionally
+  bind exact text or source word ranges, styles, margins and measured line
+  plans. The3Menu blocks have1/2/2source/native-parent paragraphs and18verified
+  word-shape ranges; their parent spacing is exact346twips. M1 retains160twips
+  physical top plus320twips paragraph-before once on the visible Module label.
+  Fixed shape paint/parent paragraph/cell flow remain distinct quantities.
+- 5representative image resources match embedded relationship bytes and XML
+  drawing dimensions via635EMU per twip. This proves frame/resource mapping,
+  not native image-host paragraph advance or clipping behavior.
+- All26XML/rels parts parse. Baseline and captured document/styles/settings/
+  custom paragraph-map parts are byte-identical. The only package differences are core
+  timestamps, font-obfuscation keys and the two obfuscated font streams; full
+  decoded font bytes match. These differences are retained and explicitly
+  normalized, not silently called whole-file equality. Embedded Sarabun/Sarabun
+  Light hashes bind source resources; actual Word font selection remains unknown.
+- XML nominal body height is644.9pt after emitted page-size/margin arithmetic;
+  the captured estimated capacity is644.8897637795275pt before that rounding.
+  The approximately0.01023622pt difference is source/XML quantization accounting,
+  not a new defect, native usable-height proof or correction to row heights.
+  CompatibilityMode15 and header/footer references/parts are recorded without
+  promoting complete Word-profile or band-reservation equivalence.
+- The selected Module table has21preceding source roots plus1derived separator
+  and the opening scope paragraph. Native prefix advance is still unknown;
+  scoped TOC/field behavior is among the preceding dependencies. Unclassified
+  source row roles remain unclassified; totals are not inferred from visible text.
+
+Coverage matrix records source and emitted XML locators, units, reference plane,
+recipe confidence, fixture applicability and missing native evidence. Eleven
+native obligations remain UNVERIFIED: text advance/wrap; Menu parent flow;
+merged-area growth/splits; border-to-flow conversion; preceding roots/fields;
+generated/terminal paragraph advances; usable native frame/bands; native font/
+settings profile; source-authoritative total roles; image-host flow; and full
+entry-origin coverage. Missing values remain null. Complete top-level ownership
+and table structure do not imply complete all-node text/style/font validation,
+a generic source adapter or any native layout upper bound.
+
+Oracle18checks pass;15independent checks confirm deterministic local/Linux
+outputs and original boundaries. Additional desktop source/XML verification
+links all181row cantSplit/header flags to source declarations and stores them
+in row-transition-links.json; it does not prove actual native break behavior.
+One worker, pinned image07c71903922e,512MiB/swap0, coordinator128MiB;
+peak71278592bytes (67.9765625MiB), exit0/OOMKilled=false/oom=0/oom_kill=0.
+No Oracle failures/retries or OOM. All18retained original DOCX/PDF hashes and
+Core42008134/Servicedb15e9d heads/clean state unchanged; original3container IDs/
+start/restart counts stable, no owned worker running. No new rendering/visual QA
+is claimed. Capture provenance is reused within its recorded scope; this worker
+does not re-establish genuine-intent branding by executing Core.
+
+Status PASS_SB0_SOURCE_XML_INVENTORY_WITH_NATIVE_PROOF_GAPS. SB0 inventory is
+complete within the stated structural/representative coverage; the11native
+proof gaps remain open. PredictiveBound=null, remainingSafe=null, HB1Ready=false.
+No SB1/HB1 or gate change follows automatically. Next owner decision may
+authorize SB1 over this missing-evidence matrix, retaining unknown outputs when
+primitive/frame proofs are absent. No Word/PDF processing beyond read-only DOCX
+inspection, Core/Service edit, original SQL/API/storage/service mutation,
+merge/push/release/install or map promotion.
