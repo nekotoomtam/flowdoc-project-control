@@ -651,3 +651,71 @@ Document budget: extend these existing shared and owner guides only. Known
 Word fallback/continuation/row bounds, default XML cap and historical test
 exclusions remain visible; neither a tag nor a successful MCP fixture closes
 them. Do not promote maps or create synthetic execution records.
+
+### Published Core/Service0.6.0; FlowDocMake remains candidate — 2026-11-05
+
+Status: PASS_CORE_SERVICE_060_GIT_PUBLISHED, scoped native MCP/PDF verification
+PASS; no installation. Owner explicitly retained FlowDocMake as a candidate.
+
+| Repository | Frozen development source | Release snapshot | Annotated tag |
+| --- | --- | --- | --- |
+| Core |c284498d33cd59f876037895d193828dbdc51163 |05818fe3e5ee7ec0d2520a51b7cf63de80b27bf5 |v0.6.0 |
+| Service |1bdae8e416050ecf3c5480e2d2f81b6b6e4420ef |5ff91f49342275f0bd6daa8e47b62ff841ad1d39 |v0.6.0 |
+
+Each snapshot tree equals its frozen development source and has one parent:
+the prior release. All14 Core/15 Service release commits have annotated tags.
+Default branch identities were read from GitHub, not guessed: Core
+codex/template-binding, Service codex/template-registry, PC main. Development,
+release and v0.6.0 tag refs were atomically pushed per repository and remote
+tag objects/peeled commits read back; all earlier remote tags stayed unchanged.
+Verified before-state Git bundles remain in release-060-20261105/git-backup.
+GitHub Release pages, npm/container publication and deployment were not done.
+
+Final Service pin is `vendor/flowdoc-core-0.6.0-release-c284498.tgz`, SHA256
+`5e3e3ada2bfd5e65dd6774ff165756f198b217d466dea1b5d1a97291e973bc50`;
+267-file package-tree digest is
+`3b5b458411307506df422034a9f4693bfea01209905396d7a71aa6fd270b077f`.
+The earlier0.6.0 integration archive is retained, not overwritten. Only packed
+README bytes changed;265 runtime files match the accepted integrated package.
+New Linux build/pack, public package contract and packed UAT/long80 consumers
+pass within512MiB, no OOM. Prior scoped73 Core and159-file Service813pass/
+6conditional-skip coverage is reused by runtime/source identity; skips,
+3historical operator gaps and known layout concerns remain unresolved.
+
+Service README and usage now contain the0.5.2→0.6.0 preparation steps: new20
+namespace, offline conversion before import, backup/isolated restore, one
+transaction covering pending migrations per invocation, schema029 refusal of
+legacy data, required host broker/cgroup prerequisites and separate deployment
+approval. Default disabled worker isolation is not a512MiB guarantee. No host
+broker deployment or real migration was performed for this Git release.
+
+Private FlowDocMake0.4.0-candidate.2 snapshot8cabe91 uses the exact final pin.
+All6 actual native MCP/stdio cases pass in Oracle: ready:true from inspected
+Docker/installed tree, tool/file client, model20 A–B–A draft/save/validate/
+preview/download, nested workflow, PDF task, paired PDF/DOCX API diagnostics
+and released queue reservations. Retired clone and DOCX MCP arguments are
+refused before a new task. A deliberately missing optional image reports one
+partial finding consistently in stream/lookup; paired API images are complete.
+External client512MiB peak148312064bytes, document worker512MiB/swap0, Service
+aggregate peak459853824bytes with unchanged1GiB budget; no unexpected OOM.
+Private bridge/metadata relay is allowlisted to only the owned lab container;
+neither client nor Service receives the Docker daemon socket.
+
+All4 PDFs/8 logical pages checked with5 distinct110dpi page images; the3-page
+workflow PDF is byte-identical to the preview, permitting exact visual reuse.
+Header/footer/group labels, Thai/English text and paired image rectangles are
+visible without observed clipping. DOCX CRC, all XML/.rels, text,987nodes,
+2drawings/2images and actual receipt hashes pass. No new Word rendering or
+arbitrary document/source-authoring fidelity is claimed. Original container
+identities remain unchanged; no owned workers/client/network stay running.
+
+Evidence: release-060-20261105/{release-verification.json,
+native-structural-verification.json,visual-review.json,pdf-review/inventory.json,
+git-preflight.json,prepared-snapshots.json,publication-result.json}; final
+postcondition is final-result.json. A fresh-context read-only release review
+finds no actionable metadata/package/update-guide issue. Installed/current-chat
+FlowDocMake separately reported SERVICE_UNREACHABLE; it was not restarted or
+reconfigured. A successful named-candidate lab preflight does not change that.
+FlowDocMake release/flowdocmake and flowdocmake-v0.3.1 remain unchanged; no
+flowdocmake-v0.4.0 tag, installed-cache change, original data/service operation,
+release artifact replacement, cleanup or map promotion occurred.

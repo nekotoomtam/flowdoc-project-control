@@ -226,3 +226,22 @@ fixture cases, with no remaining skips in those targeted runs. Delivery bytes
 are unchanged; no repack, package/image publication, GitHub Release-page creation
 or installation was part of this Git release. Evidence and backup bundles:
 `C:/Users/nekot/Documents/Codex/2026-10-17/format-release-043/`.
+
+## Checked Git release0.6.0 — 2026-11-05
+
+Owner authorized Core/Service0.6.0 Git publication and update documentation,
+while explicitly keeping FlowDocMake as a tested private candidate. Core
+sourcec284498 → snapshot05818fe and Service source1bdae8e → snapshot5ff91f4
+are published as annotated v0.6.0 tags. Each snapshot has one prior-release
+parent and an equal frozen source tree; default/release/tag refs were sent
+atomically per repository and peeled remote targets/unchanged old tags checked.
+
+The exact archive, update/rollback/host prerequisites, bounded test results and
+remaining Word/default-XML/conditional-test limitations are recorded in
+[model20 release result](flowdoc-model20-only-transition-2026-11-03.md#published-coreservice060-flowdocmake-remains-candidate--2026-11-05).
+Evidence and before-state bundles are in
+`C:/Users/nekot/Documents/FlowDoc-recovery/release-060-20261105`.
+FlowDocMake0.4.0-candidate.2 passes actual Oracle-lab MCP/PDF/API checks; it is
+not released or installed. Existing client connection is separately unavailable.
+No original-data migration/service stop, installation, npm/container publication
+or GitHub Release-page creation occurred. Release permission is not deployment.
