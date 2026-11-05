@@ -10,12 +10,12 @@ Service owns persistence/admission. Runtime discovery and verified output take
 precedence over prose. The old prepared18/19 guide sources remain historical
 inputs; they are not shipped as model20 examples in this candidate.
 
-Build-only overlay for the reviewed0.4.0-candidate.1 profile. The prepared
+Build-only overlay for the reviewed0.4.0-candidate.2 profile. The prepared
 0.3.1 source pin/snapshot and installed cache are preserved. The builder replaces
 the entire copied reference tree with this candidate's20-only guides/examples,
 uses strict20 discovery and validates both archive bytes and actual installed
 Core files. No runtime18/19 decoder or conversion fallback is shipped here.
-The exact Core archive is 145af7ff91416094e35ff9d283e350e6f86f7f7e2bb1707783591c877185e3fb;
-its267-file package-tree SHA256 isdf69f433956a921ada4be8c42eb66df0d42df5fc84b9b3b777bce2da69a8897d.
+The exact Core archive is 5e3e3ada2bfd5e65dd6774ff165756f198b217d466dea1b5d1a97291e973bc50;
+its267-file package-tree SHA256 is3b5b458411307506df422034a9f4693bfea01209905396d7a71aa6fd270b077f.
 Candidate bootstrap, actual stdio/HTTP and native governor gates remain distinct.
 This overlay alone is not a ready, installed or released plugin.

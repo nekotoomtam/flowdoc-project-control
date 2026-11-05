@@ -1,3 +1,3 @@
-// Private model20 candidate only; installed/default profiles are unchanged.
-export const supported=Object.freeze({"service":"0.6.0","core":"0.6.0","coreArtifactSha256":"145af7ff91416094e35ff9d283e350e6f86f7f7e2bb1707783591c877185e3fb"});
-export const candidate=Object.freeze({"id":"flowdocmake-model20-candidate","version":"0.4.0-candidate.1","corePackageFilesSha256":"df69f433956a921ada4be8c42eb66df0d42df5fc84b9b3b777bce2da69a8897d"});
+// Private candidate: compatible with0.6.0 release; not released or installed.
+export const supported=Object.freeze({"service":"0.6.0","core":"0.6.0","coreArtifactSha256":"5e3e3ada2bfd5e65dd6774ff165756f198b217d466dea1b5d1a97291e973bc50"});
+export const candidate=Object.freeze({"id":"flowdocmake-model20-candidate","version":"0.4.0-candidate.2","corePackageFilesSha256":"3b5b458411307506df422034a9f4693bfea01209905396d7a71aa6fd270b077f"});

@@ -12,7 +12,7 @@ inputs; they are not shipped as model20 examples in this candidate.
 
 This candidate accepts nodeModelVersion20 only, with font schema1/2 and draft
 definition.version1. Migration029 is mandatory. The reviewed Core SHA256 is
-`145af7ff91416094e35ff9d283e350e6f86f7f7e2bb1707783591c877185e3fb`.
+`5e3e3ada2bfd5e65dd6774ff165756f198b217d466dea1b5d1a97291e973bc50`.
 The installed267-file Core tree must also match its reviewed identity. Matching
 version strings or a vendor archive alone is insufficient. This is a private
 candidate; full integration, native wiring and whole-suite acceptance are separate.

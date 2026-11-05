@@ -7,7 +7,7 @@ description: Use when the user asks for flowdocmake, PDF source-data extraction 
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Private candidate0.4.0-candidate.1 routes draft-only tools;
+Owner: FlowDoc Project Control. Private candidate0.4.0-candidate.2 routes draft-only tools;
 it changes no Core/Service behavior or publication permission. Target versions:
 Service0.6.0 / Core0.6.0, nodeModelVersions20 only (explicit reusable definitions and ordered occurrences), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.

@@ -610,3 +610,44 @@ Combined disk/RAM recovery, synthetic1800 capacity and generalized memory-stage
 redesign are not closed. All18 retained original DOCX/PDF hashes remain intact.
 No original SQL/API/storage operation or service stop, no release branch/tag,
 push, product installation, installed cache update, map promotion or cleanup.
+
+## Core/Service0.6.0 release preparation — 2026-11-05
+
+New owner scope: release the accepted Core/Service0.6.0 tuple, prepare update
+instructions, and test FlowDocMake. Owner separately chose to retain FlowDocMake
+as a tested candidate, not release it. No installation, existing-service stop
+or original-data migration is authorized. Inline single-room, IDs N/A; roles
+Planning Partner, owner documentation/package preparation, Evidence Reviewer.
+Size medium, risk routine for versioned Git publication; model20 break and
+schema029 are explicit, so no in-place legacy rewrite is proposed.
+
+Allowed: Core README/template guide; Service README/usage, exact Core pin and
+lock; private model20 plugin candidate metadata/guide pin; existing PC records.
+Product source/runtime/migrations stay frozen. Reuse the just-accepted0.6.0
+runtime and ordinary-suite evidence by exact hashes. A README change changes
+the packed archive, so build a fresh immutable Core archive and repin Service
+and private plugin together; never overwrite the earlier tested archive.
+
+Acceptance/proof budget: owner-guide update/diff review; Linux package build
+and packed consumer identity; real named-candidate native MCP context, tools,
+draft/save/validation/preview/file download/task plus paired PDF/DOCX API and
+diagnostics/reservation checks on fresh private Oracle lab PostgreSQL. Keep
+512MiB/worker and client bundle, original Service aggregate budget and no
+unexpected OOM. Inspect every newly produced PDF page in this bounded fixture
+scope. Default installed FlowDocMake preflight returned SERVICE_UNREACHABLE;
+do not restart it or treat a lab pass as installed/current-chat readiness.
+
+After passing: commit/freeze exact source trees, preserve Git bundles and old
+refs, create single-parent snapshots from each prior release tree, annotated
+v0.6.0 tags, verify complete tagged ancestry/tree equality, atomic Git pushes
+of corresponding development/release/tag refs and read back remote targets.
+GitHub Release pages, npm/container publication and deployment are separate
+and outside this Git-release scope. Private plugin stays candidate. Reuse
+passing proof after unchanged fast-forward; no new broad feature/layout work.
+
+Evidence root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/release-060-20261105`.
+Document budget: extend these existing shared and owner guides only. Known
+Word fallback/continuation/row bounds, default XML cap and historical test
+exclusions remain visible; neither a tag nor a successful MCP fixture closes
+them. Do not promote maps or create synthetic execution records.
