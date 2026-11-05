@@ -1127,3 +1127,75 @@ clean and unchanged; original3container IDs/start times/restart counts stable,
 no owned lab worker running. No new visual review/export is claimed. No
 Core/Service edit, original data/storage/SQL/API/service operation,
 merge/push/release/install or map promotion.
+
+## HB0 lab evidence gate repaired and Linux-verified — 2026-11-05
+
+Owner authorized fixing the isolated prototype gate and testing in Oracle512MiB,
+preserving M1/Menu, no new Word export or Core/Service/original data/service
+changes/integration. Inline lab implementation and Evidence Reviewer, Project
+Control stewardship for prose; IDs N/A. Scope is one lab candidate and scoped
+tests, not an implemented product API or a native row-bound derivation. This
+section closes only the qualification-forgery gap reported by the prior HB0
+section; that evidence and its original failure remain unchanged.
+
+Artifact root:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-hb0-proof-gate-fix-20261105`.
+Candidate `proof_gate.py`, tests `tests_gate.py`, orchestration
+`prepare.py`/`build.py`/`run.py`/`remote.py`. Red regression:
+`red-regression.py`/`red-regression.log`; local GREEN `local-green.json`.
+Proof inputs: `trusted-files.json`, `approval.json`, `proof.json`, copied native
+events/source/line plans/export manifests/prior receipt and `request.json`.
+Results: `oracle/outputs/verification.json`, `oracle/receipt.json`, cgroup logs;
+independent `verify-local.py`/`verification-local.json`, `provenance.json` and
+`artifact-hashes.json`. Remote directory:
+`/home/ubuntu/flowdoc-audit-187957aecc2d/flowdoc-mr1-hb0-proof-gate-fix-20261105`.
+
+The original AST regression first fails because qualification-only promotion is
+accepted. The repaired EvidenceGate instead uses a consumer/operator-pinned
+manifest anchor; no request field can supply an evidence path, trust manifest
+or approval. The read-only snapshot checks manifest and artifact hashes, the
+review's observation-only purpose and proof hash, then independently derives
+the interval from the retained raw rectangle events. Source/plan identity, M1
+160/320twips, Word build, quantity/plane, row order, observed origins, source/
+PDF/DOCX bindings and exact outward micro-point endpoints must match the proof.
+The actual returned qualification is observed-only regardless of caller label.
+
+Important capability boundary: no accepted source-to-native-flow proof or
+verifier exists. Every predictive request is rejected with
+NO_ACCEPTED_NATIVE_FLOW_PROOF even if its observational evidence is genuine.
+There is no generic pathway to promote a claimed native bound from a self-
+asserted approval, proof ID or purpose string. Adding a future supported native
+derivation would require a separately reviewed verifier/authority contract;
+that capability is deliberately not implemented here. The lab approval merely
+materializes the previously reviewed observation scope from7d44465, not a new
+acceptance of native pagination or a Project Control execution registry.
+
+Oracle37tests pass:6positive observation controls and31rejections. Coverage
+includes the original forged qualification, genuine observation requested as
+native prediction, unknown/missing/path-like proof IDs, source/font-plan/Word/
+plane/row mismatch, unobserved origins, narrowed/bad-type intervals, caller-
+supplied authority/path, altered evidence/proof/review, and caller rehash of
+proof plus manifest against the unchanged operator anchor. Reanchored isolated
+test fixtures additionally reject false interval derivations, native-purpose
+claims, M1 mutation, unapproved review and wrong approved proof hash despite
+internally consistent hashes. Those test anchors never grant real authority.
+Hashes alone are therefore not presented as a mathematical proof or writer
+authentication: the source coordinate replay and purpose/domain checks matter.
+
+Twelve independent checks verify red-to-green regression, identical local/Linux
+test results, input hashes, observation-only outputs and original boundaries.
+One worker, pinned image07c71903922e,512MiB/swap0, coordinator128MiB;
+peak19832832bytes (18.9140625MiB), exit0/OOMKilled=false/oom=0/oom_kill=0.
+No failures or corrective reruns on Oracle; desktop collection uses validated
+archive member paths/types compatible with Python3.10. All18retained original
+DOCX/PDF hashes and Core42008134/Servicedb15e9d heads/clean state unchanged;
+original3container IDs/start/restart counts stable, no owned worker running.
+
+Status PASS_HB0_PROOF_GATE_REAL_EVIDENCE_AND_FORGERY_REJECTION. The lab-only
+label-bypass defect is closed within this tested gate. The operator-controlled
+read-only snapshot/anchor is the trust boundary, not a signed proof service;
+an actor who can replace that authority or code is outside this experiment.
+No native predictive bound was accepted: predictiveBound=null,
+remainingSafe=null, HB1Ready=false/full MR1 open. No new Word/PDF processing,
+Core/Service edit, original data/SQL/API/storage/service operation,
+merge/push/release/install or map promotion.

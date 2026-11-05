@@ -5153,3 +5153,35 @@ correction only; worker evidence was reused unchanged. All18original DOCX/PDF
 hashes and original3container identities stable; product candidates clean.
 No Word/PDF processing, live SQL/API/storage, original service control,
 Core/Service edit, integration/merge/push/release/install or map promotion.
+
+## HB0 prototype evidence-gate gap closed in isolated lab — 2026-11-05
+
+Owner authorized the lab-only repair and Oracle512MiB tests, preserving M1/Menu,
+no new Word export or Core/Service/original data/service changes/integration.
+Inline lab implementation/Evidence Reviewer and Project Control stewardship,
+IDs N/A. The contract's "HB0 lab evidence gate repaired and Linux-verified"
+section owns the full implementation boundary, test coverage and evidence.
+
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-hb0-proof-gate-fix-20261105`.
+Old AST regression fails on label-only promotion before the repair. The new
+gate verifies operator-pinned artifacts and observation-only review, replays
+raw coordinate-derived intervals, and binds document/plan/M1/Word/plane/rows/
+origin and endpoints. Caller labels, evidence paths, proof IDs or rehashed files
+cannot grant native prediction. Genuine retained evidence yields observation
+acceptance only. No accepted native-flow proof/verifier exists, so predictive
+requests remain rejected; no hypothetical future native-bound checker is claimed.
+
+Oracle37tests pass (6positive/31rejections), including internally consistent
+hashes with false derivations or wrong proof/review purpose. Independent12checks
+confirm results and original boundaries. One512MiB/swap0 worker, coordinator
+128MiB, peak18.9140625MiB, exit0/no OOM, no Oracle retries. Local archive
+collection succeeds without rerun. All18original files, product heads/clean
+state and original3container identities remain unchanged.
+
+The earlier HB0 lab qualification-forgery defect is now closed in this candidate;
+the actual source-to-native-flow bound remains UNKNOWN. PredictiveBound and
+remainingSafe remain null, HB1Ready=false/full MR1 open. Operator-pinned read-only
+inputs are a bounded lab trust assumption, not writer authentication or product
+integration. No new Word/PDF processing, Core/Service edit, original live
+SQL/API/storage/service operation, merge/push/release/install or map promotion.
