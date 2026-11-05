@@ -1,5 +1,13 @@
 # FlowDoc model20-only transition implementation plan
 
+> **Current release status — 2026-11-05:** By explicit owner request,
+> Core/Service v0.6.0 publication is withdrawn. Local and origin `release`
+> branches are restored to v0.5.2 and v0.6.0 tags are removed. Development
+> code, immutable packages and scoped lab evidence remain candidates.
+> Earlier publication entries below are historical and superseded by this status.
+> Current-chat actual-use acceptance has not passed; lab acceptance alone does
+> not satisfy the owner's release gate. No installation or runtime change occurred.
+
 Authority Boundary: Project Control canonical design/implementation plan for
 the owner-approved pre-use transition. Core owns template/input/composition and
 render contracts; Service owns persistence/admission/authoring/runtime; Project
@@ -719,3 +727,31 @@ reconfigured. A successful named-candidate lab preflight does not change that.
 FlowDocMake release/flowdocmake and flowdocmake-v0.3.1 remain unchanged; no
 flowdocmake-v0.4.0 tag, installed-cache change, original data/service operation,
 release artifact replacement, cleanup or map promotion occurred.
+
+### Owner-requested withdrawal — 2026-11-05
+
+Single-room inline status correction; execution/Phase/Checklist IDs N/A.
+The owner requested withdrawal after clarifying that publication requires the
+intended actual-use test to pass. Current installed FlowDocMake reported
+SERVICE_UNREACHABLE; that is a failed current-environment prerequisite, not
+evidence that the previously passing isolated lab tests failed.
+
+Core `release` is restored from 05818fe to v0.5.2 commit55315ca;
+Service `release` is restored from 5ff91f4 to v0.5.2 commit25e912f.
+Both local and origin v0.6.0 tags are removed using exact-ref guards; every
+other origin tag is unchanged. Development code remains intact with withdrawal
+notices in Core commit258ab50 and Service commit8540206. Candidate branches,
+package archives, pins and earlier publication evidence are retained unchanged.
+
+Evidence root: `C:/Users/nekot/Documents/FlowDoc-recovery/withdraw-060-20261105`.
+`before.json` records original refs and SHA-256 hashes of verified full Git
+bundles in `git-backup/`; `result.json` records verified withdrawal postconditions.
+The earlier release-060-20261105 evidence remains immutable historical evidence.
+Product checks: documentation-only diffs and diff whitespace checks; no product
+runtime behavior changed or runtime retest claimed. Project Control data and
+documentation checks cover the status correction separately.
+
+FlowDocMake remains candidate-only; release/flowdocmake and flowdocmake-v0.3.1
+are unchanged. No DB, installed files, runtime configuration or service lifecycle
+was touched. Future publication requires an owner-agreed actual-use acceptance
+scope and passing results; do not automatically republish the withdrawn version.
