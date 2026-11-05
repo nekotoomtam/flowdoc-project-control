@@ -5484,3 +5484,31 @@ and remainingSafe remain null, HB1Ready=false/full MR1 open. No frozen proof,
 gate or native admission is changed. No Core/Service edit, original live
 SQL/API/storage/service operation, integration/merge/push/release/install
 or map promotion.
+
+## Captured current Word font settings match source — 2026-11-05
+
+Owner authorized reviewing the existing live capture only, M1/Menu fixed,
+no new Word save/export/product/original data/service changes/integration.
+Inline Evidence Reviewer/Project Control Steward, IDs N/A. Contract section
+"Review of captured current Word font properties" owns source locators,
+read-only capture/fallback/interruption details, hashes and remaining gaps.
+Artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-current-word-readonly-20261105`.
+
+Review compares5ranges and18Menu textboxes to genuine-Core source and SB0
+shape/word-range identities. All23font-property comparisons match: header
+Sarabun regular8pt; Module/three numeric samples/Menu boxes Sarabun Light8.5pt;
+script-specific names, sizes and bold/italic flags agree. This establishes
+applied Word font properties in the sampled current session, not all physical
+per-glyph fallback choices. The Font Substitution dialog's content was not
+observed before the user stopped Computer Use; stored-1 is a button return,
+not proof that no substitution occurred. No UI is resumed in this review.
+
+Eleven checks pass. The earlier capture opened a filesystem/API read-only copy,
+then closed it without saving; source/copy hashes are unchanged. All18original
+files and Core/Service heads/clean state remain unchanged. No new Word open,
+render/save/export, Oracle worker or measured peak now. Oracle512MiB policy
+remains unchanged. Font settings match, full profile/fallback/native row/frame
+proof remains incomplete, HB1Ready=false. No Core/Service edit, original live
+SQL/API/storage/service operation, integration/merge/push/release/install
+or map promotion.

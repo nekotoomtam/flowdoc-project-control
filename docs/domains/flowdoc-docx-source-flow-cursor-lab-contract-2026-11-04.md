@@ -1570,3 +1570,66 @@ The entire word-profile-fonts obligation is not closed; row/frame bounds and
 remainingSafe remain null, HB1Ready=false. No gate or prior frozen artifact is
 changed. No new Word/PDF export, Core/Service edit, original SQL/API/storage/
 service operation, integration/merge/push/release/install or map promotion.
+
+## Review of captured current Word font properties — 2026-11-05
+
+Owner resumed review of already captured font results only; retain M1/Menu,
+no new save/export/product/original data/service changes or integration. Inline
+Evidence Reviewer/Project Control Steward, IDs N/A. No Word, UI or Oracle
+operation is repeated in this review. Existing artifacts:
+`C:/Users/nekot/Documents/FlowDoc-recovery/docx-mr1-current-word-readonly-20261105`.
+`before.json`, read-only M1 copy, `inspect-current-word.ps1` and
+`live-font-probe.json` preserve the earlier authorized live capture.
+`review-captured-fonts.py`/`review-result.json` contain this source comparison;
+`artifact-hashes.json` binds retained results. Source comparison uses the pinned
+genuine-Core table/row/selected-text facts and SB0word-range identities.
+
+The preceding capture created an unchanged, filesystem-read-only copy of M1.
+Word's file-picker focus/input was unreliable, so the observed picker was
+dismissed and an independent Word document API instance opened only that copy
+with ReadOnly=true and AddToRecentFiles=false. Macro automation was disabled;
+no Save, print or export call was made. Current application reported version16.0,
+build16.0.20527, document compatibilityMode15, and ReadOnly=true. The probe
+repaginated in memory, read selected ranges and Menu shape text, and closed
+the document with Close(0)/application Quit(0) in finally. Its saved-state flags
+were true on open/before close, meaning no pending edits, NOT a Save call.
+Source and copy before/after/current SHA256 are all
+`32f3fb82a0be71d0ea707e8bf3483ee2759e4210bacab11dfe72394bf6f85f91`;
+the copy remains filesystem-read-only. M1/Menu file bytes are unchanged.
+
+Confirmed capture-to-source comparison (23sample objects, zero mismatches):
+
+| Captured selection | Count | Source and Word-reported family | Size |
+| --- | ---: | --- | ---: |
+| Header Module cell |1 |Sarabun regular |8pt |
+| Merged Module label |1 |Sarabun Light |8.5pt |
+| Numeric cells column3, rows2/3/4 |3 |Sarabun Light |8.5pt |
+| Menu word textboxes across three member rows |18 |Sarabun Light |8.5pt |
+
+Name/NameAscii/NameBi/NameFarEast/NameOther, Size/SizeBi and Bold/Italic agree
+with captured source effective styles in all23objects. Shape names/source UTF16
+word-range text hashes and owning rows cover exactly the18expected Menu boxes.
+Range columns are mapped through source columnIndex/colSpan, not cell-list
+ordinal: continuation rows omit the merged Module origin from their own lists.
+This is applied/readable Word font-property agreement, not a per-glyph physical
+rendering/fallback trace or complete font coverage of every cell/page. The prior
+retained PDF glyph-program proof is consistent with these families, but does
+not become a new current PDF/font-program trace through that consistency alone.
+
+Font Substitution was displayed via Dialog.Display only, never Show/Execute.
+The stored return code is-1. Computer Use was stopped by the user's physical
+Escape before dialog content was observed; no text/screenshot proving its
+missing/substitute-font list was retained. Do not infer "no font substitution"
+from the return code. [Dialog.Display](https://learn.microsoft.com/en-us/office/vba/api/word.dialog.display)
+documents button return codes, not a substitution verdict. No Computer Use
+action is resumed for this review; its interruption boundary is preserved.
+
+Eleven review checks pass, including source/shape identity, all18original file
+hashes and unchanged Core42008134/Servicedb15e9d heads/clean state. No current
+settings mismatch was found in this sample. Per-glyph fallback and unread
+substitution-dialog content remain UNVERIFIED; full profile and native row/frame
+bounds remain open. HB1Ready=false. Oracle512MiB/worker policy unchanged; no
+Oracle runtime or peak test in the captured desktop session or this review.
+Only evidence review and these two prose records change now; no new Word open/
+render/save/export, Core/Service edit, original SQL/API/storage/service
+operation, integration/merge/push/release/install or map promotion.
