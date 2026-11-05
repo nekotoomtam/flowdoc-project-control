@@ -5299,7 +5299,7 @@ prediction and absence of glyph clipping remain separate acceptance criteria.
   proposed bounds; never fit a constant and call the same observations a proof.
   Gate: each finite output has a derivation/coverage chain; otherwise UNKNOWN
   with the exact missing primitive. No new Word export in this stage.
-- [ ] **SB2 — Freeze a reviewable proof candidate and HB1 entry decision.** A
+- [x] **SB2 — Freeze a reviewable proof candidate and HB1 entry decision.** A
   proposed private proof family may be named flowdoc-native-row-bound-proof/1;
   it is not yet supported by the gate or a public API. Bind source/profile/
   emitter/measurement revisions, covered grammar/origins, primitive proofs,
@@ -5411,3 +5411,44 @@ SB2/HB1 are not started. Further arithmetic alone cannot supply missing native
 primitive/frame evidence. No fresh Word/PDF processing, Core/Service edit,
 original live SQL/API/storage/service operation, merge/push/release/install
 or map promotion.
+
+## SB2 reviewed; HB1 is not ready — 2026-11-05
+
+Owner authorized review and prerequisite definition only, M1/Menu fixed,
+Oracle512MiB retained, no Word export/product/original data/service changes or
+integration. Inline Evidence Reviewer/Planning Partner and Project Control
+stewardship; IDs N/A. The contract's "SB2 evidence review and HB1 entry
+disposition" section owns frozen evidence hashes and exact acceptance criteria.
+
+Disposition UNKNOWN/UNSUPPORTED for native prediction; NOT READY for HB1.
+SB1 supplies source arithmetic and an always-unknown native query, not a finite
+Word row transformer or justified usable-frame lower bound. Existing synthetic
+passes and the repaired observation gate do not change that. All11native gaps
+remain open; the proposed native proof family is not implemented/admitted.
+
+Required evidence is grouped into four ordered packets, covering all11IDs:
+profile/domain (1); row transformer including M1/Menu/borders/origins (5);
+native frame/prefix/generated flow (3); total/image/transition support (2).
+Each needs applicable source/profile/plane provenance and a justified bound or
+explicit unsupported result. Finite observed maxima cannot be promoted as
+general enclosures. An excluded feature must reject real inputs containing it;
+no silent prefix/TOC/image removal or M1/Menu change is permitted.
+
+Read-only integrity review checked134manifest-listed files across SB0/SB1/gate;
+no artifact was modified and no experiment rerun. Contract records the exact
+manifest and model-code hashes. This freezes review inputs only, not a native
+proof. Review also preserves the at-most8-export HB1 budget, frozen predictions,
+independent holdouts, failure-on-bound-exceedance and separate visual checks.
+
+SB2 is complete with this explicit negative readiness result. Stop arithmetic
+replay loops; next work must bring profile/primitive/frame evidence or an owner
+scope/risk decision, with any native collection separately authorized. No SB1
+numbers or accepted label may activate the native gate. PredictiveBound and
+remainingSafe stay null, HB1Ready=false/full MR1 open.
+
+Only these two prose documents change; source locators, dependency coverage,
+hash freeze, final diff and whitespace are the checks for this review. No new
+Oracle worker, runtime test, measured peak or Word processing. Future lab
+limits512MiB/worker, swap0, coordinator128MiB remain unchanged. No Core/Service
+edit, original live SQL/API/storage/service operation, integration/merge/push/
+release/install or map promotion.

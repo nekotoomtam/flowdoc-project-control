@@ -1395,3 +1395,97 @@ missing-evidence chain only after authorization; arithmetic reruns alone cannot
 fill native primitive/frame gaps. No SB2/HB1, new Word/PDF processing,
 Core/Service edit, original SQL/API/storage/service operation,
 merge/push/release/install or map promotion is authorized by this result.
+
+## SB2 evidence review and HB1 entry disposition — 2026-11-05
+
+Owner authorized SB2 review only, M1/Menu fixed, Oracle512MiB retained, no new
+Word export/product/original data/service change/integration. Inline Evidence
+Reviewer/Planning Partner, Project Control prose stewardship; IDs N/A. Scope:
+review retained evidence, freeze the reviewed conditional candidate, identify
+required proofs and decide HB1 readiness. No new experiment, accepted native
+proof, verifier implementation or synthetic-work rerun is authorized here.
+
+Disposition: SB2 review COMPLETE; native-bound proposal UNKNOWN/UNSUPPORTED
+for predictive admission; HB1 NOT READY. SB1 build.py's native_query always
+returns unknown, with no accepted row/frame primitive proof. interval_spec.py
+proves conditional arithmetic only. There is no finite native H_i(Y) candidate
+or justified native frame lower bound for HB1 to challenge. A record/hash/review
+label cannot fill that gap or activate the existing gate. The proposed private
+flowdoc-native-row-bound-proof/1 family remains unimplemented/unadmitted.
+
+### Reviewed evidence freeze
+
+All manifest-listed bytes were rechecked read-only against the retained local
+artifacts: SB0 inventory58files, SB1 model43files and repaired gate33files.
+The following SHA256 values freeze this REVIEW INPUT, not an accepted native
+proof or current installed Word environment. Artifact roots are the existing
+FlowDoc-recovery directories recorded in the preceding result sections.
+
+| Retained artifact | SHA256 |
+| --- | --- |
+| SB0 artifact-hashes.json |471940a25acf71b533d86114306bfdf9ba6023a7acea77b2f8d0ad8ab203bc49 |
+| SB1 artifact-hashes.json |85fa274662c9421de4070d43c37b72d1f50eed230f7b66f3dc4f0e7f8dc39cea |
+| Repaired gate artifact-hashes.json |771366ef03425af65025fbd331d57cf2cc820cbfa6c6f864ee8bc305a01652c3 |
+| SB1 interval_spec.py |6d0214a94a779fb2fc07e97ca9d8ac2925e837f7510f7e1ef8c904cd29e269d7 |
+| SB1 build.py |7be2ca5fe4f669704a34bdc9fa07e50fa8734df3a49a002c52c38e021368a409 |
+
+Known evidence remains source/XML linkage and conditional algebra, not native
+prediction. Recorded compatibilityMode15 and embedded Sarabun byte identity do
+not establish actual Word font/fallback selection or a complete native profile.
+The last retained Word-build evidence must not be asserted as a fresh check of
+the currently installed executable. No application or Oracle runtime is queried
+in this review.
+
+### Required proof before HB1 readiness review
+
+These four packets account for all11open dependency IDs without creating new
+execution stages. They specify the missing evidence; none is marked passed.
+
+| Priority/packet | Dependency IDs | Required evidence and pass condition |
+| --- | --- | --- |
+|1 Profile/domain |word-profile-fonts |Bind actual Word executable/build, resolved fonts/fallback for covered glyphs, compatibility/settings, field-refresh policy, source/emitter/measurement identities and supported structural grammar. Show applicability to the intended source; font embedding or a version label alone does not pass. |
+|2 Row transformer |text-native-advance; menu-parent-flow; merge-row-growth; border-flow-plane; origin-domain |A finite source-derived H_i(Y) with justified primitive/composition bounds over its entire entry-position domain. Include text/paragraph advances, unchanged Menu parent/shape behavior, M1 label sharing/once-per-fragment offsets, automatic row/merge/split behavior and owned border planes. Prove the domain/enclosure; observed extrema or an assumed rounding period do not pass. |
+|3 Frame and prefix |native-frame; prefix-native-footprints; generated-paragraph-advance |A justified usable-frame lower bound and preceding-flow upper bound under the same profile and plane. Cover header/footer, first/continuation page class, fields/TOC, gaps and generated paragraphs. For this target include21preceding source roots,1separator and the opening scope paragraph; the document-wide54separators are not all charged before this target. Nominal644.9pt does not pass as native capacity. |
+|4 Semantic support/transition closure |total-role-ownership; image-host-flow |Source-authoritative total roles and once-only reservations; image-host paragraph contribution; supported keep/split/header/continuation transitions. A feature may be explicitly unsupported in a declared smaller domain, but must stop actual inputs that contain it. Do not silently remove an image, TOC, prefix, total or current M1/Menu to make full UAT/SRS appear supported. |
+
+For each claimed finite primitive/bound, require an independently replayable
+derivation or exhaustive coverage of an explicitly finite domain, with source
+locators, units, planes, assumptions, exclusions and proof provenance. Native
+measurements may refute a hypothesis or characterize observed cases; finite
+sample maxima alone cannot establish a bound for all new sources/origins.
+If evidence supports only a measured profile envelope, retain that qualification
+and unknown predictive admission; do not silently replace the existing criterion
+with an empirical maximum. A different risk/scope contract is an owner decision.
+
+### HB1 admission checklist and stop rule
+
+Before READY_FOR_HB1_REVIEW, freeze a concrete finite bound argument/profile/
+domain and an evaluator that actually makes the stated conditional predictions,
+with independent containment/ownership review. All applicable packets above
+must be resolved; assumptions requiring new native evidence stay visible and
+cannot masquerade as proved primitives. A mere always-unknown evaluator cannot
+be called a predictive candidate. Existing mathematical tests may be reused
+unchanged; they do not acquire native authority through another replay.
+
+After that review, HB1 still needs explicit owner authorization and its retained
+at-most8-export budget. Freeze expected source-based outputs before inspecting
+holdouts. If a fixture lies outside the supported domain, record unsupported
+rather than pass; if a claimed bound is exceeded, fail and return to review,
+without tuning on that holdout and claiming independent success. Check geometry,
+page transitions, complete label/total ownership and visual clipping separately.
+No PDF page cuts/coordinates may enter the source predictor. Full MR1 and
+product acceptance remain separate from HB1 experiment readiness.
+
+This review satisfies SB2 by returning explicit UNKNOWN/UNSUPPORTED and a finite
+next evidence request. Stop additional arithmetic/prose replay loops until new
+primitive/profile/frame evidence or an explicit owner scope/risk decision arrives.
+The first useful next scope is profile/domain evidence and the row/frame proof
+dependency design; this is a prerequisite request, not permission to collect
+native data now or bypass HB1's gate by renaming an export batch.
+
+Current predictiveBound=null, remainingSafe=null, HB1Ready=false. No gap is
+closed by this review. Oracle512MiB/worker, swap0, coordinator128MiB remain the
+future lab limits; no worker or service operation is started here, so there is
+no new runtime/peak result. Only the existing two Project Control documents
+change. No Word export, Core/Service edit, original SQL/API/storage/service
+operation, merge/push/release/install or map promotion.
