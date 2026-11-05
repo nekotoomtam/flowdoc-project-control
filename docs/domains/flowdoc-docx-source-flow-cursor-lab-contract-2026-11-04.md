@@ -1633,3 +1633,25 @@ Oracle runtime or peak test in the captured desktop session or this review.
 Only evidence review and these two prose records change now; no new Word open/
 render/save/export, Core/Service edit, original SQL/API/storage/service
 operation, integration/merge/push/release/install or map promotion.
+
+### Follow-up Font Substitution inspection attempt — 2026-11-05
+
+Owner authorized continuing the remaining font inspection. Inline discovery,
+Project Control Evidence Reviewer, execution IDs N/A; M1/Menu retained. Proof
+budget: one bounded read-only UI attempt, no save/export or product changes.
+No connected Word document-control session was available. Computer Use launched
+Word to its empty start screen and opened its file picker. The filename edit
+index was unavailable in the cached app state; subsequent screenshot caret and
+accessibility focus disagreed even after one keyboard-focus recovery. No path
+text was typed and no document was opened. The picker was cancelled with Escape,
+the owned empty Word window closed, and a fresh window list contained no Word.
+
+`substitution-ui-attempt.json` in the existing current-word-readonly lab binds
+this BLOCKED_UI_FOCUS_UNRELIABLE outcome and current source/copy SHA256 checks.
+Both still match the prior hash; the copy remains filesystem-read-only. Font
+Substitution content remains UNVERIFIED, not a failing font result; the prior
+23 property matches remain bounded evidence. No per-glyph fallback or native
+row/frame obligation is closed, HB1Ready=false. Next prerequisite is a reliable
+read-only dialog observation, possibly user-assisted; no new export is needed
+for that dialog question. No Core/Service edit, original data/service operation,
+merge/push/release/install or map promotion occurred.
