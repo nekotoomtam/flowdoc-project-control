@@ -520,7 +520,8 @@ release branches/tags, installed plugins and original data/services forbidden.
    Build and test the repinned consumer, including genuine PDF/DOCX API work
    against a newly owned lab PostgreSQL namespace. No original API/DB calls.
 3. Align only the private model20 plugin profile with the new package identities
-   and test its build/compatibility guards. Keep installed/default plugin intact.
+   and test its build/compatibility guards. Keep installed plugin and default
+   prepared profile/snapshot intact.
 4. Review changed metadata/guides and evidence coverage; commit after checks.
    Fast-forward the three clean development targets in Core→Service→PC order.
    Reuse verification after unchanged fast-forward. Retain lanes; cleanup is
@@ -535,3 +536,77 @@ Work/registry/map/report prose. Evidence goes under
 Native Word/font fallback, general row/frame prediction and Module continuation
 parity remain deferred, not PASS. Preserve M1/Menu and existing explicit
 resource limits; no new rendering/layout repair is part of this integration.
+
+### 0.6.0 local development acceptance — 2026-11-05
+
+Owner confirmed full candidates twice; no release/install/push authorization.
+Core0.6.0 source937bed1c0e0ad961bb1f04262624430e4b7392db includes model20-only,
+R1 and M1. Service0.6.0 source458479bee31546b9337659d95dba50ef0d904f15 pins
+`vendor/flowdoc-core-0.6.0.tgz`, SHA256
+`145af7ff91416094e35ff9d283e350e6f86f7f7e2bb1707783591c877185e3fb`.
+Its lockfile SHA512 is checked against the same bytes. All267 package files
+produce tree digest `df69f433956a921ada4be8c42eb66df0d42df5fc84b9b3b777bce2da69a8897d`.
+Private FlowDocMake0.4.0-candidate.1 profile, observed0.6.0 authoring contract and
+candidate guide snapshot commitb5ce037 match this tuple; retained build is
+`candidate-integration-060-20261105/plugin-candidate` under the evidence root's
+parent. Default prepared profile/snapshot and installed plugin are unchanged.
+
+Evidence in the round root above: `verification.json`, `core-identity.json`,
+`reuse-verification.json`, `service-ordinary-acceptance.json`,
+`retained-plugin-verification.json`, `git-before.json` and post-fast-forward
+`integration-result.json`. Individual source packets, receipts, logs and failed
+attempts remain in their named subdirectories; this prose is not a test result.
+
+- Core: new offline Linux build/pack,73 affected tests and actual packed UAT/
+  long80 consumers pass. All workers512MiB/swap0, no OOM; coordinator128MiB.
+  Highest observed worker peak349573120bytes. New archive differs from the
+  previously Word-reviewed M1 package only in package.json/README;265 runtime
+  files match exactly. Scoped R1 and owner Word evidence is reused, not rerun
+  or generalized. Full UAT uses the retained explicit maxXmlNodes300000 option;
+  default Core XML/drawing/archive caps are unchanged. This is not proof that
+  full UAT fits the default50000-node cap.
+- Service: ordinary inventory159 files covers813pass/0fail/6conditional skips
+  after the scoped lab-fixture correction below. Fresh real API8, real contract8
+  and original six governor cases all pass against newly owned PostgreSQL labs.
+  Worker512MiB/swap0 and original resource profiles remain unchanged. Actual
+  delivered PDF/DOCX bytes match receipts; ZIP CRC and every XML/.rels part
+  parse. Service runtime/tests/migrations are byte-identical to db15e9d; schema
+  029 remains required,001–028 unchanged. These tests do not migrate old data.
+- Plugin:6 identity/capability,2 isolated build and4 workflow protocol cases
+  pass. Retained candidate inventory/bootstrap verifies the real267-file Core
+  tree without starting its server or installing it. This is not a fresh
+  whole native-plugin performance/Word acceptance run.
+- Review: one fresh-context read-only package/pin/guide review finds no runtime
+  packaging blocker; its P3 current-version guide references were corrected
+  once and diff-reviewed. PC check:data and changed-area diff checks pass.
+
+The first Core lab attempt stops before build on a retained-container name
+collision; a new uniquely named round passes, no old container is removed.
+The first complete ordinary Service run is retained as811pass/2fail/6skip.
+Both failures are stdio clients correctly refusing a lab plugin still pinned
+to0.5.2. Read-only old/new bootstrap comparison reproduces that refusal.
+Replacing only the lab-plugin fixture with the reviewed0.6.0 profile gives
+58/58 in all5 files that reference either plugin-root environment variable.
+Acceptance keeps154 unchanged file results and replaces exactly those5 file
+results, verifies product source/lock/pin identity, and verifies the only plugin
+runtime-module difference is compatibility-profile.mjs. No product fix or
+failed-to-PASS relabeling occurred. Initial workflow invocations missing their
+explicit built-package prerequisite are not PASS; after providing the actual
+built candidate,4/4 workflow cases pass.
+
+Local integration targets are clean, ancestor-checked fast-forwards in
+Core→Service→PC order. Core and Service targets now contain the accepted heads
+above; this record/profile/guides are the PC fast-forward input. The final Git
+postcondition is recorded in integration-result.json, including exact target
+heads, unchanged release/tag/remote refs and clean state. Unchanged tested trees
+reuse the passing evidence after fast-forward; no dependency installation or
+second product build occurs in development checkouts.
+
+Remaining:6 ordinary conditional skips retain their prior dispositions (native
+counterparts separate;3 historical operator cases still unverified). Native
+Word physical font fallback, general row/frame bounds and Module continuation
+label parity remain deferred; M1/Menu is preserved and wordVerified stays false.
+Combined disk/RAM recovery, synthetic1800 capacity and generalized memory-stage
+redesign are not closed. All18 retained original DOCX/PDF hashes remain intact.
+No original SQL/API/storage operation or service stop, no release branch/tag,
+push, product installation, installed cache update, map promotion or cleanup.
